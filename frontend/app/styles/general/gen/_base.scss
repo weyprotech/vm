@@ -1,0 +1,57 @@
+.clear {
+  &:before,
+  &:after {
+    content: "";
+    clear: both;
+    display: block;
+  }
+}
+
+.transition {
+  transition: all 0.2s ease-in-out;
+}
+
+html {
+  font-size: 100%;
+}
+
+body {
+  font-family: $sans-serif;
+  line-height: 1.6;
+}
+
+main {
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+  @extend .transition;
+  &:focus {
+    outline: none;
+  }
+  &.weypro {
+    font-weight: 600;
+    &:hover {
+      color: #379bd5 !important;
+    }
+  }
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+#wrapper {
+  overflow: hidden;
+}
+
+.rwd_table_wrapper {
+  width: 100%;
+  overflow-x: auto;
+  table {
+    width: 100%;
+  }
+}

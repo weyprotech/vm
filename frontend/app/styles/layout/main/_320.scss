@@ -1,0 +1,43 @@
+// Breadcrumbs
+.breadcrumbs {
+	text-align: center;
+	a {
+		color: $black;
+		&:hover {
+			// color: $orange;
+		}
+	}
+	span {
+		&.arr {
+			margin: 0 .8em;
+		}
+		&.current {
+			// color: $orange;
+		}
+	}
+}
+
+// Page
+.pager_navigation {
+	padding: 0 1.5rem 1.5rem;
+	box-sizing: border-box;
+	text-align: center;
+	.pager_nav_inner {
+		max-width: 1170px;
+		margin: 0 auto;
+	}
+	a {
+		display: inline-block;
+		height: 24px;
+		padding: 0 .5rem;
+		line-height: 24px;
+		vertical-align: middle;
+		&:hover, &.current {
+			// color: $orange;
+		}
+		> div[class^='icon_'] {
+			display: inline-block;
+			vertical-align: middle;
+		}
+	}
+}

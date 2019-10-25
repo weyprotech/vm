@@ -1,0 +1,44 @@
+.old_browser {
+  position: fixed;
+  z-index: 99999;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 30px 0;
+  background-color: #333333;
+  text-align: center;
+  .old_browser_inner {
+    color: $white;
+    .oops {
+      font-size: 64px;
+      font-weight: bold;
+    }
+    .oops_title {
+      margin-bottom: 30px;
+      font-size: 32px;
+      font-weight: bold;
+    }
+    p {
+      margin: 30px 0;
+    }
+    a {
+      text-decoration: underline;
+    }
+    table {
+      margin: 0 auto;
+      text-align: center;
+      td {
+        padding: 8px;
+      }
+      img {
+        display: block;
+        width: 120px;
+        margin-bottom: 5px;
+      }
+      span {
+        display: block;
+      }
+    }
+  }
+}

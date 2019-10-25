@@ -1,0 +1,17 @@
+{
+  "name": "my_webapp",
+  "description": "a template",
+  "authors": [
+    "Jessie Liu <qqopp45@gmail.com>"
+  ],
+  "dependencies": {
+    "jquery": "2.1.4",
+    "magnific-popup": "^1.1.0",
+    "slick-carousel": "^1.8.1",
+    "jquery-sidebar": "^3.3.2"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.3.0"
+  }
+}

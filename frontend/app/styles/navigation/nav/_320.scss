@@ -1,0 +1,57 @@
+nav {
+  ul {
+    list-style: none;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    @extend .clear;
+  }
+}
+
+// Header Nav
+.header_nav {
+  display: none;
+}
+
+// Slide Bar
+#sidebar {
+  position: fixed;
+  z-index: 110;
+  top: 0;
+  left: -270px;
+  width: 270px;
+  max-width: calc(100vw - 44px - 1em);
+  height: 100%;
+  overflow: auto;
+  padding: 3em 1.5em;
+  box-sizing: border-box;
+  background-color: $white;
+  &.active {
+    box-shadow: 3px 0 5px rgba(0,0,0,0.3);
+  }
+  .sidebar_logo {
+    max-width: 190px;
+    margin: 0 auto 1.5em;
+    text-align: center;
+    a {
+      display: block;
+    }
+  }
+  .sidebar_menu {
+    ul {
+      li {
+        position: relative;
+        a {
+          display: block;
+          color: $main;
+          font-size: 1.25em;
+          line-height: 44px;
+          text-align: center;
+          &:hover, &.current {
+            
+          }
+        }
+      }
+    }
+  }
+}

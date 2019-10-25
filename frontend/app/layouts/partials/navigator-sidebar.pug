@@ -1,0 +1,26 @@
+nav.sidebar_menu
+  include navigator-list.pug
+  .links
+    a(href="javascript:;") SHIPPING
+    i.divide_line
+    a(href="javascript:;") REFUND
+  .currency_language
+    .select_wrapper
+      select
+        option
+          | € EUR
+        option(selected)
+          | $ TWD
+        option
+          | ¥ CNY
+    i.divide_line
+    .select_wrapper
+      select
+        option
+          | LANGUAGE
+        option
+          | English
+        option
+          | 繁體中文
+        option
+          | 简体中文

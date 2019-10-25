@@ -1,0 +1,183 @@
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    title VETRINA MIA
+    meta(name='KeyWords', content='')
+    meta(name='Description', content='')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    link(rel='icon', type='image/x-icon', href='images/favicon.ico')
+    link(rel='shortcut icon', type='image/x-icon', href='images/favicon.ico')
+
+    // build:css styles/main.css
+    link(rel='stylesheet', href='styles/main.css')
+    // endbuild
+
+  body
+    <!--[if lt IE 10]>
+    .old_browser
+      .old_browser_inner
+        .oops OOPS!
+        .oops_title 您的瀏覽器版本太舊了！
+        p
+          | 請更新至 Internet Explorer 10 以上版本或選用更現代化的瀏覽器，
+          br
+          br
+          | 使用老舊版本的瀏覽器瀏覽本網站將可能有無法預測的錯誤，請儘快更新。
+          br
+          br
+          | 微軟已於2016年起停止IE8 (含)以下版本之Windows安全更新（#[a(href="http://windows.microsoft.com/zh-tw/windows/end-support-help", target="_blank") 微軟 終止支援公告]），
+          br
+          | 為了您的個資安全、瀏覽流暢度與享受更多網站互動體驗，建議您立即升級瀏覽器。
+        table
+          caption &gt;&gt; 建議您更新或使用以下瀏覽器
+          tr
+            td
+              a(href="http://windows.microsoft.com/zh-tw/internet-explorer/download-ie", target="_blank")
+                img(src="images/browser/ie.png")
+                span IE
+            td
+              a(href="http://www.google.com/chrome/", target="_blank")
+                img(src="images/browser/chrome.png")
+                span Chrome
+            td
+              a(href="https://www.mozilla.org/en-US/firefox/new/", target="_blank")
+                img(src="images/browser/firefox.png")
+                span Firefox
+            td
+              a(href="https://www.opera.com/zh-tw/download?os=windows", target="_blank")
+                img(src="images/browser/opera.png")
+                span Opera
+        p © 2019 Vetrina Mia INC.
+    <![endif]-->
+
+    #wrapper
+      .header_top
+        .header_top_inner
+          .links
+            a(href="javascript:;") SHIPPING
+            i.divide_line
+            a(href="javascript:;") REFUND
+          .marquee
+            | FREE SHIPPING. EASY RETURN.
+          .currency_language
+            .select_wrapper
+              select
+                option
+                  | € EUR
+                option(selected)
+                  | $ TWD
+                option
+                  | ¥ CNY
+            i.divide_line
+            .select_wrapper
+              select
+                option
+                  | LANGUAGE
+                option
+                  | English
+                option
+                  | 繁體中文
+                option
+                  | 简体中文
+      header#header
+        .header_inner
+          .header_main
+            a#btn_menu(href="javascript:;") #[span]
+            .search_form
+              input(type="search", placehold="What are you looking for?")
+              button(type="button") #[i.icon_search]
+            a.header_logo(href="index.html")
+              img.retina(src="images/logo.png")
+            .user_options
+              .option_search
+                a(href="javascript:;")
+                  i.icon_search
+              .option_style
+                a(href="javascript:;")
+                  i.icon_wardrobe
+                  span My Style
+              .option_member
+                a(href="javascript:;")
+                  i.icon_member
+              .option_cart
+                a(href="javascript:;")
+                  i.icon_cart
+                .cart_view.cart_drop
+                  .title
+                    | 2 Items
+                  .cart_items
+                    .item
+                      a.btn_delete(href="javascript:;")
+                        i.icon_delete
+                      .thumb
+                        img(img="images/img_product01.jpg")
+                      .content
+                        .price $1148
+                        ul
+                          li
+                            | size: M
+                          li
+                            | color: dot
+                          li
+                            | Qty: 1
+                    .item
+                      a.btn_delete(href="javascript:;")
+                        i.icon_delete
+                      .thumb
+                        img(img="images/img_product01.jpg")
+                      .content
+                        .price $1148
+                        ul
+                          li
+                            | size: M
+                          li
+                            | color: dot
+                          li
+                            | Qty: 1
+                  .cart_foot
+                    .label Subtotal
+                    .total
+                      | NTD $2,296
+                  a.btn.submit(href="javascript:;")
+                    | CHECKOUT
+          include partials/navigator-head.pug
+          
+
+      main#main
+        block main
+          h1 Coming Soon...
+        
+        //- recaptcha
+          .captcha
+            .captcha_inner
+              .g-recaptcha(data-sitekey="6LcHGhITAAAAABIgEAplK2EWsVFkaE5o0DWUpsIs")
+
+      footer#footer
+        .footer_inner
+          .copyright.
+            Copyright © 2017 Unind Industry Holding Co.,Limited
+
+    #sidebar
+      include partials/navigator-sidebar.pug
+
+
+    block popup
+
+    // build:js scripts/vendor.js
+    script(src='../bower_components/jquery/dist/jquery.js')
+    // endbuild
+
+    // build:js scripts/plugins.js
+    script(src="scripts/plugins/jquery.sticky.js")
+    script(src="../bower_components/jquery-sidebar/src/jquery.sidebar.js")
+    script(src="../bower_components/slick-carousel/slick/slick.min.js")
+    script(src="scripts/plugins/jquery.retina.js")
+    // endbuild
+
+    // build:js scripts/main.js
+    script(src='scripts/main.js')
+    // endbuild
+
+    block js
+      //- recaptcha - script(src='https://www.google.com/recaptcha/api.js')

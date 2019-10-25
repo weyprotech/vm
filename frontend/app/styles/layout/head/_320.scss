@@ -1,0 +1,39 @@
+.header_top {
+  
+}
+
+#header {
+	position: relative;
+  z-index: 99;
+  width: 100%;
+	padding: 1em;
+	box-sizing: border-box;
+	background-color: $white;
+	@extend .transition;
+	&.scroll {
+		box-shadow: 0 3px 10px rgba($black,0.3);
+	}
+	.header_inner {
+		max-width: 1440px;
+		margin: 0 auto;
+		@extend .clear;
+	}
+	.header_logo {
+		display: block;
+		height: 40px;
+		float: left;
+		img {
+			height: 100%;
+		}
+	}
+}
+
+#header-sticky-wrapper {
+  position: relative;
+  z-index: 99;
+  &.is-sticky {
+    #header {
+      box-shadow: 0 3px 10px rgba($black,0.3);
+    }
+  }
+}

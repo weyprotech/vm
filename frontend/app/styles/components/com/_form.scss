@@ -1,0 +1,180 @@
+::-webkit-input-placeholder {
+  /* WebKit browsers */
+  color: $gray;
+}
+:-moz-placeholder {
+  /* Mozilla Firefox 4 to 18 */
+  color: $gray;
+  opacity: 1;
+}
+::-moz-placeholder {
+  /* Mozilla Firefox 19+ */
+  color: $gray;
+  opacity: 1;
+}
+:-ms-input-placeholder {
+  /* Internet Explorer 10+ */
+  color: $gray;
+}
+
+input[type="radio"],
+input[type="checkBox"] {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  outline: none;
+  vertical-align: middle;
+}
+
+input[type="text"],
+input[type="search"],
+input[type="password"],
+input[type="email"],
+input[type="date"],
+select {
+  display: block;
+  width: 100%;
+  height: 46px;
+  padding: 0 10px;
+  margin: 0;
+  border: none;
+  border-radius: 0;
+  outline: none;
+  box-sizing: border-box;
+  font-size: 1.125rem;
+}
+
+textarea {
+  display: block;
+  width: 100%;
+  height: 300px;
+  padding: 10px;
+  outline: none;
+  border: none;
+  box-sizing: border-box;
+}
+
+input[type="submit"],
+input[type="reset"],
+input[type="button"],
+button {
+  border: none;
+  transition: all 0.2s ease-in-out;
+}
+
+.radio_wrapper {
+  display: inline-block;
+  margin-right: 1rem;
+  font-size: 0;
+  vertical-align: middle;
+  &:last-child {
+    margin-right: 0;
+  }
+  input[type="radio"] {
+    margin-right: .3rem;
+  }
+  span {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 1.125rem;
+    cursor: pointer;
+  }
+}
+
+.check_wrapper {
+  display: inline-block;
+  margin-right: 1rem;
+  font-size: 0;
+  vertical-align: middle;
+  &:last-child {
+    margin-right: 0;
+  }
+  input[type="checkBox"] {
+    margin-right: .3rem;
+  }
+  span {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 1.125rem;
+    cursor: pointer;
+  }
+}
+
+.select_wrapper {
+  width: 100%;
+  overflow: hidden;
+  select {
+    width: 100%;
+    background-image: url(../images/arrow_select.png);
+    background-position: right center;
+    background-repeat: no-repeat;
+    appearance: none;
+    &::-ms-expand {
+      display: none;
+    }
+  }
+}
+
+.controls {
+  line-height: 46px;
+  .text {
+    font-size: 1.125em;
+  }
+  .error_text {
+    display: none;
+    padding-left: .3em;
+    color: red;
+    font-size: .875em;
+    line-height: 1.6;
+  }
+  &.error {
+    input[type="text"],
+    input[type="password"],
+    input[type="email"],
+    select {
+      box-shadow: 0 0 0 1px red;
+    }
+    .error_text {
+      display: block;
+    }
+  }
+}
+
+.controls_group {
+  margin-bottom: 1em;
+  @extend .clear;
+  >label {
+    display: block;
+    padding: 0 .5em;
+    margin-bottom: .5em;
+    box-sizing: border-box;
+    font-size: 1.125em;
+  }
+  @include breakpoint(768px) {
+    >label {
+      width: 110px;
+      float: left;
+      padding-right: 1rem;
+      margin-bottom: 0;
+      box-sizing: border-box;
+      background-color: transparent;
+      line-height: 46px;
+    }
+    .controls {
+      width: calc(100% - 110px);
+      float: left;
+    }
+  }
+}
+
+// Captcha
+.captcha {
+  font-size: 0;
+  .captcha_inner {
+    display: inline-block;
+    width: 304px; //use width google reCaptcha
+    font-size: 1rem;
+    transform-origin: 0 0;
+  }
+}
+

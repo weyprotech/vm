@@ -1,0 +1,56 @@
+#btn_menu {
+	position: relative;
+	display: block;
+	width: 40px;
+	height: 40px;
+	float: right;
+	transform: rotate(0deg);
+	cursor: pointer;
+	@extend .transition;
+	&:before, &:after, span {
+		display: block;
+		position: absolute;
+		height: 4px;
+		width: 100%;
+		background: $main;
+		border-radius: 5px;
+		opacity: 1;
+		left: 0;
+		transform: rotate(0deg);
+		@extend .transition;	
+	}
+	&:before {
+		content: '';
+		top: 5px;
+		transform-origin: left center;
+	}
+	span {
+		top: 50%;
+		margin-top: -2px;
+		transform-origin: left center;
+	}
+	&:after {
+		content: '';
+		bottom: 5px;
+		transform-origin: left center;
+	}
+	&.active {
+		&:before {
+			transform: rotate(45deg);
+			top: 4px;
+			left: 6px;
+		}
+		span {
+			width: 0%;
+			opacity: 0;
+		}
+		&:after {
+			transform: rotate(-45deg);
+			bottom: 4px;
+			left: 6px;
+		}
+	}
+	@include breakpoint(1280px) {
+		display: none;
+	}	
+}

@@ -1,0 +1,18 @@
+#footer {
+	padding: 2em 1em;
+	// background-color: $dark-gray;
+	// color: $white;
+	.footer_inner {
+		max-width: 1170px;
+		margin: 0 auto;
+		@extend .clear;
+	}
+	.copyright {
+		a {
+			// color: $white;
+			&:hover {
+				// color: $orange;
+			}
+		}
+	}
+}

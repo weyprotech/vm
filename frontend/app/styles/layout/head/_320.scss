@@ -1,5 +1,15 @@
 .header_top {
-  
+  padding: 0.375rem 1rem;
+  box-sizing: border-box;
+  color: $white;
+  font-size: 0.875em;
+  .header_top_inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  a {
+    color: $white;
+  }
 }
 
 #header {

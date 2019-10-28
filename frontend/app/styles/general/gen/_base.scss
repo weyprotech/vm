@@ -48,6 +48,31 @@ img {
   overflow: hidden;
 }
 
+.bg_brown {
+  background-color: $bg-brown;
+}
+.bg_red {
+  background-color: $bg-red;
+}
+.bg_purple {
+  background-color: $bg-purple;
+}
+.bg_blue {
+  background-color: $bg-blue;
+}
+.bg_green {
+  background-color: $bg-green;
+}
+
+.divide_line {
+  display: inline-block;
+  width: 1px;
+  height: 30px;
+  margin: 0 1.125em;
+  background-color: $white;
+  vertical-align: middle;
+}
+
 .rwd_table_wrapper {
   width: 100%;
   overflow-x: auto;

@@ -34,14 +34,13 @@ input[type="date"],
 select {
   display: block;
   width: 100%;
-  height: 46px;
+  height: 36px;
   padding: 0 10px;
   margin: 0;
   border: none;
   border-radius: 0;
   outline: none;
   box-sizing: border-box;
-  font-size: 1.125rem;
 }
 
 textarea {
@@ -76,7 +75,7 @@ button {
   span {
     display: inline-block;
     vertical-align: middle;
-    font-size: 1.125rem;
+    font-size: 1rem;
     cursor: pointer;
   }
 }
@@ -95,7 +94,7 @@ button {
   span {
     display: inline-block;
     vertical-align: middle;
-    font-size: 1.125rem;
+    font-size: 1rem;
     cursor: pointer;
   }
 }
@@ -116,9 +115,9 @@ button {
 }
 
 .controls {
-  line-height: 46px;
+  line-height: 36px;
   .text {
-    font-size: 1.125em;
+    font-size: 1em;
   }
   .error_text {
     display: none;
@@ -143,22 +142,21 @@ button {
 .controls_group {
   margin-bottom: 1em;
   @extend .clear;
-  >label {
+  > label {
     display: block;
     padding: 0 .5em;
     margin-bottom: .5em;
     box-sizing: border-box;
-    font-size: 1.125em;
   }
   @include breakpoint(768px) {
-    >label {
+    > label {
       width: 110px;
       float: left;
       padding-right: 1rem;
       margin-bottom: 0;
       box-sizing: border-box;
       background-color: transparent;
-      line-height: 46px;
+      line-height: 36px;
     }
     .controls {
       width: calc(100% - 110px);
@@ -178,3 +176,19 @@ button {
   }
 }
 
+// Currency Language
+.currency_language {
+  .select_wrapper {
+    display: inline-block;
+    width: auto;
+    vertical-align: middle;
+    select {
+      height: 30px;
+      padding: 0 18px 0 0;
+      background-color: transparent;
+      background-image: url(../images/arrow_select_white.png);
+      color: $white;
+      font-size: 0.875em;
+    }
+  }
+}

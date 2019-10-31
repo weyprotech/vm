@@ -9,47 +9,76 @@ nav {
 }
 
 // Header Nav
-.header_nav {
+.header_nav_wrap {
   display: none;
 }
 
 // Slide Bar
 #sidebar {
   position: fixed;
-  z-index: 110;
-  top: 0;
-  left: -270px;
-  width: 270px;
-  max-width: calc(100vw - 44px - 1em);
-  height: 100%;
-  overflow: auto;
-  padding: 3em 1.5em;
+  z-index: 99;
+  top: 116px;
+  left: -100vw;
+  overflow-y: auto;
+  width: 100vw;
+  height: calc(100vh - 116px);
+  padding: 1.5em;
   box-sizing: border-box;
-  background-color: $white;
-  &.active {
-    box-shadow: 3px 0 5px rgba(0,0,0,0.3);
-  }
-  .sidebar_logo {
-    max-width: 190px;
-    margin: 0 auto 1.5em;
-    text-align: center;
-    a {
-      display: block;
-    }
-  }
+  background-color: $khaki-lightest;
   .sidebar_menu {
+    .divide_line {
+      background-color: $gray-darkest;
+    }
     ul {
-      li {
-        position: relative;
-        a {
-          display: block;
+      margin-bottom: 1.5em;
+      a {
+        display: block;
+        padding: 0.35rem 0.5rem;
+        border-radius: 5px;
+        box-sizing: border-box;
+        color: $gray-darkest;
+        font-size: 1.25em;
+        line-height: 1.2;
+        text-align: center;
+        &:hover, &.current {
+          background-color: $white;
           color: $main;
-          font-size: 1.25em;
-          line-height: 44px;
-          text-align: center;
-          &:hover, &.current {
-            
-          }
+        }
+      }
+    }
+    .links {
+      margin-bottom: 1.5rem;
+      font-size: 0;
+      text-align: center;
+      a {
+        display: inline-block;
+        padding: 0.5em;
+        border-radius: 5px;
+        min-width: 100px;
+        color: $gray-darkest;
+        font-size: 1rem;
+        line-height: 1.2;
+        vertical-align: middle;
+        &:hover, &.current {
+          background-color: $white;
+          color: $main;
+        }
+      }
+    }
+    .currency_language {
+      text-align: center;
+      .select_wrapper {
+        display: block;
+        margin: 0 auto 1em;
+        select {
+          height: 35px;
+          border-radius: 5px;
+          padding: 0 20px 0 10px;
+          background-color: $white;
+          background-image: url(../images/arrow_select.png);
+          background-position: calc(100% - 10px) center;
+          color: $gray-darkest;
+          font-size: 1rem;
         }
       }
     }

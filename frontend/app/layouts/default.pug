@@ -82,12 +82,13 @@ html
                   | 简体中文
       
       header#header
-        .header_inner
-          .header_main
+        .header_main
+          .header_main_inner
             a#btn_menu(href="javascript:;") #[span]
-            .search_form
-              input(type="search", placehold="What are you looking for?")
-              button(type="button") #[i.icon_search]
+            .header_search
+              .search_form
+                input(type="search", placehold="What are you looking for?")
+                button(type="button") #[i.icon_search]
             a.header_logo(href="index.html")
               img.retina(src="images/logo.png")
             .user_options
@@ -96,52 +97,62 @@ html
                   i.icon_search
               .option_style
                 a(href="javascript:;")
-                  i.icon_wardrobe
+                  i.icon_waredrobe
                   span My Style
-              .option_member
+              //↓ 上線時，class加'online' ↓
+              .option_member.online
                 a(href="javascript:;")
                   i.icon_member
-              .option_cart
-                a(href="javascript:;")
+              //↑ 上線時，class加'online' ↑
+              //↓ 有產品在購物車時時，class加'online' ↓
+              .option_cart.have
+                a.cart_toggle(href="javascript:;")
                   i.icon_cart
-                .cart_view.cart_drop
-                  .title
-                    | 2 Items
-                  .cart_items
-                    .item
-                      a.btn_delete(href="javascript:;")
-                        i.icon_delete
-                      .thumb
-                        img(img="images/img_product01.jpg")
-                      .content
-                        .price $1148
-                        ul
-                          li
-                            | size: M
-                          li
-                            | color: dot
-                          li
-                            | Qty: 1
-                    .item
-                      a.btn_delete(href="javascript:;")
-                        i.icon_delete
-                      .thumb
-                        img(img="images/img_product01.jpg")
-                      .content
-                        .price $1148
-                        ul
-                          li
-                            | size: M
-                          li
-                            | color: dot
-                          li
-                            | Qty: 1
-                  .cart_foot
-                    .label Subtotal
-                    .total
-                      | NTD $2,296
-                  a.btn.submit(href="javascript:;")
-                    | CHECKOUT
+                .cart_drop
+                  .cart_view
+                    .title
+                      | 2 Items
+                    .cart_items
+                      .item
+                        a.btn_delete(href="javascript:;")
+                          i.icon_delete
+                        .thumb
+                          a(href="javascript:;")
+                            img(src="images/img_product01.jpg")
+                        .content
+                          .price $ 1148
+                          ul
+                            li
+                              | size: M
+                            li
+                              | color: dot
+                            li
+                              | Qty: 1
+                      .item
+                        a.btn_delete(href="javascript:;")
+                          i.icon_delete
+                        .thumb
+                          a(href="javascript:;")
+                            // 4:3
+                            img(src="https://via.placeholder.com/130x173")
+                        .content
+                          .price $ 1148
+                          ul
+                            li
+                              | size: M
+                            li
+                              | color: dot
+                            li
+                              | Qty: 1
+                    .cart_foot
+                      .total_calculation
+                        .label Subtotal
+                        .total_amount
+                          | NTD $2,296
+                      a.btn.confirm(href="javascript:;")
+                        | CHECKOUT
+              //↓ 有產品在購物車時時，class加'online' ↓
+        .header_nav_wrap
           include partials/navigator-head.pug
           
       main#main
@@ -155,12 +166,115 @@ html
 
       footer#footer
         .footer_inner
-          .copyright.
-            Copyright © 2017 Unind Industry Holding Co.,Limited
-
+          .footer_main
+            a.footer_logo(href="index.html")
+              img.retina(src="images/logo_footer.png")
+            .copyright
+              | © 2019 Vetrina Mia INC.
+            .social_apps_links
+              .social
+                a(href="mailto:xxx@test.com")
+                  i.icon_mail
+                a(href="javascript:;", target="_blank")
+                  i.icon_facebook
+                a(href="javascript:;", target="_blank")
+                  i.icon_instagram
+              .apps
+                a(href="javascript:;", target="_blank")
+                  img(src="images/app_apple.png")
+                a(href="javascript:;", target="_blank")
+                  img(src="images/app_google.png")
+            hr
+            a.btn(href="javascript:;")
+              | Cooperation | Joining | Investment
+            a.interested_link(href="javascript:;")
+              i.icon_hand
+              | Interested in opening a shop here?
+          nav.footer_nav
+            ul
+              li
+                a(href="javascript:;")
+                  | COMPANY
+                ul
+                  li
+                    a(href="javascript:;")
+                      | About us
+                  li
+                    a(href="javascript:;")
+                      | Contact
+                  li
+                    a(href="javascript:;")
+                      | Terms and Policy
+                  li
+                    a(href="javascript:;")
+                      | Cooperation
+              li
+                a(href="javascript:;")
+                  | HELP
+                ul
+                  li
+                    a(href="javascript:;")
+                      | FAQ
+                  li
+                    a(href="javascript:;")
+                      | Delivery
+                  li
+                    a(href="javascript:;")
+                      | Refunds &amp; Exchanges
+                  li
+                    a(href="javascript:;")
+                      | Customer Services
+                  li
+                    a(href="javascript:;")
+                      | Feedback
+              li
+                a(href="javascript:;")
+                  | SHOP
+                ul
+                  li
+                    a(href="javascript:;")
+                      | Designers
+                  li
+                    a(href="javascript:;")
+                      | Brands
+                  li
+                    a(href="javascript:;")
+                      | Events
+                  li
+                    a(href="javascript:;")
+                      | Popular designers
+              li
+                a(href="javascript:;")
+                  | PRODUCT
+                ul
+                  li
+                    a(href="javascript:;")
+                      | Women
+                  li
+                    a(href="javascript:;")
+                      | Men
+                  li
+                    a(href="javascript:;")
+                      | Sale
+              li
+                a(href="javascript:;")
+                  | MEMBER
+                ul
+                  li
+                    a(href="javascript:;")
+                      | My Favorite
+                  li
+                    a(href="javascript:;")
+                      | My Account
+                  li
+                    a(href="javascript:;")
+                      | My Wardrobe
+                  li
+                    a(href="javascript:;")
+                      | Be Our Model
+    
     #sidebar
       include partials/navigator-sidebar.pug
-
 
     block popup
 

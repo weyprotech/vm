@@ -1,3 +1,23 @@
 *[class^="icon_"] {
   display: inline-block;
 }
+
+.icon_search {
+  @include retina-sprite($icon-search-group);
+}
+
+.icon_waredrobe {
+  @include retina-sprite($icon-waredrobe-group);
+}
+
+.icon_member {
+  @include retina-sprite($icon-member-group);
+}
+
+.icon_cart {
+  @include retina-sprite($icon-cart-group);
+}
+
+.icon_delete {
+  @include retina-sprite($icon-delete-group);
+}

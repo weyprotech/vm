@@ -1,0 +1,7 @@
+@include susy-breakpoint(1280px, 12 ) {
+	#header {
+    .header_main {
+      padding: 1.25em 1em 0.8em;
+    }
+  }
+}

@@ -41,6 +41,9 @@ select {
   border-radius: 0;
   outline: none;
   box-sizing: border-box;
+  &:focus {
+    outline: none;
+  }
 }
 
 textarea {
@@ -51,6 +54,9 @@ textarea {
   outline: none;
   border: none;
   box-sizing: border-box;
+  &:focus {
+    outline: none;
+  }
 }
 
 input[type="submit"],
@@ -59,6 +65,9 @@ input[type="button"],
 button {
   border: none;
   transition: all 0.2s ease-in-out;
+  &:focus {
+    outline: none;
+  }
 }
 
 .radio_wrapper {
@@ -189,6 +198,31 @@ button {
       background-image: url(../images/arrow_select_white.png);
       color: $white;
       font-size: 0.875em;
+    }
+  }
+}
+
+// Search Form
+.search_form {
+  display: flex;
+  border: 1px solid $khaki-dark;
+  input {
+    flex: 1 1 auto;
+    border: none;
+    border-right: 1px solid #E1DCD0;
+  }
+  button {
+    flex: 0 0 auto;
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    background-color: $white;
+    text-align: center;
+    &:hover {
+      background-color: $gray-lightest;
+    }
+    i.icon_search {
+      vertical-align: middle;
     }
   }
 }

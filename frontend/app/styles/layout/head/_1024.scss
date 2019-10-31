@@ -1,3 +1,32 @@
 @include susy-breakpoint(1024px, 12 ) {
-	
+	#header {
+    .header_main {
+      padding: 1em 1em 0.8em;
+      .header_main_inner {
+        justify-content: space-between;
+      }
+    }
+    .header_search {
+      flex: 0 0 auto;
+      position: relative;
+      top: auto;
+      left: auto;
+      display: block;
+      width: 240px;
+      padding: 0;
+      margin: 0;
+      background-color: transparent;
+    }
+    .header_logo {
+      flex: 0 0 auto;
+      margin: 0;
+    }
+    .user_options {
+      flex: 0 0 auto;
+      width: 240px;
+      .option_search {
+        display: none;
+      }
+    }
+  }
 }

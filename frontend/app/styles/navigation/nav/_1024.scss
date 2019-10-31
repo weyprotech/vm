@@ -1,0 +1,35 @@
+@include susy-breakpoint(1024px, 12) {
+  // Header Nav
+  .header_nav_wrap {
+    display: block;
+    padding: 1em;
+    background-color: $white;
+    box-sizing: border-box;
+    .header_nav {
+      max-width: 1200px;
+      margin: 0 auto;
+      ul {
+        font-size: 0;
+        text-align: center;
+        li {
+          display: inline-block;
+          margin: 0 2em;
+          font-size: 1rem;
+          vertical-align: middle;
+          line-height: 1.2;
+          @include breakpoint(1280px) {
+            margin: 0 2.5em;
+          }
+          a {
+            display: block;
+            padding: 0.3em 0;
+            color: $black;
+            &:hover, &.current {
+              color: $main;
+            }
+          }
+        }
+      }
+    }
+  }
+}

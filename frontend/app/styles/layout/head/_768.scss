@@ -1,0 +1,42 @@
+@include susy-breakpoint(768px, 12) {
+  .header_top {
+    .header_top_inner {
+      display: flex;
+      align-items: center;
+    }
+    .links, .currency_language {
+      flex: 0 0 auto;
+      display: block;
+      width: 200px;
+    }
+    .currency_language {
+      text-align: right;
+    }
+    .marquee {
+      flex: 1 1 auto;
+      display: block;
+      max-width: calc(100% - 200px * 2 - 2em);
+      margin: 0 1em;
+    }
+  }
+
+  #header {
+    #btn_menu {
+      margin-right: 1.25em;
+    }
+    .header_logo {
+      height: 60px;
+      margin-right: 1.25em;
+    }
+    .user_options {
+      [class^='option_'] {
+        margin-right: 1em;
+      }
+      .option_style {
+        span {
+          display: inline-block;
+        }
+      }
+    }
+  }
+}

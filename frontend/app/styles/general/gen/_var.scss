@@ -1,18 +1,30 @@
 // Fonts
+@import url('https://fonts.googleapis.com/css?family=Arimo:400,400i|Crimson+Text:400,400i,600,600i&display=swap');
 $sans-serif: "Helvetica Neue",Arial,"Heiti TC","LiHei Pro","微軟正黑體","Microsoft Jhenghei", sans-serif;
 
 // Color
 $white: #ffffff;
 $black: #000000;
 
-$gray: #94949B;
-$gray-darken: #4A4A4A;
-$gray-darkest: #353535;
-
 $bg-brown: #B4A189;
 $bg-red: #B48989;
 $bg-purple: #9C89B4;
 $bg-blue: #898EB4;
 $bg-green: #89B4A0;
+
+$red: #EB5B5B;
+$green: #6AD687;
+
+$gray-lightest: #F7F7F7;
+$gray: #94949B;
+$gray-dark: #9B9B9B;
+$gray-darken: #4A4A4A;
+$gray-darkest: #353535;
+
+$khaki-lightest: #F4F2EE;
+$khaki-lighten: #DDD6C7;
+$khaki-light: #D5C9B0;
+$khaki: #CEB685;
+$khaki-dark: #B4A189;
 
 $main: #907E59;

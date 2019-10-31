@@ -63,15 +63,26 @@ $(document).ready(function () {
   }
 
   // Header Search
-  // $('#head_search').on(clickHandler, '.btn_scarch', function(event) {
-  //   event.preventDefault();
-  //   $('#head_search .head_search_form').addClass('active');
-  // });
-  // $(document).on(clickHandler, function(event) {
-  //   if (!$(event.target).is('#head_search, #head_search *')) {
-  //     $('#head_search .head_search_form').removeClass('active');
-  //   }
-  // });
+  $('#header').on(clickHandler, '.option_search a', function(event) {
+    event.preventDefault();
+    $('#header .header_search').stop().slideToggle();
+  });
+  $(document).on(clickHandler, function(event) {
+    if (!$(event.target).is('#header .option_search a, #header .option_search a *, #header .header_search, #header .header_search *') && windowWidth < 1024) {
+      $('#header .header_search').stop().slideUp();
+    }
+  });
+
+  // Cart Drop
+  $('#header').on(clickHandler, '.option_cart a.cart_toggle', function (event) {
+    event.preventDefault();
+    $('#header .option_cart .cart_drop').stop().slideToggle();
+  });
+  $(document).on(clickHandler, function (event) {
+    if (!$(event.target).is('#header .option_cart, #header .option_cart *')) {
+      $('#header .option_cart .cart_drop').stop().slideUp();
+    }
+  });
 
   // Slick Slider
   // $('.news_slider').slick({
@@ -155,14 +166,19 @@ $(document).ready(function () {
 // Resize
 $(window).on('resize', function () {
   if (windowWidth != $(window).width()) {
-    $('#header').unstick();
+    windowWidth = $(window).width();
+
+    // reSetting
+    $('#header .header_search').css('display', '');
+
+    // Sticky
+    $('#header .header_nav_wrap').unstick();
     sticky();
 
+    // Captcha
     if ($('.captcha').length > 0) {
       scaleCaptcha();
     }
-
-    windowWidth = $(window).width();
   }
 });
 
@@ -196,7 +212,7 @@ $(window).on('hashchange', function () {
 });
 
 function sticky() {
-  $('#header').sticky({
+  $('#header .header_nav_wrap').sticky({
     topSpacing: 0,
     zIndex: 99
   });

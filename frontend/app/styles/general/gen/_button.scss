@@ -1,56 +1,71 @@
 #btn_menu {
-	position: relative;
-	display: block;
-	width: 40px;
-	height: 40px;
-	float: right;
-	transform: rotate(0deg);
-	cursor: pointer;
-	@extend .transition;
+  width: 32px;
+  height: 30px;
+  position: relative;
+  cursor: pointer;
+  display: inline-block;
 	&:before, &:after, span {
-		display: block;
-		position: absolute;
-		height: 4px;
-		width: 100%;
-		background: $main;
-		border-radius: 5px;
-		opacity: 1;
-		left: 0;
-		transform: rotate(0deg);
-		@extend .transition;	
+    display: block;
+    background-color: $main;
+    position: absolute;
+    border-radius: 2px;
+    transition: .3s cubic-bezier(.8, .5, .2, 1.4);
+    width:100%;
+    height: 4px;
+    transition-duration: 500ms
 	}
 	&:before {
-		content: '';
-		top: 5px;
-		transform-origin: left center;
+    content: '';
+    top: 3px;
+    left: 0px;
 	}
 	span {
-		top: 50%;
-		margin-top: -2px;
-		transform-origin: left center;
+    top: 13px;
+    left: 0px;
+    opacity:1;
 	}
 	&:after {
-		content: '';
-		bottom: 5px;
-		transform-origin: left center;
-	}
+    content: '';
+    bottom: 3px;
+    left: 0px;
+  }
+  &:not(.active):hover {
+    &:before {
+      transform: rotate(-3deg) scaleY(1.1);
+    }
+    span {
+      transform: rotate(3deg) scaleY(1.1);
+    }
+    &:after {
+      transform: rotate(-4deg) scaleY(1.1);
+    }
+  }
 	&.active {
 		&:before {
-			transform: rotate(45deg);
-			top: 4px;
-			left: 6px;
+      transform: rotate(45deg);
+      top: 13px;
 		}
 		span {
-			width: 0%;
-			opacity: 0;
+      opacity:0;
 		}
 		&:after {
-			transform: rotate(-45deg);
-			bottom: 4px;
-			left: 6px;
+      transform: rotate(-45deg);
+      top: 13px;
 		}
 	}
-	@include breakpoint(1280px) {
+	@include breakpoint(1024px) {
 		display: none;
 	}	
+}
+
+.btn {
+  display: block;
+  padding: 0 1em;
+  background-color: $khaki-light;
+  color: $white;
+  text-align: center;
+  line-height: 44px;
+  &.confirm {
+    background-color: $khaki-dark;
+  }
 }

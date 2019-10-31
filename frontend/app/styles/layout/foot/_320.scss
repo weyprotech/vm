@@ -1,18 +1,9 @@
 #footer {
-	padding: 2em 1em;
-	// background-color: $dark-gray;
-	// color: $white;
+  padding: 2em 1em;
+  box-sizing: border-box;
+	background-color: $khaki-lightest;
 	.footer_inner {
-		max-width: 1170px;
+		max-width: 1200px;
 		margin: 0 auto;
-		@extend .clear;
-	}
-	.copyright {
-		a {
-			// color: $white;
-			&:hover {
-				// color: $orange;
-			}
-		}
 	}
 }

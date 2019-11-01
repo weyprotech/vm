@@ -32,6 +32,7 @@
 	background-color: $white;
 	@extend .transition;
   .header_main {
+    position: relative;
     padding: 1em;
     box-sizing: border-box;
     .header_main_inner {
@@ -94,6 +95,12 @@
         color: $main;
         font-size: 0.875rem;
         vertical-align: middle;
+        @extend .transition;
+      }
+      a:hover {
+        span {
+          color: $gray-darken;
+        }
       }
     }
     .option_member {

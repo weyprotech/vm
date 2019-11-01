@@ -72,6 +72,9 @@
         font-size: 0;
         line-height: 18px;
         text-align: center;
+        &:hover {
+          background-color: $gray-darken;
+        }
         i.icon_delete {
           vertical-align: middle;
         }

@@ -21,3 +21,19 @@
 .icon_delete {
   @include retina-sprite($icon-delete-group);
 }
+
+.icon_email {
+  @include retina-sprite($icon-email-group);
+}
+
+.icon_facebook {
+  @include retina-sprite($icon-facebook-group);
+}
+
+.icon_instagram {
+  @include retina-sprite($icon-instagram-group);
+}
+
+.icon_hand {
+  @include retina-sprite($icon-hand-group);
+}

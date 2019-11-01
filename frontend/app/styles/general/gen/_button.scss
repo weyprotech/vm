@@ -61,11 +61,17 @@
 .btn {
   display: block;
   padding: 0 1em;
-  background-color: $khaki-light;
+  background-color: $khaki;
   color: $white;
   text-align: center;
   line-height: 44px;
+  &:hover {
+    background-color: $khaki-dark;
+  }
   &.confirm {
     background-color: $khaki-dark;
+    &:hover {
+      background-color: $main;
+    }
   }
 }

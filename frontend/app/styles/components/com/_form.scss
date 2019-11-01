@@ -46,6 +46,20 @@ select {
   }
 }
 
+input[type="text"],
+input[type="search"],
+input[type="password"],
+input[type="email"],
+input[type="date"] {
+  &:focus {
+    background-color: $gray-lightest;
+  }
+}
+
+select {
+  cursor: pointer;
+}
+
 textarea {
   display: block;
   width: 100%;
@@ -219,7 +233,7 @@ button {
     background-color: $white;
     text-align: center;
     &:hover {
-      background-color: $gray-lightest;
+      background-color: $khaki-lightest;
     }
     i.icon_search {
       vertical-align: middle;

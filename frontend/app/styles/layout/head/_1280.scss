@@ -3,5 +3,15 @@
     .header_main {
       padding: 1.25em 1em 0.8em;
     }
+    .user_options {
+      .option_cart {
+        .cart_drop {
+          right: -15px;
+          &:before {
+            right: 20px;
+          }
+        }
+      }
+    }
   }
 }

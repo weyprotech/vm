@@ -5,7 +5,9 @@ $(document).ready(function () {
   $('.retina').retina();
 
   // Sticky
-  sticky();
+  if (windowWidth >= 1024) {
+    sticky();
+  }
 
   // Sidebar
   $('#sidebar').sidebar({
@@ -173,7 +175,9 @@ $(window).on('resize', function () {
 
     // Sticky
     $('#header .header_nav_wrap').unstick();
-    sticky();
+    if (windowWidth >= 1024) {
+      sticky();
+    }
 
     // Captcha
     if ($('.captcha').length > 0) {

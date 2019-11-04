@@ -37,3 +37,7 @@
 .icon_hand {
   @include retina-sprite($icon-hand-group);
 }
+
+.icon_diamond_s {
+  @include retina-sprite($icon-diamond-s-group);
+}

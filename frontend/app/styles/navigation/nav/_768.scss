@@ -1,8 +1,38 @@
 @include susy-breakpoint(768px, 12) {
+  // Footer Nav
+  .footer_nav {
+    > ul {
+      > li {
+        width: calc((100% - 4em) / 5);
+        &:nth-child(3n) {
+          margin-right: 1em;
+        }
+        &:nth-last-child(-n + 3):nth-child(3n + 1),
+        &:nth-last-child(-n + 3):nth-child(3n + 1)~li {
+          margin-bottom: 1.25em !important;
+        }
+        &:nth-child(5n) {
+          margin-right: 0;
+        }
+        &:nth-last-child(-n + 5):nth-child(5n + 1),
+        &:nth-last-child(-n + 5):nth-child(5n + 1)~li {
+          margin-bottom: 0 !important;
+        }
+        > ul {
+          margin-top: 1.125em;
+        }
+      }
+    }
+  }
+
   // Slide Bar
   #sidebar {
     top: 136px;
     height: calc(100vh - 136px);
+    &.head_sticky {
+      top: 92px;
+      height: calc(100vh - 92px);
+    }
     .sidebar_menu {
       ul {
         a {

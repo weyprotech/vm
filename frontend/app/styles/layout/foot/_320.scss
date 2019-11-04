@@ -4,9 +4,10 @@
 	background-color: $khaki-lightest;
 	.footer_inner {
 		max-width: 1200px;
-		margin: 0 auto;
+    margin: 0 auto;
+    @extend .clear;
   }
-  .footer_main {
+  .footer_information {
     margin-bottom: 1.5em;
     .footer_logo {
       display: block;
@@ -28,6 +29,9 @@
         display: inline-block;
         &:last-child {
           margin-right: 0 !important;
+        }
+        &:hover {
+          transform: scale(1.1, 1.1);
         }
       }
       .social {
@@ -70,6 +74,9 @@
       font-size: 0.875em;
       font-style: italic;
       letter-spacing: 0.018em;
+      &:hover {
+        color: $main;
+      }
       i.icon_hand {
         margin-top: -3px;
         margin-right: 0.5rem;

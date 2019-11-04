@@ -74,4 +74,14 @@
       background-color: $main;
     }
   }
+  &.common {
+    border: $khaki 1px solid;
+    box-sizing: border-box;
+    background-color: $white;
+    color: #626262;
+  }
+  &.more {
+    width: 150px;
+    margin: 0 auto;
+  }
 }

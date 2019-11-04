@@ -5,9 +5,7 @@ $(document).ready(function () {
   $('.retina').retina();
 
   // Sticky
-  if (windowWidth >= 1024) {
-    sticky();
-  }
+  sticky();
 
   // Sidebar
   $('#sidebar').sidebar({
@@ -87,12 +85,37 @@ $(document).ready(function () {
   });
 
   // Slick Slider
-  // $('.news_slider').slick({
-  //   infinite: true,
-  //   speed: 300,
-  //   autoplay: true,
-  //   autoplaySpeed: 8000
-  // });
+  if ($('.top_designers_slider').length > 0) {
+    $('.top_designers_slider').slick({
+      dots: false,
+      speed: 500,
+      slidesToShow: 4,
+      slidesToScroll: 4,
+      responsive: [
+        {
+          breakpoint: 1280,
+          settings: {
+            slidesToShow: 3,
+            slidesToScroll: 3
+          }
+        },
+        {
+          breakpoint: 960,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 2
+          }
+        },
+        {
+          breakpoint: 560,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1
+          }
+        }
+      ]
+    })
+  }
 
   // Popup Close
   // $(document).on(clickHandler, '.popup-modal-dismiss', function (event) {
@@ -174,10 +197,9 @@ $(window).on('resize', function () {
     $('#header .header_search').css('display', '');
 
     // Sticky
+    $('#header').unstick();
     $('#header .header_nav_wrap').unstick();
-    if (windowWidth >= 1024) {
-      sticky();
-    }
+    sticky();
 
     // Captcha
     if ($('.captcha').length > 0) {
@@ -216,10 +238,23 @@ $(window).on('hashchange', function () {
 });
 
 function sticky() {
-  $('#header .header_nav_wrap').sticky({
-    topSpacing: 0,
-    zIndex: 99
-  });
+  if (windowWidth >= 1024) {
+    $('#header .header_nav_wrap').sticky({
+      topSpacing: 0,
+      zIndex: 99
+    });
+  } else if (windowWidth < 1024) {
+    $('#header').sticky({
+      topSpacing: 0,
+      zIndex: 99
+    });
+    $('#header').on('sticky-start', function () {
+      $('#sidebar').addClass('head_sticky');
+    });
+    $('#header').on('sticky-end', function () {
+      $('#sidebar').removeClass('head_sticky');
+    });
+  }
 }
 
 //use width google reCaptcha

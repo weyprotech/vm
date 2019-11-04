@@ -1,3 +1,36 @@
+// Thumb 
+.thumb {
+  display: block;
+  .pic {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    img.size {
+      display: block;
+      width: 100%;
+      max-width: inherit;
+    }
+  }
+}
+.profile_picture {
+  display: block;
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  overflow: hidden;
+  .pic {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    img.size {
+      display: block;
+      width: 100%;
+      max-width: inherit;
+    }
+  }
+}
+
+
 // Breadcrumbs
 .breadcrumbs {
 	text-align: center;
@@ -42,6 +75,27 @@
 	}
 }
 
+// Block
+.page_block {
+  padding: 1.5em 1em;
+  box-sizing: border-box;
+  .block_inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    &.wide {
+      max-width: 1300px;
+    }
+  }
+}
+.block_title {
+  margin-top: 0;
+  font-family: 'Crimson Text',serif;
+  font-style: italic;
+  font-weight: 400;
+  text-align: center;
+  line-height: 1.4;
+}
+
 // Cart View
 .cart_view {
   .title {
@@ -81,9 +135,10 @@
       }
       .thumb {
         flex: 0 0 auto;
+        display: block;
         width: 40.3508771929825%;
         margin-right: 1.25rem;
-        a, img {
+        img {
           display: block;
         }
       }
@@ -125,6 +180,113 @@
     .btn {
       max-width: 150px;
       margin: 1em auto 0;
+    }
+  }
+}
+
+// Index
+.top_designers_slider {
+  margin: 0 -0.9375em 2em;
+  box-sizing: border-box;
+  .slide {
+    margin: 0 0.9375em;
+  }
+  .slide_inner {
+    max-width: 280px;
+    margin: 0 auto;
+  }
+  .thumb {
+    position: relative;
+    span {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      width: 100%;
+      min-height: 60px;
+      padding: 0.625em 1em;
+      box-sizing: border-box;
+      background: rgba(0, 0, 0, 0);
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#000000', endColorstr='#000000', GradientType=0);
+      color: $white;
+      text-align: center;
+      line-height: 1.4;
+    }
+  }
+  .intro {
+    display: flex;
+    align-items: center;
+    margin-top: 0.8em;
+    .profile_picture {
+      flex: 0 0 auto;
+      margin-right: 0.5em;
+    }
+    .text {
+      flex: 1 1 auto;
+    }
+    h3 {
+      margin: 0;
+      font-family: 'Crimson Text',serif;
+      font-size: 1.25em;
+      font-weight: 400;
+      line-height: 1.2;
+      a {
+        display: block;
+        color: $black;
+      }
+      i.icon_diamond_s {
+        margin-top: -3px;
+        margin-right: 0.3em;
+        vertical-align: middle;
+      }
+    }
+    .tags {
+      margin-top: 0.5rem;
+      color: $main;
+      font-size: 0.875em;
+    }
+  }
+  .slick-prev,
+  .slick-next {
+    z-index: 3;
+    top: 186.5px;
+    width: 18px;
+    height: 52px;
+    &:before {
+      display: block;
+      width: 18px;
+      height: 52px;
+      font-size: 0;
+    }
+    &:hover {
+      opacity: 1;
+    }
+  }
+  .slick-prev {
+    left: 0;
+    &:before {
+      @include retina-sprite($arrow-slider-prev-group);
+    }
+  }
+  .slick-next {
+    right: 0;
+    &:before {
+      @include retina-sprite($arrow-slider-next-group);
+    }
+  }
+  @include breakpoint(560px) {
+    padding: 0 1.125em;
+  }
+  @include breakpoint(730px) {
+    padding: 0 2.125em;
+    .slick-prev {
+      left: 1rem;
+    }
+    .slick-next {
+      right: 1rem;
     }
   }
 }

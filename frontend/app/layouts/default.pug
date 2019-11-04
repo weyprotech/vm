@@ -52,6 +52,7 @@ html
     <![endif]-->
 
     #wrapper
+      //↓ 後台可設定網站五個顏色 ↓ -- bg_brown、bg_red、bg_purple、bg_blue、bg_green
       .header_top.bg_brown
         .header_top_inner
           .links
@@ -116,9 +117,9 @@ html
                       .item
                         a.btn_delete(href="javascript:;")
                           i.icon_delete
-                        .thumb
-                          a(href="javascript:;")
-                            img(src="images/img_product01.jpg")
+                        a.thumb(href="javascript:;")
+                          // 3:4
+                          img(src="images/img_product01.jpg")
                         .content
                           .price $ 1148
                           ul
@@ -131,10 +132,9 @@ html
                       .item
                         a.btn_delete(href="javascript:;")
                           i.icon_delete
-                        .thumb
-                          a(href="javascript:;")
-                            // 4:3
-                            img(src="https://via.placeholder.com/130x173")
+                        a.thumb(href="javascript:;")
+                          // 3:4
+                          img(src="https://via.placeholder.com/130x173")
                         .content
                           .price $ 1148
                           ul
@@ -166,7 +166,7 @@ html
 
       footer#footer
         .footer_inner
-          .footer_main
+          .footer_information
             a.footer_logo(href="index.html")
               img.retina(src="images/logo_footer.png")
             .copyright

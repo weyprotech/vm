@@ -1,3 +1,143 @@
 extends layouts/default.pug
 
 block main
+  .top_designers.page_block
+    .block_inner
+      h2.block_title
+        | Top Designers
+      .block_main
+        .top_designers_slider
+          .slide
+            .slide_inner
+              a.thumb(href="designer_home.html")
+                .pic(style="background-image: url(images/img_designer_work.jpg);")
+                  img.size(src="images/size_3x4.png")
+                span
+                  | Stephen Herrera
+              .intro
+                a.profile_picture(href="designer_profile.html")
+                  .pic(style="background-image: url(images/img_designer.jpg")
+                    img.size(src="images/size_1x1.png")
+                .text
+                  h3.designer_name
+                    a(href="designer_profile.html")
+                      i.icon_diamond_s
+                      | Stephanie Bradley
+                  .tags
+                    span
+                      | #vintage
+          each i inArray(6)
+            .slide
+              .slide_inner
+                a.thumb(href="designer_home.html")
+                  // 3:4
+                  .pic(style="background-image: url(https://via.placeholder.com/280x373);")
+                    img.size(src="images/size_3x4.png")
+                  span
+                    | MU Jason Williams
+                .intro
+                  a.profile_picture(href="designer_profile.html")
+                    .pic(style="background-image: url(https://via.placeholder.com/100x100)")
+                      img.size(src="images/size_1x1.png")
+                  .text
+                    h3.designer_name
+                      a(href="designer_profile.html")
+                        i.icon_diamond_s
+                        | Shirley Gibson
+                    .tags
+                      span
+                        | #casual
+                      span
+                        | #comfy
+        a.btn.common.more(href="designers_list.html")
+          | All designers
+  .what_next.page_block
+    h2.block_title
+      | What's Next
+    .what_next_main
+      .items
+        each i inArray(3)
+          .item
+            .video_title
+              i.dot.red
+              h3 Live Stream
+              i.mark_live
+                | Live
+            .video.video_facebook
+              iframe(src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Ffacebook%2Fvideos%2F10153231379946729%2F&width=500&show_text=false&height=280&appId", width="500", height="280", style="border:none;overflow:hidden", scrolling="no", frameborder="0", allowTransparency="true", allow="encrypted-media", allowFullScreen="true")
+          .item
+            .video_title
+              i.dot.green
+              h3 Summer Collection
+            .video.video_youtube
+              iframe(width="560", height="315", src="https://www.youtube.com/embed/FbjUyCDrHI0", frameborder="0", allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture", allowfullscreen)
+  .ads_banner
+    .slide
+      .pic
+        img(src="images/img_ad_banner.jpg")
+      //↓ 後台可設定網站五個顏色 ↓ -- bg_brown、bg_red、bg_purple、bg_blue、bg_green
+      .text.bg_brown
+        .title SALE
+        .subtitle 20% off
+        p 2019 Summer Collection
+        a.btn(href="javascript:;")
+          | SHOP NOW
+    .slide
+      .pic
+        img(src="https://via.placeholder.com/1920x710")
+      //↓ 後台可設定網站五個顏色 ↓ -- bg_brown、bg_red、bg_purple、bg_blue、bg_green
+      .text.bg_brown
+        .title SALE
+        .subtitle 20% off
+        p 2019 Summer Collection
+        a.btn(href="javascript:;")
+          | SHOP NOW
+  .ootd_list_wrapper.page_block
+    .block_inner.wide
+      h2.block_title
+        | OOTD Inspirations
+      .block_main
+        .ootd_lists
+          each i inArray(3)
+            .item
+              a.btn_favorite(href="javascript:;")
+                i.icon_favorite_heart
+              a(href="javascript:;")
+                .thumb
+                  img(src="images/img_ootd.jpg")
+                h3
+                  | The Best Street Style From Copen Fashion Week
+            .item
+              a.btn_favorite(href="javascript:;")
+                i.icon_favorite_heart
+              a(href="javascript:;")
+                .thumb
+                  img(src="https://via.placeholder.com/240x587")
+                h3
+                  | Lorem ipsum dolor sit met, consectetur adipiscing text text
+            .item
+              a.btn_favorite(href="javascript:;")
+                i.icon_favorite_heart
+              a(href="javascript:;")
+                .thumb
+                  img(src="https://via.placeholder.com/240x360")
+                h3
+                  | The Best Street Style From Copen Fashion Week
+            .item
+              a.btn_favorite(href="javascript:;")
+                i.icon_favorite_heart
+              a(href="javascript:;")
+                .thumb
+                  img(src="https://via.placeholder.com/240x360")
+                h3
+                  | So strongly and metapcally did I conceiv.
+            .item
+              a.btn_favorite(href="javascript:;")
+                i.icon_favorite_heart
+              a(href="javascript:;")
+                .thumb
+                  img(src="https://via.placeholder.com/240x427")
+                h3
+                  | Keytar McSweeney's Williamsburg, readyma.
+        a.btn.common(href="javascript:;")
+          | MORE

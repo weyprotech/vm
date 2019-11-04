@@ -1,0 +1,11 @@
+@include susy-breakpoint(1440px, 12) {
+  // Index
+  .top_designers_slider {
+    .slick-prev {
+      left: calc(-2.125rem);
+    }
+    .slick-next {
+      right: calc(-2.125rem);
+    }
+  }
+}

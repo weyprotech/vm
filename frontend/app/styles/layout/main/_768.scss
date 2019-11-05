@@ -1,7 +1,7 @@
 @include susy-breakpoint(768px, 12) {
   // Block
   .page_block {
-    padding: 3.125em 1em;
+    padding: 3em 1em;
   }
   .block_title {
     margin-bottom: 1em;
@@ -11,5 +11,63 @@
   // Index
   .top_designers_slider {
     margin-bottom: 4em;
+  }
+  .ads_banner {
+    .slide {
+      position: relative;
+      overflow: hidden;
+      .text {
+        position: absolute;
+        z-index: 2;
+        top: 0;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        height: 100%;
+        width: 30%;
+        padding: 1em 0.5em 1em 1.5em;
+        &:after {
+          content: '';
+          position: absolute;
+          z-index: -1;
+          top: 0;
+          left: 0;
+          display: block;
+          width: 100%;
+          height: 100%;
+          transform-origin: left top;
+          transform: skewX(10deg);
+        }
+        &.bg_brown {
+          &:after {
+            background-color: $brown;
+          }
+        }
+        &.bg_red {
+          &:after {
+            background-color: $bg_red;
+          }
+        }
+        &.bg_purple {
+          &:after {
+            background-color: $bg_purple;
+          }
+        }
+        &.bg_blue {
+          &:after {
+            background-color: $bg_blue;
+          }
+        }
+        &.bg_green {
+          &:after {
+            background-color: $bg_green;
+          }
+        }
+      }
+      .text_inner {
+        width: 100%;
+        text-align: left;
+      }
+    }
   }
 }

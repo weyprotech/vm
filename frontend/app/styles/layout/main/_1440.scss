@@ -8,4 +8,24 @@
       right: calc(-2.125rem);
     }
   }
+  .what_next {
+    .items {
+      .item {
+        &:first-child {
+          margin-left: 4.375em;
+        }
+        &:last-child {
+          margin-right: 4.375em;
+        }
+      }
+    }
+  }
+  .ads_banner {
+    .slide {
+      .text {
+        max-width: 430px;
+        padding-left: 4.375em;
+      }
+    }
+  }
 }

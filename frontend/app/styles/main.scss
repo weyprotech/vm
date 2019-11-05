@@ -6,28 +6,63 @@ $susy: (
     math: fluid
 );
 
-//Normalize
+// Normalize
 @import "normalize";
 
-//General
+// General
 @import "general/general";
 
-//Componets
+// Componets
 @import "components/com";
 
-//Navigation
+// Navigation
 @import "navigation/nav";
 
-//Layout
+// Layout
 @import "layout/head";
 @import "layout/main";
 @import "layout/foot";
 
-//Plugins
+// Plugins
 @import "plugins/slick";
 @import "plugins/slick-theme";
+@import "../../bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar";
 
-//Plugins Setting
+// Plugins Setting
+// slick
 .slick-slide:focus {
   outline: none;
+}
+// mCustomScrollbar
+.mCS-dark-3 {
+  &.mCSB_scrollTools {
+    .mCSB_draggerRail {
+      background-color: #E2E2E2;
+    }
+    .mCSB_dragger{
+      .mCSB_dragger_bar {
+        background-color: #C7BFAF;
+      }
+      &:hover, &.mCSB_dragger_onDrag {
+        .mCSB_dragger_bar {
+          background-color: $main;
+        }
+      }
+    }
+  }
+  &.mCSB_scrollTools_horizontal {
+    height: 12px;
+    .mCSB_draggerRail {
+      height: 12px;
+      margin: 0;
+      border-radius: 6px;
+    }
+    .mCSB_dragger {
+      .mCSB_dragger_bar {
+        height: 12px;
+        margin: 0;
+        border-radius: 6px;
+      }
+    }
+  }
 }

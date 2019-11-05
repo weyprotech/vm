@@ -1,0 +1,26 @@
+@include susy-breakpoint(1024px, 12) {
+  // Index
+  .ads_banner {
+    .slide {
+      .text {
+        .title {
+          font-size: 4em;
+        }
+        .subtitle {
+          font-size: 3.5em;
+        }
+        p {
+          font-size: 1.5em;
+        }
+      }
+    }
+  }
+  .ootd_list_wrapper {
+    .ootd_list {
+      .grid_sizer,
+      .item {
+        width: 23.5%;
+      }
+    }
+  }
+}

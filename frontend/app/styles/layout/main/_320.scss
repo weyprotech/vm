@@ -290,3 +290,211 @@
     }
   }
 }
+.what_next {
+  &.page_block {
+  padding-right: 0;
+  padding-left: 0;
+  }
+  .mCSB_horizontal.mCSB_inside > .mCSB_container {
+    margin-bottom: 36px;
+  }
+  .what_next_main {
+    width: 100%;
+    overflow-x: auto;
+  }
+  .items {
+    white-space: nowrap;
+    font-size: 0;
+    .item {
+      display: inline-block;
+      width: calc(100vw - 3em);
+      max-width: 500px;
+      margin-right: 1.5em;
+      font-size: 1rem;
+      &:first-child {
+        margin-left: 1.5em;
+      }
+    }
+  }
+  .video_title {
+    margin-bottom: 0.8em;
+    line-height: 1.2;
+    .dot, h3, .mark_live {
+      display: inline-block;
+      vertical-align: middle;
+    }
+    .dot {
+      width: 12px;
+      height: 12px;
+      margin-right: 0.8em;
+      border-radius: 50%;
+      &.red {
+        background-color: $red;
+      }
+      &.green {
+        background-color: $green;
+      }
+      &.yellow {
+        background-color: $yellow;
+      }
+    }
+    h3 {
+      margin: 0;
+      font-size: 1.25em;
+      font-weight: 400;
+    }
+    .mark_live {
+      padding: 0.1em 0.5em;
+      margin-left: 1.5rem;
+      border-radius: 2px;
+      background-color: $red;
+      color: $white;
+      font-size: 0.875em;
+      line-height: 1;
+    }
+  }
+}
+.ads_banner {
+  margin-bottom: 0 !important;
+  .slide {
+    .text {
+      padding: 1em 1em 3em;
+      box-sizing: border-box;
+      color: $white;
+      text-align: center;
+      line-height: 1.2;
+      &.bg_brown {
+        background-color: $brown;
+      }
+      .title {
+        margin-bottom: 0.8rem;
+        font-size: 3em;
+        font-weight: bold;
+        font-style: italic;
+        letter-spacing: 0.125em;
+      }
+      .subtitle {
+        margin-bottom: 1.125rem;
+        font-size: 2.5em;
+        font-weight: bold;
+        letter-spacing: 0.094em;
+        small {
+          font-size: 0.88em;
+        }
+      }
+      p {
+        margin: 0 0 1.875rem;
+        font-size: 1.125em;
+      }
+      .btn {
+        max-width: 150px;
+        margin: 0 auto;
+        border: 1px solid $white;
+        box-sizing: border-box;
+        background-color: transparent;
+        &:hover {
+          border-color: $khaki;
+          background-color: $khaki;
+        }
+      }
+    }
+  }
+  .slick-dots {
+    bottom: 0.875rem;
+    li {
+      width: 10px;
+      height: 10px;
+      margin: 0 0.4375rem;
+      font-size: 0;
+      button {
+        width: 10px;
+        height: 10px;
+        padding: 0;
+        border-radius: 50%;
+        background-color: $white;
+        &:before {
+          display: none;
+        }
+      }
+      &.slick-active {
+        button {
+          background-color: $red;
+        }
+      }
+    }
+  }
+}
+.ootd_list_wrapper {
+  .ootd_list {
+    margin-bottom: 2em;
+    &:after {
+      content: '';
+      display: block;
+      clear: both;
+    }
+    .grid_sizer,
+    .item {
+      width: 100%;
+    }
+    .gutter_sizer {
+      width: 0;
+    }
+    .item {
+      float: left;
+      margin-bottom: 1.5em;
+      .item_inner {
+        position: relative;
+        max-width: 240px;
+        margin: 0 auto;
+        background-color: $white;
+        box-shadow: 0 1px 4px rgba(0,0,0,0.09);
+      }
+      a {
+        display: block;
+        &.btn_favorite {
+          position: absolute;
+          top: 0.625rem;
+          right: 0.625rem;
+          display: block;
+          font-size: 0;
+        }
+      }
+      .thumb {
+        img {
+          display: block;
+        }
+      }
+      .text {
+        padding: 0.8em;
+        box-sizing: border-box;
+        color: $black;
+        h3 {
+          overflow: hidden;
+          height: 1.4em * 2;
+          margin: 0;
+          font-size: 1em;
+          font-family: 'Crimson Text', serif;
+          line-height: 1.4;
+        }
+      }
+      a:hover .text {
+        color: $main;
+      }
+    }
+    @include breakpoint(560px) {
+      .grid_sizer,
+      .item {
+        width: 49%;
+      }
+      .gutter_sizer {
+        width: 2%;
+      }
+    }
+    @include breakpoint(730px) {
+      .grid_sizer,
+      .item {
+        width: 32%;
+      }
+    }
+  }
+}

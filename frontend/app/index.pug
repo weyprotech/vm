@@ -59,85 +59,126 @@ block main
         each i inArray(3)
           .item
             .video_title
-              i.dot.red
+              .dot.red
               h3 Live Stream
-              i.mark_live
+              .mark_live
                 | Live
             .video.video_facebook
               iframe(src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Ffacebook%2Fvideos%2F10153231379946729%2F&width=500&show_text=false&height=280&appId", width="500", height="280", style="border:none;overflow:hidden", scrolling="no", frameborder="0", allowTransparency="true", allow="encrypted-media", allowFullScreen="true")
           .item
             .video_title
-              i.dot.green
+              .dot.green
               h3 Summer Collection
             .video.video_youtube
               iframe(width="560", height="315", src="https://www.youtube.com/embed/FbjUyCDrHI0", frameborder="0", allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture", allowfullscreen)
+          .item
+            .video_title
+              .dot.yellow
+              h3 Live Stream
+            .video.video_facebook
+              iframe(src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Ffacebook%2Fvideos%2F10153231379946729%2F&width=500&show_text=false&height=280&appId", width="500", height="280", style="border:none;overflow:hidden", scrolling="no", frameborder="0", allowTransparency="true", allow="encrypted-media", allowFullScreen="true")
   .ads_banner
     .slide
       .pic
         img(src="images/img_ad_banner.jpg")
       //↓ 後台可設定網站五個顏色 ↓ -- bg_brown、bg_red、bg_purple、bg_blue、bg_green
       .text.bg_brown
-        .title SALE
-        .subtitle 20% off
-        p 2019 Summer Collection
-        a.btn(href="javascript:;")
-          | SHOP NOW
+        .text_inner
+          .title SALE
+          .subtitle 20% #[small off]
+          p 2019 Summer Collection
+          a.btn(href="javascript:;")
+            | SHOP NOW
     .slide
       .pic
         img(src="https://via.placeholder.com/1920x710")
       //↓ 後台可設定網站五個顏色 ↓ -- bg_brown、bg_red、bg_purple、bg_blue、bg_green
       .text.bg_brown
-        .title SALE
-        .subtitle 20% off
-        p 2019 Summer Collection
-        a.btn(href="javascript:;")
-          | SHOP NOW
+        .text_inner
+          .title SALE
+          .subtitle 20% #[small off]
+          p 2019 Summer Collection
+          a.btn(href="javascript:;")
+            | SHOP NOW
   .ootd_list_wrapper.page_block
     .block_inner.wide
       h2.block_title
         | OOTD Inspirations
       .block_main
-        .ootd_lists
+        .ootd_list
+          .grid_sizer
+          .gutter_sizer
           each i inArray(3)
             .item
-              a.btn_favorite(href="javascript:;")
-                i.icon_favorite_heart
-              a(href="javascript:;")
-                .thumb
-                  img(src="images/img_ootd.jpg")
-                h3
-                  | The Best Street Style From Copen Fashion Week
+              .item_inner
+                //↓ 愛心加'active'，表示為有加入最愛 ↓
+                a.btn_favorite.active(data-ootdId="ootd01", href="javascript:;")
+                  i.icon_favorite_heart
+                //↑ 愛心加'active'，表示為有加入最愛 ↑
+                a(href="javascript:;")
+                  .thumb
+                    img(src="images/img_ootd.jpg")
+                  .text
+                    h3
+                      | The Best Street Style From Copen Fashion Week
             .item
-              a.btn_favorite(href="javascript:;")
-                i.icon_favorite_heart
-              a(href="javascript:;")
-                .thumb
-                  img(src="https://via.placeholder.com/240x587")
-                h3
-                  | Lorem ipsum dolor sit met, consectetur adipiscing text text
+              .item_inner
+                a.btn_favorite(data-ootdId="ootd02", href="javascript:;")
+                  i.icon_favorite_heart
+                a(href="javascript:;")
+                  .thumb
+                    img(src="https://via.placeholder.com/240x587")
+                  .text
+                    h3
+                      | Lorem ipsum dolor sit met, consectetur adipiscing text text
             .item
-              a.btn_favorite(href="javascript:;")
-                i.icon_favorite_heart
-              a(href="javascript:;")
-                .thumb
-                  img(src="https://via.placeholder.com/240x360")
-                h3
-                  | The Best Street Style From Copen Fashion Week
+              .item_inner
+                a.btn_favorite(data-ootdId="ootd03", href="javascript:;")
+                  i.icon_favorite_heart
+                a(href="javascript:;")
+                  .thumb
+                    img(src="https://via.placeholder.com/240x360")
+                  .text
+                    h3
+                      | The Best Street Style From Copen Fashion Week
             .item
-              a.btn_favorite(href="javascript:;")
-                i.icon_favorite_heart
-              a(href="javascript:;")
-                .thumb
-                  img(src="https://via.placeholder.com/240x360")
-                h3
-                  | So strongly and metapcally did I conceiv.
+              .item_inner
+                a.btn_favorite(data-ootdId="ootd04", href="javascript:;")
+                  i.icon_favorite_heart
+                a(href="javascript:;")
+                  .thumb
+                    img(src="https://via.placeholder.com/240x360")
+                  .text
+                    h3
+                      | So strongly and metapcally did I conceiv.
             .item
-              a.btn_favorite(href="javascript:;")
-                i.icon_favorite_heart
-              a(href="javascript:;")
-                .thumb
-                  img(src="https://via.placeholder.com/240x427")
-                h3
-                  | Keytar McSweeney's Williamsburg, readyma.
-        a.btn.common(href="javascript:;")
+              .item_inner
+                a.btn_favorite(data-ootdId="ootd05", href="javascript:;")
+                  i.icon_favorite_heart
+                a(href="javascript:;")
+                  .thumb
+                    img(src="https://via.placeholder.com/240x427")
+                  .text
+                    h3
+                      | Keytar McSweeney's Williamsburg, readyma.
+        a.btn.common.more(href="javascript:;")
           | MORE
+
+block js
+  script.
+    $(function() {
+      $('.btn_favorite').on('click', function() {
+        // ootdId 取得穿搭的 ID
+        var ootdId = $(this).attr('data-ootdId');
+
+        if ($(this).hasClass('active')) {
+          // 取消最愛寫這裡
+
+          $(this).removeClass('active');
+        } else {
+          // 加入最愛寫這裡
+
+          $(this).addClass('active');
+        }
+      });
+    });

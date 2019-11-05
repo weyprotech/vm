@@ -41,3 +41,10 @@
 .icon_diamond_s {
   @include retina-sprite($icon-diamond-s-group);
 }
+
+.icon_favorite_heart {
+  @include retina-sprite($icon-favorite-heart-group);
+}
+.btn_favorite.active .icon_favorite_heart {
+  @include retina-sprite($icon-favorite-heart-active-group);
+}

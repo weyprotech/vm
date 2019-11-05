@@ -87,7 +87,6 @@ $(document).ready(function () {
   // Slick Slider
   if ($('.top_designers_slider').length > 0) {
     $('.top_designers_slider').slick({
-      dots: false,
       speed: 500,
       slidesToShow: 4,
       slidesToScroll: 4,
@@ -114,7 +113,36 @@ $(document).ready(function () {
           }
         }
       ]
-    })
+    });
+  }
+  if ($('.ads_banner').length > 0) {
+    $('.ads_banner').slick({
+      arrows: false,
+      //autoplay: true,
+      autoplaySpeed: 5000,
+      dots: true,
+      speed: 500
+    });
+  }
+
+  // Custom Scroll
+  if ($('.what_next_main').length > 0) {
+    $('.what_next_main').mCustomScrollbar({
+      theme: 'dark-3',
+      axis: 'x'
+    });
+  }
+
+  // Masonry
+  if ($('.ootd_list').length > 0) {
+    var $ootdList = $('.ootd_list').imagesLoaded(function () {
+      $ootdList.masonry({
+        temSelector: '.item',
+          columnWidth: '.grid_sizer',
+          gutter: '.gutter_sizer',
+          percentPosition: true
+      });
+    });
   }
 
   // Popup Close

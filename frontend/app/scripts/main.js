@@ -135,13 +135,17 @@ $(document).ready(function () {
 
   // Masonry
   if ($('.ootd_list').length > 0) {
-    var $ootdList = $('.ootd_list').imagesLoaded(function () {
-      $ootdList.masonry({
-        temSelector: '.item',
-          columnWidth: '.grid_sizer',
-          gutter: '.gutter_sizer',
-          percentPosition: true
-      });
+    var $ootdList = $('.ootd_list').masonry({
+      temSelector: '.item',
+      columnWidth: '.grid_sizer',
+      gutter: '.gutter_sizer',
+      percentPosition: true,
+      visibleStyle: { transform: 'translateY(0)', opacity: 1 },
+      hiddenStyle: { transform: 'translateY(100px)', opacity: 0 }
+    });
+
+    $ootdList.imagesLoaded().progress(function () {
+      $ootdList.masonry('layout');
     });
   }
 

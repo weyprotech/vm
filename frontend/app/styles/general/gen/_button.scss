@@ -79,6 +79,10 @@
     box-sizing: border-box;
     background-color: $white;
     color: #626262;
+    &:hover {
+      background-color: $khaki;
+      color: $white;
+    }
   }
   &.more {
     width: 150px;

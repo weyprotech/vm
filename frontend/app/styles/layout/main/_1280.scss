@@ -40,6 +40,16 @@
       .item {
         width: 18.4%;
       }
+      .item {
+        a.btn_favorite {
+          display: none;
+        }
+        &:hover {
+          a.btn_favorite {
+            display: block;
+          }
+        }
+      }
     }
   }
 }

@@ -1,0 +1,129 @@
+extends layouts/default.pug
+
+block main
+  .ootd_list_wrapper.page_block
+    .block_inner.wide
+      h2.block_title
+        | OOTD Inspirations
+      .block_main
+        .ootd_list
+          .grid_sizer
+          .gutter_sizer
+          //↓ 穿搭的list，先顯示15筆，頁面下滑時再撈資料，一次撈15筆 ↓
+          each i inArray(3)
+            .item
+              .item_inner
+                //↓ 愛心加'active'，表示為有加入最愛 ↓
+                a.btn_favorite.active(data-ootdId="ootd01", href="javascript:;")
+                  i.icon_favorite_heart
+                //↑ 愛心加'active'，表示為有加入最愛 ↑
+                a(href="ootd_detail.html")
+                  .thumb
+                    img(src="images/img_ootd.jpg")
+                  .text
+                    h3
+                      | The Best Street Style From Copen Fashion Week
+            .item
+              .item_inner
+                a.btn_favorite(data-ootdId="ootd02", href="javascript:;")
+                  i.icon_favorite_heart
+                a(href="ootd_detail.html")
+                  .thumb
+                    img(src="https://via.placeholder.com/240x587")
+                  .text
+                    h3
+                      | Lorem ipsum dolor sit met, consectetur adipiscing text text
+            .item
+              .item_inner
+                a.btn_favorite(data-ootdId="ootd03", href="javascript:;")
+                  i.icon_favorite_heart
+                a(href="ootd_detail.html")
+                  .thumb
+                    img(src="https://via.placeholder.com/240x360")
+                  .text
+                    h3
+                      | The Best Street Style From Copen Fashion Week
+            .item
+              .item_inner
+                a.btn_favorite(data-ootdId="ootd04", href="javascript:;")
+                  i.icon_favorite_heart
+                a(href="ootd_detail.html")
+                  .thumb
+                    img(src="https://via.placeholder.com/240x360")
+                  .text
+                    h3
+                      | So strongly and metapcally did I conceiv.
+            .item
+              .item_inner
+                a.btn_favorite(data-ootdId="ootd05", href="javascript:;")
+                  i.icon_favorite_heart
+                a(href="ootd_detail.html")
+                  .thumb
+                    img(src="https://via.placeholder.com/240x427")
+                  .text
+                    h3
+                      | Keytar McSweeney's Williamsburg, readyma.
+          //↑ 穿搭的list，先顯示15筆，頁面下滑時再撈資料，一次撈15筆 ↑
+        a#more.btn.common.more(href="javascript:;") load more
+
+block js
+  script.
+    $(function() {
+      // OOTD 加入愛心的點擊事件
+      $(document).on('click', '.btn_favorite', function() {
+        // ootdId 取得穿搭的 ID
+        var ootdId = $(this).attr('data-ootdId');
+
+        if ($(this).hasClass('active')) {
+          // 取消最愛寫這裡
+
+          $(this).removeClass('active');
+        } else {
+          // 加入最愛寫這裡
+
+          $(this).addClass('active');
+        }
+      });
+      
+      // Scroll Load - 一次撈15筆資料
+      var trigger = $('.ootd_list').offset().top + $('.ootd_list').height() - $(window).height();
+      $(window).scroll(function () {
+        if (trigger <= $(window).scrollTop()) {
+          $.ajax({
+            url: 'json/ootd.json',
+            dataType: 'json',
+            error: function() {
+              console.log('ajax error!')
+            },
+            success: function(data) {
+              var items = '';
+              var $items;
+
+              for( i = 0; i < data.length; i ++) {
+                var item = '<div class="item">' +
+                  '<div class="item_inner">' +
+                    '<a class="btn_favorite" data-ootdId="' + data[i].id + '" href="javascript:;">' +
+                      '<i class="icon_favorite_heart"></i>' +
+                    '</a>' +
+                    '<a href="ootd_detail.html">' +
+                      '<div class="thumb">' +
+                        '<img src="' + data[i].imgUrl + '"/>' +
+                      '</div>' +
+                      '<div class="text">' +
+                        '<h3>' + data[i].title + '</h3>' +
+                      '</div>' +
+                    '</a>' +
+                  '</div>' +
+                '</div>';
+                items += item;
+              }
+
+              $items = $(items);
+              $('.ootd_list').append( $items ).masonry( 'appended', $items );
+
+              trigger = $('.ootd_list').offset().top + $('.ootd_list').height() - $(window).height();
+            }
+          });
+        }
+      });
+    });

@@ -10,14 +10,18 @@ block main
           .slide
             .slide_inner
               a.thumb(href="designer_home.html")
+                //↓ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓
                 .pic(style="background-image: url(images/img_designer_work.jpg);")
                   img.size(src="images/size_3x4.png")
+                //↑ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑
                 span
                   | Stephen Herrera
               .intro
                 a.profile_picture(href="designer_profile.html")
+                  //↓ 1:1，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓
                   .pic(style="background-image: url(images/img_designer.jpg")
                     img.size(src="images/size_1x1.png")
+                  //↑ 1:1，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑
                 .text
                   h3.designer_name
                     a(href="designer_profile.html")
@@ -30,15 +34,18 @@ block main
             .slide
               .slide_inner
                 a.thumb(href="designer_home.html")
-                  // 3:4
+                  //↓ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓
                   .pic(style="background-image: url(https://via.placeholder.com/280x373);")
                     img.size(src="images/size_3x4.png")
+                  //↑ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑
                   span
                     | MU Jason Williams
                 .intro
                   a.profile_picture(href="designer_profile.html")
+                    //↓ 1:1，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓
                     .pic(style="background-image: url(https://via.placeholder.com/100x100)")
                       img.size(src="images/size_1x1.png")
+                    //↑ 1:1，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑
                   .text
                     h3.designer_name
                       a(href="designer_profile.html")
@@ -63,20 +70,26 @@ block main
               h3 Live Stream
               .mark_live
                 | Live
+            //↓ 如果是 facebook 的影片，class 要加 'video_facebook' ↓
             .video.video_facebook
               iframe(src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Ffacebook%2Fvideos%2F10153231379946729%2F&width=500&show_text=false&height=280&appId", width="500", height="280", style="border:none;overflow:hidden", scrolling="no", frameborder="0", allowTransparency="true", allow="encrypted-media", allowFullScreen="true")
+            //↑ 如果是 facebook 的影片，class 要加 'video_facebook' ↑
           .item
             .video_title
               .dot.green
               h3 Summer Collection
+              //↓ 如果是 youtube 的影片，class 要加 'video_youtube' ↓
             .video.video_youtube
               iframe(width="560", height="315", src="https://www.youtube.com/embed/FbjUyCDrHI0", frameborder="0", allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture", allowfullscreen)
+              //↑ 如果是 youtube 的影片，class 要加 'video_youtube' ↑
           .item
             .video_title
               .dot.yellow
               h3 Live Stream
+            //↓ 如果是 facebook 的影片，class 要加 'video_facebook' ↓
             .video.video_facebook
               iframe(src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Ffacebook%2Fvideos%2F10153231379946729%2F&width=500&show_text=false&height=280&appId", width="500", height="280", style="border:none;overflow:hidden", scrolling="no", frameborder="0", allowTransparency="true", allow="encrypted-media", allowFullScreen="true")
+            //↑ 如果是 facebook 的影片，class 要加 'video_facebook' ↑
   .ads_banner
     .slide
       .pic
@@ -108,6 +121,7 @@ block main
         .ootd_list
           .grid_sizer
           .gutter_sizer
+          //↓ 穿搭的list，15筆 ↓
           each i inArray(3)
             .item
               .item_inner
@@ -115,7 +129,7 @@ block main
                 a.btn_favorite.active(data-ootdId="ootd01", href="javascript:;")
                   i.icon_favorite_heart
                 //↑ 愛心加'active'，表示為有加入最愛 ↑
-                a(href="javascript:;")
+                a(href="ootd_detail.html")
                   .thumb
                     img(src="images/img_ootd.jpg")
                   .text
@@ -125,7 +139,7 @@ block main
               .item_inner
                 a.btn_favorite(data-ootdId="ootd02", href="javascript:;")
                   i.icon_favorite_heart
-                a(href="javascript:;")
+                a(href="ootd_detail.html")
                   .thumb
                     img(src="https://via.placeholder.com/240x587")
                   .text
@@ -135,7 +149,7 @@ block main
               .item_inner
                 a.btn_favorite(data-ootdId="ootd03", href="javascript:;")
                   i.icon_favorite_heart
-                a(href="javascript:;")
+                a(href="ootd_detail.html")
                   .thumb
                     img(src="https://via.placeholder.com/240x360")
                   .text
@@ -145,7 +159,7 @@ block main
               .item_inner
                 a.btn_favorite(data-ootdId="ootd04", href="javascript:;")
                   i.icon_favorite_heart
-                a(href="javascript:;")
+                a(href="ootd_detail.html")
                   .thumb
                     img(src="https://via.placeholder.com/240x360")
                   .text
@@ -155,19 +169,21 @@ block main
               .item_inner
                 a.btn_favorite(data-ootdId="ootd05", href="javascript:;")
                   i.icon_favorite_heart
-                a(href="javascript:;")
+                a(href="ootd_detail.html")
                   .thumb
                     img(src="https://via.placeholder.com/240x427")
                   .text
                     h3
                       | Keytar McSweeney's Williamsburg, readyma.
-        a.btn.common.more(href="javascript:;")
+          //↑ 穿搭的list，15筆 ↑
+        a.btn.common.more(href="ootd_list.html")
           | MORE
 
 block js
   script.
     $(function() {
-      $('.btn_favorite').on('click', function() {
+      // OOTD 加入愛心的點擊事件
+      $(document).on('click', '.btn_favorite', function() {
         // ootdId 取得穿搭的 ID
         var ootdId = $(this).attr('data-ootdId');
 

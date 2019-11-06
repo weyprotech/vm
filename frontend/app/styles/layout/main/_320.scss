@@ -247,6 +247,14 @@
       margin-top: 0.5rem;
       color: $main;
       font-size: 0.875em;
+      span {
+        display: inline-block;
+        margin-right: 0.5em;
+        vertical-align: middle;
+        &:last-child {
+          margin-right: 0;
+        }
+      }
     }
   }
   .slick-prev,
@@ -481,7 +489,7 @@
         color: $main;
       }
     }
-    @include breakpoint(560px) {
+    @include breakpoint(480px) {
       .grid_sizer,
       .item {
         width: 49%;
@@ -497,4 +505,11 @@
       }
     }
   }
+}
+.page-load-status {
+  display: none;
+  padding-top: 20px;
+  border-top: 1px solid #DDD;
+  text-align: center;
+  color: #777;
 }

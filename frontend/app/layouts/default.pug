@@ -105,7 +105,7 @@ html
                 a(href="javascript:;")
                   i.icon_member
               //↑ 上線時，class加'online' ↑
-              //↓ 有產品在購物車時時，class加'online' ↓
+              //↓ 有產品在購物車時時，class加'have' ↓
               .option_cart.have
                 a.cart_toggle(href="javascript:;")
                   i.icon_cart
@@ -151,7 +151,7 @@ html
                           | NTD $2,296
                       a.btn.confirm(href="javascript:;")
                         | CHECKOUT
-              //↓ 有產品在購物車時時，class加'online' ↓
+              //↓ 有產品在購物車時時，class加'have' ↓
         .header_nav_wrap
           include partials/navigator-head.pug
           
@@ -284,10 +284,10 @@ html
 
     // build:js scripts/plugins.js
     script(src="scripts/plugins/jquery.sticky.js")
-    script(src="../bower_components/imagesloaded/imagesloaded.pkgd.js")
     script(src="../bower_components/jquery-sidebar/src/jquery.sidebar.js")
     script(src="../bower_components/slick-carousel/slick/slick.min.js")
     script(src="../bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.js")
+    script(src="../bower_components/imagesloaded/imagesloaded.pkgd.js")
     script(src="../bower_components/masonry-layout/dist/masonry.pkgd.js")
     script(src="scripts/plugins/jquery.retina.js")
     // endbuild

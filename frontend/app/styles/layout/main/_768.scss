@@ -70,4 +70,40 @@
       }
     }
   }
+
+  // OOTD
+  .ootd_detail_wrapper {
+    .ootd_article {
+      .article_content {
+        margin-bottom: 3em;
+      }
+    }
+  }
+  .comments_block {
+    .comments_title {
+      padding: 0.8em 1.5em;
+    }
+    .comments_content {
+      .item {
+        padding: 1.25em 1.5em;
+      }
+      .msg {
+        .profile_picture {
+          width: 60px;
+          height: 60px;
+          margin-right: 1.25em;
+        }
+        .msg_content {
+          margin-top: 0.4em;
+          .title {
+            margin-bottom: 0.5em;
+          }
+        }
+        &.reply {
+          margin-top: 1.875em;
+          margin-left: calc(60px + 1.25em);
+        }
+      }
+    }
+  }
 }

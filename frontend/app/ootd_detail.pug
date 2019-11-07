@@ -1,0 +1,160 @@
+extends layouts/default.pug
+
+block main
+  .breadcrumbs
+    .breadcrumbs_inner
+      a(href="index.html") VM
+      span /
+      a(href="ootd_list.html") OOTD
+      span /
+      span.current The Best Street Style From Copen Fashion Week
+  .ootd_detail_wrapper.page_block
+    .block_inner
+      .container
+        .container_main
+          .ootd_article
+            h1.block_title
+              | The Best Street Style From Copen Fashion Week
+            .share_info
+              .share_links
+                | Share:
+                a.facebook(href="javascript:;")
+                  i.icon_share_facebook
+                a.pinterest(href="javascript:;")
+                  i.icon_share_pinterest
+                a.twitter(href="javascript:;")
+                  i.icon_share_twitter
+                a.weibo(href="javascript:;")
+                  i.icon_share_weibo
+              .info
+                .date
+                  | 2019/10/30
+                a.btn_favorite(data-ootdId="ootd01", href="javascript:;")
+                  i.icon_favorite_heart
+            .article_content
+              p I think my key issue was this: I didn’t leave myself enough time to plan this wedding. And I’m happy to admit it. If I didn’t have such a hectic career, AND PRIMARILY, if I hadn’t decided to buy a house at the very same time, 9 months would likely have been ample time to plan an at home wedding. But I wanted an abroad wedding… of course I did! *rolls eyes at self numerous times*
+              p So giving myself 9 months to find a venue in the South of France was the first hurdle that took longer to climb over than I optimistically expected. And then right after we found the venue, we also found our new house.
+              p A 20 ans elle quitte la République Démocratique du Congo et si’nstalle à Bruxelles avec un rêve : devenir architecte d’intérieur. Elle devra se battre pendant 7 ans pour décrocher un titre de séjour et pouvoir suivre un cursus en décoration d’i’ntérieur.
+              p
+                img(src="images/img_ootd_detail.jpg")
+              p Son diplôme en poche, après quelques expériences dans des cabinets d’architecte et des enseignes de décoration, elle décide de rentrer dans son pays alors en pleine reconstruction. De retour à Kinshasa, déterminée à exercer en tant que décoratrice d’’intérieur, elle commence par lancer un service de conciergerie privée, première étape pour se faire connaitre et se constituer un carnet d’’adresses. Elle se fait très vite remarquer et collabore avec les plus grandes entreprises du Congo en tant que scénographe, designer et décoratrice. Il n’’en faut pas plus pour que les particuliers affluent et fassent appel à ses services pour l’aménagement et la décoration de leur intérieur.
+              p Pendant tout ce temps, son envie de créer sa propre marque de mobilier n’a cessé de grandir et avec elle, cette volonté de faire connaitre les trésors de son pays, de transmettre un héritage.
+              p
+                img(src="https://via.placeholder.com/727x527")
+          .comments_block
+            .comments_title
+              i.icon_msg
+              h2 3 comments
+              i.arrow_down
+            .comments_content
+              .comments_form
+                .profile_picture
+                  .pic(style="background-image: url(images/img_profile_pic.jpg);")
+                    img.size(src="images/size_1x1.png")
+                .controls
+                  input(type="text", placeholder="Leave us a message...")
+                  button(type="button") Send
+              .comments_messages
+                .item
+                  .msg
+                    .profile_picture
+                      .pic(style="background-image: url(images/img_profile_pic.jpg);")
+                        img.size(src="images/size_1x1.png")
+                    .msg_content
+                      .title
+                        .name Lily Allen
+                        .divide_line
+                        .time 2019.08.01 18:05
+                      .text
+                        | Donec facilisis tortor ut augue.
+                  .msg.reply
+                    .profile_picture
+                      .pic(style="background-image: url(images/vm_profile_pic.jpg);")
+                        img.size(src="images/size_1x1.png")
+                    .msg_content
+                      .title
+                        .name Reply
+                        .divide_line
+                        .time 2019.08.01 18:05
+                      .text
+                        | Cras quis.
+                .item
+                  .msg
+                    .profile_picture
+                      .pic(style="background-image: url(images/img_member_noPic.jpg);")
+                        img.size(src="images/size_1x1.png")
+                    .msg_content
+                      .title
+                        .name Annie ELe
+                        .divide_line
+                        .time 2019.08.01 18:05
+                      .text
+                        | Keytar McSweeney's Williamsburg,.
+                each i inArray(3)
+                  .item
+                    .msg
+                      .profile_picture
+                        .pic(style="background-image: url(https://via.placeholder.com/100x100);")
+                          img.size(src="images/size_1x1.png")
+                      .msg_content
+                        .title
+                          .name Cynthia Woods
+                          .divide_line
+                          .time 2019.08.01 18:05
+                        .text
+                          | Keytar McSweeney's Williamsburg,.
+              a.open_comments(href="javascript:;")
+                | See more comments
+        .container_aside
+          .related_products
+            h2.title Related Products
+            .slider
+              .slide
+                a(href="product_detail.html")
+                  .thumb
+                    img(src="images/img_product01.jpg")
+                  .text
+                    h3 The Chelsea Heritage Trench Coat
+                    .pice NT$ 98800
+              each i inArray(2)
+                .slide
+                  a(href="product_detail.html")
+                    .thumb
+                      img(src="https://via.placeholder.com/240x320")
+                    .text
+                      h3 Cras quis nulla commodo, aliquam lectus.
+                      .pice NT$ 98800
+                .slide
+                  a(href="product_detail.html")
+                    .thumb
+                      img(src="https://via.placeholder.com/240x320")
+                    .text
+                      h3 Cras quis nulla commodo, aliquam lectus.
+                      .pice NT$ 98800
+  #fixedButtons
+    a#backPrve(href="javascript:;")
+      i.arrow_back
+      span back
+    a#backTop(href="javascript:;")
+      i.arrow_top
+      span top
+
+block js
+  script.
+    $(function() {
+      // OOTD 加入愛心的點擊事件
+      $(document).on('click', '.btn_favorite', function() {
+        // ootdId 取得穿搭的 ID
+        var ootdId = $(this).attr('data-ootdId');
+
+        if ($(this).hasClass('active')) {
+          // 取消最愛寫這裡
+
+          $(this).removeClass('active');
+        } else {
+          // 加入最愛寫這裡
+
+          $(this).addClass('active');
+        }
+      });
+    });

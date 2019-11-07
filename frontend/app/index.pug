@@ -14,12 +14,12 @@ block main
                 .pic(style="background-image: url(images/img_designer_work.jpg);")
                   img.size(src="images/size_3x4.png")
                 //↑ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑
-                span
+                .brand_name
                   | Stephen Herrera
               .intro
                 a.profile_picture(href="designer_profile.html")
                   //↓ 1:1，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓
-                  .pic(style="background-image: url(images/img_designer.jpg")
+                  .pic(style="background-image: url(images/img_profile_pic.jpg")
                     img.size(src="images/size_1x1.png")
                   //↑ 1:1，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑
                 .text
@@ -38,7 +38,7 @@ block main
                   .pic(style="background-image: url(https://via.placeholder.com/280x373);")
                     img.size(src="images/size_3x4.png")
                   //↑ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑
-                  span
+                  .brand_name
                     | MU Jason Williams
                 .intro
                   a.profile_picture(href="designer_profile.html")

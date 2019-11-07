@@ -2,6 +2,11 @@
   display: inline-block;
 }
 
+.arrow_down {
+  display: inline-block;
+  @include retina-sprite($arrow-down-group);
+}
+
 .icon_search {
   @include retina-sprite($icon-search-group);
 }
@@ -47,4 +52,24 @@
 }
 .btn_favorite.active .icon_favorite_heart {
   @include retina-sprite($icon-favorite-heart-active-group);
+}
+
+.icon_share_facebook {
+  @include retina-sprite($icon-share-facebook-group);
+}
+
+.icon_share_pinterest {
+  @include retina-sprite($icon-share-pinterest-group);
+}
+
+.icon_share_twitter {
+  @include retina-sprite($icon-share-twitter-group);
+}
+
+.icon_share_weibo {
+  @include retina-sprite($icon-share-weibo-group);
+}
+
+.icon_msg {
+  @include retina-sprite($icon-msg-group);
 }

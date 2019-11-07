@@ -179,22 +179,24 @@ $(document).ready(function () {
   //   });
   // });
 
-  // Back to top
+  // Fixed Buttons
+  if ($('#fixedButtons').length > 0) {
+    $(window).on('scroll', function () {
+      if ($(window).scrollTop() > 100) {
+        $('#fixedButtons').stop().fadeIn(400, function () {
+          $(this).css('display', 'block');
+        });
+      } else {
+        $('#fixedButtons').stop().fadeOut(400);
+      }
+    });
+  }
   if ($('#backTop').length > 0) {
     $('#backTop').on(clickHandler, function (event) {
       event.preventDefault();
       $('html, body').stop().animate({
         scrollTop: 0
       }, 500, 'swing');
-    });
-    $(window).on('scroll', function () {
-      if ($(window).scrollTop() > 100) {
-        $('#backTop').stop().fadeIn(400, function () {
-          $(this).css('display', 'block');
-        });
-      } else {
-        $('#backTop').stop().fadeOut(400);
-      }
     });
   }
 

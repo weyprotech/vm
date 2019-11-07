@@ -240,3 +240,57 @@ button {
     }
   }
 }
+
+// Comments Form
+.comments_form {
+  display: flex;
+  align-items: center;
+  padding: 1em 0.5em;
+  box-sizing: border-box;
+  background-color: #F4F4F4;
+  .profile_picture {
+    flex: 0 0 auto;
+    width: 44px;
+    height: 44px;
+    margin-right: 0.5em;
+    border: 1px solid $khaki-light;
+    box-sizing: border-box;
+  }
+  .controls {
+    flex: 1 1 auto;
+    display: flex;
+    input[type="text"] {
+      flex: 1 1 auto;
+      border: 1px solid $khaki-dark;
+      height: 44px;
+      box-sizing: border-box;
+    }
+    button {
+      flex: 0 0 auto;
+      width: 60px;
+      height: 44px;
+      margin-left: 0.5em;
+      border: 1px solid $khaki;
+      box-sizing: border-box;
+      background-color: $white;
+      color: #626262;
+      &:hover {
+        background-color: $khaki;
+        color: $white;
+      }
+    }
+  }
+  @include breakpoint(768px) {
+    padding: 1.25em 1.5em;
+    .profile_picture {
+      width: 60px;
+      height: 60px;
+      margin-right: 1.25em;
+    }
+    .controls {
+      button {
+        margin-left: 0.875em;
+      }
+    }
+  }
+}

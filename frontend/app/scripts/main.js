@@ -39,7 +39,7 @@ $(document).ready(function () {
     }
   });
 
-  //Nav
+  // Nav
   $('.head_nav ul li').on('mouseenter', function (event) {
     $(this).children('a').addClass('active');
     if ($(this).children('ul').length > 0) {
@@ -118,11 +118,52 @@ $(document).ready(function () {
   if ($('.ads_banner').length > 0) {
     $('.ads_banner').slick({
       arrows: false,
-      //autoplay: true,
+      autoplay: true,
       autoplaySpeed: 5000,
       dots: true,
       speed: 500
     });
+  }
+  if ($('.aside_related_products').length > 0) {
+    $('.aside_related_products .slider').slick({
+      speeed: 500,
+      slidesToShow: 3,
+      swipeToSlide: true,
+      vertical: true,
+      verticalSwiping: true,
+      responsive: [
+        {
+          breakpoint: 1024,
+          settings: {
+            centerMode: true,
+            centerPadding: '20px',
+            slidesToShow: 3,
+            vertical: false,
+            verticalSwiping: false,
+          }
+        },
+        {
+          breakpoint: 660,
+          settings: {
+            centerMode: true,
+            centerPadding: '30px',
+            slidesToShow: 2,
+            vertical: false,
+            verticalSwiping: false,
+          }
+        },
+        {
+          breakpoint: 480,
+          settings: {
+            centerMode: true,
+            centerPadding: '45px',
+            slidesToShow: 1,
+            vertical: false,
+            verticalSwiping: false,
+          }
+        }
+      ]
+    })
   }
 
   // Custom Scroll
@@ -146,6 +187,31 @@ $(document).ready(function () {
 
     $ootdList.imagesLoaded().progress(function () {
       $ootdList.masonry('layout');
+    });
+  }
+
+  // Social Share
+  if ($('.share_links').length > 0) {
+    var localUrl = window.location.href;
+    var localTitle = document.title;
+
+    $('.share_links').find('a').each(function() {
+      if ($(this).hasClass('facebook')) {
+        $(this).attr('href', 'https://www.facebook.com/sharer.php?u=' + localUrl);
+      } else if ($(this).hasClass('pinterest')) {
+        $(this).attr('href', 'http://pinterest.com/pin/create/link/?url=' + localUrl);
+      } else if ($(this).hasClass('twitter')) {
+        $(this).attr('href', 'https://twitter.com/intent/tweet?url=' + localUrl + '&text=' + localTitle);
+      } else if ($(this).hasClass('weibo')) {
+        $(this).attr('href', 'http://service.weibo.com/share/share.php?url=' + localUrl + '&title=' + localTitle);
+      }
+    });
+  }
+
+  // Comments
+  if ($('.comments_block').length > 0) {
+    $('.comments_block').on(clickHandler, '.comments_title', function() {
+      $(this).toggleClass('active').next('.comments_content').stop().slideToggle();
     });
   }
 
@@ -183,11 +249,11 @@ $(document).ready(function () {
   if ($('#fixedButtons').length > 0) {
     $(window).on('scroll', function () {
       if ($(window).scrollTop() > 100) {
-        $('#fixedButtons').stop().fadeIn(400, function () {
+        $('#fixedButtons').fadeIn(400, function () {
           $(this).css('display', 'block');
         });
       } else {
-        $('#fixedButtons').stop().fadeOut(400);
+        $('#fixedButtons').fadeOut(400);
       }
     });
   }

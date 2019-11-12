@@ -8,7 +8,7 @@ html
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
     link(rel='icon', type='image/x-icon', href='images/favicon.ico')
     link(rel='shortcut icon', type='image/x-icon', href='images/favicon.ico')
-
+    
     // build:css styles/main.css
     link(rel='stylesheet', href='styles/main.css')
     // endbuild
@@ -88,7 +88,7 @@ html
             a#btn_menu(href="javascript:;") #[span]
             .header_search
               .search_form
-                input(type="search", placehold="What are you looking for?")
+                input(type="search", placeholder="What are you looking for?")
                 button(type="button") #[i.icon_search]
             a.header_logo(href="index.html")
               img.retina(src="images/logo.png")
@@ -96,15 +96,15 @@ html
               .option_search
                 a(href="javascript:;")
                   i.icon_search
-              .option_style
-                a(href="javascript:;")
-                  i.icon_waredrobe
-                  span My Style
-              //↓ 上線時，class加'online' ↓
+              //- .option_style
+              //-   a(href="javascript:;")
+              //-     i.icon_waredrobe
+              //-     span My Style
+              //↓ 上線時，class加'online'，並且連結至'member_account.html'; 未上線時，連結至'login.html' ↓
               .option_member.online
                 a(href="javascript:;")
                   i.icon_member
-              //↑ 上線時，class加'online' ↑
+              //↑ 上線時，class加'online'，並且連結至'member_account.html'; 未上線時，連結至'login.html' ↑
               //↓ 有產品在購物車時時，class加'have' ↓
               .option_cart.have
                 a.cart_toggle(href="javascript:;")
@@ -151,7 +151,12 @@ html
                           | NTD $2,296
                       a.btn.confirm(href="javascript:;")
                         | CHECKOUT
-              //↓ 有產品在購物車時時，class加'have' ↓
+              //↑ 有產品在購物車時時，class加'have' ↑
+              //↓ 登入後顯示，按下即登出 ↓
+              .option_logout
+                a(href="javascript:;")
+                  i.icon_logout
+              //↑ 登入後顯示，按下即登出 ↑
         .header_nav_wrap
           include partials/navigator-head.pug
           

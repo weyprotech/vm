@@ -1,8 +1,11 @@
 @include susy-breakpoint(1024px) {
   #footer {
+    padding-top: 5em;
+    padding-bottom: 3.75em;
     .footer_information {
       width: 325px;
       float: left;
+      margin-bottom: 0;
     }
     .footer_nav {
       width: calc(100% - 325px - 2.5em);

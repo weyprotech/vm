@@ -1,4 +1,16 @@
 @include susy-breakpoint(1024px, 12) {
+  // Container
+  .container {
+    display: flex;
+    .container_main {
+      flex: 0 0 auto;
+      margin-bottom: 0;
+    }
+    .container_aside {
+      flex: 0 0 auto;
+    }
+  }
+
   // Index
   .ads_banner {
     .slide {
@@ -20,6 +32,56 @@
       .grid_sizer,
       .item {
         width: 23.5%;
+      }
+    }
+  }
+  
+  // OOTD
+  .ootd_detail_wrapper {
+    .container {
+      justify-content: space-between;
+      .container_main {
+        width: calc(100% - 250px - 2.5em);
+        max-width: 860px;
+      }
+      .container_aside {
+        width: 250px;
+      }
+    }
+  }
+  .aside_related_products {
+    .title {
+      margin-bottom: 1.5em;
+    }
+    .slider {
+      .slide {
+        padding: 0.75em 0;
+      }
+      .slick-prev,
+      .slick-next {
+        width: 30px;
+        height: 10px;
+        top: auto;
+        transform: translate(-50%, 0);
+        &:before {
+          width: 30px;
+          height: 10px;
+        }
+      }
+      .slick-prev {
+        top: -10px;
+        left: 50%;
+        &:before {
+          @include retina-sprite($arrow-slider-prev-v-group);
+        }
+      }
+      .slick-next {
+        bottom: -10px;
+        left: 50%;
+        right: auto;
+        &:before {
+          @include retina-sprite($arrow-slider-next-v-group);
+        }
       }
     }
   }

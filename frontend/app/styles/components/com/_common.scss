@@ -51,3 +51,40 @@
   box-sizing: border-box;
   .popup_inner {}
 }
+
+// Fixed Buttons
+#fixedButtons {
+  position: fixed;
+  z-index: 99;
+  right: 0.5em;
+  bottom: 1em;
+  width: 40px;
+  a {
+    display: block;
+    margin-bottom: 0.5em;
+    color: $gray-darken;
+    text-align: center;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  img {
+    display: block;
+    margin: 0 auto;
+  }
+  span {
+    display: block;
+    font-size: 0.875em;
+    line-height: 1.2;
+  }
+  @include breakpoint(768px) {
+    right: 1em;
+  }
+  @include breakpoint(1280px) {
+    width: 48px;
+    bottom: 1.5em;
+  }
+  @include breakpoint(1440px) {
+    right: calc((100vw - 1300px) / 2 - 48px - 1em);
+  }
+}

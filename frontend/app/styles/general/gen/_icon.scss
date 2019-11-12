@@ -1,9 +1,9 @@
-*[class^="icon_"] {
+*[class^="icon_"],
+*[class^="arrow_"] {
   display: inline-block;
 }
 
 .arrow_down {
-  display: inline-block;
   @include retina-sprite($arrow-down-group);
 }
 
@@ -21,6 +21,10 @@
 
 .icon_cart {
   @include retina-sprite($icon-cart-group);
+}
+
+.icon_logout {
+  @include retina-sprite($icon-logout-group);
 }
 
 .icon_delete {

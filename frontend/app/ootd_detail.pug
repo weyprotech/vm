@@ -5,7 +5,7 @@ block main
     .breadcrumbs_inner
       a(href="index.html") VM
       span /
-      a(href="ootd_list.html") OOTD
+      a(href="ootd.html") OOTD
       span /
       span.current The Best Street Style From Copen Fashion Week
   .ootd_detail_wrapper.page_block
@@ -18,13 +18,13 @@ block main
             .share_info
               .share_links
                 | Share:
-                a.facebook(href="javascript:;")
+                a.facebook(href="javascript:;", target="_blank")
                   i.icon_share_facebook
-                a.pinterest(href="javascript:;")
+                a.pinterest(href="javascript:;", target="_blank")
                   i.icon_share_pinterest
-                a.twitter(href="javascript:;")
+                a.twitter(href="javascript:;", target="_blank")
                   i.icon_share_twitter
-                a.weibo(href="javascript:;")
+                a.weibo(href="javascript:;", target="_blank")
                   i.icon_share_weibo
               .info
                 .date
@@ -44,7 +44,7 @@ block main
           .comments_block
             .comments_title
               i.icon_msg
-              h2 3 comments
+              h2 10 comments
               i.arrow_down
             .comments_content
               .comments_form
@@ -106,7 +106,7 @@ block main
               a.open_comments(href="javascript:;")
                 | See more comments
         .container_aside
-          .related_products
+          .aside_related_products
             h2.title Related Products
             .slider
               .slide
@@ -115,7 +115,7 @@ block main
                     img(src="images/img_product01.jpg")
                   .text
                     h3 The Chelsea Heritage Trench Coat
-                    .pice NT$ 98800
+                    .price NT$ 98800
               each i inArray(2)
                 .slide
                   a(href="product_detail.html")
@@ -123,20 +123,20 @@ block main
                       img(src="https://via.placeholder.com/240x320")
                     .text
                       h3 Cras quis nulla commodo, aliquam lectus.
-                      .pice NT$ 98800
+                      .price NT$ 98800
                 .slide
                   a(href="product_detail.html")
                     .thumb
                       img(src="https://via.placeholder.com/240x320")
                     .text
                       h3 Cras quis nulla commodo, aliquam lectus.
-                      .pice NT$ 98800
+                      .price NT$ 98800
   #fixedButtons
     a#backPrve(href="javascript:;")
-      i.arrow_back
+      img(src="images/arrow_back_prev.png")
       span back
     a#backTop(href="javascript:;")
-      i.arrow_top
+      img(src="images/arrow_back_top.png")
       span top
 
 block js

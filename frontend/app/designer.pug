@@ -1,0 +1,31 @@
+extends layouts/default.pug
+
+block main
+  .filter_search_bar
+    .bar_inner
+      .filter_buttons
+        a.active(href="javascript:;") All
+        a(href="javascript:;") A-Z
+      .search_form
+        input(type="search", placeholder="Designer name")
+        button(type="button") #[i.icon_search]
+
+block js
+  script.
+    $(function() {
+      // favorite 加入愛心的點擊事件
+      $(document).on('click', '.btn_favorite', function() {
+        // designerId 取得穿搭的 ID
+        var designerId = $(this).attr('data-designerId');
+
+        if ($(this).hasClass('active')) {
+          // 取消最愛寫這裡
+
+          $(this).removeClass('active');
+        } else {
+          // 加入最愛寫這裡
+
+          $(this).addClass('active');
+        }
+      });
+    });

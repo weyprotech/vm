@@ -224,6 +224,7 @@ button {
     flex: 1 1 auto;
     border: none;
     border-right: 1px solid #E1DCD0;
+    font-size: 0.875em;
   }
   button {
     flex: 0 0 auto;
@@ -261,8 +262,8 @@ button {
     display: flex;
     input[type="text"] {
       flex: 1 1 auto;
-      border: 1px solid $khaki-dark;
       height: 44px;
+      border: 1px solid $khaki-dark;
       box-sizing: border-box;
     }
     button {
@@ -289,6 +290,7 @@ button {
     }
     .controls {
       button {
+        width: 120px;
         margin-left: 0.875em;
       }
     }

@@ -1,5 +1,8 @@
 extends layouts/default.pug
 
+block value
+  - var currentUrl = 'index';
+
 block main
   .top_designers.page_block
     .block_inner
@@ -28,7 +31,7 @@ block main
                       //↓ 知名設計才會有鑽石icon ↓
                       i.icon_diamond_s
                       //↑ 知名設計才會有鑽石icon ↑
-                      | Stephanie Bradley
+                      span Stephanie Bradley
                   .country
                     img.flag(src="images/flag/flag_italy.png")
                     span Italy
@@ -55,7 +58,7 @@ block main
                     h3.designer_name
                       a(href="designer_profile.html")
                         //- i.icon_diamond_s
-                        | Shirley Gibson
+                        span Shirley Gibson
                     .country
                       img.flag(src="images/flag/flag_france.png")
                       span France

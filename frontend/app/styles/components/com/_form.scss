@@ -241,6 +241,20 @@ button {
     }
   }
 }
+.filter_search_bar .search_form {
+  input {
+    background-color: transparent;
+    &:focus {
+      background-color: $white;
+    }
+  }
+  button {
+    background-color: transparent;
+    &:hover {
+      background-color: $white;
+    }
+  }
+}
 
 // Comments Form
 .comments_form {

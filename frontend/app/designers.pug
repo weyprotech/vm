@@ -1,0 +1,82 @@
+extends layouts/default.pug
+
+block value
+  - var currentUrl = 'designers';
+
+block main
+  .filter_search_bar
+    .bar_inner
+      .filter_buttons
+        a.active(href="javascript:;") All
+        a(href="javascript:;") A-Z
+      .search_form
+        input(type="search", placeholder="Designer name")
+        button(type="button") #[i.icon_search]
+
+  .topping_block.designer_topping
+    .block_inner
+      .topping_header
+        .designer_topping_header
+          a.btn_favorite(href="javascript:;")
+            i.icon_favorite_heart
+          a.header_content(href="designer_profile.html")
+            .thumb
+              //↓ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓
+              .pic(style="background-image: url(images/img_designer.jpg);")
+                img.size(src="images/size_3x4.png")
+              //↑ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑
+            .intro
+              .profile_picture(href="designer_profile.html")
+                //↓ 1:1，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓
+                .pic(style="background-image: url(images/img_profile_pic.jpg)")
+                  img.size(src="images/size_1x1.png")
+                //↑ 1:1，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑
+              h3.designer_name
+                i.icon_diamond
+                img.flag(src="images/flag/flag_france.png")
+                span Shirley Gibson
+              .text Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diamLorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diams
+      .topping_main
+        .topping_list.designer_topping_list
+          each i inArray(3)
+            .item
+              a.btn_favorite(href="javascript:;")
+                i.icon_favorite_heart
+              a.item_content(href="designer_profile.html")
+                .thumb
+                  //↓ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓
+                  .pic(style="background-image: url(https://via.placeholder.com/210x280);")
+                    img.size(src="images/size_3x4.png")
+                  //↑ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑
+                .intro
+                  .intro_inner
+                    .profile_picture(href="designer_profile.html")
+                      //↓ 1:1，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓
+                      .pic(style="background-image: url(https://via.placeholder.com/100x100)")
+                        img.size(src="images/size_1x1.png")
+                      //↑ 1:1，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑
+                    h3.designer_name
+                      i.icon_diamond
+                      img.flag(src="images/flag/flag_italy.png")
+                      span Cindy Chou
+                    .text Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diamLorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diams
+
+block js
+  script.
+    $(function() {
+      // favorite 加入愛心的點擊事件
+      $(document).on('click', '.btn_favorite', function() {
+        // designerId 取得穿搭的 ID
+        var designerId = $(this).attr('data-designerId');
+
+        if ($(this).hasClass('active')) {
+          // 取消最愛寫這裡
+
+          $(this).removeClass('active');
+        } else {
+          // 加入最愛寫這裡
+
+          $(this).addClass('active');
+        }
+      });
+    });

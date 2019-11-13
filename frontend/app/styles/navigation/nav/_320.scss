@@ -76,7 +76,7 @@ nav {
   overflow-y: auto;
   width: 100vw;
   height: calc(100vh - 116px);
-  padding: 1.5em;
+  padding: 1.5em 0;
   box-sizing: border-box;
   background-color: $khaki-lightest;
   &.head_sticky {
@@ -87,20 +87,60 @@ nav {
     .divide_line {
       background-color: $gray-darkest;
     }
-    ul {
+    > ul {
       margin-bottom: 1.5em;
       a {
         display: block;
-        padding: 0.35rem 0.5rem;
-        border-radius: 5px;
+        padding: 0.35rem 1.5rem;
         box-sizing: border-box;
         color: $gray-darkest;
-        font-size: 1.25em;
         line-height: 1.2;
         text-align: center;
-        &:hover, &.current {
+      }
+      > li > a {
+        font-size: 1.25em;
+        &:hover, &.active, &.current {
           background-color: $white;
           color: $main;
+        }
+      }
+      .sub_menu {
+        display: none;
+        padding: 0.5em;
+        box-sizing: border-box;
+        background-color: $khaki-light;
+        > ul > li {
+          position: relative;
+          margin-bottom: 1.5em;
+          &:after {
+            content: '';
+            position: absolute;
+            bottom: -0.75em;
+            left: 0;
+            display: block;
+            width: 100%;
+            height: 1px;
+            background-color: $white;
+          }
+          &:last-child {
+            margin-bottom: 0;
+            &:after {
+              display: none;
+            }
+          }
+          > a {
+            font-size: 1.125em;
+            &:hover, &.current {
+              color: darken($main, 10%);
+            }
+          }
+          > ul > li > a {
+            border-radius: 5px;
+            &:hover, &.current {
+              background-color: $khaki-lightest;
+              color: $main;
+            }
+          }
         }
       }
     }

@@ -1,3 +1,6 @@
+block value
+  - var currentUrl = '';
+
 doctype html
 html
   head
@@ -118,8 +121,10 @@ html
                         a.btn_delete(href="javascript:;")
                           i.icon_delete
                         a.thumb(href="javascript:;")
-                          // 3:4
-                          img(src="images/img_product01.jpg")
+                          //↓ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓
+                          .pic(style="background-image: url(images/img_product01.jpg);")
+                            img.size(src="images/size_3x4.png")
+                          //↑ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑
                         .content
                           .price $ 1148
                           ul
@@ -133,8 +138,10 @@ html
                         a.btn_delete(href="javascript:;")
                           i.icon_delete
                         a.thumb(href="javascript:;")
-                          // 3:4
-                          img(src="https://via.placeholder.com/130x173")
+                          //↓ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓
+                          .pic(style="background-image: url(https://via.placeholder.com/130x173);")
+                            img.size(src="images/size_3x4.png")
+                          //↑ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑
                         .content
                           .price $ 1148
                           ul

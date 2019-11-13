@@ -47,8 +47,14 @@
   @include retina-sprite($icon-hand-group);
 }
 
+.icon_diamond {
+  @include retina-sprite($icon-diamond-group);
+}
 .icon_diamond_s {
   @include retina-sprite($icon-diamond-s-group);
+}
+.icon_diamond_b {
+  @include retina-sprite($icon-diamond-b-group);
 }
 
 .icon_favorite_heart {

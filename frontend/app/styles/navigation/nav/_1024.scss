@@ -1,31 +1,95 @@
 @include susy-breakpoint(1024px, 12) {
   // Header Nav
   .header_nav_wrap {
+    position: relative;
     display: block;
-    padding: 1em;
+    padding: 0 1em;
     background-color: rgba($white, 0.9);
     box-sizing: border-box;
     .header_nav {
       max-width: 1200px;
       margin: 0 auto;
-      ul {
+      > ul {
         font-size: 0;
         text-align: center;
-        li {
+        > li {
           display: inline-block;
-          margin: 0 2em;
+          margin: 0 1em;
           font-size: 1rem;
           vertical-align: middle;
           line-height: 1.2;
           @include breakpoint(1280px) {
-            margin: 0 2.5em;
+            margin: 0 1.5em;
           }
-          a {
+          > a {
+            position: relative;
             display: block;
-            padding: 0.3em 0;
+            padding: 1.25em 1em;
             color: $black;
-            &:hover, &.current {
-              color: $main;
+            &:after {
+              content: '';
+              position: absolute;
+              bottom: 0;
+              left: 0.5em;
+              display: block;
+              width: 0;
+              height: 6px;
+              background-color: $khaki;
+              transition: width 0.5s ease-in-out;
+            }
+            &:hover, &.active, &.current {
+              &:after {
+                width: calc(100% - 1em);
+              }
+            }
+          }
+          .sub_menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            display: none;
+            width: 100%;
+            padding: 1.5em 1em;
+            box-sizing: border-box;
+            background-color: $white;
+            box-shadow: 0 2px 4px rgba($black, 0.5);
+            > ul {
+              display: flex;
+              justify-content: center;
+              max-width: 1200px;
+              margin: 0 auto;
+              > li {
+                margin-right: 1.5em;
+                text-align: left;
+                @include breakpoint(1280px) {
+                  margin-right: 2.5em;
+                }
+                &:last-child {
+                  margin-right: 0;
+                }
+                > a {
+                  color: $black;
+                  &:hover,  &.current {
+                    color: $main;
+                  }
+                }
+                > ul {
+                  margin-top: 0.625em;
+                  > li {
+                    margin-bottom: 0.25em;
+                    &:last-child {
+                      margin-bottom: 0;
+                    }
+                    > a {
+                      color: $gray-darken;
+                      font-size: 0.875em;
+                      &:hover, &.current {
+                        color: $main;
+                      }
+                    }
+                  }
+                }
+              }
             }
           }
         }

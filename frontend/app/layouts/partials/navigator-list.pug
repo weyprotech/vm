@@ -1,22 +1,136 @@
 ul
   li
-    a(href="designer.html")
-      | Designer
+    a(class={current: currentUrl === 'designers'}, href="designers.html")
+      | Designers
   li
-    a(href="brand.html")
+    a(class={current: currentUrl === 'brand'}, href="brand.html")
       | Brand
   li
-    a(href="javascript:;")
+    a(class={current: currentUrl === 'women'}, href="javascript:;")
       | Women
+    .sub_menu
+      ul
+        li
+          a(href="javascript:;") CLOTHING
+          ul
+            li
+              a(href="javascript:;") Jeaens
+            li
+              a(href="javascript:;") Trench Coats
+            li
+              a(href="javascript:;") Jackets
+            li
+              a(href="javascript:;") Coats
+            li
+              a(href="javascript:;") Quilts &amp; Puffers
+            li
+              a(href="javascript:;") Suits
+            li
+              a(href="javascript:;") Blazers
+            li
+              a(href="javascript:;") Formal Shirts
+        li
+          a(href="javascript:;") BAGS
+          ul
+            li
+              a(href="javascript:;") Bags
+            li
+              a(href="javascript:;") Scarves
+            li
+              a(href="javascript:;") Wallets &amp; Card Cases
+            li
+              a(href="javascript:;") Travel Accessories
+            li
+              a(href="javascript:;") Ties &amp; Cunfflinks
+            li
+              a(href="javascript:;") Key Rings
+            li
+              a(href="javascript:;") Hats &amp; Gloves
+        li
+          a(href="javascript:;") ACCESSORIES
+          ul
+            li
+              a(href="javascript:;") Scarves
+            li
+              a(href="javascript:;") Wallets &amp; Card Cases
+            li
+              a(href="javascript:;") Key &amp; Bag Charms
+            li
+              a(href="javascript:;") Travel Accessories
+            li
+              a(href="javascript:;") Belts
+            li
+              a(href="javascript:;") Jewellery
+            li
+              a(href="javascript:;") Hats &amp; Gloves
+            li
+              a(href="javascript:;") Eyewear
   li
-    a(href="javascript:;")
+    a(class={current: currentUrl === 'men'}, href="javascript:;")
       | Men
+    .sub_menu
+      ul
+        li
+          a(href="javascript:;") CLOTHING
+          ul
+            li
+              a(href="javascript:;") Jeaens
+            li
+              a(href="javascript:;") Trench Coats
+            li
+              a(href="javascript:;") Jackets
+            li
+              a(href="javascript:;") Coats
+            li
+              a(href="javascript:;") Quilts &amp; Puffers
+            li
+              a(href="javascript:;") Suits
+            li
+              a(href="javascript:;") Blazers
+            li
+              a(href="javascript:;") Formal Shirts
+        li
+          a(href="javascript:;") BAGS
+          ul
+            li
+              a(href="javascript:;") Bags
+            li
+              a(href="javascript:;") Scarves
+            li
+              a(href="javascript:;") Wallets &amp; Card Cases
+            li
+              a(href="javascript:;") Travel Accessories
+            li
+              a(href="javascript:;") Ties &amp; Cunfflinks
+            li
+              a(href="javascript:;") Key Rings
+            li
+              a(href="javascript:;") Hats &amp; Gloves
+        li
+          a(href="javascript:;") ACCESSORIES
+          ul
+            li
+              a(href="javascript:;") Scarves
+            li
+              a(href="javascript:;") Wallets &amp; Card Cases
+            li
+              a(href="javascript:;") Key &amp; Bag Charms
+            li
+              a(href="javascript:;") Travel Accessories
+            li
+              a(href="javascript:;") Belts
+            li
+              a(href="javascript:;") Jewellery
+            li
+              a(href="javascript:;") Hats &amp; Gloves
+            li
+              a(href="javascript:;") Eyewear
   li
-    a(href="sale.hmtl")
+    a(class={current: currentUrl === 'sale'}, href="sale.hmtl")
       | Sale
   li
-    a(href="events.html")
+    a(class={current: currentUrl === 'event'}, href="events.html")
       | Event
   li
-    a(href="popular_designer.html")
+    a(class={current: currentUrl === 'popularDesigners'}, href="popular_designers.html")
       | Popular Designers

@@ -85,4 +85,46 @@
       }
     }
   }
+
+  // Topping Block
+  .topping_block {
+    .topping_list {
+      .item {
+        padding-bottom: 0;
+        border-bottom: none;
+      }
+      .item_content {
+        display: flex;
+        .thumb {
+          flex: 0 0 auto;
+          display: block;
+          margin-right: 1.5em;
+        }
+        .intro {
+          flex: 1 1 auto;
+          border-bottom: 1px solid $gray-light;
+        }
+        .intro_inner {
+          padding: 1.5em 0;
+        }
+      }
+    }
+  }
+
+  // Designer
+  .designer_topping {
+    .topping_header {
+      width: 45%;
+    }
+    .designer_topping_list {
+      .btn_favorite {
+        top: 2.5em;
+      }
+      .item_content {
+        .thumb {
+          width: 31.8979266347687%;
+        }
+      }
+    }
+  }
 }

@@ -28,4 +28,16 @@
       }
     }
   }
+
+  // List Slider
+  .list_slider_wrapper {
+    .list_slider {
+      .slick-prev {
+        left: -2.375rem;
+      }
+      .slick-next {
+        right: -2.375rem;
+      }
+    }
+  }
 }

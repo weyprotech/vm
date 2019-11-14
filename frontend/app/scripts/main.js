@@ -164,6 +164,36 @@ $(document).ready(function () {
       ]
     })
   }
+  if ($('.list_slider_wrapper').length > 0) {
+    $('.list_slider_wrapper .list_slider').slick({
+      speed: 500,
+      slidesToShow: 4,
+      slidesToScroll: 4,
+      responsive: [
+        {
+          breakpoint: 1280,
+          settings: {
+            slidesToShow: 3,
+            slidesToScroll: 3
+          }
+        },
+        {
+          breakpoint: 960,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 2
+          }
+        },
+        {
+          breakpoint: 560,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1
+          }
+        }
+      ]
+    });
+  }
 
   // Custom Scroll
   if ($('.what_next_main').length > 0) {

@@ -33,7 +33,44 @@ $susy: (
 .slick-slide:focus {
   outline: none;
 }
+.slick-prev,
+.slick-next {
+  z-index: 3;
+  width: 18px;
+  height: 52px;
+  &:before {
+    display: block;
+    width: 18px;
+    height: 52px;
+    font-size: 0;
+  }
+  &:hover {
+    opacity: 1;
+  }
+}
+.slick-prev {
+  &:before {
+    @include retina-sprite($arrow-slider-prev-group);
+  }
+}
+.slick-next {
+  &:before {
+    @include retina-sprite($arrow-slider-next-group);
+  }
+}
+
 // mCustomScrollbar
+.mCSB_inside > .mCSB_container {
+  margin-right: 1.25em;
+}
+.mCSB_scrollTools {
+  .mCSB_draggerRail {
+    margin-left: 10px;
+  }
+  .mCSB_dragger .mCSB_dragger_bar {
+    margin-left: 10px;
+  }
+}
 .mCS-dark-3 {
   &.mCSB_scrollTools {
     .mCSB_draggerRail {

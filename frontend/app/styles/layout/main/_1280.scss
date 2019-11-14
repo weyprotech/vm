@@ -1,17 +1,17 @@
 @include susy-breakpoint(1280px, 12) {
   // Block
   .page_block {
-    padding: 4em 1em;
+    padding: 3.5em 1em;
   }
 
   // Index
   .top_designers_slider {
     padding: 0;
     .slick-prev {
-      left: calc(-1.125rem);
+      left: -1.125rem;
     }
     .slick-next {
-      right: calc(-1.125rem);
+      right: -1.125rem;
     }
   }
   .ads_banner {
@@ -29,6 +29,26 @@
           font-size: 1.75em;
         }
       }
+    }
+  }
+
+  // List Slider
+  .list_slider_wrapper {
+    .list_slider {
+      padding: 0;
+      .slick-prev {
+        left: -1.125rem;
+      }
+      .slick-next {
+        right: -1.125rem;
+      }
+    }
+  }
+  
+  // Designer
+  .designer_topping {
+    .topping_header {
+      margin-right: 2.25em;
     }
   }
 }

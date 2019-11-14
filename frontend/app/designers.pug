@@ -12,37 +12,57 @@ block main
       .search_form
         input(type="search", placeholder="Designer name")
         button(type="button") #[i.icon_search]
-
   .topping_block.designer_topping
     .block_inner
       .topping_header
         .designer_topping_header
           a.btn_favorite(href="javascript:;")
             i.icon_favorite_heart
-          a.header_content(href="designer_profile.html")
+          a.header_content(href="designer_home.html")
             .thumb
               //↓ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓
               .pic(style="background-image: url(images/img_designer.jpg);")
                 img.size(src="images/size_3x4.png")
               //↑ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑
             .intro
-              .profile_picture(href="designer_profile.html")
+              .profile_picture(href="designer_home.html")
                 //↓ 1:1，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓
                 .pic(style="background-image: url(images/img_profile_pic.jpg)")
                   img.size(src="images/size_1x1.png")
                 //↑ 1:1，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑
               h3.designer_name
-                i.icon_diamond
+                i.icon_diamond_s
                 img.flag(src="images/flag/flag_france.png")
                 span Shirley Gibson
               .text Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diamLorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diams
       .topping_main
         .topping_list.designer_topping_list
-          each i inArray(3)
+          .item
+            a.btn_favorite(href="javascript:;")
+              i.icon_favorite_heart
+            a.item_content(href="designer_home.html")
+              .thumb
+                //↓ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓
+                .pic(style="background-image: url(https://via.placeholder.com/210x280);")
+                  img.size(src="images/size_3x4.png")
+                //↑ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑
+              .intro
+                .intro_inner
+                  .profile_picture(href="designer_home.html")
+                    //↓ 1:1，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓
+                    .pic(style="background-image: url(https://via.placeholder.com/100x100)")
+                      img.size(src="images/size_1x1.png")
+                    //↑ 1:1，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑
+                  h3.designer_name
+                    i.icon_diamond_s
+                    img.flag(src="images/flag/flag_france.png")
+                    span Cindy Chou
+                  .text Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diamLorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diams
+          each i inArray(2)
             .item
               a.btn_favorite(href="javascript:;")
                 i.icon_favorite_heart
-              a.item_content(href="designer_profile.html")
+              a.item_content(href="designer_home.html")
                 .thumb
                   //↓ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓
                   .pic(style="background-image: url(https://via.placeholder.com/210x280);")
@@ -50,16 +70,64 @@ block main
                   //↑ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑
                 .intro
                   .intro_inner
-                    .profile_picture(href="designer_profile.html")
+                    .profile_picture(href="designer_home.html")
                       //↓ 1:1，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓
                       .pic(style="background-image: url(https://via.placeholder.com/100x100)")
                         img.size(src="images/size_1x1.png")
                       //↑ 1:1，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑
                     h3.designer_name
-                      i.icon_diamond
                       img.flag(src="images/flag/flag_italy.png")
                       span Cindy Chou
                     .text Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diamLorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diams
+  .list_slider_wrapper.page_block.designer_story
+    .block_inner
+      h2.block_title Designer Story
+      .list_slider
+        .slide
+          h3
+            a(href="designer_home.html")
+              i.icon_diamond
+              img.flag(src="images/flag/flag_france.png")
+              span Chloe Liao
+          a.thumb.is_video.popup(href="popup_video.html")
+            .pic(style="background: url(images/img_video_pic.jpg);")
+              img.size(src="images/size_16x9.png")
+          p Channel Love Island’s Ovie In These Cute AF Tees
+        each i inArray(5)
+          .slide
+            h3
+              a(href="designer_home.html")
+                img.flag(src="images/flag/flag_italy.png")
+                span Chloe Liao
+            a.thumb.is_video.popup(href="popup_video.html")
+              .pic(style="background: url(images/img_video_pic.jpg);")
+                img.size(src="images/size_16x9.png")
+            p Channel Love Island’s Ovie In These Cute AF Tees
+  .list_items_wrapper.page_block.explore_world
+    .block_inner
+      h2.block_title Explore world
+      .list_items
+        .item
+          a(href="javascript:;")
+            h3
+              i.icon_diamond
+              img.flag(src="images/flag/flag_france.png")
+              span Katherine Stanley
+            .thumb
+              .pic(style="background-image: url(images/img_designer.jpg);")
+                img.size(src="images/size_3x4.png")
+            p Channel Love Island’s Ovie In These Cute AF Tees
+        each i inArray(19)
+          .item
+            a(href="javascript:;")
+              h3
+                i.icon_diamond
+                img.flag(src="images/flag/flag_italy.png")
+                span Katherine Stanley
+              .thumb
+                .pic(style="background-image: url(https://via.placeholder.com/210x280);")
+                  img.size(src="images/size_3x4.png")
+              p Voici la coiffure que l’on verra partout à la rentrée
 
 block js
   script.

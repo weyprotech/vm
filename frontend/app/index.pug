@@ -11,27 +11,26 @@ block main
       .block_main
         .top_designers_slider
           .slide
-            .slide_inner
-              a.thumb(href="designer_home.html")
+            a.slide_inner(href="designer_home.html")
+              .thumb
                 //↓ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓
-                .pic(style="background-image: url(images/img_designer_work.jpg);")
+                .pic(style="background-image: url(images/img_designer.jpg);")
                   img.size(src="images/size_3x4.png")
                 //↑ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑
                 .brand_name
                   | Stephen Herrera
               .intro
-                a.profile_picture(href="designer_profile.html")
+                .profile_picture
                   //↓ 1:1，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓
                   .pic(style="background-image: url(images/img_profile_pic.jpg")
                     img.size(src="images/size_1x1.png")
                   //↑ 1:1，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑
                 .text
                   h3.designer_name
-                    a(href="designer_profile.html")
-                      //↓ 知名設計才會有鑽石icon ↓
-                      i.icon_diamond_s
-                      //↑ 知名設計才會有鑽石icon ↑
-                      span Stephanie Bradley
+                    //↓ 知名設計才會有鑽石icon ↓
+                    i.icon_diamond_s
+                    //↑ 知名設計才會有鑽石icon ↑
+                    span Stephanie Bradley
                   .country
                     img.flag(src="images/flag/flag_italy.png")
                     span Italy
@@ -40,8 +39,8 @@ block main
                   //-     | #vintage
           each i inArray(6)
             .slide
-              .slide_inner
-                a.thumb(href="designer_home.html")
+              a.slide_inner(href="designer_home.html")
+                .thumb
                   //↓ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓
                   .pic(style="background-image: url(https://via.placeholder.com/280x373);")
                     img.size(src="images/size_3x4.png")
@@ -49,16 +48,15 @@ block main
                   .brand_name
                     | MU Jason Williams
                 .intro
-                  a.profile_picture(href="designer_profile.html")
+                  .profile_picture
                     //↓ 1:1，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓
                     .pic(style="background-image: url(https://via.placeholder.com/100x100)")
                       img.size(src="images/size_1x1.png")
                     //↑ 1:1，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑
                   .text
                     h3.designer_name
-                      a(href="designer_profile.html")
-                        //- i.icon_diamond_s
-                        span Shirley Gibson
+                      //- i.icon_diamond_s
+                      span Shirley Gibson
                     .country
                       img.flag(src="images/flag/flag_france.png")
                       span France

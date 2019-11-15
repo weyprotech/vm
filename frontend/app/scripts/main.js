@@ -202,11 +202,8 @@ $(document).ready(function () {
       axis: 'x'
     });
   }
-  if ($('.topping_block').length > 0) {
-    $('.topping_block .topping_list').mCustomScrollbar({
-      theme: 'dark-3',
-      axis: 'y'
-    });
+  if ($('.topping_block .topping_list').length > 0) {
+    topping_list_scroll();
   }
 
   // Masonry
@@ -330,6 +327,7 @@ $(window).on('resize', function () {
 
     // reSetting
     $('#header .header_search').css('display', '');
+    topping_list_scroll();
 
     // Sticky
     $('#header').unstick();
@@ -415,5 +413,16 @@ function scaleCaptcha() {
       'width': '',
       'height': ''
     });
+  }
+}
+
+function topping_list_scroll() {
+  if (windowWidth >= 768) {
+    $('.topping_block .topping_list').mCustomScrollbar({
+      theme: 'dark-3',
+      axis: 'y'
+    });
+  } else if(windowWidth < 768) {
+    $('.topping_block .topping_list').mCustomScrollbar('destroy');
   }
 }

@@ -22,7 +22,7 @@ block main
               .intro
                 .profile_picture
                   //↓ 1:1，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓
-                  .pic(style="background-image: url(images/img_profile_pic.jpg")
+                  .pic(style="background-image: url(images/img_profile.jpg")
                     img.size(src="images/size_1x1.png")
                   //↑ 1:1，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑
                 .text
@@ -30,7 +30,7 @@ block main
                     //↓ 知名設計才會有鑽石icon ↓
                     i.icon_diamond_s
                     //↑ 知名設計才會有鑽石icon ↑
-                    span Stephanie Bradley
+                    span Douglas Robinson
                   .country
                     img.flag(src="images/flag/flag_italy.png")
                     span Italy
@@ -67,6 +67,7 @@ block main
                     //-     | #comfy
         a.btn.common.more(href="designers_list.html")
           | All designers
+
   .what_next.page_block
     h2.block_title
       | What's Next
@@ -99,6 +100,7 @@ block main
             .video.video_facebook
               iframe(src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Ffacebook%2Fvideos%2F10153231379946729%2F&width=500&show_text=false&height=280&appId", width="500", height="280", style="border:none;overflow:hidden", scrolling="no", frameborder="0", allowTransparency="true", allow="encrypted-media", allowFullScreen="true")
             //↑ 如果是 facebook 的影片，class 要加 'video_facebook' ↑
+
   .ads_banner
     .slide
       .pic
@@ -122,6 +124,7 @@ block main
           p 2019 Summer Collection
           a.btn(href="javascript:;")
             | SHOP NOW
+
   .ootd_list_wrapper.page_block
     .block_inner.wide
       h2.block_title

@@ -149,6 +149,24 @@
   }
 }
 
+// Designer Name
+.designer_name {
+  color: $main;
+  font-family: 'Crimson Text',serif;
+  font-size: 0;
+  font-weight: 400;
+  line-height: 1.2;
+  i[class^="icon_diamond"],
+  .flag, span {
+    display: inline-block;
+    vertical-align: middle;
+  }
+  i[class^="icon_diamond"],
+  .flag {
+    margin-right: 0.5rem;
+  }
+}
+
 // Share links
 .share_links {
   color: #626262;
@@ -267,6 +285,9 @@
 .page_block {
   padding: 1.5em 1em;
   box-sizing: border-box;
+  &.bg_gray {
+    background-color: $gray-lightest;
+  }
   .block_inner {
     max-width: 1200px;
     margin: 0 auto;
@@ -336,21 +357,11 @@
     .text {
       flex: 1 1 auto;
     }
-    h3 {
+    .designer_name {
       margin: 0 0 0.5rem;
       color: $black;
-      font-family: 'Crimson Text',serif;
-      font-size: 1.25em;
-      font-weight: 400;
-      line-height: 1.2;
-      @extend .transition;
-      i.icon_diamond_s {
-        margin-right: 0.3em;
-        vertical-align: middle;
-      }
       span {
-        display: inline-block;
-        vertical-align: middle;
+        font-size: 1.25rem;
       }
     }
     .country {
@@ -888,11 +899,8 @@
     .slide {
       margin: 0 0.75em;
     }
-    h3 {
+    .designer_name {
       margin: 0 0 0.3rem;
-      font-family: 'Crimson Text',serif;
-      font-size: 1.125em;
-      font-weight: 500;
       a {
         display: block;
         color: $main;
@@ -900,14 +908,8 @@
           color: $gray-darken;
         }
       }
-      i.icon_diamond,
-      .flag, span {
-        display: inline-block;
-        vertical-align: middle;
-      }
-      i.icon_diamond,
-      .flag {
-        margin-right: 0.5em;
+      span {
+        font-size: 1.125rem;
       }
     }
     .thumb {
@@ -928,7 +930,70 @@
 
 // List Items
 .list_items_wrapper {
-
+  .list_items {
+    .item {
+      padding-bottom: 1em;
+      margin-bottom: 1em;
+      border-bottom: 1px solid $khaki-lightest;
+      &:last-child {
+        padding-bottom: 0;
+        margin-bottom: 0;
+        border-bottom: none;
+      }
+    }
+    a {
+      display: block;
+      > * {
+        margin-bottom: 0.5rem;
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+    .brand_name {
+      color: $main;
+      font-family: 'Crimson Text',serif;
+      font-size: 1.125em;
+      font-weight: 400;
+      line-height: 1.2;
+    }
+    .designer_name {
+      span {
+        font-size: 1.125rem;
+      }
+    }
+    p {
+      overflow: hidden;
+      max-height: 1.25em * 2;
+      color: $black;
+      line-height: 1.25;
+      @extend .transition;
+    }
+    a:hover {
+      p {
+        color: $main;
+      }
+    }
+    @include breakpoint(480px) {
+      display: flex;
+      flex-wrap: wrap;
+      margin: 0 -0.5em;
+      .item {
+        width: 50%;
+        padding: 0 0.5em 1em;
+        box-sizing: border-box;
+        &:nth-last-child(-n+2):nth-child(2n+1),
+        &:nth-last-child(-n+2):nth-child(2n+1) ~ .item {
+          padding-bottom: 0;
+          margin-bottom: 0;
+          border-bottom: none;
+        }
+      }
+    }
+  }
+  .list_items + .btn.more {
+    margin-top: 2em;
+  }
 }
 
 // Designer
@@ -963,20 +1028,10 @@
         box-sizing: border-box;
       }
       .designer_name {
-        width: calc(100% - 50px - 1em);
+        width: calc(100% - 50px - 1rem);
         margin: 0;
-        color: $main;
-        font-family: 'Crimson Text',serif;
-        font-size: 1.125em;
-        font-weight: 500;
-        @extend .transition;
-        > * {
-          display: inline-block;
-          vertical-align: middle;
-        }
-        i.icon_diamond_s,
-        .flag {
-          margin-right: 0.5rem;
+        span {
+          font-size: 1.125rem;
         }
       }
       &:hover .designer_name {
@@ -1024,7 +1079,9 @@
         .designer_name {
           width: 100%;
           color: $white;
-          font-size: 1.5em;
+          span {
+            font-size: 1.5rem;
+          }
         }
         &:hover .designer_name {
           color: $khaki;
@@ -1059,22 +1116,12 @@
         box-sizing: border-box;
       }
       .designer_name {
-        width: calc(100% - 50px - 1em);
+        width: calc(100% - 50px - 1rem);
         margin: 0;
         padding-right: 1.875rem;
         box-sizing: border-box;
-        color: $main;
-        font-family: 'Crimson Text',serif;
-        font-size: 1.125em;
-        font-weight: 500;
-        @extend .transition;
-        > * {
-          display: inline-block;
-          vertical-align: middle;
-        }
-        i.icon_diamond_s,
-        .flag {
-          margin-right: 0.5rem;
+        span {
+          font-size: 1.125rem;
         }
       }
       &:hover .designer_name {
@@ -1097,8 +1144,67 @@
           height: 62px;
         }
         .designer_name {
-          width: calc(100% - 62px - 1em);
-          font-size: 1.5em;
+          width: calc(100% - 62px - 1rem);
+          span {
+            font-size: 1.5rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Brand
+.brand_topping {
+  padding: 0 1em;
+  .brand_topping_header {
+    .header_content {
+      .thumb {
+        margin: 0 -1em 0.8em;
+      }
+      .brand_name {
+        color: $main;
+        font-family: 'crimson Text',serif;
+        font-size: 1.125em;
+        font-weight: 500;
+        line-height: 1.2;
+      }
+      h3 {
+        margin: 0.5em 0;
+        color: $black;
+        font-weight: 400;
+        line-height: 1.2;
+      }
+      .designer_name {
+        span {
+          font-size: 1.125rem;
+        }
+      }
+    }
+  }
+  .brand_topping_list {
+    height: auto;
+    .item_content {
+      color: $gray;
+      .brand_name {
+        color: $main;
+        font-family: 'crimson Text',serif;
+        font-size: 1.125em;
+        font-weight: 500;
+        line-height: 1.2;
+      }
+      h3 {
+        margin: 0.5em 0;
+        color: $black;
+        font-weight: 400;
+        line-height: 1.2;
+      }
+      .text {
+        margin: 0.8em 0;
+      }
+      .designer_name {
+        span {
+          font-size: 1.125rem;
         }
       }
     }

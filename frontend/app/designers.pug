@@ -12,6 +12,7 @@ block main
       .search_form
         input(type="search", placeholder="Designer name")
         button(type="button") #[i.icon_search]
+
   .topping_block.designer_topping
     .block_inner
       .topping_header
@@ -27,13 +28,15 @@ block main
             .intro
               .profile_picture(href="designer_home.html")
                 //↓ 1:1，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓
-                .pic(style="background-image: url(images/img_profile_pic.jpg)")
+                .pic(style="background-image: url(images/img_profile.jpg)")
                   img.size(src="images/size_1x1.png")
                 //↑ 1:1，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑
               h3.designer_name
+                //↓ 知名設計才會有鑽石icon ↓
                 i.icon_diamond_s
-                img.flag(src="images/flag/flag_france.png")
-                span Shirley Gibson
+                //↑ 知名設計才會有鑽石icon ↑
+                img.flag(src="images/flag/flag_italy.png")
+                span Douglas Robinson
               .text Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diamLorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diams
       .topping_main
         .topping_list.designer_topping_list
@@ -43,7 +46,7 @@ block main
             a.item_content(href="designer_home.html")
               .thumb
                 //↓ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓
-                .pic(style="background-image: url(https://via.placeholder.com/210x280);")
+                .pic(style="background-image: url(https://via.placeholder.com/220x293);")
                   img.size(src="images/size_3x4.png")
                 //↑ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑
               .intro
@@ -54,8 +57,10 @@ block main
                       img.size(src="images/size_1x1.png")
                     //↑ 1:1，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑
                   h3.designer_name
+                    //↓ 知名設計才會有鑽石icon ↓
                     i.icon_diamond_s
-                    img.flag(src="images/flag/flag_france.png")
+                    //↑ 知名設計才會有鑽石icon ↑
+                    img.flag(src="images/flag/flag_italy.png")
                     span Cindy Chou
                   .text Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diamLorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diams
           each i inArray(2)
@@ -65,7 +70,7 @@ block main
               a.item_content(href="designer_home.html")
                 .thumb
                   //↓ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓
-                  .pic(style="background-image: url(https://via.placeholder.com/210x280);")
+                  .pic(style="background-image: url(https://via.placeholder.com/220x293);")
                     img.size(src="images/size_3x4.png")
                   //↑ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑
                 .intro
@@ -76,41 +81,47 @@ block main
                         img.size(src="images/size_1x1.png")
                       //↑ 1:1，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑
                     h3.designer_name
-                      img.flag(src="images/flag/flag_italy.png")
+                      img.flag(src="images/flag/flag_france.png")
                       span Cindy Chou
                     .text Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diamLorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diams
+
   .list_slider_wrapper.page_block.designer_story
     .block_inner
       h2.block_title Designer Story
       .list_slider
         .slide
-          h3
+          h3.designer_name
             a(href="designer_home.html")
+              //↓ 知名設計才會有鑽石icon ↓
               i.icon_diamond
+              //↑ 知名設計才會有鑽石icon ↑
               img.flag(src="images/flag/flag_france.png")
               span Chloe Liao
           a.thumb.is_video.popup(href="popup_video.html")
-            .pic(style="background: url(images/img_video_pic.jpg);")
+            .pic(style="background: url(images/img_video.jpg);")
               img.size(src="images/size_16x9.png")
           p Channel Love Island’s Ovie In These Cute AF Tees
         each i inArray(5)
           .slide
-            h3
+            h3.designer_name
               a(href="designer_home.html")
                 img.flag(src="images/flag/flag_italy.png")
                 span Chloe Liao
             a.thumb.is_video.popup(href="popup_video.html")
-              .pic(style="background: url(images/img_video_pic.jpg);")
+              .pic(style="background: url(images/img_video.jpg);")
                 img.size(src="images/size_16x9.png")
             p Channel Love Island’s Ovie In These Cute AF Tees
-  .list_items_wrapper.page_block.explore_world
+
+  .list_items_wrapper.page_block
     .block_inner
       h2.block_title Explore world
       .list_items
         .item
           a(href="javascript:;")
-            h3
-              i.icon_diamond
+            h3.designer_name
+              //↓ 知名設計才會有鑽石icon ↓
+              i.icon_diamond_s
+              //↑ 知名設計才會有鑽石icon ↑
               img.flag(src="images/flag/flag_france.png")
               span Katherine Stanley
             .thumb
@@ -120,14 +131,15 @@ block main
         each i inArray(19)
           .item
             a(href="javascript:;")
-              h3
-                i.icon_diamond
+              h3.designer_name
                 img.flag(src="images/flag/flag_italy.png")
-                span Katherine Stanley
+                span Virginia Cox
               .thumb
-                .pic(style="background-image: url(https://via.placeholder.com/210x280);")
+                .pic(style="background-image: url(https://via.placeholder.com/220x293);")
                   img.size(src="images/size_3x4.png")
               p Voici la coiffure que l’on verra partout à la rentrée
+      a.btn.common.more(href="javascript:;")
+        | More Designers
 
 block js
   script.

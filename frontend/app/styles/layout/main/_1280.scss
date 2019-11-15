@@ -44,6 +44,27 @@
       }
     }
   }
+
+  // List Items
+  .list_items_wrapper {
+    .list_items {
+      .item {
+        width: 20%;
+        &:nth-last-child(-n+4):nth-child(4n+1),
+        &:nth-last-child(-n+4):nth-child(4n+1)~.item {
+          padding-bottom: 2em;
+          margin-bottom: 2em;
+          border-bottom: 1px solid $khaki-lightest;
+        }
+        &:nth-last-child(-n+5):nth-child(5n+1),
+        &:nth-last-child(-n+5):nth-child(5n+1)~.item {
+          padding-bottom: 0;
+          margin-bottom: 0;
+          border-bottom: none;
+        }
+      }
+    }
+  }
   
   // Designer
   .designer_topping {

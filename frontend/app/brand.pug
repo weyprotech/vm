@@ -14,7 +14,7 @@ block main
         button(type="button") #[i.icon_search]
 
   .topping_block.brand_topping
-    .block_inner
+    .block_inner.wide
       .topping_header
         .brand_topping_header
           a.header_content(href="brand_story.html")
@@ -34,6 +34,7 @@ block main
                 span Stella Lin
       .topping_main
         .topping_list.brand_topping_list
+          //↓ 三篇 ↓
           .item
             a.item_content(href="brand_story.html")
               .thumb
@@ -44,7 +45,7 @@ block main
               .intro
                 .brand_name Brand Name - Marchesa Notte
                 h3 Channel Love Island’s Ovie In These Cute AF Tees
-                .text Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diamLorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diams
+                p Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diamLorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diams
                 h4.designer_name
                   //↓ 知名設計才會有鑽石icon ↓
                   i.icon_diamond_s
@@ -62,10 +63,11 @@ block main
                 .intro
                   .brand_name Maryam Nassir Zadeh
                   h3 Channel Love Island’s Ovie In These Cute AF Tees
-                  .text Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diamLorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diams
+                  p Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diamLorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diams
                   h4.designer_name
                     img.flag(src="images/flag/flag_france.png")
                     span Cindy Liao
+          //↑ 三篇 ↑
 
   .list_items_wrapper.page_block.bg_gray
     .block_inner.wide
@@ -157,23 +159,3 @@ block main
                 span Mannix Lo
       a.btn.common.more(href="javascript:;")
         | View More
-
-block js
-  script.
-    $(function() {
-      // favorite 加入愛心的點擊事件
-      $(document).on('click', '.btn_favorite', function() {
-        // designerId 取得穿搭的 ID
-        var designerId = $(this).attr('data-designerId');
-
-        if ($(this).hasClass('active')) {
-          // 取消最愛寫這裡
-
-          $(this).removeClass('active');
-        } else {
-          // 加入最愛寫這裡
-
-          $(this).addClass('active');
-        }
-      });
-    });

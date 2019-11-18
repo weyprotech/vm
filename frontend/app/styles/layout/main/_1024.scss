@@ -148,4 +148,25 @@
       }
     }
   }
+
+  // Brand
+  .brand_topping {
+    .brand_topping_header {
+      .header_content {
+        h3 {
+          font-size: 2.25em;
+        }
+      }
+    }
+    .brand_topping_list {
+      .item_content {
+        .thumb {
+          width: 38.3333333333333%;
+        }
+        .intro {
+          padding-bottom: 0.8em;
+        }
+      }
+    }
+  }
 }

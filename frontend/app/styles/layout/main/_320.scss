@@ -864,6 +864,9 @@
   .block_inner {
     max-width: 1200px;
     margin: 0 auto;
+    &.wide {
+      max-width: 1300px;
+    }
   }
   .topping_header {
     padding-bottom: 1em;
@@ -912,11 +915,19 @@
         font-size: 1.125rem;
       }
     }
+    .date {
+      color: $main;
+      font-family: 'Crimson Text',serif;
+      font-size: 1.125em;
+      font-weight: 500;
+    }
     .thumb {
       margin-bottom: 0.8em;
     }
-    p {
+    .slide_title {
       margin: 0;
+      font-size: 1em;
+      font-weight: 400;
       line-height: 1.3125;
     }
     .slick-prev {
@@ -957,10 +968,23 @@
       font-weight: 400;
       line-height: 1.2;
     }
+    .date {
+      color: $main;
+      font-family: 'Crimson Text',serif;
+      font-size: 1.125em;
+      font-weight: 500;
+    }
     .designer_name {
       span {
         font-size: 1.125rem;
       }
+    }
+    .event_title {
+      margin: 0;
+      color: $black;
+      font-size: 1em;
+      font-weight: 400;
+      line-height: 1.2;
     }
     p {
       overflow: hidden;
@@ -1037,7 +1061,7 @@
       &:hover .designer_name {
         color: $gray-darken;
       }
-      .text {
+      p {
         overflow: hidden;
         height: 1.2em * 3;
         margin-top: 0.5em;
@@ -1078,13 +1102,10 @@
         }
         .designer_name {
           width: 100%;
-          color: $white;
+          color: $white !important;
           span {
             font-size: 1.5rem;
           }
-        }
-        &:hover .designer_name {
-          color: $khaki;
         }
       }
     }
@@ -1124,10 +1145,7 @@
           font-size: 1.125rem;
         }
       }
-      &:hover .designer_name {
-        color: $gray-darken;
-      }
-      .text {
+      p {
         overflow: hidden;
         height: 1.2em * 3;
         margin-top: 0.5em;
@@ -1156,9 +1174,10 @@
 
 // Brand
 .brand_topping {
-  padding: 0 1em;
+  padding: 0 1em 1.25em;
   .brand_topping_header {
     .header_content {
+      display: block;
       .thumb {
         margin: 0 -1em 0.8em;
       }
@@ -1181,11 +1200,50 @@
         }
       }
     }
+    @include breakpoint(560px) {
+      .header_content {
+        position: relative;
+        z-index: 0;
+        margin: 0 -1em;
+        .thumb {
+          margin: 0;
+        }
+        .intro {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 100%;
+          padding: 1.5em;
+          box-sizing: border-box;
+          background: rgba(0, 0, 0, 0);
+          background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%);
+          filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#000000', endColorstr='#000000', GradientType=0);
+          text-align: center;
+        }
+        .brand_name, h3, .designer_name {
+          color: $white;
+        }
+        .brand_name {
+          text-shadow: 0 0 11px rgba($black, 0.5);
+          font-size: 1.5em;
+        }
+        h3 {
+          text-shadow: 0 0 11px rgba($black,0.5);
+          font-size: 1.625em;
+        }
+        .desizing_name{
+          font-size: 1.125em;
+        }
+      }
+    }
   }
   .brand_topping_list {
     height: auto;
     .item_content {
       color: $gray;
+      &:hover {
+        color: $gray-darken;
+      }
       .brand_name {
         color: $main;
         font-family: 'crimson Text',serif;
@@ -1199,8 +1257,11 @@
         font-weight: 400;
         line-height: 1.2;
       }
-      .text {
+      p {
+        overflow: hidden;
+        height: 1.2em * 3;
         margin: 0.8em 0;
+        line-height: 1.2;
       }
       .designer_name {
         span {
@@ -1209,4 +1270,9 @@
       }
     }
   }
+}
+
+// Event
+.event_topping {
+
 }

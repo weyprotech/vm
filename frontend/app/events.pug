@@ -1,0 +1,92 @@
+extends layouts/default.pug
+
+block value
+  - var currentUrl = 'events';
+
+block main
+  .topping_block.event_topping
+    .block_inner
+      .topping_header
+        .brand_topping_header
+          a.header_content(href="event_detail.html")
+            .thumb
+              //↓ 1:1，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓
+              .pic(style="background-image: url(images/img_event.jpg);")
+                img.size(src="images/size_1x1.png")
+              //↑ 1:1，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑
+            .intro
+              .brand_name Brand Name
+              h3 Georgie Wood-Weber On Packing Like A Pro
+              h4.designer_name
+                //↓ 知名設計才會有鑽石icon ↓
+                i.icon_diamond_s
+                //↑ 知名設計才會有鑽石icon ↑
+                img.flag(src="images/flag/flag_italy.png")
+                span Stella Lin
+      .topping_main
+        .topping_list.brand_topping_list
+          //↓ 三篇 ↓
+          .item
+            a.item_content(href="brand_story.html")
+              .thumb
+                //↓ 1:1，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓
+                .pic(style="background-image: url(https://source.unsplash.com/6cHumpSxTvs/230x230);")
+                  img.size(src="images/size_1x1.png")
+                //↑ 1:1，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑
+              .intro
+                .date 2019.10.12
+                h3 Channel Love Island’s Ovie In These Cute AF Tees
+                p Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diamLorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diams
+          each i inArray(2)
+            .item
+              a.item_content(href="brand_story.html")
+                .thumb
+                  //↓ 1:1，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓
+                  .pic(style="background-image: url(https://via.placeholder.com/230x230);")
+                    img.size(src="images/size_1x1.png")
+                  //↑ 1:1，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑
+                .intro
+                  .date 2019.07.28
+                  h3 Channel Love Island’s Ovie In These Cute AF Tees
+                  p Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diamLorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diams
+          //↑ 三篇 ↑
+
+  .list_slider_wrapper.page_block.designer_story
+    .block_inner
+      h2.block_title New Collections
+      .list_slider
+        .slide
+          .date 2019.10.12
+          a.thumb.is_video.popup(href="popup_video.html")
+            .pic(style="background: url(images/img_video.jpg);")
+              img.size(src="images/size_16x9.png")
+          h3.slide_title Channel Love Island’s Ovie In These Cute AF Tees
+        each i inArray(5)
+          .slide
+            .date 2019.09.28
+            a.thumb.is_video.popup(href="popup_video.html")
+              .pic(style="background: url(images/img_video.jpg);")
+                img.size(src="images/size_16x9.png")
+            h3.slide_title Channel Love Island’s Ovie In These Cute AF Tees
+
+  .list_items_wrapper.page_block
+    .block_inner.wide
+      h2.block_title Explore Events
+      .list_items
+        .item
+          a(href="brand_story.html")
+            .date 2019.09.09
+            .thumb
+              .pic(style="background-image: url(images/img_event.jpg);")
+                img.size(src="images/size_1x1.png")
+            h3.event_title Channel Love Island’s Ovie In These Cute AF Tees
+        each i inArray(9)
+          .item
+            a(href="brand_story.html")
+              .date 2019.08.29
+              .thumb
+                .pic(style="background-image: url(https://via.placeholder.com/230x230);")
+                  img.size(src="images/size_1x1.png")
+              h3.event_title Voici la coiffure que l’on verra partout à la rentrée
+      a.btn.common.more(href="javascript:;")
+        | View More

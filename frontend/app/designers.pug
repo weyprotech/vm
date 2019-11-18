@@ -17,7 +17,7 @@ block main
     .block_inner
       .topping_header
         .designer_topping_header
-          a.btn_favorite(href="javascript:;")
+          a.btn_favorite(data-designerId="01", href="javascript:;")
             i.icon_favorite_heart
           a.header_content(href="designer_home.html")
             .thumb
@@ -37,11 +37,12 @@ block main
                 //↑ 知名設計才會有鑽石icon ↑
                 img.flag(src="images/flag/flag_italy.png")
                 span Douglas Robinson
-              .text Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diamLorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diams
+              p Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diamLorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diams
       .topping_main
         .topping_list.designer_topping_list
+          //↓ 三篇 ↓
           .item
-            a.btn_favorite(href="javascript:;")
+            a.btn_favorite(data-designerId="02", href="javascript:;")
               i.icon_favorite_heart
             a.item_content(href="designer_home.html")
               .thumb
@@ -62,10 +63,10 @@ block main
                     //↑ 知名設計才會有鑽石icon ↑
                     img.flag(src="images/flag/flag_italy.png")
                     span Cindy Chou
-                  .text Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diamLorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diams
+                  p Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diamLorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diams
           each i inArray(2)
             .item
-              a.btn_favorite(href="javascript:;")
+              a.btn_favorite(data-designerId="03", href="javascript:;")
                 i.icon_favorite_heart
               a.item_content(href="designer_home.html")
                 .thumb
@@ -83,14 +84,15 @@ block main
                     h3.designer_name
                       img.flag(src="images/flag/flag_france.png")
                       span Cindy Chou
-                    .text Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diamLorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diams
+                    p Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diamLorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diams
+          //↑ 三篇 ↑
 
   .list_slider_wrapper.page_block.designer_story
     .block_inner
       h2.block_title Designer Story
       .list_slider
         .slide
-          h3.designer_name
+          .designer_name
             a(href="designer_home.html")
               //↓ 知名設計才會有鑽石icon ↓
               i.icon_diamond
@@ -100,17 +102,17 @@ block main
           a.thumb.is_video.popup(href="popup_video.html")
             .pic(style="background: url(images/img_video.jpg);")
               img.size(src="images/size_16x9.png")
-          p Channel Love Island’s Ovie In These Cute AF Tees
+          h3.slide_title Channel Love Island’s Ovie In These Cute AF Tees
         each i inArray(5)
           .slide
-            h3.designer_name
+            .designer_name
               a(href="designer_home.html")
                 img.flag(src="images/flag/flag_italy.png")
                 span Chloe Liao
             a.thumb.is_video.popup(href="popup_video.html")
               .pic(style="background: url(images/img_video.jpg);")
                 img.size(src="images/size_16x9.png")
-            p Channel Love Island’s Ovie In These Cute AF Tees
+            h3.slide_title Channel Love Island’s Ovie In These Cute AF Tees
 
   .list_items_wrapper.page_block
     .block_inner

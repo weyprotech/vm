@@ -28,12 +28,11 @@ nav {
       &:nth-last-child(-n + 2):nth-child(2n + 1) ~ li {
         margin-bottom: 0;
       }
-      > a {
+      > h4 {
+        margin: 0;
         color: $black;
         font-size: 1.125em;
-        &:hover, &.current {
-          color: $main;
-        }
+        font-weight: 400;
       }
       > ul {
         margin-top: 0.5em;

@@ -8,11 +8,12 @@ block main
       a(href="ootd.html") OOTD
       span /
       span.current The Best Street Style From Copen Fashion Week
-  .ootd_detail_wrapper.page_block
+  
+  .detail_wrapper.page_block
     .block_inner
       .container
         .container_main
-          .ootd_article
+          .detail_article
             h1.block_title
               | The Best Street Style From Copen Fashion Week
             .share_info
@@ -106,13 +107,14 @@ block main
               a.open_comments(href="javascript:;")
                 | See more comments
         .container_aside
-          .aside_related_products
-            h2.title Related Products
-            .slider
+          .aside_block
+            h2.aside_title Related Products
+            .aside_products_slider
               .slide
                 a(href="product_detail.html")
                   .thumb
-                    img(src="images/img_product01.jpg")
+                    .pic(style="background-image: url(images/img_product01.jpg)")
+                      img.size(src="images/size_3x4.png")
                   .text
                     h3 The Chelsea Heritage Trench Coat
                     .price NT$ 98800
@@ -120,19 +122,22 @@ block main
                 .slide
                   a(href="product_detail.html")
                     .thumb
-                      img(src="https://via.placeholder.com/240x320")
+                      .pic(style="background-image: url(https://via.placeholder.com/240x320)")
+                        img.size(src="images/size_3x4.png")
                     .text
                       h3 Cras quis nulla commodo, aliquam lectus.
                       .price NT$ 98800
                 .slide
                   a(href="product_detail.html")
                     .thumb
-                      img(src="https://via.placeholder.com/240x320")
+                      .pic(style="background-image: url(https://via.placeholder.com/240x320)")
+                        img.size(src="images/size_3x4.png")
                     .text
                       h3 Cras quis nulla commodo, aliquam lectus.
                       .price NT$ 98800
+  
   #fixedButtons
-    a#backPrve(href="javascript:;")
+    a#backPrve(href="ootd.html")
       img(src="images/arrow_back_prev.png")
       span back
     a#backTop(href="javascript:;")

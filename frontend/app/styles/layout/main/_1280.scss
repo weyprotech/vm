@@ -32,6 +32,19 @@
     }
   }
 
+  // Topping Block
+  .topping_block {
+    .topping_header {
+      width: calc((100% - 3.125em) / 2);
+      margin-right: 3.125em;
+    }
+    .topping_list {
+      .item {
+        margin-bottom: 1.375em;
+      }
+    }
+  }
+
   // List Slider
   .list_slider_wrapper {
     .list_slider {
@@ -70,6 +83,31 @@
   .designer_topping {
     .topping_header {
       margin-right: 2.25em;
+    }
+  }
+
+  // Brand
+  .brand_topping {
+    .brand_topping_header {
+      .header_content {
+        h3 {
+          font-size: 2.25em;
+        }
+      }
+    }
+  }
+
+  // Event
+  .event_topping {
+    .topping_header {
+      width: 45.8333333333333% !important;
+    }
+    .event_topping_header {
+      .header_content {
+        h3 {
+          font-size: 2.25em;
+        }
+      }
     }
   }
 }

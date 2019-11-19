@@ -83,3 +83,11 @@
 .icon_msg {
   @include retina-sprite($icon-msg-group);
 }
+
+.icon_prev_popup {
+  @include retina-sprite($icon-prev-popup-group);
+}
+
+.icon_next_popup {
+  @include retina-sprite($icon-next-popup-group);
+}

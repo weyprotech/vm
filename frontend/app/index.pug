@@ -42,7 +42,7 @@ block main
               a.slide_inner(href="designer_home.html")
                 .thumb
                   //↓ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓
-                  .pic(style="background-image: url(https://via.placeholder.com/280x373);")
+                  .pic(style="background-image: url(https://via.placeholder.com/360x480);")
                     img.size(src="images/size_3x4.png")
                   //↑ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑
                   .brand_name
@@ -71,7 +71,7 @@ block main
   .what_next.page_block
     h2.block_title
       | What's Next
-    .what_next_main
+    .what_next_main.scrollbar_x
       .items
         each i inArray(3)
           .item
@@ -80,26 +80,27 @@ block main
               h3 Live Stream
               .mark_live
                 | Live
-            //↓ 如果是 facebook 的影片，class 要加 'video_facebook' ↓
-            .video.video_facebook
-              iframe(src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Ffacebook%2Fvideos%2F10153231379946729%2F&width=500&show_text=false&height=280&appId", width="500", height="280", style="border:none;overflow:hidden", scrolling="no", frameborder="0", allowTransparency="true", allow="encrypted-media", allowFullScreen="true")
-            //↑ 如果是 facebook 的影片，class 要加 'video_facebook' ↑
+            //↓ 如果是 youtube 的影片，class 要加 'video_youtube' ↓
+            .video.video_youtube
+              iframe(width="560", height="315", src="https://www.youtube.com/embed/FbjUyCDrHI0", frameborder="0", allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture", allowfullscreen)
+            //↑ 如果是 youtube 的影片，class 要加 'video_youtube' ↑
           .item
             .video_type
               .dot.green
               h3 Summer Collection
               //↓ 如果是 youtube 的影片，class 要加 'video_youtube' ↓
+            //↓ 如果是 youtube 的影片，class 要加 'video_youtube' ↓
             .video.video_youtube
               iframe(width="560", height="315", src="https://www.youtube.com/embed/FbjUyCDrHI0", frameborder="0", allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture", allowfullscreen)
-              //↑ 如果是 youtube 的影片，class 要加 'video_youtube' ↑
+            //↑ 如果是 youtube 的影片，class 要加 'video_youtube' ↑
           .item
             .video_type
               .dot.yellow
               h3 Pre Sale
-            //↓ 如果是 facebook 的影片，class 要加 'video_facebook' ↓
-            .video.video_facebook
-              iframe(src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Ffacebook%2Fvideos%2F10153231379946729%2F&width=500&show_text=false&height=280&appId", width="500", height="280", style="border:none;overflow:hidden", scrolling="no", frameborder="0", allowTransparency="true", allow="encrypted-media", allowFullScreen="true")
-            //↑ 如果是 facebook 的影片，class 要加 'video_facebook' ↑
+            //↓ 如果是 youtube 的影片，class 要加 'video_youtube' ↓
+            .video.video_youtube
+              iframe(width="560", height="315", src="https://www.youtube.com/embed/FbjUyCDrHI0", frameborder="0", allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture", allowfullscreen)
+            //↑ 如果是 youtube 的影片，class 要加 'video_youtube' ↑
 
   .ads_banner
     .slide

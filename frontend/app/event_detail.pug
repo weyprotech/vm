@@ -1,0 +1,89 @@
+extends layouts/default.pug
+
+block main
+  .breadcrumbs
+    .breadcrumbs_inner
+      a(href="index.html") VM
+      span /
+      a(href="ootd.html") Events
+      span /
+      span.current Georgie Wood-Weber On Packing Like A Pro
+  
+  .detail_wrapper.page_block
+    .block_inner
+      .container
+        .container_main
+          .detail_article
+            h1.block_title
+              | Georgie Wood-Weber On Packing Like A Pro
+            .share_info
+              .share_links
+                | Share:
+                a.facebook(href="javascript:;", target="_blank")
+                  i.icon_share_facebook
+                a.pinterest(href="javascript:;", target="_blank")
+                  i.icon_share_pinterest
+                a.twitter(href="javascript:;", target="_blank")
+                  i.icon_share_twitter
+                a.weibo(href="javascript:;", target="_blank")
+                  i.icon_share_weibo
+              .info
+                .date
+                  | 2019/10/30
+            .article_content
+              p
+                img(src="images/img_event.jpg")
+              p So strongly and metaphysically did I conceive of my situation then, that while earnestly watching his motionsh. I didn’t leave myself enough time to plan this wedding. And I’m happy to admit it. If I didn’t have such a hectic career, AND PRIMARILY, if I hadn’t decided to buy a house at the very same time, 9 months would likely have been ample time to plan an at home wedding. But I wanted an abroad wedding… of course I did! *rolls eyes at self numerous times*
+              p So giving myself 9 months to find a venue in the South of France was the first hurdle that took longer to climb over than I optimistically expected. And then right after we found the venue, we also found our new house.
+              p A 20 ans elle quitte la République Démocratique du Congo et si’nstalle à Bruxelles avec un rêve : devenir architecte d’intérieur. Elle devra se battre pendant 7 ans pour décrocher un titre de séjour et pouvoir suivre un cursus en décoration d’i’ntérieur.
+        .container_aside
+          .aside_block
+            h2.aside_title Other Events
+            .aside_other_events.scrollbar_x
+              .item
+                a(href="event_detail.html")
+                  .thumb
+                    //↓ 1:1，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓
+                    .pic(style="background-image: url(https://source.unsplash.com/2YPSfYQA6Z0/360x360);")
+                      img.size(src="images/size_1x1.png")
+                    //↑ 1:1，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑
+                  .text
+                    h3 The Chelsea Heritage Trench Coat
+              each i inArray(2)
+                .item
+                  a(href="event_detail.html")
+                    .thumb
+                      //↓ 1:1，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓
+                      .pic(style="background-image: url(https://via.placeholder.com/360x360);")
+                        img.size(src="images/size_1x1.png")
+                      //↑ 1:1，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑
+                    .text
+                      h3 Voici la coiffure que l’on verra partout à la rentrée
+    
+  #fixedButtons
+    a#backPrve(href="events.html")
+      img(src="images/arrow_back_prev.png")
+      span back
+    a#backTop(href="javascript:;")
+      img(src="images/arrow_back_top.png")
+      span top
+
+block js
+  script.
+    $(function() {
+      // OOTD 加入愛心的點擊事件
+      $(document).on('click', '.btn_favorite', function() {
+        // ootdId 取得穿搭的 ID
+        var ootdId = $(this).attr('data-ootdId');
+
+        if ($(this).hasClass('active')) {
+          // 取消最愛寫這裡
+
+          $(this).removeClass('active');
+        } else {
+          // 加入最愛寫這裡
+
+          $(this).addClass('active');
+        }
+      });
+    });

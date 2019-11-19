@@ -43,13 +43,67 @@
 // Popup
 .popup_block {
   position: relative;
-  width: 90%;
-  max-width: 800px;
-  padding: 1.5em;
+  width: 98%;
+  max-width: 1024px;
+  padding: 1em;
   margin: 0 auto;
+  border: 4px solid $khaki-dark;
+  box-sizing: border-box;
   background-color: $white;
   box-sizing: border-box;
-  .popup_inner {}
+  .mfp-close {
+    position: absolute;
+    right: -4px;
+    top: auto;
+    bottom: 100%;
+    width: 24px;
+    height: 24px;
+    margin-bottom: 0.8rem;
+    font-size: 0;
+    &:before {
+      content: '';
+      display: block;
+      @include retina-sprite($icon-close-popup-group);
+    }
+  }
+  .popup_pager_controls {
+    a {
+      position: absolute;
+      z-index: 2;
+      top: 50%;
+      display: block;
+      width: 24px;
+      height: 24px;
+      transform: translateY(-50%);
+      font-size: 0;
+      &.prev {
+        left: 0.5rem;
+      }
+      &.next {
+        right: 0.5rem;
+      }
+    }
+  }
+  .popup_inner {
+    margin: 0 auto;
+  }
+  .popup_video {
+    max-width: 685px;
+  }
+  @include breakpoint(768px) {
+    padding: 3.125em 2em;
+    .popup_pager_controls {
+      a {
+        &.prev {
+          left: 1rem;
+        }
+
+        &.next {
+          right: 1rem;
+        }
+      }
+    }
+  }
 }
 
 // Fixed Buttons

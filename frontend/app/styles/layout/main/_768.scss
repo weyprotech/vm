@@ -72,8 +72,8 @@
   }
 
   // OOTD
-  .ootd_detail_wrapper {
-    .ootd_article {
+  .detail_wrapper {
+    .detail_article {
       .article_content {
         margin-bottom: 3em;
       }
@@ -125,14 +125,14 @@
       overflow: hidden;
       flex: 1 1 auto;
       position: relative;
-      .topping_list {
-        overflow-y: auto;
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-      }
+    }
+    .topping_list {
+      overflow-y: auto;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
     }
   }
 

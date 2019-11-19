@@ -205,8 +205,7 @@ html
           nav.footer_nav
             ul
               li
-                a(href="javascript:;")
-                  | COMPANY
+                h4 COMPANY
                 ul
                   li
                     a(href="javascript:;")
@@ -221,8 +220,7 @@ html
                     a(href="javascript:;")
                       | Cooperation
               li
-                a(href="javascript:;")
-                  | HELP
+                h4 HELP
                 ul
                   li
                     a(href="javascript:;")
@@ -240,24 +238,22 @@ html
                     a(href="javascript:;")
                       | Feedback
               li
-                a(href="javascript:;")
-                  | SHOP
+                h4 SHOP
                 ul
                   li
-                    a(href="javascript:;")
+                    a(class={current: currentUrl === 'designers'}, href="designers.html")
                       | Designers
                   li
-                    a(href="javascript:;")
+                    a(class={current: currentUrl === 'brands'}, href="brands.html")
                       | Brands
                   li
-                    a(href="javascript:;")
+                    a(class={current: currentUrl === 'events'}, href="events.html")
                       | Events
                   li
-                    a(href="javascript:;")
+                    a(class={current: currentUrl === 'popularDesigners'}, href="popuplar_designers.html")
                       | Popular designers
               li
-                a(href="javascript:;")
-                  | PRODUCT
+                h4 PRODUCT
                 ul
                   li
                     a(href="javascript:;")
@@ -269,8 +265,7 @@ html
                     a(href="javascript:;")
                       | Sale
               li
-                a(href="javascript:;")
-                  | MEMBER
+                h4 MEMBER
                 ul
                   li
                     a(href="javascript:;")
@@ -301,6 +296,8 @@ html
     script(src="../bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.js")
     script(src="../bower_components/imagesloaded/imagesloaded.pkgd.js")
     script(src="../bower_components/masonry-layout/dist/masonry.pkgd.js")
+    script(src="../bower_components/magnific-popup/dist/jquery.magnific-popup.js")
+    script(src="scripts/plugins/jquery.fitvids.js")
     script(src="scripts/plugins/jquery.retina.js")
     // endbuild
 

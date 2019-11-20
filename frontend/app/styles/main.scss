@@ -61,6 +61,9 @@ $susy: (
 }
 
 // mCustomScrollbar
+.mCustomScrollbar {
+  touch-action: auto;
+}
 .mCSB_inside > .mCSB_container {
   margin-right: 1.25em;
 }

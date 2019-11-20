@@ -1,0 +1,175 @@
+extends layouts/default.pug
+
+block value
+  - var currentUrl = 'brands';
+
+block main
+  .topping_block.brandStory_topping
+    .block_inner
+      .topping_header
+        .brandStory_topping_header
+          .thumb
+            .pic(style="background-image: url(images/img_brandStory_header.jpg);")
+              img.size(src="images/size_4x3.png")
+          .designer_name
+            .profile_picture
+              .pic(style="background-image: url(images/img_profile.jpg)")
+                img.size(src="images/size_1x1.png")
+            span Katherine Schultz
+      .topping_main
+        .breadcrumbs
+          i.icon_story
+          a(href="brands.html") Designer
+          span /
+          span.current Brand
+        .brand_name
+          .brand_picture
+            .pic(style="background-image: url(images/img_brand.jpg);")
+              img.size(src="images/size_1x1.png")
+          h2 Brand Name
+        .intro_text
+          p Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur.
+        .share_links
+          | Share
+          a.facebook(href="javascript:;")
+            i.icon_share_facebook
+          a.pinterest(href="javascript:;")
+            i.icon_share_pinterest
+
+  .brandStory_slider
+    .slide
+      img(src="images/img_brandStory_slide01.jpg")
+    each i inArray(2)
+      .slide
+        img(src="https://via.placeholder.com/1920x830")
+  
+  .brandStory_article.article_center_block.page_block
+    .block_inner
+      h2.block_title
+        | Brand Story - Clothing for women
+      .block_main
+        p I think my key issue was this: I didn’t leave myself enough time to plan this wedding. And I’m happy to admit it. If I didn’t have such a hectic career, AND PRIMARILY, if I hadn’t decided to buy a house at the very same time, 9 months would likely have been ample time to plan an at home wedding. But I wanted an abroad wedding… of course I did! *rolls eyes at self numerous times*
+        p So giving myself 9 months to find a venue in the South of France was the first hurdle that took longer to climb over than I optimistically expected. And then right after we found the venue, we also found our new house.
+  
+  .brandStory_wall
+    .grid_sizer
+    .gutter_sizer
+    .item
+      img(src="images/img_brandStory_wall01.jpg")
+    .item
+      .wall_words
+        h2.block_title Brand Story - Title 2
+        .text
+          p I think my key issue was this: I didn’t leave myself enough time to plan this wedding. And I’m happy to admit it. If I didn’t have such a hectic career, AND PRIMARILY, if I hadn’t decided to buy a house at the very same time, 9 months would likely have been ample time to plan an at home wedding. But I wanted an abroad wedding… of course I did! *rolls eyes at self numerous times*
+          p So giving myself 9 months to find a venue in the South of France was the first hurdle that took longer to climb over than I optimistically expected. And then right after we found the venue, we also found our new house.
+    .item
+      img(src="images/img_brandStory_wall02.jpg")
+    .item
+      img(src="images/img_brandStory_wall03.jpg")
+    .item
+      .designer_link
+        h3 Brand Designer
+        a.btn.common.more(href="designer_home.html")
+          | Find Out
+  
+  .shop_look.page_block
+    .block_inner
+      h2.block_title Shop the Look
+      .products_list
+        .item
+          a(href="product_detail.html")
+            .thumb
+              .pic(style="background-image: url(images/img_product01.jpg)")
+                img.size(src="images/size_3x4.png")
+            h3 Lemite - Sleeveless Eyelet-Lace Dress
+            .price NT$ 988
+        each i inArray(3)
+          .item
+            a(href="product_detail.html")
+              .thumb
+                .pic(style="background-image: url(https://via.placeholder.com/300x400)")
+                  img.size(src="images/size_3x4.png")
+              h3 Lemite - Sleeveless Eyelet-Lace Dress
+              .price NT$ 1200
+      a.btn.common.more(href="product.html")
+        | All Products
+  
+  .related_post.page_block
+    .block_inner
+      h2.block_title Related Post
+      .related_post_list.scrollbar_x
+        .item
+          a(href="product_home.html")
+            .date 2019.10.30
+            .thumb.is_video
+              .pic(style="background-image: url(images/img_video.jpg)")
+                img.size(src="images/size_16x9.png")
+            p HOW I WORK WITH BRANDS
+        .item
+          a(href="product_home.html")
+            .date 2019.09.28
+            .thumb
+              .pic(style="background-image: url(https://via.placeholder.com/510x288)")
+                img.size(src="images/size_16x9.png")
+            p HOW I WORK WITH BRANDS
+        .item
+          a(href="product_home.html")
+            .date 2019.09.28
+            .thumb
+              .pic(style="background-image: url(https://via.placeholder.com/510x288)")
+                img.size(src="images/size_16x9.png")
+            p HOW I WORK WITH BRANDS
+      a.btn.common.more(href="designer_home.html")
+        | View All
+
+  .message_wrapper.page_block
+    .block_inner
+      h2.block_title
+        | Messages
+      .comments_block.message_block
+        .comments_content
+          .comments_form
+            .profile_picture
+              .pic(style="background-image: url(https://source.unsplash.com/rDEOVtE7vOs/100x100);")
+                img.size(src="images/size_1x1.png")
+            .controls
+              textarea(placeholder="Leave us a message…")
+              button(type="button") Send
+          .comments_messages
+            .item
+              .msg
+                .profile_picture
+                  .pic(style="background-image: url(https://source.unsplash.com/JQDflNNnrEE/100x100);")
+                    img.size(src="images/size_1x1.png")
+                .msg_content
+                  .title
+                    .name Lily Allen
+                    .divide_line
+                    .time 2019.08.01 18:05
+                  .text
+                    | Hello! I really love your design!
+              .msg.reply
+                .profile_picture
+                  .pic(style="background-image: url(images/img_profile.jpg);")
+                    img.size(src="images/size_1x1.png")
+                .msg_content
+                  .title
+                    .name Lauren Jensen
+                    .divide_line
+                    .time 2019.08.01 18:05
+                  .text
+                    | Thank you ：）
+            .item
+              .msg
+                .profile_picture
+                  .pic(style="background-image: url(images/img_member_noPic.jpg);")
+                    img.size(src="images/size_1x1.png")
+                .msg_content
+                  .title
+                    .name Annie ELe
+                    .divide_line
+                    .time 2019.08.01 18:05
+                  .text
+                    | Hello! I really love your design!
+      a.btn.common.more(href="javascript:;")
+        | All Messages

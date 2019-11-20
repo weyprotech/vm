@@ -194,6 +194,13 @@ $(document).ready(function () {
       ]
     });
   }
+  if ($('.brandStory_slider').length > 0) {
+    $('.brandStory_slider').slick({
+      arrows: false,
+      dots: true,
+      speed: 500
+    });
+  }
 
   // Custom Scroll
   if ($('.scrollbar_x').length > 0) {

@@ -96,6 +96,11 @@
       }
     }
   }
+  .brandStory_wall {
+    .wall_words {
+      padding: 1.85em calc((100vw - 1200px) / 2) 1.85em 3.125em;
+    }
+  }
 
   // Event
   .event_topping {

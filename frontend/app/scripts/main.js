@@ -234,6 +234,20 @@ $(document).ready(function () {
       $ootdList.masonry('layout');
     });
   }
+  if ($('.brandStory_wall').length > 0) {
+    var $brandStoryWall = $('.brandStory_wall').masonry({
+      temSelector: '.item',
+      columnWidth: '.grid_sizer',
+      gutter: '.gutter_sizer',
+      percentPosition: true,
+      visibleStyle: { transform: 'translateY(0)', opacity: 1 },
+      hiddenStyle: { transform: 'translateY(100px)', opacity: 0 }
+    });
+
+    $brandStoryWall.imagesLoaded().progress(function () {
+      $brandStoryWall.masonry('layout');
+    });
+  }
 
   // Social Share
   if ($('.share_links').length > 0) {

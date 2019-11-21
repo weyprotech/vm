@@ -176,9 +176,31 @@
       }
     }
   }
+  .brandStory_topping {
+    .brandStory_topping_header {
+      margin: 0;
+    }
+  }
   .brandStory_slider {
     .slick-dots {
       bottom: 1.875rem;
+    }
+  }
+  .brandStory_wall {
+    .grid_sizer, .item {
+      width: (100vw - 1.3888888888889vw) / 2;
+    }
+    .gutter_sizer {
+      width: 1.3888888888889vw;
+    }
+    .item {
+      margin-bottom: 1.9444444444444vw;
+    }
+    .wall_words {
+      padding: 1.85em 1em;
+      .block_title {
+        text-align: left;
+      }
     }
   }
   .related_post {

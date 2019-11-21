@@ -9,22 +9,24 @@ block main
       .topping_header
         .brandStory_topping_header
           .thumb
-            .pic(style="background-image: url(images/img_brandStory_header.jpg);")
+            .pic(style="background-image: url(images/img_brand.jpg);")
               img.size(src="images/size_4x3.png")
           .designer_name
-            .profile_picture
-              .pic(style="background-image: url(images/img_profile.jpg)")
-                img.size(src="images/size_1x1.png")
-            span Katherine Schultz
-      .topping_main
+            a(href="designer_home.html")
+              .profile_picture
+                .pic(style="background-image: url(images/img_profile.jpg)")
+                  img.size(src="images/size_1x1.png")
+              span Katherine Schultz
+      .topping_main.in_detail
         .breadcrumbs
-          i.icon_story
-          a(href="brands.html") Designer
-          span /
-          span.current Brand
+          .breadcrumbs_inner
+            i.icon_story
+            a(href="brands.html") Designer
+            span /
+            span.current Brand
         .brand_name
           .brand_picture
-            .pic(style="background-image: url(images/img_brand.jpg);")
+            .pic(style="background-image: url(images/img_brand_logo.jpg);")
               img.size(src="images/size_1x1.png")
           h2 Brand Name
         .intro_text
@@ -47,14 +49,17 @@ block main
     .block_inner
       h2.block_title
         | Brand Story - Clothing for women
-      .block_main
+      .block_main.fit_video
         p I think my key issue was this: I didn’t leave myself enough time to plan this wedding. And I’m happy to admit it. If I didn’t have such a hectic career, AND PRIMARILY, if I hadn’t decided to buy a house at the very same time, 9 months would likely have been ample time to plan an at home wedding. But I wanted an abroad wedding… of course I did! *rolls eyes at self numerous times*
         p So giving myself 9 months to find a venue in the South of France was the first hurdle that took longer to climb over than I optimistically expected. And then right after we found the venue, we also found our new house.
+        iframe(width="560", height="315", src="https://www.youtube.com/embed/FbjUyCDrHI0", frameborder="0", allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture", allowfullscreen)
+        p I think my key issue was this: I didn’t leave myself enough time to plan this wedding. And I’m happy to admit it. If I didn’t have such a hectic career, AND PRIMARILY,
   
   .brandStory_wall
     .grid_sizer
     .gutter_sizer
     .item
+      // 940px * 1154px
       img(src="images/img_brandStory_wall01.jpg")
     .item
       .wall_words
@@ -63,8 +68,10 @@ block main
           p I think my key issue was this: I didn’t leave myself enough time to plan this wedding. And I’m happy to admit it. If I didn’t have such a hectic career, AND PRIMARILY, if I hadn’t decided to buy a house at the very same time, 9 months would likely have been ample time to plan an at home wedding. But I wanted an abroad wedding… of course I did! *rolls eyes at self numerous times*
           p So giving myself 9 months to find a venue in the South of France was the first hurdle that took longer to climb over than I optimistically expected. And then right after we found the venue, we also found our new house.
     .item
+      // 940px * 968px
       img(src="images/img_brandStory_wall02.jpg")
     .item
+      // 940px * 865px
       img(src="images/img_brandStory_wall03.jpg")
     .item
       .designer_link

@@ -180,6 +180,12 @@
       }
     }
   }
+  .brandStory_topping {
+    .topping_header {
+      width: 60% !important;
+      margin-right: 2.5em !important;
+    }
+  }
 
   // Event
   .event_topping {
@@ -218,7 +224,7 @@
   }
 }
 
-@include susy-breakpoint(1200px, 12) {
+@include susy-breakpoint(1232px, 12) {
   // Products List
   .products_list {
     .item {
@@ -238,6 +244,24 @@
   }
 
   // Brand
+  .brandStory_wall {
+    .wall_words {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 27.7777777777778vw;
+      padding: 1.85em 3.125em;
+    }
+    .designer_link {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 25.8333333333333vw;
+      h3 {
+        font-size: 2.5em;
+      }
+    }
+  }
   .related_post {
     .related_post_list {
       .item {

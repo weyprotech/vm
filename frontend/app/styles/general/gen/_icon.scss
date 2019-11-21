@@ -91,3 +91,7 @@
 .icon_next_popup {
   @include retina-sprite($icon-next-popup-group);
 }
+
+.icon_story {
+  @include retina-sprite($icon-story-group);
+}

@@ -1,11 +1,14 @@
 extends layouts/default.pug
 
+block value
+  - var currentUrl = 'events';
+
 block main
   .breadcrumbs
     .breadcrumbs_inner
       a(href="index.html") VM
       span /
-      a(href="ootd.html") Events
+      a(href="events.html") Events
       span /
       span.current Georgie Wood-Weber On Packing Like A Pro
   

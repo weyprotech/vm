@@ -1,6 +1,6 @@
 .header_top {
   position: relative;
-  z-index: 100;
+  z-index: 999;
   height: 44px;
   padding: 0.4375rem 1rem;
   box-sizing: border-box;
@@ -35,7 +35,7 @@
 
 #header {
   position: relative;
-  z-index: 100;
+  z-index: 999;
 	background-color: $white;
 	@extend .transition;
   .header_main {

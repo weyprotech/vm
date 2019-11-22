@@ -24,6 +24,7 @@ $susy: (
 @import "layout/foot";
 
 // Plugins
+@import "plugins/leaflet.css";
 @import "plugins/slick";
 @import "plugins/slick-theme";
 @import "../../bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar";

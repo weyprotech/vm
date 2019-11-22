@@ -19,6 +19,10 @@
   }
 
   // Index
+  #storeMap {
+    height: 48vw;
+    max-height: calc(100vh - 150px - 44px - 4em);
+  }
   .ads_banner {
     .slide {
       .text {

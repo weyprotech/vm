@@ -5,6 +5,10 @@
   }
 
   // Index
+  #storeMap {
+    height: 48vw;
+    max-height: calc(100vh - 150px - 44px);
+  }
   .top_designers_slider {
     padding: 0;
     .slick-prev {

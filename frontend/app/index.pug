@@ -5,8 +5,8 @@ block value
 
 block main
   .store_map_wrapper
-    #storeMap
-      #map
+    .store_map_main
+      #storeMap
     #streetStore
 
   .top_designers.page_block
@@ -198,8 +198,37 @@ block main
           | MORE
 
 block js
+  // build:js scripts/plugins/leaflet.js
+  script(src="scripts/plugins/leaflet.js")
+  // endbuild
+
+  // build:js scripts/storeMap.js
+  script(src="scripts/storeMap.js")
+  // endbuild
+
   script.
     $(function() {
+      // Store Map
+      var streetMap = 'images/leaflet/street.png';
+
+      $.ajax({
+        url: 'json/ootd.json',
+        dataType: 'json',
+        error: function() {
+          console.log('ajax error!')
+        },
+        success: function(data) {
+          var storeIcons = [];
+
+          //- {
+          //-   "latlng": [-0.0065, -0.0035],
+          //-   "html": "<a href='javascript:;' data-storeid='store01'><img src='images/leaflet/store_marker.svg'/></a>"
+          //- }
+
+          storeMap(streetMap, storeIcons);
+        }
+      });
+
       // OOTD 加入愛心的點擊事件
       $(document).on('click', '.btn_favorite', function() {
         // ootdId 取得穿搭的 ID

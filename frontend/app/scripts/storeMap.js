@@ -33,11 +33,16 @@ function storeMap(streetImg, storeIcons) {
   var LeafDivIcon = L.DivIcon.extend({
     options: {
       iconSize: [14, 14],
+      iconAnchor: [0, 0],
       className: 'store_mark'
     }
   });
   for (var i = 0; i < storeIcons.length; i++) {
-    var storeMarker = new L.marker(storeIcons[i].latlng, {
+    var markerPosition = [
+      storeMap.unproject([0, storeIcons[i].latlng[0]], storeMap.getMaxZoom()).lat,
+      storeMap.unproject([storeIcons[i].latlng[1], 0], storeMap.getMaxZoom()).lng
+    ];
+    var storeMarker = new L.marker(markerPosition, {
       icon: new LeafDivIcon({
         html: storeIcons[i].html
       })
@@ -53,8 +58,8 @@ function storeMap(streetImg, storeIcons) {
   // Zoom
   storeMap.on('zoomend', function () {
     var currentZoom = storeMap.getZoom(),
-      sizeMultiple,
-      fontSize;
+        sizeMultiple,
+        fontSize;
     if (currentZoom == 2) {
       sizeMultiple = 1;
       fontSize = '0.75rem';
@@ -71,7 +76,7 @@ function storeMap(streetImg, storeIcons) {
   });
 
   function changeMarkSize(sizeMultiple, fontSize, status) {
-    var baseSizeNum = 90;
+    var baseSizeNum = 14;
     var size;
     if (status == '') {
       size = [baseSizeNum, baseSizeNum];
@@ -83,6 +88,7 @@ function storeMap(streetImg, storeIcons) {
     for (var i = 0; i < storeIcons.length; i++) {
       storeMarkers[i].setIcon(new LeafDivIcon({
         iconSize: size,
+        iconAnchor: [0, 0],
         html: storeIcons[i].html
       }));
     }

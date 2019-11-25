@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>VETRINA MIA</title>
+    <meta name="KeyWords" content="">
+    <meta name="Description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
+    <link rel="stylesheet" href="styles/main.css">
+  </head>
+  <body><!--[if lt IE 10]>
+    <div class="old_browser">
+      <div class="old_browser_inner">
+        <div class="oops">OOPS!</div>
+        <div class="oops_title">您的瀏覽器版本太舊了！</div>
+        <p>請更新至 Internet Explorer 10 以上版本或選用更現代化的瀏覽器，<br><br>使用老舊版本的瀏覽器瀏覽本網站將可能有無法預測的錯誤，請儘快更新。<br><br>微軟已於2016年起停止IE8 (含)以下版本之Windows安全更新（<a href="http://windows.microsoft.com/zh-tw/windows/end-support-help" target="_blank">微軟 終止支援公告</a>），<br>為了您的個資安全、瀏覽流暢度與享受更多網站互動體驗，建議您立即升級瀏覽器。</p>
+        <table>
+          <caption>&gt;&gt; 建議您更新或使用以下瀏覽器</caption>
+          <tr>
+            <td><a href="http://windows.microsoft.com/zh-tw/internet-explorer/download-ie" target="_blank"><img src="images/browser/ie.png"><span>IE</span></a></td>
+            <td><a href="http://www.google.com/chrome/" target="_blank"><img src="images/browser/chrome.png"><span>Chrome</span></a></td>
+            <td><a href="https://www.mozilla.org/en-US/firefox/new/" target="_blank"><img src="images/browser/firefox.png"><span>Firefox</span></a></td>
+            <td><a href="https://www.opera.com/zh-tw/download?os=windows" target="_blank"><img src="images/browser/opera.png"><span>Opera</span></a></td>
+          </tr>
+        </table>
+        <p>© 2019 Vetrina Mia INC.</p>
+      </div>
+    </div><![endif]-->
+    <div id="wrapper">
+      <!--↓ 後台可設定網站五個顏色 ↓ -- bg_brown、bg_red、bg_purple、bg_blue、bg_green-->
+      <div class="header_top bg_brown">
+        <div class="header_top_inner">
+          <div class="links"><a href="javascript:;">SHIPPING</a><i class="divide_line"></i><a href="javascript:;">REFUND</a></div>
+          <div class="marquee">FREE SHIPPING. EASY RETURN.</div>
+          <div class="currency_language">
+            <div class="select_wrapper">
+              <select>
+                <option>€ EUR</option>
+                <option selected>$ TWD</option>
+                <option>¥ CNY</option>
+              </select>
+            </div><i class="divide_line"></i>
+            <div class="select_wrapper">
+              <select>
+                <option>LANGUAGE</option>
+                <option>English</option>
+                <option>繁體中文</option>
+                <option>简体中文</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+      <header id="header">
+        <div class="header_main">
+          <div class="header_main_inner"><a id="btn_menu" href="javascript:;"><span></span></a>
+            <div class="header_search">
+              <div class="search_form">
+                <input type="search" placeholder="What are you looking for?">
+                <button type="button"><i class="icon_search"></i></button>
+              </div>
+            </div><a class="header_logo" href="index.html"><img class="retina" src="images/logo.png"></a>
+            <div class="user_options">
+              <div class="option_search"><a href="javascript:;"><i class="icon_search"></i></a></div>
+              <!--↓ 上線時，class加'online'，並且連結至'member_account.html'; 未上線時，連結至'login.html' ↓-->
+              <div class="option_member online"><a href="javascript:;"><i class="icon_member"></i></a></div>
+              <!--↑ 上線時，class加'online'，並且連結至'member_account.html'; 未上線時，連結至'login.html' ↑-->
+              <!--↓ 有產品在購物車時時，class加'have' ↓-->
+              <div class="option_cart have"><a class="cart_toggle" href="javascript:;"><i class="icon_cart"></i></a>
+                <div class="cart_drop">
+                  <div class="cart_view">
+                    <div class="title">2 Items</div>
+                    <div class="cart_items">
+                      <div class="item"><a class="btn_delete" href="javascript:;"><i class="icon_delete"></i></a><a class="thumb" href="javascript:;">
+                          <!--↓ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓-->
+                          <div class="pic" style="background-image: url(images/img_product01.jpg);"><img class="size" src="images/size_3x4.png"></div>
+                          <!--↑ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑--></a>
+                        <div class="content">
+                          <div class="price">$ 1148</div>
+                          <ul>
+                            <li>size: M</li>
+                            <li>color: dot</li>
+                            <li>Qty: 1</li>
+                          </ul>
+                        </div>
+                      </div>
+                      <div class="item"><a class="btn_delete" href="javascript:;"><i class="icon_delete"></i></a><a class="thumb" href="javascript:;">
+                          <!--↓ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓-->
+                          <div class="pic" style="background-image: url(https://via.placeholder.com/300x400);"><img class="size" src="images/size_3x4.png"></div>
+                          <!--↑ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑--></a>
+                        <div class="content">
+                          <div class="price">$ 1148</div>
+                          <ul>
+                            <li>size: M</li>
+                            <li>color: dot</li>
+                            <li>Qty: 1</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="cart_foot">
+                      <div class="total_calculation">
+                        <div class="label">Subtotal</div>
+                        <div class="total_amount">NTD $2,296</div>
+                      </div><a class="btn confirm" href="javascript:;">CHECKOUT</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!--↑ 有產品在購物車時時，class加'have' ↑-->
+              <!--↓ 登入後顯示，按下即登出 ↓-->
+              <div class="option_logout"><a href="javascript:;"><i class="icon_logout"></i></a></div>
+              <!--↑ 登入後顯示，按下即登出 ↑-->
+            </div>
+          </div>
+        </div>
+        <div class="header_nav_wrap">
+          <nav class="header_nav">
+            <ul>
+              <li><a href="designers.html">Designers</a></li>
+              <li><a class="current" href="brands.html">Brands</a></li>
+              <li><a href="javascript:;">Women</a>
+                <div class="sub_menu">
+                  <ul>
+                    <li><a href="javascript:;">CLOTHING</a>
+                      <ul>
+                        <li><a href="javascript:;">Jeaens</a></li>
+                        <li><a href="javascript:;">Trench Coats</a></li>
+                        <li><a href="javascript:;">Jackets</a></li>
+                        <li><a href="javascript:;">Coats</a></li>
+                        <li><a href="javascript:;">Quilts &amp; Puffers</a></li>
+                        <li><a href="javascript:;">Suits</a></li>
+                        <li><a href="javascript:;">Blazers</a></li>
+                        <li><a href="javascript:;">Formal Shirts</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="javascript:;">BAGS</a>
+                      <ul>
+                        <li><a href="javascript:;">Bags</a></li>
+                        <li><a href="javascript:;">Scarves</a></li>
+                        <li><a href="javascript:;">Wallets &amp; Card Cases</a></li>
+                        <li><a href="javascript:;">Travel Accessories</a></li>
+                        <li><a href="javascript:;">Ties &amp; Cunfflinks</a></li>
+                        <li><a href="javascript:;">Key Rings</a></li>
+                        <li><a href="javascript:;">Hats &amp; Gloves</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="javascript:;">ACCESSORIES</a>
+                      <ul>
+                        <li><a href="javascript:;">Scarves</a></li>
+                        <li><a href="javascript:;">Wallets &amp; Card Cases</a></li>
+                        <li><a href="javascript:;">Key &amp; Bag Charms</a></li>
+                        <li><a href="javascript:;">Travel Accessories</a></li>
+                        <li><a href="javascript:;">Belts</a></li>
+                        <li><a href="javascript:;">Jewellery</a></li>
+                        <li><a href="javascript:;">Hats &amp; Gloves</a></li>
+                        <li><a href="javascript:;">Eyewear</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+              <li><a href="javascript:;">Men</a>
+                <div class="sub_menu">
+                  <ul>
+                    <li><a href="javascript:;">CLOTHING</a>
+                      <ul>
+                        <li><a href="javascript:;">Jeaens</a></li>
+                        <li><a href="javascript:;">Trench Coats</a></li>
+                        <li><a href="javascript:;">Jackets</a></li>
+                        <li><a href="javascript:;">Coats</a></li>
+                        <li><a href="javascript:;">Quilts &amp; Puffers</a></li>
+                        <li><a href="javascript:;">Suits</a></li>
+                        <li><a href="javascript:;">Blazers</a></li>
+                        <li><a href="javascript:;">Formal Shirts</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="javascript:;">BAGS</a>
+                      <ul>
+                        <li><a href="javascript:;">Bags</a></li>
+                        <li><a href="javascript:;">Scarves</a></li>
+                        <li><a href="javascript:;">Wallets &amp; Card Cases</a></li>
+                        <li><a href="javascript:;">Travel Accessories</a></li>
+                        <li><a href="javascript:;">Ties &amp; Cunfflinks</a></li>
+                        <li><a href="javascript:;">Key Rings</a></li>
+                        <li><a href="javascript:;">Hats &amp; Gloves</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="javascript:;">ACCESSORIES</a>
+                      <ul>
+                        <li><a href="javascript:;">Scarves</a></li>
+                        <li><a href="javascript:;">Wallets &amp; Card Cases</a></li>
+                        <li><a href="javascript:;">Key &amp; Bag Charms</a></li>
+                        <li><a href="javascript:;">Travel Accessories</a></li>
+                        <li><a href="javascript:;">Belts</a></li>
+                        <li><a href="javascript:;">Jewellery</a></li>
+                        <li><a href="javascript:;">Hats &amp; Gloves</a></li>
+                        <li><a href="javascript:;">Eyewear</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+              <li><a href="sale.hmtl">Sale</a></li>
+              <li><a href="events.html">Events</a></li>
+              <li><a href="popular_designers.html">Popular Designers</a></li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+      <main id="main">
+        <div class="topping_block brandStory_topping">
+          <div class="block_inner">
+            <div class="topping_header">
+              <div class="brandStory_topping_header">
+                <div class="thumb">
+                  <div class="pic" style="background-image: url(images/img_brand.jpg);"><img class="size" src="images/size_4x3.png"></div>
+                </div>
+                <div class="designer_name"><a href="designer_home.html">
+                    <div class="profile_picture">
+                      <div class="pic" style="background-image: url(images/img_profile.jpg)"><img class="size" src="images/size_1x1.png"></div>
+                    </div><span>Katherine Schultz</span></a></div>
+              </div>
+            </div>
+            <div class="topping_main in_detail">
+              <div class="breadcrumbs">
+                <div class="breadcrumbs_inner"><i class="icon_story"></i><a href="brands.html">Designer</a><span>/</span><span class="current">Brand</span></div>
+              </div>
+              <div class="brand_name">
+                <div class="brand_picture">
+                  <div class="pic" style="background-image: url(images/img_brand_logo.jpg);"><img class="size" src="images/size_1x1.png"></div>
+                </div>
+                <h2>Brand Name</h2>
+              </div>
+              <div class="intro_text">
+                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur.</p>
+              </div>
+              <div class="share_links">Share<a class="facebook" href="javascript:;"><i class="icon_share_facebook"></i></a><a class="pinterest" href="javascript:;"><i class="icon_share_pinterest"></i></a></div>
+            </div>
+          </div>
+        </div>
+        <div class="brandStory_slider">
+          <div class="slide"><img src="images/img_brandStory_slide01.jpg"></div>
+          <div class="slide"><img src="https://via.placeholder.com/1920x830"></div>
+          <div class="slide"><img src="https://via.placeholder.com/1920x830"></div>
+        </div>
+        <div class="brandStory_article article_center_block page_block">
+          <div class="block_inner">
+            <h2 class="block_title">Brand Story - Clothing for women</h2>
+            <div class="block_main fit_video">
+              <p>I think my key issue was this: I didn’t leave myself enough time to plan this wedding. And I’m happy to admit it. If I didn’t have such a hectic career, AND PRIMARILY, if I hadn’t decided to buy a house at the very same time, 9 months would likely have been ample time to plan an at home wedding. But I wanted an abroad wedding… of course I did! *rolls eyes at self numerous times*</p>
+              <p>So giving myself 9 months to find a venue in the South of France was the first hurdle that took longer to climb over than I optimistically expected. And then right after we found the venue, we also found our new house.</p>
+              <iframe width="560" height="315" src="https://www.youtube.com/embed/FbjUyCDrHI0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              <p>I think my key issue was this: I didn’t leave myself enough time to plan this wedding. And I’m happy to admit it. If I didn’t have such a hectic career, AND PRIMARILY,</p>
+            </div>
+          </div>
+        </div>
+        <div class="brandStory_wall">
+          <div class="grid_sizer"></div>
+          <div class="gutter_sizer"></div>
+          <div class="item">
+            <!-- 940px * 1154px--><img src="images/img_brandStory_wall01.jpg">
+          </div>
+          <div class="item">
+            <div class="wall_words">
+              <h2 class="block_title">Brand Story - Title 2</h2>
+              <div class="text">
+                <p>I think my key issue was this: I didn’t leave myself enough time to plan this wedding. And I’m happy to admit it. If I didn’t have such a hectic career, AND PRIMARILY, if I hadn’t decided to buy a house at the very same time, 9 months would likely have been ample time to plan an at home wedding. But I wanted an abroad wedding… of course I did! *rolls eyes at self numerous times*</p>
+                <p>So giving myself 9 months to find a venue in the South of France was the first hurdle that took longer to climb over than I optimistically expected. And then right after we found the venue, we also found our new house.</p>
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <!-- 940px * 968px--><img src="images/img_brandStory_wall02.jpg">
+          </div>
+          <div class="item">
+            <!-- 940px * 865px--><img src="images/img_brandStory_wall03.jpg">
+          </div>
+          <div class="item">
+            <div class="designer_link">
+              <h3>Brand Designer</h3><a class="btn common more" href="designer_home.html">Find Out</a>
+            </div>
+          </div>
+        </div>
+        <div class="shop_look page_block">
+          <div class="block_inner">
+            <h2 class="block_title">Shop the Look</h2>
+            <div class="products_list">
+              <div class="item"><a href="product_detail.html">
+                  <div class="thumb">
+                    <div class="pic" style="background-image: url(images/img_product01.jpg)"><img class="size" src="images/size_3x4.png"></div>
+                  </div>
+                  <h3>Lemite - Sleeveless Eyelet-Lace Dress</h3>
+                  <div class="price">NT$ 988</div></a></div>
+              <div class="item"><a href="product_detail.html">
+                  <div class="thumb">
+                    <div class="pic" style="background-image: url(https://via.placeholder.com/300x400)"><img class="size" src="images/size_3x4.png"></div>
+                  </div>
+                  <h3>Lemite - Sleeveless Eyelet-Lace Dress</h3>
+                  <div class="price">NT$ 1200</div></a></div>
+              <div class="item"><a href="product_detail.html">
+                  <div class="thumb">
+                    <div class="pic" style="background-image: url(https://via.placeholder.com/300x400)"><img class="size" src="images/size_3x4.png"></div>
+                  </div>
+                  <h3>Lemite - Sleeveless Eyelet-Lace Dress</h3>
+                  <div class="price">NT$ 1200</div></a></div>
+              <div class="item"><a href="product_detail.html">
+                  <div class="thumb">
+                    <div class="pic" style="background-image: url(https://via.placeholder.com/300x400)"><img class="size" src="images/size_3x4.png"></div>
+                  </div>
+                  <h3>Lemite - Sleeveless Eyelet-Lace Dress</h3>
+                  <div class="price">NT$ 1200</div></a></div>
+            </div><a class="btn common more" href="product.html">All Products</a>
+          </div>
+        </div>
+        <div class="related_post page_block">
+          <div class="block_inner">
+            <h2 class="block_title">Related Post</h2>
+            <div class="related_post_list scrollbar_x">
+              <div class="item"><a href="product_home.html">
+                  <div class="date">2019.10.30</div>
+                  <div class="thumb is_video">
+                    <div class="pic" style="background-image: url(images/img_video.jpg)"><img class="size" src="images/size_16x9.png"></div>
+                  </div>
+                  <p>HOW I WORK WITH BRANDS</p></a></div>
+              <div class="item"><a href="product_home.html">
+                  <div class="date">2019.09.28</div>
+                  <div class="thumb">
+                    <div class="pic" style="background-image: url(https://via.placeholder.com/510x288)"><img class="size" src="images/size_16x9.png"></div>
+                  </div>
+                  <p>HOW I WORK WITH BRANDS</p></a></div>
+              <div class="item"><a href="product_home.html">
+                  <div class="date">2019.09.28</div>
+                  <div class="thumb">
+                    <div class="pic" style="background-image: url(https://via.placeholder.com/510x288)"><img class="size" src="images/size_16x9.png"></div>
+                  </div>
+                  <p>HOW I WORK WITH BRANDS</p></a></div>
+            </div><a class="btn common more" href="designer_home.html">View All</a>
+          </div>
+        </div>
+        <div class="message_wrapper page_block">
+          <div class="block_inner">
+            <h2 class="block_title">Messages</h2>
+            <div class="comments_block message_block">
+              <div class="comments_content">
+                <div class="comments_form">
+                  <div class="profile_picture">
+                    <div class="pic" style="background-image: url(https://source.unsplash.com/rDEOVtE7vOs/100x100);"><img class="size" src="images/size_1x1.png"></div>
+                  </div>
+                  <div class="controls">
+                    <textarea placeholder="Leave us a message…"></textarea>
+                    <button type="button">Send</button>
+                  </div>
+                </div>
+                <div class="comments_messages">
+                  <div class="item">
+                    <div class="msg">
+                      <div class="profile_picture">
+                        <div class="pic" style="background-image: url(https://source.unsplash.com/JQDflNNnrEE/100x100);"><img class="size" src="images/size_1x1.png"></div>
+                      </div>
+                      <div class="msg_content">
+                        <div class="title">
+                          <div class="name">Lily Allen</div>
+                          <div class="divide_line"></div>
+                          <div class="time">2019.08.01 18:05</div>
+                        </div>
+                        <div class="text">Hello! I really love your design!</div>
+                      </div>
+                    </div>
+                    <div class="msg reply">
+                      <div class="profile_picture">
+                        <div class="pic" style="background-image: url(images/img_profile.jpg);"><img class="size" src="images/size_1x1.png"></div>
+                      </div>
+                      <div class="msg_content">
+                        <div class="title">
+                          <div class="name">Lauren Jensen</div>
+                          <div class="divide_line"></div>
+                          <div class="time">2019.08.01 18:05</div>
+                        </div>
+                        <div class="text">Thank you ：）</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="item">
+                    <div class="msg">
+                      <div class="profile_picture">
+                        <div class="pic" style="background-image: url(images/img_member_noPic.jpg);"><img class="size" src="images/size_1x1.png"></div>
+                      </div>
+                      <div class="msg_content">
+                        <div class="title">
+                          <div class="name">Annie ELe</div>
+                          <div class="divide_line"></div>
+                          <div class="time">2019.08.01 18:05</div>
+                        </div>
+                        <div class="text">Hello! I really love your design!</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div><a class="btn common more" href="javascript:;">All Messages</a>
+          </div>
+        </div>
+      </main>
+      <footer id="footer">
+        <div class="footer_inner">
+          <div class="footer_information"><a class="footer_logo" href="index.html"><img class="retina" src="images/logo_footer.png"></a>
+            <div class="copyright">© 2019 Vetrina Mia INC.</div>
+            <div class="social_apps_links">
+              <div class="social"><a href="mailto:xxx@test.com"><i class="icon_email"></i></a><a href="javascript:;" target="_blank"><i class="icon_facebook"></i></a><a href="javascript:;" target="_blank"><i class="icon_instagram"></i></a></div>
+              <div class="apps"><a href="javascript:;" target="_blank"><img src="images/app_ios.png"></a><a href="javascript:;" target="_blank"><img src="images/app_android.png"></a></div>
+            </div>
+            <hr><a class="btn cooperation_link" href="javascript:;">Cooperation | Joining | Investment</a><a class="interested_link" href="javascript:;"><i class="icon_hand"></i>Interested in opening a shop here?</a>
+          </div>
+          <nav class="footer_nav">
+            <ul>
+              <li>
+                <h4>COMPANY</h4>
+                <ul>
+                  <li><a href="javascript:;">About us</a></li>
+                  <li><a href="javascript:;">Contact</a></li>
+                  <li><a href="javascript:;">Terms and Policy</a></li>
+                  <li><a href="javascript:;">Cooperation</a></li>
+                </ul>
+              </li>
+              <li>
+                <h4>HELP</h4>
+                <ul>
+                  <li><a href="javascript:;">FAQ</a></li>
+                  <li><a href="javascript:;">Delivery</a></li>
+                  <li><a href="javascript:;">Refunds &amp; Exchanges</a></li>
+                  <li><a href="javascript:;">Customer Services</a></li>
+                  <li><a href="javascript:;">Feedback</a></li>
+                </ul>
+              </li>
+              <li>
+                <h4>SHOP</h4>
+                <ul>
+                  <li><a href="designers.html">Designers</a></li>
+                  <li><a class="current" href="brands.html">Brands</a></li>
+                  <li><a href="events.html">Events</a></li>
+                  <li><a href="popuplar_designers.html">Popular designers</a></li>
+                </ul>
+              </li>
+              <li>
+                <h4>PRODUCT</h4>
+                <ul>
+                  <li><a href="javascript:;">Women</a></li>
+                  <li><a href="javascript:;">Men</a></li>
+                  <li><a href="javascript:;">Sale</a></li>
+                </ul>
+              </li>
+              <li>
+                <h4>MEMBER</h4>
+                <ul>
+                  <li><a href="javascript:;">My Favorite</a></li>
+                  <li><a href="javascript:;">My Account</a></li>
+                  <li><a href="javascript:;">My Wardrobe</a></li>
+                  <li><a href="javascript:;">Be Our Model</a></li>
+                </ul>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </footer>
+    </div>
+    <div id="sidebar">
+      <nav class="sidebar_menu">
+        <ul>
+          <li><a href="designers.html">Designers</a></li>
+          <li><a class="current" href="brands.html">Brands</a></li>
+          <li><a href="javascript:;">Women</a>
+            <div class="sub_menu">
+              <ul>
+                <li><a href="javascript:;">CLOTHING</a>
+                  <ul>
+                    <li><a href="javascript:;">Jeaens</a></li>
+                    <li><a href="javascript:;">Trench Coats</a></li>
+                    <li><a href="javascript:;">Jackets</a></li>
+                    <li><a href="javascript:;">Coats</a></li>
+                    <li><a href="javascript:;">Quilts &amp; Puffers</a></li>
+                    <li><a href="javascript:;">Suits</a></li>
+                    <li><a href="javascript:;">Blazers</a></li>
+                    <li><a href="javascript:;">Formal Shirts</a></li>
+                  </ul>
+                </li>
+                <li><a href="javascript:;">BAGS</a>
+                  <ul>
+                    <li><a href="javascript:;">Bags</a></li>
+                    <li><a href="javascript:;">Scarves</a></li>
+                    <li><a href="javascript:;">Wallets &amp; Card Cases</a></li>
+                    <li><a href="javascript:;">Travel Accessories</a></li>
+                    <li><a href="javascript:;">Ties &amp; Cunfflinks</a></li>
+                    <li><a href="javascript:;">Key Rings</a></li>
+                    <li><a href="javascript:;">Hats &amp; Gloves</a></li>
+                  </ul>
+                </li>
+                <li><a href="javascript:;">ACCESSORIES</a>
+                  <ul>
+                    <li><a href="javascript:;">Scarves</a></li>
+                    <li><a href="javascript:;">Wallets &amp; Card Cases</a></li>
+                    <li><a href="javascript:;">Key &amp; Bag Charms</a></li>
+                    <li><a href="javascript:;">Travel Accessories</a></li>
+                    <li><a href="javascript:;">Belts</a></li>
+                    <li><a href="javascript:;">Jewellery</a></li>
+                    <li><a href="javascript:;">Hats &amp; Gloves</a></li>
+                    <li><a href="javascript:;">Eyewear</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li><a href="javascript:;">Men</a>
+            <div class="sub_menu">
+              <ul>
+                <li><a href="javascript:;">CLOTHING</a>
+                  <ul>
+                    <li><a href="javascript:;">Jeaens</a></li>
+                    <li><a href="javascript:;">Trench Coats</a></li>
+                    <li><a href="javascript:;">Jackets</a></li>
+                    <li><a href="javascript:;">Coats</a></li>
+                    <li><a href="javascript:;">Quilts &amp; Puffers</a></li>
+                    <li><a href="javascript:;">Suits</a></li>
+                    <li><a href="javascript:;">Blazers</a></li>
+                    <li><a href="javascript:;">Formal Shirts</a></li>
+                  </ul>
+                </li>
+                <li><a href="javascript:;">BAGS</a>
+                  <ul>
+                    <li><a href="javascript:;">Bags</a></li>
+                    <li><a href="javascript:;">Scarves</a></li>
+                    <li><a href="javascript:;">Wallets &amp; Card Cases</a></li>
+                    <li><a href="javascript:;">Travel Accessories</a></li>
+                    <li><a href="javascript:;">Ties &amp; Cunfflinks</a></li>
+                    <li><a href="javascript:;">Key Rings</a></li>
+                    <li><a href="javascript:;">Hats &amp; Gloves</a></li>
+                  </ul>
+                </li>
+                <li><a href="javascript:;">ACCESSORIES</a>
+                  <ul>
+                    <li><a href="javascript:;">Scarves</a></li>
+                    <li><a href="javascript:;">Wallets &amp; Card Cases</a></li>
+                    <li><a href="javascript:;">Key &amp; Bag Charms</a></li>
+                    <li><a href="javascript:;">Travel Accessories</a></li>
+                    <li><a href="javascript:;">Belts</a></li>
+                    <li><a href="javascript:;">Jewellery</a></li>
+                    <li><a href="javascript:;">Hats &amp; Gloves</a></li>
+                    <li><a href="javascript:;">Eyewear</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li><a href="sale.hmtl">Sale</a></li>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="popular_designers.html">Popular Designers</a></li>
+        </ul>
+        <div class="links"><a href="javascript:;">SHIPPING</a><i class="divide_line"></i><a href="javascript:;">REFUND</a></div>
+        <div class="currency_language">
+          <div class="select_wrapper">
+            <select>
+              <option>€ EUR</option>
+              <option selected>$ TWD</option>
+              <option>¥ CNY</option>
+            </select>
+          </div>
+          <div class="select_wrapper">
+            <select>
+              <option>LANGUAGE</option>
+              <option>English</option>
+              <option>繁體中文</option>
+              <option>简体中文</option>
+            </select>
+          </div>
+        </div>
+      </nav>
+    </div>
+    <script src="scripts/vendor.js"></script>
+    <script src="scripts/plugins.js"></script>
+    <script src="scripts/main.js"></script>
+  </body>
+</html>

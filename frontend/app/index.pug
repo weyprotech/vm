@@ -208,23 +208,33 @@ block js
 
   script.
     $(function() {
+      var streetStores = [];
+
       // Store Map
       var streetMap = 'images/leaflet/street.png';
 
       $.ajax({
-        url: 'json/ootd.json',
+        url: 'json/stores.json',
         dataType: 'json',
         error: function() {
           console.log('ajax error!')
         },
         success: function(data) {
+          streetStores = data;
+
           var storeIcons = [];
 
-          //- {
-          //-   "latlng": [-0.0065, -0.0035],
-          //-   "html": "<a href='javascript:;' data-storeid='store01'><img src='images/leaflet/store_marker.svg'/></a>"
-          //- }
-
+          for(var i=0; i < streetStores.length; i++) {
+            if( streetStores[i].stores.length !== 0 ) {
+              for(j=0; j < streetStores[i].stores.length; j++) {
+                var storeObj = {
+                  latlng: streetStores[i].stores[j].latlng,
+                  html: '<a href="javascript:;" data-storeid="' + streetStores[i].stores[j].id + '" title="No.' + streetStores[i].stores[j].number + ', ' + streetStores[i].streetName + '"><img class="store_icon" src="images/leaflet/store_marker.svg"/></a>'
+                }
+                storeIcons.push(storeObj);
+              }
+            }
+          }
           storeMap(streetMap, storeIcons);
         }
       });

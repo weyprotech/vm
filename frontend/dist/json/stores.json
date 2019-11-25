@@ -1,10 +1,287 @@
 [
   {
+    "id": "street01",
     "streetName": "Versailles Avenue",
+    "style": "LUXURY",
     "stores": [
       {
-        "latlng": [-0.0065, -0.0035]
+        "id": "store001",
+        "latlng": [1216.31, 1847],
+        "number": "1",
+        "storeName": "Stephen Herrera"
+      },
+      {
+        "id": "store002",
+        "latlng": [1234.32, 1894.98],
+        "number": "2",
+        "storeName": "Stephen Herrera"
+      },
+      {
+        "id": "store003",
+        "latlng": [1194.28, 1894.98],
+        "number": "3",
+        "storeName": "Stephen Herrera"
+      },
+      {
+        "id": "store004",
+        "latlng": [1174.27, 1962.96],
+        "number": "4",
+        "storeName": "Stephen Herrera"
+      },
+      {
+        "id": "store005",
+        "latlng": [1074.17, 1988.95],
+        "number": "7",
+        "storeName": "Stephen Herrera"
+      },
+      {
+        "id": "store006",
+        "latlng": [1074.17, 2058.92],
+        "number": "8",
+        "storeName": "Stephen Herrera"
+      },
+      {
+        "id": "store007",
+        "latlng": [984.08, 2066.92],
+        "number": "11",
+        "storeName": "Stephen Herrera"
+      },
+      {
+        "id": "store008",
+        "latlng": [996.1, 2118.9],
+        "number": "12",
+        "storeName": "Stephen Herrera"
+      },
+      {
+        "id": "store009",
+        "latlng": [944.05, 2154.89],
+        "number": "14",
+        "storeName": "Stephen Herrera"
+      },
+      {
+        "id": "store010",
+        "latlng": [922.02, 2184.88],
+        "number": "16",
+        "storeName": "Stephen Herrera"
       }
     ]
+  },
+  {
+    "id": "street02",
+    "streetName": "Berlin Lane",
+    "style": "LUXURY",
+    "stores": [{
+      "id": "store011",
+      "latlng": [1368.45, 2052.93],
+      "number": "1",
+      "storeName": "MU Jason Williams"
+    },
+    {
+      "id": "store012",
+      "latlng": [1360.44, 2094.91],
+      "number": "2",
+      "storeName": "MU Jason Williams"
+    },
+    {
+      "id": "store013",
+      "latlng": [1196.29, 2234.86],
+      "number": "9",
+      "storeName": "MU Jason Williams"
+    },
+    {
+      "id": "store014",
+      "latlng": [1170.26, 2266.85],
+      "number": "11",
+      "storeName": "MU Jason Williams"
+    },
+    {
+      "id": "store015",
+      "latlng": [1124.22, 2330],
+      "number": "13",
+      "storeName": "MU Jason Williams"
+    }]
+  },
+  {
+    "id": "street03",
+    "streetName": "Victoria Lane",
+    "style": "LUXURY",
+    "stores": [{
+      "id": "store016",
+      "latlng": [1454.53, 2124.9],
+      "number": "1",
+      "storeName": "MU Jason Williams"
+    },
+    {
+      "id": "store017",
+      "latlng": [1468.55, 2154.89],
+      "number": "2",
+      "storeName": "MU Jason Williams"
+    },
+    {
+      "id": "store018",
+      "latlng": [1384.47, 2248.86],
+      "number": "7",
+      "storeName": "MU Jason Williams"
+    },
+    {
+      "id": "store019",
+      "latlng": [1370.45, 2272.85],
+      "number": "9",
+      "storeName": "MU Jason Williams"
+    },
+    {
+      "id": "store020",
+      "latlng": [1366.45, 2328.83],
+      "number": "10",
+      "storeName": "MU Jason Williams"
+    }]
+  },
+  {
+    "id": "street04",
+    "streetName": "Bond Street",
+    "style": "LUXURY",
+    "stores": [{
+      "id": "store021",
+      "latlng": [896, 2032.93],
+      "number": "1",
+      "storeName": "MU Jason Williams"
+    },
+    {
+      "id": "store022",
+      "latlng": [896, 2078.92],
+      "number": "2",
+      "storeName": "MU Jason Williams"
+    },
+    {
+      "id": "store023",
+      "latlng": [1218.31, 2298.84],
+      "number": "11",
+      "storeName": "MU Jason Williams"
+    },
+    {
+      "id": "store024",
+      "latlng": [1298.38, 2340.82],
+      "number": "14",
+      "storeName": "MU Jason Williams"
+    },
+    {
+      "id": "store025",
+      "latlng": [1360.44, 2386.81],
+      "number": "16",
+      "storeName": "MU Jason Williams"
+    }]
+  },
+  {
+    "id": "street05",
+    "streetName": "Barcelona Street",
+    "style": "CASUAL,ECLECTIC",
+    "stores": [{
+      "id": "store026",
+      "latlng": [1627.86, 2106],
+      "number": "1",
+      "storeName": "MU Jason Williams"
+    },
+    {
+      "id": "store027",
+      "latlng": [1637.86, 2141.96],
+      "number": "2",
+      "storeName": "MU Jason Williams"
+    },
+    {
+      "id": "store028",
+      "latlng": [1589.88, 2259.81],
+      "number": "5",
+      "storeName": "MU Jason Williams"
+    },
+    {
+      "id": "store029",
+      "latlng": [1583.88, 2355.7],
+      "number": "9",
+      "storeName": "MU Jason Williams"
+    },
+    {
+      "id": "store030",
+      "latlng": [1623.86, 2497.53],
+      "number": "14",
+      "storeName": "MU Jason Williams"
+    },
+    {
+      "id": "store031",
+      "latlng": [1623.86, 2643.35],
+      "number": "18",
+      "storeName": "MU Jason Williams"
+    },
+    {
+      "id": "store032",
+      "latlng": [1623.86, 2745.23],
+      "number": "22",
+      "storeName": "MU Jason Williams"
+    },
+    {
+      "id": "store033",
+      "latlng": [1625.86, 2773.19],
+      "number": "24",
+      "storeName": "MU Jason Williams"
+    },
+    {
+      "id": "store034",
+      "latlng": [1627.86, 2907.03],
+      "number": "26",
+      "storeName": "MU Jason Williams"
+    },
+    {
+      "id": "store035",
+      "latlng": [1629.86, 2970.96],
+      "number": "28",
+      "storeName": "MU Jason Williams"
+    },
+    {
+      "id": "store036",
+      "latlng": [1605.87, 2988.93],
+      "number": "29",
+      "storeName": "MU Jason Williams"
+    },
+    {
+      "id": "store037",
+      "latlng": [1613.87, 3068.84],
+      "number": "31",
+      "storeName": "MU Jason Williams"
+    },
+    {
+      "id": "store038",
+      "latlng": [1645.86, 3120.77],
+      "number": "32",
+      "storeName": "MU Jason Williams"
+    },
+    {
+      "id": "store039",
+      "latlng": [1619.87, 3172.71],
+      "number": "33",
+      "storeName": "MU Jason Williams"
+    },
+    {
+      "id": "store040",
+      "latlng": [1579.88, 3236.63],
+      "number": "35",
+      "storeName": "MU Jason Williams"
+    },
+    {
+      "id": "store041",
+      "latlng": [1549.9, 3314.54],
+      "number": "37",
+      "storeName": "MU Jason Williams"
+    },
+    {
+      "id": "store042",
+      "latlng": [1561.89, 3368.48],
+      "number": "39",
+      "storeName": "MU Jason Williams"
+    },
+    {
+      "id": "store043",
+      "latlng": [1611.87, 3412.42],
+      "number": "40",
+      "storeName": "MU Jason Williams"
+    }]
   }
 ]

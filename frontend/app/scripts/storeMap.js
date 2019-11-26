@@ -28,38 +28,44 @@ function storeMap(streetImg, storeIcons) {
 
   L.imageOverlay(streetImg, bounds).addTo(storeMap);
 
-  // Icon    
+  // Icon
   var storeMarkers = [];
   var LeafDivIcon = L.DivIcon.extend({
     options: {
       iconSize: [14, 14],
       iconAnchor: [0, 0],
+      popupAnchor: [7, 0],
+      tooltipAnchor: [7, 7],
       className: 'store_mark'
     }
   });
+
   for (var i = 0; i < storeIcons.length; i++) {
     var markerPosition = [
       storeMap.unproject([0, storeIcons[i].latlng[0]], storeMap.getMaxZoom()).lat,
       storeMap.unproject([storeIcons[i].latlng[1], 0], storeMap.getMaxZoom()).lng
     ];
+
     var storeMarker = new L.marker(markerPosition, {
       icon: new LeafDivIcon({
         html: storeIcons[i].html
       })
-    }).addTo(storeMap);
+    })
+    .bindTooltip(storeIcons[i].storeName)
+    .bindPopup(storeIcons[i].popupHtml, {
+      maxWidth: 'auto'
+    })
+    .addTo(storeMap);
+
     storeMarkers.push(storeMarker);
   }
-
-  // Mark Click
-  $(document).on(clickHandler, '.store_mark a', function () {
-    alert($(this).data('storeid'));
-  });
 
   // Zoom
   storeMap.on('zoomend', function () {
     var currentZoom = storeMap.getZoom(),
         sizeMultiple,
         fontSize;
+
     if (currentZoom == 2) {
       sizeMultiple = 1;
       fontSize = '0.75rem';
@@ -77,21 +83,33 @@ function storeMap(streetImg, storeIcons) {
 
   function changeMarkSize(sizeMultiple, fontSize, status) {
     var baseSizeNum = 14;
-    var size;
+    var size = [];
+    var popAnchor = [];
+    var tipAnchor = [];
+
     if (status == '') {
       size = [baseSizeNum, baseSizeNum];
+      popAnchor = [baseSizeNum * 0.5, 0];
+      tipAnchor = [baseSizeNum * 0.5, baseSizeNum * 0.5];
     } else if (status == 'larger') {
       size = [baseSizeNum * sizeMultiple, baseSizeNum * sizeMultiple];
+      popAnchor = [baseSizeNum * sizeMultiple * 0.5, 0];
+      tipAnchor = [baseSizeNum * sizeMultiple * 0.5, baseSizeNum * sizeMultiple * 0.5];
     } else if (status == 'smaller') {
       size = [baseSizeNum / sizeMultiple, baseSizeNum / sizeMultiple];
+      popAnchor = [baseSizeNum / sizeMultiple * 0.5, 0];
+      tipAnchor = [baseSizeNum / sizeMultiple * 0.5, baseSizeNum / sizeMultiple * 0.5];
     }
     for (var i = 0; i < storeIcons.length; i++) {
       storeMarkers[i].setIcon(new LeafDivIcon({
         iconSize: size,
         iconAnchor: [0, 0],
+        popupAnchor: popAnchor,
+        tooltipAnchor: tipAnchor,
         html: storeIcons[i].html
       }));
     }
+
     $('.store_mark').find('.store_name').css('font-size', fontSize);
   }
 
@@ -99,6 +117,7 @@ function storeMap(streetImg, storeIcons) {
   var scrollWhellTime;
   $('#storeMap').on('mousewheel DOMMouseScroll', function (event) {
     event.stopPropagation();
+
     if (event.ctrlKey == true) {
       event.preventDefault();
       storeMap.scrollWheelZoom.enable();
@@ -118,4 +137,8 @@ function storeMap(streetImg, storeIcons) {
   $(window).on('mousewheel DOMMouseScroll', function (event) {
     $('#storeMap').removeClass('map_scroll');
   })
+
+  $(window).on('resize', function() {
+    storeMap.closePopup();
+  });
 }

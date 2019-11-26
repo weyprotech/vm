@@ -12,6 +12,9 @@
   #storeMap {
     height: 48vw;
     max-height: calc(100vh - 92px - 44px);
+    .map_popup {
+      width: 600px;
+    }
   }
   .top_designers_slider {
     margin-bottom: 4em;

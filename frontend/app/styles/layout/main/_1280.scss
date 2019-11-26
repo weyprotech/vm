@@ -8,6 +8,9 @@
   #storeMap {
     height: 48vw;
     max-height: calc(100vh - 150px - 44px);
+    .leaflet-tooltip {
+      display: block;
+    }
   }
   .top_designers_slider {
     padding: 0;

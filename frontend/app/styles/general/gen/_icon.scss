@@ -95,3 +95,7 @@
 .icon_story {
   @include retina-sprite($icon-story-group);
 }
+
+.icon_map_marker {
+  @include retina-sprite($icon-map-marker-group);
+}

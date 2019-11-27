@@ -812,20 +812,68 @@
           },
           success: function(data) {
             streetStores = data;
-      
             var storeIcons = [];
       
             for(var i=0; i < streetStores.length; i++) {
               if( streetStores[i].stores.length !== 0 ) {
                 for(j=0; j < streetStores[i].stores.length; j++) {
+                  var store = streetStores[i].stores[j];
                   var storeObj = {
-                    latlng: streetStores[i].stores[j].latlng,
-                    html: '<a href="javascript:;" data-storeid="' + streetStores[i].stores[j].id + '" title="No.' + streetStores[i].stores[j].number + ', ' + streetStores[i].streetName + '"><img class="store_icon" src="images/leaflet/store_marker.svg"/></a>'
+                    latlng: store.latlng,
+                    storeName: store.storeName,
+                    html: '<a href="javascript:;" data-storeid="' + store.id + '">' + 
+                      '<img class="store_icon" src="images/leaflet/store_marker.svg"/>' + 
+                    '</a>',
+                    popupHtml: '<div class="map_popup">' + 
+                      '<div class="map_popup_inner">' +
+                        '<div class="map_popup_head">' + 
+                          '<a class="brand_name" href="' + store.brandLink + '">' + 
+                            '<div class="brand_picture">' + 
+                              '<div class="pic" style="background-image: url(' + store.brandImg + ');">' + 
+                                '<img class="size" src="images/size_1x1.png">' +
+                              '</div>' + 
+                            '</div>' + 
+                            '<h2>' + store.storeName + '</h2>' + 
+                          '</a>' + 
+                          '<div class="address">' + 
+                            '<i class="icon_map_marker"></i>' + 
+                            '<span>' + 'No.' + store.number + ', ' + streetStores[i].streetName + '</span>' + 
+                          '</div>' + 
+                        '</div>' + 
+                        '<div class="map_popup_content">' +
+                          '<div class="intro">' + 
+                            '<a class="designer_info" href="' + store.designerLink + '">' + 
+                              '<div class="profile_picture">' + 
+                                '<div class="pic" style="background-image: url(' + store.designerImg + ')">' + 
+                                  '<img class="size" src="images/size_1x1.png">' +
+                                '</div>' + 
+                              '</div>' + 
+                              '<h3 class="designer_name">' + 
+                                '<span class="name">' + store.designerName + '</span>' + 
+                                '<div class="divide_line"></div>' + 
+                                '<img class="flag" src="' + store.flag + '">' + 
+                                '<span class="country">' + store.country + '</span>' + 
+                              '</h3>' + 
+                            '</a>' + 
+                            '<div class="text">' +  store.description + '</div>' + 
+                            '<a class="btn common more" href="' + store.productsLink + '">' + 'Products' + '</a>' + 
+                          '</div>' + 
+                          '<div class="picture">' + 
+                            '<div class="thumb">' + 
+                              '<div class="pic" style="background-image: url(' + store.brandPic + ')">' + 
+                                '<img class="size" src="images/size_4x3.png">' + 
+                              '</div>' + 
+                            '</div>' + 
+                          '</div>' +
+                        '</div>' + 
+                      '</div>' + 
+                    '</div>'
                   }
                   storeIcons.push(storeObj);
                 }
               }
             }
+      
             storeMap(streetMap, storeIcons);
           }
         });

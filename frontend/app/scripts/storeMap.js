@@ -55,6 +55,12 @@ function storeMap(streetImg, storeIcons) {
     .bindPopup(storeIcons[i].popupHtml, {
       maxWidth: 'auto'
     })
+    .on('popupopen', function(popup) {
+      $('.map_popup_inner').mCustomScrollbar({
+        theme: 'dark-3',
+        axis: 'y'
+      });
+    })
     .addTo(storeMap);
 
     storeMarkers.push(storeMarker);

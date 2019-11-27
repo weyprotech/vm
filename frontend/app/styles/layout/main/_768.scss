@@ -10,10 +10,47 @@
 
   // Index
   #storeMap {
-    height: 48vw;
+    height: 50vw;
     max-height: calc(100vh - 92px - 44px);
     .map_popup {
       width: 600px;
+      height: 300px;
+      .map_popup_head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 1.125rem;
+        .brand_name {
+          flex: 0 0 auto;
+          width: calc((100% - 1.5em) / 2);
+          margin-bottom: 0;
+          margin-right: 1.5em;
+        }
+        h2 {
+          padding: 0 1.125rem;
+        }
+        .address {
+          flex: 0 0 auto;
+          width: calc((100% - 1.5em) / 2);
+          text-align: right;
+        }
+      }
+      .map_popup_content {
+        display: flex;
+        .intro {
+          flex: 0 0 auto;
+          width: calc((100% - 1.5em) / 2);
+          margin-bottom: 0;
+          margin-right: 1.5em;
+        }
+        .picture {
+          flex: 0 0 auto;
+          width: calc((100% - 1.5em) / 2);
+          .thumb, .thumb .pic {
+            height: 100%;
+          }
+        }
+      }
     }
   }
   .top_designers_slider {

@@ -1,6 +1,6 @@
 .header_top {
   position: relative;
-  z-index: 999;
+  z-index: 9999;
   height: 44px;
   padding: 0.4375rem 1rem;
   box-sizing: border-box;
@@ -35,7 +35,7 @@
 
 #header {
   position: relative;
-  z-index: 999;
+  z-index: 9999;
 	background-color: $white;
 	@extend .transition;
   .header_main {
@@ -168,4 +168,9 @@
       }
     }
   }
+}
+
+#header-sticky-wrapper {
+  position: relative;
+  z-index: 9999;
 }

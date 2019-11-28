@@ -34,37 +34,37 @@ function storeMap(streetImg, storeIcons) {
     options: {
       iconSize: [14, 14],
       iconAnchor: [0, 0],
-      popupAnchor: [7, 0],
+      popupAnchor: [7, 7],
       tooltipAnchor: [7, 7],
       className: 'store_mark'
     }
   });
-
   for (var i = 0; i < storeIcons.length; i++) {
     var markerPosition = [
       storeMap.unproject([0, storeIcons[i].latlng[0]], storeMap.getMaxZoom()).lat,
       storeMap.unproject([storeIcons[i].latlng[1], 0], storeMap.getMaxZoom()).lng
     ];
 
+    var popup = L.responsivePopup().setContent(storeIcons[i].popupHtml);
     var storeMarker = new L.marker(markerPosition, {
       icon: new LeafDivIcon({
-        html: storeIcons[i].html
+        html: storeIcons[i].markerHtml
       })
     })
     .bindTooltip(storeIcons[i].storeName)
-    .bindPopup(storeIcons[i].popupHtml, {
-      maxWidth: 'auto'
-    })
-    .on('popupopen', function(popup) {
-      $('.map_popup_inner').mCustomScrollbar({
-        theme: 'dark-3',
-        axis: 'y'
-      });
-    })
+    .bindPopup(popup, { maxWidth: 'auto' })
     .addTo(storeMap);
 
     storeMarkers.push(storeMarker);
   }
+
+  // Popup Open
+  storeMap.on('popupopen', function (popup) {
+    $('.map_popup_inner').mCustomScrollbar({
+      theme: 'dark-3',
+      axis: 'y'
+    });
+  })
 
   // Zoom
   storeMap.on('zoomend', function () {
@@ -86,7 +86,6 @@ function storeMap(streetImg, storeIcons) {
       changeMarkSize(sizeMultiple, fontSize, 'smaller');
     }
   });
-
   function changeMarkSize(sizeMultiple, fontSize, status) {
     var baseSizeNum = 14;
     var size = [];
@@ -95,15 +94,15 @@ function storeMap(streetImg, storeIcons) {
 
     if (status == '') {
       size = [baseSizeNum, baseSizeNum];
-      popAnchor = [baseSizeNum * 0.5, 0];
+      popAnchor = [baseSizeNum * 0.5, baseSizeNum * 0.5];
       tipAnchor = [baseSizeNum * 0.5, baseSizeNum * 0.5];
     } else if (status == 'larger') {
       size = [baseSizeNum * sizeMultiple, baseSizeNum * sizeMultiple];
-      popAnchor = [baseSizeNum * sizeMultiple * 0.5, 0];
+      popAnchor = [baseSizeNum * sizeMultiple * 0.5, baseSizeNum * sizeMultiple * 0.5];
       tipAnchor = [baseSizeNum * sizeMultiple * 0.5, baseSizeNum * sizeMultiple * 0.5];
     } else if (status == 'smaller') {
       size = [baseSizeNum / sizeMultiple, baseSizeNum / sizeMultiple];
-      popAnchor = [baseSizeNum / sizeMultiple * 0.5, 0];
+      popAnchor = [baseSizeNum / sizeMultiple * 0.5, baseSizeNum / sizeMultiple * 0.5];
       tipAnchor = [baseSizeNum / sizeMultiple * 0.5, baseSizeNum / sizeMultiple * 0.5];
     }
     for (var i = 0; i < storeIcons.length; i++) {
@@ -112,7 +111,7 @@ function storeMap(streetImg, storeIcons) {
         iconAnchor: [0, 0],
         popupAnchor: popAnchor,
         tooltipAnchor: tipAnchor,
-        html: storeIcons[i].html
+        html: storeIcons[i].markerHtml
       }));
     }
 

@@ -19,19 +19,20 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
+        width: 100%;
         margin-bottom: 1.125rem;
         .brand_name {
           flex: 0 0 auto;
-          width: calc((100% - 1.5em) / 2);
+          width: calc((100% - 1.5rem) / 2);
           margin-bottom: 0;
-          margin-right: 1.5em;
+          margin-right: 1.5rem;
         }
         h2 {
           padding: 0 1.125rem;
         }
         .address {
-          flex: 0 0 auto;
-          width: calc((100% - 1.5em) / 2);
+          flex: 1 1 auto;
+          width: calc((100% - 1.5rem) / 2);
           text-align: right;
         }
       }
@@ -39,13 +40,13 @@
         display: flex;
         .intro {
           flex: 0 0 auto;
-          width: calc((100% - 1.5em) / 2);
+          width: calc((100% - 1.5rem) / 2);
           margin-bottom: 0;
-          margin-right: 1.5em;
+          margin-right: 1.5rem;
         }
         .picture {
           flex: 0 0 auto;
-          width: calc((100% - 1.5em) / 2);
+          width: calc((100% - 1.5rem) / 2);
           .thumb, .thumb .pic {
             height: 100%;
           }

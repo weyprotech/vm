@@ -53,18 +53,20 @@ function storeMap(streetImg, storeIcons) {
     })
     .bindTooltip(storeIcons[i].storeName)
     .bindPopup(popup, { maxWidth: 'auto' })
-    .addTo(storeMap);
+    .addTo(storeMap)
+    .on('popupopen', function (e) {
+      $(e.target._icon).addClass('isPopup');
+      $('.map_popup_inner').mCustomScrollbar({
+        theme: 'dark-3',
+        axis: 'y'
+      });
+    })
+    .on('popupclose', function (e) {
+      $(e.target._icon).removeClass('isPopup');
+    });;
 
     storeMarkers.push(storeMarker);
   }
-
-  // Popup Open
-  storeMap.on('popupopen', function (popup) {
-    $('.map_popup_inner').mCustomScrollbar({
-      theme: 'dark-3',
-      axis: 'y'
-    });
-  })
 
   // Zoom
   storeMap.on('zoomend', function () {

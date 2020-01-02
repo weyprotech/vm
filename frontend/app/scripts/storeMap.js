@@ -1,5 +1,6 @@
 function storeMap(streetImg, storeIcons) {
   var storeMap = L.map('storeMap', {
+    zoomControl: false,
     minZoom: 1,
     maxZoom: 3,
     continuousWorld: false,
@@ -69,6 +70,12 @@ function storeMap(streetImg, storeIcons) {
   }
 
   // Zoom
+  $('#mapControls').on('click', '.zoomOut', function() {
+    storeMap.setZoom(storeMap.getZoom() - 1);
+  });
+  $('#mapControls').on('click', '.zoomIn', function () {
+    storeMap.setZoom(storeMap.getZoom() + 1);
+  });
   storeMap.on('zoomend', function () {
     var currentZoom = storeMap.getZoom(),
         sizeMultiple,

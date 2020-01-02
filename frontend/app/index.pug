@@ -7,6 +7,29 @@ block main
   .store_map_wrapper
     .store_map_main
       #storeMap
+      #mapControls
+        a.fullScreen(href="javascript:;")
+          img(src="images/map_fullScreen.png")
+        .zoom_controls
+          a.zoomOut(href="javascript:;")
+            img(src="images/map_zoomOut.png")
+          a.zoomIn(href="javascript:;")
+            img(src="images/map_zoomIn.png")
+        .mode
+      #streetAside
+        a.toggle_control(href="javascript:;")
+          | Shopping map
+        .search_form
+          input(type="search", placeholder="Search Store")
+          button(type="button") #[i.icon_search]
+        .street_list
+          .item
+            a(href="javascript:;") Versailles Avenue
+            ul
+              li
+                a(href="javascript:;") Store Name 001
+              li
+                a(href="javascript:;") Store Name 002
     #streetStore
 
   .top_designers.page_block

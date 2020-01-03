@@ -417,6 +417,50 @@
   .leaflet-tooltip {
     display: none;
   }
+  .leaflet-control-zoom {
+    border: none;
+    @extend .clear;
+    a {
+      width: 34px;
+      height: 34px;
+      float: right;
+      margin-left: 0.75rem;
+      border: none;
+      border-radius: 0;
+      background-color: $white;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      box-shadow: 0 0 3px rgba($black, 0.38);
+      font-size: 0;
+      &.leaflet-control-zoom-in {
+        background-image: url(../images/map_zoomIn.png);
+      }
+      &.leaflet-control-zoom-out {
+        background-image: url(../images/map_zoomOut.png);
+        margin-left: 0;
+      }
+    }
+  }
+  .leaflet-control-fullscreen {
+    border: none;
+    .leaflet-control-fullscreen-button {
+      width: 40px;
+      height: 40px;
+      border-radius: 0;
+      background-color: $white;
+      background-image: url(../images/map_fullscreen.png);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      box-shadow: 0 0 3px rgba($black, 0.38);
+    }
+  }
+  &.leaflet-fullscreen-on {
+    .leaflet-control-fullscreen .leaflet-control-fullscreen-button {
+      background-image: url(../images/map_fullscreen_on.png);
+    }
+  }
   .leaflet-popup {
     margin-bottom: 0;
     .leaflet-popup-content-wrapper {
@@ -551,52 +595,100 @@
     }
   }
 }
-#mapControls {
-  position: absolute;
-  z-index: 2;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  > * {
-    pointer-events: visible;
-  }
-  .fullScreen {
-    position: absolute;
-    top: 0.5rem;
-    left: 0.5rem;
-    display: block;
-    font-size: 0;
-    box-shadow: 0 0 3px rgba($black, 0.38);
-    &:hover {
-      box-shadow: 0 0 3px rgba($khaki-dark, 0.8);
-    }
-  }
-  .zoom_controls {
-    position: absolute;
-    top: 0.5rem;
-    right: 0.5rem;
-    font-size: 0;
-    a {
-      display: inline-block;
-      margin-right: 0.5rem;
-      box-shadow: 0 0 3px rgba($black, 0.38);
-      &:last-child {
-        margin-right: 0;
-      }
-      &:hover {
-        box-shadow: 0 0 3px rgba($khaki-dark, 0.8);
-      }
-    }
-  }
-}
 #streetAside {
   position: absolute;
   z-index: 3;
-  top: 0;
-  right: 0;
-  transform: translateX(100%);
+  top: 0.5em;
+  left: 0.5em;
+  display: flex;
+  flex-direction: column;
+  width: calc(100% - 1em);
+  height: calc(100% - 1em);
+  padding: 0.5em 0;
+  border-radius: 5px;
+  box-sizing: border-box;
+  background-color: rgba($white, 0.95);
+  box-shadow: 0 0 8px rgba($black, 0.32);
+  .open_aside {
+    position: absolute;
+    display: block;
+  }
+  .aside_title {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    margin: 0 1em 0.5em;
+    box-sizing: border-box;
+    h2 {
+      flex: 1 1 auto;
+      margin: 0;
+      color: $main;
+      font-size: 1.25em;
+      font-weight: 400;
+      line-height: 1.2;
+      letter-spacing: 0.026em;
+    }
+    .close_aside {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex: 0 0 auto;
+      width: 30px;
+      height: 44px;
+      margin-left: 0.5em;
+      .arrow_double_right {
+        @extend .transition;
+      }
+      &:hover {
+        .arrow_double_right {
+          transform: translateX(50%);
+        }
+      }
+    }
+  }
+  .search_form {
+    flex: 0 0 auto;
+    margin: 0 1em 1.5em;
+  }
+  .street_list {
+    flex: 1 1 auto;
+    overflow-y: auto;
+    .item {
+      border-top: $khaki-lighten 1px solid;
+      &.active {
+        background-color: $khaki-lightest;
+      }
+      a {
+        display: block;
+        box-sizing: border-box;
+        line-height: 1.2;
+      }
+      .street_name {
+        padding: 1em 1.5em;
+        color: #3C3C3C;
+        &:hover {
+          color: $gray;
+        }
+      }
+      ul {
+        display: none;
+        list-style: none;
+        margin: 0;
+        padding: 0 0 1.5em;
+        li {
+          list-style: none;
+          a {
+            padding: 0.4rem 1rem 0.4rem 2.5rem;
+            color: $gray-darken;
+            font-size: 0.875em;
+            &:hover {
+              color: $gray;
+            }
+          }
+        }
+      }
+    }
+  }
 }
 
 

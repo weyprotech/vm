@@ -99,3 +99,11 @@
 .icon_map_marker {
   @include retina-sprite($icon-map-marker-group);
 }
+
+.arrow_double_right {
+  @include retina-sprite($arrow-double-right-group);
+}
+
+.arrow_double_left {
+  @include retina-sprite($arrow-double-left-group);
+}

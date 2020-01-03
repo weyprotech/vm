@@ -1,6 +1,7 @@
 function storeMap(streetImg, storeIcons) {
   var storeMap = L.map('storeMap', {
     zoomControl: false,
+    fullscreenControl: true,
     minZoom: 1,
     maxZoom: 3,
     continuousWorld: false,
@@ -9,6 +10,10 @@ function storeMap(streetImg, storeIcons) {
     attributionControl: false,
     scrollWheelZoom: false
   });
+
+  L.control.zoom({
+    position: 'topright'
+  }).addTo(storeMap);
 
   var bounds = new L.LatLngBounds(
     storeMap.unproject([0, 2500], storeMap.getMaxZoom()),

@@ -41,6 +41,17 @@
       }
     }
   }
+  #streetStores {
+    display: flex;
+    .street_intro {
+      flex: 0 0 auto;
+      width: 40%;
+    }
+    .stores_slider {
+      flex: 0 0 auto;
+      width: 60%;
+    }
+  }
   .ads_banner {
     .slide {
       .text {

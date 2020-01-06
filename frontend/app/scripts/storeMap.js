@@ -132,7 +132,7 @@ function storeMap(streetImg, storeIcons) {
     $('.store_mark').find('.store_name').css('font-size', fontSize);
   }
 
-  // ctrl + mousewheel
+  // Ctrl + Mousewheel
   var scrollWhellTime;
   $('#storeMap').on('mousewheel DOMMouseScroll', function (event) {
     event.stopPropagation();
@@ -157,6 +157,57 @@ function storeMap(streetImg, storeIcons) {
     $('#storeMap').removeClass('map_scroll');
   })
 
+  // Aside
+  $('#streetAside').on('click', '.open_aside', function(e) {
+    $('#streetAside').addClass('isOpen');
+  });
+  $('#streetAside').on('click', '.close_aside', function (e) {
+    $('#streetAside').removeClass('isOpen');
+  });
+  $('#streetAside .street_list').on('click', '.street_name', function (e) {
+    $(this).parent('.item').siblings('.item').children('ul').stop().slideUp(function(e) {
+      $(this).parent('.item').removeClass('active')
+    });
+    $(this).parent('.item').children('ul').stop().slideDown(function(e) {
+      $(this).parent('.item').addClass('active')
+    });
+  });
+
+  // Slider
+  $('#streetStores .stores_slider').slick({
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 3,
+    responsive: [
+      {
+        breakpoint: 1280,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2
+        }
+      },
+      {
+        breakpoint: 560,
+        settings: {
+          centerMode: true,
+          centerPadding: '44px',
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      },
+      {
+        breakpoint: 370,
+        settings: {
+          centerMode: true,
+          centerPadding: '20px',
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      }
+    ]
+  });
+
+  // Resize
   $(window).on('resize', function() {
     storeMap.closePopup();
   });

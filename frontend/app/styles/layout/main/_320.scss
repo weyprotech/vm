@@ -433,6 +433,9 @@
       background-size: cover;
       box-shadow: 0 0 3px rgba($black, 0.38);
       font-size: 0;
+      &:hover {
+        box-shadow: 0 0 5px rgba($khaki-dark, 0.8);
+      }
       &.leaflet-control-zoom-in {
         background-image: url(../images/map_zoomIn.png);
       }
@@ -454,6 +457,9 @@
       background-position: center;
       background-size: cover;
       box-shadow: 0 0 3px rgba($black, 0.38);
+      &:hover {
+        box-shadow: 0 0 5px rgba($khaki-dark, 0.8);
+      }
     }
   }
   &.leaflet-fullscreen-on {
@@ -609,9 +615,34 @@
   box-sizing: border-box;
   background-color: rgba($white, 0.95);
   box-shadow: 0 0 8px rgba($black, 0.32);
+  transform: translateX(100%);
+  @extend .transition;
+  &.isOpen {
+    transform: translateX(0);
+    .open_aside {
+      display: none;
+    }
+  }
   .open_aside {
     position: absolute;
-    display: block;
+    top: 50px;
+    right: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 5px 0 0 5px;
+    background-color: $white;
+    box-shadow: -4px 0 12px -4px rgba($black, 0.32);
+    i.arrow_double_left {
+      @extend .transition;
+    }
+    &:hover {
+      i.arrow_double_left {
+        transform: translateX(-50%);
+      }
+    }
   }
   .aside_title {
     flex: 0 0 auto;
@@ -655,9 +686,6 @@
     overflow-y: auto;
     .item {
       border-top: $khaki-lighten 1px solid;
-      &.active {
-        background-color: $khaki-lightest;
-      }
       a {
         display: block;
         box-sizing: border-box;
@@ -687,11 +715,137 @@
           }
         }
       }
+      &.active {
+        background-color: $khaki-lightest;
+        ul {
+          display: block;
+        }
+      }
     }
   }
 }
-
-
+#streetStores {
+  position: relative;
+  z-index: 2;
+  overflow: hidden;
+  background-color: $white;
+  box-shadow: 2px 0 7px rgba($black, 0.16);
+  .street_intro {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5em 1em;
+    border-top: $khaki 5px solid;
+    background-image: url(../images/bg_index_street_intro.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    box-sizing: border-box;
+    box-shadow: 2px 0 7px rgba($black,0.16);
+    .intro_inner {
+      max-width: 320px;
+      text-align: center;
+    }
+    h2 {
+      margin: 0;
+      font-family: 'Crimson Text',serif;
+      font-size: 2em;
+      font-style: italic;
+      font-weight: 400;
+      line-height: 1.2;
+    }
+    hr {
+      border: none;
+      width: 180px;
+      height: 3px;
+      margin: 1.25em auto;
+      background-color: $khaki-light;
+    }
+    h3 {
+      margin-top: 0;
+      margin-bottom: 1.25rem;
+      color: $main;
+      font-weight: 400;
+      font-size: 1.5em;
+      line-height: 1.2;
+    }
+    text {
+      font-size: 0.875em;
+    }
+  }
+  .stores_slider {
+    position: relative;
+    z-index: 1;
+    .slide {
+      box-shadow: 2px 0 7px rgba($black, 0.16);
+    }
+    .intro {
+      padding: 1em 1.25em;
+      box-sizing: border-box;
+    }
+    .store_name {
+      width: 100%;
+      margin: 0 0 0.625rem;
+      color: $black;
+      font-family: 'Crimson Text', serif;
+      font-size: 1.5em;
+      font-weight: 600;
+      line-height: 1.2;
+      @extend .transition;
+      a{
+        color: $black;
+        &:hover {
+          color: $main;
+        }
+      }
+    }
+    .designer_info {
+      font-size: 0;
+      .profile_picture {
+        display: inline-block;
+        width: 44px;
+        height: 44px;
+        margin-right: 0.5rem;
+        border: $khaki-light 1px solid;
+        box-sizing: border-box;
+        vertical-align: middle;
+      }
+      .designer_name {
+        display: inline-block;
+        width: calc(100% - 44px - 0.5rem);
+        color: $gray-darken;
+        font-size: 1rem;
+        vertical-align: middle;
+        @extend .transition;
+      }
+      &:hover .designer_name {
+        color: $main;
+      }
+    }
+    .slick-prev {
+      left: 0;
+      &:before {
+        @include retina-sprite($arrow-slider-prev-white-group);
+      }
+    }
+    .slick-next {
+      right: 0;
+      &:before {
+        @include retina-sprite($arrow-slider-next-white-group);
+      }
+    }
+    @include breakpoint(730px) {
+      .slick-prev {
+        left: 1rem;
+      }
+      .slick-next {
+        right: 1rem;
+      }
+    }
+  }
+}
 .top_designers_slider {
   margin: 0 -0.9375em 2em;
   box-sizing: border-box;
@@ -739,6 +893,7 @@
     .designer_name {
       margin: 0 0 0.5rem;
       color: $black;
+      @extend .transition;
       span {
         font-size: 1.25rem;
       }

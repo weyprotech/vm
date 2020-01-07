@@ -347,7 +347,7 @@
 
 // Index
 .store_map_wrapper {
-  background-color: #F6F6F6;
+  background-color: #FCFCFD;
 }
 .store_map_main {
   position: relative;
@@ -385,37 +385,40 @@
     }
   }
   .store_mark {
-    &:after {
-      content: '';
-      position: absolute;
-      z-index: -1;
-      bottom: 0;
-      left: 50%;
-      display: none;
-      height: 50%;
-      width: 100%;
-      background-color: rgba($black,0.30);
-      border-radius: 50%;
-      transform: translate(-50%,55%);
-    }
     a {
       position: relative;
       display: block;
       width: 100%;
     }
-    .store_icon {
-      display: block;
+    img {
       width: 100%;
       max-width: inherit;
+      &.store_icon {
+        display: block;
+      }
+      &.store_icon_active {
+        display: none;
+      }
     }
     &.isPopup {
-      &:after {
-        display: block;
+      img {
+        &.store_icon {
+          display: none;
+        }
+        &.store_icon_active {
+          display: block;
+        }
       }
     }
   }
   .leaflet-tooltip {
     display: none;
+  }
+  .leaflet-tooltip-left {
+    margin-left: 0;
+  }
+  .leaflet-tooltip-right {
+    margin-left: 12px;
   }
   .leaflet-control-zoom {
     border: none;
@@ -452,7 +455,7 @@
       height: 40px;
       border-radius: 0;
       background-color: $white;
-      background-image: url(../images/map_fullscreen.png);
+      background-image: url(../images/map_fullscreen_on.png);
       background-repeat: no-repeat;
       background-position: center;
       background-size: cover;
@@ -464,7 +467,7 @@
   }
   &.leaflet-fullscreen-on {
     .leaflet-control-fullscreen .leaflet-control-fullscreen-button {
-      background-image: url(../images/map_fullscreen_on.png);
+      background-image: url(../images/map_fullscreen_off.png);
     }
   }
   .leaflet-popup {
@@ -601,6 +604,12 @@
     }
   }
 }
+#mapMode.radio_switch {
+  position: absolute;
+  z-index: 3;
+  left: 15px;
+  bottom: 30px;
+}
 #streetAside {
   position: absolute;
   z-index: 3;
@@ -633,7 +642,7 @@
     width: 40px;
     height: 40px;
     border-radius: 5px 0 0 5px;
-    background-color: $white;
+    background-color: rgba($white, 0.95);
     box-shadow: -4px 0 12px -4px rgba($black, 0.32);
     i.arrow_double_left {
       @extend .transition;
@@ -702,7 +711,7 @@
         display: none;
         list-style: none;
         margin: 0;
-        padding: 0 0 1.5em;
+        padding: 0 0 1.25em;
         li {
           list-style: none;
           a {
@@ -842,6 +851,150 @@
       }
       .slick-next {
         right: 1rem;
+      }
+    }
+  }
+}
+.store_map_wrapper.night_mode {
+  background-color: #323741;
+  #storeMap {
+    background-color: #323741;
+    .leaflet-tooltip {
+      background: rgba($black, 0.95);
+      border-color: rgba($black, 0.95);
+      color: $white;
+      &-top:before {
+        border-top-color: rgba($black, 0.95);
+      }
+      &-bottom:before {
+        border-bottom-color: rgba($black, 0.95);
+      }
+      &-left:before {
+        border-left-color: rgba($black, 0.95);
+      }
+      &-right:before {
+        border-right-color: rgba($black, 0.95);
+      }
+    }
+    .leaflet-control-zoom a,
+    .leaflet-control-fullscreen .leaflet-control-fullscreen-button {
+      background-color: $black;
+    }
+    .map_popup {
+      background-color: $black;
+      &:after {
+        background-color: $black;
+      }
+      .map_popup_head {
+        h2 {
+          color: $khaki;
+        }
+        .address span {
+          color: $khaki;
+        }
+      }
+      .map_popup_content {
+        .intro {
+          .designer_name {
+            .name{
+              color: $khaki;
+            }
+            .country {
+              color: $white;
+            }
+          }
+          .text {
+            color: $white;
+          }
+          .btn.common {
+            color: $white;
+          }
+        }
+      }
+    }
+  }
+  #streetAside {
+    background-color: rgba($black, 0.95);
+    .open_aside {
+      background-color: rgba($black, 0.95);
+    }
+    .search_form {
+      border-color: $khaki-dark;
+      ::-webkit-input-placeholder {
+        color: $khaki-dark;
+      }
+      :-moz-placeholder {
+        color: $khaki-dark;
+        opacity: 1;
+      }
+      ::-moz-placeholder {
+        color: $khaki-dark;
+        opacity: 1;
+      }
+      :-ms-input-placeholder {
+        color: $khaki-dark;
+      }
+      input[type="search"],
+      input[type="input"],
+      button {
+        background-color: $black;
+      }
+      input[type="search"],
+      input[type="input"] {
+        border-color: $khaki-dark;
+        color: $white;
+      }
+      button:hover {
+        background-color: rgba($khaki-light, 0.3);
+      }
+    }
+    .street_list {
+      .item {
+        border-top: $khaki-lighten 1px solid;
+        .street_name {
+          color: $white;
+          &:hover {
+            color: $khaki;
+          }
+        }
+        &.active {
+          .street_name {
+            color: #3C3C3C;
+            &:hover {
+              color: $gray;
+            }
+          }
+        }
+      }
+    }
+  }
+  #streetStores {
+    background-color: #323741;
+    .street_intro {
+      h2, .text {
+        color: $white;
+      }
+      h3 {
+        color: $khaki;
+      }
+    }
+    .stores_slider {
+      .store_name {
+        color: $khaki;
+        a {
+          color: $khaki;
+          &:hover {
+            color: $white;
+          }
+        }
+      }
+      .designer_info {
+        .designer_name {
+          color: $white;
+          &:hover {
+            color: $khaki;
+          }
+        }
       }
     }
   }

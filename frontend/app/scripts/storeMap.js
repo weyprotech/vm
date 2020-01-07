@@ -157,6 +157,15 @@ function storeMap(streetImg, storeIcons) {
     $('#storeMap').removeClass('map_scroll');
   })
 
+  // Mode Change
+  $('#mapMode').on('change', 'input:radio[name="mapMode"]', function() {
+    if ($('input:radio[name="mapMode"]:checked').hasClass('switch_off')) {
+      $('.store_map_wrapper').removeClass('night_mode');
+    } else if ($('input:radio[name="mapMode"]:checked').hasClass('switch_on')) {
+      $('.store_map_wrapper').addClass('night_mode');
+    }
+  })
+
   // Aside
   $('#streetAside').on('click', '.open_aside', function(e) {
     $('#streetAside').addClass('isOpen');

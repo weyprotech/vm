@@ -122,6 +122,50 @@ button {
   }
 }
 
+.radio_switch {
+  position: relative;
+  display: flex;
+  width: 46px;
+  height: 22px;
+  border-radius: 11px;
+  input[type="radio"] {
+    display: none;
+  }
+  label {
+    cursor: pointer;
+    flex: 0 0 auto;
+    display: block;
+    line-height: 1.2;
+  }
+  .switch_off:checked ~ .switch_on_label,
+  .switch_on:checked ~ .switch_off_label {
+    width: 100%;
+  }
+  .switch_off:checked ~ .switch_off_label,
+  .switch_on:checked ~ .switch_on_label {
+    width: 0%;
+  }
+  .turn_dot {
+    content: '';
+    pointer-events: none;
+    position: absolute;
+    display: block;
+    width: 18px;
+    height: 18px;
+    top: 2px;
+    left: 2px;
+    border-radius: 50%;
+    background-color: $white;
+    @extend .transition;
+  }
+  .switch_off:checked ~ .turn_dot {
+    left: 2px;
+  }
+  .switch_on:checked ~ .turn_dot {
+    left: 26px;
+  }
+}
+
 .select_wrapper {
   width: 100%;
   overflow: hidden;
@@ -253,6 +297,35 @@ button {
     &:hover {
       background-color: $white;
     }
+  }
+}
+
+// Map Mode
+#mapMode.radio_switch {
+  background-color: #FFDD5B;
+  box-shadow: 0 0 3px rgba($black, 0.4);
+  label {
+    span {
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      display: block;
+      margin-top: 0.5em;
+      color: $gray-darken;
+      font-size: 0.75em;
+      white-space: nowrap;
+      transform: translateX(-50%);
+    }
+  }
+  .switch_on_label span {
+    color: $white;
+  }
+  .switch_off:checked ~ .switch_on_label span,
+  .switch_on:checked ~ .switch_off_label span {
+    display: none;
+  }
+  .switch_on:checked ~ .turn_dot {
+    background-color: #323741;
   }
 }
 

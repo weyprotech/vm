@@ -2,6 +2,7 @@
   {
     "id": "street01",
     "streetName": "Versailles Avenue",
+    "streetDescription": "Synth polaroid bitters chillwave pickled. Vegan disrupt tousled, Portland keffiyeh aesthetic food truck sriracha cornhole single-origin coffee church-key roof party.",
     "style": "LUXURY",
     "stores": [
       {
@@ -169,6 +170,7 @@
   {
     "id": "street02",
     "streetName": "Berlin Lane",
+    "streetDescription": "Street Description Street Description Street Description Street Description Street Description.",
     "style": "LUXURY",
     "stores": [
       {
@@ -256,6 +258,7 @@
   {
     "id": "street03",
     "streetName": "Victoria Lane",
+    "streetDescription": "Street Description Street Description Street Description Street Description Street Description.",
     "style": "LUXURY",
     "stores": [
       {
@@ -343,6 +346,7 @@
   {
     "id": "street04",
     "streetName": "Bond Street",
+    "streetDescription": "Street Description Street Description Street Description Street Description Street Description.",
     "style": "LUXURY",
     "stores": [
       {
@@ -430,6 +434,7 @@
   {
     "id": "street05",
     "streetName": "Barcelona Street",
+    "streetDescription": "Street Description Street Description Street Description Street Description Street Description.",
     "style": "CASUAL,ECLECTIC",
     "stores": [
       {
@@ -725,6 +730,7 @@
   {
     "id": "street06",
     "streetName": "Prague Alley",
+    "streetDescription": "Street Description Street Description Street Description Street Description Street Description.",
     "style": "CASUAL,ECLECTIC",
     "stores": [
       {
@@ -828,6 +834,7 @@
   {
     "id": "street07",
     "streetName": "Maiden Lane",
+    "streetDescription": "Street Description Street Description Street Description Street Description Street Description.",
     "style": "CASUAL,ECLECTIC",
     "stores": [
       {
@@ -1011,6 +1018,7 @@
   {
     "id": "street08",
     "streetName": "Via Milano",
+    "streetDescription": "Street Description Street Description Street Description Street Description Street Description.",
     "style": "高端,CLASSICAL,ELEGANT",
     "stores": [
       {
@@ -1530,6 +1538,7 @@
   {
     "id": "street09",
     "streetName": "Hyde Park Street",
+    "streetDescription": "Street Description Street Description Street Description Street Description Street Description.",
     "style": "高端,CLASSICAL,ELEGAN",
     "stores": [
       {
@@ -1745,6 +1754,7 @@
   {
     "id": "street10",
     "streetName": "London Walk",
+    "streetDescription": "Street Description Street Description Street Description Street Description Street Description.",
     "style": "STREETWEAR,COOL,HIP",
     "stores": [
       {
@@ -2392,6 +2402,7 @@
   {
     "id": "street11",
     "streetName": "Da Vinci Road",
+    "streetDescription": "Street Description Street Description Street Description Street Description Street Description.",
     "style": "STREETWEAR,COOL,HIP",
     "stores": [
       {
@@ -2543,6 +2554,7 @@
   {
     "id": "street12",
     "streetName": "Paris Boulevard",
+    "streetDescription": "Street Description Street Description Street Description Street Description Street Description.",
     "style": "STREETWEAR,COOL,HIP",
     "stores": [
       {
@@ -2886,6 +2898,7 @@
   {
     "id": "street13",
     "streetName": "Michaelangelo Lane",
+    "streetDescription": "Street Description Street Description Street Description Street Description Street Description.",
     "style": "STREETWEAR,COOL,HIP",
     "stores": [
       {
@@ -3053,6 +3066,7 @@
   {
     "id": "street14",
     "streetName": "Piccadilly Way",
+    "streetDescription": "Street Description Street Description Street Description Street Description Street Description.",
     "style": "STREETWEAR,COOL,HIP",
     "stores": [
       {
@@ -3172,6 +3186,7 @@
   {
     "id": "street15",
     "streetName": "Acropolis Way",
+    "streetDescription": "Street Description Street Description Street Description Street Description Street Description.",
     "style": "STREETWEAR,COOL,HIP",
     "stores": [
       {
@@ -3291,6 +3306,7 @@
   {
     "id": "street16",
     "streetName": "Palermo Street",
+    "streetDescription": "Street Description Street Description Street Description Street Description Street Description.",
     "style": "STREETWEAR,COOL,HIP",
     "stores": [
       {

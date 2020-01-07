@@ -7,6 +7,12 @@ block main
   .store_map_wrapper
     .store_map_main
       #storeMap
+      #mapMode.radio_switch
+        input#day.switch_off(type="radio", name="mapMode", checked)
+        input#night.switch_on(type="radio", name="mapMode")
+        label.switch_off_label(for="day") #[span Day mode]
+        label.switch_on_label(for="night") #[span Night mode]
+        .turn_dot
       #streetAside.isOpen
         a.open_aside(href="javascript:;")
           i.arrow_double_left
@@ -288,7 +294,6 @@ block js
   script.
     $(function() {
       var streetStores = [];
-      var localUrl = '';
       var streetMap = 'images/leaflet/street.png';
 
       $.ajax({
@@ -310,6 +315,7 @@ block js
                   storeName: store.storeName,
                   markerHtml: '<a href="javascript:;" data-storeid="' + store.id + '">' + 
                     '<img class="store_icon" src="images/leaflet/store_marker.svg"/>' + 
+                    '<img class="store_icon_active" src="images/leaflet/store_marker_active.svg"/>' + 
                   '</a>',
                   popupHtml: '<div class="map_popup">' + 
                     '<div class="map_popup_inner">' +

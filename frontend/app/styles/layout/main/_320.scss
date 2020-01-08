@@ -351,11 +351,12 @@
 }
 .store_map_main {
   position: relative;
+  z-index: 0;
   overflow: hidden;
 }
 #storeMap {
   position: relative;
-  z-index: 1;
+  z-index: 0;
   height: calc(100vh - 72px - 44px - 4em);
   background-color: #FCFCFD;
   &.map_scroll {
@@ -389,25 +390,20 @@
       position: relative;
       display: block;
       width: 100%;
+      height: 100%;
     }
-    img {
+    .store_icon {
+      display: block;
       width: 100%;
-      max-width: inherit;
-      &.store_icon {
-        display: block;
-      }
-      &.store_icon_active {
-        display: none;
-      }
+      height: 100%;
+      background-image: url(../images/leaflet/store_marker.svg);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;;
     }
     &.isPopup {
-      img {
-        &.store_icon {
-          display: none;
-        }
-        &.store_icon_active {
-          display: block;
-        }
+      .store_icon {
+        background-image: url(../images/leaflet/store_marker_active.svg);
       }
     }
   }
@@ -418,7 +414,7 @@
     margin-left: 0;
   }
   .leaflet-tooltip-right {
-    margin-left: 12px;
+    margin-left: 14px;
   }
   .leaflet-control-zoom {
     border: none;
@@ -604,15 +600,39 @@
     }
   }
 }
+#mapSky {
+  pointer-events: none;
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  display: none;
+  width: 100%;
+  transition: all 0.5s ease-in-out;
+  &.popupActive {
+    opacity: 0;
+  }
+  img {
+    display: block;
+    width: 100%;
+    max-width: inherit;
+    &.sky_day {
+      display: block;
+    }
+    &.sky_night {
+      display: none;
+    }
+  }
+}
 #mapMode.radio_switch {
   position: absolute;
-  z-index: 3;
+  z-index: 2;
   left: 15px;
   bottom: 30px;
 }
 #streetAside {
   position: absolute;
-  z-index: 3;
+  z-index: 2;
   top: 0.5em;
   left: 0.5em;
   display: flex;
@@ -693,6 +713,9 @@
   .street_list {
     flex: 1 1 auto;
     overflow-y: auto;
+    .list_inner {
+      
+    }
     .item {
       border-top: $khaki-lighten 1px solid;
       a {
@@ -735,7 +758,7 @@
 }
 #streetStores {
   position: relative;
-  z-index: 2;
+  z-index: 1;
   overflow: hidden;
   background-color: $white;
   box-shadow: 2px 0 7px rgba($black, 0.16);
@@ -995,6 +1018,16 @@
             color: $khaki;
           }
         }
+      }
+    }
+  }
+  #mapSky {
+    img {
+      &.sky_day {
+        display: none;
+      }
+      &.sky_night {
+        display: block;
       }
     }
   }

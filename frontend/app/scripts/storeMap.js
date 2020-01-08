@@ -1,4 +1,4 @@
-function storeMap(streetImg, storeIcons) {
+function storeMap(streetImgs, storeIcons) {
   var storeMap = L.map('storeMap', {
     zoomControl: false,
     fullscreenControl: true,
@@ -32,7 +32,8 @@ function storeMap(streetImg, storeIcons) {
     prefix: false
   }).addAttribution('Design by Weypro.').addTo(storeMap);
 
-  L.imageOverlay(streetImg, bounds).addTo(storeMap);
+  var dayStreet = L.imageOverlay(streetImgs.daymode, bounds).addTo(storeMap);
+  var nightStreet = L.imageOverlay(streetImgs.nightmode, bounds);
 
   // Icon
   var storeMarkers = [];
@@ -53,6 +54,7 @@ function storeMap(streetImg, storeIcons) {
 
     var popup = L.responsivePopup().setContent(storeIcons[i].popupHtml);
     var storeMarker = new L.marker(markerPosition, {
+      storeId: storeIcons[i].storeId,
       icon: new LeafDivIcon({
         html: storeIcons[i].markerHtml
       })
@@ -61,6 +63,7 @@ function storeMap(streetImg, storeIcons) {
     .bindPopup(popup, { maxWidth: 'auto' })
     .addTo(storeMap)
     .on('popupopen', function (e) {
+      $('#mapSky').addClass('popupActive');
       $(e.target._icon).addClass('isPopup');
       $('.map_popup_inner').mCustomScrollbar({
         theme: 'dark-3',
@@ -68,6 +71,7 @@ function storeMap(streetImg, storeIcons) {
       });
     })
     .on('popupclose', function (e) {
+      $('#mapSky').removeClass('popupActive');
       $(e.target._icon).removeClass('isPopup');
     });;
 
@@ -160,10 +164,19 @@ function storeMap(streetImg, storeIcons) {
   // Mode Change
   $('#mapMode').on('change', 'input:radio[name="mapMode"]', function() {
     if ($('input:radio[name="mapMode"]:checked').hasClass('switch_off')) {
+      storeMap.removeLayer(nightStreet);
+      storeMap.addLayer(dayStreet);
       $('.store_map_wrapper').removeClass('night_mode');
     } else if ($('input:radio[name="mapMode"]:checked').hasClass('switch_on')) {
+      storeMap.removeLayer(dayStreet);
+      storeMap.addLayer(nightStreet);
       $('.store_map_wrapper').addClass('night_mode');
     }
+    storeMap.eachLayer(function (layer) {
+      if (layer.options && layer.options.pane === 'markerPane') {
+        console.log(layer.options.storeId);
+      }
+    });
   })
 
   // Aside

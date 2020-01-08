@@ -7,6 +7,9 @@ block main
   .store_map_wrapper
     .store_map_main
       #storeMap
+      #mapSky
+        img.sky_day(src="images/leaflet/sky.png")
+        img.sky_night(src="images/leaflet/sky_night.png")
       #mapMode.radio_switch
         input#day.switch_off(type="radio", name="mapMode", checked)
         input#night.switch_on(type="radio", name="mapMode")
@@ -24,73 +27,47 @@ block main
         //-   input(type="search", placeholder="Search Store")
         //-   button(type="button") #[i.icon_search]
         .street_list
-          .item.active
-            a.street_name(href="javascript:;") Versailles Avenue
-            ul
-              li
-                a.store_name(href="javascript:;") Store Name 001
-              li
-                a.store_name(href="javascript:;") Store Name 002
-          .item
-            a.street_name(href="javascript:;") Versailles Avenue
-            ul
-              li
-                a.store_name(href="javascript:;") Store Name 001
-              li
-                a.store_name(href="javascript:;") Store Name 002
+          //- .item.active
+          //-   a.street_name(href="javascript:;", data-streetId="") Versailles Avenue
+          //-   ul
+          //-     li
+          //-       a.store_name(href="javascript:;", data-storeId="") Store Name 001
+          //-     li
+          //-       a.store_name(href="javascript:;", data-storeId="") Store Name 002
     #streetStores
       .street_intro
         .intro_inner
-          h2 J street
+          h2
           hr
-          h3 Casual Free style
-          .text Synth polaroid bitters chillwave pickled. Vegan disrupt tousled, Portland keffiyeh aesthetic food truck sriracha cornhole single-origin coffee church-key roof party.
+          h3
+          .text
+          //- h2 J street
+          //- hr
+          //- h3 Casual Free style
+          //- .text Synth polaroid bitters chillwave pickled. Vegan disrupt tousled, Portland keffiyeh aesthetic food truck sriracha cornhole single-origin coffee church-key roof party.
       .stores_slider
-        .slide
-          a.thumb(href="designer_products.html")
-            //↓ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓
-            .pic(style="background-image: url(images/img_brand.jpg);")
-              img.size(src="images/size_1x1.png")
-            //↑ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑
-          .intro
-            h3.store_name
-              a(href="brand_story.html")
-                | Store Name
-            a.designer_info(href="designer_home.html")
-              .profile_picture
-                //↓ 1:1，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓
-                .pic(style="background-image: url(images/img_profile.jpg")
-                  img.size(src="images/size_1x1.png")
-                //↑ 1:1，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑
-              .designer_name
-                //↓ 知名設計才會有鑽石icon ↓
-                i.icon_diamond_s
-                //↑ 知名設計才會有鑽石icon ↑
-                img.flag(src="images/flag/flag_italy.png")
-                span Designer Name
-        each i inArray(4)
-          .slide
-            a.thumb(href="designer_products.html")
-              //↓ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓
-              .pic(style="background-image: url(https://via.placeholder.com/600x600);")
-                img.size(src="images/size_1x1.png")
-              //↑ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑
-            .intro
-              h3.store_name
-                a(href="brand_story.html")
-                  | Store Name
-              a.designer_info(href="designer_home.html")
-                .profile_picture
-                  //↓ 1:1，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓
-                  .pic(style="background-image: url(https://via.placeholder.com/100x100);")
-                    img.size(src="images/size_1x1.png")
-                  //↑ 1:1，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑
-                .designer_name
-                  //↓ 知名設計才會有鑽石icon ↓
-                  i.icon_diamond_s
-                  //↑ 知名設計才會有鑽石icon ↑
-                  img.flag(src="images/flag/flag_italy.png")
-                  span Designer Name
+        //- .slide
+        //-   a.thumb(href="designer_products.html")
+        //-     //↓ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓
+        //-     .pic(style="background-image: url(images/img_brand.jpg);")
+        //-       img.size(src="images/size_1x1.png")
+        //-     //↑ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑
+        //-   .intro
+        //-     h3.store_name
+        //-       a(href="brand_story.html")
+        //-         | Store Name
+        //-     a.designer_info(href="designer_home.html")
+        //-       .profile_picture
+        //-         //↓ 1:1，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓
+        //-         .pic(style="background-image: url(images/img_profile.jpg")
+        //-           img.size(src="images/size_1x1.png")
+        //-         //↑ 1:1，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑
+        //-       .designer_name
+        //-         //↓ 知名設計才會有鑽石icon ↓
+        //-         i.icon_diamond_s
+        //-         //↑ 知名設計才會有鑽石icon ↑
+        //-         img.flag(src="images/flag/flag_italy.png")
+        //-         span Designer Name
 
   .top_designers.page_block
     .block_inner
@@ -294,7 +271,10 @@ block js
   script.
     $(function() {
       var streetStores = [];
-      var streetMap = 'images/leaflet/street.png';
+      var streetImgs = {
+        daymode: 'images/leaflet/street.png',
+        nightmode: 'images/leaflet/street_night.png'
+      };
 
       $.ajax({
         url: 'json/stores.json',
@@ -304,18 +284,29 @@ block js
         },
         success: function(data) {
           streetStores = data;
+
           var storeIcons = [];
 
           for(var i=0; i < streetStores.length; i++) {
+            // Street Item
+            var $streetLink = $('<a></a>').addClass('street_name').attr('href', 'javascript:;').attr('data-streetid', streetStores[i].id).text(streetStores[i].streetName);
+            var $streetItem = $('<div></div>').addClass('item').append($streetLink);
+            if(i == 0) {
+              $streetItem.addClass('active');
+            }
+
             if( streetStores[i].stores.length !== 0 ) {
+              var $storeItems = $('<ul></ul>');
+
               for(j=0; j < streetStores[i].stores.length; j++) {
+                // Icon
                 var store = streetStores[i].stores[j];
                 var storeObj = {
+                  storeId: store.id,
                   latlng: store.latlng,
                   storeName: store.storeName,
-                  markerHtml: '<a href="javascript:;" data-storeid="' + store.id + '">' + 
-                    '<img class="store_icon" src="images/leaflet/store_marker.svg"/>' + 
-                    '<img class="store_icon_active" src="images/leaflet/store_marker_active.svg"/>' + 
+                  markerHtml: '<a href="javascript:;">' + 
+                    '<i class="store_icon"></i>' + 
                   '</a>',
                   popupHtml: '<div class="map_popup">' + 
                     '<div class="map_popup_inner">' +
@@ -363,11 +354,20 @@ block js
                   '</div>'
                 }
                 storeIcons.push(storeObj);
+
+                // Street Item
+                var $storeLink = $('<a></a>').addClass('store_name').attr('href', 'javascript:;').attr('data-storeid', store.id).text(store.storeName);
+                var $storeItem = $('<li></li>').append($storeLink);
+                $storeItems.append($storeItem);
               }
+
+              $streetItem.append($storeItems);
             }
+
+            $('#streetAside .street_list').append($streetItem);
           }
 
-          storeMap(streetMap, storeIcons);
+          storeMap(streetImgs, storeIcons);
         }
       });
 

@@ -84,7 +84,7 @@ block main
                 //↑ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑
                 .brand_name
                   | Stephen Herrera
-              .intro
+              .designer_info
                 .profile_picture
                   //↓ 1:1，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓
                   .pic(style="background-image: url(images/img_profile.jpg")
@@ -112,7 +112,7 @@ block main
                   //↑ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑
                   .brand_name
                     | MU Jason Williams
-                .intro
+                .designer_info
                   .profile_picture
                     //↓ 1:1，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓
                     .pic(style="background-image: url(https://via.placeholder.com/100x100)")
@@ -130,7 +130,7 @@ block main
                     //-     | #casual
                     //-   span
                     //-     | #comfy
-        a.btn.common.more(href="designers_list.html")
+        a.btn.common.more(href="designers.html")
           | All designers
 
   .what_next.page_block
@@ -270,11 +270,12 @@ block js
 
   script.
     $(function() {
-      var streetStores = [];
       var streetImgs = {
         daymode: 'images/leaflet/street.png',
         nightmode: 'images/leaflet/street_night.png'
       };
+      var streetStores = [];
+      var currentStreetId;
 
       $.ajax({
         url: 'json/stores.json',
@@ -291,66 +292,73 @@ block js
             // Street Item
             var $streetLink = $('<a></a>').addClass('street_name').attr('href', 'javascript:;').attr('data-streetid', streetStores[i].id).text(streetStores[i].streetName);
             var $streetItem = $('<div></div>').addClass('item').append($streetLink);
+            
             if(i == 0) {
               $streetItem.addClass('active');
-            }
 
+              // Street Intro
+              streetIntro(streetStores[i]);
+            }
             if( streetStores[i].stores.length !== 0 ) {
               var $storeItems = $('<ul></ul>');
 
               for(j=0; j < streetStores[i].stores.length; j++) {
                 // Icon
                 var store = streetStores[i].stores[j];
+                var diamondhtml = (streetStores[i].stores[j].diamond) ? '<i class="icon_diamond_s"></i>' : '';
                 var storeObj = {
                   storeId: store.id,
                   latlng: store.latlng,
                   storeName: store.storeName,
-                  markerHtml: '<a href="javascript:;">' + 
-                    '<i class="store_icon"></i>' + 
+                  markerHtml: '<a href="javascript:;">' +
+                    '<i class="store_icon"></i>' +
                   '</a>',
-                  popupHtml: '<div class="map_popup">' + 
+                  popupHtml: '<div class="map_popup">' +
                     '<div class="map_popup_inner">' +
-                      '<div class="map_popup_head">' + 
-                        '<a class="brand_name" href="' + store.brandLink + '">' + 
-                          '<div class="brand_picture">' + 
-                            '<div class="pic" style="background-image: url(' + store.brandImg + ');">' + 
+                      '<div class="map_popup_head">' +
+                        '<a class="brand_name" href="' + store.brandLink + '">' +
+                          '<div class="brand_picture">' +
+                            '<div class="pic" style="background-image: url(' +store.brandImg + ');">' + 
                               '<img class="size" src="images/size_1x1.png">' +
-                            '</div>' + 
-                          '</div>' + 
-                          '<h2>' + store.storeName + '</h2>' + 
-                        '</a>' + 
-                        '<div class="address">' + 
-                          '<i class="icon_map_marker"></i>' + 
-                          '<span>' + 'No.' + store.number + ', ' + streetStores[i].streetName + '</span>' + 
-                        '</div>' + 
-                      '</div>' + 
-                      '<div class="map_popup_content">' +
-                        '<div class="intro">' + 
-                          '<a class="designer_info" href="' + store.designerLink + '">' + 
-                            '<div class="profile_picture">' + 
-                              '<div class="pic" style="background-image: url(' + store.designerImg + ')">' + 
-                                '<img class="size" src="images/size_1x1.png">' +
-                              '</div>' + 
-                            '</div>' + 
-                            '<h3 class="designer_name">' + 
-                              '<span class="name">' + store.designerName + '</span>' + 
-                              '<div class="divide_line"></div>' + 
-                              '<img class="flag" src="' + store.flag + '">' + 
-                              '<span class="country">' + store.country + '</span>' + 
-                            '</h3>' + 
-                          '</a>' + 
-                          '<div class="text">' +  store.description + '</div>' + 
-                          '<a class="btn common more" href="' + store.productsLink + '">' + 'Products' + '</a>' + 
-                        '</div>' + 
-                        '<div class="picture">' + 
-                          '<div class="thumb">' + 
-                            '<div class="pic" style="background-image: url(' + store.brandPic + ')">' + 
-                              '<img class="size" src="images/size_4x3.png">' + 
-                            '</div>' + 
-                          '</div>' + 
+                            '</div>' +
+                          '</div>' +
+                          '<h2>' + store.storeName + '</h2>' +
+                        '</a>' +
+                        '<div class="address">' +
+                          '<i class="icon_map_marker"></i>' +
+                          '<span>' + 'No.' + store.number + ', ' + streetStores[i].streetName + '</span>' +
                         '</div>' +
-                      '</div>' + 
-                    '</div>' + 
+                      '</div>' +
+                      '<div class="map_popup_content">' +
+                        '<div class="intro">' +
+                          '<a class="designer_info" href="' + store.designerLink + '">' +
+                            '<div class="profile_picture">' +
+                              '<div class="pic" style="background-image: url(' +store.designerImg + ')">' +
+                                '<img class="size" src="images/size_1x1.png">' +
+                              '</div>' +
+                            '</div>' +
+                            '<h3 class="designer_name">' +
+                              diamondhtml +
+                              '<span class="name">' + store.designerName + '</span>' +
+                              '<div class="divide_line"></div>' +
+                              '<div class="country">' +
+                                '<img class="flag" src="' + store.flag + '">' +
+                                '<span class="country">' + store.country + '</span>' +
+                              '</div>' +
+                            '</h3>' +
+                          '</a>' +
+                          '<div class="text">' +  store.description + '</div>' +
+                          '<a class="btn common more" href="' + store.productsLink + '">' + 'Products' + '</a>' +
+                        '</div>' +
+                        '<div class="picture">' +
+                          '<div class="thumb">' +
+                            '<div class="pic" style="background-image: url(' + store.brandPic + ')">' +
+                              '<img class="size" src="images/size_4x3.png">' +
+                            '</div>' +
+                          '</div>' +
+                        '</div>' +
+                      '</div>' +
+                    '</div>' +
                   '</div>'
                 }
                 storeIcons.push(storeObj);
@@ -360,19 +368,124 @@ block js
                 var $storeItem = $('<li></li>').append($storeLink);
                 $storeItems.append($storeItem);
               }
-
               $streetItem.append($storeItems);
             }
 
             $('#streetAside .street_list').append($streetItem);
           }
-
+          
           storeMap(streetImgs, storeIcons);
+
+          $('#streetAside .street_list').mCustomScrollbar({
+            theme: 'dark-3',
+            axis: 'y',
+            autoHideScrollbar: true
+          });
         }
       });
 
+      // Aside
+      $('#streetAside').on('click', '.open_aside', function(event) {
+        $('#streetAside').addClass('isOpen');
+      });
+      $('#streetAside').on('click', '.close_aside', function (event) {
+        $('#streetAside').removeClass('isOpen');
+      });
+      $('#streetAside .street_list').on('click', '.street_name', function (event) {
+        $(this).parent('.item').siblings('.item').children('ul').stop().slideUp(function(event) {
+          $(this).parent('.item').removeClass('active');
+        });
+        $(this).parent('.item').children('ul').stop().slideDown(function(event) {
+          $(this).parent('.item').addClass('active');
+        });
+
+        var streetid = $(this).attr('data-streetId');
+        if(streetid !== currentStreetId) {
+          $.each(streetStores, function(i, item) {
+            if( item.id == streetid ) {
+              $('#streetStores .stores_slider').slick('unslick');
+              $('#streetStores .stores_slider').empty();
+              streetIntro(streetStores[i]);
+            }
+          });
+        }
+      });
+
+      function streetIntro(streetData) {
+        currentStreetId = streetData.id;
+
+        // Street Intro
+        $('#streetStores .street_intro h2').text(streetData.streetName);
+        $('#streetStores .street_intro h3').text(streetData.style);
+        $('#streetStores .street_intro .text').text(streetData.streetDescription);
+
+        // Street Stores Slider
+        $('#streetStores .stores_slider').slick({
+          speed: 500,
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          responsive: [
+            {
+              breakpoint: 1280,
+              settings: {
+                slidesToShow: 2,
+                slidesToScroll: 2
+              }
+            },
+            {
+              breakpoint: 560,
+              settings: {
+                centerMode: true,
+                centerPadding: '44px',
+                slidesToShow: 1,
+                slidesToScroll: 1
+              }
+            },
+            {
+              breakpoint: 370,
+              settings: {
+                centerMode: true,
+                centerPadding: '20px',
+                slidesToShow: 1,
+                slidesToScroll: 1
+              }
+            }
+          ]
+        });
+
+        for(var i=0; i < streetData.stores.length; i++) {
+          var diamondhtml = (streetData.stores[i].diamond) ? '<i class="icon_diamond_s"></i>' : '';
+          var slidehtml = '<div class="slide">' +
+            '<a class="thumb" href="' + streetData.stores[i].productsLink + '">' +
+              '<div class="pic" style="background-image: url(' + streetData.stores[i].brandPic + ');">' +
+                '<img class="size" src="images/size_1x1.png" />' +
+              '</div>' +
+            '</a>' +
+            '<div class="intro">' +
+              '<h3 class="store_name">' +
+                '<a href="' + streetData.stores[i].brandLink + '">' + streetData.stores[i].storeName + '</a>' +
+              '</h3>' +
+              '<a class="designer_info" href="' + streetData.stores[i].designerLink + '">' +
+                '<div class="profile_picture">' +
+                  '<div class="pic" style="background-image: url(' + streetData.stores[i].designerImg + ')">' +
+                    '<img class="size" src="images/size_1x1.png" />' +
+                  '</div>' +
+                '</div>' +
+                '<div class="designer_name">' +
+                  diamondhtml +
+                  '<img class="flag" src="' + streetData.stores[i].flag + '" />' +
+                  '<span>' + streetData.stores[i].designerName + '</span>' +
+                '</div>' +
+              '</a>' +
+            '</div>' +
+          '</div>';
+
+          $('#streetStores .stores_slider').slick('slickAdd', slidehtml);
+        }
+      }
+
       // OOTD 加入愛心的點擊事件
-      $(document).on('click', '.btn_favorite', function() {
+      $(document).on('click', '.btn_favorite', function(event) {
         // ootdId 取得穿搭的 ID
         var ootdId = $(this).attr('data-ootdId');
 
@@ -386,4 +499,4 @@ block js
           $(this).addClass('active');
         }
       });
-    });
+    }); 

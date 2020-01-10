@@ -79,13 +79,13 @@ function storeMap(streetImgs, storeIcons) {
   }
 
   // Zoom
-  $('#mapControls').on('click', '.zoomOut', function() {
+  $('#mapControls').on('click', '.zoomOut', function(event) {
     storeMap.setZoom(storeMap.getZoom() - 1);
   });
-  $('#mapControls').on('click', '.zoomIn', function () {
+  $('#mapControls').on('click', '.zoomIn', function (event) {
     storeMap.setZoom(storeMap.getZoom() + 1);
   });
-  storeMap.on('zoomend', function () {
+  storeMap.on('zoomend', function (event) {
     var currentZoom = storeMap.getZoom(),
         sizeMultiple,
         fontSize;
@@ -162,7 +162,7 @@ function storeMap(streetImgs, storeIcons) {
   })
 
   // Mode Change
-  $('#mapMode').on('change', 'input:radio[name="mapMode"]', function() {
+  $('#mapMode').on('change', 'input:radio[name="mapMode"]', function(event) {
     if ($('input:radio[name="mapMode"]:checked').hasClass('switch_off')) {
       storeMap.removeLayer(nightStreet);
       storeMap.addLayer(dayStreet);
@@ -172,65 +172,24 @@ function storeMap(streetImgs, storeIcons) {
       storeMap.addLayer(nightStreet);
       $('.store_map_wrapper').addClass('night_mode');
     }
-    storeMap.eachLayer(function (layer) {
-      if (layer.options && layer.options.pane === 'markerPane') {
-        console.log(layer.options.storeId);
-      }
-    });
   })
 
-  // Aside
-  $('#streetAside').on('click', '.open_aside', function(e) {
-    $('#streetAside').addClass('isOpen');
-  });
-  $('#streetAside').on('click', '.close_aside', function (e) {
-    $('#streetAside').removeClass('isOpen');
-  });
-  $('#streetAside .street_list').on('click', '.street_name', function (e) {
-    $(this).parent('.item').siblings('.item').children('ul').stop().slideUp(function(e) {
-      $(this).parent('.item').removeClass('active')
-    });
-    $(this).parent('.item').children('ul').stop().slideDown(function(e) {
-      $(this).parent('.item').addClass('active')
-    });
-  });
+  // Street Aside
+  $('#streetAside .street_list').on('click', '.store_name', function (event) {
+    var storeid = $(this).attr('data-storeid');
 
-  // Slider
-  $('#streetStores .stores_slider').slick({
-    speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 3,
-    responsive: [
-      {
-        breakpoint: 1280,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2
-        }
-      },
-      {
-        breakpoint: 560,
-        settings: {
-          centerMode: true,
-          centerPadding: '44px',
-          slidesToShow: 1,
-          slidesToScroll: 1
-        }
-      },
-      {
-        breakpoint: 370,
-        settings: {
-          centerMode: true,
-          centerPadding: '20px',
-          slidesToShow: 1,
-          slidesToScroll: 1
+    storeMap.eachLayer(function (layer) {
+      if (layer.options && layer.options.pane === 'markerPane') {
+        if (layer.options.storeId === storeid) {
+          layer.openPopup();
+          storeMap.panTo(layer._latlng);
         }
       }
-    ]
+    });
   });
 
   // Resize
-  $(window).on('resize', function() {
+  $(window).on('resize', function(event) {
     storeMap.closePopup();
   });
 }

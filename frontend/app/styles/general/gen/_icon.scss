@@ -107,3 +107,26 @@
 .arrow_double_left {
   @include retina-sprite($arrow-double-left-group);
 }
+
+.icon_just_for_you {
+  @include retina-sprite($icon-just-for-you-group);
+}
+
+.icon_message {
+  @include retina-sprite($icon-message-group);
+}
+
+.icon_favorite_heart_big {
+  @include retina-sprite($icon-favorite-heart-big-group);
+}
+.btn_favorite.active .icon_favorite_heart_big {
+  @include retina-sprite($icon-favorite-heart-big-active-group);
+}
+
+.icon_gift_designer {
+  @include retina-sprite($icon-gift-designer-group);
+}
+
+.icon_make_wish {
+  @include retina-sprite($icon-make-wish-group);
+}

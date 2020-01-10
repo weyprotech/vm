@@ -8,6 +8,13 @@
     font-size: 2.5em;
   }
 
+  // Banner Slider
+  .banner_slider {
+    .slick-dots {
+      bottom: 1.875rem;
+    }
+  }
+
   // Index
   #storeMap {
     height: 70vw;
@@ -245,11 +252,6 @@
   .brandStory_topping {
     .brandStory_topping_header {
       margin: 0;
-    }
-  }
-  .brandStory_slider {
-    .slick-dots {
-      bottom: 1.875rem;
     }
   }
   .brandStory_wall {

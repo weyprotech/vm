@@ -1,0 +1,93 @@
+extends layouts/default.pug
+
+block value
+  - var currentUrl = 'designers';
+
+block main
+  .designer_banner.banner_slider
+    .slide
+      img(src="images/banner_designer.jpg", alt="")
+    .slide
+      img(src="https://via.placeholder.com/1920x826", alt="")
+    .slide
+      img(src="https://via.placeholder.com/1920x826", alt="")
+  .designer_header
+    .designer_header_inner.wide
+      .designer_header_mian
+        a.designer_info(href="designer_profile.html")
+          .profile_picture
+            //↓ 1:1，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓
+            .pic(style="background-image: url(images/img_profile.jpg")
+              img.size(src="images/size_1x1.png")
+            //↑ 1:1，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑
+          .text
+            .designer_name
+              //↓ 知名設計才會有鑽石icon ↓
+              i.icon_diamond_b
+              //↑ 知名設計才會有鑽石icon ↑
+              span Douglas Robinson
+            .country
+              img.flag(src="images/flag/flag_italy.png")
+              span Italy
+        ul.links
+          li
+            a.popup(href="javascript:;", title="Just for you")
+              i.icon_just_for_you
+              span Just for you
+          li
+            a.popup(href="javascript:;", title="Message")
+              i.icon_message
+              span Message
+          li
+            a.btn_favorite(href="javascript:;", data-designerId="designer001", title="Favorite")
+              i.icon_favorite_heart_big
+              span (#[span.count 1207])
+          li
+            a.popup(href="javascript:;", title="Gift Designer")
+              i.icon_gift_designer
+              span Gift Designer
+          li
+            a.popup(href="javascript:;", title="Make a Wish")
+              i.icon_make_wish
+              span Make a Wish
+      .designer_navigation
+        .navigation_inner
+          .reviews
+            i.icon_star
+            .number 4.8
+            span (232 Reviews)
+          .nav_menu
+            ul
+              li
+                a(href="designer_home.html") Home
+              li
+                a(href="designer_profile.html") Designer Profile
+              li
+                a(href="brand_story.html") Brand Story
+              li
+                a(href="designer_products.html") Product
+              li
+                a(href="designer_review.html") Review
+
+block js
+  script.
+    $(function() {
+      // 愛心的點擊事件
+      $(document).on('click', '.btn_favorite', function(event) {
+        // designerId 取得穿搭的 ID
+        var designerId = $(this).attr('data-designerId');
+        var countNumber = parseInt($(this).find('.count').text());
+
+        if ($(this).hasClass('active')) {
+          // 取消最愛寫這裡
+
+          $(this).removeClass('active');
+          $(this).find('.count').text(countNumber - 1);
+        } else {
+          // 加入最愛寫這裡
+
+          $(this).addClass('active');
+          $(this).find('.count').text(countNumber + 1);
+        }
+      });
+    });

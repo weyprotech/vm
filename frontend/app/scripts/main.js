@@ -194,9 +194,11 @@ $(document).ready(function () {
       ]
     });
   }
-  if ($('.brandStory_slider').length > 0) {
-    $('.brandStory_slider').slick({
+  if ($('.banner_slider').length > 0) {
+    $('.banner_slider').slick({
       arrows: false,
+      autoplay: true,
+      autoplaySpeed: 5000,
       dots: true,
       speed: 500
     });

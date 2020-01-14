@@ -1168,7 +1168,7 @@
     .thumb .brand_name {
       color: $khaki;
     }
-    .intro h3 {
+    .designer_info h3 {
       color: $main;
     }
   }
@@ -2064,84 +2064,209 @@
     border-radius: 5px;
     box-sizing: border-box;
     background-color: $white;
-    .designer_info {
-      display: flex;
+  }
+  .designer_info {
+    margin-bottom: 1em;
+    font-size: 0;
+    a {
+      display: inline-flex;
       align-items: center;
-      margin-bottom: 1em;
-      .profile_picture {
-        flex: 0 0 auto;
-        width: 80px;
-        height: 80px;
-        margin-right: 1.25em;
-        border: $khaki-light 1px solid;
-        box-sizing: border-box;
+      max-width: 100%;
+      font-size: 1rem;
+    }
+    .profile_picture {
+      flex: 0 0 auto;
+      width: 80px;
+      height: 80px;
+      margin-right: 1.125em;
+      border: $khaki-light 1.5px solid;
+      box-sizing: border-box;
+      @extend .transition;
+    }
+    .text {
+      flex: 1 1 auto;
+    }
+    .designer_name {
+      margin-bottom: 0.625rem;
+      color: $main;
+      @extend .transition;
+      span {
+        font-size: 1.25rem;
+        font-weight: 700;
       }
-      .text {
-        flex: 1 1 auto;
+    }
+    .country {
+      line-height: 1.2;
+      .flag, span {
+        display: inline-block;
+        vertical-align: middle;
+      }
+      .flag {
+        margin: 0 0.75rem 0 0.28125rem;
+      }
+      span {
+        color: $gray-darken;
+      }
+    }
+    a:hover {
+      .profile_picture {
+        border-color: $khaki;
       }
       .designer_name {
-        margin-bottom: 0.8rem;
-        color: $main;
-        span {
-          font-size: 1.25rem;
-          font-weight: 700;
-        }
+        color: $khaki;
       }
-      .country {
-        line-height: 1.2;
-        .flag, span {
-          display: inline-block;
-          vertical-align: middle;
-        }
-        .flag {
-          margin: 0 0.75rem 0 0.28125rem;
-        }
-        span {
-          color: $gray-darken;
+    }
+  }
+  .links {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: 0;
+    li {
+      list-style: none;
+      display: inline-block;
+      width: (100% - 2% * 2) / 3;
+      margin-right: 2%;
+      margin-bottom: 0.8rem;
+      text-align: center;
+      &:nth-child(3n) {
+        margin-right: 0;
+      }
+      &:nth-last-child(-n+3):nth-child(3n+1),
+      &:nth-last-child(-n+3):nth-child(3n+1) ~ li {
+        margin-bottom: 0;
+      }
+      
+    }
+    @include breakpoint(480px) {
+      text-align: center;
+      li {
+        width: auto;
+        margin-right: 1rem !important;
+        margin-bottom: 0;
+        &:last-child() {
+          margin-right: 0 !important;
         }
       }
     }
-    .links {
-      margin: 0;
-      padding: 0;
+    a {
+      display: inline-block;
+      color: $gray-darken;
+      &:hover {
+        color: $khaki;
+      }
+      > span {
+        display: block;
+        font-size: 0.875rem;
+        span {
+          display: inline;
+        }
+      }
+    }
+  }
+  .designer_navigation {
+    padding: 0.8em 0;
+    border-color: $khaki-lightest;
+    border-width: 1px 0 1px 0;
+    border-style: solid;
+  }
+  .designer_navigation_inner {
+    max-width: 1200px;
+    padding: 0 0.8em;
+    margin: 0 auto;
+    box-sizing: border-box;
+  }
+  .reviews {
+    margin-bottom: 0.8em;
+    line-height: 1.2;
+    a {
+      display: inline-block;
+      > * {
+        vertical-align: middle;
+        @extend .transition;
+      }
+    }
+    .icon_star_full_big {
+      margin-top: -3px;
+      margin-right: 0.5em;
+    }
+    .score {
+      margin-right: 0.5rem;
+      color: #5C5C5C;
+      font-size: 1.5em;
+    }
+    .count {
+      color: $main;
+    }
+    a:hover {
+      .score, .count {
+        color: $khaki;
+      }
+    }
+  }
+  .nav_menu {
+    ul {
       list-style: none;
-      font-size: 0;
+      padding: 0;
+      margin: 0;
       li {
         list-style: none;
-        display: inline-block;
-        width: (100% - 2% * 2) / 3;
-        margin-right: 2%;
-        margin-bottom: 0.8rem;
-        text-align: center;
-        &:nth-child(3n) {
-          margin-right: 0;
-        }
-        &:nth-last-child(-n+3):nth-child(3n+1),
-        &:nth-last-child(-n+3):nth-child(3n+1) ~ li {
-          margin-bottom: 0;
-        }
-        
-      }
-      @include breakpoint(480px) {
-        text-align: center;
-        li {
-          width: auto;
-          margin-right: 1rem !important;
-          margin-bottom: 0;
-          &:last-child() {
-            margin-right: 0 !important;
-          }
-        }
       }
       a {
-        display: inline-block;
-        color: $gray-darken;
-        > span {
-          display: block;
-          font-size: 0.875rem;
-          span {
-            display: inline;
+        display: block;
+        padding: 0 0.625em;
+        color: $black;
+        &:hover, &.current, &.active {
+          background-color: $khaki-dark;
+          color: $white;
+        }
+      }
+    }
+    > ul {
+      display: none;
+      > li {
+        border-bottom: $khaki-light 1px solid;
+        &:first-child {
+          border-top: $khaki-light 1px solid;
+        }
+        > a {
+          line-height: 30px;
+        }
+        > ul {
+          display: none;
+          background-color: $khaki-lightest;
+          > li {
+            > a {
+              padding: 0.15em 0.625em;
+            }
           }
+        }
+      }
+    }
+    .toggle_menu {
+      padding: 0.3rem 0.5rem;
+      display: block;
+      border-radius: 0 0 5px 5px;
+      background-color: $khaki-dark;
+      color: $white;
+      font-size: 1.125em;
+      text-align: center;
+      &:after {
+        content: '';
+        display: inline-block;
+        width: 0;
+        height: 0;
+        margin-left: 0.3em;
+        border-style: solid;
+        border-width: 10px 6px 0 6px;
+        border-color: #ffffff transparent transparent transparent;
+        @extend .transition;
+      }
+    }
+    &.open {
+      .toggle_menu {
+        &:after {
+          transform: rotate(-180deg);
         }
       }
     }

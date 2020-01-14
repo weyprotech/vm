@@ -14,21 +14,22 @@ block main
   .designer_header
     .designer_header_inner.wide
       .designer_header_mian
-        a.designer_info(href="designer_profile.html")
-          .profile_picture
-            //↓ 1:1，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓
-            .pic(style="background-image: url(images/img_profile.jpg")
-              img.size(src="images/size_1x1.png")
-            //↑ 1:1，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑
-          .text
-            .designer_name
-              //↓ 知名設計才會有鑽石icon ↓
-              i.icon_diamond_b
-              //↑ 知名設計才會有鑽石icon ↑
-              span Douglas Robinson
-            .country
-              img.flag(src="images/flag/flag_italy.png")
-              span Italy
+        .designer_info
+          a(href="designer_profile.html")
+            .profile_picture
+              //↓ 1:1，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓
+              .pic(style="background-image: url(images/img_profile.jpg")
+                img.size(src="images/size_1x1.png")
+              //↑ 1:1，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑
+            .text
+              .designer_name
+                //↓ 知名設計才會有鑽石icon ↓
+                i.icon_diamond_b
+                //↑ 知名設計才會有鑽石icon ↑
+                span Douglas Robinson
+              .country
+                img.flag(src="images/flag/flag_italy.png")
+                span Italy
         ul.links
           li
             a.popup(href="javascript:;", title="Just for you")
@@ -51,23 +52,31 @@ block main
               i.icon_make_wish
               span Make a Wish
       .designer_navigation
-        .navigation_inner
+        .designer_navigation_inner
           .reviews
-            i.icon_star
-            .number 4.8
-            span (232 Reviews)
+            a(href="designer_review.html")
+              i.icon_star_full_big
+              span.score 4.8
+              span.count (232 Reviews)
           .nav_menu
             ul
               li
-                a(href="designer_home.html") Home
+                a.current(href="designer_home.html") Home
               li
                 a(href="designer_profile.html") Designer Profile
               li
-                a(href="brand_story.html") Brand Story
+                a(href="javascript:;") Brand Story
+                ul
+                  li
+                    a(href="brand_story.html") Brand Name 01
+                  li
+                    a(href="brand_story.html") Brand Name 02
               li
                 a(href="designer_products.html") Product
               li
                 a(href="designer_review.html") Review
+            a.toggle_menu(href="javascript:;")
+              | Menu
 
 block js
   script.

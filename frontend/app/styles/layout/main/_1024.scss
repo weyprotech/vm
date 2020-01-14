@@ -192,6 +192,26 @@
       }
     }
   }
+  .designer_header {
+    .designer_header_mian {
+      padding: 1.5em;
+    }
+    .links {
+      li {
+        margin-right: 1.5rem !important;
+      }
+    }
+    .designer_navigation_inner {
+      padding: 0 1.5em;
+    }
+    .nav_menu {
+      > ul {
+        > li {
+          padding: 0 1em;
+        }
+      }
+    }
+  }
 
   // Brand
   .brand_topping {

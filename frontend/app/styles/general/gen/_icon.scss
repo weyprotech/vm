@@ -130,3 +130,7 @@
 .icon_make_wish {
   @include retina-sprite($icon-make-wish-group);
 }
+
+.icon_star_full_big {
+  @include retina-sprite($icon-star-full-big-group);
+}

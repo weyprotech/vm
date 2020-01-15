@@ -1710,10 +1710,10 @@
     .designer_name {
       margin: 0 0 0.3rem;
       a {
-        display: block;
+        display: inline-block;
         color: $main;
         &:hover {
-          color: $gray-darken;
+          color: $khaki;
         }
       }
       span {
@@ -1891,9 +1891,6 @@
     }
     .header_content {
       color: $gray;
-      &:hover {
-        color: $gray-darken;
-      }
       .thumb {
         margin-bottom: 0.8em;
       }
@@ -1912,6 +1909,7 @@
       .designer_name {
         width: calc(100% - 50px - 1rem);
         margin: 0;
+        @extend .transition;
         span {
           font-size: 1.125rem;
         }
@@ -1922,6 +1920,12 @@
         margin: 0.5em 0 0;
         line-height: 1.25;
       }
+      &:hover {
+        color: $gray-darken;
+        .designer_name {
+          color: $khaki;
+        }
+      }
     }
     @include breakpoint(560px) {
       .btn_favorite {
@@ -1929,10 +1933,7 @@
         right: 1.5em;
       }
       .header_content {
-        color: $white !important;
-        &:hover {
-          color: $khaki !important;
-        }
+        color: $white;
         .thumb {
           margin-bottom: 0;
         }
@@ -1955,9 +1956,15 @@
         }
         .designer_name {
           width: 100%;
-          color: $white !important;
+          color: $white;
           span {
             font-size: 1.5rem;
+          }
+        }
+        &:hover {
+          color: $khaki;
+          .designer_name {
+            color: $khaki;
           }
         }
       }
@@ -1973,10 +1980,8 @@
       right: 0;
     }
     .item_content {
+      display: block;
       color: $gray;
-      &:hover {
-        color: $gray-darken;
-      }
       .intro_inner {
         display: flex;
         flex-wrap: wrap;
@@ -1994,6 +1999,7 @@
         margin: 0;
         padding-right: 1.875rem;
         box-sizing: border-box;
+        @extend .transition;
         span {
           font-size: 1.125rem;
         }
@@ -2003,6 +2009,12 @@
         max-height: 1.2em * 3;
         margin: 0.5em 0 0;
         line-height: 1.25;
+      }
+      &:hover {
+        color: $gray-darken;
+        .designer_name {
+          color: $khaki;
+        }
       }
     }
     @include breakpoint(560px) {
@@ -2109,9 +2121,6 @@
       }
     }
     a:hover {
-      .profile_picture {
-        border-color: $khaki;
-      }
       .designer_name {
         color: $khaki;
       }
@@ -2302,6 +2311,11 @@
           font-size: 1.125rem;
         }
       }
+      &:hover {
+        h3 {
+          color: $khaki;
+        }
+      }
     }
     @include breakpoint(560px) {
       .header_content {
@@ -2347,9 +2361,6 @@
     height: auto;
     .item_content {
       color: $gray;
-      &:hover {
-        color: $gray-darken;
-      }
       .brand_name {
         color: $main;
         font-family: 'crimson Text',serif;
@@ -2362,6 +2373,7 @@
         color: $black;
         font-weight: 400;
         line-height: 1.25;
+        @extend .transition;
       }
       p {
         overflow: hidden;
@@ -2372,6 +2384,12 @@
       .designer_name {
         span {
           font-size: 1.125rem;
+        }
+      }
+      &:hover {
+        color: $gray-darken;
+        h3 {
+          color: $khaki;
         }
       }
     }
@@ -2551,6 +2569,7 @@
         color: $black;
         font-weight: 400;
         line-height: 1.25;
+        @extend .transition;
       }
       p {
         overflow: hidden;
@@ -2561,8 +2580,13 @@
         line-height: 1.25;
         @extend .transition;
       }
-      &:hover p {
-        color: $gray-darken;
+      &:hover {
+        h3 {
+          color: $khaki;
+        }
+        p {
+          color: $gray-darken;
+        }
       }
     }
   }
@@ -2580,6 +2604,7 @@
         font-size: 1.125em;
         font-weight: 400;
         line-height: 1.25;
+        @extend .transition;
       }
       p {
         overflow: hidden;
@@ -2589,8 +2614,13 @@
         line-height: 1.25;
         @extend .transition;
       }
-      &:hover p {
-        color: $gray-darken;
+      &:hover {
+        h3 {
+          color: $khaki;
+        }
+        p {
+          color: $gray-darken;
+        }
       }
     }
   }

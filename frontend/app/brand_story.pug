@@ -82,101 +82,104 @@ block main
   .shop_look.page_block
     .block_inner
       h2.block_title Shop the Look
-      .products_list
-        .item
-          a(href="product_detail.html")
-            .thumb
-              .pic(style="background-image: url(images/img_product01.jpg)")
-                img.size(src="images/size_3x4.png")
-            h3 Lemite - Sleeveless Eyelet-Lace Dress
-            .price NT$ 988
-        each i inArray(3)
+      .block_main
+        .products_list
           .item
             a(href="product_detail.html")
               .thumb
-                .pic(style="background-image: url(https://via.placeholder.com/300x400)")
+                .pic(style="background-image: url(images/img_product01.jpg)")
                   img.size(src="images/size_3x4.png")
               h3 Lemite - Sleeveless Eyelet-Lace Dress
-              .price NT$ 1200
-      a.btn.common.more(href="product.html")
-        | All Products
+              .price NT$ 988
+          each i inArray(3)
+            .item
+              a(href="product_detail.html")
+                .thumb
+                  .pic(style="background-image: url(https://via.placeholder.com/300x400)")
+                    img.size(src="images/size_3x4.png")
+                h3 Lemite - Sleeveless Eyelet-Lace Dress
+                .price NT$ 1200
+        a.btn.common.more(href="product.html")
+          | All Products
   
   .related_post.page_block
     .block_inner
       h2.block_title Related Post
-      .related_post_list.scrollbar_x
-        .item
-          a(href="designer_home.html")
-            .date 2019.10.30
-            .thumb.is_video
-              .pic(style="background-image: url(images/img_video.jpg)")
-                img.size(src="images/size_16x9.png")
-            p HOW I WORK WITH BRANDS
-        .item
-          a(href="designer_home.html")
-            .date 2019.09.28
-            .thumb
-              .pic(style="background-image: url(https://via.placeholder.com/510x288)")
-                img.size(src="images/size_16x9.png")
-            p HOW I WORK WITH BRANDS
-        .item
-          a(href="designer_home.html")
-            .date 2019.09.28
-            .thumb
-              .pic(style="background-image: url(https://via.placeholder.com/510x288)")
-                img.size(src="images/size_16x9.png")
-            p HOW I WORK WITH BRANDS
-      a.btn.common.more(href="designer_home.html")
-        | View All
+      .block_main
+        .related_post_list.scrollbar_x
+          .item
+            a(href="designer_home.html")
+              .date 2019.10.30
+              .thumb.is_video
+                .pic(style="background-image: url(images/img_video.jpg)")
+                  img.size(src="images/size_16x9.png")
+              p HOW I WORK WITH BRANDS
+          .item
+            a(href="designer_home.html")
+              .date 2019.09.28
+              .thumb
+                .pic(style="background-image: url(https://via.placeholder.com/510x288)")
+                  img.size(src="images/size_16x9.png")
+              p HOW I WORK WITH BRANDS
+          .item
+            a(href="designer_home.html")
+              .date 2019.09.28
+              .thumb
+                .pic(style="background-image: url(https://via.placeholder.com/510x288)")
+                  img.size(src="images/size_16x9.png")
+              p HOW I WORK WITH BRANDS
+        a.btn.common.more(href="designer_home.html")
+          | View All
 
   .message_wrapper.page_block
     .block_inner
       h2.block_title
         | Messages
-      .comments_block.message_block
-        .comments_content
-          .comments_form
-            .profile_picture
-              .pic(style="background-image: url(https://source.unsplash.com/rDEOVtE7vOs/100x100);")
-                img.size(src="images/size_1x1.png")
-            .controls
-              textarea(placeholder="Leave us a message…")
-              button(type="button") Send
-          .comments_messages
-            .item
-              .msg
-                .profile_picture
-                  .pic(style="background-image: url(https://source.unsplash.com/JQDflNNnrEE/100x100);")
-                    img.size(src="images/size_1x1.png")
-                .msg_content
-                  .title
-                    .name Lily Allen
-                    .divide_line
-                    .time 2019.08.01 18:05
-                  .text
-                    | Hello! I really love your design!
-              .msg.reply
-                .profile_picture
-                  .pic(style="background-image: url(images/img_profile.jpg);")
-                    img.size(src="images/size_1x1.png")
-                .msg_content
-                  .title
-                    .name Lauren Jensen
-                    .divide_line
-                    .time 2019.08.01 18:05
-                  .text
-                    | Thank you ：）
-            .item
-              .msg
-                .profile_picture
-                  .pic(style="background-image: url(images/img_member_noPic.jpg);")
-                    img.size(src="images/size_1x1.png")
-                .msg_content
-                  .title
-                    .name Annie ELe
-                    .divide_line
-                    .time 2019.08.01 18:05
-                  .text
-                    | Hello! I really love your design!
-      a.btn.common.more(href="javascript:;")
-        | All Messages
+      .block_main
+        .comments_block.message_block
+          .comments_content
+            .comments_form
+              .profile_picture
+                .pic(style="background-image: url(https://source.unsplash.com/rDEOVtE7vOs/100x100);")
+                  img.size(src="images/size_1x1.png")
+              .controls
+                textarea(placeholder="Leave us a message…")
+                button(type="button") Send
+            .comments_messages
+              .item
+                .msg
+                  .profile_picture
+                    .pic(style="background-image: url(https://source.unsplash.com/JQDflNNnrEE/100x100);")
+                      img.size(src="images/size_1x1.png")
+                  .msg_content
+                    .title
+                      .name Lily Allen
+                      .divide_line
+                      .time 2019.08.01 18:05
+                    .text
+                      | Hello! I really love your design!
+                .msg.reply
+                  .profile_picture
+                    .pic(style="background-image: url(images/img_profile.jpg);")
+                      img.size(src="images/size_1x1.png")
+                  .msg_content
+                    .title
+                      .name Lauren Jensen
+                      .divide_line
+                      .time 2019.08.01 18:05
+                    .text
+                      | Thank you ：）
+              .item
+                .msg
+                  .profile_picture
+                    .pic(style="background-image: url(images/img_member_noPic.jpg);")
+                      img.size(src="images/size_1x1.png")
+                  .msg_content
+                    .title
+                      .name Annie ELe
+                      .divide_line
+                      .time 2019.08.01 18:05
+                    .text
+                      | Hello! I really love your design!
+        a.btn.common.more(href="javascript:;")
+          | All Messages

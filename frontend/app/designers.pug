@@ -90,58 +90,60 @@ block main
   .list_slider_wrapper.page_block.designer_story
     .block_inner
       h2.block_title Designer Story
-      .list_slider
-        .slide
-          .designer_name
-            a(href="designer_home.html")
-              //↓ 知名設計才會有鑽石icon ↓
-              i.icon_diamond
-              //↑ 知名設計才會有鑽石icon ↑
-              img.flag(src="images/flag/flag_france.png")
-              span Chloe Liao
-          a.thumb.is_video.popup(href="popup_video.html")
-            .pic(style="background-image: url(images/img_video.jpg);")
-              img.size(src="images/size_16x9.png")
-          h3.slide_title Channel Love Island’s Ovie In These Cute AF Tees
-        each i inArray(5)
+      .block_main
+        .list_slider
           .slide
             .designer_name
               a(href="designer_home.html")
-                img.flag(src="images/flag/flag_italy.png")
+                //↓ 知名設計才會有鑽石icon ↓
+                i.icon_diamond
+                //↑ 知名設計才會有鑽石icon ↑
+                img.flag(src="images/flag/flag_france.png")
                 span Chloe Liao
             a.thumb.is_video.popup(href="popup_video.html")
-              .pic(style="background-image: url(https://via.placeholder.com/510x288);")
+              .pic(style="background-image: url(images/img_video.jpg);")
                 img.size(src="images/size_16x9.png")
             h3.slide_title Channel Love Island’s Ovie In These Cute AF Tees
+          each i inArray(5)
+            .slide
+              .designer_name
+                a(href="designer_home.html")
+                  img.flag(src="images/flag/flag_italy.png")
+                  span Chloe Liao
+              a.thumb.is_video.popup(href="popup_video.html")
+                .pic(style="background-image: url(https://via.placeholder.com/510x288);")
+                  img.size(src="images/size_16x9.png")
+              h3.slide_title Channel Love Island’s Ovie In These Cute AF Tees
 
   .list_items_wrapper.page_block
     .block_inner
       h2.block_title Explore world
-      .list_items
-        .item
-          a(href="designer_home.html")
-            h3.designer_name
-              //↓ 知名設計才會有鑽石icon ↓
-              i.icon_diamond_s
-              //↑ 知名設計才會有鑽石icon ↑
-              img.flag(src="images/flag/flag_france.png")
-              span Katherine Stanley
-            .thumb
-              .pic(style="background-image: url(images/img_designer.jpg);")
-                img.size(src="images/size_3x4.png")
-            p Channel Love Island’s Ovie In These Cute AF Tees
-        each i inArray(19)
+      .block_main
+        .list_items
           .item
             a(href="designer_home.html")
               h3.designer_name
-                img.flag(src="images/flag/flag_italy.png")
-                span Virginia Cox
+                //↓ 知名設計才會有鑽石icon ↓
+                i.icon_diamond_s
+                //↑ 知名設計才會有鑽石icon ↑
+                img.flag(src="images/flag/flag_france.png")
+                span Katherine Stanley
               .thumb
-                .pic(style="background-image: url(https://via.placeholder.com/360x480);")
+                .pic(style="background-image: url(images/img_designer.jpg);")
                   img.size(src="images/size_3x4.png")
-              p Voici la coiffure que l’on verra partout à la rentrée
-      a.btn.common.more(href="javascript:;")
-        | More Designers
+              p Channel Love Island’s Ovie In These Cute AF Tees
+          each i inArray(19)
+            .item
+              a(href="designer_home.html")
+                h3.designer_name
+                  img.flag(src="images/flag/flag_italy.png")
+                  span Virginia Cox
+                .thumb
+                  .pic(style="background-image: url(https://via.placeholder.com/360x480);")
+                    img.size(src="images/size_3x4.png")
+                p Voici la coiffure que l’on verra partout à la rentrée
+        a.btn.common.more(href="javascript:;")
+          | More Designers
 
 block js
   script.

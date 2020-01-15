@@ -11,8 +11,9 @@ block main
       img(src="https://via.placeholder.com/1920x826", alt="")
     .slide
       img(src="https://via.placeholder.com/1920x826", alt="")
+
   .designer_header
-    .designer_header_inner.wide
+    .designer_header_inner
       .designer_header_mian
         .designer_info
           a(href="designer_profile.html")
@@ -77,6 +78,31 @@ block main
                 a(href="designer_review.html") Review
             a.toggle_menu(href="javascript:;")
               | Menu
+
+  .designer_about.page_block
+    .block_inner
+      .designer_about_image
+        img(src="images/img_designer_about.jpg")
+      .designer_about_intro
+        h2.block_title About Designer
+        .text
+          p I think my key issue was this: I didn’t leave myself enough time to plan this wedding. And I’m happy to admit it. If I didn’t have such a hectic career, AND PRIMARILY.
+          p Les collections OMOY sont le reflet de l’’histoire de leur créatrice, de ses voyages entre l’Afrique et l’’Europe, de son héritage culturel et des influences modernes qui l’ont nourrie. Les pièces mixent des formes élégantes et contemporaines à des matériaux naturels, bruts, fabriqués à la main selon un savoir-faire.
+        a.btn.common.more(href="designer_profile.html") My Profile
+
+  .designer_event.page_block
+    .block_inner
+      .event_countdown
+        h2.block_title RUNWAY#[br]NEW EVENT
+        .countdown_timer
+      .event_content
+        h3.event_title 2019 Autumn collection title
+        .event_time Collection on 2019.8.31 20:00
+        .text.
+          Donec facilisis tortor ut augue lacinia, at viverra est semper. Sed sapien metus, scelerisque nec pharetra id, tempor a tortor. Pellentesque non dignissim neque.
+        a.thumb.is_video.popup(href="popup_video.html")
+          .pic(style="background-image: url(images/img_video.jpg);")
+            img.size(src="images/size_16x9.png")
 
 block js
   script.

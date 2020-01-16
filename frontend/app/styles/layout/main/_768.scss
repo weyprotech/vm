@@ -300,6 +300,35 @@
       }
     }
   }
+  .designer_about {
+    &.page_block {
+      padding-top: 4em;
+    }
+    .block_inner {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+    }
+    .designer_about_image {
+      flex: 0 0 auto;
+      width: 48%;
+      margin-bottom: 0;
+      &:before {
+        top: -1em;
+        left: -1em;
+      }
+    }
+    .designer_about_intro {
+      flex: 0 0 auto;
+      width: 48%;
+      .block_title {
+        text-align: left;
+      }
+      .btn.more {
+        margin: 0;
+      }
+    }
+  }
 
   // Brand
   .brand_topping {

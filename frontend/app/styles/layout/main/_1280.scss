@@ -104,6 +104,17 @@
       margin-right: 2.25em;
     }
   }
+  .designer_about {
+    &.page_block {
+      padding-top: 4.5em;
+    }
+    .designer_about_image {
+      &:before {
+        top: -1.5em;
+        left: -1.5em;
+      }
+    }
+  }
 
   // Brand
   .brand_topping {

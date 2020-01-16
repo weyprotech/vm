@@ -1,3 +1,8 @@
+// Popup Entrance
+#popupEntrance {
+  max-width: 480px;
+}
+
 // Cart View
 .cart_view {
   .title {
@@ -2276,6 +2281,49 @@
       .toggle_menu {
         &:after {
           transform: rotate(-180deg);
+        }
+      }
+    }
+  }
+}
+.designer_about {
+  &.page_block {
+    padding-top: 2em;
+  }
+  .designer_about_image {
+    position: relative;
+    margin-bottom: 1.5em;
+    &:before {
+      content: '';
+      position: absolute;
+      z-index: 0;
+      top: -0.5em;
+      left: -0.5em;
+      display: block;
+      width: 100%;
+      height: 100%;
+      background-color: $khaki-lightest;
+    }
+    img {
+      position: relative;
+      z-index: 1;
+      display: block;
+      margin: 0 auto;
+    }
+  }
+  .designer_about_intro {
+    .block_title {
+      margin-bottom: 1.25rem;
+      line-height: 1.2;
+    }
+    .text {
+      margin-bottom: 1.5em;
+      > * {
+        &:first-child {
+          margin-top: 0;
+        }
+        &:last-child {
+          margin-bottom: 0;
         }
       }
     }

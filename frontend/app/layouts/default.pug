@@ -67,9 +67,9 @@ html
           .currency_language
             .select_wrapper
               select
-                option
-                  | € EUR
                 option(selected)
+                  | € EUR
+                option
                   | $ TWD
                 option
                   | ¥ CNY
@@ -282,6 +282,32 @@ html
     
     #sidebar
       include partials/navigator-sidebar.pug
+
+    #popupEntrance.popup_block.mfp-hide
+      .popup_inner
+        .controls_group
+          label Currency
+          .select_wrapper
+            select
+              option(selected)
+                | € EUR
+              option
+                | $ TWD
+              option
+                | ¥ CNY
+        .controls_group
+          label Languange
+          .select_wrapper
+            select
+              option
+                | LANGUAGE
+              option
+                | English
+              option
+                | 繁體中文
+              option
+                | 简体中文
+        button.btn.confirm.popup_modal_dismiss(type="button") Save
 
     block popup
 

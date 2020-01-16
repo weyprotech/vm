@@ -212,6 +212,23 @@
       }
     }
   }
+  .designer_about {
+    &.page_block {
+      padding-top: 4em;
+    }
+    .designer_about_image {
+      width: 45%;
+      &:before {
+        top: -1em;
+        left: -1em;
+      }
+    }
+    .designer_about_intro {
+      width: 45%;
+      padding-right: 1.5em;
+      box-sizing: border-box;
+    }
+  }
 
   // Brand
   .brand_topping {

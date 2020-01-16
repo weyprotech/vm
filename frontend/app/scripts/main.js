@@ -1,5 +1,5 @@
 var windowWidth = $(window).width();
-var clickHandler = ('ontouchstart' in document.documentElement ? 'touchstart' : 'click');
+var clickHandler = ('ontouchstart' in document.documentElement ? 'touchend' : 'click');
 
 $(document).ready(function () {
   $('.retina').retina();
@@ -313,10 +313,10 @@ $(document).ready(function () {
       }
     }
   });
-  // $(document).on(clickHandler, '.popup-modal-dismiss', function (event) {
-  //   event.preventDefault();
-  //   $.magnificPopup.close();
-  // });
+  $(document).on(clickHandler, '.popup_modal_dismiss', function (event) {
+    event.preventDefault();
+    $.magnificPopup.close();
+  });
 
   // Tab - jquery.tabber.js
   // $('.tabber_wrapper').tabber();

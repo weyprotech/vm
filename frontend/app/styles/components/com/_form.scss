@@ -215,21 +215,6 @@ button {
     margin-bottom: .5em;
     box-sizing: border-box;
   }
-  @include breakpoint(768px) {
-    > label {
-      width: 110px;
-      float: left;
-      padding-right: 1rem;
-      margin-bottom: 0;
-      box-sizing: border-box;
-      background-color: transparent;
-      line-height: 36px;
-    }
-    .controls {
-      width: calc(100% - 110px);
-      float: left;
-    }
-  }
 }
 
 // Captcha
@@ -421,5 +406,32 @@ button {
     @include breakpoint(1024px) {
       padding: 0 3em 2.25em;
     }
+  }
+}
+
+// Popup Entrance
+#popupEntrance {
+  .controls_group {
+    margin-bottom: 1.5em;
+    > label {
+      display: block;
+      padding: 0;
+      margin-bottom: 0.3em;
+      font-family: 'Crimson Text', serif;
+      font-size: 1.875em;
+      font-style: italic;
+      text-align: center;
+      line-height: 1.2;
+    }
+    select {
+      border: $khaki-dark 1px solid;
+      box-sizing: border-box;
+      background-position: calc(100% - 10px) center;
+    }
+  }
+  .btn.confirm {
+    display: block;
+    width: 150px;
+    margin: 2em auto 0;
   }
 }

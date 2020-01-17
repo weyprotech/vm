@@ -218,7 +218,7 @@ $(document).ready(function () {
     });
   }
   if ($('.topping_block .topping_list').length > 0) {
-    topping_list_scroll();
+    toppingListScroll();
   }
 
   // Masonry
@@ -389,7 +389,7 @@ $(window).on('resize', function () {
 
     // reSetting
     $('#header .header_search').css('display', '');
-    topping_list_scroll();
+    toppingListScroll();
 
     // Sticky
     $('#header').unstick();
@@ -494,7 +494,7 @@ function scaleCaptcha() {
   }
 }
 
-function topping_list_scroll() {
+function toppingListScroll() {
   if (windowWidth >= 768) {
     $('.topping_block .topping_list').mCustomScrollbar({
       theme: 'dark-3',
@@ -503,4 +503,15 @@ function topping_list_scroll() {
   } else if(windowWidth < 768) {
     $('.topping_block .topping_list').mCustomScrollbar('destroy');
   }
+}
+
+// 開啟選擇語言和幣別的跳窗
+function popupEntrance() {
+  $.magnificPopup.open({
+    items: {
+      src: '#popupEntrance',
+    },
+    type: 'inline',
+    closeOnBgClick: false
+  });
 }

@@ -270,14 +270,8 @@ block js
 
   script.
     $(function() {
-      // Popup
-      $.magnificPopup.open({
-        items: {
-          src: '#popupEntrance',
-        },
-        type: 'inline',
-        closeOnBgClick: false
-      });
+      // 開啟選擇語言和幣別的跳窗
+      popupEntrance();
 
       // Map
       var streetImgs = {
@@ -303,17 +297,20 @@ block js
             var $streetLink = $('<a></a>').addClass('street_name').attr('href', 'javascript:;').attr('data-streetid', streetStores[i].id).text(streetStores[i].streetName);
             var $streetItem = $('<div></div>').addClass('item').append($streetLink);
             
+            // First Street Item
             if(i == 0) {
               $streetItem.addClass('active');
 
-              // Street Intro
+              // 顯示街道資料
               streetIntro(streetStores[i]);
             }
+
+            // 街道的商店設定
             if( streetStores[i].stores.length !== 0 ) {
               var $storeItems = $('<ul></ul>');
 
               for(j=0; j < streetStores[i].stores.length; j++) {
-                // Icon
+                // 商店的標點
                 var store = streetStores[i].stores[j];
                 var diamondhtml = (streetStores[i].stores[j].diamond) ? '<i class="icon_diamond_s"></i>' : '';
                 var storeObj = {
@@ -373,19 +370,24 @@ block js
                 }
                 storeIcons.push(storeObj);
 
-                // Street Item
+                // Aside Store Item
                 var $storeLink = $('<a></a>').addClass('store_name').attr('href', 'javascript:;').attr('data-storeid', store.id).text(store.storeName);
                 var $storeItem = $('<li></li>').append($storeLink);
                 $storeItems.append($storeItem);
               }
+
+              // 街道塞入店家
               $streetItem.append($storeItems);
             }
 
+            // Street Aside 塞入街道、店家
             $('#streetAside .street_list').append($streetItem);
           }
           
+          // 設定地圖、加入商店的標點
           storeMap(streetImgs, storeIcons);
 
+          // Street Aside Store List 加入捲軸
           $('#streetAside .street_list').mCustomScrollbar({
             theme: 'dark-3',
             axis: 'y',
@@ -394,6 +396,7 @@ block js
         }
       });
 
+      // Street Aside 的 click 設定
       $('#streetAside').on('click', '.open_aside', function(event) {
         $('#streetAside').addClass('isOpen');
       });
@@ -419,6 +422,8 @@ block js
           });
         }
       });
+
+      // 街道資料的顯示、切換
       function streetIntro(streetData) {
         currentStreetId = streetData.id;
 

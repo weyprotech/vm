@@ -92,51 +92,68 @@ block main
 
   .designer_event.page_block
     .block_inner
+      // ↓ 直播影片的時候使用 ↓
+      //
+        <div class="event_video fit_video">
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/FbjUyCDrHI0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+      // ↑ 直播影片的時候使用 ↑
+      // ↓ 倒數期間使用 ↓
       .event_countdown
         h2.block_title RUNWAY#[br]NEW EVENT
-        .countdown_timer
+        .countdown(data-date="2020-12-31", data-time="18:30")
+      // ↑ 倒數期間使用 ↑
       .event_content
         h3.event_title 2019 Autumn collection title
-        .event_time Collection on 2019.8.31 20:00
+        .event_time
+          i.dot
+          | Collection on 2019.8.31 20:00
         .text.
           Donec facilisis tortor ut augue lacinia, at viverra est semper. Sed sapien metus, scelerisque nec pharetra id, tempor a tortor. Pellentesque non dignissim neque.
+        // ↓ 直播影片的時候不放 ↓
         a.thumb.is_video.popup(href="popup_video.html")
           .pic(style="background-image: url(images/img_video.jpg);")
             img.size(src="images/size_16x9.png")
-  
+        // ↑ 直播影片的時候不放 ↑
+
   .designer_hometown.page_block
     .block_inner
-      h2.block_title My Hometown - Seggiano
-      .country_city
-        img.flag(src="images/flag/flag_italy.png")
-        span Italy, Seggiano
-      .intro_text.
-        Seggiano is a comune (municipality) in the Province of Grosseto in the Italian region Tuscany, located about 100 kilometres (62 mi) south of Florence and about 40 kilometres (25 mi) northeast of Grosseto.
-      .hometown_characteristics
-        .item
-          .thumb
-            .pic(style="background-image: url(images/img_designer_hometown.jpg);")
-              img.size(src="images/size_4x3.png")
-          h3 Wildflower raw honey
-          .text.
-            From the Monte Cimino area: sumptuosly thick amber coloured, rich in active enzymes, vitamins and minerals. Each batch of wildflower will be slightly different, according to the predominant flowering prior to honey collection.
-        .item
-          .thumb
-            .pic(style="background-image: url(https://via.placeholder.com/360x270);")
-              img.size(src="images/size_4x3.png")
-          h3 Italian Honey with Truffle
-          .text.
-            Italian honey 96%, Italian white truffle (Tuber Magnatum Pico)#[br]
-            or Italian bianchetto truffle (Tuber Borchii Vitt.) 3%, flavor.
-        .item
-          .thumb
-            .pic(style="background-image: url(https://via.placeholder.com/360x270);")
-              img.size(src="images/size_4x3.png")
-          h3 CALAMARATA PASTA RINGS
-          .text.
-            These fun Calamari ring pasta make a different and delicious addition to your pasta choices, the seafood, meats or vegetables get caught up in the rings and make it so tasty and love the presentation!
+      .designer_hometown_main
+        h2.block_title My Hometown - Seggiano
+        .country_city
+          img.flag(src="images/flag/flag_italy.png")
+          span Italy, Seggiano
+        .intro_text.
+          Seggiano is a comune (municipality) in the Province of Grosseto in the Italian region Tuscany, located about 100 kilometres (62 mi) south of Florence and about 40 kilometres (25 mi) northeast of Grosseto.
+        .hometown_characteristics
+          .item
+            .thumb
+              .pic(style="background-image: url(images/img_designer_hometown.jpg);")
+                img.size(src="images/size_4x3.png")
+            h3 Wildflower raw honey
+            .text.
+              From the Monte Cimino area: sumptuosly thick amber coloured, rich in active enzymes, vitamins and minerals. Each batch of wildflower will be slightly different, according to the predominant flowering prior to honey collection.
+          .item
+            .thumb
+              .pic(style="background-image: url(https://via.placeholder.com/360x270);")
+                img.size(src="images/size_4x3.png")
+            h3 Italian Honey with Truffle
+            .text.
+              Italian honey 96%, Italian white truffle (Tuber Magnatum Pico)#[br]
+              or Italian bianchetto truffle (Tuber Borchii Vitt.) 3%, flavor.
+          .item
+            .thumb
+              .pic(style="background-image: url(https://via.placeholder.com/360x270);")
+                img.size(src="images/size_4x3.png")
+            h3 CALAMARATA PASTA RINGS
+            .text.
+              These fun Calamari ring pasta make a different and delicious addition to your pasta choices, the seafood, meats or vegetables get caught up in the rings and make it so tasty and love the presentation!
 
 block js
+  // build:js scripts/plugins/countdown.js
+  script(src="scripts/plugins/countdown.js")
+  // endbuild
+
   script.
     $(function() {
       // 愛心的點擊事件

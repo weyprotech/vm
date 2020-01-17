@@ -2318,11 +2318,199 @@
     }
     .text {
       margin-bottom: 1.5em;
+      color: $gray-darken;
       > * {
         &:first-child {
           margin-top: 0;
         }
         &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+}
+.designer_event {
+  overflow: hidden;
+  .block_inner {
+    position: relative;
+    &:before {
+      content: '';
+      position: absolute;
+      z-index: -1;
+      top: -5em;
+      left: calc((100vw - 100%) / 2 * -1);
+      display: block;
+      width: 100vw;
+      height: calc(100% + 10em);
+      background-color: $khaki-lightest;
+    }
+  }
+  .event_video,
+  .event_countdown {
+    margin-bottom: 1.5em;
+  }
+  .event_video {
+    display: flex;
+    align-items: center;
+    margin-top: -1.5em;
+    margin-left: -1em;
+    margin-right: -1em;
+  }
+  .event_countdown {
+    .countdown{
+      text-align: center;
+      > div {
+        display: inline-block;
+        > span {
+          display: block;
+          box-sizing: border-box;
+          text-align: center;
+        }
+      }
+      .countdown-container {
+        min-width: 60px;
+        margin: 0 0.5em;
+        border-radius: 3px;
+        background-color: $khaki-dark;
+        color: $white;
+        &.seconds{
+          display: none;
+        }
+        .countdown-value {
+          position: relative;
+          padding: 0.15rem 0.5rem 1rem;
+          font-size: 1.5em;
+          line-height: 1;
+          &:before, &:after {
+            content: '';
+            position: absolute;
+            top: 0.15em;
+            display: block;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background-color: $white;
+          }
+          &:before {
+            left: 0.15em;
+          }
+          &:after {
+            right: 0.15em;
+          }
+        }
+        .countdown-title {
+          padding: 0.5rem;
+          border-top: $white 1px solid;
+          font-size: 1.125em;
+          line-height: 1.2;
+        }
+      }
+    }
+  }
+  .event_content {
+    .event_title {
+      margin-top: 0;
+      margin-bottom: 0.8rem;
+      font-size: 1.125em;
+      font-weight: 400;
+      line-height: 1.2;
+    }
+    .event_time {
+      margin-bottom: 0.8em;
+      color: $gray-dark;
+      line-height: 1.2;
+      .dot {
+        display: inline-block;
+        width: 12px;
+        height: 12px;
+        margin-top: -3px;
+        margin-right: 0.5em;
+        border-radius: 50%;
+        background-color: $green;
+        vertical-align: middle;
+      }
+    }
+    .text {
+      margin-bottom: 0.8em;
+      color: $gray-darken;
+    }
+    .thumb {
+      max-width: 265px;
+    }
+  }
+}
+.designer_hometown {
+  overflow: hidden;
+  margin: 1.5em 0;
+  .block_inner {
+    position: relative;
+    &:before {
+      content: '';
+      position: absolute;
+      z-index: -1;
+      top: -5em;
+      left: calc((100vw - 100%) / 2 * -1);
+      display: block;
+      width: 100vw;
+      height: calc(100% + 10em);
+      background-color: $khaki-lightest;
+    }
+  }
+  .designer_hometown_main {
+    max-width: 1024px;
+    margin: 0 auto;
+  }
+  .block_title {
+    margin-bottom: 0.5rem;
+  }
+  .country_city {
+    margin-bottom: 1.5rem;
+    color: $gray-darken;
+    text-align: center;
+    line-height: 1.2;
+    .flag {
+      display: inline-block;
+      margin-top: -3px;
+      margin-right: 0.5em;
+      vertical-align: middle;
+    }
+  }
+  .intro_text {
+    margin-bottom: 1.5rem;
+    color: $gray-darken;
+  }
+  .hometown_characteristics {
+    .item {
+      margin-bottom: 1.5em;
+      &:last-child {
+        margin-bottom: 0;
+      }
+      .thumb {
+        margin-bottom: 1.25em;
+      }
+      h3 {
+        margin-top: 0;
+        margin-bottom: 0.8rem;
+        font-size: 1.125em;
+        font-weight: 400;
+        line-height: 1.2;
+      }
+      .text {
+        color: $gray-darken;
+      }
+    }
+    @include breakpoint(560px) {
+      display: flex;
+      flex-wrap: wrap;
+      .item {
+        width: (100% - 3.9%) / 2;
+        margin-right: 3.9%;
+        &:nth-child(2n) {
+          margin-right: 0;
+        }
+        &:nth-last-child(-n+2):nth-child(2n+1),
+        &:nth-last-child(-n+2):nth-child(2n+1) ~ .item {
           margin-bottom: 0;
         }
       }

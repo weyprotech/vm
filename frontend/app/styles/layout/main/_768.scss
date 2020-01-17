@@ -329,6 +329,51 @@
       }
     }
   }
+  .designer_event {
+    .block_inner {
+      display: flex;
+      justify-content: space-between;
+    }
+    .event_video {
+      width: calc(48% + 1em);
+      margin-top: -3em;
+      margin-bottom: -3em;
+      margin-left: calc((100vw - 100%) / 2 * -1);
+    }
+    .event_countdown {
+      width: 48%;
+      margin-bottom: 0;
+    }
+    .event_content {
+      width: 48%;
+    }
+  }
+  .designer_hometown {
+    margin: 3em 0;
+    .block_title,
+    .country_city {
+      text-align: left;
+    }
+    .hometown_characteristics {
+      .item {
+        width: (100% - 3.9% * 2) / 3;
+        &:nth-child(2n) {
+          margin-right: 3.9%;
+        }
+        &:nth-last-child(-n+2):nth-child(2n+1),
+        &:nth-last-child(-n+2):nth-child(2n+1) ~ .item {
+          margin-bottom: 1.5em;
+        }
+        &:nth-child(3n) {
+          margin-right: 0;
+        }
+        &:nth-last-child(-n+3):nth-child(3n+1),
+        &:nth-last-child(-n+3):nth-child(3n+1) ~ .item {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
 
   // Brand
   .brand_topping {

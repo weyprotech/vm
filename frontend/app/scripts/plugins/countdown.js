@@ -31,24 +31,24 @@
 
     if (days != 0) {
       html += '<div class="countdown-container days">'
-      html += '<span class="countdown-value">' + pad(days) + '</span>';
-      html += '<span class="countdown-title">Days</span>';
+      html += '<span class="countdown_value">' + pad(days) + '</span>';
+      html += '<span class="countdown_title">Days</span>';
       html += '</div>';
     }
 
     html += '<div class="countdown-container hours">'
-    html += '<span class="countdown-value">' + pad(hours) + '</span>';
-    html += '<span class="countdown-title">Hours</span>';
+    html += '<span class="countdown_value">' + pad(hours) + '</span>';
+    html += '<span class="countdown_title">Hours</span>';
     html += '</div>';
 
     html += '<div class="countdown-container minutes">'
-    html += '<span class="countdown-value">' + pad(minutes) + '</span>';
-    html += '<span class="countdown-title">Mins</span>';
+    html += '<span class="countdown_value">' + pad(minutes) + '</span>';
+    html += '<span class="countdown_title">Mins</span>';
     html += '</div>';
 
     html += '<div class="countdown-container seconds">'
-    html += '<span class="countdown-value">' + pad(seconds) + '</span>';
-    html += '<span class="countdown-title">Sec</span>';
+    html += '<span class="countdown_value">' + pad(seconds) + '</span>';
+    html += '<span class="countdown_title">Sec</span>';
     html += '</div>';
 
     this.html(html);

@@ -53,18 +53,20 @@ block main
       .block_main
         .list_slider
           .slide
-            .date 2019.10.12
-            a.thumb.is_video(href="event_detail.html")
-              .pic(style="background-image: url(images/img_video.jpg);")
-                img.size(src="images/size_16x9.png")
-            h3.slide_title Channel Love Island’s Ovie In These Cute AF Tees
-          each i inArray(5)
-            .slide
-              .date 2019.09.28
-              a.thumb.is_video(href="event_detail.html")
-                .pic(style="background-image: url(https://via.placeholder.com/510x288);")
+            a(href="event_detail.html")
+              .date 2019.10.12
+              .thumb.is_video
+                .pic(style="background-image: url(images/img_video.jpg);")
                   img.size(src="images/size_16x9.png")
               h3.slide_title Channel Love Island’s Ovie In These Cute AF Tees
+          each i inArray(5)
+            .slide
+              a(href="event_detail.html")
+                .date 2019.09.28
+                .thumb.is_video
+                  .pic(style="background-image: url(https://via.placeholder.com/510x288);")
+                    img.size(src="images/size_16x9.png")
+                h3.slide_title Channel Love Island’s Ovie In These Cute AF Tees
 
   .list_items_wrapper.page_block
     .block_inner.wide

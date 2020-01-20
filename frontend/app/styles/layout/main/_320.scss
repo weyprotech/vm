@@ -1711,16 +1711,12 @@
     box-sizing: border-box;
     .slide {
       margin: 0 0.75em;
+      > a {
+        display: block;
+      }
     }
     .designer_name {
       margin: 0 0 0.3rem;
-      a {
-        display: inline-block;
-        color: $main;
-        &:hover {
-          color: $khaki;
-        }
-      }
       span {
         font-size: 1.125rem;
       }
@@ -1738,9 +1734,15 @@
       overflow: hidden;
       max-height: 1.2em * 2;
       margin: 0;
+      color: $black;
       font-size: 1em;
       font-weight: 400;
       line-height: 1.25;
+    }
+    a:hover {
+      .slide_title {
+        color: $main;
+      }
     }
     .slick-prev {
       left: 0;
@@ -2369,7 +2371,7 @@
         }
       }
       .countdown-container {
-        min-width: 60px;
+        min-width: 80px;
         margin: 0 0.5em;
         border-radius: 3px;
         background-color: $khaki-dark;
@@ -2377,15 +2379,15 @@
         &.seconds{
           display: none;
         }
-        .countdown-value {
+        .countdown_value {
           position: relative;
-          padding: 0.15rem 0.5rem 1rem;
+          padding: 0 0.625rem 1em;
           font-size: 1.5em;
-          line-height: 1;
+          line-height: 0.9;
           &:before, &:after {
             content: '';
             position: absolute;
-            top: 0.15em;
+            top: 0.15rem;
             display: block;
             width: 5px;
             height: 5px;
@@ -2393,17 +2395,36 @@
             background-color: $white;
           }
           &:before {
-            left: 0.15em;
+            left: 0.15rem;
           }
           &:after {
-            right: 0.15em;
+            right: 0.15rem;
           }
         }
-        .countdown-title {
+        .countdown_title {
           padding: 0.5rem;
-          border-top: $white 1px solid;
-          font-size: 1.125em;
+          border-top: $khaki-light 1px solid;
+          font-size: 0.875em;
           line-height: 1.2;
+        }
+        @include breakpoint (480px) {
+          min-width: 100px;
+          .countdown_value {
+            padding: 0 0.875rem 1em;
+            font-size: 2em;
+            &:before, &:after {
+              top: 0.3125rem;
+            }
+            &:before {
+              left: 0.3125rem;
+            }
+            &:after {
+              right: 0.3125rem;
+            }
+          }
+          .countdown_title {
+            font-size: 1em;
+          }
         }
       }
     }

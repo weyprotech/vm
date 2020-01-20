@@ -124,6 +124,21 @@
   .designer_hometown {
     margin: 3.5em 0;
   }
+  .designer_event {
+    .event_countdown {
+      .countdown {
+        .countdown-container {
+          min-width: 126px;
+          .countdown_value {
+            font-size: 4em;
+          }
+          .countdown_title {
+            font-size: 1.125em;
+          }
+        }
+      }
+    }
+  }
 
   // Brand
   .brand_topping {

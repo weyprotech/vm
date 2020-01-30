@@ -737,7 +737,7 @@
       color: $main;
       font-size: 1.25em;
       font-weight: 400;
-      line-height: 1.2;
+      line-height: 1.25;
       letter-spacing: 0.026em;
     }
     .close_aside {
@@ -771,7 +771,7 @@
       a {
         display: block;
         box-sizing: border-box;
-        line-height: 1.2;
+        line-height: 1.25;
       }
       .street_name {
         padding: 1em 1.5em;
@@ -843,7 +843,7 @@
       font-size: 2em;
       font-style: italic;
       font-weight: 400;
-      line-height: 1.2;
+      line-height: 1.25;
     }
     hr {
       border: none;
@@ -858,7 +858,7 @@
       color: $main;
       font-weight: 400;
       font-size: 1.5em;
-      line-height: 1.2;
+      line-height: 1.25;
     }
     text {
       font-size: 0.875em;
@@ -881,7 +881,7 @@
       font-family: 'Crimson Text', serif;
       font-size: 1.5em;
       font-weight: 600;
-      line-height: 1.2;
+      line-height: 1.25;
       @extend .transition;
       a{
         color: $black;
@@ -1464,13 +1464,17 @@
       }
     }
   }
+  .comments_block {
+    .comments_title {
+      border-bottom: $gray-light 1px solid;
+    }
+  }
 }
 .comments_block {
   .comments_title {
     cursor: pointer;
     padding: 0.8em 0.5em;
-    border-top: 1px solid $khaki-lightest;
-    border-bottom: 1px solid $gray-light;
+    border-top: $khaki-lightest 1px solid;
     box-sizing: border-box;
     .icon_msg {
       vertical-align: middle;
@@ -1488,6 +1492,7 @@
       @extend .transition;
     }
     &.active {
+      border-bottom: $gray-light 1px solid;
       .arrow_down {
         transform: rotate(180deg);
       }
@@ -1685,7 +1690,6 @@
   }
   .intro_text {
     color: $gray-darken;
-    line-height: 1.25;
     > * {
       &:first-child {
         margin-top: 0;
@@ -1732,7 +1736,7 @@
     }
     .slide_title {
       overflow: hidden;
-      max-height: 1.2em * 2;
+      max-height: 1.25em * 2;
       margin: 0;
       color: $black;
       font-size: 1em;
@@ -1795,7 +1799,7 @@
     }
     .event_title, p {
       overflow: hidden;
-      max-height: 1.2em * 2;
+      max-height: 1.25em * 2;
       color: $black;
       font-size: 1em;
       font-weight: 400;
@@ -1878,9 +1882,6 @@
   .block_inner {
     max-width: 750px;
   }
-  .block_main {
-    line-height: 1.25;
-  }
   .fluid-width-video-wrapper {
     margin: 1.5em 0;
   }
@@ -1923,7 +1924,7 @@
       }
       p {
         overflow: hidden;
-        max-height: 1.2em * 3;
+        max-height: 1.25em * 3;
         margin: 0.5em 0 0;
         line-height: 1.25;
       }
@@ -2013,7 +2014,7 @@
       }
       p {
         overflow: hidden;
-        max-height: 1.2em * 3;
+        max-height: 1.25em * 3;
         margin: 0.5em 0 0;
         line-height: 1.25;
       }
@@ -2115,7 +2116,7 @@
       }
     }
     .country {
-      line-height: 1.2;
+      line-height: 1.25;
       .flag, span {
         display: inline-block;
         vertical-align: middle;
@@ -2194,7 +2195,7 @@
   }
   .reviews {
     margin-bottom: 0.8em;
-    line-height: 1.2;
+    line-height: 1.25;
     a {
       display: inline-block;
       > * {
@@ -2316,7 +2317,7 @@
   .designer_about_intro {
     .block_title {
       margin-bottom: 1.25rem;
-      line-height: 1.2;
+      line-height: 1.25;
     }
     .text {
       margin-bottom: 1.5em;
@@ -2405,7 +2406,7 @@
           padding: 0.5rem;
           border-top: $khaki-light 1px solid;
           font-size: 0.875em;
-          line-height: 1.2;
+          line-height: 1.25;
         }
         @include breakpoint (480px) {
           min-width: 100px;
@@ -2435,12 +2436,12 @@
       margin-bottom: 0.8rem;
       font-size: 1.125em;
       font-weight: 400;
-      line-height: 1.2;
+      line-height: 1.25;
     }
     .event_time {
       margin-bottom: 0.8em;
       color: $gray-dark;
-      line-height: 1.2;
+      line-height: 1.25;
       .dot {
         display: inline-block;
         width: 12px;
@@ -2489,7 +2490,7 @@
     margin-bottom: 1.5rem;
     color: $gray-darken;
     text-align: center;
-    line-height: 1.2;
+    line-height: 1.25;
     .flag {
       display: inline-block;
       margin-top: -3px;
@@ -2515,7 +2516,7 @@
         margin-bottom: 0.8rem;
         font-size: 1.125em;
         font-weight: 400;
-        line-height: 1.2;
+        line-height: 1.25;
       }
       .text {
         color: $gray-darken;
@@ -2536,6 +2537,156 @@
         }
       }
     }
+  }
+}
+.designer_posts {
+  .block_title {
+    margin-bottom: 0.5em;
+    @include breakpoint(768px) {
+      text-align: left;
+    }
+  }
+}
+.post_block {
+  margin-bottom: 1.5em;
+  border: $gray-light 1px solid;
+  box-sizing: border-box;
+  background-color: $white;
+  &:last-child {
+    margin-bottom: 0;
+  }
+  .post_main {
+    padding: 1em;
+    box-sizing: border-box;
+    .post_title {
+      margin-top: 0;
+      margin-bottom: 0.625rem;
+      font-size: 1.125em;
+      font-weight: 400;
+      letter-spacing: 0.023em;
+    }
+    .date {
+      display: block;
+      margin-bottom: 0.8rem;
+      color: $gray;
+    }
+    .text {
+      color: $gray-darken;
+    }
+    .post_media {
+      max-width: 400px;
+      margin-top: 1em;
+    }
+    .thumb.has_more {
+      position: relative;
+      .btn.common {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 120px;
+        transform: translate(-50%, -50%);
+      }
+    }
+    @include breakpoint(660px) {
+      display: flex;
+      .posst_content {
+        flex: 1 1 auto;
+        min-width: calc(60% - 1em);
+      }
+      .post_media {
+        flex: 0 0 auto;
+        width: 40%;
+        margin-top: 0;
+        margin-left: 1em;
+      }
+    }
+  }
+}
+.designer_profile_topping {
+  .designer_info {
+    display: flex;
+    align-items: center;
+    max-width: 100%;
+    margin-bottom: 1.25em;
+    .profile_picture {
+      flex: 0 0 auto;
+      width: 60px;
+      height: 60px;
+      margin-right: 1.125em;
+      border: $khaki-light 1.5px solid;
+      box-sizing: border-box;
+    }
+    .text {
+      flex: 1 1 auto;
+    }
+    .designer_name {
+      margin-bottom: 0.625rem;
+      color: $main;
+      span {
+        font-size: 1.25rem;
+        font-weight: 700;
+      }
+    }
+    .country {
+      line-height: 1.25;
+      .flag, span {
+        display: inline-block;
+        vertical-align: middle;
+      }
+      .flag {
+        margin: 0 0.75rem 0 0.28125rem;
+      }
+      span {
+        color: $gray-darken;
+      }
+    }
+    a.btn_favorite {
+      flex: 0 0 auto;
+      display: block;
+      margin-left: 1.125em;
+      color: $gray;
+      text-align: center;
+      &:hover {
+        color: $khaki;
+      }
+      > span {
+        display: block;
+        font-size: 0.875rem;
+        line-height: 1;
+        span {
+          display: inline;
+        }
+      }
+    }
+  }
+}
+.designer_profile_story {
+  position: relative;
+  &:before {
+    content: '';
+    position: absolute;
+    z-index: 0;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 35vw;
+    max-height: 440px;
+    background-color: $gray-lightest;
+  }
+  .block_inner {
+    position: relative;
+    z-index: 1;
+  }
+  .block_main {
+    max-width: 750px;
+    margin: 0 auto;
+  }
+  .story_video {
+    margin-bottom: 1.5em;
+  }
+  .story_article {
+    color: $gray-darken;
   }
 }
 
@@ -2634,7 +2785,7 @@
       }
       p {
         overflow: hidden;
-        max-height: 1.2em * 3;
+        max-height: 1.25em * 3;
         margin: 0.8em 0;
         line-height: 1.25;
       }
@@ -2726,7 +2877,6 @@
     }
     .text {
       color: $gray-darken;
-      line-height: 1.25;
       > * {
         &:first-child {
           margin-top: 0;
@@ -2751,8 +2901,12 @@
       font-style: italic;
     }
     .btn.common {
+      background-color: transparent;
       border-color: $white;
       color: $white;
+      &:hover {
+        background-color: $khaki;
+      }
     }
   }
 }
@@ -2791,7 +2945,7 @@
     }
     p {
       overflow: hidden;
-      max-height: 1.2em * 2;
+      max-height: 1.25em * 2;
       margin: 0;
       font-size: 1rem;
       font-weight: 400;
@@ -2830,7 +2984,7 @@
       }
       p {
         overflow: hidden;
-        max-height: 1.2em * 2;
+        max-height: 1.25em * 2;
         margin-top: 0;
         margin-bottom: 1.25em;
         color: $gray-dark;
@@ -2865,7 +3019,7 @@
       }
       p {
         overflow: hidden;
-        max-height: 1.2em * 3;
+        max-height: 1.25em * 3;
         margin: 0;
         color: $gray-dark;
         line-height: 1.25;

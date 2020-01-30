@@ -104,6 +104,15 @@
       margin-right: 2.25em;
     }
   }
+  .designer_header {
+    .designer_info {
+      .designer_name {
+        span {
+          font-size: 2.25rem;
+        }
+      }
+    }
+  }
   .designer_about {
     &.page_block {
       padding-top: 4.5em;
@@ -135,6 +144,15 @@
           .countdown_title {
             font-size: 1.125em;
           }
+        }
+      }
+    }
+  }
+  .designer_profile_topping {
+    .designer_info {
+      .designer_name {
+        span {
+          font-size: 2.25rem;
         }
       }
     }

@@ -135,7 +135,7 @@ button {
     cursor: pointer;
     flex: 0 0 auto;
     display: block;
-    line-height: 1.2;
+    line-height: 1.25;
   }
   .switch_off:checked ~ .switch_on_label,
   .switch_on:checked ~ .switch_off_label {
@@ -421,7 +421,7 @@ button {
       font-size: 1.875em;
       font-style: italic;
       text-align: center;
-      line-height: 1.2;
+      line-height: 1.25;
     }
     select {
       border: $khaki-dark 1px solid;

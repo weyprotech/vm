@@ -93,7 +93,7 @@ nav {
         padding: 0.35rem 1.5rem;
         box-sizing: border-box;
         color: $gray-darkest;
-        line-height: 1.2;
+        line-height: 1.25;
         text-align: center;
       }
       > li > a {
@@ -154,7 +154,7 @@ nav {
         min-width: 100px;
         color: $gray-darkest;
         font-size: 1rem;
-        line-height: 1.2;
+        line-height: 1.25;
         vertical-align: middle;
         &:hover, &.current {
           background-color: $white;

@@ -1,0 +1,89 @@
+extends layouts/default.pug
+
+block value
+  - var currentUrl = 'designers';
+
+block main
+  .topping_block.designer_profile_topping
+    .block_inner
+      .topping_header
+        .thumb
+          //↓ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓
+          .pic(style="background-image: url(images/img_designer.jpg);")
+            img.size(src="images/size_3x4.png")
+          //↑ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑
+      .topping_main.in_detail
+        .breadcrumbs
+          .breadcrumbs_inner
+            i.icon_story
+            a(href="designer_home.html") Designer
+            span /
+            span.current Designer Profile
+        .designer_info
+          .profile_picture
+            //↓ 1:1，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓
+            .pic(style="background-image: url(images/img_profile.jpg")
+              img.size(src="images/size_1x1.png")
+            //↑ 1:1，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑
+          .text
+            .designer_name
+              //↓ 知名設計才會有鑽石icon ↓
+              i.icon_diamond_b
+              //↑ 知名設計才會有鑽石icon ↑
+              span Douglas Robinson
+            .country
+              img.flag(src="images/flag/flag_italy.png")
+              span Italy
+          a.btn_favorite(href="javascript:;", data-designerId="designer001", title="Favorite")
+            i.icon_favorite_heart
+            span (#[span.count 1207])
+        .intro_text
+          p Retro occupy organic, stumptown shabby chic pour-over roof party DIY normcore. Actually artisan organic occupy, Wes Anderson ugh whatever pour-over gastropub selvage. Chillwave craft beer tote bag stumptown quinoa hashtag. Dreamcatcher locavore iPhone chillwave, occupy trust fund slow-carb distillery art party narwhal. Ennui shabby chic Brooklyn, fanny pack direct trade Tumblr tattooed retro polaroid deep v chia vinyl Austin Tonx food truck. Literally ugh umami, pickled jean shorts Wes Anderson letterpress. Banjo Tonx beard biodiesel narwhal.
+          p Being the savage's bowsman, that is, the person who pulled the bow-oar in his boat (the second one from forward), it was my cheerful duty to attend upon him while taking that hard-scrabble scramble upon the dead whale's back. You have seen Italian organ-boys holding a dancing-ape by a long cord. Just so, from the ship's steep side, did I hold Queequeg down there in the sea, by what is technically called in the fishery a monkey-rope, attached to a strong strip of canvas belted round his waist.
+        .share_links
+          | Share
+          a.facebook(href="javascript:;")
+            i.icon_share_facebook
+          a.pinterest(href="javascript:;")
+            i.icon_share_pinterest
+      
+  .designer_profile_story.page_block
+    .block_inner
+      h2.block_title My Story - title
+      .block_main
+        .story_video.fit_video
+          iframe(width="560", height="315", src="https://www.youtube.com/embed/FbjUyCDrHI0", frameborder="0", allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture", allowfullscreen)
+        .story_article
+          p I think my key issue was this: I didn’t leave myself enough time to plan this wedding. And I’m happy to admit it. If I didn’t have such a hectic career, AND PRIMARILY, if I hadn’t decided to buy a house at the very same time, 9 months would likely have been ample time to plan an at home wedding. But I wanted an abroad wedding… of course I did! *rolls eyes at self numerous times*
+          p So giving myself 9 months to find a venue in the South of France was the first hurdle that took longer to climb over than I optimistically expected. And then right after we found the venue, we also found our new house.
+          p A 20 ans elle quitte la République Démocratique du Congo et si’nstalle à Bruxelles avec un rêve : devenir architecte d’intérieur. Elle devra se battre pendant 7 ans pour décrocher un titre de séjour et pouvoir suivre un cursus en décoration d’i’ntérieur.
+          p Son diplôme en poche, après quelques expériences dans des cabinets d’architecte et des enseignes de décoration, elle décide de rentrer dans son pays alors en pleine reconstruction. De retour à Kinshasa, déterminée à exercer en tant que décoratrice d’’intérieur, elle commence par lancer un service de conciergerie privée, première étape pour se faire connaitre et se constituer un carnet d’’adresses. Elle se fait très vite remarquer et collabore avec les plus grandes entreprises du Congo en tant que scénographe, designer et décoratrice. Il n’’en faut pas plus pour que les particuliers affluent et fassent appel à ses services pour l’aménagement et la décoration de leur intérieur.
+          p Pendant tout ce temps, son envie de créer sa propre marque de mobilier n’a cessé de grandir et avec elle, cette volonté de faire connaitre les trésors de son pays, de transmettre un héritage.
+
+  .designer_profile_brands.page_block
+    .block_inner
+      h2.block_title My Brands
+      .block_main
+
+block js
+  script.
+    $(function() {
+      // 愛心的點擊事件
+      $(document).on('click', '.btn_favorite', function(event) {
+        // designerId 取得設計師的 ID
+        var designerId = $(this).attr('data-designerId');
+        var countNumber = parseInt($(this).find('.count').text());
+
+        if ($(this).hasClass('active')) {
+          // 取消最愛寫這裡
+
+          $(this).removeClass('active');
+          $(this).find('.count').text(countNumber - 1);
+        } else {
+          // 加入最愛寫這裡
+
+          $(this).addClass('active');
+          $(this).find('.count').text(countNumber + 1);
+        }
+      });
+    });

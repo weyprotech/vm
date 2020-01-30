@@ -259,6 +259,27 @@
       }
     }
   }
+  .post_block {
+    .post_main {
+      .posst_content {
+        min-width: calc(60% - 6em);
+      }
+      .post_media {
+        margin-left: 6em;
+      }
+    }
+  }
+  .designer_profile_topping {
+    .topping_header {
+      width: 45% !important;
+    }
+    .designer_info {
+      .profile_picture {
+        width: 80px;
+        height: 80px;
+      }
+    }
+  }
 
   // Brand
   .brand_topping {

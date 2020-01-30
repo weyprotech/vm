@@ -107,7 +107,7 @@
   .popup_inner {
     margin: 0 auto;
   }
-  .popup_video {
+  .popup_media {
     max-width: 685px;
   }
   @include breakpoint(768px) {
@@ -148,7 +148,7 @@
   span {
     display: block;
     font-size: 0.875em;
-    line-height: 1.2;
+    line-height: 1.25;
   }
   @include breakpoint(768px) {
     right: 1em;

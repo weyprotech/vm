@@ -1,8 +1,3 @@
-// Popup Entrance
-#popupEntrance {
-  max-width: 480px;
-}
-
 // Cart View
 .cart_view {
   .title {
@@ -153,7 +148,7 @@
     }
   }
 }
-.brand_picture {
+.brand_logo {
   display: block;
   width: 85px;
   height: 85px;
@@ -230,29 +225,75 @@
 	}
 }
 
-// Page
+// Pager
 .pager_navigation {
-	padding: 0 1.5rem 1.5rem;
-	box-sizing: border-box;
-	text-align: center;
-	.pager_nav_inner {
-		max-width: 1170px;
-		margin: 0 auto;
-	}
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0;
+  text-align: center;
 	a {
-		display: inline-block;
-		height: 24px;
-		padding: 0 .5rem;
-		line-height: 24px;
-		vertical-align: middle;
-		&:hover, &.current {
-			// color: $orange;
-		}
-		> div[class^='icon_'] {
-			display: inline-block;
-			vertical-align: middle;
-		}
-	}
+    display: block;
+    min-width: 24px;
+    padding: 0 0.15em;
+    box-sizing: border-box;
+    color: $khaki-dark;
+    text-align: center;
+    line-height: 24px;
+    &:hover {
+      background-color: $khaki-dark;
+      color: $white !important;
+    }
+  }
+  li {
+    list-style: none;
+    display: inline-block;
+    margin: 0.25em;
+    font-size: 0.875rem;
+    vertical-align: middle;
+    &.current {
+      a {
+        background-color: $khaki-dark;
+        color: $white;
+      }
+    }
+    &.prev, &.next {
+      a {
+        width: 80px;
+        border: $khaki-dark 1px solid;
+        color: $gray;
+        line-height: 36px;
+      }
+    }
+    &.prev {
+      margin-left: 0;
+      margin-right: 0.8em;
+    }
+    &.next {
+      margin-right: 0;
+      margin-left: 0.8em;
+    }
+  }
+}
+.pager_bar {
+  margin-top: 1.125em;
+  .pages {
+    margin-bottom: 0.5rem;
+    color: $khaki-dark;
+    font-size: 0.875em;
+    text-align: center;
+  }
+  @include breakpoint(560px) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .pages {
+      margin-bottom: 0;
+    }
+    .pager_navigation {
+      text-align: right;
+    }
+  }
 }
 
 // Filter Search
@@ -568,7 +609,7 @@
         margin-bottom: 1em;
         color: $black;
       }
-      .brand_picture {
+      .brand_logo {
         flex: 0 0 auto;
         width: 48px;
         height: 48px;
@@ -2689,6 +2730,165 @@
     color: $gray-darken;
   }
 }
+.designer_profile_brands {
+  .brands_items {
+    .item {
+      margin-bottom: 1.5em;
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+    a {
+      display: block;
+      color: $main;
+      text-align: left;
+      &:hover {
+        color: $khaki;
+      }
+    }
+    .thumb {
+      margin-bottom: 1em;
+      @extend .transition;
+    }
+    .brand_name {
+      display: flex;
+      align-items: center;
+      .brand_logo {
+        flex: 0 0 auto;
+        margin-right: 0.8em;
+      }
+      h3 {
+        flex: 1 1 auto;
+        font-size: 1.125em;
+        font-family: 'Crimson Text', serif;
+        font-weight: 600;
+      }
+    }
+    a:hover {
+      .thumb {
+        box-shadow: 0 0 0 1px $khaki;
+      }
+    }
+    @include breakpoint(560px) {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      .item {
+        width: 46%;
+        margin-left: 2%;
+        margin-right: 2%;
+        &:nth-last-child(-n+2):nth-child(2n+1),
+        &:nth-last-child(-n+2):nth-child(2n+1) ~ .item {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+}
+.reviews_wrapper {
+  .item {
+    border-bottom: $khaki-lightest 1px solid;
+    box-sizing: border-box;
+    &:first-child {
+      border-top: $khaki-lightest 1px solid;
+    }
+  }
+  .review {
+    padding: 1.5em 0;
+    border-bottom: $khaki-lightest 1px solid;
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+  .user_info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.3em;
+    .profile_picture {
+      flex: 0 0 auto;
+      width: 40px;
+      height: 40px;
+      margin-right: 0.8em;
+      border: $khaki-light 1px solid;
+      box-sizing: border-box;
+    }
+    .title {
+      color: $main;
+      line-height: 1.25;
+      .name {
+        display: inline-block;
+        flex: 1 1 auto;
+        font-family: 'Crimson Text', serif;
+        font-size: 1.125em;
+        font-weight: 600;
+        vertical-align: middle;
+      }
+      span {
+        display: inline-block;
+        vertical-align: middle;
+      }
+      .divide_line {
+        height: 16px;
+        margin: 0 1rem;
+        background-color: $main;
+      }
+    }
+  }
+  .product_name {
+    margin-bottom: 0.3em;
+    line-height: 1.25;
+  }
+  .rate_date {
+    margin-bottom: 0.3em;
+    color: $main;
+    .rate_star {
+      display: inline-block;
+      padding: 0;
+      margin-right: 0.8em;
+      vertical-align: middle;
+    }
+    .date {
+      display: inline-block;
+      vertical-align: middle;
+    }
+  }
+  .text {
+    color: $gray-darken;
+  }
+}
+.designer_reviews {
+  .block_title {
+    small {
+      display: block;
+      color: $main;
+      font-family: 'Arimo', $sans-serif;
+      font-size: 1rem;
+      font-style: normal;
+    }
+  }
+  .reviews_wrapper {
+    .review {
+      display: flex;
+      &.reply {
+        padding-left: calc(80px + 1em);
+        @include breakpoint(480px) {
+          padding-left: calc(100px + 1em);
+        }
+      }
+    }
+    .review_picture {
+      flex: 0 0 auto;
+      width: 80px;
+      margin-right: 1em;
+      @include breakpoint(480px) {
+        width: 105px;
+      }
+    }
+    .review_content {
+      flex: 1 1 auto;
+    }
+  }
+}
 
 // Brand
 .brand_topping {
@@ -2836,7 +3036,7 @@
   }
   .brand_name {
     margin-bottom: 1.5em;
-    .brand_picture {
+    .brand_logo {
       display: inline-block;
       vertical-align: middle;
     }

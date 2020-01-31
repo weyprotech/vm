@@ -12,7 +12,8 @@
     "malihu-custom-scrollbar-plugin": "^3.1.5",
     "masonry-layout": "masonry#^4.2.2",
     "imagesloaded": "^4.1.4",
-    "infinite-scroll": "^3.0.6"
+    "infinite-scroll": "^3.0.6",
+    "rateyo": "^2.3.4"
   },
   "devDependencies": {
     "chai": "^3.5.0",

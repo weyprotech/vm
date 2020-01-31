@@ -1,4 +1,23 @@
 @include susy-breakpoint(768px, 12) {
+  // Pager
+  .pager_navigation {
+    li {
+      margin: 0.25em 0.3125em;
+      font-size: 1rem;
+      &.prev, &.next {
+        a {
+          width: 108px;
+        }
+      }
+      &.prev {
+        margin-right: 2.5rem;
+      }
+      &.next {
+        margin-left: 2.5rem;
+      }
+    }
+  }
+
   // Block
   .page_block {
     padding: 3em 1em;
@@ -380,6 +399,22 @@
       padding: 1.5em;
     }
   }
+  .designer_profile_brands {
+    .brands_items {
+      .item {
+        width: 44%;
+        margin-left: 3%;
+        margin-right: 3%;
+      }
+    }
+  }
+  .designer_reviews {
+    .reviews_wrapper {
+      .item {
+        padding: 0 2.5em;
+      }
+    }
+  }
 
   // Brand
   .brand_topping {
@@ -443,6 +478,25 @@
       &:nth-last-child(-n+4):nth-child(4n+1),
       &:nth-last-child(-n+4):nth-child(4n+1)~.item {
         margin-bottom: 0;
+      }
+    }
+  }
+
+  // Designer
+  .designer_profile_brands {
+    .brands_items {
+      .item {
+        width: (100% - 12%) / 3;
+        margin-left: 2%;
+        margin-right: 2%;
+        &:nth-last-child(-n+2):nth-child(2n+1),
+        &:nth-last-child(-n+2):nth-child(2n+1)~.item {
+          margin-bottom: 1.5em;
+        }
+        &:nth-last-child(-n+3):nth-child(3n+1),
+        &:nth-last-child(-n+3):nth-child(3n+1)~.item {
+          margin-bottom: 0;
+        }
       }
     }
   }

@@ -64,6 +64,31 @@ block main
     .block_inner
       h2.block_title My Brands
       .block_main
+        .brands_items
+          .item
+            a(href="brand_story.html")
+              .thumb
+                //↓ 4:3，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓
+                .pic(style="background-image: url(images/img_brand.jpg);")
+                  img.size(src="images/size_4x3.png")
+                //↑ 4:3，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑
+              .brand_name
+                .brand_logo
+                  .pic(style="background-image: url(images/img_brand_logo.jpg);")
+                    img.size(src="images/size_1x1.png")
+                h3 Nature Beauty Brand Name
+          .item
+            a(href="brand_story.html")
+              .thumb
+                //↓ 4:3，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓
+                .pic(style="background-image: url(https://source.unsplash.com/TkwBK8nbA8I/300x225);")
+                  img.size(src="images/size_4x3.png")
+                //↑ 4:3，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑
+              .brand_name
+                .brand_logo
+                  .pic(style="background-image: url(images/img_brand_logo2.jpg);")
+                    img.size(src="images/size_1x1.png")
+                h3 Nature Beauty Brand Name
 
 block js
   script.

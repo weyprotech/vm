@@ -157,6 +157,15 @@
       }
     }
   }
+  .designer_profile_brands {
+    .brands_items {
+      .item {
+        width: (100% - 24%) / 3;
+        margin-left: 4%;
+        margin-right: 4%;
+      }
+    }
+  }
 
   // Brand
   .brand_topping {

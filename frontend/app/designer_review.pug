@@ -1,0 +1,182 @@
+extends layouts/default.pug
+
+block value
+  - var currentUrl = 'designers';
+
+block main
+  .designer_banner.banner_slider
+    .slide
+      img(src="images/banner_designer.jpg", alt="")
+    .slide
+      img(src="https://via.placeholder.com/1920x826", alt="")
+    .slide
+      img(src="https://via.placeholder.com/1920x826", alt="")
+
+  .designer_header
+    .designer_header_inner
+      .designer_header_mian
+        .designer_info
+          a(href="designer_profile.html")
+            .profile_picture
+              //↓ 1:1，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓
+              .pic(style="background-image: url(images/img_profile.jpg")
+                img.size(src="images/size_1x1.png")
+              //↑ 1:1，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑
+            .text
+              .designer_name
+                //↓ 知名設計才會有鑽石icon ↓
+                i.icon_diamond_b
+                //↑ 知名設計才會有鑽石icon ↑
+                span Douglas Robinson
+              .country
+                img.flag(src="images/flag/flag_italy.png")
+                span Italy
+        ul.links
+          li
+            a.popup(href="javascript:;", title="Just for you")
+              i.icon_just_for_you
+              span Just for you
+          li
+            a.popup(href="javascript:;", title="Message")
+              i.icon_message
+              span Message
+          li
+            a.btn_favorite(href="javascript:;", data-designerId="designer001", title="Favorite")
+              i.icon_favorite_heart_big
+              span (#[span.count 1207])
+          li
+            a.popup(href="javascript:;", title="Gift Designer")
+              i.icon_gift_designer
+              span Gift Designer
+          li
+            a.popup(href="javascript:;", title="Make a Wish")
+              i.icon_make_wish
+              span Make a Wish
+      .designer_navigation
+        .designer_navigation_inner
+          .reviews
+            a(href="designer_review.html")
+              i.icon_star_full_big
+              span.score 4.8
+              span.count (232 Reviews)
+          .nav_menu
+            ul
+              li
+                a(href="designer_home.html") Home
+              li
+                a(href="designer_profile.html") Designer Profile
+              li
+                a(href="javascript:;") Brand Story
+                ul
+                  li
+                    a(href="brand_story.html") Brand Name 01
+                  li
+                    a(href="brand_story.html") Brand Name 02
+              li
+                a(href="designer_products.html") Product
+              li
+                a.current(href="designer_review.html") Review
+            a.toggle_menu(href="javascript:;")
+              | Menu
+
+  .designer_reviews.page_block
+    .block_inner
+      h2.block_title Reviews#[small (232 Reviews)]
+      .block_main
+        .reviews_wrapper
+          each i inArray(5)
+            .item
+              .review
+                .review_picture
+                  .thumb
+                    .pic(style="background-image: url(images/img_product01.jpg);")
+                      img.size(src="images/size_3x4.png")
+                .review_content
+                  .user_info
+                    .profile_picture
+                      .pic(style="background-image: url(https://source.unsplash.com/JQDflNNnrEE/100x100);")
+                        img.size(src="images/size_1x1.png")
+                    .title
+                      .name Lily Allen
+                  .product_name
+                    | Drop-Shoulder A-Line Dress With Belt
+                  .rate_date
+                    .rate_star(data-rateyo-read-only="true", data-rateyo-rating="5")
+                    .date 2019.08.01
+                  .text
+                    | Nice! Comfort!
+              .review.reply
+                .review_content
+                  .user_info
+                    .profile_picture
+                      .pic(style="background-image: url(images/img_profile.jpg);")
+                        img.size(src="images/size_1x1.png")
+                    .title
+                      .name Lily Allen
+                      .divide_line
+                      span Reply
+                      .divide_line
+                      span 2019.08.01
+                  .text
+                    | Thank you ：）
+            .item
+              .review
+                .review_picture
+                  .thumb
+                    .pic(style="background-image: url(https://source.unsplash.com/WcXxxQYp_aM/300x400);")
+                      img.size(src="images/size_3x4.png")
+                .review_content
+                  .user_info
+                    .profile_picture
+                      .pic(style="background-image: url(https://source.unsplash.com/6W4F62sN_yI/100x100);")
+                        img.size(src="images/size_1x1.png")
+                    .title
+                      .name Ann Li
+                  .product_name
+                    | Drop-Shoulder C-Line Dress With Belt
+                  .rate_date
+                    .rate_star(data-rateyo-read-only="true", data-rateyo-rating="4.5")
+                    .date 2019.08.01
+                  .text
+                    | I am really pleased with this dress, I am 5' 1" and usually size 10, but size 8 fitted me well and the length is just fine on me and not too long. It could be worn as a summer dress to the office, or dressed up with heels for a smart evening out or afternoon tea. Lovely vibrant colours and nice flowing material. Very pleased - another great dress from Matalan at a very reasonable price.
+        .pager_bar
+          .pages
+            | Page 9 of 15
+          ul.pager_navigation
+            li.prev
+              a(href="javascript:;") &lt; Previous
+            li.current
+              a(href="javascript:;") 1
+            li
+              a(href="javascript:;") 2
+            li
+              a(href="javascript:;") 3
+            li
+              a(href="javascript:;") 4
+            li
+              a(href="javascript:;") 5
+            li.next
+              a(href="javascript:;") Next &gt;
+
+block js
+  script.
+    $(function() {
+      // 愛心的點擊事件
+      $(document).on('click', '.btn_favorite', function(event) {
+        // designerId 取得設計師的 ID
+        var designerId = $(this).attr('data-designerId');
+        var countNumber = parseInt($(this).find('.count').text());
+
+        if ($(this).hasClass('active')) {
+          // 取消最愛寫這裡
+
+          $(this).removeClass('active');
+          $(this).find('.count').text(countNumber - 1);
+        } else {
+          // 加入最愛寫這裡
+
+          $(this).addClass('active');
+          $(this).find('.count').text(countNumber + 1);
+        }
+      });
+    });

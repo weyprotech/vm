@@ -661,7 +661,7 @@
           width: 44px;
           height: 44px;
           margin-right: 0.5rem;
-          border: $khaki-light 1px solid;
+          border: $khaki-light 2px solid;
           box-sizing: border-box;
         }
         .designer_name {
@@ -939,7 +939,7 @@
         width: 44px;
         height: 44px;
         margin-right: 0.5rem;
-        border: $khaki-light 1px solid;
+        border: $khaki-light 2px solid;
         box-sizing: border-box;
         vertical-align: middle;
       }
@@ -1545,7 +1545,7 @@
   .comments_messages {
     .item {
       padding: 1em 0.5em;
-      border-bottom: 1px solid $khaki-lightest;
+      border-bottom: $khaki-lightest 1px solid;
       box-sizing: border-box;
       &:last-child {
         border-bottom: none;
@@ -1558,7 +1558,7 @@
         width: 44px;
         height: 44px;
         margin-right: 0.5em;
-        border: 1px solid $khaki-light;
+        border: $khaki-light 2px solid;
         box-sizing: border-box;
       }
       .msg_content {
@@ -1952,7 +1952,7 @@
         width: 50px;
         height: 50px;
         margin-right: 1em;
-        border: 1px solid $khaki-light;
+        border: $khaki-light 2px solid;
         box-sizing: border-box;
       }
       .designer_name {
@@ -2040,7 +2040,7 @@
         width: 50px;
         height: 50px;
         margin-right: 1em;
-        border: 1px solid $khaki-light;
+        border: $khaki-light 2px solid;
         box-sizing: border-box;
       }
       .designer_name {
@@ -2127,7 +2127,7 @@
     background-color: $white;
   }
   .designer_info {
-    margin-bottom: 1em;
+    margin-bottom: 1rem;
     font-size: 0;
     a {
       display: inline-flex;
@@ -2140,7 +2140,7 @@
       width: 80px;
       height: 80px;
       margin-right: 1.125em;
-      border: $khaki-light 1.5px solid;
+      border: $khaki-light 2px solid;
       box-sizing: border-box;
       @extend .transition;
     }
@@ -2654,7 +2654,7 @@
       width: 60px;
       height: 60px;
       margin-right: 1.125em;
-      border: $khaki-light 1.5px solid;
+      border: $khaki-light 2px solid;
       box-sizing: border-box;
     }
     .text {
@@ -2809,7 +2809,7 @@
       width: 40px;
       height: 40px;
       margin-right: 0.8em;
-      border: $khaki-light 1px solid;
+      border: $khaki-light 2px solid;
       box-sizing: border-box;
     }
     .title {
@@ -2886,6 +2886,127 @@
     }
     .review_content {
       flex: 1 1 auto;
+    }
+  }
+}
+.designer_brands_sort {
+  background-color: $khaki-lightest;
+  .block_inner {
+    padding: 0 0.8em;
+  }
+  .brands_sort {
+    .item {
+      font-size: 0;
+      margin-bottom: 1rem;
+      &:last-child {
+        margin-bottom: 0;
+      }
+      a {
+        display: flex;
+        align-items: center;
+        color: $main;
+        font-size: 1rem;
+        &:hover {
+          color: $khaki;
+        }
+      }
+      .brand_logo {
+        flex: 0 0 auto;
+        width: 62px;
+        height: 62px;
+        margin-right: 0.8em;
+      }
+      h3 {
+        flex: 1 1 auto;
+        margin: 0;
+        font-family: 'Crimson Text', serif;
+        font-size: 1.125em;
+        font-weight: 600;
+        line-height: 1.25;
+      }
+    }
+  }
+  @include breakpoint(560px) {
+    .block_title {
+      text-align: left;
+    }
+    .brands_sort {
+      display: flex;
+      flex-wrap: wrap;
+      .item {
+        position: relative;
+        width: calc((100% - 2rem) / 2);
+        margin-right: 2rem;
+        &:after {
+          content: '';
+          position: absolute;
+          top: 0;
+          right: -1rem;
+          display: block;
+          width: 1px;
+          height: 100%;
+          background-color: $gray-light;
+        }
+        a {
+          height: 100%;
+        }
+        &:last-child {
+          &:after {
+            display: none !important;
+          }
+        }
+        &:nth-child(2n) {
+          margin-right: 0;
+          &:after {
+            display: none;
+          }
+        }
+        &:nth-last-child(-n+2):nth-child(2n+1),
+        &:nth-last-child(-n+2):nth-child(2n+1) ~ .item {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+}
+.designer_new_arrivals {
+  .news_arrivals {
+    overflow: hidden;
+    .news_arrivals_inner {
+      display: flex;
+      white-space: nowrap;
+      font-size: 0;
+    }
+    .products_list {
+      order: 2;
+      flex: 0 0 auto;
+      display: inline-block;
+      margin-bottom: 0;
+      margin-right: 1rem;
+      white-space: nowrap;
+      vertical-align: top;
+      &:last-child {
+        margin-right: 0;
+      }
+      .item {
+        display: inline-block;
+        width: 230px;
+        margin-bottom: 0;
+        margin-right: 1rem;
+        font-size: 1rem;
+        white-space: normal;
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+    }
+    .master_vision {
+      order: 1;
+      flex: 0 0 auto;
+      display: inline-block;
+      width: 230px;
+      margin-right: 1rem;
+      vertical-align: top;
     }
   }
 }
@@ -3021,7 +3142,7 @@
         display: inline-block;
         width: 62px;
         height: 62px;
-        border: 1px solid $khaki-light;
+        border: $khaki-light 2px solid;
         vertical-align: middle;
       }
       span {

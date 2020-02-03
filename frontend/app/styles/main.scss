@@ -76,8 +76,23 @@ $susy: (
 }
 
 // mCustomScrollbar
-.mCustomScrollbar {
+.mCustomScrollbar,
+.mCustomScrollbar.mCS_touch_action,
+.mCustomScrollbar.mCS_touch_action .mCS-aviva.mCSB_scrollTools {
+  -ms-touch-action: auto;
   touch-action: auto;
+}
+.mCustomScrollBox {
+  -ms-touch-action: pan-x;
+  touch-action: pan-x;
+}
+.mCustomScrollBox.mCSB_vertical_horizontal {
+  -ms-touch-action: auto;
+  touch-action: auto;
+}
+.mCustomScrollBox.mCSB_horizontal {
+  -ms-touch-action: pan-y;
+  touch-action: pan-y;
 }
 .mCSB_inside > .mCSB_container {
   margin-right: 1.25em;
@@ -125,8 +140,8 @@ $susy: (
 
 // Popup
 .mfp-bg {
-  z-index: 99998;
+  z-index: 99990;
 }
 .mfp-wrap {
-  z-index: 99999;
+  z-index: 99991;
 }

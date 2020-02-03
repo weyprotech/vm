@@ -79,15 +79,95 @@ block main
             a.toggle_menu(href="javascript:;")
               | Menu
 
+  .designer_brands_sort.page_block
+    .block_inner
+      h2.block_title My Brands
+      .block_main
+        .brands_sort
+          .item
+            a(href="javascript:;")
+              .brand_logo
+                .pic(style="background-image: url(images/img_brand_logo.jpg);")
+                  img.size(src="images/size_1x1.png")
+              h3 Maison Artaner
+          .item
+            a(href="javascript:;")
+              .brand_logo
+                .pic(style="background-image: url(images/img_brand_logo2.jpg);")
+                  img.size(src="images/size_1x1.png")
+              h3 Article Suivant
+  
   .designer_new_arrivals.page_block
     .block_inner
       h2.block_title New Arrivals
       .block_main
-        
+        .news_arrivals.scrollbar_x
+          .news_arrivals_inner
+            .products_list
+              .item
+                a(href="product_detail.html")
+                  .thumb
+                    .pic(style="background-image: url(images/img_product01.jpg)")
+                      img.size(src="images/size_3x4.png")
+                  h3 The Chelsea Heritage Trench Coat
+                  .price NT$ 98800
+              .item
+                a(href="product_detail.html")
+                  .thumb
+                    .pic(style="background-image: url(https://via.placeholder.com/300x400)")
+                      img.size(src="images/size_3x4.png")
+                  h3 The Chelsea Heritage Trench Coat
+                  .price NT$ 98800
+            .master_vision
+              img(src="images/img_master_vision.jpg")
+            .products_list
+              .item
+                a(href="product_detail.html")
+                  .thumb
+                    .pic(style="background-image: url(images/img_product01.jpg)")
+                      img.size(src="images/size_3x4.png")
+                  h3 The Chelsea Heritage Trench Coat
+                  .price NT$ 98800
+              .item
+                a(href="product_detail.html")
+                  .thumb
+                    .pic(style="background-image: url(https://via.placeholder.com/300x400)")
+                      img.size(src="images/size_3x4.png")
+                  h3 The Chelsea Heritage Trench Coat
+                  .price NT$ 98800
+  
   .designer_products.page_block
     .block_inner
       h2.block_title Products
       .block_main
+        .nav_menu
+          ul
+            li
+              a(href="designer_home.html") Home
+            li
+              a(href="designer_profile.html") Designer Profile
+            li
+              a(href="javascript:;") Brand Story
+            li
+              a.current(href="designer_products.html") Product
+            li
+              a(href="designer_review.html") Review
+        .products_list
+          .item
+            a(href="product_detail.html")
+              .thumb
+                .pic(style="background-image: url(images/img_product01.jpg)")
+                  img.size(src="images/size_3x4.png")
+              h3 Lemite - Sleeveless Eyelet-Lace Dress
+              .price NT$ 988
+          each i inArray(3)
+            .item
+              a(href="product_detail.html")
+                .thumb
+                  .pic(style="background-image: url(https://via.placeholder.com/300x400)")
+                    img.size(src="images/size_3x4.png")
+                h3 Lemite - Sleeveless Eyelet-Lace Dress
+                .price NT$ 1200
 
 block js
   script.

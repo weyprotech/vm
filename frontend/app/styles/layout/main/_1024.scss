@@ -280,6 +280,23 @@
       }
     }
   }
+  .designer_brands_sort {
+    .block_inner {
+      padding: 0 1.5em;
+    }
+    .brands_sort {
+      .item {
+        width: calc((100% - 5rem * 2) / 3);
+        margin-right: 5rem;
+        &:after {
+          right: -2.5rem;
+        }
+        &:nth-child(2n) {
+          margin-right: 5rem;
+        }
+      }
+    }
+  }
   
   // Brand
   .brand_topping {

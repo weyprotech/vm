@@ -415,6 +415,39 @@
       }
     }
   }
+  .designer_brands_sort {
+    &.page_block {
+      padding: 1.875em 1em;
+    }
+    .block_title {
+      font-size: 1.5em;
+    }
+    .brands_sort {
+      .item {
+        width: calc((100% - 2rem * 2) / 3);
+        &:nth-child(2n) {
+          margin-right: 2rem;
+          &:after {
+            display: block;
+          }
+        }
+        &:nth-last-child(-n+2):nth-child(2n+1),
+        &:nth-last-child(-n+2):nth-child(2n+1) ~ .item {
+          margin-bottom: 1rem;
+        }
+        &:nth-child(3n) {
+          margin-right: 0;
+          &:after {
+            display: none;
+          }
+        }
+        &:nth-last-child(-n+3):nth-child(3n+1),
+        &:nth-last-child(-n+3):nth-child(3n+1) ~ .item {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
 
   // Brand
   .brand_topping {
@@ -497,6 +530,40 @@
         &:nth-last-child(-n+3):nth-child(3n+1)~.item {
           margin-bottom: 0;
         }
+      }
+    }
+  }
+  .designer_new_arrivals {
+    .news_arrivals {
+      .news_arrivals_inner {
+        display: flex;
+        justify-content: space-between;
+        white-space: normal;
+      }
+      .products_list {
+        order: 1;
+        display: block;
+        width: 19%;
+        margin-right: 2.75%;
+        white-space: normal;
+        .item {
+          display: block;
+          width: 100%;
+          margin-bottom: 1.875rem !important;
+          margin-right: 0;
+          &:last-child {
+            margin-bottom: 0 !important;
+          }
+        }
+      }
+      .master_vision {
+        order: 2;
+        display: block;
+        width: 56.5%;
+        margin-right: 2.75%;
+      }
+      .master_vision + .products_list {
+        order: 3;
       }
     }
   }

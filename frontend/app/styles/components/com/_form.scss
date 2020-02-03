@@ -326,7 +326,7 @@ button {
     width: 44px;
     height: 44px;
     margin-right: 0.5em;
-    border: 1px solid $khaki-light;
+    border: $khaki-light 2px solid;
     box-sizing: border-box;
   }
   .controls {

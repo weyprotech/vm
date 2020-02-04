@@ -76,6 +76,12 @@ $susy: (
 }
 
 // mCustomScrollbar
+.mCSB_scrollTools .mCSB_buttonUp,
+.mCSB_scrollTools .mCSB_buttonDown,
+.mCSB_scrollTools .mCSB_buttonLeft,
+.mCSB_scrollTools .mCSB_buttonRight {
+  background-image: url(../images/mCSB_buttons.png);
+}
 .mCustomScrollbar,
 .mCustomScrollbar.mCS_touch_action,
 .mCustomScrollbar.mCS_touch_action .mCS-aviva.mCSB_scrollTools {
@@ -96,6 +102,9 @@ $susy: (
 }
 .mCSB_inside > .mCSB_container {
   margin-right: 1.25em;
+  &.mCS_x_hidden {
+    margin-bottom: 0 !important;
+  }
 }
 .mCSB_scrollTools {
   .mCSB_draggerRail {
@@ -133,6 +142,26 @@ $susy: (
         height: 12px;
         margin: 0;
         border-radius: 6px;
+      }
+    }
+  }
+}
+.mCS-dark-2 {
+  &.mCSB_horizontal.mCSB_inside > .mCSB_container {
+    margin-bottom: 20px;
+  }
+  &.mCSB_scrollTools {
+    .mCSB_draggerRail {
+      background-color: #E2E2E2;
+    }
+    .mCSB_dragger{
+      .mCSB_dragger_bar {
+        background-color: #C7BFAF;
+      }
+      &:hover, &.mCSB_dragger_onDrag {
+        .mCSB_dragger_bar {
+          background-color: $main;
+        }
       }
     }
   }

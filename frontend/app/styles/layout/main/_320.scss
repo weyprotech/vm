@@ -89,6 +89,7 @@
 // Thumb 
 .thumb {
   display: block;
+  @extend .transition;
   .pic {
     background-position: center;
     background-repeat: no-repeat;
@@ -343,6 +344,43 @@
     .search_form {
       flex: 0 0 auto;
       width: 240px;
+    }
+  }
+}
+
+// Sort Menu
+.sort_menu {
+  overflow-x: auto;
+  margin-bottom: 1em;
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 0;
+    white-space: nowrap;
+    li {
+      list-style: none;
+      display: inline-block;
+      padding: 0 0.625em;
+      border-right: $khaki-light 1px solid;
+      font-size: 1rem;
+      &:first-child {
+        padding-left: 0;
+      }
+      &:last-child {
+        padding-right: 0;
+        border-right: none;
+      }
+    }
+    a {
+      display: block;
+      padding: 0 0.625em;
+      color: $black;
+      line-height: 30px;
+      &:hover, &.current {
+        background-color: $khaki-dark;
+        color: $white;
+      }
     }
   }
 }
@@ -1211,8 +1249,11 @@
     }
   }
   .slide_inner:hover {
-    .thumb .brand_name {
-      color: $khaki;
+    .thumb {
+      box-shadow: 0 0 0 1px $khaki;
+      .brand_name {
+        color: $khaki;
+      }
     }
     .designer_info h3 {
       color: $main;
@@ -1429,8 +1470,13 @@
           line-height: 1.4;
         }
       }
-      a:hover .text {
-        color: $main;
+      a:hover {
+        .thumb {
+          box-shadow: 0 0 0 1px $khaki;
+        }
+        .text {
+          color: $main;
+        }
       }
     }
     @include breakpoint(480px) {
@@ -1785,6 +1831,9 @@
       line-height: 1.25;
     }
     a:hover {
+      .thumb {
+        box-shadow: 0 0 0 1px $khaki;
+      }
       .slide_title {
         color: $main;
       }
@@ -1848,6 +1897,9 @@
       @extend .transition;
     }
     a:hover {
+      .thumb {
+        box-shadow: 0 0 0 1px $khaki;
+      }
       .event_title, p {
         color: $main;
       }
@@ -1876,45 +1928,62 @@
 
 // Products List
 .products_list {
-  margin-bottom: 2em;
+  margin-bottom: 1.5em;
   .item {
     margin-bottom: 1em;
-    &:last-child {
-      margin-bottom: 0;
-    }
-    a {
-      display: block;
-      color: $black;
-      &:hover {
-        color: $main;
+  }
+  a {
+    display: block;
+    color: $black;
+    &:hover {
+      color: $main;
+      .thumb {
+        box-shadow: 0 0 0 1px $khaki;
       }
     }
-    .thumb {
-      margin-bottom: 0.5em;
+  }
+  .thumb {
+    margin-bottom: 0.5em;
+  }
+  h3 {
+    margin: 0 0 0.5em;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.25;
+  }
+  .price {
+    color: $main;
+    line-height: 1.25;
+  }
+  .product_list_head {
+    .text {
+      padding-top: 1.5em;
+      padding-right: 1em;
+      margin-top: -2.5em;
+      margin-right: 8%;
+      background-color: $white;
     }
-    h3 {
-      margin: 0 0 0.5em;
-      font-size: 1rem;
+    h2 {
+      margin: 0 0 0.8rem;
+      font-size: 1.25em;
       font-weight: 400;
       line-height: 1.25;
     }
-    .price {
-      color: $main;
+    p {
+      margin: 0;
+      color: $gray-darken;
       line-height: 1.25;
     }
   }
   @include breakpoint(370px) {
     display: flex;
     flex-wrap: wrap;
+    margin: 0 -1.25% 1.5em;
     .item {
-      width: calc((100% - 1em) / 2);
-      margin-right: 1em;
-      &:nth-child(2n) {
-        margin-right: 0;
-      }
-      &:nth-last-child(-n+2):nth-child(2n+1),
-      &:nth-last-child(-n+2):nth-child(2n+1) ~ .item {
-        margin-bottom: 0;
+      width: (100% - 2.5% * 2) / 2;
+      margin: 0 1.25% 1em;
+      &.col_2 {
+        width: 100%;
       }
     }
   }
@@ -1971,6 +2040,9 @@
       }
       &:hover {
         color: $gray-darken;
+        .thumb {
+          box-shadow: 0 0 0 1px $khaki;
+        }
         .designer_name {
           color: $khaki;
         }
@@ -2061,6 +2133,9 @@
       }
       &:hover {
         color: $gray-darken;
+        .thumb {
+          box-shadow: 0 0 0 1px $khaki;
+        }
         .designer_name {
           color: $khaki;
         }
@@ -2500,6 +2575,9 @@
     }
     .thumb {
       max-width: 265px;
+      &:hover {
+        box-shadow: 0 0 0 1px $khaki;
+      }
     }
   }
 }
@@ -2618,14 +2696,19 @@
       max-width: 400px;
       margin-top: 1em;
     }
-    .thumb.has_more {
-      position: relative;
-      .btn.common {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 120px;
-        transform: translate(-50%, -50%);
+    .thumb {
+      &:hover {
+        box-shadow: 0 0 0 1px $khaki;
+      }
+      &.has_more {
+        position: relative;
+        .btn.common {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          width: 120px;
+          transform: translate(-50%, -50%);
+        }
       }
     }
     @include breakpoint(660px) {
@@ -2748,7 +2831,6 @@
     }
     .thumb {
       margin-bottom: 1em;
-      @extend .transition;
     }
     .brand_name {
       display: flex;
@@ -2756,6 +2838,7 @@
       .brand_logo {
         flex: 0 0 auto;
         margin-right: 0.8em;
+        @extend .transition;
       }
       h3 {
         flex: 1 1 auto;
@@ -2767,6 +2850,11 @@
     a:hover {
       .thumb {
         box-shadow: 0 0 0 1px $khaki;
+      }
+      .brand_name {
+        .brand_logo {
+          box-shadow: 0 0 0 1px $khaki;
+        }
       }
     }
     @include breakpoint(560px) {
@@ -2893,6 +2981,7 @@
   background-color: $khaki-lightest;
   .block_inner {
     padding: 0 0.8em;
+    box-sizing: border-box;
   }
   .brands_sort {
     .item {
@@ -2906,8 +2995,11 @@
         align-items: center;
         color: $main;
         font-size: 1rem;
-        &:hover {
+        &:hover, &.current {
           color: $khaki;
+          .brand_logo {
+            box-shadow: 0 0 0 1px $khaki;
+          }
         }
       }
       .brand_logo {
@@ -2915,6 +3007,7 @@
         width: 62px;
         height: 62px;
         margin-right: 0.8em;
+        @extend .transition;
       }
       h3 {
         flex: 1 1 auto;
@@ -2981,8 +3074,7 @@
       order: 2;
       flex: 0 0 auto;
       display: inline-block;
-      margin-bottom: 0;
-      margin-right: 1rem;
+      margin: 0 1rem 0 0;
       white-space: nowrap;
       vertical-align: top;
       &:last-child {
@@ -2991,8 +3083,7 @@
       .item {
         display: inline-block;
         width: 230px;
-        margin-bottom: 0;
-        margin-right: 1rem;
+        margin: 0 1rem 0 0;
         font-size: 1rem;
         white-space: normal;
         &:last-child {
@@ -3008,6 +3099,11 @@
       margin-right: 1rem;
       vertical-align: top;
     }
+  }
+}
+.designer_products {
+  .sort_menu {
+    text-align: center;
   }
 }
 
@@ -3041,6 +3137,9 @@
         }
       }
       &:hover {
+        .thumb {
+          box-shadow: 0 0 0 1px $khaki;
+        }
         h3 {
           color: $khaki;
         }
@@ -3117,6 +3216,9 @@
       }
       &:hover {
         color: $gray-darken;
+        .thumb {
+          box-shadow: 0 0 0 1px $khaki;
+        }
         h3 {
           color: $khaki;
         }
@@ -3138,6 +3240,12 @@
       background: rgba(0, 0, 0, 0);
       background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%);
       filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#000000', endColorstr='#000000', GradientType=0);
+      a {
+        color: $white;
+        &:hover {
+          color: $khaki;
+        }
+      }
       .profile_picture {
         display: inline-block;
         width: 62px;
@@ -3148,7 +3256,6 @@
       span {
         display: inline-block;
         margin-left: 0.5rem;
-        color: $white;
         font-family: 'Crimson Text',serif;
         font-size: 1.125rem;
         vertical-align: middle;
@@ -3255,6 +3362,11 @@
       color: $black;
       &:hover {
         color: $main;
+        .thumb {
+          .pic {
+            box-shadow: 0 0 0 1px $khaki inset;
+          }
+        }
       }
     }
     .date {
@@ -3263,6 +3375,9 @@
     }
     .thumb {
       margin-bottom: 0.5em;
+      .pic {
+        @extend .transition;
+      }
     }
     p {
       overflow: hidden;
@@ -3313,6 +3428,9 @@
         @extend .transition;
       }
       &:hover {
+        .thumb {
+          box-shadow: 0 0 0 1px $khaki;
+        }
         h3 {
           color: $khaki;
         }
@@ -3347,6 +3465,9 @@
         @extend .transition;
       }
       &:hover {
+        .thumb {
+          box-shadow: 0 0 0 1px $khaki;
+        }
         h3 {
           color: $khaki;
         }
@@ -3380,6 +3501,9 @@
       color: $black;
       &:hover {
         color: $main;
+        .thumb {
+          box-shadow: 0 0 0 1px $khaki;
+        }
       }
     }
     .text {

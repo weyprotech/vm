@@ -365,18 +365,15 @@
 @include susy-breakpoint(1232px, 12) {
   // Products List
   .products_list {
-    .item {
-      width: calc((100% - 1.875em * 3) / 4);
-      margin-right: 1.875em;
-      &:nth-child(2n) {
-        margin-right: 1.875em;
-      }
-      &:nth-child(4n) {
-        margin-right: 0;
-      }
-      &:nth-last-child(-n+4):nth-child(4n+1),
-      &:nth-last-child(-n+4):nth-child(4n+1)~.item {
-        margin-bottom: 0;
+    margin: 0 -0.9375em 1.5em;
+    &.span5 {
+      margin: 0 -1% 1.5em;
+      .item {
+        width: (100% - 2% * 5) / 5;
+        margin: 0 1% 1.875em;
+        &.col_2 {
+          width: (100% - 2% * 5) / 5 * 2 + 2%;
+        }
       }
     }
   }

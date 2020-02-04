@@ -85,7 +85,7 @@ block main
       .block_main
         .brands_sort
           .item
-            a(href="javascript:;")
+            a.current(href="javascript:;")
               .brand_logo
                 .pic(style="background-image: url(images/img_brand_logo.jpg);")
                   img.size(src="images/size_1x1.png")
@@ -140,19 +140,31 @@ block main
     .block_inner
       h2.block_title Products
       .block_main
-        .nav_menu
+        .sort_menu
           ul
             li
-              a(href="designer_home.html") Home
+              a.current(href="javascript:;") Trench Coats
             li
-              a(href="designer_profile.html") Designer Profile
+              a(href="javascript:;") Custom Made
             li
-              a(href="javascript:;") Brand Story
+              a(href="javascript:;") Jumpsuits
             li
-              a.current(href="designer_products.html") Product
+              a(href="javascript:;") Dresses
             li
-              a(href="designer_review.html") Review
-        .products_list
+              a(href="javascript:;") Jeans
+        .products_list.span5
+          .item.col_2
+            //↓ 產品主標題 ↓
+            .product_list_head
+              //↓ 產品視覺圖 ↓
+              .thumb
+                .pic(style="background-image: url(images/img_product_vision.jpg)")
+                  img.size(src="images/size_8x5.png")
+              //↑ 產品視覺圖 ↑
+              .text
+                h2 HERITAGE TRENCH COATS
+                p Cras quis nulla commodo, aliquam lectus sed bland augue. Cras ullamcorper bibendum bibendum. Duis tincidunt urna non pretium porta. 
+            //↑ 產品主標題 ↑
           .item
             a(href="product_detail.html")
               .thumb
@@ -160,7 +172,7 @@ block main
                   img.size(src="images/size_3x4.png")
               h3 Lemite - Sleeveless Eyelet-Lace Dress
               .price NT$ 988
-          each i inArray(3)
+          each i inArray(10)
             .item
               a(href="product_detail.html")
                 .thumb
@@ -168,6 +180,22 @@ block main
                     img.size(src="images/size_3x4.png")
                 h3 Lemite - Sleeveless Eyelet-Lace Dress
                 .price NT$ 1200
+          .item.col_2
+            //↓ 產品視覺圖 ↓
+            .thumb
+              .pic(style="background-image: url(images/img_product_vision2.jpg)")
+                img.size(src="images/size_8x5.png")
+            //↑ 產品視覺圖 ↑
+          each i inArray(5)
+            .item
+              a(href="product_detail.html")
+                .thumb
+                  .pic(style="background-image: url(https://via.placeholder.com/300x400)")
+                    img.size(src="images/size_3x4.png")
+                h3 Lemite - Sleeveless Eyelet-Lace Dress
+                .price NT$ 1200
+        a.btn.common.more(href="javascript:;")
+          | More Products
 
 block js
   script.

@@ -220,6 +220,13 @@ $(document).ready(function () {
   if ($('.topping_block .topping_list').length > 0) {
     toppingListScroll();
   }
+  if ($('.sort_menu').length > 0) {
+    $('.sort_menu').mCustomScrollbar({
+      theme: 'dark-2',
+      axis: 'x',
+      //scrollButtons: { enable: true }
+    });
+  }
 
   // Masonry
   if ($('.ootd_list').length > 0) {

@@ -134,3 +134,11 @@
 .icon_star_full_big {
   @include retina-sprite($icon-star-full-big-group);
 }
+
+.icon_meteor_left {
+  @include retina-sprite($icon-meteor-left-group);
+}
+
+.icon_meteor_right {
+  @include retina-sprite($icon-meteor-right-group);
+}

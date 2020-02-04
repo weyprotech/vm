@@ -407,6 +407,20 @@
   font-weight: 400;
   text-align: center;
   line-height: 1.4;
+  &.has_icon {
+    span {
+      position: relative;
+      display: inline-block;
+    }
+    i[class^='icon_'] {
+      position: absolute;
+      top: 50%;
+      right: 100%;
+      display: block;
+      margin-right: 0.8rem;
+      transform: translateY(-50%);
+    }
+  }
 }
 
 // Container
@@ -1723,6 +1737,27 @@
     right: 0;
     &:before {
       @include retina-sprite($arrow-slider-next-group);
+    }
+  }
+}
+
+// Popup
+.popup_form {
+  .block_title {
+    font-style: normal;
+  }
+  .text {
+    margin-bottom: 1.875em;
+    color: $gray-darken;
+  }
+}
+.make_a_wish {
+  .block_title {
+    i.icon_meteor_right {
+      left: 100%;
+      right: auto;
+      margin-right: 0;
+      margin-left: 0.8rem;
     }
   }
 }

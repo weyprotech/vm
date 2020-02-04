@@ -37,7 +37,7 @@ select {
   height: 36px;
   padding: 0 10px;
   margin: 0;
-  border: none;
+  border: $khaki-dark 1px solid;
   border-radius: 0;
   outline: none;
   box-sizing: border-box;
@@ -63,13 +63,15 @@ select {
 textarea {
   display: block;
   width: 100%;
-  height: 300px;
+  height: 220px;
   padding: 10px;
   outline: none;
-  border: none;
+  border: $khaki-dark 1px solid;
   box-sizing: border-box;
+  resize: vertical;
   &:focus {
     outline: none;
+    background-color: $gray-lightest;
   }
 }
 
@@ -211,9 +213,18 @@ button {
   @extend .clear;
   > label {
     display: block;
-    padding: 0 .5em;
     margin-bottom: .5em;
     box-sizing: border-box;
+  }
+}
+
+// Call action
+.call_action {
+  margin-top: 1.875em;
+  text-align: center;
+  .btn {
+    width: 120px;
+    display: inline-block;
   }
 }
 
@@ -237,6 +248,7 @@ button {
     select {
       height: 30px;
       padding: 0 18px 0 0;
+      border: none;
       background-color: transparent;
       background-image: url(../images/arrow_select_white.png);
       color: $white;
@@ -335,7 +347,6 @@ button {
     input[type="text"] {
       flex: 1 1 auto;
       height: 44px;
-      border: 1px solid $khaki-dark;
       box-sizing: border-box;
     }
     button {
@@ -378,7 +389,6 @@ button {
       textarea {
         width: 100%;
         height: 148px;
-        border: 1px solid $khaki-dark;
         box-sizing: border-box;
       }
       button {
@@ -424,7 +434,6 @@ button {
       line-height: 1.25;
     }
     select {
-      border: $khaki-dark 1px solid;
       box-sizing: border-box;
       background-position: calc(100% - 10px) center;
     }

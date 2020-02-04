@@ -46,7 +46,7 @@
   width: 98%;
   max-width: 1024px;
   padding: 1em;
-  margin: 0 auto;
+  margin: 2.5em auto;
   border: 4px solid $khaki-dark;
   box-sizing: border-box;
   background-color: $white;
@@ -106,9 +106,13 @@
   }
   .popup_inner {
     margin: 0 auto;
+    overflow: hidden;
   }
   .popup_media {
     max-width: 685px;
+  }
+  .popup_form {
+    max-width: 480px;
   }
   @include breakpoint(768px) {
     padding: 3.125em 2em;

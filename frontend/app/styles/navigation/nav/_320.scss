@@ -75,7 +75,7 @@ nav {
   overflow-y: auto;
   width: 100vw;
   height: calc(100vh - 116px);
-  padding: 1.5em 0;
+  padding: 1.5em 1em;
   box-sizing: border-box;
   background-color: $khaki-lightest;
   &.head_sticky {
@@ -169,8 +169,8 @@ nav {
         margin: 0 auto 1em;
         select {
           height: 35px;
-          border-radius: 5px;
           padding: 0 20px 0 10px;
+          border-radius: 5px;
           background-color: $white;
           background-image: url(../images/arrow_select.png);
           background-position: calc(100% - 10px) center;

@@ -1751,7 +1751,7 @@
     color: $gray-darken;
   }
 }
-.make_a_wish {
+.popup_makeWish {
   .block_title {
     i.icon_meteor_right {
       left: 100%;
@@ -1759,6 +1759,11 @@
       margin-right: 0;
       margin-left: 0.8rem;
     }
+  }
+}
+.popup_gift {
+  .btn_radio {
+    width: 100%;
   }
 }
 
@@ -2033,8 +2038,7 @@
 }
 
 // Designer
-.designer_topping {
-  .designer_topping_header {
+.designer_card {
     position: relative;
     .btn_favorite {
       position: absolute;
@@ -2042,7 +2046,7 @@
       top: 1em;
       right: 1em;
     }
-    .header_content {
+    .card_content {
       color: $gray;
       .thumb {
         margin-bottom: 0.8em;
@@ -2088,7 +2092,7 @@
         top: 1.5em;
         right: 1.5em;
       }
-      .header_content {
+      .card_content {
         color: $white;
         .thumb {
           margin-bottom: 0;
@@ -2126,6 +2130,7 @@
       }
     }
   }
+.designer_topping {
   .designer_topping_list {
     .item {
       position: relative;
@@ -3554,5 +3559,62 @@
         line-height: 1.4;
       }
     }
+  }
+}
+
+// Popular Designers
+.designers_slider {
+  // .slick-slider {
+  //   margin-left: -12%;
+  //   margin-right: -12%;
+  // }
+
+  .slick-list {
+    padding-left: 10% !important;
+    padding-right: 10% !important;
+    box-sizing: border-box;
+  }
+
+  .slick-track {
+    max-width: 100% !important;
+    transform: translate3d(0, 0, 0) !important;
+    perspective: 100px;
+  }
+
+  .slick-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    opacity: 0;
+    width: 100% !important;
+    transform: translate3d(0, 0, 0);
+    transition: transform 1s, opacity 1s;
+  }
+
+  .slick-snext,
+  .slick-sprev {
+    display: block;
+  }
+
+  .slick-current {
+    opacity: 1;
+    position: relative;
+    display: block;
+    transform: translate3d(0, 0, 0);
+    z-index: 2;
+  }
+
+  .slick-snext {
+    opacity: 1;
+    transform: translate3d(30%, 0, -10px);
+    z-index: 1;
+  }
+
+  .slick-sprev {
+    opacity: 1;
+    transform: translate3d(-30%, 0, -10px);
   }
 }

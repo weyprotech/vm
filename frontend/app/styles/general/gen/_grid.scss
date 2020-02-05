@@ -8,8 +8,9 @@
 @include breakpoint(768px) {
   .row {
     .grid {
+      margin-bottom: 0;
       &.g_6_12 {
-        @include span(1 of 2 0.05);
+        @include span(1 of 2 0.1);
       }
       &:last-child {
         margin-right: 0;

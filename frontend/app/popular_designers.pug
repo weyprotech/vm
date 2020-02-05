@@ -1,0 +1,103 @@
+extends layouts/default.pug
+
+block value
+  - var currentUrl = 'popularDesigners';
+
+block main
+  .feature_designers.page_block
+    .block_inner
+      h2.block_title Feature Designers
+      .block_main
+        .designers_slider
+          each i inArray(3)
+            .slide
+              .designer_card
+                a.btn_favorite(data-designerId="01", href="javascript:;")
+                  i.icon_favorite_heart
+                a.card_content(href="designer_home.html")
+                  .thumb
+                    //↓ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓
+                    .pic(style="background-image: url(images/img_designer.jpg);")
+                      img.size(src="images/size_3x4.png")
+                    //↑ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑
+                  .intro
+                    .profile_picture(href="designer_home.html")
+                      //↓ 1:1，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓
+                      .pic(style="background-image: url(images/img_profile.jpg)")
+                        img.size(src="images/size_1x1.png")
+                      //↑ 1:1，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑
+                    h3.designer_name
+                      //↓ 知名設計才會有鑽石icon ↓
+                      i.icon_diamond_s
+                      //↑ 知名設計才會有鑽石icon ↑
+                      img.flag(src="images/flag/flag_italy.png")
+                      span Douglas Robinson
+                    p Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diamLorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diams
+
+  .popular_designers.page_block
+    .block_inner
+      h2.block_title Our Popular Designers
+      .block_main
+
+        a.btn.common.more(href="designers.html")
+          | More designers
+
+block js
+  script.
+    $(function() {
+      // Designer Slider
+      var designerSlider = $('.designers_slider');
+      designerSlider.on('init', function(event, slick, currentSlide) {
+        var cur = $(slick.$slides[slick.currentSlide]),
+        next = cur.next(),
+        prev = cur.prev();
+        prev.addClass('slick-sprev');
+        next.addClass('slick-snext');
+        cur.removeClass('slick-snext').removeClass('slick-sprev');
+        slick.$prev = prev;
+        slick.$next = next;
+      }).on('beforeChange', function(event, slick, currentSlide, nextSlide) {
+        var cur = $(slick.$slides[nextSlide]);
+        slick.$prev.removeClass('slick-sprev');
+        slick.$next.removeClass('slick-snext');
+        next = cur.next(),
+        prev = cur.prev();
+        prev.prev();
+        prev.next();
+        prev.addClass('slick-sprev');
+        next.addClass('slick-snext');
+        slick.$prev = prev;
+        slick.$next = next;
+        cur.removeClass('slick-next').removeClass('slick-sprev');
+      });
+
+      designerSlider.slick({
+        speed: 800,
+        arrows: true,
+        dots: false,
+        focusOnSelect: true,
+        infinite: true,
+        centerMode: true,
+        slidesPerRow: 1,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        centerPadding: '0',
+        swipe: true
+      });
+
+      // favorite 加入愛心的點擊事件
+      $(document).on('click', '.btn_favorite', function() {
+        // designerId 取得穿搭的 ID
+        var designerId = $(this).attr('data-designerId');
+
+        if ($(this).hasClass('active')) {
+          // 取消最愛寫這裡
+
+          $(this).removeClass('active');
+        } else {
+          // 加入最愛寫這裡
+
+          $(this).addClass('active');
+        }
+      });
+    });

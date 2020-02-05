@@ -1,5 +1,5 @@
 .popup_block
-  .popup_inner.popup_form.gift
+  .popup_inner.popup_form.popup_gift
     h2.block_title.has_icon
       span
         i.icon_gift_designer
@@ -11,6 +11,17 @@
         label Gift amount
         .controls
           input(type="text", placeholder="NT$")
+      .controls_group
+        label Choose your payment
+        .controls.row
+          .grid.g_6_12
+            .btn_radio
+              input#payment1(type="radio", name="payment", checked)
+              label(for="payment1") Credit Card
+          .grid.g_6_12
+            .btn_radio
+              input#payment2(type="radio", name="payment")
+              label(for="payment2") Account deduction
       .controls_group
         label Gift comments
         .controls

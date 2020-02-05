@@ -218,6 +218,31 @@ button {
   }
 }
 
+// Button Radio
+.btn_radio {
+  display: inline-block;
+  input[type="radio"] {
+    display: none;
+  }
+  label {
+    display: block;
+    padding: 0.7em 0.5em;
+    border: $khaki-dark 1px solid;
+    box-sizing: border-box;
+    background-color: $white;
+    color: $gray-darken;
+    text-align: center;
+    line-height: 1.25;
+    cursor: pointer;
+    @extend .transition;
+  }
+  input[type="radio"]:checked + label {
+    border-color: $khaki;
+    background-color: $khaki;
+    color: $white;
+  }
+}
+
 // Call action
 .call_action {
   margin-top: 1.875em;

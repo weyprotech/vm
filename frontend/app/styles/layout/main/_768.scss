@@ -509,6 +509,45 @@
       margin-bottom: 3em;
     }
   }
+
+  // Popular Designers
+  .feature_designers {
+    &:before {
+      height: calc(100% - 5.25em);
+    }
+    .designers_slider {
+      .slick-prev {
+        left: 0;
+      }
+      .slick-next {
+        right: 0;
+      }
+    }
+  }
+  .popular_designers {
+    .block_title {
+      margin-bottom: 1.5em;
+    }
+    .popular_block_wrapper {
+      margin-bottom: 4em;
+    }
+    .popular_block {
+      padding-bottom: 3em;
+      margin-bottom: 3em;
+      .popular_content {
+        .designer_info {
+          margin-bottom: 1.5rem;
+          .profile_picture {
+            width: 80px;
+            height: 80px;
+          }
+        }
+        .text {
+          margin-bottom: 1.5em;
+        }
+      }
+    }
+  }
 }
 
 @include susy-breakpoint(900px, 12) {

@@ -226,6 +226,30 @@
       }
     }
   }
+
+  // Popular Designers
+  .feature_designers {
+    &:before {
+      height: calc(100% - 5.75em);
+    }
+  }
+  .popular_designers {
+    .popular_block_wrapper {
+      margin-bottom: 5.25em;
+    }
+    .popular_block {
+      padding-bottom: 4.875em;
+      margin-bottom: 4.875em;
+      .popular_content {
+        .designer_info {
+          margin-bottom: 2.5rem;
+        }
+        .text {
+          margin-bottom: 2.5em;
+        }
+      }
+    }
+  }
 }
 
 @include susy-breakpoint(1366px, 12) {

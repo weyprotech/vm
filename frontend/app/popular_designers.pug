@@ -5,7 +5,7 @@ block value
 
 block main
   .feature_designers.page_block
-    .block_inner
+    .block_inner.wide
       h2.block_title Feature Designers
       .block_main
         .designers_slider
@@ -21,7 +21,7 @@ block main
                       img.size(src="images/size_3x4.png")
                     //↑ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑
                   .intro
-                    .profile_picture(href="designer_home.html")
+                    .profile_picture
                       //↓ 1:1，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓
                       .pic(style="background-image: url(images/img_profile.jpg)")
                         img.size(src="images/size_1x1.png")
@@ -35,10 +35,61 @@ block main
                     p Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diamLorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diams
 
   .popular_designers.page_block
-    .block_inner
+    .block_inner.wide
       h2.block_title Our Popular Designers
       .block_main
-
+        .popular_block_wrapper
+          each i inArray(2)
+            .popular_block
+              .popular_block_inner
+                .popular_picture
+                  .thumb
+                    //↓ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓
+                    .pic(style="background-image: url(images/img_designer.jpg);")
+                      img.size(src="images/size_3x4.png")
+                    //↑ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑
+                  a.btn.common(href="designer_profile.html")
+                    | Read more
+                .popular_content
+                  a.designer_info(href="designer_profile.html")
+                    .profile_picture
+                      .pic(style="background-image: url(images/img_profile.jpg")
+                        img.size(src="images/size_1x1.png")
+                    .designer_name
+                      //↓ 知名設計才會有鑽石icon ↓
+                      i.icon_diamond_b
+                      //↑ 知名設計才會有鑽石icon ↑
+                      span Nancy Barnett
+                  .text.
+                    I think my key issue was this: I didn’t leave myself enough time to plan this wedding. And I’m happy to admit it. If I didn’t have such a hectic career, AND PRIMARILY, if I hadn’t decided to buy a house at the very same time, 9 months would likely have been ample time to plan an at home wedding. But I wanted an abroad wedding…
+                  a.thumb.is_video.popup(href="popup_video.html")
+                    .pic(style="background-image: url(images/img_video.jpg);")
+                      img.size(src="images/size_16x9.png")
+            .popular_block
+              .popular_block_inner
+                .popular_picture
+                  .thumb
+                    //↓ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓
+                    .pic(style="background-image: url(https://via.placeholder.com/540x720);")
+                      img.size(src="images/size_3x4.png")
+                    //↑ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑
+                  a.btn.common(href="designer_profile.html")
+                    | Read more
+                .popular_content
+                  a.designer_info(href="designer_profile.html")
+                    .profile_picture
+                      .pic(style="background-image: url(https://via.placeholder.com/100x100")
+                        img.size(src="images/size_1x1.png")
+                    .designer_name
+                      //↓ 知名設計才會有鑽石icon ↓
+                      i.icon_diamond_b
+                      //↑ 知名設計才會有鑽石icon ↑
+                      span Nancy Barnett
+                  .text.
+                    I think my key issue was this: I didn’t leave myself enough time to plan this wedding. And I’m happy to admit it. If I didn’t have such a hectic career, AND PRIMARILY, if I hadn’t decided to buy a house at the very same time, 9 months would likely have been ample time to plan an at home wedding. But I wanted an abroad wedding…
+                  a.thumb.popup(href="popup_picture.html")
+                    .pic(style="background-image: url(https://source.unsplash.com/TS--uNw-JqE/400x225);")
+                      img.size(src="images/size_16x9.png")
         a.btn.common.more(href="designers.html")
           | More designers
 
@@ -47,6 +98,7 @@ block js
     $(function() {
       // Designer Slider
       var designerSlider = $('.designers_slider');
+      
       designerSlider.on('init', function(event, slick, currentSlide) {
         var cur = $(slick.$slides[slick.currentSlide]),
         next = cur.next(),

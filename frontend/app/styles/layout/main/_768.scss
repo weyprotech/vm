@@ -548,6 +548,22 @@
       }
     }
   }
+
+  // Search
+  .search_block {
+    .title_sort {
+      margin-bottom: 1.5em;
+    }
+    .search_title {
+      margin-bottom: 1.875rem;
+      font-size: 1.5em;
+    }
+    .topping_list {
+      .item {
+        margin-bottom: 1.375em;
+      }
+    }
+  }
 }
 
 @include susy-breakpoint(900px, 12) {

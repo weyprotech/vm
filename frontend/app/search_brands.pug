@@ -1,0 +1,90 @@
+extends layouts/default.pug
+
+block main
+  .filter_search_bar
+    .bar_inner
+      .filter_buttons
+        a(href="brands.html") All
+        a.active(href="search_brands.html") A-Z
+      .search_form
+        input(type="search", placeholder="Designer / Brand name")
+        button(type="button", onclick="location.href='search_brands.html'") #[i.icon_search]
+  
+  //↓ 篩選選 A-Z 時才顯示 ↓
+  .filter_a2z
+    .a2z_inner
+      a(href="javascript:;") A
+      a(href="javascript:;") B
+      a(href="javascript:;") C
+      a(href="javascript:;") D
+      a(href="javascript:;") E
+      a(href="javascript:;") F
+      a(href="javascript:;") G
+      a(href="javascript:;") H
+      a(href="javascript:;") I
+      a(href="javascript:;") J
+      a(href="javascript:;") K
+      a(href="javascript:;") L
+      a.current(href="javascript:;") M
+      a(href="javascript:;") N
+      a(href="javascript:;") O
+      a(href="javascript:;") P
+      a(href="javascript:;") Q
+      a(href="javascript:;") R
+      a(href="javascript:;") S
+      a(href="javascript:;") T
+      a(href="javascript:;") U
+      a(href="javascript:;") V
+      a(href="javascript:;") W
+      a(href="javascript:;") X
+      a(href="javascript:;") Y
+      a(href="javascript:;") Z
+  //↑ 篩選選 A-Z 時才顯示 ↑
+
+  .search_block.page_block
+    .block_inner
+      h2.block_title Search Results for ” M”
+      .block_main
+        .search_title Brands
+        .search_main
+          .topping_list.brand_topping_list
+            .item
+              a.item_content(href="brand_story.html")
+                .thumb
+                  //↓ 1:1，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓
+                  .pic(style="background-image: url(https://source.unsplash.com/6cHumpSxTvs/360x360);")
+                    img.size(src="images/size_1x1.png")
+                  //↑ 1:1，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑
+                .intro
+                  .brand_name Brand Name - Marchesa Notte
+                  h3 Channel Love Island’s Ovie In These Cute AF Tees
+                  p Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diamLorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diams
+                  h4.designer_name
+                    //↓ 知名設計才會有鑽石icon ↓
+                    i.icon_diamond_s
+                    //↑ 知名設計才會有鑽石icon ↑
+                    img.flag(src="images/flag/flag_italy.png")
+                    span Cindy Chou
+            each i inArray(2)
+              .item
+                a.item_content(href="brand_story.html")
+                  .thumb
+                    //↓ 1:1，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓
+                    .pic(style="background-image: url(https://via.placeholder.com/360x360);")
+                      img.size(src="images/size_1x1.png")
+                    //↑ 1:1，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑
+                  .intro
+                    .brand_name Maryam Nassir Zadeh
+                    h3 Channel Love Island’s Ovie In These Cute AF Tees
+                    p Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diamLorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diams
+                    h4.designer_name
+                      img.flag(src="images/flag/flag_france.png")
+                      span Cindy Liao
+  
+  #fixedButtons
+    a#backPrve(href="brands.html")
+      img(src="images/arrow_back_prev.png")
+      span back
+    a#backTop(href="javascript:;")
+      img(src="images/arrow_back_top.png")
+      span top

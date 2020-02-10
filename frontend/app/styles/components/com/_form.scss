@@ -174,7 +174,7 @@ button {
   select {
     width: 100%;
     background-image: url(../images/arrow_select.png);
-    background-position: right center;
+    background-position: calc(100% - 10px) center;
     background-repeat: no-repeat;
     appearance: none;
     &::-ms-expand {
@@ -240,6 +240,58 @@ button {
     border-color: $khaki;
     background-color: $khaki;
     color: $white;
+  }
+}
+
+// Dropdow Menu
+.dropdown_menu {
+  position: relative;
+  .dropdown_head {
+    padding: 0 10px;
+    border: $khaki-dark 1px solid;
+    box-sizing: border-box;
+    background-color: $white;
+    background-image: url(../images/arrow_select.png);
+    background-position: calc(100% - 10px) center;
+    background-repeat: no-repeat;
+    appearance: none;
+    color: $gray;
+    font-size: 0.875em;
+    line-height: 34px;
+    cursor: pointer;
+  }
+  .dropdown_list {
+    list-style: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    display: none;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border-color: $khaki-dark;
+    border-style: solid;
+    border-width: 0 1px 1px;
+    box-sizing: border-box;
+    background-color: $white;
+    li {
+      list-style: none;
+      border-bottom: $khaki-lightest 1px solid;
+      &:last-child {
+        border-bottom: none;
+      }
+      a {
+        display: block;
+        padding: 0 10px;
+        box-sizing: border-box;
+        color: $main;
+        font-size: 0.875em;
+        line-height: 34px;
+        &.current, &:hover {
+          color: $gray-darken;
+        }
+      }
+    }
   }
 }
 

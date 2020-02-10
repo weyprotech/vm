@@ -1,0 +1,54 @@
+extends layouts/default.pug
+
+block main
+  .search_block.page_block
+    .block_inner
+      .title_sort
+        h2.block_title Search Results for ” Cute”
+        .sort
+          .results_count
+            | 3 results
+          .dropdown_menu
+            .dropdown_head
+              | Sort: Events
+            ul.dropdown_list
+              li
+                a(href="search_products.html") Products
+              li
+                a(href="search_designers.html") Designers
+              li
+                a(href="search_brands.html") Brands
+              li
+                a.current(href="javascript:;") Events
+      .block_main
+        .search_title Events
+        .search_main
+          .topping_list.event_topping_list
+            .item
+              a.item_content(href="event_detail.html")
+                .thumb
+                  //↓ 1:1，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓
+                  .pic(style="background-image: url(https://source.unsplash.com/2YPSfYQA6Z0/360x360);")
+                    img.size(src="images/size_1x1.png")
+                  //↑ 1:1，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑
+                .intro
+                  .date 2019.8.12
+                  h3 Channel Love Island’s Ovie In These Cute AF Tees
+                  p Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diamLorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diams
+            each i inArray(2)
+              .item
+                a.item_content(href="event_detail.html")
+                  .thumb
+                    //↓ 1:1，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓
+                    .pic(style="background-image: url(https://via.placeholder.com/360x360);")
+                      img.size(src="images/size_1x1.png")
+                    //↑ 1:1，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑
+                  .intro
+                    .date 2019.07.28
+                    h3 Channel Love Island’s Ovie In These Cute AF Tees
+                    p Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diamLorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diams
+  
+  #fixedButtons
+    a#backTop(href="javascript:;")
+      img(src="images/arrow_back_top.png")
+      span top

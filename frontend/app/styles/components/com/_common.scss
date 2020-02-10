@@ -157,6 +157,9 @@
     font-size: 0.875em;
     line-height: 1.25;
   }
+  a:hover {
+    color: $khaki;
+  }
   @include breakpoint(768px) {
     right: 1em;
   }

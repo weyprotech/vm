@@ -1,0 +1,46 @@
+extends layouts/default.pug
+
+block main
+  .search_block.page_block
+    .block_inner
+      .title_sort
+        h2.block_title Search Results for ” Chelsea”
+        .sort
+          .results_count
+            | 12 results
+          .dropdown_menu
+            .dropdown_head
+              | Sort: Products
+            ul.dropdown_list
+              li
+                a.current(href="javascript:;") Products
+              li
+                a(href="search_designers.html") Designers
+              li
+                a(href="search_brands.html") Brands
+              li
+                a(href="search_events.html") Events
+      .block_main
+        .search_title Products
+        .search_main
+          .products_list.span5
+            .item
+              a(href="product_detail.html")
+                .thumb
+                  .pic(style="background-image: url(images/img_product01.jpg)")
+                    img.size(src="images/size_3x4.png")
+                h3 The Chelsea Heritage Trench Coat
+                .price NT$ 98800
+            each i inArray(11)
+              .item
+                a(href="product_detail.html")
+                  .thumb
+                    .pic(style="background-image: url(https://via.placeholder.com/300x400)")
+                      img.size(src="images/size_3x4.png")
+                  h3 The Chelsea Heritage Trench Coat
+                  .price NT$ 98800
+  
+  #fixedButtons
+    a#backTop(href="javascript:;")
+      img(src="images/arrow_back_top.png")
+      span top

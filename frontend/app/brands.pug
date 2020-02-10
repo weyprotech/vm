@@ -7,11 +7,11 @@ block main
   .filter_search_bar
     .bar_inner
       .filter_buttons
-        a.active(href="javascript:;") All
-        a(href="javascript:;") A-Z
+        a.active(href="brands.html") All
+        a(href="search_brands.html") A-Z
       .search_form
-        input(type="search", placeholder="Designer name")
-        button(type="button") #[i.icon_search]
+        input(type="search", placeholder="Designer / Brand name")
+        button(type="button", onclick="location.href='search_brands.html'") #[i.icon_search]
 
   .topping_block.brand_topping
     .block_inner.wide

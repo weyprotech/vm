@@ -1,0 +1,98 @@
+extends layouts/default.pug
+
+block main
+  .filter_search_bar
+    .bar_inner
+      .filter_buttons
+        a(href="designers.html") All
+        a.active(href="search_designers.html") A-Z
+      .search_form
+        input(type="search", placeholder="Designer name")
+        button(type="button", onclick="location.href='search_designers.html'") #[i.icon_search]
+  
+  //↓ 篩選選 A-Z 時才顯示 ↓
+  .filter_a2z
+    .a2z_inner
+      a(href="javascript:;") A
+      a(href="javascript:;") B
+      a.current(href="javascript:;") C
+      a(href="javascript:;") D
+      a(href="javascript:;") E
+      a(href="javascript:;") F
+      a(href="javascript:;") G
+      a(href="javascript:;") H
+      a(href="javascript:;") I
+      a(href="javascript:;") J
+      a(href="javascript:;") K
+      a(href="javascript:;") L
+      a(href="javascript:;") M
+      a(href="javascript:;") N
+      a(href="javascript:;") O
+      a(href="javascript:;") P
+      a(href="javascript:;") Q
+      a(href="javascript:;") R
+      a(href="javascript:;") S
+      a(href="javascript:;") T
+      a(href="javascript:;") U
+      a(href="javascript:;") V
+      a(href="javascript:;") W
+      a(href="javascript:;") X
+      a(href="javascript:;") Y
+      a(href="javascript:;") Z
+  //↑ 篩選選 A-Z 時才顯示 ↑
+
+  .search_block.page_block
+    .block_inner
+      h2.block_title Search Results for ” C”
+      .block_main
+        .search_title Designers
+        .search_main
+          .topping_list.designer_topping_list
+            .item
+              a.item_content(href="designer_home.html")
+                .thumb
+                  //↓ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓
+                  .pic(style="background-image: url(https://via.placeholder.com/360x480);")
+                    img.size(src="images/size_3x4.png")
+                  //↑ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑
+                .intro
+                  .intro_inner
+                    .profile_picture(href="designer_home.html")
+                      //↓ 1:1，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓
+                      .pic(style="background-image: url(https://via.placeholder.com/100x100)")
+                        img.size(src="images/size_1x1.png")
+                      //↑ 1:1，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑
+                    h3.designer_name
+                      //↓ 知名設計才會有鑽石icon ↓
+                      i.icon_diamond_s
+                      //↑ 知名設計才會有鑽石icon ↑
+                      img.flag(src="images/flag/flag_italy.png")
+                      span Cindy Chou
+                    p Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diamLorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diams
+            each i inArray(2)
+              .item
+                a.item_content(href="designer_home.html")
+                  .thumb
+                    //↓ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓
+                    .pic(style="background-image: url(https://via.placeholder.com/360x480);")
+                      img.size(src="images/size_3x4.png")
+                    //↑ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑
+                  .intro
+                    .intro_inner
+                      .profile_picture(href="designer_home.html")
+                        //↓ 1:1，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓
+                        .pic(style="background-image: url(https://via.placeholder.com/100x100)")
+                          img.size(src="images/size_1x1.png")
+                        //↑ 1:1，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑
+                      h3.designer_name
+                        img.flag(src="images/flag/flag_france.png")
+                        span Cindy Chou
+                      p Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diamLorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diams
+  
+  #fixedButtons
+    a#backPrve(href="designers.html")
+      img(src="images/arrow_back_prev.png")
+      span back
+    a#backTop(href="javascript:;")
+      img(src="images/arrow_back_top.png")
+      span top

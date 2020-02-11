@@ -212,6 +212,28 @@
     }
   }
 
+  // Popup
+  .popup_create {
+    .popup_inner {
+      display: flex;
+      .popup_create_form {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 0 0 auto;
+        width: 42%;
+        padding: 3em 2em;
+      }
+      .popup_create_picture {
+        flex: 0 0 auto;
+        width: 58%;
+        .thumb, .thumb .pic {
+          height: 100%;
+        }
+      }
+    }
+  }
+
   // Topping Block
   .topping_block {
     padding: 3.5em 1em;
@@ -561,6 +583,26 @@
     .topping_list {
       .item {
         margin-bottom: 1.375em;
+      }
+    }
+  }
+
+  // Login
+  .login_wrapper {
+    .login_container {
+      display: flex;
+      margin: 0 auto;
+      .login_block {
+        flex: 0 0 auto;
+        width: 50%;
+        padding: 0 2em;
+        border-bottom: none;
+        margin-bottom: 0;
+        border-right: $khaki-light 1px solid;
+        box-sizing: border-box;
+        &:last-child {
+          border-right: none;
+        }
       }
     }
   }

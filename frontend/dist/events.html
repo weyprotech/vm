@@ -28,6 +28,12 @@
         <p>© 2019 Vetrina Mia INC.</p>
       </div>
     </div><![endif]-->
+    <div id="loading">
+      <div class="loading_inner">
+        <div class="loading_image"><img class="loading_circle" src="images/loading.png"><img class="logo" src="images/logo-2x.png"></div>
+        <div class="text">Loading...</div>
+      </div>
+    </div>
     <div id="wrapper">
       <!--↓ 後台可設定網站五個顏色 ↓ -- bg_brown、bg_red、bg_purple、bg_blue、bg_green-->
       <div class="header_top bg_brown">
@@ -37,15 +43,14 @@
           <div class="currency_language">
             <div class="select_wrapper">
               <select>
-                <option>€ EUR</option>
-                <option selected>$ TWD</option>
+                <option selected>€ EUR</option>
+                <option>$ TWD</option>
                 <option>¥ CNY</option>
               </select>
             </div><i class="divide_line"></i>
             <div class="select_wrapper">
               <select>
-                <option>LANGUAGE</option>
-                <option>English</option>
+                <option selected>English</option>
                 <option>繁體中文</option>
                 <option>简体中文</option>
               </select>
@@ -59,7 +64,7 @@
             <div class="header_search">
               <div class="search_form">
                 <input type="search" placeholder="What are you looking for?">
-                <button type="button"><i class="icon_search"></i></button>
+                <button type="button" onclick="location.href='search_products.html'"><i class="icon_search"></i></button>
               </div>
             </div><a class="header_logo" href="index.html"><img class="retina" src="images/logo.png"></a>
             <div class="user_options">
@@ -224,8 +229,7 @@
                     <div class="date">2019.09.09</div>
                     <h3>Georgie Wood-Weber On Packing Like A Pro</h3>
                     <p>So strongly and metaphysically did I conceive of my situation then, that while earnestly watching his motionsh.</p>
-                    <div class="btn common more">View More</div>
-                  </div></a></div>
+                  </div></a><a class="btn common more" href="event_detail.html">View More</a></div>
             </div>
             <div class="topping_main">
               <div class="topping_list event_topping_list scrollbar_y">
@@ -271,36 +275,44 @@
         <div class="list_slider_wrapper page_block designer_story">
           <div class="block_inner">
             <h2 class="block_title">New Collections</h2>
-            <div class="list_slider">
-              <div class="slide">
-                <div class="date">2019.10.12</div><a class="thumb is_video" href="event_detail.html">
-                  <div class="pic" style="background-image: url(images/img_video.jpg);"><img class="size" src="images/size_16x9.png"></div></a>
-                <h3 class="slide_title">Channel Love Island’s Ovie In These Cute AF Tees</h3>
-              </div>
-              <div class="slide">
-                <div class="date">2019.09.28</div><a class="thumb is_video" href="event_detail.html">
-                  <div class="pic" style="background-image: url(https://via.placeholder.com/510x288);"><img class="size" src="images/size_16x9.png"></div></a>
-                <h3 class="slide_title">Channel Love Island’s Ovie In These Cute AF Tees</h3>
-              </div>
-              <div class="slide">
-                <div class="date">2019.09.28</div><a class="thumb is_video" href="event_detail.html">
-                  <div class="pic" style="background-image: url(https://via.placeholder.com/510x288);"><img class="size" src="images/size_16x9.png"></div></a>
-                <h3 class="slide_title">Channel Love Island’s Ovie In These Cute AF Tees</h3>
-              </div>
-              <div class="slide">
-                <div class="date">2019.09.28</div><a class="thumb is_video" href="event_detail.html">
-                  <div class="pic" style="background-image: url(https://via.placeholder.com/510x288);"><img class="size" src="images/size_16x9.png"></div></a>
-                <h3 class="slide_title">Channel Love Island’s Ovie In These Cute AF Tees</h3>
-              </div>
-              <div class="slide">
-                <div class="date">2019.09.28</div><a class="thumb is_video" href="event_detail.html">
-                  <div class="pic" style="background-image: url(https://via.placeholder.com/510x288);"><img class="size" src="images/size_16x9.png"></div></a>
-                <h3 class="slide_title">Channel Love Island’s Ovie In These Cute AF Tees</h3>
-              </div>
-              <div class="slide">
-                <div class="date">2019.09.28</div><a class="thumb is_video" href="event_detail.html">
-                  <div class="pic" style="background-image: url(https://via.placeholder.com/510x288);"><img class="size" src="images/size_16x9.png"></div></a>
-                <h3 class="slide_title">Channel Love Island’s Ovie In These Cute AF Tees</h3>
+            <div class="block_main">
+              <div class="list_slider">
+                <div class="slide"><a href="event_detail.html">
+                    <div class="date">2019.10.12</div>
+                    <div class="thumb is_video">
+                      <div class="pic" style="background-image: url(images/img_video.jpg);"><img class="size" src="images/size_16x9.png"></div>
+                    </div>
+                    <h3 class="slide_title">Channel Love Island’s Ovie In These Cute AF Tees</h3></a></div>
+                <div class="slide"><a href="event_detail.html">
+                    <div class="date">2019.09.28</div>
+                    <div class="thumb is_video">
+                      <div class="pic" style="background-image: url(https://via.placeholder.com/510x288);"><img class="size" src="images/size_16x9.png"></div>
+                    </div>
+                    <h3 class="slide_title">Channel Love Island’s Ovie In These Cute AF Tees</h3></a></div>
+                <div class="slide"><a href="event_detail.html">
+                    <div class="date">2019.09.28</div>
+                    <div class="thumb is_video">
+                      <div class="pic" style="background-image: url(https://via.placeholder.com/510x288);"><img class="size" src="images/size_16x9.png"></div>
+                    </div>
+                    <h3 class="slide_title">Channel Love Island’s Ovie In These Cute AF Tees</h3></a></div>
+                <div class="slide"><a href="event_detail.html">
+                    <div class="date">2019.09.28</div>
+                    <div class="thumb is_video">
+                      <div class="pic" style="background-image: url(https://via.placeholder.com/510x288);"><img class="size" src="images/size_16x9.png"></div>
+                    </div>
+                    <h3 class="slide_title">Channel Love Island’s Ovie In These Cute AF Tees</h3></a></div>
+                <div class="slide"><a href="event_detail.html">
+                    <div class="date">2019.09.28</div>
+                    <div class="thumb is_video">
+                      <div class="pic" style="background-image: url(https://via.placeholder.com/510x288);"><img class="size" src="images/size_16x9.png"></div>
+                    </div>
+                    <h3 class="slide_title">Channel Love Island’s Ovie In These Cute AF Tees</h3></a></div>
+                <div class="slide"><a href="event_detail.html">
+                    <div class="date">2019.09.28</div>
+                    <div class="thumb is_video">
+                      <div class="pic" style="background-image: url(https://via.placeholder.com/510x288);"><img class="size" src="images/size_16x9.png"></div>
+                    </div>
+                    <h3 class="slide_title">Channel Love Island’s Ovie In These Cute AF Tees</h3></a></div>
               </div>
             </div>
           </div>
@@ -308,68 +320,70 @@
         <div class="list_items_wrapper page_block">
           <div class="block_inner wide">
             <h2 class="block_title">Explore Events</h2>
-            <div class="list_items">
-              <div class="item"><a href="event_detail.html">
-                  <div class="date">2019.09.09</div>
-                  <div class="thumb">
-                    <div class="pic" style="background-image: url(images/img_event.jpg);"><img class="size" src="images/size_1x1.png"></div>
-                  </div>
-                  <h3 class="event_title">Channel Love Island’s Ovie In These Cute AF Tees</h3></a></div>
-              <div class="item"><a href="event_detail.html">
-                  <div class="date">2019.08.29</div>
-                  <div class="thumb">
-                    <div class="pic" style="background-image: url(https://via.placeholder.com/360x360);"><img class="size" src="images/size_1x1.png"></div>
-                  </div>
-                  <h3 class="event_title">Voici la coiffure que l’on verra partout à la rentrée</h3></a></div>
-              <div class="item"><a href="event_detail.html">
-                  <div class="date">2019.08.29</div>
-                  <div class="thumb">
-                    <div class="pic" style="background-image: url(https://via.placeholder.com/360x360);"><img class="size" src="images/size_1x1.png"></div>
-                  </div>
-                  <h3 class="event_title">Voici la coiffure que l’on verra partout à la rentrée</h3></a></div>
-              <div class="item"><a href="event_detail.html">
-                  <div class="date">2019.08.29</div>
-                  <div class="thumb">
-                    <div class="pic" style="background-image: url(https://via.placeholder.com/360x360);"><img class="size" src="images/size_1x1.png"></div>
-                  </div>
-                  <h3 class="event_title">Voici la coiffure que l’on verra partout à la rentrée</h3></a></div>
-              <div class="item"><a href="event_detail.html">
-                  <div class="date">2019.08.29</div>
-                  <div class="thumb">
-                    <div class="pic" style="background-image: url(https://via.placeholder.com/360x360);"><img class="size" src="images/size_1x1.png"></div>
-                  </div>
-                  <h3 class="event_title">Voici la coiffure que l’on verra partout à la rentrée</h3></a></div>
-              <div class="item"><a href="event_detail.html">
-                  <div class="date">2019.08.29</div>
-                  <div class="thumb">
-                    <div class="pic" style="background-image: url(https://via.placeholder.com/360x360);"><img class="size" src="images/size_1x1.png"></div>
-                  </div>
-                  <h3 class="event_title">Voici la coiffure que l’on verra partout à la rentrée</h3></a></div>
-              <div class="item"><a href="event_detail.html">
-                  <div class="date">2019.08.29</div>
-                  <div class="thumb">
-                    <div class="pic" style="background-image: url(https://via.placeholder.com/360x360);"><img class="size" src="images/size_1x1.png"></div>
-                  </div>
-                  <h3 class="event_title">Voici la coiffure que l’on verra partout à la rentrée</h3></a></div>
-              <div class="item"><a href="event_detail.html">
-                  <div class="date">2019.08.29</div>
-                  <div class="thumb">
-                    <div class="pic" style="background-image: url(https://via.placeholder.com/360x360);"><img class="size" src="images/size_1x1.png"></div>
-                  </div>
-                  <h3 class="event_title">Voici la coiffure que l’on verra partout à la rentrée</h3></a></div>
-              <div class="item"><a href="event_detail.html">
-                  <div class="date">2019.08.29</div>
-                  <div class="thumb">
-                    <div class="pic" style="background-image: url(https://via.placeholder.com/360x360);"><img class="size" src="images/size_1x1.png"></div>
-                  </div>
-                  <h3 class="event_title">Voici la coiffure que l’on verra partout à la rentrée</h3></a></div>
-              <div class="item"><a href="event_detail.html">
-                  <div class="date">2019.08.29</div>
-                  <div class="thumb">
-                    <div class="pic" style="background-image: url(https://via.placeholder.com/360x360);"><img class="size" src="images/size_1x1.png"></div>
-                  </div>
-                  <h3 class="event_title">Voici la coiffure que l’on verra partout à la rentrée</h3></a></div>
-            </div><a class="btn common more" href="javascript:;">View More</a>
+            <div class="block_main">
+              <div class="list_items">
+                <div class="item"><a href="event_detail.html">
+                    <div class="date">2019.09.09</div>
+                    <div class="thumb">
+                      <div class="pic" style="background-image: url(images/img_event.jpg);"><img class="size" src="images/size_1x1.png"></div>
+                    </div>
+                    <h3 class="event_title">Channel Love Island’s Ovie In These Cute AF Tees</h3></a></div>
+                <div class="item"><a href="event_detail.html">
+                    <div class="date">2019.08.29</div>
+                    <div class="thumb">
+                      <div class="pic" style="background-image: url(https://via.placeholder.com/360x360);"><img class="size" src="images/size_1x1.png"></div>
+                    </div>
+                    <h3 class="event_title">Voici la coiffure que l’on verra partout à la rentrée</h3></a></div>
+                <div class="item"><a href="event_detail.html">
+                    <div class="date">2019.08.29</div>
+                    <div class="thumb">
+                      <div class="pic" style="background-image: url(https://via.placeholder.com/360x360);"><img class="size" src="images/size_1x1.png"></div>
+                    </div>
+                    <h3 class="event_title">Voici la coiffure que l’on verra partout à la rentrée</h3></a></div>
+                <div class="item"><a href="event_detail.html">
+                    <div class="date">2019.08.29</div>
+                    <div class="thumb">
+                      <div class="pic" style="background-image: url(https://via.placeholder.com/360x360);"><img class="size" src="images/size_1x1.png"></div>
+                    </div>
+                    <h3 class="event_title">Voici la coiffure que l’on verra partout à la rentrée</h3></a></div>
+                <div class="item"><a href="event_detail.html">
+                    <div class="date">2019.08.29</div>
+                    <div class="thumb">
+                      <div class="pic" style="background-image: url(https://via.placeholder.com/360x360);"><img class="size" src="images/size_1x1.png"></div>
+                    </div>
+                    <h3 class="event_title">Voici la coiffure que l’on verra partout à la rentrée</h3></a></div>
+                <div class="item"><a href="event_detail.html">
+                    <div class="date">2019.08.29</div>
+                    <div class="thumb">
+                      <div class="pic" style="background-image: url(https://via.placeholder.com/360x360);"><img class="size" src="images/size_1x1.png"></div>
+                    </div>
+                    <h3 class="event_title">Voici la coiffure que l’on verra partout à la rentrée</h3></a></div>
+                <div class="item"><a href="event_detail.html">
+                    <div class="date">2019.08.29</div>
+                    <div class="thumb">
+                      <div class="pic" style="background-image: url(https://via.placeholder.com/360x360);"><img class="size" src="images/size_1x1.png"></div>
+                    </div>
+                    <h3 class="event_title">Voici la coiffure que l’on verra partout à la rentrée</h3></a></div>
+                <div class="item"><a href="event_detail.html">
+                    <div class="date">2019.08.29</div>
+                    <div class="thumb">
+                      <div class="pic" style="background-image: url(https://via.placeholder.com/360x360);"><img class="size" src="images/size_1x1.png"></div>
+                    </div>
+                    <h3 class="event_title">Voici la coiffure que l’on verra partout à la rentrée</h3></a></div>
+                <div class="item"><a href="event_detail.html">
+                    <div class="date">2019.08.29</div>
+                    <div class="thumb">
+                      <div class="pic" style="background-image: url(https://via.placeholder.com/360x360);"><img class="size" src="images/size_1x1.png"></div>
+                    </div>
+                    <h3 class="event_title">Voici la coiffure que l’on verra partout à la rentrée</h3></a></div>
+                <div class="item"><a href="event_detail.html">
+                    <div class="date">2019.08.29</div>
+                    <div class="thumb">
+                      <div class="pic" style="background-image: url(https://via.placeholder.com/360x360);"><img class="size" src="images/size_1x1.png"></div>
+                    </div>
+                    <h3 class="event_title">Voici la coiffure que l’on verra partout à la rentrée</h3></a></div>
+              </div><a class="btn common more" href="javascript:;">View More</a>
+            </div>
           </div>
         </div>
       </main>
@@ -531,20 +545,44 @@
           <div class="select_wrapper">
             <select>
               <option>€ EUR</option>
-              <option selected>$ TWD</option>
+              <option>$ TWD</option>
               <option>¥ CNY</option>
             </select>
           </div>
           <div class="select_wrapper">
             <select>
-              <option>LANGUAGE</option>
-              <option>English</option>
+              <option selected>English</option>
               <option>繁體中文</option>
               <option>简体中文</option>
             </select>
           </div>
         </div>
       </nav>
+    </div>
+    <div class="popup_block mfp-hide" id="popupEntrance">
+      <div class="popup_inner">
+        <div class="controls_group">
+          <label>Currency</label>
+          <div class="select_wrapper">
+            <select>
+              <option selected>€ EUR</option>
+              <option>$ TWD</option>
+              <option>¥ CNY</option>
+            </select>
+          </div>
+        </div>
+        <div class="controls_group">
+          <label>Languange</label>
+          <div class="select_wrapper">
+            <select>
+              <option selected>English</option>
+              <option>繁體中文</option>
+              <option>简体中文</option>
+            </select>
+          </div>
+        </div>
+        <button class="btn confirm popup_modal_dismiss" type="button">Save</button>
+      </div>
     </div>
     <script src="scripts/vendor.js"></script>
     <script src="scripts/plugins.js"></script>

@@ -1,7 +1,12 @@
 
 <div class="popup_block">
+  <!--↓ 若為單一影片，不顯示上下頁控制項 ↓-->
   <div class="popup_pager_controls"><a class="prev" href="javascript:;"><i class="icon_prev_popup"></i></a><a class="next" href="javascript:;"><i class="icon_next_popup"></i></a></div>
-  <div class="popup_inner popup_video fit_video">
+  <!--↑ 若為單一影片，不顯示上下頁控制項 ↑-->
+  <!--↓ 若為影片 class 需加入 'fit_video' ↓-->
+  <div class="popup_inner popup_media fit_video">
     <iframe width="560" height="315" src="https://www.youtube.com/embed/FbjUyCDrHI0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen"></iframe>
   </div>
+  <!--↑ 若為影片 class 需加入 'fit_video' ↑-->
+  <!-- 若使用 ajax 跳頁，該頁為影片時，需在載入影片後加 $('.fit_video').fitVids();-->
 </div>

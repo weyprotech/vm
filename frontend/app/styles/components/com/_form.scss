@@ -235,6 +235,11 @@ button {
     line-height: 1.25;
     cursor: pointer;
     @extend .transition;
+    &:hover {
+      border-color: $khaki;
+      background-color: $khaki;
+      color: $white;
+    }
   }
   input[type="radio"]:checked + label {
     border-color: $khaki;
@@ -328,6 +333,7 @@ button {
       border: none;
       background-color: transparent;
       background-image: url(../images/arrow_select_white.png);
+      background-position: right center;
       color: $white;
       font-size: 0.875em;
     }
@@ -519,5 +525,81 @@ button {
     display: block;
     width: 150px;
     margin: 2em auto 0;
+  }
+}
+
+// Login Form
+.login_form {
+  .remember_forgot {
+    .check_wrapper {
+      margin-right: 0;
+      vertical-align: middle;
+      span {
+        color: $gray;
+        font-size: 0.875rem;
+        @extend .transition;
+        &:hover {
+          color: $khaki;
+        }
+      }
+    }
+    .divide_line {
+      height: 12px;
+      background-color: $khaki-light;
+      vertical-align: middle;
+    }
+    a {
+      display: inline-block;
+      color: $gray;
+      font-size: 0.875em;
+      vertical-align: middle;
+      &:hover {
+        color: $khaki;
+      }
+    }
+  }
+  .create_link {
+    margin-top: 1.875rem;
+    color: $gray;
+    font-size: 0.875em;
+    text-align: center;
+    a {
+      color: $khaki-dark;
+      &:hover {
+        color: $khaki;
+      }
+    }
+  }
+  @include breakpoint(768px) {
+    .call_action {
+      margin-top: 2em;
+    }
+    .create_link {
+      margin-top: 3.5rem;
+    }
+  }
+}
+.forgot_password_controls {
+  .controls {
+    input[type="email"] {
+      height: 44px;
+      margin-bottom: 1em;
+    }
+    .btn {
+      width: 100%;
+    }
+    @include breakpoint(480px) {
+      display: flex;
+      align-items: flex-start;
+      input[type="email"] {
+        flex: 1 1 auto;
+        margin-bottom: 0;
+        margin-right: 1.5em;
+      }
+      .btn {
+        flex: 0 0 auto;
+        width: 120px;
+      }
+    }
   }
 }

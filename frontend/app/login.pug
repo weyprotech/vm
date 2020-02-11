@@ -1,0 +1,44 @@
+extends layouts/default.pug
+
+block main
+  .login_wrapper.page_block
+    .block_inner
+      .login_container
+        .login_block
+          h2.block_title
+            | Member Login
+          .login_form
+            .controls_group
+              label Account
+              .controls
+                input(type="email", placeholder="Email")
+            .controls_group
+              label Password
+              .controls
+                input(type="password", placeholder="Password")
+            .remember_forgot
+              label.check_wrapper
+                input(type="checkBox")
+                span Remember Me
+              .divide_line
+              a(href="forgot_password.html")
+                | Forgot Password
+            .call_action
+              button.btn.confirm Sign In
+            .create_link
+              | Not a member? &nbsp; #[a.popup(href="popup_create.html") Create Account]
+        .login_block
+          h2.block_title
+            | Guest Login
+          .other_login
+            .item
+              a.login_btn_guest(href="javascript:;")
+                | Continue as a guest
+            .item
+              a.login_btn_facebook(href="javascript:;")
+                i.icon_login_facebook
+                | Continue with Facebook
+            .item
+              a.login_btn_google(href="javascript:;")
+                i.icon_login_google
+                | Continue with Google

@@ -1,0 +1,43 @@
+extends layouts/default.pug
+
+block value
+  - var currentUrl = 'designers';
+
+block main
+  .designer_products.page_block
+    .block_inner
+      .block_main
+        .products_list.span5
+          .item
+            a(href="product_detail.html")
+              .thumb
+                .pic(style="background-image: url(images/img_product01.jpg)")
+                  img.size(src="images/size_3x4.png")
+              h3 Lemite - Sleeveless Eyelet-Lace Dress
+              .price NT$ 988
+          each i inArray(19)
+            .item
+              a(href="product_detail.html")
+                .thumb
+                  .pic(style="background-image: url(https://via.placeholder.com/300x400)")
+                    img.size(src="images/size_3x4.png")
+                h3 Lemite - Sleeveless Eyelet-Lace Dress
+                .price NT$ 1200
+        .pager_bar
+          .pages
+            | Page 1 of 15
+          ul.pager_navigation
+            li.prev
+              a(href="javascript:;") &lt; Previous
+            li.current
+              a(href="javascript:;") 1
+            li
+              a(href="javascript:;") 2
+            li
+              a(href="javascript:;") 3
+            li
+              a(href="javascript:;") 4
+            li
+              a(href="javascript:;") 5
+            li.next
+              a(href="javascript:;") Next &gt;

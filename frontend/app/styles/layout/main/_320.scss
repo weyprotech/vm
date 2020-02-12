@@ -297,7 +297,58 @@
   }
 }
 
+// Sort Menu
+.sort_menu {
+  overflow-x: auto;
+  margin-bottom: 1em;
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 0;
+    white-space: nowrap;
+    li {
+      list-style: none;
+      display: inline-block;
+      padding: 0 0.625em;
+      border-right: $khaki-light 1px solid;
+      font-size: 1rem;
+      &:first-child {
+        padding-left: 0;
+      }
+      &:last-child {
+        padding-right: 0;
+        border-right: none;
+      }
+    }
+    a {
+      display: block;
+      padding: 0 0.625em;
+      color: $black;
+      line-height: 30px;
+      &:hover, &.current {
+        background-color: $khaki-dark;
+        color: $white;
+      }
+    }
+  }
+}
+
 // Filter Search
+.results_sort {
+  .results_count {
+    display: inline-block;
+    margin-right: 0.8rem;
+    color: $main;
+    font-size: 0.875em;
+    vertical-align: middle;
+  }
+  .dropdown_menu {
+    display: inline-block;
+    width: 210px;
+    vertical-align: middle;
+  }
+}
 .filter_search_bar {
   padding: 1.125em 1em;
   box-sizing: border-box;
@@ -365,40 +416,26 @@
     }
   }
 }
-
-// Sort Menu
-.sort_menu {
-  overflow-x: auto;
-  margin-bottom: 1em;
-  ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    font-size: 0;
-    white-space: nowrap;
-    li {
-      list-style: none;
-      display: inline-block;
-      padding: 0 0.625em;
-      border-right: $khaki-light 1px solid;
-      font-size: 1rem;
-      &:first-child {
-        padding-left: 0;
-      }
-      &:last-child {
-        padding-right: 0;
-        border-right: none;
-      }
+.filter_sort_bar {
+  padding: 1.5em 1em 0;
+  .bar_inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  @include breakpoint(660px) {
+    .bar_inner {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
     }
-    a {
-      display: block;
-      padding: 0 0.625em;
-      color: $black;
-      line-height: 30px;
-      &:hover, &.current {
-        background-color: $khaki-dark;
-        color: $white;
-      }
+    .filter_selects {
+      flex: 0 0 auto;
+      margin-bottom: 0;
+      margin-right: 1rem;
+    }
+    .results_sort {
+      flex: 0 0 auto;
     }
   }
 }
@@ -502,6 +539,52 @@
     }
     @include breakpoint(660px) {
       bottom: 1.25rem;
+    }
+  }
+}
+
+// Popup
+.popup_form {
+  .block_title {
+    padding-top: 3px;
+    font-style: normal;
+  }
+  .text {
+    margin-bottom: 1.875em;
+    color: $gray-darken;
+  }
+}
+.popup_makeWish {
+  .block_title {
+    i.icon_meteor_right {
+      left: 100%;
+      right: auto;
+      margin-right: 0;
+      margin-left: 0.8rem;
+    }
+  }
+}
+.popup_gift {
+  .btn_radio {
+    width: 100%;
+  }
+}
+.popup_create {
+  padding: 0;
+  .popup_create_form {
+    padding: 1.5em 1em;
+    box-sizing: border-box;
+    .create_form_inner {
+      width: 100%;
+      max-width: 320px;
+      margin: 0 auto;
+    }
+  }
+  .popup_create_picture {
+    img {
+      display: block;
+      width: 100%;
+      max-width: inherit;
     }
   }
 }
@@ -1759,51 +1842,6 @@
   }
 }
 
-// Popup
-.popup_form {
-  .block_title {
-    font-style: normal;
-  }
-  .text {
-    margin-bottom: 1.875em;
-    color: $gray-darken;
-  }
-}
-.popup_makeWish {
-  .block_title {
-    i.icon_meteor_right {
-      left: 100%;
-      right: auto;
-      margin-right: 0;
-      margin-left: 0.8rem;
-    }
-  }
-}
-.popup_gift {
-  .btn_radio {
-    width: 100%;
-  }
-}
-.popup_create {
-  padding: 0;
-  .popup_create_form {
-    padding: 1.5em 1em;
-    box-sizing: border-box;
-    .create_form_inner {
-      width: 100%;
-      max-width: 320px;
-      margin: 0 auto;
-    }
-  }
-  .popup_create_picture {
-    img {
-      display: block;
-      width: 100%;
-      max-width: inherit;
-    }
-  }
-}
-
 // Topping Block
 .topping_block {
   padding: 1.25em 1em;
@@ -2031,6 +2069,26 @@
   .price {
     color: $main;
     line-height: 1.25;
+    span {
+      display: inline-block;
+      &.strikethrough {
+        position: relative;
+        margin-right: 1em;
+        &:before {
+          content: '';
+          position: absolute;
+          left: 0;
+          top: 50%;
+          display: block;
+          width: 100%;
+          height: 1px;
+          background-color: $red;
+        }
+      }
+      &.sale_price {
+        color: $red;
+      }
+    }
   }
   .product_list_head {
     .text {
@@ -3470,6 +3528,72 @@
   }
 }
 
+// Sale
+.sale_wrapper {
+  .sale_banner {
+    margin-bottom: 1.875em;
+    .banner_content {
+      padding: 1em;
+      margin-bottom: 1em;
+      box-sizing: border-box;
+      color: $white;
+      text-align: center;
+      line-height: 1.25;
+      .content_inner {
+        width: 100%;
+        max-width: 350px;
+        margin: 0 auto;
+      }
+      .title {
+        margin-bottom: 0.8rem;
+        font-size: 3em;
+        font-weight: bold;
+      }
+      .subtitle {
+        font-size: 2.5em;
+        font-weight: bold;
+        small {
+          font-size: 0.88em;
+        }
+      }
+      hr {
+        height: 1px;
+        margin: 1em 0;
+        border: none;
+        background-color: $white;
+      }
+      p {
+        margin: 0;
+        font-size: 1.125em;
+      }
+    }
+    @include breakpoint(560px) {
+      display: flex;
+      .banner_content {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 0 0 auto;
+        width: 59.1666666666667%;
+        margin-right: 2%;
+        margin-bottom: 0;
+      }
+      .banner_pic {
+        flex: 0 0 auto;
+        width: 38.8333333333333%;
+        .thumb, .thumb .pic {
+          height: 100%;
+        }
+      }
+    }
+    @include breakpoint(660px) {
+      .banner_content {
+        padding: 1.5em;
+      }
+    }
+  }
+}
+
 // Event
 .event_topping {
   .event_topping_header {
@@ -3794,6 +3918,9 @@
         margin-bottom: 1em;
         color: $gray-darken;
       }
+      .thumb:hover {
+        box-shadow: 0 0 0 1px $khaki;
+      }
     }
     @include breakpoint(660px) {
       .popular_block_inner {
@@ -3843,20 +3970,6 @@
     text-align: left;
     font-style: normal;
   }
-  .sort {
-    .results_count {
-      display: inline-block;
-      margin-right: 0.8rem;
-      color: $main;
-      font-size: 0.875em;
-      vertical-align: middle;
-    }
-    .dropdown_menu {
-      display: inline-block;
-      width: 210px;
-      vertical-align: middle;
-    }
-  }
   .title_sort {
     margin-bottom: 1em;
     @include breakpoint(660px) {
@@ -3867,7 +3980,7 @@
         margin-bottom: 0;
         margin-right: 1rem;
       }
-      .sort {
+      .results_sort {
         flex: 0 0 auto;
       }
     }

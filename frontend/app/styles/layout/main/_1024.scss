@@ -405,4 +405,19 @@
       }
     }
   }
+
+  // Sale
+  .sale_wrapper {
+    .sale_banner {
+      .banner_content {
+        padding: 3em 2em;
+        .title {
+          font-size: 7.5em;
+        }
+        .subtitle {
+          font-size: 4.5em;
+        }
+      }
+    }
+  }
 }

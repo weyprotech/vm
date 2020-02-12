@@ -31,6 +31,11 @@
     }
   }
 
+  // Filter Search
+  .filter_sort_bar {
+    padding: 2.5em 1em 0;
+  }
+
   // Block
   .page_block {
     padding: 3em 1em;
@@ -44,6 +49,28 @@
   .banner_slider {
     .slick-dots {
       bottom: 1.875rem;
+    }
+  }
+
+  // Popup
+  .popup_create {
+    .popup_inner {
+      display: flex;
+      .popup_create_form {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 0 0 auto;
+        width: 42%;
+        padding: 3em 2em;
+      }
+      .popup_create_picture {
+        flex: 0 0 auto;
+        width: 58%;
+        .thumb, .thumb .pic {
+          height: 100%;
+        }
+      }
     }
   }
 
@@ -207,28 +234,6 @@
         &.reply {
           margin-top: 1.875em;
           margin-left: calc(60px + 1.25em);
-        }
-      }
-    }
-  }
-
-  // Popup
-  .popup_create {
-    .popup_inner {
-      display: flex;
-      .popup_create_form {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex: 0 0 auto;
-        width: 42%;
-        padding: 3em 2em;
-      }
-      .popup_create_picture {
-        flex: 0 0 auto;
-        width: 58%;
-        .thumb, .thumb .pic {
-          height: 100%;
         }
       }
     }
@@ -529,6 +534,20 @@
   .message_wrapper {
     .message_block {
       margin-bottom: 3em;
+    }
+  }
+
+  // Sale
+  .sale_wrapper {
+    .sale_banner {
+      .banner_content {
+        .title {
+          font-size: 4.5em;
+        }
+        .subtitle {
+          font-size: 3.5em;
+        }
+      }
     }
   }
 

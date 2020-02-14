@@ -336,17 +336,23 @@ $(document).ready(function () {
       type: 'ajax',
       callbacks: {
         ajaxContentAdded: function() {
-          if ($('.fit_video').length > 0) {
-            $('.fit_video').fitVids();
+          if ($('.popup_slider').length > 0) {
+            $('.popup_slider').on('init', function (event, slick) {
+              $('.popup_slider').fitVids();
+            });
+            $('.popup_slider').slick({
+              dots: false,
+              speed: 500,
+              appendArrows: '.popup_pager_controls'
+            });
           }
         }
       }
     });
-    $(document).on(clickHandler, '.popup_modal_dismiss', function (event) {
-      event.preventDefault();
-      $.magnificPopup.close();
-    });
   }
+  $(document).on(clickHandler, '.popup_modal_dismiss', function (event) {
+    $.magnificPopup.close();
+  });
 
   // Rate
   if($('.rate_star').length > 0) {

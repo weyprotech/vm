@@ -305,6 +305,15 @@
         font-size: 1.5em;
       }
     }
+    .item {
+      width: (100% - 2.5% * 4) / 4;
+      width: calc((100% - 2.5% * 4) / 4 - 0.5px) \0;
+      margin-bottom: 1.875em;
+      &.col_2 {
+        width: (100% - 2.5% * 4) / 4 * 2 + 2.5%;
+        width: calc((100% - 2.5% * 4) / 4 * 2 + 2.5% - 0.5px) \0;
+      }
+    }
   }
 
   // Designer
@@ -537,6 +546,16 @@
     }
   }
 
+  // Products
+  .products_show_wrapper {
+    .master_vision {
+      width: 48.75%;
+      float: left;
+      margin-right: 1.25%;
+      margin-bottom: 1.875em;
+    }
+  }
+
   // Sale
   .sale_wrapper {
     .sale_banner {
@@ -628,17 +647,6 @@
 }
 
 @include susy-breakpoint(900px, 12) {
-  // Products List
-  .products_list {
-    .item {
-      width: (100% - 2.5% * 4) / 4;
-      margin-bottom: 1.875em;
-      &.col_2 {
-        width: (100% - 2.5% * 4) / 4 * 2 + 2.5%;
-      }
-    }
-  }
-
   // Designer
   .designer_profile_brands {
     .brands_items {

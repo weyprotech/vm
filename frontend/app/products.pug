@@ -1,0 +1,93 @@
+extends layouts/default.pug
+
+block value
+  - var currentUrl = 'women';
+
+block main
+  .filter_sort_bar
+    .bar_inner
+      .filter_selects
+        //篩選項目
+      .results_sort
+        .results_count
+          | 5982 items
+        .dropdown_menu.dropdown_select
+          .dropdown_head
+            | Sort by: #[span.sortText Price]
+          ul.dropdown_list
+            li
+              a.current(href="javascript:;") Price
+            li
+              a(href="javascript:;") Popularity
+
+  .products_show_wrapper.page_block
+    .block_inner
+      .products_show
+        .master_vision
+          img(src="images/img_master_vision.jpg", alt="")
+        .products_list.span5
+          .item
+            a(href="product_detail.html")
+              .thumb
+                .pic(style="background-image: url(images/img_product01.jpg)")
+                  img.size(src="images/size_3x4.png")
+              h3 Lemite - Sleeveless Eyelet-Lace Dress
+              .price
+                | NT$ 98800
+          each i inArray(3)
+            .item
+              a(href="product_detail.html")
+                .thumb
+                  .pic(style="background-image: url(https://via.placeholder.com/300x400)")
+                    img.size(src="images/size_3x4.png")
+                h3 Lemite - Sleeveless Eyelet-Lace Dress
+                .price
+                  | NT$ 98800
+          .item.col_2
+            //↓ 產品視覺圖 ↓
+            .thumb
+              .pic(style="background-image: url(images/img_product_vision.jpg)")
+                img.size(src="images/size_8x5.png")
+            //↑ 產品視覺圖 ↑
+          each i inArray(11)
+            .item
+              a(href="product_detail.html")
+                .thumb
+                  .pic(style="background-image: url(https://via.placeholder.com/300x400)")
+                    img.size(src="images/size_3x4.png")
+                h3 Lemite - Sleeveless Eyelet-Lace Dress
+                .price
+                  | NT$ 98800
+          .item.col_2
+            //↓ 產品視覺圖 ↓
+            .thumb
+              .pic(style="background-image: url(images/img_product_vision2.jpg)")
+                img.size(src="images/size_8x5.png")
+            //↑ 產品視覺圖 ↑
+          each i inArray(5)
+            .item
+              a(href="product_detail.html")
+                .thumb
+                  .pic(style="background-image: url(https://via.placeholder.com/300x400)")
+                    img.size(src="images/size_3x4.png")
+                h3 Lemite - Sleeveless Eyelet-Lace Dress
+                .price
+                  | NT$ 98800
+      .pager_bar
+        .pages
+          | Page 1 of 15
+        ul.pager_navigation
+          li.prev
+            a(href="javascript:;") &lt; Previous
+          li.current
+            a(href="javascript:;") 1
+          li
+            a(href="javascript:;") 2
+          li
+            a(href="javascript:;") 3
+          li
+            a(href="javascript:;") 4
+          li
+            a(href="javascript:;") 5
+          li.next
+            a(href="javascript:;") Next &gt;

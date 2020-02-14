@@ -6,7 +6,7 @@
         | Just for you
     .text.
       Vestibulum rutrum quam vitae fringilla tincidunt. Suspendisse nec tortor urna. Ut laoreet sodales nisi, quis iaculis nulla iaculis vitae. Donec sagittis faucibus lacus eget blandit.
-    .form_wrapper
+    form.form_wrapper
       .controls_group
         label Your Name
         .controls
@@ -20,4 +20,4 @@
         .controls
           textarea(placeholder="Hello! Leave a message…")
       .call_action
-        button.btn.common Send
+        button.btn.common.popup_modal_dismiss(type="smbmit") Send

@@ -127,7 +127,7 @@
             <ul>
               <li><a href="designers.html">Designers</a></li>
               <li><a href="brands.html">Brands</a></li>
-              <li><a href="products.html">Women</a>
+              <li><a class="current" href="products.html">Women</a>
                 <div class="sub_menu">
                   <ul>
                     <li><a href="products.html">CLOTHING</a>
@@ -217,87 +217,12 @@
         </div>
       </header>
       <main id="main">
-        <div class="filter_search_bar">
-          <div class="bar_inner">
-            <div class="filter_buttons"><a href="designers.html">All</a><a class="active" href="search_designers.html">A-Z</a></div>
-            <div class="search_form">
-              <input type="search" placeholder="Designer name">
-              <button type="button" onclick="location.href='search_designers.html'"><i class="icon_search"></i></button>
-            </div>
-          </div>
+        <div class="breadcrumbs">
+          <div class="breadcrumbs_inner"><a href="products.html">Women</a><span>/</span><a href="products.html">Clothing</a><span>/</span><a href="products.html">Dresses</a><span>/</span></div>
         </div>
-        <!--↓ 篩選選 A-Z 時才顯示 ↓-->
-        <div class="filter_a2z">
-          <div class="a2z_inner"><a href="javascript:;">A</a><a href="javascript:;">B</a><a class="current" href="javascript:;">C</a><a href="javascript:;">D</a><a href="javascript:;">E</a><a href="javascript:;">F</a><a href="javascript:;">G</a><a href="javascript:;">H</a><a href="javascript:;">I</a><a href="javascript:;">J</a><a href="javascript:;">K</a><a href="javascript:;">L</a><a href="javascript:;">M</a><a href="javascript:;">N</a><a href="javascript:;">O</a><a href="javascript:;">P</a><a href="javascript:;">Q</a><a href="javascript:;">R</a><a href="javascript:;">S</a><a href="javascript:;">T</a><a href="javascript:;">U</a><a href="javascript:;">V</a><a href="javascript:;">W</a><a href="javascript:;">X</a><a href="javascript:;">Y</a><a href="javascript:;">Z</a></div>
+        <div class="products_showcase page_block">
+          <div class="block_inner"></div>
         </div>
-        <!--↑ 篩選選 A-Z 時才顯示 ↑-->
-        <div class="search_block page_block">
-          <div class="block_inner">
-            <h2 class="block_title">Search Results for ” C”</h2>
-            <div class="block_main">
-              <div class="search_title">Designers</div>
-              <div class="search_main">
-                <div class="topping_list designer_topping_list">
-                  <div class="item"><a class="item_content" href="designer_home.html">
-                      <div class="thumb">
-                        <!--↓ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓-->
-                        <div class="pic" style="background-image: url(https://via.placeholder.com/360x480);"><img class="size" src="images/size_3x4.png"></div>
-                        <!--↑ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑-->
-                      </div>
-                      <div class="intro">
-                        <div class="intro_inner">
-                          <div class="profile_picture" href="designer_home.html">
-                            <!--↓ 1:1，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓-->
-                            <div class="pic" style="background-image: url(https://via.placeholder.com/100x100)"><img class="size" src="images/size_1x1.png"></div>
-                            <!--↑ 1:1，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑-->
-                          </div>
-                          <h3 class="designer_name">
-                            <!--↓ 知名設計才會有鑽石icon ↓--><i class="icon_diamond_s"></i>
-                            <!--↑ 知名設計才會有鑽石icon ↑--><img class="flag" src="images/flag/flag_italy.png"><span>Cindy Chou</span>
-                          </h3>
-                          <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diamLorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diams</p>
-                        </div>
-                      </div></a></div>
-                  <div class="item"><a class="item_content" href="designer_home.html">
-                      <div class="thumb">
-                        <!--↓ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓-->
-                        <div class="pic" style="background-image: url(https://via.placeholder.com/360x480);"><img class="size" src="images/size_3x4.png"></div>
-                        <!--↑ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑-->
-                      </div>
-                      <div class="intro">
-                        <div class="intro_inner">
-                          <div class="profile_picture" href="designer_home.html">
-                            <!--↓ 1:1，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓-->
-                            <div class="pic" style="background-image: url(https://via.placeholder.com/100x100)"><img class="size" src="images/size_1x1.png"></div>
-                            <!--↑ 1:1，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑-->
-                          </div>
-                          <h3 class="designer_name"><img class="flag" src="images/flag/flag_france.png"><span>Cindy Chou</span></h3>
-                          <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diamLorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diams</p>
-                        </div>
-                      </div></a></div>
-                  <div class="item"><a class="item_content" href="designer_home.html">
-                      <div class="thumb">
-                        <!--↓ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓-->
-                        <div class="pic" style="background-image: url(https://via.placeholder.com/360x480);"><img class="size" src="images/size_3x4.png"></div>
-                        <!--↑ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑-->
-                      </div>
-                      <div class="intro">
-                        <div class="intro_inner">
-                          <div class="profile_picture" href="designer_home.html">
-                            <!--↓ 1:1，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓-->
-                            <div class="pic" style="background-image: url(https://via.placeholder.com/100x100)"><img class="size" src="images/size_1x1.png"></div>
-                            <!--↑ 1:1，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑-->
-                          </div>
-                          <h3 class="designer_name"><img class="flag" src="images/flag/flag_france.png"><span>Cindy Chou</span></h3>
-                          <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diamLorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diams</p>
-                        </div>
-                      </div></a></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div id="fixedButtons"><a id="backPrve" href="designers.html"><img src="images/arrow_back_prev.png"><span>back</span></a><a id="backTop" href="javascript:;"><img src="images/arrow_back_top.png"><span>top</span></a></div>
       </main>
       <footer id="footer">
         <div class="footer_inner">
@@ -366,7 +291,7 @@
         <ul>
           <li><a href="designers.html">Designers</a></li>
           <li><a href="brands.html">Brands</a></li>
-          <li><a href="products.html">Women</a>
+          <li><a class="current" href="products.html">Women</a>
             <div class="sub_menu">
               <ul>
                 <li><a href="products.html">CLOTHING</a>

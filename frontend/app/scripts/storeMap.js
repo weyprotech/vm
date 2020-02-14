@@ -178,6 +178,10 @@ function storeMap(streetImgs, storeIcons) {
   $('#streetAside .street_list').on('click', '.store_name', function (event) {
     var storeid = $(this).attr('data-storeid');
 
+    if ($(window).width() < 768) {
+      $('#streetAside').removeClass('isOpen');
+    }
+    
     storeMap.eachLayer(function (layer) {
       if (layer.options && layer.options.pane === 'markerPane') {
         if (layer.options.storeId === storeid) {

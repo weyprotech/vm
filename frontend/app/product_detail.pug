@@ -4,7 +4,7 @@ block value
   - var currentUrl = 'women';
 
 block main
-  .breadcrumbs
+  .breadcrumbs.pb_none
     .breadcrumbs_inner
       a(href="products.html") Women
       span /
@@ -29,16 +29,112 @@ block main
             .thumb.is_video
               .pic(style="background-image: url(https://via.placeholder.com/300x400)")
                 img.size(src="images/size_3x4.png")
-        .showcase_slider
           .slide
             .thumb
-              .pic(style="background-image: url(images/img_product01_showcase.jpg)")
-                img.size(src="images/size_3x4.png")
-          .slide
-            .thumb
-              .pic(style="background-image: url(https://via.placeholder.com/470x627)")
+              .pic(style="background-image: url(https://via.placeholder.com/300x400)")
                 img.size(src="images/size_3x4.png")
           .slide
             .thumb.is_video
+              .pic(style="background-image: url(https://via.placeholder.com/300x400)")
+                img.size(src="images/size_3x4.png")
+        .showcase_slider
+          .slide
+            a.thumb.popup(href="popup_products.html", data-index="0")
+              .pic(style="background-image: url(images/img_product01_showcase.jpg)")
+                img.size(src="images/size_3x4.png")
+          .slide
+            a.thumb.popup(href="popup_products.html", data-index="1")
               .pic(style="background-image: url(https://via.placeholder.com/470x627)")
                 img.size(src="images/size_3x4.png")
+          .slide
+            a.thumb.is_video.popup(href="popup_products.html", data-index="2")
+              .pic(style="background-image: url(https://via.placeholder.com/470x627)")
+                img.size(src="images/size_3x4.png")
+          .slide
+            a.thumb.popup(href="popup_products.html", data-index="3")
+              .pic(style="background-image: url(https://via.placeholder.com/470x627)")
+                img.size(src="images/size_3x4.png")
+          .slide
+            a.thumb.is_video.popup(href="popup_products.html", data-index="4")
+              .pic(style="background-image: url(https://via.placeholder.com/470x627)")
+                img.size(src="images/size_3x4.png")
+        .share_links
+          | Share
+          a.facebook(href="javascript:;")
+            i.icon_share_facebook
+          a.pinterest(href="javascript:;")
+            i.icon_share_pinterest
+      .showcase_content
+        h1.product_title
+          | PRINTED MINI DRESS
+        .product_intro
+          | Printed silk dress with aquatic flower motif
+        .products_price
+          | $2,880
+        .products_sku
+          .controls_group
+            label Size
+            .controls
+              .select_wrapper
+                select
+                  option S
+                  option M
+                  option L
+              .note (size guide)
+          .controls_group
+            label Color
+            .controls
+              .select_wrapper
+                select
+                  option Select a color
+                  option Blue
+                  option Red
+          .controls_group
+            label Quantity
+            .controls
+              .quantity_counter
+                button.minus(type="button") －
+                input.quantity(type="text", value="1", name="quantity")
+                button.plus(type="button") ＋
+          .controls_group
+            lable &nbsp;
+            .controls
+              button.btn.confirm(type="button") Add to cart
+              a.btn_favorite(href="javascript:;", data-productId="product001", title="Favorite")
+                i.icon_favorite_heart
+        .products_fold.fold_block
+          .fold
+            .fold_title Product Details
+            .fold_content
+              ul
+                li As seen in the Spring Summer '20 lookbook, pair with white strappy sandals to complete the look
+                li Ruffled hem, puffed sleeves, mini length, lined
+                li Zipper fastening and hook &amp; eye closure
+                li Composition: 100% rayon light
+                li Hand-wash &amp; rinse in cold water, dry flat or tumble dry, do not bleach or dry clean
+          .fold
+            .fold_title Shipping &nbsp; Returns
+            .fold_content
+              | Returnable within 14 days of delivery date. Return Policy
+              br
+              | Free shipping available worldwide. Check our shipping policy to see your countries minimum order requirement. Shipping Policy.
+
+block js
+  script.
+    $(function() {
+      // 愛心的點擊事件
+      $(document).on('click', '.btn_favorite', function(event) {
+        // productId 取得設計師的 ID
+        var productId = $(this).attr('data-productId');
+
+        if ($(this).hasClass('active')) {
+          // 取消最愛寫這裡
+
+          $(this).removeClass('active');
+        } else {
+          // 加入最愛寫這裡
+
+          $(this).addClass('active');
+        }
+      });
+    });

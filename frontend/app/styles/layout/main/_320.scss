@@ -201,6 +201,9 @@
 .breadcrumbs {
   padding: 1.5em 1em;
   box-sizing: border-box;
+  &.pb_none {
+    padding-bottom: 0;
+  }
 	.breadcrumbs_inner {
     max-width: 1200px;
     margin: 0 auto;
@@ -3545,6 +3548,109 @@
       display: block;
       width: 100%;
       max-width: inherit;
+    }
+  }
+}
+.products_showcase {
+  .showcase_slider_wrapper {
+    max-width: 590px;
+    margin: 0 auto 1.5em;
+    @extend .clear;
+    .showcase_nav {
+      overflow: hidden;
+      height: 0;
+      box-sizing: border-box;
+      .slide {
+        margin: 0.3125em 0;
+        cursor: pointer;
+        .thumb {
+          &.is_video:before {
+            display: none;
+          }
+          .pic {
+            transition: all 0.2s ease-in-out;
+          }
+        }
+        img {
+          display: block;
+        }
+        &.slick-current,
+        &:hover {
+          .thumb {
+            .pic {
+              box-shadow: 0 0 0 1px $khaki inset;
+            }
+          }
+        }
+      }
+      .slick-prev,
+      .slick-next {
+        width: 26px;
+        height: 9px;
+        &:before {
+          width: 26px;
+          height: 9px;
+        }
+      }
+      .slick-prev {
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        &:before {
+          @include retina-sprite($arrow-slider-up-group);
+        }
+      }
+      .slick-next {
+        top: auto;
+        bottom: 0;
+        left: 50%;
+        right: auto;
+        transform: translateX(-50%);
+        &:before {
+          @include retina-sprite($arrow-slider-down-group);
+        }
+      }
+    }
+    .showcase_slider {
+      .slick-prev {
+        left: 0.3rem;
+      }
+      .slick-next {
+        right: 0.3rem;
+      }
+      .thumb {
+        .pic {
+          @extend .transition;
+        }
+        &:hover {
+          .pic {
+            box-shadow: 0 0 0 1px $khaki inset;
+          }
+        }
+      }
+    }
+    .share_links {
+      margin-top: 0.5em;
+    }
+    @include breakpoint(480px) {
+      .showcase_nav {
+        overflow: visible;
+        display: block;
+        width: 14%;
+        height: auto;
+        padding: 0.75em 0;
+        float: left;
+      }
+      .showcase_slider {
+        width: 80%;
+        float: right;
+      }
+      .share_links {
+        float: left;
+        width: 100%;
+        padding-left: 20%;
+        box-sizing: border-box;
+      }
     }
   }
 }

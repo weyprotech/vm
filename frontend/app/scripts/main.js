@@ -223,6 +223,42 @@ $(document).ready(function () {
       speed: 500
     });
   }
+  if ($('.products_showcase').length > 0) {
+    $('.showcase_slider_wrapper .showcase_slider').slick({
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      arrows: false,
+      fade: true,
+      asNavFor: '.showcase_slider_wrapper .showcase_nav',
+      responsive: [
+        {
+          breakpoint: 480,
+          settings: {
+            arrows: true
+          }
+        }
+      ]
+    });
+    $('.showcase_slider_wrapper .showcase_nav').slick({
+      slidesToShow: 4,
+      slidesToScroll: 1,
+      arrows: true,
+      asNavFor: '.showcase_slider_wrapper .showcase_slider',
+      focusOnSelect: true,
+      vertical: true,
+      verticalSwiping: true,
+      responsive: [
+        {
+          breakpoint: 480,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            arrows: false
+          }
+        }
+      ]
+    });
+  }
 
   // Custom Scroll
   if ($('.scrollbar_x').length > 0) {
@@ -337,14 +373,32 @@ $(document).ready(function () {
       callbacks: {
         ajaxContentAdded: function() {
           if ($('.popup_slider').length > 0) {
+            var slideIndex = 0,
+                popupSliderTime;
+
+            if ($.magnificPopup.instance.st.el.attr('data-index') != 'undefined') {
+              slideIndex = $.magnificPopup.instance.st.el.attr('data-index');
+            }
             $('.popup_slider').on('init', function (event, slick) {
               $('.popup_slider').fitVids();
+
+              clearTimeout(popupSliderTime);
+              popupSliderTime = setTimeout(function () {
+                var setHeight = $('.popup_slider').find('.slide.slick-current').outerHeight();
+                $('.popup_slider').find('.slick-track').css('height', setHeight + 'px');
+              }, 300)
+            });
+            $('.popup_slider').on('afterChange', function (event, slick, currentSlide) {
+              var setHeight = $('.popup_slider').find('.slide.slick-current').outerHeight();
+              $('.popup_slider').find('.slick-track').css('height', setHeight + 'px');
             });
             $('.popup_slider').slick({
               dots: false,
               speed: 500,
+              initialSlide: slideIndex,
               appendArrows: '.popup_pager_controls'
             });
+            $('.popup_slider').slick('slickGoTo', slideIndex);
           }
         }
       }

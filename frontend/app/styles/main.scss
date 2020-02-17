@@ -46,8 +46,14 @@ $susy: (
 }
 
 // slick
-.slick-slide:focus {
-  outline: none;
+.slick-slide {
+  height: auto;
+  &:focus {
+    outline: none;
+  }
+  img {
+    margin: 0 auto;
+  }
 }
 .slick-prev,
 .slick-next {
@@ -62,6 +68,9 @@ $susy: (
   }
   &:hover {
     opacity: 1;
+  }
+  &.slick-disabled:before {
+    display: none;
   }
 }
 .slick-prev {

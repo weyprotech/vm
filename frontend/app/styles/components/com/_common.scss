@@ -186,7 +186,7 @@
 .fold_block {
   .fold_title {
     position: relative;
-    padding: 0.625rem 0 0.625rem 0.625rem;
+    padding: 0.625rem 1.65rem 0.625rem 0;
     box-sizing: border-box;
     line-height: 1.25;
     cursor: pointer;
@@ -227,6 +227,18 @@
     }
     @include breakpoint(660px) {
       padding: 0.625rem;
+    }
+  }
+}
+
+// Tabber
+.tabber_wrapper {
+  .tabber-contents {
+    .tabber-content {
+      display: none;
+      &.active {
+        display: block;
+      }
     }
   }
 }

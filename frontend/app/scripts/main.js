@@ -223,7 +223,7 @@ $(document).ready(function () {
       speed: 500
     });
   }
-  if ($('.products_showcase').length > 0) {
+  if ($('.product_showcase').length > 0) {
     $('.showcase_slider_wrapper .showcase_slider').slick({
       slidesToShow: 1,
       slidesToScroll: 1,
@@ -366,6 +366,15 @@ $(document).ready(function () {
     $('.fit_video').fitVids();
   }
 
+  // Fold Block
+  if ($('.fold_block').length > 0) {
+    $('.fold_block').on(clickHandler, '.fold_title', function(event) {
+      $(this).toggleClass('active').next('.fold_content').stop().slideToggle(function() {
+        $(this).toggleClass('active');
+      });
+    });
+  }
+
   // Popup
   if ($('.popup').length > 0) {
     $('.popup').magnificPopup({
@@ -409,7 +418,7 @@ $(document).ready(function () {
   });
 
   // Rate
-  if($('.rate_star').length > 0) {
+  if ($('.rate_star').length > 0) {
     $('.rate_star').rateYo({
       starWidth: '18px',
       spacing: '5px',
@@ -419,6 +428,32 @@ $(document).ready(function () {
       starSvg: '<svg width="18px" height="17px" viewBox="0 0 18 17" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns: xlink = "http://www.w3.org/1999/xlink" >' +
         '<path stroke="#CEB685" d="M13.5814958,11.3522884 L14.3257952,15.6308479 C14.3632805,15.8461616 14.2785781,16.0518821 14.0990812,16.1805018 C13.9192239,16.3087662 13.6953934,16.3243995 13.4989561,16.2234935 L9.600846,14.2028849 C9.4130591,14.1058872 9.20616911,14.0568553 9,14.0568553 C8.79383089,14.0568553 8.58730134,14.1058872 8.399154,14.2032402 L4.50176478,16.2234935 C4.30460655,16.3243995 4.0807761,16.3087662 3.90127921,16.1805018 C3.72178233,16.0518821 3.63744041,15.8465169 3.67456527,15.6308479 L4.41886461,11.3522884 C4.49059128,10.9394262 4.3518236,10.5180368 4.04761603,10.2259776 L0.893805278,7.19559776 C0.734853216,7.04281744 0.680787889,6.82750378 0.749631072,6.61965149 C0.81811382,6.41144389 0.99004156,6.26861206 1.20954679,6.23699008 L5.5675726,5.61272259 C5.98820084,5.55267637 6.35188027,5.29259452 6.53966718,4.91668388 L8.488542,1.02362814 C8.58658046,0.827500849 8.77797172,0.710606139 8.99963956,0.710606139 C9.22166784,0.710606139 9.41269866,0.827500849 9.51109756,1.02362814 L11.4599724,4.91668388 C11.6477593,5.29259452 12.0110783,5.55267637 12.4317065,5.61272259 L16.7900928,6.23699008 C17.009598,6.26861206 17.1815257,6.41144389 17.2500085,6.61965149 C17.3184912,6.82750378 17.2647863,7.04281744 17.1058343,7.19559776 L13.952384,10.2256223 C13.6481764,10.5180368 13.5094087,10.9390709 13.5814958,11.3522884 Z"></path>' +
       '</svg >'
+    });
+  }
+
+  //
+  if ($('.quantity_counter').length > 0) {
+    $('.quantity_counter').on(clickHandler, '.plus', function(event) {
+      var $qtde = $(this).siblings('.quantity');
+      var a = $qtde.val();
+
+      a++;
+      $qtde.val(a);
+
+      $(this).siblings('.minus').attr('disabled', !a);
+    });
+
+    $('.quantity_counter .minus').attr('disabled', !$(this).siblings('quantity').val());
+    $('.quantity_counter').on(clickHandler, '.minus', function (event) {
+      var $qtde = $(this).siblings($('.quantity'));
+      var b = $qtde.val();
+
+      if (b >= 2) {
+        b--;
+        $qtde.val(b);
+      } else {
+        $(this).attr('disabled', true);
+      }
     });
   }
 
@@ -452,7 +487,7 @@ $(document).ready(function () {
   }
 
   // Tab - jquery.tabber.js
-  // $('.tabber_wrapper').tabber();
+  $('.tabber_wrapper').tabber();
 
   // Body Scroll
   // $(window).scroll(function () {

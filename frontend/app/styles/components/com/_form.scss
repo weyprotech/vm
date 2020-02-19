@@ -31,6 +31,7 @@ input[type="search"],
 input[type="password"],
 input[type="email"],
 input[type="date"],
+input[type="number"],
 select {
   display: block;
   width: 100%;
@@ -51,7 +52,8 @@ input[type="text"],
 input[type="search"],
 input[type="password"],
 input[type="email"],
-input[type="date"] {
+input[type="date"],
+input[type="number"] {
   &:focus {
     background-color: $gray-lightest;
   }
@@ -325,6 +327,13 @@ button {
   .quantity {
     width: calc(100% - 36px * 2);
     text-align: center;
+    appearance: none;
+    -moz-appearance: textfield;
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
   }
 }
 
@@ -668,6 +677,7 @@ button {
         .select_wrapper {
           display: inline-block;
           max-width: 210px;
+          margin-right: 0.8rem;
           vertical-align: middle;
         }
         .note {
@@ -694,6 +704,14 @@ button {
       vertical-align: middle;
       i {
         display: block;
+      }
+    }
+    @include breakpoint(768px) {
+      padding-left: 80px;
+      box-sizing: border-box;
+      .btn {
+        flex: 0 0 auto;
+        width: 150px;
       }
     }
   }

@@ -13,7 +13,7 @@ block main
       a(href="products.html") Dresses
       span /
 
-  .products_showcase.page_block
+  .product_showcase.page_block
     .block_inner
       .showcase_slider_wrapper
         .showcase_nav
@@ -71,6 +71,11 @@ block main
           | Printed silk dress with aquatic flower motif
         .product_price
           | $2,880
+          //↓ 如果是Sale 使用這個 ↓
+          //
+            <span class="strikethrough">$2,880</span>
+            <span class="sale_price">$1,990</span>
+          //↑ 如果是Sale 使用這個 ↑
         .products_sku
           .controls_group
             label Size
@@ -94,12 +99,17 @@ block main
             .controls
               .quantity_counter
                 button.minus(type="button") －
-                input.quantity(type="text", value="1", name="quantity")
+                input.quantity(type="number", value="1", min="1", readOnly="true")
                 button.plus(type="button") ＋
           .call_action
             button.btn.confirm(type="button") Add to cart
+            //↓ 如果是預購改用這個 button ↓
+            // <button class="btn" type="button">Preorder Now</button>
+            //↑ 如果是預購改用這個 button ↑
+            //↓ class 加 'active' 表示加入最愛 ↓
             a.btn_favorite(href="javascript:;", data-productId="product001", title="Favorite")
               i.icon_favorite_heart
+            //↑ class 加 'active' 表示加入最愛 ↑
         .products_fold.fold_block
           .fold
             .fold_title Product Details
@@ -116,6 +126,102 @@ block main
               | Returnable within 14 days of delivery date. Return Policy
               br
               | Free shipping available worldwide. Check our shipping policy to see your countries minimum order requirement. Shipping Policy.
+
+  .product_detail_reviews.page_block
+    .block_inner
+      .tabber_wrapper
+        .tabber-selectors.sort_menu
+          ul
+            li
+              a.tabber-anchor.active(href="javascript:;") Product Detail
+            li
+              a.tabber-anchor(href="javascript:;") Reviews
+        .tabber-contents
+          .tabber-content.active
+            .product_detail
+              img(src="images/img_product_detail.jpg")
+          .tabber-content
+            .product_reviews
+              .reviews_title
+                span.score 4.8
+                .rate_star(data-rateyo-read-only="true", data-rateyo-star-width="24px", data-rateyo-rating="4.5")
+                span.count (32 Reviews)
+              .reviews_wrapper
+                each i inArray(5)
+                  .item
+                    .review
+                      .review_content
+                        .user_info
+                          .profile_picture
+                            .pic(style="background-image: url(https://source.unsplash.com/JQDflNNnrEE/100x100);")
+                              img.size(src="images/size_1x1.png")
+                          .title
+                            .name Lily Allen
+                        .purchase_info.
+                          Size: #[span L] &nbsp; &nbsp; &nbsp;Color: #[span White]
+                        .rate_date
+                          .rate_star(data-rateyo-read-only="true", data-rateyo-rating="5")
+                          .date 2019.08.01
+                        .text
+                          | Nice! Comfort!
+                    .review.reply
+                      .review_content
+                        .user_info
+                          .profile_picture
+                            .pic(style="background-image: url(images/img_profile.jpg);")
+                              img.size(src="images/size_1x1.png")
+                          .title
+                            .name Lily Allen
+                            .divide_line
+                            span Reply
+                            .divide_line
+                            span 2019.08.01
+                        .text
+                          | Thank you ：）
+                  .item
+                    .review
+                      .review_content
+                        .user_info
+                          .profile_picture
+                            .pic(style="background-image: url(https://source.unsplash.com/6W4F62sN_yI/100x100);")
+                              img.size(src="images/size_1x1.png")
+                          .title
+                            .name Ann Li
+                        .purchase_info.
+                          Size: #[span M] &nbsp; &nbsp; &nbsp;Color: #[span Black]
+                        .rate_date
+                          .rate_star(data-rateyo-read-only="true", data-rateyo-rating="4.5")
+                          .date 2019.08.01
+                        .text
+                          | I am really pleased with this dress, I am 5' 1" and usually size 10, but size 8 fitted me well and the length is just fine on me and not too long. It could be worn as a summer dress to the office, or dressed up with heels for a smart evening out or afternoon tea. Lovely vibrant colours and nice flowing material. Very pleased - another great dress from Matalan at a very reasonable price.
+              .pager_bar
+                .pages
+                  | Page 1 of 15
+                ul.pager_navigation
+                  li.prev
+                    a(href="javascript:;") &lt; Previous
+                  li.current
+                    a(href="javascript:;") 1
+                  li
+                    a(href="javascript:;") 2
+                  li
+                    a(href="javascript:;") 3
+                  li
+                    a(href="javascript:;") 4
+                  li
+                    a(href="javascript:;") 5
+                  li.next
+                    a(href="javascript:;") Next &gt;
+
+  .product_related_wrapper.page_block
+    .block_inner
+      h2.block_title You may also like
+      .product_related_slider
+        
+
+  .product_related_wrapper.page_block
+    .block_inner
+      h2.block_title Recently viewed
 
 block js
   script.

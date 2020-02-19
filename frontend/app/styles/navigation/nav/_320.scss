@@ -130,11 +130,11 @@ nav {
           > a {
             font-size: 1.125em;
             &:hover, &.current {
-              color: darken($main, 10%);
+              background-color: $gray-lightest;
+              color: $main;
             }
           }
           > ul > li > a {
-            border-radius: 5px;
             &:hover, &.current {
               background-color: $khaki-lightest;
               color: $main;
@@ -170,7 +170,6 @@ nav {
         select {
           height: 35px;
           padding: 0 20px 0 10px;
-          border-radius: 5px;
           background-color: $white;
           background-image: url(../images/arrow_select.png);
           background-position: calc(100% - 10px) center;

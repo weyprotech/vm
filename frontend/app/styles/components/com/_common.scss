@@ -182,6 +182,55 @@
   max-width: 480px;
 }
 
+// Fold
+.fold_block {
+  .fold_title {
+    position: relative;
+    padding: 0.625rem 0 0.625rem 0.625rem;
+    box-sizing: border-box;
+    line-height: 1.25;
+    cursor: pointer;
+    &:after {
+      content: '＋';
+      position: absolute;
+      top: 0.5rem;
+      right: 0.15rem;
+      display: block;
+      width: 24px;
+      height: 24px;
+      font-size: 1.5rem;
+      line-height: 1;
+    }
+    &.active {
+      &:after {
+        content: '－';
+      }
+    }
+    @include breakpoint(660px) {
+      padding: 0.625rem 1.65rem 0.625rem 0.625rem;
+    }
+  }
+  .fold_content {
+    display: none;
+    padding: 0.625rem 0;
+    box-sizing: border-box;
+    &.active {
+      display: block;
+    }
+    > * {
+      &:first-child {
+        margin-top: 0;
+      }
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+    @include breakpoint(660px) {
+      padding: 0.625rem;
+    }
+  }
+}
+
 // Fixed Buttons
 #fixedButtons {
   position: fixed;

@@ -39,6 +39,7 @@ select {
   margin: 0;
   border: $khaki-dark 1px solid;
   border-radius: 0;
+  background-color: $white;
   outline: none;
   box-sizing: border-box;
   &:focus {
@@ -68,6 +69,7 @@ textarea {
   outline: none;
   border: $khaki-dark 1px solid;
   box-sizing: border-box;
+  background-color: $white;
   resize: vertical;
   &:focus {
     outline: none;
@@ -213,8 +215,9 @@ button {
   @extend .clear;
   > label {
     display: block;
-    margin-bottom: .5em;
+    margin-bottom: 0.3em;
     box-sizing: border-box;
+    line-height: 1.25;
   }
 }
 
@@ -300,10 +303,41 @@ button {
   }
 }
 
+// Quantity Counter
+.quantity_counter {
+  display: flex;
+  button {
+    width: 36px;
+    height: 36px;
+    border: $khaki-dark 1px solid;
+    background-color: $white;
+    &:hover {
+      background-color: $khaki-dark;
+      color: $white;
+    }
+    &.minus {
+      border-right: none;
+    }
+    &.plus {
+      border-left: none;
+    }
+  }
+  .quantity {
+    width: calc(100% - 36px * 2);
+    text-align: center;
+  }
+}
+
 // Call action
 .call_action {
   margin-top: 1.875em;
   text-align: center;
+  &.left {
+    text-align: left;
+  }
+  &.right {
+    text-align: right;
+  }
   .btn {
     width: 120px;
     display: inline-block;
@@ -330,7 +364,6 @@ button {
     select {
       height: 30px;
       padding: 0 18px 0 0;
-      border: none;
       background-color: transparent;
       background-image: url(../images/arrow_select_white.png);
       background-position: right center;
@@ -440,7 +473,7 @@ button {
       border: 1px solid $khaki;
       box-sizing: border-box;
       background-color: $white;
-      color: #626262;
+      color: $gray-darken2;
       &:hover {
         background-color: $khaki;
         color: $white;
@@ -599,6 +632,68 @@ button {
       .btn {
         flex: 0 0 auto;
         width: 120px;
+      }
+    }
+  }
+}
+
+// Product Sku
+.products_sku {
+  .controls_group {
+    margin-bottom: 1.25em;
+    > label {
+      color: $gray-darken2;
+    }
+    .controls {
+      .note {
+        color: $gray-dark;
+        font-size: 0.75em;
+        line-height: 1.6;
+      }
+    }
+    @include breakpoint(768px) {
+      display: flex;
+      align-items: flex-start;
+      > label {
+        flex: 0 0 auto;
+        width: 80px;
+        padding-right: 0.5rem;
+        margin-top: 0.5rem;
+        margin-bottom: 0;
+        box-sizing: border-box;
+      }
+      .controls {
+        flex: 1 1 auto;
+        line-height: 1;
+        .select_wrapper {
+          display: inline-block;
+          max-width: 210px;
+          vertical-align: middle;
+        }
+        .note {
+          display: inline-block;
+          vertical-align: middle;
+        }
+        .quantity_counter {
+          display: inline-flex;
+          max-width: 130px;
+        }
+      }
+    }
+  }
+  .call_action {
+    display: flex;
+    align-items: center;
+    margin-top: 1.25em;
+    .btn {
+      flex: 1 1 auto;
+    }
+    .btn_favorite {
+      flex: 0 0 auto;
+      margin-left: 1.25em;
+      vertical-align: middle;
+      i {
+        display: block;
       }
     }
   }

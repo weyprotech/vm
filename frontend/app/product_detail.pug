@@ -60,16 +60,16 @@ block main
                 img.size(src="images/size_3x4.png")
         .share_links
           | Share
-          a.facebook(href="javascript:;")
+          a.facebook(href="javascript:;", target="_blank")
             i.icon_share_facebook
-          a.pinterest(href="javascript:;")
+          a.pinterest(href="javascript:;", target="_blank")
             i.icon_share_pinterest
       .showcase_content
         h1.product_title
           | PRINTED MINI DRESS
         .product_intro
           | Printed silk dress with aquatic flower motif
-        .products_price
+        .product_price
           | $2,880
         .products_sku
           .controls_group
@@ -96,12 +96,10 @@ block main
                 button.minus(type="button") －
                 input.quantity(type="text", value="1", name="quantity")
                 button.plus(type="button") ＋
-          .controls_group
-            lable &nbsp;
-            .controls
-              button.btn.confirm(type="button") Add to cart
-              a.btn_favorite(href="javascript:;", data-productId="product001", title="Favorite")
-                i.icon_favorite_heart
+          .call_action
+            button.btn.confirm(type="button") Add to cart
+            a.btn_favorite(href="javascript:;", data-productId="product001", title="Favorite")
+              i.icon_favorite_heart
         .products_fold.fold_block
           .fold
             .fold_title Product Details

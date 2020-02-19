@@ -11,6 +11,9 @@
     }
     .currency_language {
       text-align: right;
+      select {
+        border: none;
+      }
     }
     .marquee {
       flex: 1 1 auto;

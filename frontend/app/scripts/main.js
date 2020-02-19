@@ -232,7 +232,7 @@ $(document).ready(function () {
       asNavFor: '.showcase_slider_wrapper .showcase_nav',
       responsive: [
         {
-          breakpoint: 480,
+          breakpoint: 768,
           settings: {
             arrows: true
           }
@@ -249,7 +249,7 @@ $(document).ready(function () {
       verticalSwiping: true,
       responsive: [
         {
-          breakpoint: 480,
+          breakpoint: 768,
           settings: {
             slidesToShow: 1,
             slidesToScroll: 1,

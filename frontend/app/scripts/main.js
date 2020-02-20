@@ -259,6 +259,36 @@ $(document).ready(function () {
       ]
     });
   }
+  if ($('.product_list_slider').length > 0) {
+    $('.product_list_slider').slick({
+      speed: 500,
+      slidesToShow: 4,
+      slidesToScroll: 4,
+      responsive: [
+        {
+          breakpoint: 1280,
+          settings: {
+            slidesToShow: 3,
+            slidesToScroll: 3
+          }
+        },
+        {
+          breakpoint: 960,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 2
+          }
+        },
+        {
+          breakpoint: 560,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1
+          }
+        }
+      ]
+    });
+  }
 
   // Custom Scroll
   if ($('.scrollbar_x').length > 0) {

@@ -213,6 +213,17 @@
     }
   }
 
+  // Products
+  .product_list_slider {
+    padding: 0;
+    .slick-prev {
+      left: -1.125rem;
+    }
+    .slick-next {
+      right: -1.125rem;
+    }
+  }
+
   // Event
   .event_topping {
     .topping_header {

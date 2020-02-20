@@ -581,6 +581,19 @@
       }
     }
   }
+  .product_about {
+    .tabber_wrapper {
+      margin-top: -1.875em;
+      .tabber-selectors {
+        padding: 1.875em 1em;
+      }
+      .tabber-contents {
+        .tabber-content {
+          padding: 1.875em 1em;
+        }
+      }
+    }
+  }
 
   // Sale
   .sale_wrapper {

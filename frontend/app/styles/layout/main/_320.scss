@@ -94,6 +94,7 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    @extend .transition;
     img.size {
       display: block;
       width: 100%;
@@ -129,6 +130,14 @@
       &:before {
         opacity: 1;
       }
+    }
+  }
+}
+a .thumb,
+a.thumb {
+  &:hover {
+    .pic {
+      box-shadow: 0 0 0 1px $khaki inset;
     }
   }
 }
@@ -447,9 +456,6 @@
 .page_block {
   padding: 1.5em 1em;
   box-sizing: border-box;
-  &.bg_gray {
-    background-color: $gray-lightest;
-  }
   .block_inner {
     max-width: 1200px;
     margin: 0 auto;
@@ -1295,7 +1301,7 @@
   }
   .slide_inner {
     display: block;
-    max-width: 280px;
+    max-width: 360px;
     margin: 0 auto;
   }
   .thumb {
@@ -1368,7 +1374,6 @@
   }
   .slide_inner:hover {
     .thumb {
-      box-shadow: 0 0 0 1px $khaki;
       .brand_name {
         color: $khaki;
       }
@@ -1376,10 +1381,6 @@
     .designer_info h3 {
       color: $main;
     }
-  }
-  .slick-prev,
-  .slick-next {
-    top: 186.5px;
   }
   .slick-prev {
     left: 0;
@@ -1574,6 +1575,9 @@
           display: block;
         }
       }
+      a:hover .thumb {
+        box-shadow: 0 0 0 1px $khaki;
+      }
       .text {
         padding: 0.8em;
         box-sizing: border-box;
@@ -1589,9 +1593,6 @@
         }
       }
       a:hover {
-        .thumb {
-          box-shadow: 0 0 0 1px $khaki;
-        }
         .text {
           color: $main;
         }
@@ -1949,9 +1950,6 @@
       line-height: 1.25;
     }
     a:hover {
-      .thumb {
-        box-shadow: 0 0 0 1px $khaki;
-      }
       .slide_title {
         color: $main;
       }
@@ -2015,9 +2013,6 @@
       @extend .transition;
     }
     a:hover {
-      .thumb {
-        box-shadow: 0 0 0 1px $khaki;
-      }
       .event_title, p {
         color: $main;
       }
@@ -2055,9 +2050,6 @@
     color: $black;
     &:hover {
       color: $main;
-      .thumb {
-        box-shadow: 0 0 0 1px $khaki;
-      }
     }
   }
   .thumb {
@@ -2182,9 +2174,6 @@
     }
     &:hover {
       color: $gray-darken;
-      .thumb {
-        box-shadow: 0 0 0 1px $khaki;
-      }
       .designer_name {
         color: $khaki;
       }
@@ -2274,9 +2263,6 @@
     }
     &:hover {
       color: $gray-darken;
-      .thumb {
-        box-shadow: 0 0 0 1px $khaki;
-      }
       .designer_name {
         color: $khaki;
       }
@@ -2563,10 +2549,9 @@
       height: 100%;
       background-color: $khaki-lightest;
     }
-    img {
+    .thumb {
       position: relative;
       z-index: 1;
-      display: block;
       margin: 0 auto;
     }
   }
@@ -2715,9 +2700,6 @@
     }
     .thumb {
       max-width: 265px;
-      &:hover {
-        box-shadow: 0 0 0 1px $khaki;
-      }
     }
   }
 }
@@ -2837,9 +2819,6 @@
       margin-top: 1em;
     }
     .thumb {
-      &:hover {
-        box-shadow: 0 0 0 1px $khaki;
-      }
       &.has_more {
         position: relative;
         .btn.common {
@@ -2988,9 +2967,6 @@
       }
     }
     a:hover {
-      .thumb {
-        box-shadow: 0 0 0 1px $khaki;
-      }
       .brand_name {
         .brand_logo {
           box-shadow: 0 0 0 1px $khaki;
@@ -3287,9 +3263,6 @@
         }
       }
       &:hover {
-        .thumb {
-          box-shadow: 0 0 0 1px $khaki;
-        }
         h3 {
           color: $khaki;
         }
@@ -3367,9 +3340,6 @@
     }
     &:hover {
       color: $gray-darken;
-      .thumb {
-        box-shadow: 0 0 0 1px $khaki;
-      }
       h3 {
         color: $khaki;
       }
@@ -3512,11 +3482,6 @@
       color: $black;
       &:hover {
         color: $main;
-        .thumb {
-          .pic {
-            box-shadow: 0 0 0 1px $khaki inset;
-          }
-        }
       }
     }
     .date {
@@ -3525,9 +3490,6 @@
     }
     .thumb {
       margin-bottom: 0.5em;
-      .pic {
-        @extend .transition;
-      }
     }
     p {
       overflow: hidden;
@@ -3577,9 +3539,6 @@
             @include retina-sprite($icon-play-small-group);
           }
         }
-        .pic {
-          transition: all 0.2s ease-in-out;
-        }
       }
       .slide {
         margin-bottom: 0.625em;
@@ -3587,8 +3546,7 @@
         img {
           display: block;
         }
-        &.slick-current,
-        &:hover {
+        &.slick-current{
           .thumb {
             .pic {
               box-shadow: 0 0 0 1px $khaki inset;
@@ -3630,16 +3588,6 @@
       }
       .slick-next {
         right: 0.3rem;
-      }
-      .thumb {
-        .pic {
-          @extend .transition;
-        }
-        &:hover {
-          .pic {
-            box-shadow: 0 0 0 1px $khaki inset;
-          }
-        }
       }
     }
     .share_links {
@@ -3742,12 +3690,15 @@
 .product_detail_reviews {
   .tabber_wrapper {
     .tabber-selectors {
-      max-width: 970px;
-      padding: 1em 0;
-      margin: 0 auto 1.5em;
+      margin-bottom: 1.5em;
       border-color: $khaki-lightest;
       border-style: solid;
       border-width: 1px 0 1px 0;
+    }
+    .sort_menu {
+      max-width: 970px;
+      padding: 1em 0;
+      margin: 0 auto;
     }
   }
   .product_detail {
@@ -3763,11 +3714,9 @@
     }
   }
   .product_reviews {
-    max-width: 970px;
-    margin: 0 auto;
     .reviews_title {
       max-width: 970px;
-      margin-bottom: 1.5em;
+      margin: 0 auto 1.5em;
       span, .rate_star {
         display: inline-block;
         vertical-align: middle;
@@ -3785,10 +3734,126 @@
       }
     }
     .reviews_wrapper {
-      .review.reply {
-        box-sizing: border-box;
-        margin-left: 1em;
+      .review {
+        max-width: 970px;
+        margin: 0 auto;
+        &.reply {
+          box-sizing: border-box;
+          .review_content {
+            margin-left: 1em;
+          }
+        }
       }
+    }
+  }
+}
+.product_about {
+  &.page_block {
+    padding-top: 0;
+  }
+  .designer_banner {
+    .slick-dots {
+      bottom: 3.8vw !important;
+    }
+  }
+  .tabber_wrapper {
+    position: relative;
+    z-index: 2;
+    margin: -2.5vw auto 0;
+    box-sizing: border-box;
+    .tabber-selectors {
+      max-width: 1200px;
+      padding: 0.8em 1em;
+      margin: 0 auto;
+      border-radius: 5px 5px 0 0;
+      border-bottom: $khaki-lightest 1px solid;
+      box-sizing: border-box;
+      background-color: $white;
+      .sort_menu {
+        max-width: 1024px;
+        margin: 0 auto 0;
+      }
+    }
+    .tabber-contents {
+      .tabber-content {
+        padding: 1.5em 1em;
+        box-sizing: border-box;
+      }
+    }
+  }
+  .product_about_designer {
+    max-width: 1024px;
+    margin: 0 auto;
+    .designer_introduction {
+      
+    }
+  }
+}
+.product_list_slider {
+  margin: 0 -0.9375em 2em;
+  box-sizing: border-box;
+  .slide {
+    margin: 0 0.9375em;
+  }
+  .slide_inner {
+    display: block;
+    max-width: 300px;
+    margin: 0 auto;
+    color: $black;
+  }
+  .thumb {
+    position: relative;
+    margin-bottom: 0.5em;
+  }
+  h3 {
+    margin: 0 0 0.5em;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.25;
+  }
+  .price {
+    color: $main;
+    line-height: 1.25;
+    span {
+      display: inline-block;
+      &.strikethrough {
+        position: relative;
+        margin-right: 1em;
+        &:before {
+          content: '';
+          position: absolute;
+          left: 0;
+          top: 50%;
+          display: block;
+          width: 100%;
+          height: 1px;
+          background-color: $red;
+        }
+      }
+      &.sale_price {
+        color: $red;
+      }
+    }
+  }
+  .slide_inner:hover {
+    color: $main;
+  }
+  .slick-prev {
+    left: 0;
+  }
+  .slick-next {
+    right: 0;
+  }
+  @include breakpoint(560px) {
+    padding: 0 1.125em;
+  }
+  @include breakpoint(730px) {
+    padding: 0 2.125em;
+    .slick-prev {
+      left: 1rem;
+    }
+    .slick-next {
+      right: 1rem;
     }
   }
 }
@@ -3892,9 +3957,6 @@
         @extend .transition;
       }
       &:hover {
-        .thumb {
-          box-shadow: 0 0 0 1px $khaki;
-        }
         h3 {
           color: $khaki;
         }
@@ -3930,9 +3992,6 @@
       @extend .transition;
     }
     &:hover {
-      .thumb {
-        box-shadow: 0 0 0 1px $khaki;
-      }
       h3 {
         color: $khaki;
       }
@@ -3965,9 +4024,6 @@
       color: $black;
       &:hover {
         color: $main;
-        .thumb {
-          box-shadow: 0 0 0 1px $khaki;
-        }
       }
     }
     .text {
@@ -4129,9 +4185,6 @@
       max-width: 390px;
       margin: 0 auto 1em;
       @extend .clear;
-      .thumb:hover {
-        box-shadow: 0 0 0 1px $khaki;
-      }
       .btn {
         position: relative;
         width: 150px;
@@ -4182,9 +4235,6 @@
       .text {
         margin-bottom: 1em;
         color: $gray-darken;
-      }
-      .thumb:hover {
-        box-shadow: 0 0 0 1px $khaki;
       }
     }
     @include breakpoint(660px) {
@@ -4292,7 +4342,6 @@
       .item_content {
         .thumb {
           width: 38.3333333333333%;
-          
         }
         .intro {
           padding-bottom: 0.8em;

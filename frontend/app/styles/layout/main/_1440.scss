@@ -1,11 +1,23 @@
 @include susy-breakpoint(1440px, 12) {
+  // List Slider
+  .list_slider_wrapper {
+    .list_slider {
+      .slick-prev {
+        left: -2.375rem;
+      }
+      .slick-next {
+        right: -2.375rem;
+      }
+    }
+  }
+
   // Index
   .top_designers_slider {
     .slick-prev {
-      left: calc(-2.125rem);
+      left: -2.125rem;
     }
     .slick-next {
-      right: calc(-2.125rem);
+      right: -2.125rem;
     }
   }
   .what_next {
@@ -29,15 +41,13 @@
     }
   }
 
-  // List Slider
-  .list_slider_wrapper {
-    .list_slider {
-      .slick-prev {
-        left: -2.375rem;
-      }
-      .slick-next {
-        right: -2.375rem;
-      }
+  // Products
+  .product_list_slider {
+    .slick-prev {
+      left: -2.125rem;
+    }
+    .slick-next {
+      right: -2.125rem;
     }
   }
 }

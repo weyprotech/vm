@@ -297,6 +297,28 @@
       }
     }
   }
+
+  // Products
+  .product_about {
+    .tabber_wrapper {
+      .tabber-contents {
+        .tabber-content {
+          padding: 3.5em 1em;
+        }
+      }
+    }
+  }
+  .product_about_designer {
+    .designer_introduction {
+      .designer_info {
+        .designer_name {
+          span {
+            font-size: 2.25rem;
+          }
+        }
+      }
+    }
+  }
   
   // Brand
   .brand_topping {

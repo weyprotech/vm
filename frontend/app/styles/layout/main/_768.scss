@@ -589,9 +589,49 @@
       }
       .tabber-contents {
         .tabber-content {
-          padding: 1.875em 1em;
+          padding: 3em 1em;
         }
       }
+    }
+  }
+  .product_about_designer {
+    .designer_introduction {
+      margin-bottom: 2.5em;
+      .designer_info {
+        .profile_picture {
+          width: 80px;
+          height: 80px;
+        }
+        .designer_name {
+          span {
+            font-size: 1.875rem;
+          }
+        }
+      }
+      .intro_image {
+        margin-top: 1.875em;
+        &:before {
+          top: -1.875em;
+          right: -1.875em;
+        }
+      }
+    }
+    .latest_post {
+      .post_block_wrapper {
+        margin-bottom: 3em;
+      }
+    }
+  }
+  .product_about_cooperate {
+    .title {
+      margin-bottom: 3rem;
+      font-size: 2.5em;
+    }
+    .subtitle {
+      font-size: 2.25em;
+    }
+    .cooperate_block {
+      padding: 3em 0;
     }
   }
 

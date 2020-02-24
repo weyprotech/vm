@@ -24,7 +24,8 @@ block main
               a(href="forgot_password.html")
                 | Forgot Password
             .call_action
-              button.btn.confirm Sign In
+              button.btn.confirm(onClick="location.href='member_account.html'")
+                | Sign In
             .create_link
               | Not a member? &nbsp; #[a.popup(href="popup_create.html") Create Account]
         .login_block

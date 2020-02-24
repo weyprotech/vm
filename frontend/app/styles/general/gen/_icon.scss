@@ -123,6 +123,10 @@
   @include retina-sprite($icon-favorite-heart-big-active-group);
 }
 
+.icon_favorite_heart_small {
+  @include retina-sprite($icon-favorite-heart-small-group);
+}
+
 .icon_gift_designer {
   @include retina-sprite($icon-gift-designer-group);
 }
@@ -149,4 +153,8 @@
 
 .icon_login_google {
   @include retina-sprite($icon-login-google-group);
+}
+
+.icon_remove {
+  @include retina-sprite($icon-remove-group);
 }

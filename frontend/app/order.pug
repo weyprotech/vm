@@ -1,0 +1,118 @@
+extends layouts/default.pug
+
+block main
+  .shopping_cart.page_block
+    .block_inner
+      h1.block_subtitle Shopping Cart
+      .block_main
+        .checkout_cart
+          .cart_title
+            .main Product
+            .label Size
+            .label Color
+            .label Quantity
+            .label Price
+          .cart_container
+            ul.cart_items
+              li.item
+                a.thumb(href="product_detail.html")
+                  //↓ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓
+                  .pic(style="background-image: url(images/img_product01.jpg);")
+                    img.size(src="images/size_3x4.png")
+                  //↑ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑
+                .content
+                  .ci_info
+                    .ci_name
+                      | Product Details
+                    .ci_description
+                      | Printed silk dress with aquatic flower motif
+                  .ci_size
+                    .select_wrapper
+                      select
+                        option(selected) S
+                        option M
+                        option L
+                  .ci_color
+                    .select_wrapper
+                      select
+                        option Blue
+                        option(selected) Black
+                        option Yellow
+                  .ci_quantity
+                    .quantity_counter
+                      button.minus(type="button") －
+                      input.quantity(type="number", value="1", min="1", readOnly="true")
+                      button.plus(type="button") ＋
+                  .ci_price $6,880
+                .links
+                  a(href="javascript:;")
+                    i.icon_favorite_heart_small
+                    span save to heart
+                  a(href="javascript:;")
+                    i.icon_remove
+                    span remove
+              li.item
+                a.thumb(href="product_detail.html")
+                  //↓ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓
+                  .pic(style="background-image: url(images/img_product01.jpg);")
+                    img.size(src="images/size_3x4.png")
+                  //↑ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑
+                .content
+                  .ci_info
+                    .ci_name
+                      | Ganni
+                    .ci_description
+                      | Smocked Seersucker Check Midi Dress
+                  .ci_size
+                    .select_wrapper
+                      select
+                        option(selected) S
+                        option M
+                        option L
+                  .ci_color
+                    .select_wrapper
+                      select
+                        option Blue
+                        option(selected) Black
+                        option Yellow
+                  .ci_quantity
+                    .quantity_counter
+                      button.minus(type="button") －
+                      input.quantity(type="number", value="1", min="1", readOnly="true")
+                      button.plus(type="button") ＋
+                  .ci_price $6,880
+                .links
+                  a(href="javascript:;")
+                    i.icon_favorite_heart_small
+                    span save to heart
+                  a(href="javascript:;")
+                    i.icon_remove
+                    span remove
+          .cart_summary
+            .summary_calculation
+              ul.summary_items
+                li.item
+                  .controls_group
+                    label Item Total
+                  .price $10,160
+                li.item
+                  .controls_group
+                    label Item Total
+                    .controls
+                      .select_wrapper
+                        select
+                          option Denmark
+                  .price $1,160
+                li.item
+                  .controls_group
+                    label Add discout coupon
+                    .controls.coupon
+                      input(type="text")
+                      button(type="button") &check;
+                  .price -$1,160
+            .total_calculation
+              label TOTAL
+              .total_amount NTD$11,320
+        .call_action.space_between
+          a.btn.common(href="products.html") Continue Shopping
+          a.btn.confirm(href="order_information.html") CHECKOUT

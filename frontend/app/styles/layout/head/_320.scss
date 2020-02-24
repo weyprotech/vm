@@ -40,7 +40,7 @@
 	@extend .transition;
   .header_main {
     position: relative;
-    z-index: 2;
+    z-index: 3;
     padding: 1em;
     border-bottom: $khaki-lightest 1px solid;
     box-sizing: border-box;
@@ -147,9 +147,10 @@
       .cart_drop {
         position: absolute;
         top: 100%;
-        right: -5px;
+        right: -10px;
         display: none;
-        width: 292px;
+        width: 82vw;
+        max-width: 292px;
         margin-top: 1.25em;
         background-color: $white;
         box-shadow: 0 0 4px $khaki-lighten;
@@ -158,13 +159,27 @@
           content: '';
           position: absolute;
           top: -16px;
-          right: 10px;
+          right: 15px;
           display: block;
           width: 20px;
           height: 18px;
           background-image: url(../images/arrow_drop.png);
           background-position: center;
           background-repeat: no-repeat;
+        }
+        .cart_view {
+          overflow-y: auto;
+          max-height: calc(100vh - 80px);
+          .mCSB_inside>.mCSB_container {
+            margin-right: 6px;
+          }
+          .mCSB_scrollTools {
+            width: 6px;
+            .mCSB_draggerRail,
+            .mCSB_dragger .mCSB_dragger_bar {
+              margin-left: 0;
+            }
+          }
         }
       }
     }

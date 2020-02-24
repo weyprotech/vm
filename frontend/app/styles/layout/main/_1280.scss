@@ -223,6 +223,37 @@
       right: -1.125rem;
     }
   }
+  .product_about_cooperate {
+    .cooperate_block {
+      padding: 5em 0;
+    }
+    .cooperate_introduction {
+      .intro_block {
+        margin-bottom: 5em;
+      }
+      .intro_image {
+        margin: 1.875em 0 0;
+        &:before {
+          top: -1.875em;
+          left: -1.875em;
+        }
+      }
+      .intro_block:nth-child(even) {
+        .intro_image {
+          &:before {
+            right: -1.875em;
+          }
+        }
+      }
+    }
+    .cooperate_wall {
+      .item {
+        &:nth-child(3) {
+          padding: 1.875em 1.875em 0 0;
+        }
+      }
+    }
+  }
 
   // Event
   .event_topping {

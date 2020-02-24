@@ -415,21 +415,23 @@ $(document).ready(function () {
             var slideIndex = 0,
                 popupSliderTime;
 
-            if ($.magnificPopup.instance.st.el.attr('data-index') != 'undefined') {
+            if ($.magnificPopup.instance.st.el.attr('data-index') !== undefined) {
               slideIndex = $.magnificPopup.instance.st.el.attr('data-index');
             }
             $('.popup_slider').on('init', function (event, slick) {
               $('.popup_slider').fitVids();
-
               clearTimeout(popupSliderTime);
               popupSliderTime = setTimeout(function () {
                 var setHeight = $('.popup_slider').find('.slide.slick-current').outerHeight();
                 $('.popup_slider').find('.slick-track').css('height', setHeight + 'px');
-              }, 300)
+              }, 300);
             });
             $('.popup_slider').on('afterChange', function (event, slick, currentSlide) {
-              var setHeight = $('.popup_slider').find('.slide.slick-current').outerHeight();
-              $('.popup_slider').find('.slick-track').css('height', setHeight + 'px');
+              clearTimeout(popupSliderTime);
+              popupSliderTime = setTimeout(function () {
+                var setHeight = $('.popup_slider').find('.slide.slick-current').outerHeight();
+                $('.popup_slider').find('.slick-track').css('height', setHeight + 'px');
+              }, 300);
             });
             $('.popup_slider').slick({
               dots: false,
@@ -612,9 +614,7 @@ $(window).on('load', function () {
   var $target = $('[data-anchor="' + hashName + '"]');
 
   if ($target.length > 0) {
-    // Reset where animation starts.
     $('html, body').scrollTop(0);
-    // Animate to
     $('html, body').stop().animate({
       scrollTop: $target.offset().top - $('#header').outerHeight()
     }, 800);

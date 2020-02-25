@@ -70,11 +70,19 @@ $(document).ready(function () {
   // Cart Drop
   $('#header').on(clickHandler, '.option_cart a.cart_toggle', function (event) {
     event.preventDefault();
-    $('#header .option_cart .cart_drop').stop().slideToggle();
+    if ($(this).hasClass('active')) {
+      $(this).removeClass('active');
+      $(this).next('.cart_drop').stop().fadeOut();
+      
+    } else {
+      $(this).addClass('active');
+      $(this).next('.cart_drop').stop().fadeIn();
+    }
   });
   $(document).on(clickHandler, function (event) {
     if (!$(event.target).is('#header .option_cart, #header .option_cart *')) {
-      $('#header .option_cart .cart_drop').stop().slideUp();
+      $('#header .option_cart a.cart_toggle').removeClass('active');
+      $('#header .option_cart .cart_drop').stop().fadeOut();
     }
   });
 
@@ -463,7 +471,7 @@ $(document).ready(function () {
     });
   }
 
-  //
+  // Quantity Counter
   if ($('.quantity_counter').length > 0) {
     $('.quantity_counter').on(clickHandler, '.plus', function(event) {
       var $qtde = $(this).siblings('.quantity');
@@ -563,12 +571,22 @@ $(document).ready(function () {
 
 // Resize
 $(window).on('resize', function () {
+  if ($('.scrollbar_y').length > 0) {
+    $('.scrollbar_y').mCustomScrollbar('destroy');
+    $('.scrollbar_y').mCustomScrollbar({
+      theme: 'dark-3',
+      axis: 'y'
+    });
+  }
+
   if (windowWidth != $(window).width()) {
     windowWidth = $(window).width();
 
     // reSetting
     $('#header .header_search').css('display', '');
-    toppingListScroll();
+    if ($('.topping_block .topping_list').length > 0) {
+      toppingListScroll();
+    }
 
     // Sticky
     $('#header').unstick();
@@ -642,12 +660,12 @@ function sticky() {
   if (windowWidth >= 1024) {
     $('#header .header_nav_wrap').sticky({
       topSpacing: 0,
-      zIndex: 99
+      zIndex: 10001
     });
   } else if (windowWidth < 1024) {
     $('#header').sticky({
       topSpacing: 0,
-      zIndex: 99
+      zIndex: 10001
     });
     $('#header').on('sticky-start', function () {
       $('#sidebar').addClass('head_sticky');

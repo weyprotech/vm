@@ -71,13 +71,14 @@
   &.confirm {
     background-color: $khaki-dark;
     &:hover {
-      background-color: $main;
+      background-color: $khaki;
     }
   }
   &.common {
-    border: $khaki 1px solid;
+    //border: $khaki 1px solid;
     box-sizing: border-box;
-    background-color: $white;
+    box-shadow: 0 0 0 1px $khaki inset;
+    background-color: transparent;
     color: $gray-darken2;
     &:hover {
       background-color: $khaki;
@@ -85,7 +86,7 @@
     }
   }
   &.more {
-    min-width: 150px;
+    width: 150px;
     margin: 0 auto;
   }
 }

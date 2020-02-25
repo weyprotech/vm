@@ -338,6 +338,27 @@ button {
   }
 }
 
+// Coupon Controls
+.coupon_controls {
+  display: flex;
+  input[type="text"] {
+    flex: 1 1 auto;
+    margin-right: 0.5em;
+  }
+  .btn_check {
+    flex: 0 0 auto;
+    width: 34px;
+    height: 36px;
+    border: $khaki-dark 1px solid;
+    background-color: $white;
+    color: $khaki-dark;
+    &:hover {
+      background-color: $khaki;
+      color: $white;
+    }
+  }
+}
+
 // Call action
 .call_action {
   margin-top: 1.875em;
@@ -353,8 +374,12 @@ button {
     justify-content: space-between;
   }
   .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     min-width: 120px;
-    display: inline-block;
+    height: 44px;
+    line-height: 1.25;
   }
 }
 

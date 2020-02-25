@@ -35,7 +35,7 @@
 
 #header {
   position: relative;
-  z-index: 9999;
+  z-index: 10001;
 	background-color: $white;
 	@extend .transition;
   .header_main {
@@ -188,5 +188,5 @@
 
 #header-sticky-wrapper {
   position: relative;
-  z-index: 9999;
+  z-index: 10001;
 }

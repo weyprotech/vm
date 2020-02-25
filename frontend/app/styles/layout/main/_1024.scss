@@ -2,9 +2,11 @@
   // Container
   .container {
     display: flex;
+    > [class^="container_"] {
+      margin-bottom: 0;
+    }
     .container_main {
       flex: 0 0 auto;
-      margin-bottom: 0;
     }
     .container_aside {
       flex: 0 0 auto;

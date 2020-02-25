@@ -1,0 +1,142 @@
+extends layouts/default.pug
+
+block main
+  .shopping_fill_information.page_block.bg_gray
+    .block_inner
+      .sopping_steps
+        .step.process
+          span Shipping
+        .step
+          span Payment
+        .step
+          span Review
+      .container
+        .container_aside
+          h2.block_subtitle.sans-serif
+            | Payment Summary
+          .aside_block
+            .cart_view
+              .title
+                | 2 Items
+              .cart_items
+                .item
+                  a.thumb(href="product_detail.html")
+                    //↓ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓
+                    .pic(style="background-image: url(images/img_product01.jpg);")
+                      img.size(src="images/size_3x4.png")
+                    //↑ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑
+                  .content
+                    .price $ 1148
+                    ul
+                      li
+                        | size: M
+                      li
+                        | color: dot
+                      li
+                        | Qty: 1
+                .item
+                  a.thumb(href="product_detail.html")
+                    //↓ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓
+                    .pic(style="background-image: url(https://via.placeholder.com/300x400);")
+                      img.size(src="images/size_3x4.png")
+                    //↑ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑
+                  .content
+                    .price $ 1148
+                    ul
+                      li
+                        | size: M
+                      li
+                        | color: dot
+                      li
+                        | Qty: 1
+              .cart_foot
+                .total_calculation
+                  .label TOTAL
+                  .total_amount
+                    | NTD $2,296
+          .aside_block.has_padding
+            h3.aside_title Notice
+            .text Bushwick meh Blue Bottle pork belly mustache skateboard 3 wolf moon. Actually beard single-origin coffee, twee 90's PBR Echo Park sartorial try-hard freegan Portland ennui. 
+          .aside_block.has_padding
+            h3.aside_title Customer Notes
+            textarea.note_textarea
+        .container_main
+          .form_wrapper
+            h2.block_subtitle.sans-serif
+              | Shipping Address
+            .form_block
+              .row
+                .grid.g_6_12
+                  .controls_group
+                    label *First Name
+                    .controls
+                      input(type="text")
+                .grid.g_6_12
+                  .controls_group
+                    label *Last Name
+                    .controls
+                      input(type="text")
+              .row
+                .grid.g_6_12
+                  .controls_group
+                    label *Country
+                    .controls
+                      .select_wrapper
+                        select
+                          option Taiwan
+                          option Japan
+                .grid.g_6_12
+                  .controls_group
+                    label *State/Region
+                    .controls
+                      .select_wrapper
+                        select
+                          option Taipei
+                          option New Taipei
+              .row
+                .grid
+                  .controls_group
+                    label *Address
+                    .controls
+                      input(type="text")
+              .row
+                .grid
+                  .controls_group
+                    label *Phone
+                    .controls.row
+                      .grid.g_6_12
+                        .select_wrapper
+                          select
+                            option Taiwan(+886)
+                      .grid.g_6_12
+                        .controls
+                          input(type="text")
+          .form_wrapper
+            h2.block_subtitle.sans-serif
+              | Email account
+            .form_block
+              .controls_group
+                label *Email
+                .controls
+                  input(type="email")
+              .controls_group
+                label *Password
+                .controls
+                  input(type="password")
+              .controls_group
+                label *Password confirmed
+                .controls
+                  input(type="password")
+          .accept_capatach
+            label.check_wrapper
+              input(type="checkBox")
+              span I accept the “Terms &amp; Conditions” and “Privacy Statement”
+            .captcha
+              .captcha_inner
+                .g-recaptcha(data-sitekey="6LcHGhITAAAAABIgEAplK2EWsVFkaE5o0DWUpsIs")
+          .call_action.space_between
+            a.btn.common(href="products.html") Continue Shopping
+            a.btn.confirm(href="order_information.html") CHECKOUT
+
+block js
+  script(src='https://www.google.com/recaptcha/api.js')

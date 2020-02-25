@@ -7,11 +7,16 @@ block main
       .block_main
         .checkout_cart
           .cart_title
-            .main Product
-            .label Size
-            .label Color
-            .label Quantity
-            .label Price
+            .main
+              | Product
+            .label_size
+              | Size
+            .label_color
+              | Color
+            .label_quantity
+              | Quantity
+            .label_price
+              | Price
           .cart_container
             ul.cart_items
               li.item
@@ -89,27 +94,26 @@ block main
                     i.icon_remove
                     span remove
           .cart_summary
-            .summary_calculation
-              ul.summary_items
-                li.item
-                  .controls_group
-                    label Item Total
-                  .price $10,160
-                li.item
-                  .controls_group
-                    label Item Total
-                    .controls
-                      .select_wrapper
-                        select
-                          option Denmark
-                  .price $1,160
-                li.item
-                  .controls_group
-                    label Add discout coupon
-                    .controls.coupon
-                      input(type="text")
-                      button(type="button") &check;
-                  .price -$1,160
+            ul.summary_items
+              li.item
+                .controls_group
+                  label Item Total
+                .price $10,160
+              li.item
+                .controls_group
+                  label Shipping to
+                  .controls
+                    .select_wrapper
+                      select
+                        option Denmark
+                .price $1,160
+              li.item
+                .controls_group
+                  label Add discout coupon
+                  .controls.coupon_controls
+                    input(type="text")
+                    button.btn_check(type="button") &check;
+                .price -$1,160
             .total_calculation
               label TOTAL
               .total_amount NTD$11,320

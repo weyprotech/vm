@@ -126,7 +126,7 @@
           <nav class="header_nav">
             <ul>
               <li><a href="designers.html">Designers</a></li>
-              <li><a class="current" href="brands.html">Brands</a></li>
+              <li><a href="brands.html">Brands</a></li>
               <li><a href="products.html">Women</a>
                 <div class="sub_menu">
                   <ul>
@@ -217,288 +217,139 @@
         </div>
       </header>
       <main id="main">
-        <div class="filter_search_bar">
-          <div class="bar_inner">
-            <div class="filter_buttons"><a class="active" href="brands.html">All</a><a href="search_brands.html">A-Z</a></div>
-            <div class="search_form">
-              <input type="search" placeholder="Designer / Brand name">
-              <button type="button" onclick="location.href='search_brands.html'"><i class="icon_search"></i></button>
-            </div>
-          </div>
-        </div>
-        <div class="topping_block brand_topping">
-          <div class="block_inner wide">
-            <div class="topping_header">
-              <div class="brand_topping_header"><a class="header_content" href="brand_story.html">
-                  <div class="thumb">
-                    <!--↓ 1:1，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓-->
-                    <div class="pic" style="background-image: url(images/img_brand.jpg);"><img class="size" src="images/size_1x1.png"></div>
-                    <!--↑ 1:1，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑-->
+        <div class="shopping_cart page_block">
+          <div class="block_inner">
+            <h1 class="block_subtitle">Shopping Cart</h1>
+            <div class="block_main">
+              <div class="checkout_cart">
+                <div class="cart_title">
+                  <div class="main">Product</div>
+                  <div class="label">Size</div>
+                  <div class="label">Color</div>
+                  <div class="label">Quantity</div>
+                  <div class="label">Price</div>
+                </div>
+                <div class="cart_container">
+                  <ul class="cart_items">
+                    <li class="item"><a class="thumb" href="product_detail.html">
+                        <!--↓ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓-->
+                        <div class="pic" style="background-image: url(images/img_product01.jpg);"><img class="size" src="images/size_3x4.png"></div>
+                        <!--↑ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑--></a>
+                      <div class="content">
+                        <div class="ci_info">
+                          <div class="ci_name">Product Details</div>
+                          <div class="ci_description">Printed silk dress with aquatic flower motif</div>
+                        </div>
+                        <div class="ci_size">
+                          <div class="select_wrapper">
+                            <select>
+                              <option selected>S</option>
+                              <option>M</option>
+                              <option>L</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="ci_color">
+                          <div class="select_wrapper">
+                            <select>
+                              <option>Blue</option>
+                              <option selected>Black</option>
+                              <option>Yellow</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="ci_quantity">
+                          <div class="quantity_counter">
+                            <button class="minus" type="button">－</button>
+                            <input class="quantity" type="number" value="1" min="1" readOnly="true">
+                            <button class="plus" type="button">＋</button>
+                          </div>
+                        </div>
+                        <div class="ci_price">$6,880</div>
+                      </div>
+                      <div class="links"><a href="javascript:;"><i class="icon_favorite_heart_small"></i><span>save to heart</span></a><a href="javascript:;"><i class="icon_remove"></i><span>remove</span></a></div>
+                    </li>
+                    <li class="item"><a class="thumb" href="product_detail.html">
+                        <!--↓ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓-->
+                        <div class="pic" style="background-image: url(images/img_product01.jpg);"><img class="size" src="images/size_3x4.png"></div>
+                        <!--↑ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑--></a>
+                      <div class="content">
+                        <div class="ci_info">
+                          <div class="ci_name">Ganni</div>
+                          <div class="ci_description">Smocked Seersucker Check Midi Dress</div>
+                        </div>
+                        <div class="ci_size">
+                          <div class="select_wrapper">
+                            <select>
+                              <option selected>S</option>
+                              <option>M</option>
+                              <option>L</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="ci_color">
+                          <div class="select_wrapper">
+                            <select>
+                              <option>Blue</option>
+                              <option selected>Black</option>
+                              <option>Yellow</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="ci_quantity">
+                          <div class="quantity_counter">
+                            <button class="minus" type="button">－</button>
+                            <input class="quantity" type="number" value="1" min="1" readOnly="true">
+                            <button class="plus" type="button">＋</button>
+                          </div>
+                        </div>
+                        <div class="ci_price">$6,880</div>
+                      </div>
+                      <div class="links"><a href="javascript:;"><i class="icon_favorite_heart_small"></i><span>save to heart</span></a><a href="javascript:;"><i class="icon_remove"></i><span>remove</span></a></div>
+                    </li>
+                  </ul>
+                </div>
+                <div class="cart_summary">
+                  <div class="summary_calculation">
+                    <ul class="summary_items">
+                      <li class="item">
+                        <div class="controls_group">
+                          <label>Item Total</label>
+                        </div>
+                        <div class="price">$10,160</div>
+                      </li>
+                      <li class="item">
+                        <div class="controls_group">
+                          <label>Item Total</label>
+                          <div class="controls">
+                            <div class="select_wrapper">
+                              <select>
+                                <option>Denmark</option>
+                              </select>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="price">$1,160</div>
+                      </li>
+                      <li class="item">
+                        <div class="controls_group">
+                          <label>Add discout coupon</label>
+                          <div class="controls coupon">
+                            <input type="text">
+                            <button type="button">&check;</button>
+                          </div>
+                        </div>
+                        <div class="price">-$1,160</div>
+                      </li>
+                    </ul>
                   </div>
-                  <div class="intro">
-                    <div class="brand_name">Brand Name</div>
-                    <h3>Georgie Wood-Weber On Packing Like A Pro</h3>
-                    <h4 class="designer_name">
-                      <!--↓ 知名設計才會有鑽石icon ↓--><i class="icon_diamond_s"></i>
-                      <!--↑ 知名設計才會有鑽石icon ↑--><img class="flag" src="images/flag/flag_italy.png"><span>Stella Lin</span>
-                    </h4>
-                  </div></a></div>
-            </div>
-            <div class="topping_main">
-              <div class="topping_list brand_topping_list scrollbar_y">
-                <!--↓ 三篇 ↓-->
-                <div class="item"><a class="item_content" href="brand_story.html">
-                    <div class="thumb">
-                      <!--↓ 1:1，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓-->
-                      <div class="pic" style="background-image: url(https://source.unsplash.com/6cHumpSxTvs/360x360);"><img class="size" src="images/size_1x1.png"></div>
-                      <!--↑ 1:1，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑-->
-                    </div>
-                    <div class="intro">
-                      <div class="brand_name">Brand Name - Marchesa Notte</div>
-                      <h3>Channel Love Island’s Ovie In These Cute AF Tees</h3>
-                      <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diamLorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diams</p>
-                      <h4 class="designer_name">
-                        <!--↓ 知名設計才會有鑽石icon ↓--><i class="icon_diamond_s"></i>
-                        <!--↑ 知名設計才會有鑽石icon ↑--><img class="flag" src="images/flag/flag_italy.png"><span>Cindy Chou</span>
-                      </h4>
-                    </div></a></div>
-                <div class="item"><a class="item_content" href="brand_story.html">
-                    <div class="thumb">
-                      <!--↓ 1:1，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓-->
-                      <div class="pic" style="background-image: url(https://via.placeholder.com/360x360);"><img class="size" src="images/size_1x1.png"></div>
-                      <!--↑ 1:1，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑-->
-                    </div>
-                    <div class="intro">
-                      <div class="brand_name">Maryam Nassir Zadeh</div>
-                      <h3>Channel Love Island’s Ovie In These Cute AF Tees</h3>
-                      <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diamLorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diams</p>
-                      <h4 class="designer_name"><img class="flag" src="images/flag/flag_france.png"><span>Cindy Liao</span></h4>
-                    </div></a></div>
-                <div class="item"><a class="item_content" href="brand_story.html">
-                    <div class="thumb">
-                      <!--↓ 1:1，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓-->
-                      <div class="pic" style="background-image: url(https://via.placeholder.com/360x360);"><img class="size" src="images/size_1x1.png"></div>
-                      <!--↑ 1:1，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑-->
-                    </div>
-                    <div class="intro">
-                      <div class="brand_name">Maryam Nassir Zadeh</div>
-                      <h3>Channel Love Island’s Ovie In These Cute AF Tees</h3>
-                      <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diamLorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diams</p>
-                      <h4 class="designer_name"><img class="flag" src="images/flag/flag_france.png"><span>Cindy Liao</span></h4>
-                    </div></a></div>
-                <!--↑ 三篇 ↑-->
+                  <div class="total_calculation">
+                    <label>TOTAL</label>
+                    <div class="total_amount">NTD$11,320</div>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-        </div>
-        <div class="list_items_wrapper page_block bg_gray">
-          <div class="block_inner wide">
-            <h2 class="block_title">Fashion in Italy</h2>
-            <div class="block_main">
-              <div class="list_items">
-                <div class="item"><a href="brand_story.html">
-                    <h3 class="brand_name">Haute Couture Automne</h3>
-                    <div class="thumb">
-                      <div class="pic" style="background-image: url(images/img_brand.jpg);"><img class="size" src="images/size_1x1.png"></div>
-                    </div>
-                    <p>Channel Love Island’s Ovie In These Cute AF Tees</p>
-                    <div class="designer_name">
-                      <!--↓ 知名設計才會有鑽石icon ↓--><i class="icon_diamond_s"></i>
-                      <!--↑ 知名設計才會有鑽石icon ↑--><img class="flag" src="images/flag/flag_france.png"><span>Katherine Stanley</span>
-                    </div></a></div>
-                <div class="item"><a href="brand_story.html">
-                    <h3 class="brand_name">A. TEODORO</h3>
-                    <div class="thumb">
-                      <div class="pic" style="background-image: url(https://via.placeholder.com/360x360);"><img class="size" src="images/size_1x1.png"></div>
-                    </div>
-                    <p>Voici la coiffure que l’on verra partout à la rentrée</p>
-                    <div class="designer_name"><img class="flag" src="images/flag/flag_italy.png"><span>Mannix Lo</span></div></a></div>
-                <div class="item"><a href="brand_story.html">
-                    <h3 class="brand_name">A. TEODORO</h3>
-                    <div class="thumb">
-                      <div class="pic" style="background-image: url(https://via.placeholder.com/360x360);"><img class="size" src="images/size_1x1.png"></div>
-                    </div>
-                    <p>Voici la coiffure que l’on verra partout à la rentrée</p>
-                    <div class="designer_name"><img class="flag" src="images/flag/flag_italy.png"><span>Mannix Lo</span></div></a></div>
-                <div class="item"><a href="brand_story.html">
-                    <h3 class="brand_name">A. TEODORO</h3>
-                    <div class="thumb">
-                      <div class="pic" style="background-image: url(https://via.placeholder.com/360x360);"><img class="size" src="images/size_1x1.png"></div>
-                    </div>
-                    <p>Voici la coiffure que l’on verra partout à la rentrée</p>
-                    <div class="designer_name"><img class="flag" src="images/flag/flag_italy.png"><span>Mannix Lo</span></div></a></div>
-                <div class="item"><a href="brand_story.html">
-                    <h3 class="brand_name">A. TEODORO</h3>
-                    <div class="thumb">
-                      <div class="pic" style="background-image: url(https://via.placeholder.com/360x360);"><img class="size" src="images/size_1x1.png"></div>
-                    </div>
-                    <p>Voici la coiffure que l’on verra partout à la rentrée</p>
-                    <div class="designer_name"><img class="flag" src="images/flag/flag_italy.png"><span>Mannix Lo</span></div></a></div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="list_items_wrapper page_block">
-          <div class="block_inner wide">
-            <h2 class="block_title">Explore world</h2>
-            <div class="block_main">
-              <div class="list_items">
-                <div class="item"><a href="brand_story.html">
-                    <h3 class="brand_name">Haute Couture Automne</h3>
-                    <div class="thumb">
-                      <div class="pic" style="background-image: url(images/img_brand.jpg);"><img class="size" src="images/size_1x1.png"></div>
-                    </div>
-                    <p>Channel Love Island’s Ovie In These Cute AF Tees</p>
-                    <div class="designer_name">
-                      <!--↓ 知名設計才會有鑽石icon ↓--><i class="icon_diamond_s"></i>
-                      <!--↑ 知名設計才會有鑽石icon ↑--><img class="flag" src="images/flag/flag_france.png"><span>Katherine Stanley</span>
-                    </div></a></div>
-                <div class="item"><a href="brand_story.html">
-                    <h3 class="brand_name">A. TEODORO</h3>
-                    <div class="thumb">
-                      <div class="pic" style="background-image: url(https://via.placeholder.com/360x360);"><img class="size" src="images/size_1x1.png"></div>
-                    </div>
-                    <p>Voici la coiffure que l’on verra partout à la rentrée</p>
-                    <div class="designer_name"><img class="flag" src="images/flag/flag_italy.png"><span>Mannix Lo</span></div></a></div>
-                <div class="item"><a href="brand_story.html">
-                    <h3 class="brand_name">A. TEODORO</h3>
-                    <div class="thumb">
-                      <div class="pic" style="background-image: url(https://via.placeholder.com/360x360);"><img class="size" src="images/size_1x1.png"></div>
-                    </div>
-                    <p>Voici la coiffure que l’on verra partout à la rentrée</p>
-                    <div class="designer_name"><img class="flag" src="images/flag/flag_italy.png"><span>Mannix Lo</span></div></a></div>
-                <div class="item"><a href="brand_story.html">
-                    <h3 class="brand_name">A. TEODORO</h3>
-                    <div class="thumb">
-                      <div class="pic" style="background-image: url(https://via.placeholder.com/360x360);"><img class="size" src="images/size_1x1.png"></div>
-                    </div>
-                    <p>Voici la coiffure que l’on verra partout à la rentrée</p>
-                    <div class="designer_name"><img class="flag" src="images/flag/flag_italy.png"><span>Mannix Lo</span></div></a></div>
-                <div class="item"><a href="brand_story.html">
-                    <h3 class="brand_name">A. TEODORO</h3>
-                    <div class="thumb">
-                      <div class="pic" style="background-image: url(https://via.placeholder.com/360x360);"><img class="size" src="images/size_1x1.png"></div>
-                    </div>
-                    <p>Voici la coiffure que l’on verra partout à la rentrée</p>
-                    <div class="designer_name"><img class="flag" src="images/flag/flag_italy.png"><span>Mannix Lo</span></div></a></div>
-                <div class="item"><a href="brand_story.html">
-                    <h3 class="brand_name">A. TEODORO</h3>
-                    <div class="thumb">
-                      <div class="pic" style="background-image: url(https://via.placeholder.com/360x360);"><img class="size" src="images/size_1x1.png"></div>
-                    </div>
-                    <p>Voici la coiffure que l’on verra partout à la rentrée</p>
-                    <div class="designer_name"><img class="flag" src="images/flag/flag_italy.png"><span>Mannix Lo</span></div></a></div>
-                <div class="item"><a href="brand_story.html">
-                    <h3 class="brand_name">A. TEODORO</h3>
-                    <div class="thumb">
-                      <div class="pic" style="background-image: url(https://via.placeholder.com/360x360);"><img class="size" src="images/size_1x1.png"></div>
-                    </div>
-                    <p>Voici la coiffure que l’on verra partout à la rentrée</p>
-                    <div class="designer_name"><img class="flag" src="images/flag/flag_italy.png"><span>Mannix Lo</span></div></a></div>
-                <div class="item"><a href="brand_story.html">
-                    <h3 class="brand_name">A. TEODORO</h3>
-                    <div class="thumb">
-                      <div class="pic" style="background-image: url(https://via.placeholder.com/360x360);"><img class="size" src="images/size_1x1.png"></div>
-                    </div>
-                    <p>Voici la coiffure que l’on verra partout à la rentrée</p>
-                    <div class="designer_name"><img class="flag" src="images/flag/flag_italy.png"><span>Mannix Lo</span></div></a></div>
-                <div class="item"><a href="brand_story.html">
-                    <h3 class="brand_name">A. TEODORO</h3>
-                    <div class="thumb">
-                      <div class="pic" style="background-image: url(https://via.placeholder.com/360x360);"><img class="size" src="images/size_1x1.png"></div>
-                    </div>
-                    <p>Voici la coiffure que l’on verra partout à la rentrée</p>
-                    <div class="designer_name"><img class="flag" src="images/flag/flag_italy.png"><span>Mannix Lo</span></div></a></div>
-                <div class="item"><a href="brand_story.html">
-                    <h3 class="brand_name">A. TEODORO</h3>
-                    <div class="thumb">
-                      <div class="pic" style="background-image: url(https://via.placeholder.com/360x360);"><img class="size" src="images/size_1x1.png"></div>
-                    </div>
-                    <p>Voici la coiffure que l’on verra partout à la rentrée</p>
-                    <div class="designer_name"><img class="flag" src="images/flag/flag_italy.png"><span>Mannix Lo</span></div></a></div>
-              </div><a class="btn common more" href="javascript:;">View More</a>
-            </div>
-          </div>
-        </div>
-        <div class="list_items_wrapper page_block">
-          <div class="block_inner wide">
-            <h2 class="block_title">Brand Projects</h2>
-            <div class="block_main">
-              <div class="list_items">
-                <div class="item"><a href="brand_story.html">
-                    <h3 class="brand_name">Haute Couture Automne</h3>
-                    <div class="thumb">
-                      <div class="pic" style="background-image: url(images/img_brand.jpg);"><img class="size" src="images/size_1x1.png"></div>
-                    </div>
-                    <p>Channel Love Island’s Ovie In These Cute AF Tees</p>
-                    <div class="designer_name">
-                      <!--↓ 知名設計才會有鑽石icon ↓--><i class="icon_diamond_s"></i>
-                      <!--↑ 知名設計才會有鑽石icon ↑--><img class="flag" src="images/flag/flag_france.png"><span>Katherine Stanley</span>
-                    </div></a></div>
-                <div class="item"><a href="brand_story.html">
-                    <h3 class="brand_name">A. TEODORO</h3>
-                    <div class="thumb">
-                      <div class="pic" style="background-image: url(https://via.placeholder.com/360x360);"><img class="size" src="images/size_1x1.png"></div>
-                    </div>
-                    <p>Voici la coiffure que l’on verra partout à la rentrée</p>
-                    <div class="designer_name"><img class="flag" src="images/flag/flag_italy.png"><span>Mannix Lo</span></div></a></div>
-                <div class="item"><a href="brand_story.html">
-                    <h3 class="brand_name">A. TEODORO</h3>
-                    <div class="thumb">
-                      <div class="pic" style="background-image: url(https://via.placeholder.com/360x360);"><img class="size" src="images/size_1x1.png"></div>
-                    </div>
-                    <p>Voici la coiffure que l’on verra partout à la rentrée</p>
-                    <div class="designer_name"><img class="flag" src="images/flag/flag_italy.png"><span>Mannix Lo</span></div></a></div>
-                <div class="item"><a href="brand_story.html">
-                    <h3 class="brand_name">A. TEODORO</h3>
-                    <div class="thumb">
-                      <div class="pic" style="background-image: url(https://via.placeholder.com/360x360);"><img class="size" src="images/size_1x1.png"></div>
-                    </div>
-                    <p>Voici la coiffure que l’on verra partout à la rentrée</p>
-                    <div class="designer_name"><img class="flag" src="images/flag/flag_italy.png"><span>Mannix Lo</span></div></a></div>
-                <div class="item"><a href="brand_story.html">
-                    <h3 class="brand_name">A. TEODORO</h3>
-                    <div class="thumb">
-                      <div class="pic" style="background-image: url(https://via.placeholder.com/360x360);"><img class="size" src="images/size_1x1.png"></div>
-                    </div>
-                    <p>Voici la coiffure que l’on verra partout à la rentrée</p>
-                    <div class="designer_name"><img class="flag" src="images/flag/flag_italy.png"><span>Mannix Lo</span></div></a></div>
-                <div class="item"><a href="brand_story.html">
-                    <h3 class="brand_name">A. TEODORO</h3>
-                    <div class="thumb">
-                      <div class="pic" style="background-image: url(https://via.placeholder.com/360x360);"><img class="size" src="images/size_1x1.png"></div>
-                    </div>
-                    <p>Voici la coiffure que l’on verra partout à la rentrée</p>
-                    <div class="designer_name"><img class="flag" src="images/flag/flag_italy.png"><span>Mannix Lo</span></div></a></div>
-                <div class="item"><a href="brand_story.html">
-                    <h3 class="brand_name">A. TEODORO</h3>
-                    <div class="thumb">
-                      <div class="pic" style="background-image: url(https://via.placeholder.com/360x360);"><img class="size" src="images/size_1x1.png"></div>
-                    </div>
-                    <p>Voici la coiffure que l’on verra partout à la rentrée</p>
-                    <div class="designer_name"><img class="flag" src="images/flag/flag_italy.png"><span>Mannix Lo</span></div></a></div>
-                <div class="item"><a href="brand_story.html">
-                    <h3 class="brand_name">A. TEODORO</h3>
-                    <div class="thumb">
-                      <div class="pic" style="background-image: url(https://via.placeholder.com/360x360);"><img class="size" src="images/size_1x1.png"></div>
-                    </div>
-                    <p>Voici la coiffure que l’on verra partout à la rentrée</p>
-                    <div class="designer_name"><img class="flag" src="images/flag/flag_italy.png"><span>Mannix Lo</span></div></a></div>
-                <div class="item"><a href="brand_story.html">
-                    <h3 class="brand_name">A. TEODORO</h3>
-                    <div class="thumb">
-                      <div class="pic" style="background-image: url(https://via.placeholder.com/360x360);"><img class="size" src="images/size_1x1.png"></div>
-                    </div>
-                    <p>Voici la coiffure que l’on verra partout à la rentrée</p>
-                    <div class="designer_name"><img class="flag" src="images/flag/flag_italy.png"><span>Mannix Lo</span></div></a></div>
-                <div class="item"><a href="brand_story.html">
-                    <h3 class="brand_name">A. TEODORO</h3>
-                    <div class="thumb">
-                      <div class="pic" style="background-image: url(https://via.placeholder.com/360x360);"><img class="size" src="images/size_1x1.png"></div>
-                    </div>
-                    <p>Voici la coiffure que l’on verra partout à la rentrée</p>
-                    <div class="designer_name"><img class="flag" src="images/flag/flag_italy.png"><span>Mannix Lo</span></div></a></div>
-              </div><a class="btn common more" href="javascript:;">View More</a>
+              <div class="call_action space_between"><a class="btn common" href="products.html">Continue Shopping</a><a class="btn confirm" href="order_information.html">CHECKOUT</a></div>
             </div>
           </div>
         </div>
@@ -538,7 +389,7 @@
                 <h4>SHOP</h4>
                 <ul>
                   <li><a href="designers.html">Designers</a></li>
-                  <li><a class="current" href="brands.html">Brands</a></li>
+                  <li><a href="brands.html">Brands</a></li>
                   <li><a href="events.html">Events</a></li>
                   <li><a href="popuplar_designers.html">Popular designers</a></li>
                 </ul>
@@ -569,7 +420,7 @@
       <nav class="sidebar_menu">
         <ul>
           <li><a href="designers.html">Designers</a></li>
-          <li><a class="current" href="brands.html">Brands</a></li>
+          <li><a href="brands.html">Brands</a></li>
           <li><a href="products.html">Women</a>
             <div class="sub_menu">
               <ul>

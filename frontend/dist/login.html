@@ -71,15 +71,15 @@
             <div class="user_options">
               <div class="option_search"><a href="javascript:;"><i class="icon_search"></i></a></div>
               <!--↓ 上線時，class加'online'，並且連結至'member_account.html'; 未上線時，連結至'login.html' ↓-->
-              <div class="option_member online"><a href="javascript:;"><i class="icon_member"></i></a></div>
+              <div class="option_member"><a href="login.html"><i class="icon_member"></i></a></div>
               <!--↑ 上線時，class加'online'，並且連結至'member_account.html'; 未上線時，連結至'login.html' ↑-->
               <!--↓ 有產品在購物車時時，class加'have' ↓-->
               <div class="option_cart have"><a class="cart_toggle" href="javascript:;"><i class="icon_cart"></i></a>
                 <div class="cart_drop">
-                  <div class="cart_view">
+                  <div class="cart_view scrollbar_y">
                     <div class="title">2 Items</div>
                     <div class="cart_items">
-                      <div class="item"><a class="btn_delete" href="javascript:;"><i class="icon_delete"></i></a><a class="thumb" href="javascript:;">
+                      <div class="item"><a class="btn_delete" href="javascript:;"><i class="icon_delete"></i></a><a class="thumb" href="product_detail.html">
                           <!--↓ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓-->
                           <div class="pic" style="background-image: url(images/img_product01.jpg);"><img class="size" src="images/size_3x4.png"></div>
                           <!--↑ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑--></a>
@@ -92,7 +92,7 @@
                           </ul>
                         </div>
                       </div>
-                      <div class="item"><a class="btn_delete" href="javascript:;"><i class="icon_delete"></i></a><a class="thumb" href="javascript:;">
+                      <div class="item"><a class="btn_delete" href="javascript:;"><i class="icon_delete"></i></a><a class="thumb" href="product_detail.html">
                           <!--↓ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓-->
                           <div class="pic" style="background-image: url(https://via.placeholder.com/300x400);"><img class="size" src="images/size_3x4.png"></div>
                           <!--↑ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑--></a>
@@ -110,7 +110,7 @@
                       <div class="total_calculation">
                         <div class="label">Subtotal</div>
                         <div class="total_amount">NTD $2,296</div>
-                      </div><a class="btn confirm" href="javascript:;">CHECKOUT</a>
+                      </div><a class="btn confirm" href="order.html">CHECKOUT</a>
                     </div>
                   </div>
                 </div>
@@ -242,7 +242,7 @@
                     <div class="divide_line"></div><a href="forgot_password.html">Forgot Password</a>
                   </div>
                   <div class="call_action">
-                    <button class="btn confirm">Sign In</button>
+                    <button class="btn confirm" onClick="location.href='member_account.html'">Sign In</button>
                   </div>
                   <div class="create_link">Not a member? &nbsp; <a class="popup" href="popup_create.html">Create Account</a></div>
                 </div>

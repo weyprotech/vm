@@ -1,0 +1,39 @@
+extends layouts/default.pug
+
+block main
+  .order_payment.page_block.bg_gray
+    .block_inner
+      .sopping_steps
+        .step.process
+          span Shipping
+        .step.process
+          span Payment
+        .step
+          span Review
+      form.payment_block
+        .total_calculation
+          label TOTAL
+          .total_amount NTD $10,160
+        .payment_method
+          h2.block_subtitle Payment method
+          .method_items
+            .item
+              label.radio_wrapper
+                input(type="radio", name="paymentRadio")
+                span Credit Card
+            .item
+              label.radio_wrapper
+                input(type="radio", name="paymentRadio")
+                span ATM
+            .item
+              label.radio_wrapper
+                input(type="radio", name="paymentRadio")
+                span My account deduction
+              .controls_group
+                label My points :
+                .controls
+                  input(type="text", value="$50,000", readonly="true")
+          .call_action
+            //↓ 如果是選 ATM 付款，連結至 order_view_atm.html ↓
+            a.btn.confirm(href="order_view.html") Submit Order
+            //↑ 如果是選 ATM 付款，連結至 order_view_atm.html ↑

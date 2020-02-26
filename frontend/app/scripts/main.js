@@ -680,24 +680,29 @@ function sticky() {
 function scaleCaptcha() {
   var reCaptchaWidth = 304;
   var reCaptchaHeight = 78;
-  var containerWidth = $('.captcha').width();
+  var containerWidth;
+
+  $('.captcha').attr('style', '');
+  $('.captcha .captcha_inner').attr('style', '');
+
+  containerWidth = $('.captcha').width();
 
   if (reCaptchaWidth > containerWidth) {
     var captchaScale = containerWidth / reCaptchaWidth;
-    $('.captcha_inner').css({
-      'transform': 'scale(' + captchaScale + ')'
-    });
     $('.captcha').css({
       'width': reCaptchaWidth * captchaScale + 'px',
       'height': reCaptchaHeight * captchaScale + 'px'
     });
-  } else {
-    $('.captcha_inner').css({
-      'transform': ''
+    $('.captcha .captcha_inner').css({
+      'transform': 'scale(' + captchaScale + ')'
     });
+  } else {
     $('.captcha').css({
       'width': '',
       'height': ''
+    });
+    $('.captcha .captcha_inner').css({
+      'transform': ''
     });
   }
 }

@@ -1,0 +1,18 @@
+extends layouts/default.pug
+
+block main
+  .order_view.page_block
+    .block_inner
+      h2.block_subtitle Thank you for your order :)
+      table.order_table
+        tr
+          th Order Number
+          td No.2093574395
+        tr
+          th Date
+          td 2019/09/05
+        tr
+          th Total
+          td #[span.font_red NT $32800]
+      .call_action
+        a.btn.confirm(href="javascript:;") Order Detail

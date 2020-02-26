@@ -737,6 +737,9 @@
   }
 
   // Order
+  .sopping_steps {
+    margin-bottom: 2.5em;
+  }
   .checkout_cart {
     .cart_summary {
       .summary_items {
@@ -745,6 +748,23 @@
       .total_calculation {
         padding: 1rem 1.5rem;
       }
+    }
+  }
+  .order_information {
+    .form_wrapper {
+      .row {
+        .grid.g_6_12 {
+          @include span(1 of 2 0.065);
+        }
+      }
+    }
+  }
+  .order_view {
+    .block_subtitle {
+      margin-bottom: 3.125rem;
+    }
+    .call_action {
+      margin-top: 2.8125em;
     }
   }
 }

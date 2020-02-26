@@ -158,3 +158,10 @@
 .icon_remove {
   @include retina-sprite($icon-remove-group);
 }
+
+.icon_check {
+  @include retina-sprite($icon-check-group);
+}
+.btn_check:hover .icon_check {
+  @include retina-sprite($icon-check-white-group);
+}

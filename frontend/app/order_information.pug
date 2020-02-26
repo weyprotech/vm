@@ -1,7 +1,7 @@
 extends layouts/default.pug
 
 block main
-  .shopping_fill_information.page_block.bg_gray
+  .order_information.page_block.bg_gray
     .block_inner
       .sopping_steps
         .step.process
@@ -10,9 +10,9 @@ block main
           span Payment
         .step
           span Review
-      .container
+      form.container
         .container_aside
-          h2.block_subtitle.sans-serif
+          h2.block_subtitle
             | Payment Summary
           .aside_block
             .cart_view
@@ -62,7 +62,7 @@ block main
             textarea.note_textarea
         .container_main
           .form_wrapper
-            h2.block_subtitle.sans-serif
+            h2.block_subtitle
               | Shipping Address
             .form_block
               .row
@@ -103,7 +103,7 @@ block main
                 .grid
                   .controls_group
                     label *Phone
-                    .controls.row
+                    .controls.row.phone_controls
                       .grid.g_6_12
                         .select_wrapper
                           select
@@ -112,7 +112,7 @@ block main
                         .controls
                           input(type="text")
           .form_wrapper
-            h2.block_subtitle.sans-serif
+            h2.block_subtitle
               | Email account
             .form_block
               .controls_group
@@ -127,16 +127,16 @@ block main
                 label *Password confirmed
                 .controls
                   input(type="password")
-          .accept_capatach
-            label.check_wrapper
+          .accept_captcha
+            label.check_wrapper.accept_check
               input(type="checkBox")
               span I accept the “Terms &amp; Conditions” and “Privacy Statement”
             .captcha
               .captcha_inner
                 .g-recaptcha(data-sitekey="6LcHGhITAAAAABIgEAplK2EWsVFkaE5o0DWUpsIs")
           .call_action.space_between
-            a.btn.common(href="products.html") Continue Shopping
-            a.btn.confirm(href="order_information.html") CHECKOUT
+            a.btn.common(href="order.html") Cancel
+            a.btn.confirm(href="order_payment.html") Continue
 
 block js
   script(src='https://www.google.com/recaptcha/api.js')

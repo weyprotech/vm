@@ -2,6 +2,7 @@
   // Container
   .container {
     display: flex;
+    justify-content: space-between;
     > [class^="container_"] {
       margin-bottom: 0;
     }
@@ -81,7 +82,6 @@
   // OOTD
   .detail_wrapper {
     .container {
-      justify-content: space-between;
       .container_main {
         width: calc(100% - 250px - 2.5em);
         max-width: 860px;
@@ -381,6 +381,24 @@
       a {
         max-width: 240px;
         margin: 0 auto;
+      }
+    }
+  }
+
+  // Order
+  .order_information {
+    .container {
+      .container_aside {
+        order: 2;
+        width: 28%;
+        margin-bottom: 0;
+      }
+      .container_main {
+        order: 1;
+        width: 68.5%;
+      }
+      .form_wrapper {
+        margin-bottom: 1.875em;
       }
     }
   }

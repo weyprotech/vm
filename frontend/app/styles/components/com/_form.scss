@@ -19,9 +19,8 @@
 
 input[type="radio"],
 input[type="checkBox"] {
-  display: inline-block;
-  width: 15px;
-  height: 15px;
+  width: 16px;
+  height: 16px;
   outline: none;
   vertical-align: middle;
 }
@@ -56,6 +55,9 @@ input[type="date"],
 input[type="number"] {
   &:focus {
     background-color: $gray-lightest;
+  }
+  &[readonly="true"] {
+    background-color: $white;
   }
 }
 
@@ -95,17 +97,27 @@ button {
   margin-right: 1rem;
   font-size: 0;
   vertical-align: middle;
+  cursor: pointer;
   &:last-child {
     margin-right: 0;
   }
   input[type="radio"] {
-    margin-right: .3rem;
+    display: none;
   }
   span {
-    display: inline-block;
-    vertical-align: middle;
     font-size: 1rem;
-    cursor: pointer;
+    @extend .transition;
+    &:before {
+      content: '';
+      display: inline-block;
+      margin-top: -3px;
+      margin-right: 0.5em;
+      @include retina-sprite($checkbox-group);
+      vertical-align: middle;
+    }
+  }
+  input[type="radio"]:checked + span:before {
+    @include retina-sprite($checkbox-checked-group);
   }
 }
 
@@ -114,17 +126,27 @@ button {
   margin-right: 1rem;
   font-size: 0;
   vertical-align: middle;
+  cursor: pointer;
   &:last-child {
     margin-right: 0;
   }
   input[type="checkBox"] {
-    margin-right: .3rem;
+    display: none;
   }
   span {
-    display: inline-block;
-    vertical-align: middle;
     font-size: 1rem;
-    cursor: pointer;
+    @extend .transition;
+    &:before {
+      content: '';
+      display: inline-block;
+      margin-top: -3px;
+      margin-right: 0.5em;
+      @include retina-sprite($checkbox-group);
+      vertical-align: middle;
+    }
+  }
+  input[type="checkBox"]:checked + span:before {
+    @include retina-sprite($checkbox-checked-group);
   }
 }
 
@@ -215,6 +237,9 @@ button {
 .controls_group {
   margin-bottom: 1em;
   @extend .clear;
+  &:last-child {
+    margin-bottom: 0;
+  }
   > label {
     display: block;
     margin-bottom: 0.3em;
@@ -359,6 +384,23 @@ button {
   }
 }
 
+// Phone Controls
+.phone_controls {
+  @include breakpoint(768px) {
+    position: relative;
+    &:before {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      display: block;
+      width: 6px;
+      height: 1px;
+      margin-left: -3px;
+      background-color: $black;
+    }
+  }
+}
+
 // Call action
 .call_action {
   margin-top: 1.875em;
@@ -385,6 +427,8 @@ button {
 
 // Captcha
 .captcha {
+  overflow: hidden;
+  max-width: 100%;
   font-size: 0;
   .captcha_inner {
     display: inline-block;
@@ -609,7 +653,6 @@ button {
       span {
         color: $gray;
         font-size: 0.875rem;
-        @extend .transition;
         &:hover {
           color: $khaki;
         }

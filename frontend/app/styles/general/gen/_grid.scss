@@ -1,7 +1,14 @@
 .row {
+  margin-bottom: 1em;
   @extend .clear;
+  &:last-child {
+    margin-bottom: 0;
+  }
   .grid {
-    margin-bottom: 1rem;
+    margin-bottom: 1em;
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 }
 
@@ -13,7 +20,7 @@
         @include span(1 of 2 0.1);
       }
       &:last-child {
-        margin-right: 0;
+        margin-right: 0 !important;
       }
     }
   }

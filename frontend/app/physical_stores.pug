@@ -1,0 +1,33 @@
+extends layouts/default.pug
+
+block value
+  - var currentUrl = 'physicalStores';
+
+block main
+  .page_banner
+    img(src="images/banner_company.jpg")
+  .company_block.page_block
+    .block_inner
+      h1.block_title About Our Physical Stores
+      .block_main
+        .words
+          p Nam porttitor blandit accumsan. Ut vel dictum sem, #[span.font_khaki a pretium dui]. In malesuada enim in dolor euismod, id commodo mi consectetur. Curabitur at vestibulum nisi. Nullam vehicula nisi velit. Mauris turpis nisl, molestie ut ipsum et, suscipit vehicula odio. Vestibulum interdum vestibulum felis ac molestie. Praesent aliquet quam et libero dictum, vitae dignissim leo eleifend. In in turpis turpis. Quisque justo turpis, vestibulum non enim nec, tempor mollis mi. Sed vel tristique quam.
+          p Nam porttitor blandit accumsan. Ut vel dictum sem, a pretium dui. In malesuada enim in dolor euismod, id commodo mi consectetur. Curabitur at vestibulum nisi. Nullam vehicula nisi velit. Mauris turpis nisl, molestie ut ipsum et, suscipit vehicula odio. Vestibulum interdum vestibulum felis ac molestie. Praesent aliquet quam et libero dictum, vitae dignissim leo eleifend. In in turpis turpis. Quisque justo turpis, vestibulum non enim nec, tempor mollis mi. Sed vel tristique quam.
+        .physical_stores
+          .map
+            iframe(src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2969.282022911883!2d12.48033845120897!3d41.90829567911785!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132f60fff367793f%3A0x441e35610b230bad!2zVmlhbGUgZGVsbGEgVHJpbml0w6AgZGVpIE1vbnRpLCAxLCAwMDE4NyBSb21hIFJNLCDnvqnlpKfliKk!5e0!3m2!1szh-TW!2stw!4v1582783222207!5m2!1szh-TW!2stw" width="100%" height="220" frameborder="0" style="border:0;" allowfullscreen="")
+          .physical_info
+            h2.block_subtitle VM Physical Stores
+            .info_items
+              .item
+                i.icon_map_marker2
+                a(href="https://goo.gl/maps/MV5Z9AunjopiqTZM7", target="_blank")
+                  | Viale della Trinità dei Monti, 1, 00187 Roma RM, Italy
+              .item
+                i.icon_phone
+                a(href="tel:+390667611")
+                  | +39 06 67611
+              .item
+                i.icon_clock
+                span
+                  | Tuesday - Sunday   10:00 a.m. - 5:00 p.m.

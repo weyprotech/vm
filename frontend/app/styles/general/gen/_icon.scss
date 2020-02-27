@@ -80,6 +80,14 @@
   @include retina-sprite($icon-share-weibo-group);
 }
 
+.icon_share_instagram {
+  @include retina-sprite($icon-share-instagram-group);
+}
+
+.icon_share_youtube {
+  @include retina-sprite($icon-share-youtube-group);
+}
+
 .icon_msg {
   @include retina-sprite($icon-msg-group);
 }
@@ -98,6 +106,17 @@
 
 .icon_map_marker {
   @include retina-sprite($icon-map-marker-group);
+}
+.icon_map_marker2 {
+  @include retina-sprite($icon-map-marker2-group);
+}
+
+.icon_phone {
+  @include retina-sprite($icon-phone-group);
+}
+
+.icon_clock {
+  @include retina-sprite($icon-clock-group);
 }
 
 .arrow_double_right {

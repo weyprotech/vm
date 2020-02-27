@@ -767,6 +767,16 @@
       margin-top: 2.8125em;
     }
   }
+
+  // Company
+  .company_block {
+    &.page_block {
+      padding: 1.875em 1em 3.5em;
+    }
+    .block_title {
+      margin-bottom: 2.5rem;
+    }
+  }
 }
 
 @include susy-breakpoint(900px, 12) {

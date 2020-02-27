@@ -1,0 +1,70 @@
+extends layouts/default.pug
+
+block value
+  - var currentUrl = 'contact';
+
+block main
+  .page_banner
+    img(src="images/banner_company.jpg")
+  .company_block.page_block
+    .block_inner
+      h1.block_title Contact Us
+      .block_main
+        .words
+          p Need some help? Check out our #[a(href="faq.html") FAQ] section, but if you can't find the answer you're looking for, please get in touch using one of the below options
+        .social_links
+          | Connect with us:
+          a(href="javascript:;", target="_blank")
+            i.icon_share_facebook
+          a(href="javascript:;", target="_blank")
+            i.icon_share_instagram
+          a(href="javascript:;", target="_blank")
+            i.icon_share_pinterest
+          a(href="javascript:;", target="_blank")
+            i.icon_share_twitter
+          a(href="javascript:;", target="_blank")
+            i.icon_share_youtube
+          a(href="javascript:;", target="_blank")
+            i.icon_share_weibo
+        form.form_wrapper.common_form
+          .form_block
+            .controls_group
+              label *Name
+              .controls
+                input(type="text", required)
+            .controls_group
+              label *Email
+              .controls
+                input(type="email", required)
+            .controls_group
+              label *Phone
+              .controls.row.phone_controls
+                .grid.g_6_12
+                  .select_wrapper
+                    select(required)
+                      option(value="886") Taiwan(+886)
+                .grid.g_6_12
+                  input(type="tel", required)
+            .controls_group
+              label *Contact me
+              .controls
+                label.radio_wrapper
+                  input(type="radio", name="contactBy", value="email", required)
+                  span By Email
+                label.radio_wrapper
+                  input(type="radio", name="contactBy", value="phone")
+                  span By Phone
+            .controls_group
+              label *Choose your topic
+              .controls
+                .select_wrapper
+                  select(required)
+                    option(value="") Choose your topic
+                    option(value="status1") Online order status
+            .controls_group
+              label *Your comments
+              .controls
+                textarea(required)
+          .call_action.right
+            button.btn.common(type="reset") Clear All
+            button.btn.confirm(type="submit") Submit

@@ -292,6 +292,13 @@
       }
     }
   }
+
+  // Company
+  .company_block {
+    &.page_block {
+      padding: 1.875em 1em 5.625em;
+    }
+  }
 }
 
 @include susy-breakpoint(1366px, 12) {

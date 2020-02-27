@@ -31,6 +31,7 @@ input[type="password"],
 input[type="email"],
 input[type="date"],
 input[type="number"],
+input[type="tel"],
 select {
   display: block;
   width: 100%;
@@ -52,7 +53,8 @@ input[type="search"],
 input[type="password"],
 input[type="email"],
 input[type="date"],
-input[type="number"] {
+input[type="number"],
+input[type="tel"] {
   &:focus {
     background-color: $gray-lightest;
   }
@@ -112,12 +114,15 @@ button {
       display: inline-block;
       margin-top: -3px;
       margin-right: 0.5em;
-      @include retina-sprite($checkbox-group);
+      @include retina-sprite($radio-group);
       vertical-align: middle;
+    }
+    &:hover {
+      color: $khaki;
     }
   }
   input[type="radio"]:checked + span:before {
-    @include retina-sprite($checkbox-checked-group);
+    @include retina-sprite($radio-checked-group);
   }
 }
 
@@ -143,6 +148,9 @@ button {
       margin-right: 0.5em;
       @include retina-sprite($checkbox-group);
       vertical-align: middle;
+    }
+    &:hover {
+      color: $khaki;
     }
   }
   input[type="checkBox"]:checked + span:before {
@@ -421,7 +429,11 @@ button {
     justify-content: center;
     min-width: 120px;
     height: 44px;
+    margin-right: 1rem;
     line-height: 1.25;
+    &:last-child {
+      margin-right: 0;
+    }
   }
 }
 

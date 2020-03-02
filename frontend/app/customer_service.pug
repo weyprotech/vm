@@ -1,0 +1,45 @@
+extends layouts/default.pug
+
+block value
+  - var currentUrl = 'customerService';
+
+block main
+  .help_center.page_block
+    .block_inner
+      .center_container.container
+        .container_aside
+          .aside_block
+            .aside_menu.fold_block
+              .fold
+                .fold_title Help Center
+                .fold_content
+                  ul
+                    li
+                      a(href="faq.html") FAQ
+                    li
+                      a(href="delivery.html") Delivery
+                    li
+                      a(href="refunds_exchanges.html") Refunds &amp; Exchanges
+                    li
+                      a.current(href="customer_service.html") Customer Service
+                    li
+                      a(href="feedback.html") Feedback
+        .container_main
+          h1.block_title Customer Service
+          .words
+            p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut pretium pretium tempor. Ut eget imperdiet neque. In volutpat ante semper diam molestie, et aliquam erat laoreet. Sed sit amet arcu aliquet, molestie justo at, auctor nunc. Phasellus ligula ipsum, volutpat eget semper id, viverra eget nibh. Suspendisse luctus mattis cursus. Nam consectetur ante at nisl hendrerit gravida. Donec vehicula rhoncus mattis. Mauris dignissim semper mattis. Fusce porttitor a mi at suscipit. Praesent facilisis dolor sapien, vel sodales augue mollis ut. Mauris venenatis magna eu tortor posuere luctus. Aenean.
+            p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut pretium pretium tempor. Ut eget imperdiet neque. In volutpat ante semper diam molestie, et aliquam erat laoreet. Sed sit amet arcu aliquet, molestie justo at, auctor nunc. Phasellus ligula ipsum, volutpat eget semper id, viverra eget nibh. Suspendisse luctus mattis cursus. Nam consectetur ante at nisl hendrerit gravida. Donec vehicula rhoncus mattis. Mauris dignissim semper mattis. Fusce porttitor a mi at suscipit. Praesent facilisis dolor sapien, vel sodales augue mollis ut. Mauris venenatis magna eu tortor posuere luctus. Aenean.
+          .social_links
+            | Connect with us:
+            a(href="javascript:;", target="_blank")
+              i.icon_share_facebook
+            a(href="javascript:;", target="_blank")
+              i.icon_share_instagram
+            a(href="javascript:;", target="_blank")
+              i.icon_share_pinterest
+            a(href="javascript:;", target="_blank")
+              i.icon_share_twitter
+            a(href="javascript:;", target="_blank")
+              i.icon_share_youtube
+            a(href="javascript:;", target="_blank")
+              i.icon_share_weibo

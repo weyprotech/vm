@@ -407,6 +407,9 @@ $(document).ready(function () {
   // Fold Block
   if ($('.fold_block').length > 0) {
     $('.fold_block').on(clickHandler, '.fold_title', function(event) {
+      if ($(this).parents('.fold_block').hasClass('aside_menu') && windowWidth >= 1024) {
+        return false;
+      }
       $(this).toggleClass('active').next('.fold_content').stop().slideToggle(function() {
         $(this).toggleClass('active');
       });

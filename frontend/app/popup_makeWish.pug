@@ -8,13 +8,14 @@
     .text.
       Vestibulum rutrum quam vitae fringilla tincidunt. Suspendisse nec tortor urna. Ut laoreet sodales nisi, quis iaculis nulla iaculis vitae. Donec sagittis faucibus lacus eget blandit. Mauris vitae ultricies metus, at condimentum nulla.
     form.form_wrapper
-      .controls_group
-        label Subject
-        .controls
-          input(type="text", placeholder="Title")
-      .controls_group
-        label Your Wish
-        .controls
-          textarea(placeholder="Make a wish, we will realize it for you…")
+      .form_block
+        .controls_group
+          label Subject
+          .controls
+            input(type="text", placeholder="Title")
+        .controls_group
+          label Your Wish
+          .controls
+            textarea(placeholder="Make a wish, we will realize it for you…")
       .call_action
         button.btn.common.popup_modal_dismiss(type="smbmit") Send

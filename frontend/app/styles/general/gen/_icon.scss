@@ -184,3 +184,7 @@
 .btn_check:hover .icon_check {
   @include retina-sprite($icon-check-white-group);
 }
+
+.icon_edit {
+  @include retina-sprite($icon-edit-group);
+}

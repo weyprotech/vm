@@ -5143,12 +5143,11 @@ a.thumb {
         .item {
           display: flex;
           align-items: center;
+          justify-content: space-between;
         }
         .radio_wrapper {
-          flex: 1 1 auto;
         }
         .controls_group {
-          flex: 0 0 auto;
           margin-top: 0;
           margin-left: 1em;
         }
@@ -5206,7 +5205,7 @@ a.thumb {
     }
   }
 }
-.common_block {
+.common_form {
   .form_block {
     padding: 1.25em 1.5em 1.875em;
     box-sizing: border-box;
@@ -5233,7 +5232,7 @@ a.thumb {
   .social_links {
     color: $gray-darken2;
   }
-  .common_block {
+  .common_form {
     margin-top: 1.5em;
   }
   .physical_stores {
@@ -5288,12 +5287,120 @@ a.thumb {
 
 // Center Container
 .center_container {
-  .aside_block {
-    .aside_menu {
-      .fold_title {
-        color: $black;
-        font-family: 'Crimson Text',serif;
+  .container_main {
+    .block_title {
+      margin-bottom: 1.5rem;
+      color: $khaki-dark;
+      font-size: 1.5em;
+      font-weight: 400;
+      font-style: normal;
+      text-align: left;
+    }
+    * + .block_title {
+      margin-top: 1.5rem;
+    }
+  }
+  .aside_menu {
+    background-color: $white;
+    box-shadow: 0 0 4px $khaki-lighten;
+    hr {
+      height: 1px;
+      margin: 0;
+      border: none;
+      background-color: $khaki-light;
+    }
+    .fold_title {
+      padding: 0.625rem 1.65rem 0.625rem 1rem;
+      color: $black;
+      font-family: 'Crimson Text',serif;
+      font-size: 1.25em;
+      &:after {
+        content: '';
+        top: 50%;
+        right: 0.5rem;
+        @include retina-sprite($arrow-down-group);
+        transform: translateY(-50%);
+        @extend .transition;
+      }
+      &.active:after {
+        transform: translateY(-50%) rotate(-180deg);
       }
     }
+    .fold_content {
+      padding: 0;
+      ul {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        li {
+          list-style: none;
+        }
+        a {
+          display: block;
+          padding: 0.625em 1em;
+          box-sizing: border-box;
+          color: $gray-darken;
+          line-height: 1.25;
+          &:hover, &.current {
+            background-color: $khaki-lightest;
+          }
+        }
+      }
+    }
+  }
+  .words {
+    color: $gray-darken2;
+  }
+  .social_links {
+    color: $gray-darken2;
+  }
+}
+.faq_fold {
+  .fold {
+    padding: 1em 0;
+    border-bottom: $khaki-lightest 1px solid;
+    &:first-child {
+      border-top: $khaki-lightest 1px solid;
+    }
+  }
+  .fold_title {
+    padding: 0 1.875rem 0 0;
+    font-size: 1.125em;
+    &:after {
+      content: '';
+      top: 0;
+      right: 0;
+      @include retina-sprite($arrow-down-circle-group);
+      @extend .transition;
+    }
+    &:hover, &.active {
+      color: $khaki-dark;
+    }
+    &.active {
+      font-weight: 700;
+      &:after {
+        transform: rotate(-180deg);
+      }
+    }
+  }
+  .fold_content {
+    padding: 0;
+    margin-top: 1em;
+    color: $gray-darken2;
+  }
+}
+.account_form {
+  .link_edit {
+    color: $gray-darken2;
+    font-size: 0.875em;
+    i.icon_edit {
+      margin-top: -3px;
+      margin-right: 0.5rem;
+      vertical-align: middle;
+    }
+  }
+  .profile_picture {
+    width: 80px;
+    height: 80px;
   }
 }

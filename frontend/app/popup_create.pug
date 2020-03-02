@@ -5,18 +5,19 @@
         h2.block_title
           | Join us
         form.form_wrapper
-          .controls_group
-            label Account
-            .controls
-              input(type="email", placeholder="Email")
-          .controls_group
-            label Password
-            .controls
-              input(type="password", placeholder="Password")
-          .controls_group
-            label Password Confirmed
-            .controls
-              input(type="password", placeholder="Password")
+          .form_block
+            .controls_group
+              label Account
+              .controls
+                input(type="email", placeholder="Email")
+            .controls_group
+              label Password
+              .controls
+                input(type="password", placeholder="Password")
+            .controls_group
+              label Password Confirmed
+              .controls
+                input(type="password", placeholder="Password")
           .call_action
             button.btn.popup_modal_dismiss(type="submit") Sign Up
     .popup_create_picture

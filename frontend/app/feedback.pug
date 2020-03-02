@@ -1,0 +1,72 @@
+extends layouts/default.pug
+
+block value
+  - var currentUrl = 'feedback';
+
+block main
+  .help_center.page_block
+    .block_inner
+      .center_container.container
+        .container_aside
+          .aside_block
+            .aside_menu.fold_block
+              .fold
+                .fold_title Help Center
+                .fold_content
+                  ul
+                    li
+                      a(href="faq.html") FAQ
+                    li
+                      a(href="delivery.html") Delivery
+                    li
+                      a(href="refunds_exchanges.html") Refunds &amp; Exchanges
+                    li
+                      a(href="customer_service.html") Customer Service
+                    li
+                      a.current(href="feedback.html") Feedback
+        .container_main
+          h1.block_title Feedback
+          .words
+            p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut pretium pretium tempor. Ut eget imperdiet neque. In volutpat ante semper diam molestie, et aliquam erat laoreet.
+          form.form_wrapper.common_form
+            .form_block
+              .controls_group
+                label *Name
+                .controls
+                  input(type="text", required)
+              .controls_group
+                label *Email
+                .controls
+                  input(type="email", required)
+              .controls_group
+                label *Phone
+                .controls.row.phone_controls
+                  .grid.g_6_12
+                    .select_wrapper
+                      select(required)
+                        option(value="886") Taiwan(+886)
+                  .grid.g_6_12
+                    input(type="tel", required)
+              .controls_group
+                label *Contact me
+                .controls
+                  label.radio_wrapper
+                    input(type="radio", name="contactBy", value="email", required)
+                    span By Email
+                  label.radio_wrapper
+                    input(type="radio", name="contactBy", value="phone")
+                    span By Phone
+              .controls_group
+                label *Choose your topic
+                .controls
+                  .select_wrapper
+                    select(required)
+                      option(value="") Choose your topic
+                      option(value="status1") Online order status
+              .controls_group
+                label *Your feedback
+                .controls
+                  textarea(required)
+            .call_action.right
+              button.btn.common(type="reset") Clear All
+              button.btn.confirm(type="submit") Submit

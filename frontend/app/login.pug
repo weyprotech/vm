@@ -8,21 +8,22 @@ block main
           h2.block_title
             | Member Login
           .login_form
-            .controls_group
-              label Account
-              .controls
-                input(type="email", placeholder="Email")
-            .controls_group
-              label Password
-              .controls
-                input(type="password", placeholder="Password")
-            .remember_forgot
-              label.check_wrapper
-                input(type="checkBox")
-                span Remember Me
-              .divide_line
-              a(href="forgot_password.html")
-                | Forgot Password
+            .form_block
+              .controls_group
+                label Account
+                .controls
+                  input(type="email", placeholder="Email")
+              .controls_group
+                label Password
+                .controls
+                  input(type="password", placeholder="Password")
+              .remember_forgot
+                label.check_wrapper
+                  input(type="checkBox")
+                  span Remember Me
+                .divide_line
+                a(href="forgot_password.html")
+                  | Forgot Password
             .call_action
               button.btn.confirm(onClick="location.href='member_account.html'")
                 | Sign In

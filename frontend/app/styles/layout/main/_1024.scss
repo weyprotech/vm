@@ -402,6 +402,32 @@
       }
     }
   }
+
+  // Center Container
+  .center_container {
+    .container_aside {
+      width: 20.8333333333333%;
+    }
+    .container_main {
+      width: 69.5833333333333%;
+    }
+    .aside_menu {
+      padding: 1.625em 0;
+      hr {
+        margin: 1.875em 1em;
+      }
+      .fold_title {
+        padding: 0.625rem 1rem;
+        cursor: inherit;
+        &:after {
+          display: none;
+        }
+      }
+      .fold_content {
+        display: block !important;
+      }
+    }
+  }
 }
 
 @include susy-breakpoint(1232px, 12) {

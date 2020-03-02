@@ -777,6 +777,16 @@
       margin-bottom: 2.5rem;
     }
   }
+
+  // Center Container
+  .faq_fold {
+    .fold {
+      padding: 1.5em 0;
+    }
+    .fold_content {
+      margin-top: 1.125em;
+    }
+  }
 }
 
 @include susy-breakpoint(900px, 12) {

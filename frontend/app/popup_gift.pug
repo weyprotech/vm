@@ -7,24 +7,25 @@
     .text.
       Thank you for your rutrum quam vitae fringilla tt. Suspendisse nec tortor urna. Ut laoreet sodales nisi, quis iaculis nulla iaculis vitae. Donec sagittis faucibus lacus eget blandit.
     form.form_wrapper
-      .controls_group
-        label Gift amount
-        .controls
-          input(type="text", placeholder="NT$")
-      .controls_group
-        label Choose your payment
-        .controls.row
-          .grid.g_6_12
-            .btn_radio
-              input#payment1(type="radio", name="payment", checked)
-              label(for="payment1") Credit Card
-          .grid.g_6_12
-            .btn_radio
-              input#payment2(type="radio", name="payment")
-              label(for="payment2") Account deduction
-      .controls_group
-        label Gift comments
-        .controls
-          textarea(placeholder="Leave us a message…")
+      .form_block
+        .controls_group
+          label Gift amount
+          .controls
+            input(type="text", placeholder="NT$")
+        .controls_group
+          label Choose your payment
+          .controls.row
+            .grid.g_6_12
+              .btn_radio
+                input#payment1(type="radio", name="payment", checked)
+                label(for="payment1") Credit Card
+            .grid.g_6_12
+              .btn_radio
+                input#payment2(type="radio", name="payment")
+                label(for="payment2") Account deduction
+        .controls_group
+          label Gift comments
+          .controls
+            textarea(placeholder="Leave us a message…")
       .call_action
         button.btn.common.popup_modal_dismiss(type="smbmit") Send

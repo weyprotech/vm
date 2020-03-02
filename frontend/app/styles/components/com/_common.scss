@@ -190,6 +190,7 @@
     box-sizing: border-box;
     line-height: 1.25;
     cursor: pointer;
+    @extend .transition;
     &:after {
       content: '＋';
       position: absolute;

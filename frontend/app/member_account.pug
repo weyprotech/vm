@@ -1,0 +1,99 @@
+extends layouts/default.pug
+
+block value
+  - var currentUrl = 'memberAccount';
+
+block main
+  .help_center.page_block
+    .block_inner
+      .center_container.container
+        .container_aside
+          .aside_block
+            .aside_menu.fold_block
+              .fold
+                .fold_title My Account
+                .fold_content
+                  ul
+                    li
+                      a.current(href="member_account.html") Account
+                    li
+                      a(href="member_history.html") Order History
+                    li
+                      a(href="member_points.html") My Points
+                    li
+                      a(href="member_gift.html") Gift Designer
+                    li
+                      a(href="member_model.html") Be VM Model
+              hr
+              .fold
+                .fold_title My Style
+                .fold_content
+                  ul
+                    li
+                      a(href="member_favorite.html") My Favorite
+                    li
+                      a(href="member_style.html") Style Inpsiration
+                    li
+                      a(href="member_reviews.html") My Reviews
+                    li
+                      a(href="member_upcoming.html") Upcoming Events
+        .container_main
+          h1.block_title My Account
+          .form_wrapper.common_form.account_form
+            a.link_edit(href="member_account_editAccount.html")
+              i.icon_edit
+              | edit
+            .form_block
+              .controls_group
+                label *Email
+                .controls
+                  input(type="email", value="member2019@vm.com", readOnly)
+              .controls_group
+                label *Password
+                .controls
+                  input(type="password", value="testtest", readOnly)
+          h1.block_title My Profile
+          .form_wrapper.common_form.account_form
+            a.link_edit(href="member_account_editProfile.html")
+              i.icon_edit
+              | edit
+            .form_block
+              .row
+                .grid
+                  .controls_group
+                    label Photo
+                    .profile_picture
+                      .pic(style="background-image: url(images/vm_profile_pic.jpg)")
+                        img.size(src="images/size_1x1.png")
+              .row
+                .grid.g_6_12
+                  .controls_group
+                    label First Name
+                    .controls
+                      input(type="email", value="Lily", readOnly)
+                .grid.g_6_12
+                  .controls_group
+                    label Last Name
+                    .controls
+                      input(type="email", value="Wang", readOnly)
+              .row
+                .grid.g_6_12
+                  .controls_group
+                    label Gender
+                    .controls
+                      .select_wrapper
+                        select(disabled)
+                          option(selected) Woman
+                          option Men
+                .grid.g_6_12
+                  .controls_group
+                    label Age
+                    .controls
+                      .select_wrapper
+                        select(disabled)
+                          option 25
+                          option 26
+                          option 27
+                          option(selected) 28
+                          option 29
+

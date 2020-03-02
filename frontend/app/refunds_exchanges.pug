@@ -1,0 +1,33 @@
+extends layouts/default.pug
+
+block value
+  - var currentUrl = 'refundsExchanges';
+
+block main
+  .help_center.page_block
+    .block_inner
+      .center_container.container
+        .container_aside
+          .aside_block
+            .aside_menu.fold_block
+              .fold
+                .fold_title Help Center
+                .fold_content
+                  ul
+                    li
+                      a(href="faq.html") FAQ
+                    li
+                      a(href="delivery.html") Delivery
+                    li
+                      a.current(href="refunds_exchanges.html") Refunds &amp; Exchanges
+                    li
+                      a(href="customer_service.html") Customer Service
+                    li
+                      a(href="feedback.html") Feedback
+        .container_main
+          h1.block_title Refunds &amp; Exchanges
+          .words
+            p We always calculate a fully delivered price so you will never have to pay any additional charges when your order arrives.
+            p With almost everything on selfridges.com available for International Delivery, you can send your order to 130 countries and regions around the world, including North America, Australia, the Middle East and China.
+            p For all orders outside of the European Union, we'll even remove UK VAT and include any relevant import charges before you pay so there are no surprises when your order arrives.
+            p To find out more about International Delivery, select your country or region below:

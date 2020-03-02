@@ -238,11 +238,11 @@ html
                     a(class={current: currentUrl === 'delivery'}, href="delivery.html")
                       | Delivery
                   li
-                    a(class={current: currentUrl === 'refunds_exchanges'}, href="refunds_exchanges.html")
+                    a(class={current: currentUrl === 'refundsExchanges'}, href="refunds_exchanges.html")
                       | Refunds &amp; Exchanges
                   li
-                    a(class={current: currentUrl === 'customer_services'}, href="customer_services.html")
-                      | Customer Services
+                    a(class={current: currentUrl === 'customerService'}, href="customer_service.html")
+                      | Customer Service
                   li
                     a(class={current: currentUrl === 'feedback'}, href="feedback.html")
                       | Feedback
@@ -265,28 +265,28 @@ html
                 h4 PRODUCT
                 ul
                   li
-                    a(href="products.html")
+                    a(class={current: currentUrl === 'women'}, href="products.html")
                       | Women
                   li
                     a(href="products.html")
                       | Men
                   li
-                    a(href="sale.html")
+                    a(class={current: currentUrl === 'sale'}, href="sale.html")
                       | Sale
               li
                 h4 MEMBER
                 ul
                   li
-                    a(href="javascript:;")
+                    a(class={current: currentUrl === 'memberFavorite'}, href="member_favorite.html")
                       | My Favorite
                   li
-                    a(href="javascript:;")
+                    a(class={current: currentUrl === 'memberAccount'}, href="member_account.html")
                       | My Account
                   li
-                    a(href="javascript:;")
+                    a(class={current: currentUrl === 'memberPoints'}, href="member_points.html")
                       | My Points
                   li
-                    a(href="javascript:;")
+                    a(class={current: currentUrl === 'memberModel'}, href="member_model.html")
                       | Be Our Model
     
     #sidebar

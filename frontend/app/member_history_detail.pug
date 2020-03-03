@@ -1,0 +1,133 @@
+extends layouts/default.pug
+
+block value
+  - var currentUrl = 'memberAccount';
+
+block main
+  .help_center.page_block
+    .block_inner
+      .center_container.container
+        .container_aside
+          .aside_block
+            .aside_menu.fold_block
+              .fold
+                .fold_title My Account
+                .fold_content
+                  ul
+                    li
+                      a(href="member_account.html") Account
+                    li
+                      a.current(href="member_history.html") Order History
+                    li
+                      a(href="member_points.html") My Points
+                    li
+                      a(href="member_gift.html") Gift Designer
+                    li
+                      a(href="member_model.html") Be VM Model
+              hr
+              .fold
+                .fold_title My Style
+                .fold_content
+                  ul
+                    li
+                      a(href="member_favorite.html") My Favorite
+                    li
+                      a(href="member_style.html") Style Inpsiration
+                    li
+                      a(href="member_reviews.html") My Reviews
+                    li
+                      a(href="member_upcoming.html") Upcoming Events
+        .container_main
+          h1.block_title Order Detail
+          .order_detail_content
+            .words
+              .number No: 19020037439
+              p.
+                Name: Chloe Chiu#[br]
+                Address: No.8, Zhengzhou RD, Zhongzheng Dist, Taipei, Taiwan
+            a.btn.common.popup(href="popup_returns.html")
+              | Need Returns
+          .rwd_table
+            .thead
+              .tr
+                .th Status
+                .th Date
+                .th Payment
+                .th Delivery Date
+                .th Tracking
+            .tbody
+              .tr
+                .td(data-label="Order number")
+                  | Completed
+                .td(data-label="Date")
+                  | 2019/07/08
+                .td(data-label="Amount")
+                  | Credit Card
+                .td(data-label="Payment")
+                  | 2019/07/10
+                .td(data-label="Status")
+                  | #[span.font_red In transit]
+                  br
+                  | #[span.font_gray On FedEx vehicle#[br]delivery Covington, LA]
+          h1.block_title Order Products
+          .checkout_cart.in_detail
+            .cart_title
+              .main
+                | Product
+              .label_quantity
+                | Quantity
+              .label_price
+                | Price
+            .cart_container
+              ul.cart_items
+                li.item
+                  a.thumb(href="product_detail.html")
+                    //↓ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓
+                    .pic(style="background-image: url(images/img_product01.jpg);")
+                      img.size(src="images/size_3x4.png")
+                    //↑ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑
+                  .content
+                    .ci_info
+                      .ci_name
+                        | Product Details
+                      .ci_description
+                        | Printed silk dress with aquatic flower motif
+                      br
+                      .ci_name size: M
+                      .ci_name color: dot
+                    .ci_quantity 1
+                    .ci_price $6,880
+                li.item
+                  a.thumb(href="product_detail.html")
+                    //↓ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓
+                    .pic(style="background-image: url(images/img_product01.jpg);")
+                      img.size(src="images/size_3x4.png")
+                    //↑ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑
+                  .content
+                    .ci_info
+                      .ci_name
+                        | Product Details
+                      .ci_description
+                        | Printed silk dress with aquatic flower motif
+                      br
+                      .ci_name size: M
+                      .ci_name color: dot
+                    .ci_quantity 1
+                    .ci_price $6,880
+            .cart_summary
+              ul.summary_items
+                li.item
+                  .controls_group
+                    label Item Total
+                  .price $10,160
+                li.item
+                  .controls_group
+                    label Shipping to
+                  .price $1,160
+                li.item
+                  .controls_group
+                    label Add discout coupon
+                  .price -$1,160
+              .total_calculation
+                label TOTAL
+                .total_amount NTD$11,320

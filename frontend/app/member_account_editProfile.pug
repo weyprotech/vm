@@ -1,0 +1,185 @@
+extends layouts/default.pug
+
+block value
+  - var currentUrl = 'memberAccount';
+
+block main
+  .help_center.page_block
+    .block_inner
+      .center_container.container
+        .container_aside
+          .aside_block
+            .aside_menu.fold_block
+              .fold
+                .fold_title My Account
+                .fold_content
+                  ul
+                    li
+                      a.current(href="member_account.html") Account
+                    li
+                      a(href="member_history.html") Order History
+                    li
+                      a(href="member_points.html") My Points
+                    li
+                      a(href="member_gift.html") Gift Designer
+                    li
+                      a(href="member_model.html") Be VM Model
+              hr
+              .fold
+                .fold_title My Style
+                .fold_content
+                  ul
+                    li
+                      a(href="member_favorite.html") My Favorite
+                    li
+                      a(href="member_style.html") Style Inpsiration
+                    li
+                      a(href="member_reviews.html") My Reviews
+                    li
+                      a(href="member_upcoming.html") Upcoming Events
+        .container_main
+          h1.block_title Edit Profile
+          form.form_wrapper.common_form.account_form
+            .form_block
+              .row
+                .grid
+                  .controls_group
+                    label Photo
+                    .upload_photo
+                      .profile_picture
+                        .upload_pic.pic(style="background-image: url(images/vm_profile_pic.jpg)")
+                          img.size(src="images/size_1x1.png")
+                      a.upload_btn.btn.common(href="javascript:;")
+                        | Change
+                      input.upload_input(type="file", name="photo", accept=".png,.jpeg,.jpg,.gif")
+              .row
+                .grid.g_6_12
+                  .controls_group
+                    label First Name
+                    .controls
+                      input(type="text", value="Lily", required)
+                .grid.g_6_12
+                  .controls_group
+                    label Last Name
+                    .controls
+                      input(type="text", value="Wang", required)
+              .row
+                .grid.g_6_12
+                  .controls_group
+                    label Gender
+                    .controls
+                      .select_wrapper
+                        select
+                          option(selected) Woman
+                          option Men
+                .grid.g_6_12
+                  .controls_group
+                    label Age
+                    .controls
+                      .select_wrapper
+                        select(required)
+                          option(vilue="") -
+                          option(vilue="25") 25
+                          option(vilue="26") 26
+                          option(vilue="27") 27
+                          option(vilue="28", selected) 28
+                          option(vilue="29") 29
+            .call_action.right
+              a.btn.common(href="member_account.html")
+                | Cancel
+              button.btn.confirm(type="submit")
+                | Save
+
+block js
+  // build:js scripts/plugins/exif.js
+  script(src="../bower_components/exif-js/exif.js")
+  // endbuild
+
+  script.
+    $(function() {
+      if (window.File && window.FileList && window.FileReader) {
+        $('.upload_photo').each(function() {
+          var $upPic = $(this).find('.upload_pic'),
+              $upBtn = $(this).find('.upload_btn'),
+              $upInput = $(this).find('.upload_input');
+        
+          $upBtn.on('click', function() {
+            $upInput.click();
+          });
+          $upInput.on("change", function(e) {
+            var files = e.target.files;
+            var f = files[0]
+            var fileReader = new FileReader();
+
+            fileReader.onload = (function(e) {
+              var file = e.target;
+              var image = new Image();
+
+              image.src = file.result;
+              image.onload = function() {
+                var canvas = document.createElement("canvas");
+                compressCtx = canvas.getContext("2d");
+                
+                EXIF.getData(image, function(){
+                  EXIF.getAllTags(this);
+                  var orientation = EXIF.getTag(this, 'Orientation');
+                  switch(orientation) {
+                    case 1:
+                      var resizeW = 200;
+                      var resizeH = resizeW * (image.height / image.width);
+                      canvas.width = resizeW;
+                      canvas.height = resizeH;
+                      compressCtx.clearRect(0, 0, canvas.width, canvas.height)
+                      compressCtx.drawImage(image, 0, 0, resizeW, resizeH);
+                      break;
+                    case 6:
+                      var resizeW = 200;
+                      var resizeH = resizeW * (image.width/ image.height);
+                      canvas.width = resizeW;
+                      canvas.height = resizeH;
+                      compressCtx.clearRect(0, 0, canvas.width, canvas.height)
+                      compressCtx.translate(0, 0);
+                      compressCtx.rotate(90 * Math.PI / 180);
+                      compressCtx.drawImage(image, 0, -resizeW, resizeH, resizeW);
+                      break;
+                    case 8:
+                      var resizeW = 200;
+                      var resizeH = resizeW * (image.width/ image.height);
+                      canvas.width = resizeW;
+                      canvas.height = resizeH;
+                      compressCtx.clearRect(0, 0, canvas.width, canvas.height)
+                      compressCtx.translate(0, 0);
+                      compressCtx.rotate(-90 * Math.PI / 180);
+                      compressCtx.drawImage(image, -resizeH, 0, resizeH, resizeW);
+                      break;
+                    case 3:
+                      var resizeW = 200;
+                      var resizeH = resizeW * (image.height / image.width);
+                      canvas.width = resizeW;
+                      canvas.height = resizeH;
+                      compressCtx.clearRect(0, 0, canvas.width, canvas.height)
+                      compressCtx.translate(0, 0);
+                      compressCtx.rotate(Math.PI);
+                      compressCtx.drawImage(image, -resizeW, -resizeH, resizeW, resizeH);
+                      break;
+                    default:
+                      var resizeW = 200;
+                      var resizeH = resizeW * (image.height / image.width);
+                      canvas.width = resizeW;
+                      canvas.height = resizeH;
+                      compressCtx.clearRect(0, 0, canvas.width, canvas.height)
+                      compressCtx.drawImage(image, 0, 0, resizeW, resizeH);
+                      break;
+                  }
+                  var base64 = canvas.toDataURL("image/jpeg", .5);
+                  $upPic.css('background-image', 'url("' + base64 + '")');
+                });
+              }
+            });
+            fileReader.readAsDataURL(f);
+          });
+        });
+      } else {
+        alert("Your browser doesn't support to File API")
+      }
+    });

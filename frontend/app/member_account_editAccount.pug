@@ -1,0 +1,60 @@
+extends layouts/default.pug
+
+block value
+  - var currentUrl = 'memberAccount';
+
+block main
+  .help_center.page_block
+    .block_inner
+      .center_container.container
+        .container_aside
+          .aside_block
+            .aside_menu.fold_block
+              .fold
+                .fold_title My Account
+                .fold_content
+                  ul
+                    li
+                      a.current(href="member_account.html") Account
+                    li
+                      a(href="member_history.html") Order History
+                    li
+                      a(href="member_points.html") My Points
+                    li
+                      a(href="member_gift.html") Gift Designer
+                    li
+                      a(href="member_model.html") Be VM Model
+              hr
+              .fold
+                .fold_title My Style
+                .fold_content
+                  ul
+                    li
+                      a(href="member_favorite.html") My Favorite
+                    li
+                      a(href="member_style.html") Style Inpsiration
+                    li
+                      a(href="member_reviews.html") My Reviews
+                    li
+                      a(href="member_upcoming.html") Upcoming Events
+        .container_main
+          h1.block_title Edit Account
+          form.form_wrapper.common_form.account_form
+            .form_block
+              .controls_group
+                label *Email
+                .controls
+                  input(type="email", value="member2019@vm.com", required)
+              .controls_group
+                label *Password
+                .controls
+                  input(type="password", value="testtest", required)
+              .controls_group
+                label *Confirmed Password
+                .controls
+                  input(type="password", value="testtest", required)
+            .call_action.right
+              a.btn.common(href="member_account.html")
+                | Cancel
+              button.btn.confirm(type="submit")
+                | Save

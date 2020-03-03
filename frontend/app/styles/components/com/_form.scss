@@ -415,6 +415,22 @@ button {
   }
 }
 
+// Upload Photo
+.upload_photo {
+  display: flex;
+  align-items: center;
+  .profile_picture {
+    flex: 0 0 auto;
+    margin-right: 1em;
+  }
+  .upload_btn {
+    width: 120px;
+  }
+  .upload_input {
+    display: none;
+  }
+}
+
 // Call action
 .call_action {
   margin-top: 1.875em;

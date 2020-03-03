@@ -76,6 +76,11 @@
       }
     }
   }
+  .popup_returns {
+    .call_action {
+      margin-top: 4em;
+    }
+  }
 
   // Index
   #storeMap {
@@ -769,6 +774,14 @@
   }
 
   // Company
+  .common_form {
+    .form_block {
+      padding: 1.25em 1.875em 1.875em;
+      box-sizing: border-box;
+      background-color: $white;
+      box-shadow: 0 0 4px $khaki-lighten;
+    }
+  }
   .company_block {
     &.page_block {
       padding: 1.875em 1em 3.5em;
@@ -892,6 +905,7 @@
         }
         .ci_quantity {
           width: 120px !important;
+          text-align: center;
         }
         .ci_price {
           text-align: right;
@@ -905,6 +919,13 @@
           right: 1.5rem;
           margin-top: 0;
           text-align: right;
+        }
+      }
+    }
+    &.in_detail {
+      .cart_items {
+        .item {
+          padding: 1.25em 1.5em;
         }
       }
     }

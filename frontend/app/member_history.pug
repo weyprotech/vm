@@ -1,0 +1,96 @@
+extends layouts/default.pug
+
+block value
+  - var currentUrl = 'memberAccount';
+
+block main
+  .help_center.page_block
+    .block_inner
+      .center_container.container
+        .container_aside
+          .aside_block
+            .aside_menu.fold_block
+              .fold
+                .fold_title My Account
+                .fold_content
+                  ul
+                    li
+                      a(href="member_account.html") Account
+                    li
+                      a.current(href="member_history.html") Order History
+                    li
+                      a(href="member_points.html") My Points
+                    li
+                      a(href="member_gift.html") Gift Designer
+                    li
+                      a(href="member_model.html") Be VM Model
+              hr
+              .fold
+                .fold_title My Style
+                .fold_content
+                  ul
+                    li
+                      a(href="member_favorite.html") My Favorite
+                    li
+                      a(href="member_style.html") Style Inpsiration
+                    li
+                      a(href="member_reviews.html") My Reviews
+                    li
+                      a(href="member_upcoming.html") Upcoming Events
+        .container_main
+          h1.block_title Order history
+          .words
+            p The order is valid for 30 days. After 30 days of completing the order, the order will be automatically cancelled if the payment has not been completed.
+          .rwd_table
+            .thead
+              .tr
+                .th Order number
+                .th Date
+                .th Amount
+                .th Payment
+                .th Status
+            .tbody
+              a.tr(href="member_history_detail.html")
+                .td(data-label="Order number")
+                  | #[span.font_khaki 19028434923]
+                .td(data-label="Date")
+                  | 2019/07/08
+                .td(data-label="Amount")
+                  | $ 12,000
+                .td(data-label="Payment")
+                  | #[span.font_khaki Unpaid]
+                .td(data-label="Status")
+                  | #[span.font_khaki Go to pay]
+              a.tr(href="member_history_detail_atm.html")
+                .td(data-label="Order number")
+                  | #[span.font_khaki 192304832579]
+                .td(data-label="Date")
+                  | 2019/08/19
+                .td(data-label="Amount")
+                  | $ 8,000
+                .td(data-label="Payment")
+                  | Paid
+                .td(data-label="Status")
+                  | #[span.font_red In transit]
+              a.tr(href="member_history_detail.html")
+                .td(data-label="Order number")
+                  | #[span.font_khaki 192374032575]
+                .td(data-label="Date")
+                  | 2019/08/19
+                .td(data-label="Amount")
+                  | $ 9,900
+                .td(data-label="Payment")
+                  | Paid
+                .td(data-label="Status")
+                  | Delivered
+              a.tr(href="member_history_detail_atm.html")
+                .td(data-label="Order number")
+                  | #[span.font_khaki 192305332957]
+                .td(data-label="Date")
+                  | 2019/08/19
+                .td(data-label="Amount")
+                  | $ 10,800
+                .td(data-label="Payment")
+                  | Paid
+                .td(data-label="Status")
+                  | Delivered

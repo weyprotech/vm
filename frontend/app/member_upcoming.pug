@@ -1,0 +1,87 @@
+extends layouts/default.pug
+
+block value
+  - var currentUrl = 'memberUpcoming';
+
+block main
+  .member_center.page_block
+    .block_inner
+      .center_container.container
+        .container_aside
+          .aside_block
+            .aside_menu.fold_block
+              .fold
+                .fold_title My Account
+                .fold_content
+                  ul
+                    li
+                      a(href="member_account.html") Account
+                    li
+                      a(href="member_history.html") Order History
+                    li
+                      a(href="member_points.html") My Points
+                    li
+                      a(href="member_gift.html") Gift Designer
+                    li
+                      a(href="member_model.html") Be VM Model
+              hr
+              .fold
+                .fold_title My Style
+                .fold_content
+                  ul
+                    li
+                      a(href="member_favorite.html") My Favorite
+                    li
+                      a(href="member_style.html") Style Inpsiration
+                    li
+                      a(href="member_reviews.html") My Reviews
+                    li
+                      a.current(href="member_upcoming.html") Upcoming Events
+        .container_main
+          h1.block_title Upcoming Events
+          .rwd_table
+            .thead
+              .tr
+                .th Designer
+                .th Upcoming Event
+            .tbody
+              .tr
+                .td(data-label="Designer")
+                  a.designer_info(href="designer_home.html")
+                    .profile_picture
+                      .pic(style="background-image: url(images/img_profile.jpg);")
+                        img.size(src="images/size_1x1.png")
+                    .di_name Dennis Martinez
+                .td(data-label="Upcoming Event")
+                  .event_info
+                    .date.font_khaki 2019.12.25
+                    .text 2020 New Collection Runway
+              .tr
+                .td(data-label="Designer")
+                  a.designer_info(href="designer_home.html")
+                    .profile_picture
+                      .pic(style="background-image: url(https://via.placeholder.com/100x100);")
+                        img.size(src="images/size_1x1.png")
+                    .di_name Dennis Martinez
+                .td(data-label="Upcoming Event")
+                  .event_info
+                    .date.font_khaki 2019.12.25
+                    .text 2020 New Collection Runway
+          .pager_bar
+            .pages
+              | Page 1 of 15
+            ul.pager_navigation
+              li.prev
+                a(href="javascript:;") &lt; Previous
+              li.current
+                a(href="javascript:;") 1
+              li
+                a(href="javascript:;") 2
+              li
+                a(href="javascript:;") 3
+              li
+                a(href="javascript:;") 4
+              li
+                a(href="javascript:;") 5
+              li.next
+                a(href="javascript:;") Next &gt;

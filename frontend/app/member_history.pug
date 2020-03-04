@@ -1,10 +1,10 @@
 extends layouts/default.pug
 
 block value
-  - var currentUrl = 'memberAccount';
+  - var currentUrl = 'memberHistory';
 
 block main
-  .help_center.page_block
+  .member_center.page_block
     .block_inner
       .center_container.container
         .container_aside
@@ -50,6 +50,8 @@ block main
                 .th Payment
                 .th Status
             .tbody
+              //↓ 使用刷卡付款 - 連結至 member_history_detail.html ↓
+              //↓ 使用ATM付款 - 連結至 member_history_detail_atm.html ↓
               a.tr(href="member_history_detail.html")
                 .td(data-label="Order number")
                   | #[span.font_khaki 19028434923]
@@ -94,3 +96,5 @@ block main
                   | Paid
                 .td(data-label="Status")
                   | Delivered
+              //↑ 使用刷卡付款 - 連結至 member_history_detail.html ↑
+              //↑ 使用ATM付款 - 連結至 member_history_detail_atm.html ↑

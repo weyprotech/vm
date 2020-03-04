@@ -30,7 +30,7 @@ block main
               .info
                 .date
                   | 2019/10/30
-                a.btn_favorite(data-ootdId="ootd01", href="javascript:;")
+                a.btn_favorite.active(data-ootdId="ootd01", href="javascript:;")
                   i.icon_favorite_heart
             .article_content
               p I think my key issue was this: I didn’t leave myself enough time to plan this wedding. And I’m happy to admit it. If I didn’t have such a hectic career, AND PRIMARILY, if I hadn’t decided to buy a house at the very same time, 9 months would likely have been ample time to plan an at home wedding. But I wanted an abroad wedding… of course I did! *rolls eyes at self numerous times*
@@ -135,7 +135,8 @@ block main
                     .text
                       h3 Cras quis nulla commodo, aliquam lectus.
                       .price NT$ 98800
-  
+
+block fixedButton
   #fixedButtons
     a#backPrve(href="ootd.html")
       img(src="images/arrow_back_prev.png")

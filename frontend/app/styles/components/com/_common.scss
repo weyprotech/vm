@@ -6,7 +6,6 @@
     width: 100%;
   }
 }
-
 .rwd_table {
   width: 100%;
   background-color: $white;
@@ -85,6 +84,7 @@
       display: table-cell;
       padding: 0.8em 1.25em;
       box-sizing: border-box;
+      vertical-align: top;
     }
     .td {
       &:before {
@@ -321,6 +321,11 @@
 
 // Tabber
 .tabber_wrapper {
+  .tabber-selectors {
+    .sort_menu {
+      margin-bottom: 0;
+    }
+  }
   .tabber-contents {
     .tabber-content {
       display: none;
@@ -333,11 +338,16 @@
 
 // Fixed Buttons
 #fixedButtons {
+  opacity: 0;
   position: fixed;
   z-index: 99;
   right: 0.5em;
   bottom: 1em;
   width: 40px;
+  @extend .transition;
+  &.active {
+    opacity: 1;
+  }
   a {
     display: block;
     margin-bottom: 0.5em;

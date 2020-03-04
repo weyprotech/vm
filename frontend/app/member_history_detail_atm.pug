@@ -1,10 +1,10 @@
 extends layouts/default.pug
 
 block value
-  - var currentUrl = 'memberAccount';
+  - var currentUrl = 'memberHistory';
 
 block main
-  .help_center.page_block
+  .member_center.page_block
     .block_inner
       .center_container.container
         .container_aside
@@ -64,14 +64,15 @@ block main
                 .td(data-label="Amount")
                   | ATM
                   br
-                  a.popup(href="popup_remittance_account.html")
+                  a.popup(href="popup_remittanceAccount.html")
                     | Remittance#[br]account
                 .td(data-label="Payment")
                   | 2019/07/10
                 .td(data-label="Status")
-                  | #[span.font_red In transit]
-                  br
-                  | #[span.font_gray On FedEx vehicle#[br]delivery Covington, LA]
+                  .limit_width
+                    span.font_red In transit
+                    br
+                    span.font_gray On FedEx vehicle#[br]delivery Covington, LA
           h1.block_title Order Products
           .checkout_cart.in_detail
             .cart_title

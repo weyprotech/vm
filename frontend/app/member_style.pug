@@ -1,0 +1,86 @@
+extends layouts/default.pug
+
+block value
+  - var currentUrl = 'memberUpcoming';
+
+block main
+  .member_center.page_block
+    .block_inner
+      .center_container.container
+        .container_aside
+          .aside_block
+            .aside_menu.fold_block
+              .fold
+                .fold_title My Account
+                .fold_content
+                  ul
+                    li
+                      a(href="member_account.html") Account
+                    li
+                      a(href="member_history.html") Order History
+                    li
+                      a(href="member_points.html") My Points
+                    li
+                      a(href="member_gift.html") Gift Designer
+                    li
+                      a(href="member_model.html") Be VM Model
+              hr
+              .fold
+                .fold_title My Style
+                .fold_content
+                  ul
+                    li
+                      a(href="member_favorite.html") My Favorite
+                    li
+                      a.current(href="member_style.html") Style Inpsiration
+                    li
+                      a(href="member_reviews.html") My Reviews
+                    li
+                      a(href="member_upcoming.html") Upcoming Events
+        .container_main
+          h1.block_title My Style Inspiration
+          .ootd_list_wrapper.in_center
+            .ootd_list
+              .grid_sizer
+              .gutter_sizer
+              each i inArray(3)
+                .item
+                  .item_inner
+                    //↓ 愛心加'active'，表示為有加入最愛 ↓
+                    a.btn_favorite.active(data-ootdId="ootd01", href="javascript:;")
+                      i.icon_favorite_heart
+                    //↑ 愛心加'active'，表示為有加入最愛 ↑
+                    a(href="ootd_detail.html")
+                      .thumb
+                        img(src="images/img_ootd.jpg")
+                      .text
+                        h3
+                          | The Best Street Style From Copen Fashion Week
+                .item
+                  .item_inner
+                    a.btn_favorite.active(data-ootdId="ootd02", href="javascript:;")
+                      i.icon_favorite_heart
+                    a(href="ootd_detail.html")
+                      .thumb
+                        img(src="https://via.placeholder.com/240x587")
+                      .text
+                        h3
+                          | Lorem ipsum dolor sit met, consectetur adipiscing text text
+
+block js
+  script.
+    $(function() {
+      // OOTD 移除愛心的點擊事件
+      $(document).on('click', '.btn_favorite', function() {
+        // ootdId 取得穿搭的 ID
+        var ootdId = $(this).attr('data-ootdId');
+
+        // 取消最愛的動作寫這裡
+
+        $(this).removeClass('active');
+
+        // 取得grid-item，並移除
+        var $item = $(this).parents('.item');
+        $('.ootd_list').masonry('remove', $item).masonry('layout');
+      });
+    });

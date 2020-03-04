@@ -1,0 +1,135 @@
+extends layouts/default.pug
+
+block value
+  - var currentUrl = 'memberFavorite';
+
+block main
+  .member_center.page_block
+    .block_inner
+      .center_container.container
+        .container_aside
+          .aside_block
+            .aside_menu.fold_block
+              .fold
+                .fold_title My Account
+                .fold_content
+                  ul
+                    li
+                      a(href="member_account.html") Account
+                    li
+                      a(href="member_history.html") Order History
+                    li
+                      a(href="member_points.html") My Points
+                    li
+                      a(href="member_gift.html") Gift Designer
+                    li
+                      a(href="member_model.html") Be VM Model
+              hr
+              .fold
+                .fold_title My Style
+                .fold_content
+                  ul
+                    li
+                      a.current(href="member_favorite.html") My Favorite
+                    li
+                      a(href="member_style.html") Style Inpsiration
+                    li
+                      a(href="member_reviews.html") My Reviews
+                    li
+                      a(href="member_upcoming.html") Upcoming Events
+        .container_main
+          h1.block_title My Favorites
+          .tabber_wrapper.point_record_tabber
+            .tabber-selectors
+              .sort_menu
+                ul
+                  li
+                    a.tabber-anchor.active(href="javascript:;") Designers 
+                  li
+                    a.tabber-anchor(href="javascript:;") Products
+            .tabber-contents
+              .tabber-content.active
+                .rwd_table
+                  .thead
+                    .tr
+                      .th Designer
+                      .th Upcoming Event
+                      .th &nbsp;
+                  .tbody
+                    .tr
+                      .td(data-label="Designer")
+                        a.designer_info(href="designer_home.html")
+                          .profile_picture
+                            .pic(style="background-image: url(https://via.placeholder.com/100x100);")
+                              img.size(src="images/size_1x1.png")
+                          .di_name Dennis Martinez
+                      .td(data-label="Upcoming Event")
+                        .event_info
+                          .date.font_khaki 2019.12.25
+                          .text 2020 New Collection Runway
+                      .td(data-label="")
+                        a.btn.confirm.popup(href="popup_gift.html") 
+                          | Gift Designer
+                    .tr
+                      .td(data-label="Designer")
+                        a.designer_info(href="designer_home.html")
+                          .profile_picture
+                            .pic(style="background-image: url(https://via.placeholder.com/100x100);")
+                              img.size(src="images/size_1x1.png")
+                          .di_name Dennis Martinez
+                      .td(data-label="Upcoming Event")
+                        .event_info
+                          .date.font_khaki No event yet
+                      .td(data-label="")
+                        a.btn.confirm.popup(href="popup_gift.html") 
+                          | Gift Designer
+              .tabber-content
+                .rwd_table
+                  .thead
+                    .tr
+                      .th Product
+                      .th Designer
+                      .th &nbsp;
+                  .tbody
+                    .tr
+                      .td(data-label="Product")
+                        .product_info
+                          a.thumb(href="product_detail.html")
+                            //↓ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓
+                            .pic(style="background-image: url(images/img_product01.jpg);")
+                              img.size(src="images/size_3x4.png")
+                            //↑ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑
+                          .pi_text
+                            .pi_name Product Name
+                            .pi_description
+                              | Fixie tote bag ethnic keytar. Neutra vinyl.
+                      .td(data-label="Designer")
+                        a.designer_info(href="designer_home.html")
+                          .profile_picture
+                            .pic(style="background-image: url(images/img_profile.jpg);")
+                              img.size(src="images/size_1x1.png")
+                          .di_name Dennis Martinez
+                      .td(data-label="")
+                        a.btn.confirm(href="product_detail.html")
+                          | Product
+                    .tr
+                      .td(data-label="Product")
+                        .product_info
+                          a.thumb(href="product_detail.html")
+                            //↓ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓
+                            .pic(style="background-image: url(images/img_product01.jpg);")
+                              img.size(src="images/size_3x4.png")
+                            //↑ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑
+                          .pi_text
+                            .pi_name Product Name
+                            .pi_description
+                              | Fixie tote bag ethnic keytar. Neutra vinyl.
+                      .td(data-label="Designer")
+                        a.designer_info(href="designer_home.html")
+                          .profile_picture
+                            .pic(style="background-image: url(https://via.placeholder.com/100x100);")
+                              img.size(src="images/size_1x1.png")
+                          .di_name Dennis Martinez
+                      .td(data-label="")
+                        a.btn.confirm(href="product_detail.html")
+                          | Product

@@ -473,7 +473,7 @@
     }
   }
   .designer_reviews {
-    .reviews_wrapper {
+    .reviews_wrapper.has_thumb {
       .item {
         padding: 0 2.5em;
       }
@@ -799,6 +799,19 @@
     .fold_content {
       margin-top: 1.125em;
     }
+  }
+  .member_center {
+    .rwd_table {
+      .limit_width {
+        max-width: 210px;
+      }
+      .pi_text {
+        max-width: 250px;
+      }
+    }
+  }
+  .points_display {
+    padding: 1.5rem 2rem;
   }
 }
 

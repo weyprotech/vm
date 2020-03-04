@@ -1,4 +1,9 @@
 @include susy-breakpoint(1280px, 12) {
+  // Pager
+  .pager_bar {
+    margin-top: 2.5em;
+  }
+  
   // Block
   .page_block {
     padding: 3.5em 1em;
@@ -46,6 +51,27 @@
         p {
           margin-bottom: 3rem;
           font-size: 1.75em;
+        }
+      }
+    }
+  }
+  .ootd_list_wrapper {
+    .ootd_list {
+
+      .grid_sizer,
+      .item {
+        width: 18.4%;
+      }
+
+      .item {
+        a.btn_favorite {
+          display: none;
+        }
+
+        &:hover {
+          a.btn_favorite {
+            display: block;
+          }
         }
       }
     }
@@ -314,27 +340,6 @@
         ul {
           a {
             padding: 0.625em 1.875em;
-          }
-        }
-      }
-    }
-  }
-}
-
-@include susy-breakpoint(1366px, 12) {
-  .ootd_list_wrapper {
-    .ootd_list {
-      .grid_sizer,
-      .item {
-        width: 18.4%;
-      }
-      .item {
-        a.btn_favorite {
-          display: none;
-        }
-        &:hover {
-          a.btn_favorite {
-            display: block;
           }
         }
       }

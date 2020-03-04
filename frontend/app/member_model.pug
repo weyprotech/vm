@@ -1,7 +1,7 @@
 extends layouts/default.pug
 
 block value
-  - var currentUrl = 'memberAccount';
+  - var currentUrl = 'memberModel';
 
 block main
   .member_center.page_block
@@ -15,7 +15,7 @@ block main
                 .fold_content
                   ul
                     li
-                      a.current(href="member_account.html") Account
+                      a(href="member_account.html") Account
                     li
                       a(href="member_history.html") Order History
                     li
@@ -23,7 +23,7 @@ block main
                     li
                       a(href="member_gift.html") Gift Designer
                     li
-                      a(href="member_model.html") Be VM Model
+                      a.current(href="member_model.html") Be VM Model
               hr
               .fold
                 .fold_title My Style
@@ -38,23 +38,7 @@ block main
                     li
                       a(href="member_upcoming.html") Upcoming Events
         .container_main
-          h1.block_title Edit Account
-          form.form_wrapper.common_form.account_form
-            .form_block
-              .controls_group
-                label *Email
-                .controls
-                  input(type="email", value="member2019@vm.com", required)
-              .controls_group
-                label *Password
-                .controls
-                  input(type="password", value="testtest", required)
-              .controls_group
-                label *Confirmed Password
-                .controls
-                  input(type="password", value="testtest", required)
-            .call_action.right
-              a.btn.common(href="member_account.html")
-                | Cancel
-              button.btn.confirm(type="submit")
-                | Save
+          h1.block_title Be VM Model
+          .words
+            p Donec facilisis tortor ut augue lacinia, at viverra est semper. Sed sapien metus, scelerisque nec pharetra id, tempor a tortor. Pellentesque non dignissim neque. Ut porta viverra est, ut dignissim elit elementum ut. Nu.
+          img(src="images/img_member_model.jpg")

@@ -1,0 +1,84 @@
+extends layouts/default.pug
+
+block value
+  - var currentUrl = 'memberGift';
+
+block main
+  .member_center.page_block
+    .block_inner
+      .center_container.container
+        .container_aside
+          .aside_block
+            .aside_menu.fold_block
+              .fold
+                .fold_title My Account
+                .fold_content
+                  ul
+                    li
+                      a(href="member_account.html") Account
+                    li
+                      a(href="member_history.html") Order History
+                    li
+                      a(href="member_points.html") My Points
+                    li
+                      a.current(href="member_gift.html") Gift Designer
+                    li
+                      a(href="member_model.html") Be VM Model
+              hr
+              .fold
+                .fold_title My Style
+                .fold_content
+                  ul
+                    li
+                      a(href="member_favorite.html") My Favorite
+                    li
+                      a(href="member_style.html") Style Inpsiration
+                    li
+                      a(href="member_reviews.html") My Reviews
+                    li
+                      a(href="member_upcoming.html") Upcoming Events
+        .container_main
+          h1.block_title Gift Designers
+          .words
+            p Vestibulum rutrum quam vitae fringilla tincidunt. Suspendisse nec tortor urna. Ut laoreet sodales nisi, quis iaculis nulla iaculis vitae. Donec sagittis faucibus lacus eget blandit. Mauris vitae ultricies metus, at con.
+          .rwd_table
+            .thead
+              .tr
+                .th Designer
+                .th Date
+                .th Comment
+                .th Payment
+                .th Amount
+            .tbody
+              .tr
+                .td(data-label="Designer")
+                  a.designer_info(href="designer_home.html")
+                    .profile_picture
+                      .pic(style="background-image: url(images/img_profile.jpg);")
+                        img.size(src="images/size_1x1.png")
+                    .di_name Dennis Martinez
+                .td(data-label="Date")
+                  | 2019/10/08
+                .td(data-label="Comment")
+                  .limit_width
+                    span.font_gray Curabitur lobortis id lorem id bibendum. Ut id consectetur magna. Quisque volutpat augue enim, pulvinar lobortis nibh lacinia at.
+                .td(data-label="Payment")
+                  | Credit Card
+                .td(data-label="Amount")
+                  span.font_khaki NT$ 50
+              .tr
+                .td(data-label="Designer")
+                  a.designer_info(href="designer_home.html")
+                    .profile_picture
+                      .pic(style="background-image: url(https://via.placeholder.com/100x100);")
+                        img.size(src="images/size_1x1.png")
+                    .di_name Dennis Martinez
+                .td(data-label="Date")
+                  | 2019/07/08
+                .td(data-label="Comment")
+                  .limit_width
+                    span.font_gray I have hinted that I would often jerk poor Queequeg from between the whale and the ship—where he would occasionally fall, from th.
+                .td(data-label="Payment")
+                  | My Points
+                .td(data-label="Amount")
+                  span.font_khaki $500

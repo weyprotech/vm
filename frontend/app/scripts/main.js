@@ -503,6 +503,11 @@ $(document).ready(function () {
   // Fixed Buttons
   if ($('#fixedButtons').length > 0) {
     $(window).on('scroll', function () {
+      if($(window).scrollTop() > 100) {
+        $('#fixedButtons').addClass('active');
+      } else {
+        $('#fixedButtons').removeClass('active');
+      }
       if(windowWidth >= 1280) {
         if (($(window).scrollTop() + $(window).height() - $('#fixedButtons').outerHeight()) > ($(document).height() - $('#fixedButtons').outerHeight() - $('#footer').outerHeight())) {
           $('#fixedButtons').css({

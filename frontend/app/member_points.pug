@@ -1,0 +1,143 @@
+extends layouts/default.pug
+
+block value
+  - var currentUrl = 'memberPoints';
+
+block main
+  .member_center.page_block
+    .block_inner
+      .center_container.container
+        .container_aside
+          .aside_block
+            .aside_menu.fold_block
+              .fold
+                .fold_title My Account
+                .fold_content
+                  ul
+                    li
+                      a(href="member_account.html") Account
+                    li
+                      a(href="member_history.html") Order History
+                    li
+                      a.current(href="member_points.html") My Points
+                    li
+                      a(href="member_gift.html") Gift Designer
+                    li
+                      a(href="member_model.html") Be VM Model
+              hr
+              .fold
+                .fold_title My Style
+                .fold_content
+                  ul
+                    li
+                      a(href="member_favorite.html") My Favorite
+                    li
+                      a(href="member_style.html") Style Inpsiration
+                    li
+                      a(href="member_reviews.html") My Reviews
+                    li
+                      a(href="member_upcoming.html") Upcoming Events
+        .container_main
+          h1.block_title My Points
+          .points_display
+            | $50,000
+          h1.block_title Point Record
+          .tabber_wrapper.point_record_tabber
+            .tabber-selectors
+              .sort_menu
+                ul
+                  li
+                    a.tabber-anchor.active(href="javascript:;") Point Record 
+                  li
+                    a.tabber-anchor(href="javascript:;") Rewards
+            .tabber-contents
+              .tabber-content.active
+                .rwd_table
+                  .thead
+                    .tr
+                      .th Date
+                      .th Order
+                      .th Discount / Reward
+                      .th My points
+                  .tbody
+                    .tr
+                      .td(data-label="Date")
+                        | 2019/07/08
+                      .td(data-label="Order")
+                        | No:19020037439
+                      .td(data-label="Discount / Reward")
+                        span.font_red - $50
+                      .td(data-label="My points")
+                        | $51,000
+                    .tr
+                      .td(data-label="Date")
+                        | 2019/08/19
+                      .td(data-label="Order")
+                        | No:19020037428
+                      .td(data-label="Discount / Reward")
+                        span.font_khaki + $100
+                      .td(data-label="My points")
+                        | $44,200
+                    .tr
+                      .td(data-label="Date")
+                        | 2019/08/19
+                      .td(data-label="Order")
+                        | No:19020037688
+                      .td(data-label="Discount / Reward")
+                        span.font_red - $200
+                      .td(data-label="My points")
+                        | $43,400
+                    .tr
+                      .td(data-label="Date")
+                        | 2019/08/19
+                      .td(data-label="Order")
+                        | No:19020026890
+                      .td(data-label="Discount / Reward")
+                        span.font_khaki + $500
+                      .td(data-label="My points")
+                        | $42,900
+              .tabber-content
+                .rwd_table
+                  .thead
+                    .tr
+                      .th Date
+                      .th Product
+                      .th Rewards
+                      .th My points
+                  .tbody
+                    .tr
+                      .td(data-label="Date")
+                        | 2019/07/08
+                      .td(data-label="Product")
+                        .product_info
+                          a.thumb(href="product_detail.html")
+                            //↓ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓
+                            .pic(style="background-image: url(images/img_product01.jpg);")
+                              img.size(src="images/size_3x4.png")
+                            //↑ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑
+                          .pi_text
+                            .pi_name Product Name
+                            .pi_description
+                              | Fixie tote bag ethnic keytar. Neutra vinyl.
+                      .td(data-label="Reward")
+                        span.font_red + $50
+                      .td(data-label="My points")
+                        | $51,000
+                    .tr
+                      .td(data-label="Date")
+                        | 2019/07/08
+                      .td(data-label="Product")
+                        .product_info
+                          a.thumb(href="product_detail.html")
+                            //↓ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓
+                            .pic(style="background-image: url(images/img_product01.jpg);")
+                              img.size(src="images/size_3x4.png")
+                            //↑ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑
+                          .pi_text
+                            .pi_name Product Name
+                            .pi_description
+                              | Printed silk dress with aquatic flower motif
+                      .td(data-label="Reward")
+                        span.font_red + $100
+                      .td(data-label="My points")
+                        | $50,900

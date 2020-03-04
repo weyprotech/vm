@@ -1,0 +1,123 @@
+extends layouts/default.pug
+
+block value
+  - var currentUrl = 'memberReviews';
+
+block main
+  .member_center.page_block
+    .block_inner
+      .center_container.container
+        .container_aside
+          .aside_block
+            .aside_menu.fold_block
+              .fold
+                .fold_title My Account
+                .fold_content
+                  ul
+                    li
+                      a(href="member_account.html") Account
+                    li
+                      a(href="member_history.html") Order History
+                    li
+                      a(href="member_points.html") My Points
+                    li
+                      a(href="member_gift.html") Gift Designer
+                    li
+                      a(href="member_model.html") Be VM Model
+              hr
+              .fold
+                .fold_title My Style
+                .fold_content
+                  ul
+                    li
+                      a(href="member_favorite.html") My Favorite
+                    li
+                      a(href="member_style.html") Style Inpsiration
+                    li
+                      a.current(href="member_reviews.html") My Reviews
+                    li
+                      a(href="member_upcoming.html") Upcoming Events
+        .container_main
+          h1.block_title My Reviews
+          .reviews_wrapper.has_thumb
+            .item
+              .review
+                .review_picture
+                  .thumb
+                    .pic(style="background-image: url(https://source.unsplash.com/WcXxxQYp_aM/300x400);")
+                      img.size(src="images/size_3x4.png")
+                .review_content
+                  .product_name
+                    | Drop-Shoulder A-Line Dress With Belt
+                  .purchase_info.
+                    Size: #[span L] &nbsp; &nbsp; &nbsp;Color: #[span White]
+                  .rate_date
+                    .rate_star(data-rateyo-read-only="true", data-rateyo-rating="5")
+                    .date 2019.08.01
+                  .text
+                    | Nice! Comfort!
+            each i inArray(2)
+              .item
+                .review
+                  .review_picture
+                    .thumb
+                      .pic(style="background-image: url(images/img_product01.jpg);")
+                        img.size(src="images/size_3x4.png")
+                  .review_content
+                    .product_name
+                      | Drop-Shoulder A-Line Dress With Belt
+                    .purchase_info.
+                      Size: #[span L] &nbsp; &nbsp; &nbsp;Color: #[span White]
+                    .rate_date
+                      .rate_star(data-rateyo-read-only="true", data-rateyo-rating="5")
+                      .date 2019.08.01
+                    .text
+                      | Nice! Comfort!
+                .review.reply
+                  .review_content
+                    .user_info
+                      .profile_picture
+                        .pic(style="background-image: url(images/img_profile.jpg);")
+                          img.size(src="images/size_1x1.png")
+                      .title
+                        .name Lily Allen
+                        .divide_line
+                        span Reply
+                        .divide_line
+                        span 2019.08.01
+                    .text
+                      | Thank you ：）
+              .item
+                .review
+                  .review_picture
+                    .thumb
+                      .pic(style="background-image: url(https://source.unsplash.com/WcXxxQYp_aM/300x400);")
+                        img.size(src="images/size_3x4.png")
+                  .review_content
+                    .product_name
+                      | Drop-Shoulder C-Line Dress With Belt
+                    .purchase_info.
+                      Size: #[span L] &nbsp; &nbsp; &nbsp;Color: #[span White]
+                    .rate_date
+                      .rate_star(data-rateyo-read-only="true", data-rateyo-rating="4.5")
+                      .date 2019.08.01
+                    .text
+                      | I am really pleased with this dress, I am 5' 1" and usually size 10, but size 8 fitted me well and the length is just fine on me and not too long. It could be worn as a summer dress to the office, or dressed up with heels for a smart evening out or afternoon tea. Lovely vibrant colours and nice flowing material. Very pleased - another great dress from Matalan at a very reasonable price.
+          .pager_bar
+            .pages
+              | Page 1 of 15
+            ul.pager_navigation
+              li.prev
+                a(href="javascript:;") &lt; Previous
+              li.current
+                a(href="javascript:;") 1
+              li
+                a(href="javascript:;") 2
+              li
+                a(href="javascript:;") 3
+              li
+                a(href="javascript:;") 4
+              li
+                a(href="javascript:;") 5
+              li.next
+                a(href="javascript:;") Next &gt;

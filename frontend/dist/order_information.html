@@ -284,7 +284,7 @@
                         <div class="controls_group">
                           <label>*First Name</label>
                           <div class="controls">
-                            <input type="text">
+                            <input type="text" required>
                           </div>
                         </div>
                       </div>
@@ -292,7 +292,7 @@
                         <div class="controls_group">
                           <label>*Last Name</label>
                           <div class="controls">
-                            <input type="text">
+                            <input type="text" required>
                           </div>
                         </div>
                       </div>
@@ -330,7 +330,7 @@
                         <div class="controls_group">
                           <label>*Address</label>
                           <div class="controls">
-                            <input type="text">
+                            <input type="text" required>
                           </div>
                         </div>
                       </div>
@@ -348,7 +348,7 @@
                               </div>
                             </div>
                             <div class="grid g_6_12">
-                              <input type="text">
+                              <input type="text" required>
                             </div>
                           </div>
                         </div>
@@ -362,26 +362,26 @@
                     <div class="controls_group">
                       <label>*Email</label>
                       <div class="controls">
-                        <input type="email">
+                        <input type="email" required>
                       </div>
                     </div>
                     <div class="controls_group">
                       <label>*Password</label>
                       <div class="controls">
-                        <input type="password">
+                        <input type="password" required>
                       </div>
                     </div>
                     <div class="controls_group">
                       <label>*Password confirmed</label>
                       <div class="controls">
-                        <input type="password">
+                        <input type="password" required>
                       </div>
                     </div>
                   </div>
                 </div>
                 <div class="accept_captcha">
                   <label class="check_wrapper accept_check">
-                    <input type="checkBox"><span>I accept the “Terms &amp; Conditions” and “Privacy Statement”</span>
+                    <input type="checkBox" required><span>I accept the “Terms &amp; Conditions” and “Privacy Statement”</span>
                   </label>
                   <div class="captcha">
                     <div class="captcha_inner">
@@ -447,10 +447,10 @@
               <li>
                 <h4>MEMBER</h4>
                 <ul>
-                  <li><a href="javascript:;">My Favorite</a></li>
-                  <li><a href="javascript:;">My Account</a></li>
-                  <li><a href="javascript:;">My Points</a></li>
-                  <li><a href="javascript:;">Be Our Model</a></li>
+                  <li><a href="member_favorite.html">My Favorite</a></li>
+                  <li><a href="member_account.html">My Account</a></li>
+                  <li><a href="member_points.html">My Points</a></li>
+                  <li><a href="member_model.html">Be Our Model</a></li>
                 </ul>
               </li>
             </ul>
@@ -593,6 +593,7 @@
         <button class="btn confirm popup_modal_dismiss" type="button">Save</button>
       </div>
     </div>
+    <div id="fixedButtons"><a id="backTop" href="javascript:;"><img src="images/arrow_back_top.png"><span>top</span></a></div>
     <script src="scripts/vendor.js"></script>
     <script src="scripts/plugins.js"></script>
     <script src="scripts/main.js"></script>

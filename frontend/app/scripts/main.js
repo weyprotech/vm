@@ -426,8 +426,8 @@ $(document).ready(function () {
             var slideIndex = 0,
                 popupSliderTime;
 
-            if ($.magnificPopup.instance.st.el.attr('data-index') !== undefined) {
-              slideIndex = $.magnificPopup.instance.st.el.attr('data-index');
+            if (this.st.el.attr('data-index') !== undefined) {
+              slideIndex = this.st.el.attr('data-index');
             }
             $('.popup_slider').on('init', function (event, slick) {
               $('.popup_slider').fitVids();

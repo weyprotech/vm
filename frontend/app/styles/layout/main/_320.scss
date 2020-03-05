@@ -650,6 +650,45 @@ a.thumb {
     color: $gray-darken2;
   }
 }
+.popup_review {
+  .popup_review_main {
+    max-width: 790px;
+    margin: 0 auto;
+    .review_picture {
+      max-width: 210px;
+      margin: 0 auto 1rem;
+    }
+    .review_content {
+      > div {
+        margin-bottom: 0.75rem;
+      }
+      .product_name {
+        font-size: 1.125em;
+      }
+      .label, label {
+        color: $gray-darken2;
+      }
+      #reviewStar {
+        padding: 0;
+      }
+      #reviewComment {
+        height: 130px;
+      }
+    }
+    @include breakpoint(560px) {
+      display: flex;
+      .review_picture {
+        flex: 0 0 auto;
+        width: 26.5822784810127%;
+        margin-right: 1.5em;
+        margin-bottom: 0;
+      }
+      .review_content {
+        flex: 1 1 auto;
+      }
+    }
+  }
+}
 
 // Index
 .store_map_wrapper {
@@ -5462,6 +5501,41 @@ a.thumb {
         }
         .pi_text {
           flex: 1 1 auto;
+        }
+      }
+    }
+  }
+  .reviews_wrapper.has_thumb {
+    .review {
+      flex-wrap: wrap;
+      .review_content {
+        width: calc(100% - 80px - 1em);
+        @include breakpoint(480px) {
+          width: calc(100% - 105px - 1em);
+        }
+      }
+      .rate_date {
+        .rate_star {
+          &.hide {
+            display: none;
+          }
+        }
+      }
+      a.popup_review {
+        width: 100%;
+        margin-top: 1em;
+      }
+      @include breakpoint(660px) {
+        flex-wrap: nowrap;
+        .review_content {
+          width: auto;
+        }
+        a.popup_review {
+          flex: 0 0 auto;
+          align-self: flex-start;
+          width: 120px;
+          margin-top: 0;
+          margin-right: 1em;
         }
       }
     }

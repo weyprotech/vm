@@ -1,0 +1,28 @@
+.popup_block.bg_gray
+  .popup_inner.popup_review
+    h2.block_title
+      | My Review
+    .popup_review_main
+      .review_picture
+        .thumb
+          .pic(style="background-image: url(https://source.unsplash.com/WcXxxQYp_aM/300x400);")
+            img.size(src="images/size_3x4.png")
+      .review_content
+        .product_name
+          | Drop-Shoulder A-Line Dress With Belt
+        .purchase_info.
+          #[span.label Size:] L &nbsp; &nbsp; &nbsp;#[span.label Color:] White
+        .controls_group
+          label Review
+          .controls
+            #reviewStar(data-rateyo-star-width="24px")
+            .error_text Please rate, thank you.
+        .controls_group.comment
+          label Comment
+          .controls
+            textarea#reviewComment
+        .call_action.right
+          a.btn.common.popup_modal_dismiss(href="javascript:;")
+            | Cancel
+          a#saveBtn.btn.confirm(href="javascript:;")
+            | Save

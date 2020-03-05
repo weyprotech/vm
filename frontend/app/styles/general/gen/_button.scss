@@ -61,6 +61,7 @@
 .btn {
   display: block;
   padding: 0 1em;
+  box-sizing: border-box;
   background-color: $khaki;
   color: $white;
   text-align: center;
@@ -76,7 +77,6 @@
   }
   &.common {
     //border: $khaki 1px solid;
-    box-sizing: border-box;
     box-shadow: 0 0 0 1px $khaki inset;
     background-color: transparent;
     color: $gray-darken2;

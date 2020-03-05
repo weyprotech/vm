@@ -228,7 +228,7 @@ button {
   .error_text {
     display: none;
     padding-left: .3em;
-    color: red;
+    color: $red;
     font-size: .875em;
     line-height: 1.6;
   }
@@ -237,7 +237,7 @@ button {
     input[type="password"],
     input[type="email"],
     select {
-      box-shadow: 0 0 0 1px red;
+      box-shadow: 0 0 0 1px $red;
     }
     .error_text {
       display: block;

@@ -127,6 +127,10 @@
   @include retina-sprite($arrow-double-left-group);
 }
 
+.icon_blog{
+  @include retina-sprite($icon-blog-group);
+}
+
 .icon_just_for_you {
   @include retina-sprite($icon-just-for-you-group);
 }

@@ -659,7 +659,7 @@
               // 儲存review
               $('#saveBtn').on('click', function() {
                 var rating = $('#reviewStar').rateYo('rating'),
-                    comment = $('#reviewComment').val().replace(/\r?\n/g, '<br />');
+                    comment = $('#reviewComment').val().replace(/\r?\n/g, '<br />').replace(/\s+/g, ' ');
                 var date = new Date(),
                     month = date.getMonth()+1,
                     day = date.getDate(),

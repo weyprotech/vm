@@ -224,6 +224,12 @@ a.thumb {
     margin: 0 auto;
     color: $gray-dark;
     font-size: 0.875em;
+    &.shrink {
+      max-width: 912px;
+    }
+    &.right {
+      text-align: right;
+    }
   }
   i.icon_story {
     margin-top: -3px;
@@ -579,6 +585,11 @@ a.thumb {
 
 // Page Banner
 .page_banner {
+  .pic {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
   img {
     display: block;
     width: 100%;
@@ -1724,7 +1735,7 @@ a.thumb {
   .detail_article {
     margin-bottom: 2em;
     .block_title {
-      margin-bottom: 0.8rem;
+      margin-bottom: 1rem;
       text-align: left;
     }
     .share_info {
@@ -3332,6 +3343,83 @@ a.thumb {
 .designer_products {
   .sort_menu {
     text-align: center;
+  }
+}
+.designer_blog {
+  .block_inner {
+    max-width: 912px;
+  }
+  .detail_article {
+    .author_info {
+      margin-bottom: 1em;
+      .designer_info {
+        margin-bottom: 1rem;
+        font-size: 0;
+        a {
+          display: inline-flex;
+          align-items: center;
+          max-width: 100%;
+          font-size: 1rem;
+        }
+        .profile_picture {
+          flex: 0 0 auto;
+          width: 80px;
+          height: 80px;
+          margin-right: 1.125em;
+          border: $khaki-light 2px solid;
+          box-sizing: border-box;
+          @extend .transition;
+        }
+        .text {
+          flex: 1 1 auto;
+        }
+        .designer_name {
+          margin-bottom: 0.625rem;
+          color: $main;
+          @extend .transition;
+          span {
+            font-size: 1.25rem;
+            font-weight: 700;
+          }
+        }
+        .country {
+          line-height: 1.25;
+          .flag, span {
+            display: inline-block;
+            vertical-align: middle;
+          }
+          .flag {
+            margin: 0 0.75rem 0 0.28125rem;
+          }
+          span {
+            color: $gray-darken;
+          }
+        }
+        a:hover {
+          .designer_name {
+            color: $khaki;
+          }
+        }
+      }
+      .share_links {
+        text-align: center;
+      }
+      @include breakpoint(560px) {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        .designer_info {
+          margin-bottom: 0;
+          margin-right: 1em;
+        }
+        .share_links {
+          flex: 0 0 auto;
+        }
+      }
+    }
+    .article_content {
+      margin-bottom: 0 !important;
+    }
   }
 }
 

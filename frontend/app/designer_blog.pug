@@ -1,0 +1,68 @@
+extends layouts/default.pug
+
+block value
+  - var currentUrl = 'designers';
+
+block main
+  .page_banner
+    .pic(style="background-image: url(https://source.unsplash.com/DpoMKEARZe4/1920x490)")
+      img.size(src="images/size_50x13.png")
+  .breadcrumbs
+    .breadcrumbs_inner.shrink.right
+      i.icon_story
+      a(href="designer_home.html") Designer
+      span /
+      span.current Blog
+  .designer_blog.detail_wrapper.page_block
+    .block_inner
+      .detail_article
+        h1.block_title
+          | 12 Embellished Cardigans To Add To Your Collection Of Trophy Knits
+        .author_info
+          .designer_info
+            a(href="designer_profile.html")
+              .profile_picture
+                //↓ 1:1，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓
+                .pic(style="background-image: url(images/img_profile.jpg")
+                  img.size(src="images/size_1x1.png")
+                //↑ 1:1，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑
+              .text
+                .designer_name
+                  //↓ 知名設計才會有鑽石icon ↓
+                  i.icon_diamond_b
+                  //↑ 知名設計才會有鑽石icon ↑
+                  span Douglas Robinson
+                .country
+                  img.flag(src="images/flag/flag_italy.png")
+                  span Italy
+          .share_links
+            | Share:
+            a.facebook(href="javascript:;", target="_blank")
+              i.icon_share_facebook
+            a.pinterest(href="javascript:;", target="_blank")
+              i.icon_share_pinterest
+            a.twitter(href="javascript:;", target="_blank")
+              i.icon_share_twitter
+            a.weibo(href="javascript:;", target="_blank")
+              i.icon_share_weibo
+        .article_content
+          p.
+            IIf your love of knitwear is escalating this winter – the revolving styles spotted daily in the Vogue office suggests ours is – then you’ve come to the right place. From Aran knits to fine-ribbed bodies to cashmere roll-necks, the Vogue editors can’t help but cosy up to a trophy knit the moment temperatures plummet, especially when they’re matched with a pair of tailored trousers.#[br]
+            Even the granddad cardigan isn’t safe this season, since its yarns have been taken for a more youthful spin – be it with needlepoint florals at Miu Miu, embellished buttons at Ganni, or knitted tassels at Loewe. Meanwhile Christopher Kane, whose knitwear offering never disappoints, has delivered oversized cardigans iced in crystals that are a breakout style for this season and beyond.#[br]
+            Scroll for 12 of Vogue’s favourite embellished cardigans to up your knitwear game.
+          p
+            img(src="https://source.unsplash.com/bETVkpm2uMw/912x475")
+          p.
+            Even the granddad cardigan isn’t safe this season, since its yarns have been taken for a more youthful spin – be it with needlepoint florals at Miu Miu, embellished buttons at Ganni, or knitted tassels at Loewe. Meanwhile Christopher Kane, whose knitwear offering never disappoints, has delivered oversized cardigans iced in crystals that are a breakout style for this season and beyond.#[br]
+            Scroll for 12 of Vogue’s favourite embellished cardigans to up your knitwear game.#[br]
+            #[br]
+            Pendant tout ce temps, son envie de créer sa propre marque de mobilier n’a cessé de grandir et avec elle, cette volonté de faire connaitre les trésors de son pays, de transmettre un héritage.
+
+block fixedButton
+  #fixedButtons
+    a#backPrve(href="designer_home.html")
+      img(src="images/arrow_back_prev.png")
+      span back
+    a#backTop(href="javascript:;")
+      img(src="images/arrow_back_top.png")
+      span top

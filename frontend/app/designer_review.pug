@@ -15,25 +15,24 @@ block main
   .designer_header
     .designer_header_inner
       .designer_header_mian
-        .designer_info
-          a(href="designer_profile.html")
-            .profile_picture
-              //↓ 1:1，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓
-              .pic(style="background-image: url(images/img_profile.jpg")
-                img.size(src="images/size_1x1.png")
-              //↑ 1:1，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑
-            .text
-              .designer_name
-                //↓ 知名設計才會有鑽石icon ↓
-                i.icon_diamond_b
-                //↑ 知名設計才會有鑽石icon ↑
-                span Douglas Robinson
-              .country
-                img.flag(src="images/flag/flag_italy.png")
-                span Italy
+        a.designer_info(href="designer_profile.html")
+          .profile_picture
+            //↓ 1:1，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓
+            .pic(style="background-image: url(images/img_profile.jpg")
+              img.size(src="images/size_1x1.png")
+            //↑ 1:1，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑
+          .text
+            .designer_name
+              //↓ 知名設計才會有鑽石icon ↓
+              i.icon_diamond_b
+              //↑ 知名設計才會有鑽石icon ↑
+              span Douglas Robinson
+            .country
+              img.flag(src="images/flag/flag_italy.png")
+              span Italy
         ul.links
           li
-            a.popup(href="designer_blog.html", title="Blog")
+            a(href="designer_blog.html", title="Blog")
               i.icon_blog
               span Blog
           li

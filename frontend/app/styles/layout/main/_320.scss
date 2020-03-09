@@ -2436,14 +2436,10 @@ a.thumb {
     background-color: $white;
   }
   .designer_info {
+    display: inline-flex;
+    align-items: center;
+    max-width: 100%;
     margin-bottom: 1rem;
-    font-size: 0;
-    a {
-      display: inline-flex;
-      align-items: center;
-      max-width: 100%;
-      font-size: 1rem;
-    }
     .profile_picture {
       flex: 0 0 auto;
       width: 80px;
@@ -2478,7 +2474,7 @@ a.thumb {
         color: $gray-darken;
       }
     }
-    a:hover {
+    &:hover {
       .designer_name {
         color: $khaki;
       }
@@ -3350,17 +3346,13 @@ a.thumb {
     max-width: 912px;
   }
   .detail_article {
-    .author_info {
+    .author_share {
       margin-bottom: 1em;
       .designer_info {
+        display: inline-flex;
+        align-items: center;
+        max-width: 100%;
         margin-bottom: 1rem;
-        font-size: 0;
-        a {
-          display: inline-flex;
-          align-items: center;
-          max-width: 100%;
-          font-size: 1rem;
-        }
         .profile_picture {
           flex: 0 0 auto;
           width: 80px;
@@ -3395,7 +3387,7 @@ a.thumb {
             color: $gray-darken;
           }
         }
-        a:hover {
+        &:hover {
           .designer_name {
             color: $khaki;
           }

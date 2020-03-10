@@ -3,9 +3,12 @@ var clickHandler = ('ontouchstart' in document.documentElement ? 'touchend' : 'c
 
 $(document).ready(function () {
   $('.retina').retina();
-
+  
   // Sticky
   sticky();
+
+  // Main
+  mainHeight();
 
   // Sidebar
   $('#sidebar').sidebar({
@@ -590,6 +593,9 @@ $(window).on('resize', function () {
   if (windowWidth != $(window).width()) {
     windowWidth = $(window).width();
 
+    // Main
+    mainHeight();
+
     // reSetting
     $('#header .header_search').css('display', '');
     if ($('.topping_block .topping_list').length > 0) {
@@ -682,6 +688,12 @@ function sticky() {
       $('#sidebar').removeClass('head_sticky');
     });
   }
+}
+
+function mainHeight() {
+  var minH = $(window).height() - $('.header_top').outerHeight() - $('#header').outerHeight() - $('#footer').outerHeight();
+
+  $('#main').css('min-height', minH + 'px');
 }
 
 //use width google reCaptcha

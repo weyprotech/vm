@@ -1747,7 +1747,9 @@ a.thumb {
 
 // OOTD
 .detail_wrapper {
-  padding-top: 0 !important;
+  &.page_block {
+    padding-top: 0;
+  }
   .detail_article {
     margin-bottom: 2em;
     .block_title {
@@ -3358,10 +3360,14 @@ a.thumb {
   }
 }
 .designer_blog {
+  &.page_block {
+    padding-top: 1.5em;
+  }
   .block_inner {
     max-width: 912px;
   }
   .detail_article {
+    margin-bottom: 0;
     .author_share {
       margin-bottom: 1em;
       .designer_info {
@@ -3401,11 +3407,6 @@ a.thumb {
           }
           span {
             color: $gray-darken;
-          }
-        }
-        &:hover {
-          .designer_name {
-            color: $khaki;
           }
         }
       }

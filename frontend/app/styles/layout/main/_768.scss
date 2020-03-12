@@ -536,7 +536,9 @@
     }
   }
   .designer_blog {
-    margin-top: 1rem !important;
+    &.page_block {
+      padding-top: 2.5em;
+    }
     .detail_article {
       .author_share {
         margin-bottom: 1.875em;

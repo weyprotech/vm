@@ -1,67 +1,135 @@
-extends layouts/default.pug
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    title VETRINA MIA
+    meta(name='KeyWords', content='')
+    meta(name='Description', content='')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    link(rel='icon', type='image/x-icon', href='images/favicon.ico')
+    link(rel='shortcut icon', type='image/x-icon', href='images/favicon.ico')
+    
+    // build:css styles/main.css
+    link(rel='stylesheet', href='styles/main.css')
+    // endbuild
 
-block value
-  - var currentUrl = 'designers';
-
-block main
-  .page_banner
-    .pic(style="background-image: url(https://source.unsplash.com/DpoMKEARZe4/1920x490)")
-      img.size(src="images/size_50x13.png")
-  .breadcrumbs
-    .breadcrumbs_inner.shrink.right
-      i.icon_story
-      a(href="designer_home.html") Designer
-      span /
-      span.current Blog
-  .designer_blog.detail_wrapper.page_block
-    .block_inner
-      .detail_article
-        h1.block_title
-          | 12 Embellished Cardigans To Add To Your Collection Of Trophy Knits
-        .author_share
-          a.designer_info(href="designer_profile.html")
-            .profile_picture
-              //↓ 1:1，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓
-              .pic(style="background-image: url(images/img_profile.jpg")
-                img.size(src="images/size_1x1.png")
-              //↑ 1:1，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑
-            .text
-              .designer_name
-                //↓ 知名設計才會有鑽石icon ↓
-                i.icon_diamond_b
-                //↑ 知名設計才會有鑽石icon ↑
-                span Douglas Robinson
-              .country
-                img.flag(src="images/flag/flag_italy.png")
-                span Italy
-          .share_links
-            | Share:
-            a.facebook(href="javascript:;", target="_blank")
-              i.icon_share_facebook
-            a.pinterest(href="javascript:;", target="_blank")
-              i.icon_share_pinterest
-            a.twitter(href="javascript:;", target="_blank")
-              i.icon_share_twitter
-            a.weibo(href="javascript:;", target="_blank")
-              i.icon_share_weibo
-        .article_content
-          p.
-            IIf your love of knitwear is escalating this winter – the revolving styles spotted daily in the Vogue office suggests ours is – then you’ve come to the right place. From Aran knits to fine-ribbed bodies to cashmere roll-necks, the Vogue editors can’t help but cosy up to a trophy knit the moment temperatures plummet, especially when they’re matched with a pair of tailored trousers.#[br]
-            Even the granddad cardigan isn’t safe this season, since its yarns have been taken for a more youthful spin – be it with needlepoint florals at Miu Miu, embellished buttons at Ganni, or knitted tassels at Loewe. Meanwhile Christopher Kane, whose knitwear offering never disappoints, has delivered oversized cardigans iced in crystals that are a breakout style for this season and beyond.#[br]
-            Scroll for 12 of Vogue’s favourite embellished cardigans to up your knitwear game.
+    body
+      <!--[if lt IE 10]>
+      .old_browser
+        .old_browser_inner
+          .oops OOPS!
+          .oops_title 您的瀏覽器版本太舊了！
           p
-            img(src="https://source.unsplash.com/bETVkpm2uMw/912x475")
-          p.
-            Even the granddad cardigan isn’t safe this season, since its yarns have been taken for a more youthful spin – be it with needlepoint florals at Miu Miu, embellished buttons at Ganni, or knitted tassels at Loewe. Meanwhile Christopher Kane, whose knitwear offering never disappoints, has delivered oversized cardigans iced in crystals that are a breakout style for this season and beyond.#[br]
-            Scroll for 12 of Vogue’s favourite embellished cardigans to up your knitwear game.#[br]
-            #[br]
-            Pendant tout ce temps, son envie de créer sa propre marque de mobilier n’a cessé de grandir et avec elle, cette volonté de faire connaitre les trésors de son pays, de transmettre un héritage.
+            | 請更新至 Internet Explorer 10 以上版本或選用更現代化的瀏覽器，
+            br
+            br
+            | 使用老舊版本的瀏覽器瀏覽本網站將可能有無法預測的錯誤，請儘快更新。
+            br
+            br
+            | 微軟已於2016年起停止IE8 (含)以下版本之Windows安全更新（#[a(href="http://windows.microsoft.com/zh-tw/windows/end-support-help", target="_blank") 微軟 終止支援公告]），
+            br
+            | 為了您的個資安全、瀏覽流暢度與享受更多網站互動體驗，建議您立即升級瀏覽器。
+          table
+            caption &gt;&gt; 建議您更新或使用以下瀏覽器
+            tr
+              td
+                a(href="http://windows.microsoft.com/zh-tw/internet-explorer/download-ie", target="_blank")
+                  img(src="images/browser/ie.png")
+                  span IE
+              td
+                a(href="http://www.google.com/chrome/", target="_blank")
+                  img(src="images/browser/chrome.png")
+                  span Chrome
+              td
+                a(href="https://www.mozilla.org/en-US/firefox/new/", target="_blank")
+                  img(src="images/browser/firefox.png")
+                  span Firefox
+              td
+                a(href="https://www.opera.com/zh-tw/download?os=windows", target="_blank")
+                  img(src="images/browser/opera.png")
+                  span Opera
+          p © 2019 Vetrina Mia INC.
+      <![endif]-->
 
-block fixedButton
-  #fixedButtons
-    a#backPrve(href="designer_home.html")
-      img(src="images/arrow_back_prev.png")
-      span back
-    a#backTop(href="javascript:;")
-      img(src="images/arrow_back_top.png")
-      span top
+      #wrapper
+        .main
+          .page_banner
+            .pic(style="background-image: url(https://source.unsplash.com/DpoMKEARZe4/1920x490)")
+              img.size(src="images/size_50x13.png")
+          .designer_blog.detail_wrapper.page_block
+            .block_inner
+              .detail_article
+                h1.block_title
+                  | 12 Embellished Cardigans To Add To Your Collection Of Trophy Knits
+                .author_share
+                  .designer_info
+                    .profile_picture
+                      //↓ 1:1，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓
+                      .pic(style="background-image: url(images/img_profile.jpg")
+                        img.size(src="images/size_1x1.png")
+                      //↑ 1:1，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑
+                    .text
+                      .designer_name
+                        //↓ 知名設計才會有鑽石icon ↓
+                        i.icon_diamond_b
+                        //↑ 知名設計才會有鑽石icon ↑
+                        span Douglas Robinson
+                      .country
+                        img.flag(src="images/flag/flag_italy.png")
+                        span Italy
+                  .share_links
+                    | Share:
+                    a.facebook(href="javascript:;", target="_blank")
+                      i.icon_share_facebook
+                    a.pinterest(href="javascript:;", target="_blank")
+                      i.icon_share_pinterest
+                    a.twitter(href="javascript:;", target="_blank")
+                      i.icon_share_twitter
+                    a.weibo(href="javascript:;", target="_blank")
+                      i.icon_share_weibo
+                .article_content
+                  p.
+                    IIf your love of knitwear is escalating this winter – the revolving styles spotted daily in the Vogue office suggests ours is – then you’ve come to the right place. From Aran knits to fine-ribbed bodies to cashmere roll-necks, the Vogue editors can’t help but cosy up to a trophy knit the moment temperatures plummet, especially when they’re matched with a pair of tailored trousers.#[br]
+                    Even the granddad cardigan isn’t safe this season, since its yarns have been taken for a more youthful spin – be it with needlepoint florals at Miu Miu, embellished buttons at Ganni, or knitted tassels at Loewe. Meanwhile Christopher Kane, whose knitwear offering never disappoints, has delivered oversized cardigans iced in crystals that are a breakout style for this season and beyond.#[br]
+                    Scroll for 12 of Vogue’s favourite embellished cardigans to up your knitwear game.
+                  p
+                    img(src="https://source.unsplash.com/bETVkpm2uMw/912x475")
+                  p.
+                    Even the granddad cardigan isn’t safe this season, since its yarns have been taken for a more youthful spin – be it with needlepoint florals at Miu Miu, embellished buttons at Ganni, or knitted tassels at Loewe. Meanwhile Christopher Kane, whose knitwear offering never disappoints, has delivered oversized cardigans iced in crystals that are a breakout style for this season and beyond.#[br]
+                    Scroll for 12 of Vogue’s favourite embellished cardigans to up your knitwear game.#[br]
+                    #[br]
+                    Pendant tout ce temps, son envie de créer sa propre marque de mobilier n’a cessé de grandir et avec elle, cette volonté de faire connaitre les trésors de son pays, de transmettre un héritage.
+
+        footer#footer.in_blog
+          .footer_inner
+            a.footer_logo(href="index.html", target="blank")
+              img.retina(src="images/logo_footer.png")
+            .copyright
+              | © 2019 Vetrina Mia INC.
+      
+      #fixedButtons
+        a#backTop(href="javascript:;")
+          img(src="images/arrow_back_top.png")
+          span top
+      
+      // build:js scripts/vendor.js
+      script(src='../bower_components/jquery/dist/jquery.js')
+      // endbuild
+
+      // build:js scripts/plugins.js
+      script(src="scripts/plugins/jquery.sticky.js")
+      script(src="../bower_components/jquery-sidebar/src/jquery.sidebar.js")
+      script(src="../bower_components/slick-carousel/slick/slick.min.js")
+      script(src="../bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.js")
+      script(src="../bower_components/imagesloaded/imagesloaded.pkgd.js")
+      script(src="../bower_components/masonry-layout/dist/masonry.pkgd.js")
+      script(src="../bower_components/magnific-popup/dist/jquery.magnific-popup.js")
+      script(src="scripts/plugins/jquery.fitvids.js")
+      script(src="../bower_components/rateyo/src/jquery.rateyo.js")
+      script(src="scripts/plugins/jquery.tabber.js")
+      script(src="scripts/plugins/jquery.retina.js")
+      // endbuild
+
+      // build:js scripts/main.js
+      script(src='scripts/main.js')
+      // endbuild

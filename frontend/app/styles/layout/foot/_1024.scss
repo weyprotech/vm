@@ -12,5 +12,18 @@
       max-width: 750px;
       float: right;
     }
+    &.in_blog {
+      .footer_inner {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        &:before, &:after {
+          display: none;
+        }
+      }
+      .footer_logo {
+        margin-bottom: 0;
+      }
+    }
   }
 }

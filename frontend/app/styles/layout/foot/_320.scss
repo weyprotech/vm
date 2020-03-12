@@ -84,4 +84,25 @@
       }
     }
   }
+  &.in_blog {
+    padding: 1.5em 1em;
+    @include breakpoint(768px) {
+      padding: 2em 1em;
+    }
+    .footer_inner {
+      max-width: 912px;
+    }
+    .footer_logo {
+      display: block;
+      max-width: 200px;
+      margin-bottom: 0.5em;
+      img {
+        display: block;
+      }
+    }
+    .copyright {
+      color: $gray-darken;
+      line-height: 1.25;
+    }
+  }
 }

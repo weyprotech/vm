@@ -19,7 +19,7 @@
         "designerImg": "images/img_profile.jpg",
         "designerName": "Douglas Robinson",
         "diamond": true,
-        "flag": "images/flag/flag_france.png",
+        "flag": "images/flag/FR.png",
         "country": "France"
       },
       {
@@ -36,7 +36,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": true,
-        "flag": "images/flag/flag_france.png",
+        "flag": "images/flag/FR.png",
         "country": "France"
       },
       {
@@ -53,7 +53,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": true,
-        "flag": "images/flag/flag_france.png",
+        "flag": "images/flag/FR.png",
         "country": "France"
       },
       {
@@ -70,7 +70,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_france.png",
+        "flag": "images/flag/FR.png",
         "country": "France"
       },
       {
@@ -87,7 +87,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_france.png",
+        "flag": "images/flag/FR.png",
         "country": "France"
       },
       {
@@ -104,7 +104,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_france.png",
+        "flag": "images/flag/FR.png",
         "country": "France"
       },
       {
@@ -121,7 +121,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_france.png",
+        "flag": "images/flag/FR.png",
         "country": "France"
       },
       {
@@ -138,7 +138,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_france.png",
+        "flag": "images/flag/FR.png",
         "country": "France"
       },
       {
@@ -155,7 +155,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_france.png",
+        "flag": "images/flag/FR.png",
         "country": "France"
       },
       {
@@ -172,7 +172,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_france.png",
+        "flag": "images/flag/FR.png",
         "country": "France"
       }
     ]
@@ -197,7 +197,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -214,7 +214,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -231,7 +231,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -248,7 +248,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -265,7 +265,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       }
     ]
@@ -290,7 +290,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -307,7 +307,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -324,7 +324,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -341,7 +341,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -358,7 +358,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       }
     ]
@@ -383,7 +383,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -400,7 +400,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -417,7 +417,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -434,7 +434,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -451,7 +451,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       }
     ]
@@ -476,7 +476,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_france.png",
+        "flag": "images/flag/FR.png",
         "country": "France"
       },
       {
@@ -493,7 +493,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_france.png",
+        "flag": "images/flag/FR.png",
         "country": "France"
       },
       {
@@ -510,7 +510,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_france.png",
+        "flag": "images/flag/FR.png",
         "country": "France"
       },
       {
@@ -527,7 +527,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_france.png",
+        "flag": "images/flag/FR.png",
         "country": "France"
       },
       {
@@ -544,7 +544,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_france.png",
+        "flag": "images/flag/FR.png",
         "country": "France"
       },
       {
@@ -561,7 +561,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_france.png",
+        "flag": "images/flag/FR.png",
         "country": "France"
       },
       {
@@ -578,7 +578,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_france.png",
+        "flag": "images/flag/FR.png",
         "country": "France"
       },
       {
@@ -595,7 +595,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_france.png",
+        "flag": "images/flag/FR.png",
         "country": "France"
       },
       {
@@ -612,7 +612,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_france.png",
+        "flag": "images/flag/FR.png",
         "country": "France"
       },
       {
@@ -629,7 +629,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_france.png",
+        "flag": "images/flag/FR.png",
         "country": "France"
       },
       {
@@ -646,7 +646,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_france.png",
+        "flag": "images/flag/FR.png",
         "country": "France"
       },
       {
@@ -663,7 +663,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_france.png",
+        "flag": "images/flag/FR.png",
         "country": "France"
       },
       {
@@ -680,7 +680,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_france.png",
+        "flag": "images/flag/FR.png",
         "country": "France"
       },
       {
@@ -697,7 +697,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_france.png",
+        "flag": "images/flag/FR.png",
         "country": "France"
       },
       {
@@ -714,7 +714,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_france.png",
+        "flag": "images/flag/FR.png",
         "country": "France"
       },
       {
@@ -731,7 +731,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_france.png",
+        "flag": "images/flag/FR.png",
         "country": "France"
       },
       {
@@ -748,7 +748,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_france.png",
+        "flag": "images/flag/FR.png",
         "country": "France"
       },
       {
@@ -765,7 +765,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_france.png",
+        "flag": "images/flag/FR.png",
         "country": "France"
       }
     ]
@@ -790,7 +790,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -807,7 +807,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -824,7 +824,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -841,7 +841,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -858,7 +858,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -875,7 +875,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       }
     ]
@@ -900,7 +900,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_france.png",
+        "flag": "images/flag/FR.png",
         "country": "France"
       },
       {
@@ -917,7 +917,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_france.png",
+        "flag": "images/flag/FR.png",
         "country": "France"
       },
       {
@@ -934,7 +934,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_france.png",
+        "flag": "images/flag/FR.png",
         "country": "France"
       },
       {
@@ -951,7 +951,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_france.png",
+        "flag": "images/flag/FR.png",
         "country": "France"
       },
       {
@@ -968,7 +968,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_france.png",
+        "flag": "images/flag/FR.png",
         "country": "France"
       },
       {
@@ -985,7 +985,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_france.png",
+        "flag": "images/flag/FR.png",
         "country": "France"
       },
       {
@@ -1002,7 +1002,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_france.png",
+        "flag": "images/flag/FR.png",
         "country": "France"
       },
       {
@@ -1019,7 +1019,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_france.png",
+        "flag": "images/flag/FR.png",
         "country": "France"
       },
       {
@@ -1036,7 +1036,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_france.png",
+        "flag": "images/flag/FR.png",
         "country": "France"
       },
       {
@@ -1053,7 +1053,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_france.png",
+        "flag": "images/flag/FR.png",
         "country": "France"
       },
       {
@@ -1070,7 +1070,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_france.png",
+        "flag": "images/flag/FR.png",
         "country": "France"
       }
     ]
@@ -1095,7 +1095,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -1112,7 +1112,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -1129,7 +1129,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -1146,7 +1146,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -1163,7 +1163,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -1180,7 +1180,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -1197,7 +1197,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -1214,7 +1214,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -1231,7 +1231,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -1248,7 +1248,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -1265,7 +1265,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -1282,7 +1282,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -1299,7 +1299,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -1316,7 +1316,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -1333,7 +1333,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -1350,7 +1350,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -1367,7 +1367,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -1384,7 +1384,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -1401,7 +1401,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -1418,7 +1418,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -1435,7 +1435,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -1452,7 +1452,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -1469,7 +1469,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -1486,7 +1486,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -1503,7 +1503,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -1520,7 +1520,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -1537,7 +1537,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -1554,7 +1554,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -1571,7 +1571,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -1588,7 +1588,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -1605,7 +1605,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -1622,7 +1622,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       }
     ]
@@ -1647,7 +1647,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_france.png",
+        "flag": "images/flag/FR.png",
         "country": "France"
       },
       {
@@ -1664,7 +1664,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_france.png",
+        "flag": "images/flag/FR.png",
         "country": "France"
       },
       {
@@ -1681,7 +1681,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_france.png",
+        "flag": "images/flag/FR.png",
         "country": "France"
       },
       {
@@ -1698,7 +1698,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_france.png",
+        "flag": "images/flag/FR.png",
         "country": "France"
       },
       {
@@ -1715,7 +1715,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_france.png",
+        "flag": "images/flag/FR.png",
         "country": "France"
       },
       {
@@ -1732,7 +1732,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_france.png",
+        "flag": "images/flag/FR.png",
         "country": "France"
       },
       {
@@ -1749,7 +1749,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_france.png",
+        "flag": "images/flag/FR.png",
         "country": "France"
       },
       {
@@ -1766,7 +1766,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_france.png",
+        "flag": "images/flag/FR.png",
         "country": "France"
       },
       {
@@ -1783,7 +1783,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_france.png",
+        "flag": "images/flag/FR.png",
         "country": "France"
       },
       {
@@ -1800,7 +1800,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_france.png",
+        "flag": "images/flag/FR.png",
         "country": "France"
       },
       {
@@ -1817,7 +1817,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_france.png",
+        "flag": "images/flag/FR.png",
         "country": "France"
       },
       {
@@ -1834,7 +1834,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_france.png",
+        "flag": "images/flag/FR.png",
         "country": "France"
       },
       {
@@ -1851,7 +1851,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_france.png",
+        "flag": "images/flag/FR.png",
         "country": "France"
       }
     ]
@@ -1876,7 +1876,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -1893,7 +1893,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -1910,7 +1910,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -1927,7 +1927,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -1944,7 +1944,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -1961,7 +1961,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -1978,7 +1978,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -1995,7 +1995,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -2012,7 +2012,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -2029,7 +2029,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -2046,7 +2046,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -2063,7 +2063,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -2080,7 +2080,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -2097,7 +2097,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -2114,7 +2114,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -2131,7 +2131,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -2148,7 +2148,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -2165,7 +2165,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -2182,7 +2182,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -2199,7 +2199,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -2216,7 +2216,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -2233,7 +2233,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -2250,7 +2250,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -2267,7 +2267,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -2284,7 +2284,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -2301,7 +2301,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -2318,7 +2318,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -2335,7 +2335,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -2352,7 +2352,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -2369,7 +2369,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -2386,7 +2386,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -2403,7 +2403,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -2420,7 +2420,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -2437,7 +2437,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -2454,7 +2454,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -2471,7 +2471,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -2488,7 +2488,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -2505,7 +2505,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -2522,7 +2522,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -2539,7 +2539,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       }
     ]
@@ -2564,7 +2564,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_france.png",
+        "flag": "images/flag/FR.png",
         "country": "France"
       },
       {
@@ -2581,7 +2581,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_france.png",
+        "flag": "images/flag/FR.png",
         "country": "France"
       },
       {
@@ -2598,7 +2598,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_france.png",
+        "flag": "images/flag/FR.png",
         "country": "France"
       },
       {
@@ -2615,7 +2615,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_france.png",
+        "flag": "images/flag/FR.png",
         "country": "France"
       },
       {
@@ -2632,7 +2632,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_france.png",
+        "flag": "images/flag/FR.png",
         "country": "France"
       },
       {
@@ -2649,7 +2649,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_france.png",
+        "flag": "images/flag/FR.png",
         "country": "France"
       },
       {
@@ -2666,7 +2666,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_france.png",
+        "flag": "images/flag/FR.png",
         "country": "France"
       },
       {
@@ -2683,7 +2683,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_france.png",
+        "flag": "images/flag/FR.png",
         "country": "France"
       },
       {
@@ -2700,7 +2700,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_france.png",
+        "flag": "images/flag/FR.png",
         "country": "France"
       }
     ]
@@ -2725,7 +2725,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -2742,7 +2742,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -2759,7 +2759,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -2776,7 +2776,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -2793,7 +2793,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -2810,7 +2810,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -2827,7 +2827,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -2844,7 +2844,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -2861,7 +2861,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -2878,7 +2878,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -2895,7 +2895,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -2912,7 +2912,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -2929,7 +2929,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -2946,7 +2946,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -2963,7 +2963,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -2980,7 +2980,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -2997,7 +2997,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -3014,7 +3014,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -3031,7 +3031,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -3048,7 +3048,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -3065,7 +3065,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       }
     ]
@@ -3090,7 +3090,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_france.png",
+        "flag": "images/flag/FR.png",
         "country": "France"
       },
       {
@@ -3107,7 +3107,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_france.png",
+        "flag": "images/flag/FR.png",
         "country": "France"
       },
       {
@@ -3124,7 +3124,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_france.png",
+        "flag": "images/flag/FR.png",
         "country": "France"
       },
       {
@@ -3141,7 +3141,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_france.png",
+        "flag": "images/flag/FR.png",
         "country": "France"
       },
       {
@@ -3158,7 +3158,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_france.png",
+        "flag": "images/flag/FR.png",
         "country": "France"
       },
       {
@@ -3175,7 +3175,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_france.png",
+        "flag": "images/flag/FR.png",
         "country": "France"
       },
       {
@@ -3192,7 +3192,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_france.png",
+        "flag": "images/flag/FR.png",
         "country": "France"
       },
       {
@@ -3209,7 +3209,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_france.png",
+        "flag": "images/flag/FR.png",
         "country": "France"
       },
       {
@@ -3226,7 +3226,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_france.png",
+        "flag": "images/flag/FR.png",
         "country": "France"
       },
       {
@@ -3243,7 +3243,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_france.png",
+        "flag": "images/flag/FR.png",
         "country": "France"
       }
     ]
@@ -3268,7 +3268,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -3285,7 +3285,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -3302,7 +3302,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -3319,7 +3319,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -3336,7 +3336,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -3353,7 +3353,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -3370,7 +3370,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       }
     ]
@@ -3395,7 +3395,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_france.png",
+        "flag": "images/flag/FR.png",
         "country": "France"
       },
       {
@@ -3412,7 +3412,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_france.png",
+        "flag": "images/flag/FR.png",
         "country": "France"
       },
       {
@@ -3429,7 +3429,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_france.png",
+        "flag": "images/flag/FR.png",
         "country": "France"
       },
       {
@@ -3446,7 +3446,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_france.png",
+        "flag": "images/flag/FR.png",
         "country": "France"
       },
       {
@@ -3463,7 +3463,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_france.png",
+        "flag": "images/flag/FR.png",
         "country": "France"
       },
       {
@@ -3480,7 +3480,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_france.png",
+        "flag": "images/flag/FR.png",
         "country": "France"
       },
       {
@@ -3497,7 +3497,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_france.png",
+        "flag": "images/flag/FR.png",
         "country": "France"
       }
     ]
@@ -3522,7 +3522,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -3539,7 +3539,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -3556,7 +3556,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -3573,7 +3573,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -3590,7 +3590,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       },
       {
@@ -3607,7 +3607,7 @@
         "designerImg": "https://via.placeholder.com/100x100",
         "designerName": "Douglas Robinson",
         "diamond": false,
-        "flag": "images/flag/flag_italy.png",
+        "flag": "images/flag/IT.png",
         "country": "Italy"
       }
     ]

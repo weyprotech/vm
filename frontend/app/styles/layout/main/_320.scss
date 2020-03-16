@@ -5489,6 +5489,7 @@ a.thumb {
         @extend .transition;
       }
       &.active:after {
+        content: '';
         transform: translateY(-50%) rotate(-180deg);
       }
     }
@@ -5542,6 +5543,7 @@ a.thumb {
     &.active {
       font-weight: 700;
       &:after {
+        content: '';
         transform: rotate(-180deg);
       }
     }

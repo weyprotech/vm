@@ -279,7 +279,7 @@
     cursor: pointer;
     @extend .transition;
     &:after {
-      content: '＋';
+      content: '\002B';
       position: absolute;
       top: 0.5rem;
       right: 0.15rem;
@@ -291,7 +291,7 @@
     }
     &.active {
       &:after {
-        content: '－';
+        content: '\2212';
       }
     }
     @include breakpoint(660px) {

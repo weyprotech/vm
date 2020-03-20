@@ -33,7 +33,6 @@ class tb_designer_banner_model extends MY_Model
     {
         $this->set_filter(array(array('field' => 'banner.is_enable', 'value' => $boolean['enable']), array('field' => 'banner.is_visible', 'value' => $boolean['visible'])));
         $query = $this->db->where('banner.bannerId', $bannerId)->get('tb_designer_banner as banner');
-        echo $this->db->last_query();
         if($query->num_rows() > 0){
             $banner = $query->row();
             return $banner;

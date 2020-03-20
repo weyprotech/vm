@@ -31,8 +31,9 @@ class Post extends Ajax_Controller
                 $data[] = array(
                     'visible' => '<td><img src="' . show_enable_image($row->is_visible) . '" width="25"></td>',                
                     'title' => $row->title,
+                    'comments' => '<a class="btn btn-success" href="'.site_url('backend/brand/Post_message/index/'.$row->postId).'"><i class="fa fa-book"></i><span class="hidden-mobile"> Comments</span></button>',
                     'order' => $this->get_order('post', $row->postId, $row->order),
-                    'action' => $this->get_button('edit', 'backend/brand/post/edit/' . $row->postId . $query) . $this->get_button('delete', 'backend/brand/post/delete/' . $row->postId . $query).'&nbsp;&nbsp;<a class="btn btn-success" href="'.site_url('backend/brand/Post_message/index/'.$row->postId).'"><i class="fa fa-book"></i><span class="hidden-mobile"> Message</span></button>'
+                    'action' => $this->get_button('edit', 'backend/brand/post/edit/' . $row->postId . $query) . $this->get_button('delete', 'backend/brand/post/delete/' . $row->postId . $query)
                 );
             endforeach;
         endif;

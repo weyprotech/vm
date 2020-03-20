@@ -25,7 +25,7 @@
 
                     <h2>Add</h2>
                     <ul class="nav nav-tabs pull-right in"><?php $i = 1; ?>
-                        <li><a data-toggle="tab" href="#hb<?= $i++ ?>">Content</a></li>
+                        <li class="active"><a data-toggle="tab" href="#hb<?= $i++ ?>">Content</a></li>
                         <li><a data-toggle="tab" href="#hb<?= $i++ ?>">Image List</a></li>
                         <?php if ($this->langList): ?>
                             <?php foreach ($this->langList as $lrow): ?>
@@ -44,10 +44,9 @@
                             data-bv-feedbackicons-validating="glyphicon glyphicon-refresh">
                             <input type="hidden" name="is_enable" value="1">
                             <input type="hidden" name="productId" value="<?= $productId ?>">
-                            <input type="hidden" name="uuid" value="<?= $row->uuid ?>">
 
                             <div id="content" class="tab-content"><?php $i = 1; ?>
-                                <div class="tab-pane" id="hb<?= $i++ ?>">
+                                <div class="tab-pane active" id="hb<?= $i++ ?>">
                                     <fieldset>
                                         <legend>Product</legend>
 
@@ -66,89 +65,6 @@
                                                 </label>
                                             </div>
                                         </div>
-
-                                        <div class="form-group">
-                                            <label class="col-sm-2 control-label" for="baseId">Base Category</label>
-
-                                            <div class="col-sm-9 col-lg-4">
-                                                <select class="form-control" id="baseId">
-                                                    <option value="0" selected>None</option>
-                                                    <?php if ($topList): ?>
-                                                        <?php foreach ($topList as $crow): ?>
-                                                            <option value="<?= $crow->categoryId ?>" <?= $base_category->categoryId == $crow->categoryId ? 'selected' : '' ?>><?= $crow->name ?></option>
-                                                        <?php endforeach; ?>
-                                                    <?php endif; ?>
-                                                </select>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label class="col-sm-2 control-label" for="subId">Sub Category</label>
-                                            <div class="col-sm-9 col-lg-4">
-                                                <select class="form-control" id="subId">
-                                                    <?php if($subList): ?>
-                                                        <?php foreach($subList as $subKey => $subValue): ?>
-                                                            <option value="<?= $subValue->categoryId ?>" <?= $sub_category->categoryId == $subValue->categoryId ? 'selected' : '' ?>><?= $subValue->name ?></option>
-                                                        <?php endforeach; ?>
-                                                    <?php endif; ?>
-                                                </select>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label class="col-sm-2 control-label" for="category">Category</label>
-
-                                            <div class="col-sm-9 col-lg-4">
-                                                <select class="form-control" id="category" name="cId">  
-                                                    <?php if($categoryList): ?>
-                                                        <?php foreach($categoryList as $categoryKey => $categoryValue): ?>
-                                                            <option value="<?= $categoryValue->categoryId ?>" <?= $categoryValue->categoryId == $category->categoryId ? 'selected' : '' ?>><?= $categoryValue->name ?></option>
-                                                        <?php endforeach; ?>
-                                                    <?php endif; ?>                                                  
-                                                </select>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label class="col-sm-2 control-label" for="price">Price</label>
-
-                                            <div class="col-sm-9 col-lg-2">
-                                                <input type="integer" class="form-control" name="price" value="<?= $row->price ?>" data-bv-notempty="true" data-bv-notempty-message=" ">
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label class="col-sm-2 control-label" for="size">Size</label>
-
-                                            <div class="col-sm-9">
-                                                <?php foreach($size_chart as $sizeKey => $sizeValue){ ?>
-                                                    <?php $selected = 0; ?>
-                                                    <?php foreach($sizeList as $productKey => $productValue){ ?>
-                                                        <?php if($sizeValue->size == $productValue->size){ ?>
-                                                            <?php $selected = 1; ?>
-                                                        <?php } ?>
-                                                    <?php } ?>
-                                                    <input type="checkbox" value="<?= $sizeValue->size ?>" name='size[]' <?= $selected == 1 ? 'checked' : '' ?>> <?= $sizeValue->size ?>&nbsp;&nbsp;&nbsp;
-                                                <?php } ?>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label class="col-sm-2 control-label">Image</label>
-
-                                            <div class="col-sm-9">
-                                                <input type="file" class="btn btn-default" id="uploadImg" name="productImg">
-
-                                                <p class="help-block">
-                                                    <strong>Note:</strong>Picture size is <strong>300 x 400</strong>.type is<strong>JPG、PNG</strong>。
-                                                </p>
-                                                
-                                                <p class="help-block">
-                                                    <?php $productImg = check_file_path($row->productImg); ?>
-                                                    <img id="preview" src="<?= $productImg ?>"<?= !$productImg ? "display:none;" : "" ?>">
-                                                </p>
-                                            </div>
-                                        </div>
                                     </fieldset>
                                 </div>
 
@@ -160,16 +76,16 @@
                                             <table id="image_list" class="table table-bordered table-striped text-center">
                                                 <thead>
                                                     <tr>
-                                                        <th width="60%" class="text-center hidden-tablet hidden-md">Image</th>
-                                                        <th width="20%" class="text-center hidden-tablet hidden-md">Youtube</th>
-                                                        <!-- <th width="20%" class="text-center">Sort</th> -->
+                                                        <th width="60%" class="text-center">Image</th>
+                                                        <th width="20%" class="text-center">Youtube</th>
                                                         <th width="20%" class="text-center">Action</th>
                                                     </tr>
                                                 </thead>
                                             </table>
                                         </fieldset>
                                     </fieldset>
-                                </div>
+                                </div>                              
+
                                 <?php if ($this->langList): ?>
                                     <?php foreach ($this->langList as $lrow): ?>
                                         <div class="tab-pane" id="hb<?= $i++ ?>">
@@ -181,8 +97,8 @@
                                                 <div class="form-group">
                                                     <label class="col-sm-2 control-label" for="name-<?= $lrow->langId ?>">Name</label>
 
-                                                    <div class="col-sm-9 col-lg-4">
-                                                        <input class="form-control" type="text" id="name-<?= $lrow->langId ?>" name="langList[<?= $lrow->langId ?>][name]" value="<?= $row->langList[$lrow->langId]->name ?>" data-bv-notempty="true" data-bv-notempty-message=" ">
+                                                    <div class="col-sm-9">
+                                                        <input class="form-control" type="text" id="name-<?= $lrow->langId ?>" name="langList[<?= $lrow->langId ?>][name]" data-bv-notempty="true" data-bv-notempty-message=" ">
                                                     </div>
                                                 </div>
 
@@ -190,7 +106,7 @@
                                                     <label class="col-sm-2 control-label" for="name-<?= $lrow->langId ?>">Introduction</label>
 
                                                     <div class="col-sm-9">
-                                                        <input class="form-control" type="text" id="name-<?= $lrow->langId ?>" name="langList[<?= $lrow->langId ?>][introduction]" value="<?= $row->langList[$lrow->langId]->introduction ?>" data-bv-notempty="true" data-bv-notempty-message=" ">
+                                                        <input class="form-control" type="text" id="name-<?= $lrow->langId ?>" name="langList[<?= $lrow->langId ?>][introduction]" data-bv-notempty="true" data-bv-notempty-message=" ">
                                                     </div>
                                                 </div>
 
@@ -198,7 +114,7 @@
                                                     <label class="col-sm-2 control-label" for="name-<?= $lrow->langId ?>">Description</label>
 
                                                     <div class="col-sm-9">
-                                                        <textarea class="form-control" name="langList[<?= $lrow->langId ?>][description]" rows="10" data-bv-notempty="true" data-bv-notempty-message=" "><?= $row->langList[$lrow->langId]->description ?></textarea>                                                        
+                                                        <textarea class="form-control" name="langList[<?= $lrow->langId ?>][description]" rows="10" data-bv-notempty="true" data-bv-notempty-message=" "></textarea>                                                        
                                                     </div>
                                                 </div>
 
@@ -206,7 +122,7 @@
                                                     <label class="col-sm-2 control-label" for="name-<?= $lrow->langId ?>">Return</label>
 
                                                     <div class="col-sm-9">
-                                                        <textarea class="form-control" name="langList[<?= $lrow->langId ?>][return]" rows="10" data-bv-notempty="true" data-bv-notempty-message=" "><?= $row->langList[$lrow->langId]->return ?></textarea>                                                        
+                                                        <textarea class="form-control" name="langList[<?= $lrow->langId ?>][return]" rows="10" data-bv-notempty="true" data-bv-notempty-message=" "></textarea>                                                        
                                                     </div>
                                                 </div>
 
@@ -214,10 +130,57 @@
                                                     <label class="col-sm-2 control-label" for="name-<?= $lrow->langId ?>">Detail</label>
 
                                                     <div class="col-sm-9">
-                                                        <div id="content-edit"><?= $row->langList[$lrow->langId]->detail ?></div>
+                                                        <div id="content-edit"></div>
                                                         <input type="hidden" id="content" name="langList[<?= $lrow->langId ?>][detail]">
                                                     </div>
                                                 </div>
+                                               
+                                            </fieldset>
+
+                                            <fieldset>
+                                                <legend><?= $lrow->name ?></legend>
+
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label" for="name-<?= $lrow->langId ?>">Name</label>
+
+                                                    <div class="col-sm-9">
+                                                        <input class="form-control" type="text" id="name-<?= $lrow->langId ?>" name="langList[<?= $lrow->langId ?>][name]" data-bv-notempty="true" data-bv-notempty-message=" ">
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label" for="name-<?= $lrow->langId ?>">Introduction</label>
+
+                                                    <div class="col-sm-9">
+                                                        <input class="form-control" type="text" id="name-<?= $lrow->langId ?>" name="langList[<?= $lrow->langId ?>][introduction]" data-bv-notempty="true" data-bv-notempty-message=" ">
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label" for="name-<?= $lrow->langId ?>">Description</label>
+
+                                                    <div class="col-sm-9">
+                                                        <textarea class="form-control" name="langList[<?= $lrow->langId ?>][description]" rows="10" data-bv-notempty="true" data-bv-notempty-message=" "></textarea>                                                        
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label" for="name-<?= $lrow->langId ?>">Return</label>
+
+                                                    <div class="col-sm-9">
+                                                        <textarea class="form-control" name="langList[<?= $lrow->langId ?>][return]" rows="10" data-bv-notempty="true" data-bv-notempty-message=" "></textarea>                                                        
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label" for="name-<?= $lrow->langId ?>">Detail</label>
+
+                                                    <div class="col-sm-9">
+                                                        <div id="content-edit"></div>
+                                                        <input type="hidden" id="content" name="langList[<?= $lrow->langId ?>][detail]">
+                                                    </div>
+                                                </div>
+                                               
                                             </fieldset>
                                         </div>
                                     <?php endforeach; ?>
@@ -246,8 +209,6 @@
 <script type="text/javascript" src="<?= base_url("assets/backend/js/plugin/clockpicker/clockpicker.min.js") ?>"></script>
 <script>
     var hash = window.location.hash;
-    $('ul.nav-tabs li').eq(hash.substr(1)).addClass('active');
-    $('.tab-pane').eq(hash.substr(1)).addClass('active');
 
     $(document).ready(function () {
         $('input#uploadImg').change(function () {
@@ -308,19 +269,7 @@
             "serverSide": true,
             "sDom": "<'dt-toolbar'<'col-sm-8 hidden-xs'><'col-xs-12 col-sm-4'Tl>>" + "t" + "<'dt-toolbar-footer'<'col-sm-6 col-xs-12 hidden-xs'i><'col-xs-12 col-sm-6'p>>",  //功能表
             "oTableTools": {
-                "aButtons": [
-                // {
-                //     "sExtends": "text",
-                //     "sButtonText": '<i class="fa fa-refresh" style="color:white"></i> <span class="hidden-mobile" style="color:white">Update Sort</span>',
-                //     "sButtonClass": "btn-lg btn-success hidden-tablet",
-                //     "fnInit": function (nButton, oConfig) {
-                //         $(nButton).css('margin-left', 5).css('text-shadow','0 -1px 0 rgba(0, 0, 0, 0.5), 0 1px 0 rgba(255, 255, 255, 0.3)');
-                //     },
-                //     "fnClick": function (nButton, oConfig, oFlash) {
-                        
-                //     }
-                // },
-                {
+                "aButtons": [{
                     "sExtends": "text",
                     "sButtonText": '<i class="fa fa-plus" style="color:white"></i> <span class="hidden-mobile" style="color:white">Add Image</span>',
                     "sButtonClass": "btn-lg btn-primary",
@@ -336,9 +285,8 @@
                 }
             },
             "columns": [
-                {class: "hidden-xs", data: "preview"},
+                {class: "", data: "preview"},
                 {class: "", data: "youtube"},
-                // {class: "", data: "order"},
                 {class: "", data: "action"}
             ],
             "preDrawCallback": function () {   //一載入的動作
@@ -454,22 +402,25 @@
                     }
                 }
             });
-        });    
+        });
     }
 
     function change_img(){
         file = event.target.files;
     };
+    $('form').bootstrapValidator({
+        excluded: ""
+    });    
 
     function sendFile(file, editor) {
         var data = new FormData();
-        data.append('productId', '<?= $productId ?>');
+        data.append('postId', '<?= $postId ?>');
         data.append("file", file);
 
         return $.ajax({
             data: data,
             type: "POST",
-            url: "<?= site_url("backend/ajax/product/product/upload") ?>",
+            url: "<?= site_url("backend/ajax/brand/post/upload") ?>",
             cache: false,
             contentType: false,
             processData: false,
@@ -478,7 +429,4 @@
             }
         });
     }
-
-    
-    /******* 圖片列表 *****/
 </script>

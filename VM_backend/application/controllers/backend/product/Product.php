@@ -27,14 +27,23 @@ class Product extends Backend_Controller
     {
         $this->check_action_auth($this->menuId, 'add', true); // Check Auth
         $productId = uniqid();
+        $size_chart = $this->product_model->get_size_chart();
         $topList = $this->category_model->get_category_select(array(array('field' => 'category.lv','value' => '1')),false,false,$this->langId);    
         if($post = $this->input->post(null,true)){
-            $productId = $this->product_model->insert_product($post);
-            redirect("backend/product/edit/" . $productId);            
+            $this->set_active_status('success', 'Success');
+            unset($post['image_list_length']);
+            $productId = $post['productId'];
+            $this->product_model->insert_product($post);
+            $this->product_model->insert_product_size($post['size'],$post['productId']);
+            if ($this->input->get('back', true)):
+                redirect('backend/product/product' . $this->query);
+            endif;
+            redirect("backend/product/product/edit/" . $productId);            
         }
         $data = array(
             'topList' => $topList,
-            'productId' => $productId
+            'productId' => $productId,
+            'size_chart' => $size_chart            
         );
         $this->get_view('add',$data);
     }
@@ -46,27 +55,41 @@ class Product extends Backend_Controller
             redirect('backend/product');
         endif;
 
+        $topList = $this->category_model->get_category_select(array(array('field' => 'category.lv','value' => '1')),false,false,$this->langId); 
+        $category = $this->category_model->get_category_by_id($row->cId,$this->langId);
+        $sub_category = $this->category_model->get_category_by_id($category->prevId);
+        $base_category = $this->category_model->get_category_by_id($sub_category->prevId);
+        $subList = $this->category_model->get_category_select(array(array('field' => 'category.prevId','value' => $base_category->categoryId)),false,false,$this->langId);
+        $categoryList = $this->category_model->get_category_select(array(array('field' => 'category.prevId','value' => $sub_category->categoryId)),false,false,$this->langId);
+        $sizeList = $this->product_model->get_product_size_select(array(array('field' => 'product_size.pId','value' => $productId)),false,false);
+        $size_chart = $this->product_model->get_size_chart();
         if ($post = $this->input->post(null, true)):
             $this->check_action_auth($this->menuId, 'edit', true); // Check Auth
-
             if ($row->uuid != $post['uuid']):
                 $this->set_active_status('danger', 'Date has been changed');
             else:
                 $this->product_model->update_product($row, $post);
+                $this->product_model->update_product_size($sizeList,$post['size'],$productId);
                 $this->set_active_status('success', 'Success');
                 if ($this->input->get('back', true)):
-                    redirect('backend/product' . $this->query);
+                    redirect('backend/product/product' . $this->query);
                 endif;
             endif;
 
-            redirect('backend/product/edit/' . $productId . $this->query);
+            redirect('backend/product/product/edit/' . $productId . $this->query);
         endif;
 
         $data = array(
-            'row' => $row,
-            'imageList' => $this->product_model->get_product_image_select(
-                array(array('field' => 'image.is_visible', 'value' => 1), array('field' => 'image.prevId', 'value' => $productId)), array(array('field' => 'image.order', 'dir' => 'asc')), false
-            )
+            'productId' => $productId,
+            'row' => $row,            
+            'size_chart' => $size_chart,
+            'sizeList' => $sizeList,
+            'topList' => $topList,
+            'category' => $category,
+            'sub_category' => $sub_category,
+            'base_category' => $base_category,
+            'subList' => $subList,
+            'categoryList' => $categoryList
         );
 
         $this->get_view('edit', $data);
@@ -79,11 +102,11 @@ class Product extends Backend_Controller
         if (!$row = $this->product_model->get_product_by_id($productId, $this->langId, array('enable' => true, 'visible' => false))):
             $this->set_active_status('danger', 'The data does not exist!');
         else:
-            $this->product->delete_product($row);
+            $this->product_model->delete_product($row);
             $this->set_active_status('success', 'Success');
         endif;
 
-        redirect('backend/product' . $this->query);
+        redirect('backend/product/product' . $this->query);
     }
 
     public function save()
@@ -99,82 +122,9 @@ class Product extends Backend_Controller
             $this->set_active_status('success', 'Success');
         endif;
 
-        redirect('backend/product' . $this->query);
+        redirect('backend/product/product' . $this->query);
     }
 
-    /******************** Image Function ********************/
-    public function image($action, $imageId)
-    {
-        $this->check_action_auth($this->menuId, 'view', true); // Check Auth
-
-        $data = array();
-        switch ($action):
-            case 'add':
-                $this->check_action_auth($this->menuId, 'add', true); // Check Auth
-
-                $productId = $imageId;
-                $imageId = $this->product_model->insert_product_image($productId);
-                redirect('backend/product/image/edit/' . $imageId . $this->query);
-                break;
-            case 'edit':
-                if (!$row = $this->product_model->get_product_image_by_id($imageId, array('enable' => false, 'visible' => false))):
-                    $this->set_active_status('danger', 'The data does not exist!');
-                    redirect('backend/product' . $this->query);
-                endif;
-
-                if ($post = $this->input->post(null, true)):
-                    $this->check_action_auth($this->menuId, 'edit', true); // Check Auth
-
-                    if ($row->uuid != $post['uuid']):
-                        $this->set_active_status('danger', 'Date has been changed');
-                    else:
-                        $this->product_model->update_product_image($row, $post);
-                        $this->set_active_status('success', 'Success');
-
-                        if ($this->input->get('back', true)):
-                            redirect('backend/product/edit/' . $row->prevId . $this->query . '#3');
-                        endif;
-                    endif;
-
-                    redirect('backend/product/image/edit/' . $imageId . $this->query);
-                endif;
-
-                $data = array(
-                    'row' => $row
-                );
-                break;
-            case 'delete':
-                $this->check_action_auth($this->menuId, 'delete', true); // Check Auth
-
-                if (!$row = $this->product_model->get_product_image_by_id($imageId, array('enable' => true, 'visible' => false))):
-                    $this->set_active_status('danger', 'The data does not exist!');
-                else:
-                    $this->product_model->delete_product_image($row);
-                    $this->set_active_status('success', 'Success');
-                    redirect('backend/product/edit/' . $row->prevId . $this->query . '#3');
-                endif;
-
-                redirect('backend/product' . $this->query);
-                break;
-            case 'save':
-                if ($order = $this->input->post('imageOrder', true)):
-                    $this->check_action_auth($this->menuId, 'edit', true); // Check Auth
-
-                    foreach ($order as $i => $row):
-                        $order[$i] = array_merge($row, array('uuid' => uniqid(), 'update_at' => date('Y-m-d H:i:s')));
-                    endforeach;
-
-                    $this->db->update_batch('tb_product_image', $order, 'imageId');
-                    $this->set_active_status('success', 'Success');
-                endif;
-
-                $productId = $imageId;
-                redirect('backend/product/edit/' . $productId . $this->query . '#3');
-                break;
-        endswitch;
-
-        $this->get_view('image', $data);
-    }
 
     /******************** Private Function ********************/
     private function get_view($page, $data = '')

@@ -87,6 +87,16 @@
             "oTableTools": {
                 "aButtons": [{
                     "sExtends": "text",
+                    "sButtonText": '<i class="fa fa-plus" style="color:white"></i> <span class="hidden-mobile" style="color:white">Update Sort</span>',
+                    "sButtonClass": "btn-lg hidden-tablet btn-success",
+                    "fnInit": function (nButton, oConfig) {
+                        $(nButton).css('margin-left', 5).css('text-shadow','0 -1px 0 rgba(0, 0, 0, 0.5), 0 1px 0 rgba(255, 255, 255, 0.3)');
+                    },
+                    "fnClick": function (nButton, oConfig, oFlash) {
+                        $(nButton).parents('form:first').attr('action', 'designer/save').submit();
+                    }
+                },{
+                    "sExtends": "text",
                     "sButtonText": '<i class="fa fa-plus" style="color:white"></i> <span class="hidden-mobile" style="color:white">Add Designer</span>',
                     "sButtonClass": "btn-lg btn-primary",
                     "fnInit": function (nButton, oConfig) {

@@ -33,6 +33,10 @@ class Category extends Ajax_Controller
                 $prevId = $secondId;                
             }
         }
+        // print_r($firstId);exit;
+        if($firstId === 'all'){
+            $prevId = false;
+        }
         $filter = array(array('field' => 'category.prevId', 'value' => $prevId), 'like' => array('field' => 'lang.name', 'value' => $search));
         $order = array(array('field' => 'category.order', 'dir' => 'asc'));
         $query = $this->set_http_query(array('prevId' => $prevId, 'search' => $search));
@@ -42,23 +46,31 @@ class Category extends Ajax_Controller
         $prevList = $this->category->get_category_select(false,$order,array());
         if ($categoryList):
             foreach ($categoryList as $row):
+                //找第一層和第二層類別
                 $basecategory = '';
                 $subcategory = '';
-                if($row->lv == 3){
-                    foreach($prevList as $prevKey => $prevValue){
-                        if($row->prev_categoryId == $prevValue->categoryId){
-                            $basecategory = $this->category->get_category_by_id($prevValue->prevId);                        
+                switch($row->lv){
+                    case 2:
+                        $basecategory = check_input_value($row->prevName, false, "None");
+                        $subcategory = '';
+                    break;
+                    case 3:
+                        foreach($prevList as $prevKey => $prevValue){
+                            if($row->prev_categoryId == $prevValue->categoryId){
+                                $temp = $this->category->get_category_by_id($prevValue->prevId,false,false,3);
+                                $basecategory = $temp->langList[3]->name;
+                                $subcategory = check_input_value($row->prevName, false, "None");
+                            }
                         }
-                    }
-                }
+                    break;
+                }            
 
                 $data[] = array(
                     'visible' => '<td><img src="' . show_enable_image($row->is_visible) . '" width="25"></td>',
                     'preview' => '<div id="preview">' . (!empty($row->categoryImg) ? '<img src="' . base_url($row->categoryImg) . '">' : '') . '</div>',
                     'name' => $row->name,
-                    'prevName' => check_input_value($row->prevName, false, "無"),
-
-                    'lv' => $row->lv != $this->lv ? $this->get_button('level', $row->categoryId) : '無',
+                    'base_category' => $basecategory,
+                    'sub_category' => $subcategory,                    
                     'order' => $this->get_order('category', $row->categoryId, $row->order),
                     'action' => $this->get_button('edit', 'backend/product/category/edit/' . $row->categoryId . $query) . $this->get_button('delete', 'backend/product/category/delete/' . $row->categoryId . $query)
                 );

@@ -11,7 +11,7 @@ class Post_message extends Backend_Controller
             redirect("admin");
         endif;
 
-        $this->load->model('designer/tb_post_model', 'post_model');
+        $this->load->model('brand/tb_post_model', 'post_model');
         $this->query = $this->set_http_query(array('search' => $this->input->get('search', true)));
     }
 
@@ -68,7 +68,7 @@ class Post_message extends Backend_Controller
             $this->set_active_status('success', 'Success');
         endif;
 
-        redirect('backend/designer/post/index/'.$designerId . $this->query);
+        redirect('backend/brand/post/message/index/'.$postId . $this->query);
     }
 
     public function save($designerId)
@@ -89,7 +89,7 @@ class Post_message extends Backend_Controller
     /******************** Private Function ********************/
     private function get_view($page, $data = '')
     {
-        $content = $this->load->view('backend/designer/post/message/' . $page, $data, true);
+        $content = $this->load->view('backend/brand/post/message/' . $page, $data, true);
         $this->load->view('backend/index', $this->get_page_nav($content), false);
     }
 }

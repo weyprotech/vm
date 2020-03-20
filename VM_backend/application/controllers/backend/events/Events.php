@@ -1,6 +1,6 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
-class Brand extends Backend_Controller
+class Events extends Backend_Controller
 {
     public $query;
 

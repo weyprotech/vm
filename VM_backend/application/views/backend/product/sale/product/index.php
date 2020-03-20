@@ -18,6 +18,8 @@
         padding-bottom: 5px;
     }
 </style>
+<div id="dialog" style="display: none;"></div>
+
 <section id="widget-grid" class="">
     <div class="row">
         <article class="col-xs-12">
@@ -34,28 +36,23 @@
                 <header>
                     <span class="widget-icon"><i class="fa fa-table"></i></span>
 
-                    <h2>Product List</h2>
+                    <h2>Sale Product List</h2>
                 </header>
 
                 <div>
                     <div class="widget-body no-padding">
                         <form class="form-horizontal" method="post" enctype="multipart/form-data">
                             <div class="table-responsive">
-                                <table id="dt_basic" class="table table-bordered table-striped text-center">
+                                <table id="dt_basic_sale" class="table table-bordered table-striped text-center">
                                     <thead>
                                         <tr>
-                                            <th width="30" class="text-center hidden-xs">Visible</th>
                                             <th width="10%" class="text-center hidden-tablet hidden-md">Image</th>
-                                            <th width="10%" class="text-center">Name</th>
-                                            <th width="8%" class="text-center">Base Category</th>
-                                            <th width="9%" class="text-center">Sub Category</th>
-                                            <th width="9%" class="text-center">Category</th>
-                                            <th width="120" class="text-center">Price</th>
-                                            <th width="50" class="text-center">Color</th>
-                                            <th width="50" class="text-center">Manufacture</th>
-                                            <th width="50" class="text-center">Fabric</th>   
-                                            <th width="50" class="text-center">Reviews</th>
-                                            <th width="50" class="text-center hidden-tablet">Sort</th>
+                                            <th width="20%" class="text-center">Name</th>
+                                            <th width="15%" class="text-center">Base Category</th>
+                                            <th width="15%" class="text-center">Sub Category</th>
+                                            <th width="15%" class="text-center">Category</th>
+                                            <th width="100" class="text-center">Original Price</th>
+                                            <th width="100" class="text-center">Special Offer</th>
                                             <th width="160" class="text-center">Action</th>
                                         </tr>
                                     </thead>
@@ -73,6 +70,26 @@
 <script src="<?= base_url("assets/backend/js/plugin/datatables/dataTables.bootstrap.min.js") ?>"></script>
 <script src="<?= base_url("assets/backend/js/plugin/datatable-responsive/datatables.responsive.min.js") ?>"></script>
 <script>
+    //選擇訂單
+    $("body").on("click", ".dialog", function () {
+        var url = $(this).attr("href");
+        $('#dialog').html("");
+        var dialog = $('#dialog').dialog({
+            modal: true,
+            draggable: false,
+            resizable: false,
+            width: $("#content").width(),
+            position: { my: 'top', at: 'top+10' },
+            open: function (event, ui) {
+                $(this).load(url);
+            }
+        });
+        swal.close();
+        
+        dialog.dialog('open');
+        return false;
+    });
+    var $Table;
     $(document).ready(function () {
         var responsiveHelper_dt_basic = undefined;
         var breakpointDefinition = {
@@ -80,7 +97,7 @@
             phone: 480
         };
 
-        var $Table = $('#dt_basic').DataTable({
+        $Table = $('#dt_basic_sale').DataTable({
             "displayStart": <?= $start = check_input_value($this->input->get('start', true), true, 0) ?>,
             "pageLength": <?= $length = check_input_value($this->input->get('length', true), true, 25) ?>,
             "oSearch": {"sSearch": "<?= $this->input->get('search', true) ?>"},
@@ -91,28 +108,18 @@
             "oTableTools": {
                 "aButtons": [{
                     "sExtends": "text",
-                    "sButtonText": '<i class="fa fa-plus" style="color:white"></i> <span class="hidden-mobile" style="color:white">Update Sort</span>',
-                    "sButtonClass": "btn-lg hidden-tablet btn-success",
+                    "sButtonText": '<i class="fa fa-plus" style="color:white"></i> <span style="color:white">Add Sale Product</span>',
+                    "sButtonClass": "btn-lg btn-primary dialog",
                     "fnInit": function (nButton, oConfig) {
-                        $(nButton).css('margin-left', 5).css('text-shadow','0 -1px 0 rgba(0, 0, 0, 0.5), 0 1px 0 rgba(255, 255, 255, 0.3)');
+                        $(nButton).css('margin-left', 5).css('text-shadow','0 -1px 0 rgba(0, 0, 0, 0.5), 0 1px 0 rgba(255, 255, 255, 0.3)').attr('href', 'sale_product/get_product/');
+                        // .attr('href', 'sale_product/get_product/').attr('data-toggle','modal');
                     },
                     "fnClick": function (nButton, oConfig, oFlash) {
-                        $(nButton).parents('form:first').attr('action', 'product/save').submit();
-                    }
-                }, {
-                    "sExtends": "text",
-                    "sButtonText": '<i class="fa fa-plus" style="color:white"></i> <span style="color:white">Add Product</span>',
-                    "sButtonClass": "btn-lg btn-primary",
-                    "fnInit": function (nButton, oConfig) {
-                        $(nButton).css('margin-left', 5).css('text-shadow','0 -1px 0 rgba(0, 0, 0, 0.5), 0 1px 0 rgba(255, 255, 255, 0.3)');
-                    },
-                    "fnClick": function (nButton, oConfig, oFlash) {
-                        $(nButton).attr('href', 'product/add/');                        
                     }
                 }]
             },
             "ajax": {
-                "url": "<?= site_url("backend/ajax/product/product/get_product_data") ?>",
+                "url": "<?= site_url("backend/ajax/product/sale/sale/get_sale_product") ?>",
                 "data": function (data) {
                     data.baseId = $('div.main-select select').val();
                     data.subId = $('div.minor-select select').val();
@@ -121,24 +128,19 @@
                 "type":'post'
             },
             "columns": [
-                {class: "hidden-xs", data: "visible"},
                 {class: "hidden-tablet hidden-md", data: "preview"},
                 {class: "", data: "name"},
                 {class: "", data: "base_category"},
                 {class: "", data: "sub_category"},
                 {class: "", data: "category"},
-                {class: "", data: "price"},
-                {class: "", data:"color"},
-                {class: "", data:"manufacture"},
-                {class: "", data:"fabric"}, 
-                {class: "", data:"review"},
-                {class: "hidden-tablet", data: "order"},
+                {class: "", data: "original_price"},
+                {class: "", data: "special_offer"},
                 {class: "", data: "action"}
             ],
             "preDrawCallback": function () {
                 // Initialize the responsive datatables helper once.
                 if (!responsiveHelper_dt_basic) {
-                    responsiveHelper_dt_basic = new ResponsiveDatatablesHelper($('#dt_basic'), breakpointDefinition);
+                    responsiveHelper_dt_basic = new ResponsiveDatatablesHelper($('#dt_basic_sale'), breakpointDefinition);
                 }
             },
             "rowCallback": function (nRow) {
@@ -212,5 +214,21 @@
             data:{selected : '',cId : category},
             dataType:'json',
         });
+    }
+
+    //選擇產品
+    function select_product(productId){
+        $.ajax({
+            url:'<?= site_url('backend/ajax/product/sale/sale/add_product') ?>',
+            type:'post',
+            data:{productId : productId},
+            dataType:'post',
+            success:function(response){
+                
+            }
+        });
+        $('.ui-dialog-titlebar-close').click();
+        // $Table.draw();
+        window.location.reload();
     }
 </script>

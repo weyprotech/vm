@@ -263,7 +263,7 @@
         var postId = $('#postId').val();
         swal({
             title: 'Upload image or video',
-            html:'<input type="file" id="transactionImg" multiple="multiple" onchange="change_img()" class="swal2-file transactionImg" placeholder="" style="display: block;width:92%"><br><span stle="float:left">Youtube</span><input type="text" id="youtube" name="youtube" style="width:80%"></p>'
+            html:'<input type="file" id="transactionImg" multiple="multiple" onchange="change_img()" class="swal2-file transactionImg" placeholder="" style="display: block;width:92%"><br><strong>Note:</strong> Picture size is <strong>510 x 288</strong>.type is<strong>JPG、PNG</strong><br><span stle="float:left">Youtube</span><input type="text" id="youtube" name="youtube" style="width:80%"></p>'
         }).then(function (e) {
             var data = new FormData();
             if(file != undefined && file != ''){
@@ -288,7 +288,7 @@
                         file = '';
                     }        
                 }
-            });                
+            });
         })
     }
 

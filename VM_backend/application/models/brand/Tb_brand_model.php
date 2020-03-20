@@ -176,7 +176,7 @@ class Tb_brand_model extends MY_Model
         foreach ($post as $field => $value):
             if (!in_array($field, array('langList', 'uuid'))):
                 switch ($field):
-                    case 'brand_story_content':
+                    case 'detail':
                         $data[$field] = check_input_value(html_entity_decode($value));
                         break;
                     default:

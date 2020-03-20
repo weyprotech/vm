@@ -37,7 +37,7 @@
                 <header>
                     <span class="widget-icon"><i class="fa fa-table"></i></span>
 
-                    <h2>Post List</h2>
+                    <h2>Comment List</h2>
                 </header>
 
                 <div>
@@ -47,7 +47,7 @@
                                 <table id="dt_basic" class="table table-bordered table-striped text-center">
                                     <thead>
                                     <tr>
-                                        <th width="40%" class="text-center">Message</th>
+                                        <th width="40%" class="text-center">Comment</th>
                                         <th width="40%" class="text-center hidden-tablet">response</th>
                                         <th width="20%" class="text-center">Action</th>
                                     </tr>
@@ -118,7 +118,7 @@
                 );
             },
             "initComplete": function () {
-                $('div.back_button').html('<a class="btn btn-success" href="<?= site_url('backend/designer/designer') ?>"><i class="fa fa-reply" style="color:white"></i>Back Designer List</button>')
+                $('div.back_button').html('<a class="btn btn-success" href="<?= site_url('backend/brand/post/index/'.$postId) ?>"><i class="fa fa-reply" style="color:white"></i>Back Post List</button>')
             }
         });
     });

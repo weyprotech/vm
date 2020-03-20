@@ -93,7 +93,7 @@ class Designer extends Backend_Controller
                 $order[$i] = array_merge($row, array('uuid' => uniqid(), 'update_at' => date('Y-m-d H:i:s')));
             endforeach;
 
-            $this->db->update_batch('tb_designer_designer', $order, 'designerId');
+            $this->db->update_batch('tb_designer', $order, 'designerId');
             $this->set_active_status('success', 'Success');
         endif;
 

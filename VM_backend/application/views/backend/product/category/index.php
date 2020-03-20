@@ -120,8 +120,8 @@
             "columns": [
                 {class: "hidden-xs", data: "visible"},
                 {class: "", data: "name"},
-                {class: "hidden-tablet hidden-md", data: "prevName"},
-                {class: "", data: "lv"},
+                {class: "hidden-tablet hidden-md", data: "base_category"},
+                {class: "hidden-tablet hidden-md", data: "sub_category"},
                 {class: "hidden-tablet", data: "order"},
                 {class: "", data: "action"}
             ],
@@ -148,7 +148,7 @@
             },
             "initComplete": function () {
                 $categorySelect = $('div.category-select').html('<span class="input-group-addon">Base Category</span><select class="form-control"></select>')
-                    .find("select").html("<option value=''>全部</option>").change(function () {
+                    .find("select").html("<option value='all'>All</option><option value=''>None</option>").change(function () {
                         var category = $(this).val();
                         var result = '';
                         $Table.draw();
@@ -165,7 +165,7 @@
                 });
 
                 $areaList = $('div.area-select').html('<span class="input-group-addon">Sub Category</span><select class="form-control"></select>')
-                    .find('select').html('<option value="">全部</option>').change(function(){
+                    .find('select').html('<option value="">None</option>').change(function(){
                         $Table.draw();
                     });
 

@@ -480,6 +480,11 @@
       }
     }
   }
+  .designer_posts {
+    .block_main {
+      margin-bottom: 3em;
+    }
+  }
   .post_block {
     margin-bottom: 2.5em;
     .post_main {
@@ -568,10 +573,10 @@
   }
   .brandStory_wall {
     .grid_sizer, .item {
-      width: (100vw - 1.3888888888889vw) / 2;
+      width: (100% - 1.3888888888889%) / 2;
     }
     .gutter_sizer {
-      width: 1.3888888888889vw;
+      width: 1.3888888888889%;
     }
     .item {
       margin-bottom: 1.9444444444444vw;

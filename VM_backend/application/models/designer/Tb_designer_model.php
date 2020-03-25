@@ -201,6 +201,10 @@ class Tb_designer_model extends MY_Model
                         $data[$field] = check_input_value(html_entity_decode($value));
                         break;
 
+                    case 'description':
+                        $data[$field] = check_input_value(html_entity_decode($value));
+                        break;
+                        
                     default:
                         $int_array = array(
                             'is_enable', 'is_visible', 'langId', 'order', /* Common Field */

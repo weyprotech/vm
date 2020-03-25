@@ -7,7 +7,7 @@ class Tb_events_model extends MY_Model
     {
         parent::__construct();
         $this->model = get_class($this); // 本身Model
-        $this->checkUploadPath('events/events/'); // 上傳路徑
+        $this->checkUploadPath('events/'); // 上傳路徑
     }
 
     /******************** events Model ********************/
@@ -32,16 +32,16 @@ class Tb_events_model extends MY_Model
         return $this->db->where('events.is_enable', 1)->count_all_results('tb_events as events');
     }
 
-    public function get_events_by_id($eventsId = false, $langId = false, $boolean = array('enable' => true, 'visible' => true))
+    public function get_events_by_id($eventId = false, $langId = false, $boolean = array('enable' => true, 'visible' => true))
     {
         $this->set_events_join($langId);
         $this->set_filter(array(array('field' => 'events.is_enable', 'value' => $boolean['enable']), array('field' => 'events.is_visible', 'value' => $boolean['visible'])));
-        $query = $this->db->where('events.eventsId', $eventsId)->get('tb_events as events');
+        $query = $this->db->where('events.eventId', $eventId)->get('tb_events as events');
 
         if ($query->num_rows() > 0):
             $events = $query->row();
             if (!$langId):
-                $events->langList = $this->get_events_lang_select(array(array('field' => 'eventsId', 'value' => $events->eventsId)));
+                $events->langList = $this->get_events_lang_select(array(array('field' => 'eventId', 'value' => $events->eventId)));
             endif;
 
             return $events;
@@ -57,14 +57,16 @@ class Tb_events_model extends MY_Model
         $post['is_enable'] = 1;
         $post['is_visible'] = 1;
         $insert = $this->check_db_data($post);
-        if (isset($_FILES['eventsiconImg']) && !$_FILES['eventsiconImg']['error']):
-            $insert['eventsiconImg'] = $this->uploadFile('eventsicon', $post['eventsId'] . '/', 100);
+        if (isset($_FILES['eventImg']) && !$_FILES['eventImg']['error']):
+            $insert['eventImg'] = $this->uploadFile('event',  $post['eventId'] . '/', 600);
         endif;
-        if (isset($_FILES['eventsImg']) && !$_FILES['eventsImg']['error']):
-            $insert['eventsImg'] = $this->uploadFile('events',  $post['eventsId'] . '/', 600);
+
+        if (isset($_FILES['exploreImg']) && !$_FILES['exploreImg']['error']):
+            $insert['exploreImg'] = $this->uploadFile('explore',  $post['eventId'] . '/', 360);
         endif;
-        if (isset($_FILES['eventsindexImg']) && !$_FILES['eventsindexImg']['error']):
-            $insert['eventsindexImg'] = $this->uploadFile('eventsindex',  $post['eventsId'] . '/', 360);
+
+        if (isset($_FILES['collectionImg']) && !$_FILES['collectionImg']['error']):
+            $insert['collectionImg'] = $this->uploadFile('collection',  $post['eventId'] . '/', 510);
         endif;
 
         if (isset($post['langList'])):
@@ -72,7 +74,7 @@ class Tb_events_model extends MY_Model
                 $post['langList'][$i] = $this->check_db_data($lrow);
             endforeach;
 
-            $this->update_events_lang($post['eventsId'], $post['langList']);
+            $this->update_events_lang($post['eventId'], $post['langList']);
         endif;
 
         $this->insert('tb_events', $insert);
@@ -82,30 +84,34 @@ class Tb_events_model extends MY_Model
     public function update_events($events, $post)
     {
         $update = $this->check_db_data($post);
-        if (isset($_FILES['eventsiconImg']) && !$_FILES['eventsiconImg']['error']):
-            $update['eventsiconImg'] = $this->uploadFile('eventsicon', $events->eventsId . '/', 100);
+
+        if (isset($_FILES['eventImg']) && !$_FILES['eventImg']['error']):
+            $update['eventImg'] = $this->uploadFile('event', $events->eventId . '/', 600);
         endif;
-        if (isset($_FILES['eventsImg']) && !$_FILES['eventsImg']['error']):
-            $update['eventsImg'] = $this->uploadFile('events', $events->eventsId . '/', 600);
+
+        if (isset($_FILES['exploreImg']) && !$_FILES['exploreImg']['error']):
+            $insert['exploreImg'] = $this->uploadFile('explore',  $events->eventId . '/', 360);
         endif;
-        if (isset($_FILES['eventsindexImg']) && !$_FILES['eventsindexImg']['error']):
-            $update['eventsindexImg'] = $this->uploadFile('eventsindex', $events->eventsId . '/', 360);
-        endif;        
+  
+        if (isset($_FILES['collectionImg']) && !$_FILES['collectionImg']['error']):
+            $insert['collectionImg'] = $this->uploadFile('collection',  $events->eventId . '/', 510);
+        endif;
+
         if (isset($post['langList'])):
             foreach ($post['langList'] as $i => $lrow):
                 $post['langList'][$i] = $this->check_db_data($lrow);
             endforeach;
 
-            $this->update_events_lang($events->eventsId, $post['langList']);
+            $this->update_events_lang($events->eventId, $post['langList']);
         endif;
 
-        $this->update('tb_events', $update, array('eventsId' => $events->eventsId));
+        $this->update('tb_events', $update, array('eventId' => $events->eventId));
         return true;
     }
 
     public function delete_events($events)
     {
-        $this->delete('tb_events', $this->check_db_data(array('is_enable' => 0)), array('eventsId' => $events->eventsId));
+        $this->delete('tb_events', $this->check_db_data(array('is_enable' => 0)), array('eventId' => $events->eventId));
         return $this->reorder_events();
     }
 
@@ -115,9 +121,9 @@ class Tb_events_model extends MY_Model
         $result = $this->get_events_select(false, array(array('field' => 'events.order', 'dir' => 'asc')));
         if ($result):
             foreach ($result as $i => $row):
-                $order[] = $this->check_db_data(array('eventsId' => $row->eventsId, 'order' => $i + 1));
+                $order[] = $this->check_db_data(array('eventId' => $row->eventId, 'order' => $i + 1));
             endforeach;
-            return $this->db->update_batch('tb_events', $order, 'eventsId');
+            return $this->db->update_batch('tb_events', $order, 'eventId');
         endif;
 
         return true;
@@ -138,11 +144,11 @@ class Tb_events_model extends MY_Model
         return $langList;
     }
 
-    private function update_events_lang($eventsId, $update)
+    private function update_events_lang($eventId, $update)
     {
-        $this->db->where('eventsId', $eventsId)->update_batch('tb_events_lang', $update, 'langId');
+        $this->db->where('eventId', $eventId)->update_batch('tb_events_lang', $update, 'langId');
       
-        $langList = $this->get_events_lang_select(array(array('field' => 'eventsId', 'value' => $eventsId)));
+        $langList = $this->get_events_lang_select(array(array('field' => 'eventId', 'value' => $eventId)));
         $insert = array_diff_key($update, $langList);
         if (!empty($insert)):
             foreach ($insert as $i => $lrow):
@@ -162,7 +168,7 @@ class Tb_events_model extends MY_Model
     {
         $this->db->select('events.*');
         if ($langId):
-            $this->db->select('lang.name');
+            $this->db->select('lang.title,lang.Content');
             $this->db->join('tb_events_lang as lang', 'lang.eventId = events.eventId AND lang.langId = ' . $langId);
         endif;
         return true;

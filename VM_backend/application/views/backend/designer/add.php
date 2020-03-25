@@ -47,6 +47,23 @@
                                 <div class="tab-pane" id="hb<?= $i++ ?>">
                                     <fieldset>
                                         <legend>Designer</legend>
+
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">visible</label>
+
+                                            <div class="col-sm-9">
+                                                <label class="radio radio-inline">
+                                                    <input type="radio" class="radiobox" name="is_visible" value="1" checked>
+                                                    <span>Yes</span>
+                                                </label>
+
+                                                <label class="radio radio-inline">
+                                                    <input type="radio" class="radiobox" name="is_visible" value="0">
+                                                    <span>No</span>
+                                                </label>
+                                            </div>
+                                        </div>
+
                                         <div class="form-group">
                                             <label class="col-sm-2 control-label">Icon</label>
 
@@ -229,15 +246,8 @@
                                                     <label class="col-sm-2 control-label">Description</label>
 
                                                     <div class="col-sm-9">
-                                                        <textarea class="form-control" name="langList[<?= $lrow->langId ?>][description]" rows="10" data-bv-notempty="true" data-bv-notempty-message=" "></textarea>
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label class="col-sm-2 control-label">Content</label>
-
-                                                    <div class="col-sm-9">
-                                                        <textarea class="form-control" name="langList[<?= $lrow->langId ?>][content]" rows="10" data-bv-notempty="true" data-bv-notempty-message=" "></textarea>
+                                                        <div id="content-edit"><?= @$langData->description ?></div>
+                                                        <input type="hidden" id="content" name="langList[<?= $lrow->langId ?>][description]">
                                                     </div>
                                                 </div>
 
@@ -247,14 +257,6 @@
 
                                                     <div class="col-sm-9">
                                                         <input type="text" class="form-control" name="langList[<?= $lrow->langId ?>][my_story_title]" data-bv-notempty="true" data-bv-notempty-message=" ">                                                                                                                
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label class="col-sm-2 control-label" for="title-<?= $lrow->langId ?>">Story Youtube</label>
-
-                                                    <div class="col-sm-9">
-                                                        <input type="text" class="form-control" name="langList[<?= $lrow->langId ?>][my_story_youtube]">                                                                                                                
                                                     </div>
                                                 </div>
 
@@ -381,6 +383,13 @@
         });
 
         $("#save, #back").click(function (e) {            
+            $('div#content-edit').each(function () {
+                var content = $(this).summernote('code').replace(/[\u00A0-\u9999<>\&]/gim, function (i) {
+                    return '&#' + i.charCodeAt(0) + ';';
+                });
+
+                $(this).siblings('input#content').val(content);
+            }); 
         });
 
         $('form').bootstrapValidator({
@@ -422,5 +431,45 @@
                 }
             }
         });
+        $('div#content-edit').each(function () {
+            $(this).summernote({
+                height: 500,
+                lang: 'zh-TW',
+                toolbar: [
+                    ['font', ['clear']],
+                    ['insert', ['picture', 'link', 'video']],
+                    ['misc', ['codeview']]
+                    //['font', ['fontname', 'fontsize', 'color', 'bold', 'italic', 'underline', 'strikethrough', 'superscript', 'subsript', 'clear']],
+                    //['para', ['style', 'ol', 'ul', 'paragraph', 'height']],
+                    //['insert', ['picture', 'link', 'video', 'table', 'hr']],
+                    //['misc', ['fullscreen', 'codeview', 'undo', 'redo', 'help']]
+                ],
+                callbacks: {
+                    onImageUpload: function (files) {
+                        for (var i = 0; i < files.length; i++) {
+                            sendFile(files[i], $(this));
+                        }
+                    }
+                }
+            });
+        });
     });
+
+    function sendFile(file, editor) {
+        var data = new FormData();
+        data.append('designerId', '<?= $designerId ?>');
+        data.append("file", file);
+
+        return $.ajax({
+            data: data,
+            type: "POST",
+            url: "<?= site_url("backend/ajax/designer/designer/upload") ?>",
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function (url) {
+                editor.summernote('editor.insertImage', url);
+            }
+        });
+    }
 </script>

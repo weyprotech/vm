@@ -56,7 +56,7 @@
 
                                             <p class="help-block">
                                                 <?php $imagePath = check_file_path($row->imagePath); ?>
-                                                <img id="preview" src="<?= $imagePath ?>" style="<?= !$imagePath ? "display:none;" : "" ?>">
+                                                <img id="preview" src="<?= $imagePath ?>" <?= !$imagePath ? "style=\"display:none;\"" : "" ?>>
                                             </p>
                                         </div>
                                     </div>
@@ -74,7 +74,7 @@
 
                                             <p class="help-block">
                                                 <?php $thumbPath = check_file_path($row->thumbPath); ?>
-                                                <img id="preview" src="<?= $thumbPath ?>" style="<?= !$thumbPath ? "display:none;" : "" ?>">
+                                                <img id="preview" src="<?= $thumbPath ?>" <?= !$thumbPath ? "style=\"display:none;\"" : "" ?>>
                                             </p>
                                         </div>
                                     </div>

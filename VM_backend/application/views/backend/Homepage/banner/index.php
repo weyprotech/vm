@@ -44,7 +44,7 @@
                                         <th width="30" class="text-center">Visible</th>
                                         <th width="120" class="text-center hidden-tablet">Image</th>
                                         <th width="200" class="text-center">Title</th>
-                                        <th width="120" class="text-center">Date</th>
+                                        <th width="120" class="text-center">Sub Title</th>
                                         <th width="60" class="text-center hidden-tablet">Sort</th>
                                         <th width="160" class="text-center">Action</th>
                                     </tr>
@@ -89,19 +89,19 @@
                         $(nButton).css('margin-left', 5).css('text-shadow','0 -1px 0 rgba(0, 0, 0, 0.5), 0 1px 0 rgba(255, 255, 255, 0.3)');
                     },
                     "fnClick": function (nButton, oConfig, oFlash) {
-                        $(nButton).parents('form:first').attr('action', 'events/save').submit();
+                        $(nButton).parents('form:first').attr('action', 'save').submit();
                     }
                 },{
                     "sExtends": "text",
-                    "sButtonText": '<i class="fa fa-plus" style="color:white"></i> <span class="hidden-mobile" style="color:white">Add Events</span>',
+                    "sButtonText": '<i class="fa fa-plus" style="color:white"></i> <span class="hidden-mobile" style="color:white">Add Banner</span>',
                     "sButtonClass": "btn-lg btn-primary",
                     "fnInit": function (nButton, oConfig) {
-                        $(nButton).css('margin-left', 5).attr('href', '<?= site_url(uri_string() . "/add") ?>').css('text-shadow','0 -1px 0 rgba(0, 0, 0, 0.5), 0 1px 0 rgba(255, 255, 255, 0.3)');
+                        $(nButton).css('margin-left', 5).attr('href', '<?= site_url("backend/homepage/banner/add") ?>').css('text-shadow','0 -1px 0 rgba(0, 0, 0, 0.5), 0 1px 0 rgba(255, 255, 255, 0.3)');
                     }
                 }]
             },
             "ajax": {
-                "url": "<?= site_url("backend/ajax/events/events/get_events_data") ?>",
+                "url": "<?= site_url("backend/ajax/homepage/banner/get_banner_data") ?>",
                 "data": function (data) {
                 }
             },
@@ -109,7 +109,7 @@
                 {class: "", data:"visible"},
                 {class: "hidden-tablet", data:"preview"},
                 {class: "", data:"title"},
-                {class: "", data:"date"},
+                {class: "", data:"subtitle"},
                 {class: "hidden-tablet", data: "order"},
                 {class: "", data: "action"}
             ],

@@ -1,6 +1,6 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
-class Events extends Backend_Controller
+class Inspiration extends Backend_Controller
 {
     public $query;
 
@@ -14,7 +14,7 @@ class Events extends Backend_Controller
         $this->check_action_auth($this->prevId, 'view', true); // Check Auth
         $this->check_action_auth($this->menuId, 'view', true); // Check Auth
 
-        $this->load->model('events/tb_events_model', 'events_model');
+        $this->load->model('homepage/tb_inspiration_model', 'inspiration_model');
         $this->query = $this->set_http_query(array('search' => $this->input->get('search', true)));
     }
 
@@ -26,24 +26,24 @@ class Events extends Backend_Controller
     public function add()
     {
         $this->check_action_auth($this->menuId, 'add', true); // Check Auth
-        $eventId = uniqid();
+        $inspirationId = uniqid();
     
         if($post = $this->input->post(null,true)){
-            $this->events_model->insert_events($post);
-            $eventId = $post['eventId'];
+            $this->inspiration_model->insert_inspiration($post);
+            $inspirationId = $post['inspirationId'];
             if($this->input->get('back',true)){
-                redirect("backend/events/events/");
+                redirect("backend/homepage/inspiration/");
             }
-            redirect('backend/events/events/edit/' . $eventId . $this->query);
+            redirect('backend/homepage/inspiration/edit/' . $inspirationId . $this->query);
         }
-        $this->get_view('add',array('eventId' => $eventId));
+        $this->get_view('add',array('inspirationId' => $inspirationId));
     }
 
-    public function edit($eventId = false)
+    public function edit($inspirationId = false)
     {
-        if (!$row = $this->events_model->get_events_by_id($eventId, false, array('enable' => false, 'visible' => false))):
+        if (!$row = $this->inspiration_model->get_inspiration_by_id($inspirationId, false, array('enable' => false, 'visible' => false))):
             $this->set_active_status('danger', 'The data does not exist!');
-            redirect('backend/events/events');
+            redirect('backend/inspiration/inspiration');
         endif;        
 
         if ($post = $this->input->post(null, true)):
@@ -52,19 +52,19 @@ class Events extends Backend_Controller
             if ($row->uuid != $post['uuid']):
                 $this->set_active_status('danger', 'Date has been changed');
             else:
-                $this->events_model->update_events($row, $post);
+                $this->inspiration_model->update_inspiration($row, $post);
                 $this->set_active_status('success', 'Success');
 
                 if ($this->input->get('back', true)):
-                    redirect('backend/events/events' . $this->query);
+                    redirect('backend/homepage/inspiration' . $this->query);
                 endif;
             endif;
 
-            redirect('backend/events/events/edit/' . $eventId . $this->query);
+            redirect('backend/homepage/inspiration/edit/' . $inspirationId . $this->query);
         endif;
         
         $data = array(
-            'eventId' => $eventId,
+            'inspirationId' => $inspirationId,
             'row' => $row
         );
 
@@ -75,14 +75,14 @@ class Events extends Backend_Controller
     {
         $this->check_action_auth($this->menuId, 'delete', true); // Check Auth
 
-        if (!$row = $this->events_model->get_events_by_id($eventId, $this->langId, array('enable' => true, 'visible' => false))):
+        if (!$row = $this->inspiration_model->get_inspiration_by_id($eventId, $this->langId, array('enable' => true, 'visible' => false))):
             $this->set_active_status('danger', 'The data does not exist!');
         else:
-            $this->events_model->delete_events($row);
+            $this->inspiration_model->delete_inspiration($row);
             $this->set_active_status('success', 'Success');
         endif;
 
-        redirect('backend/events/events' . $this->query);
+        redirect('backend/inspiration/inspiration' . $this->query);
     }
 
     public function save()
@@ -94,17 +94,17 @@ class Events extends Backend_Controller
                 $order[$i] = array_merge($row, array('uuid' => uniqid(), 'update_at' => date('Y-m-d H:i:s')));
             endforeach;
 
-            $this->db->update_batch('tb_events', $order, 'eventId');
+            $this->db->update_batch('tb_inspiration', $order, 'eventId');
             $this->set_active_status('success', 'Success');
         endif;
 
-        redirect('backend/events/events' . $this->query);
+        redirect('backend/inspiration/inspiration' . $this->query);
     }
 
     /******************** Private Function ********************/
     private function get_view($page, $data = '')
     {
-        $content = $this->load->view('backend/events/' . $page, $data, true);
+        $content = $this->load->view('backend/homepage/inspiration/' . $page, $data, true);
         $this->load->view('backend/index', $this->get_page_nav($content), false);
     }
 }

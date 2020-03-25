@@ -65,85 +65,21 @@
                                         </div>
 
                                         <div class="form-group">
-                                            <label class="col-sm-2 control-label">Category</label>
-                                            <div class="col-sm-9">
-                                                <select class="form-control" id="category" name="category"
-                                                    data-bv-notempty="true" data-bv-notempty-message=" ">
-                                                    <option value="">Choose</option>
-                                                    <option value="0" <?= $row->category == '0' ? 'selected' : '' ?>>Explore Events</option>
-                                                    <option value="1" <?= $row->category == '1' ? 'selected' : '' ?>>New Collections</option>
-                                                </select> 
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label class="col-sm-2 control-label" for="date">Date</label>
-
-                                            <div class="col-sm-9 col-lg-3">
-                                                <div class="input-group">
-                                                    <input type="text" class="form-control datepicker" id="date" name="date" data-dateformat="yy-mm-dd" placeholder="選擇日期" autocomplete="off" value="<?= $row->date ?>" data-bv-notempty="true" data-bv-notempty-message=" ">
-                                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label class="col-sm-2 control-label">Content Image</label>
+                                            <label class="col-sm-2 control-label">Image</label>
 
                                             <div class="col-sm-9">
-                                                <input type="file" class="btn btn-default" id="uploadImg" name="eventImg">
+                                                <input type="file" class="btn btn-default" id="uploadImg" name="inspirationImg">
 
                                                 <p class="help-block">
-                                                    <strong>Note:</strong>Picture size is <strong>600 x 600</strong>.type is<strong>JPG、PNG</strong>。
+                                                    <strong>Note:</strong>Picture width is <strong>240</strong>.type is<strong>JPG、PNG</strong>。
                                                 </p>
+
                                                 <p class="help-block">
-                                                    <?php $eventImg = check_file_path($row->eventImg); ?>
-                                                    <img id="preview" src="<?= $eventImg ?>"<?= !$eventImg ? "display:none;" : "" ?>>
+                                                    <?php $inspirationImg = check_file_path($row->inspirationImg); ?>
+                                                    <img id="preview" src="<?= $inspirationImg ?>"<?= !$inspirationImg ? "display:none;" : "" ?>>
                                                 </p>
                                             </div>
-                                        </div>
-
-                                        <div class="form-group" id="collectionImg" style="display:<?= $row->category == 0 ? 'none;' : 'block' ?>">
-                                            <label class="col-sm-2 control-label">New Collections Image</label>
-
-                                            <div class="col-sm-9">
-                                                <input type="file" class="btn btn-default" id="uploadImg" name="collectionImg">
-
-                                                <p class="help-block">
-                                                    <strong>Note:</strong>Picture size is <strong>510 x 288</strong>.type is<strong>JPG、PNG</strong>。
-                                                </p>
-
-                                                <p class="help-block">                                                    
-                                                    <?php @$collectionImg = check_file_path($row->collectionImg);?>
-                                                    <img id="preview" src="<?= $collectionImg ?>"<?= !$collectionImg ? 'display:none;' : '' ?>>
-                                                </p>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group" id="collectionyoutube" style="display:<?= $row->category == 0 ? 'none;' : 'block' ?>">
-                                            <label class="col-sm-2 control-label">New Collections Youtube</label>
-
-                                            <div class="col-sm-9 col-lg-6">
-                                                <input type="text" class="form-control" name="collectionyoutube" value="<?=$row->collectionyoutube ?>" <?= $row->category == 1 ? 'data-bv-notempty="true" data-bv-notempty-message=" "' : '' ?> >
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group" id="exploreImg" style="display:<?= $row->category == 1 ? 'none;' : 'block' ?>">
-                                            <label class="col-sm-2 control-label">Explore Events Image</label>
-
-                                            <div class="col-sm-9">
-                                                <input type="file" class="btn btn-default" id="uploadImg" name="exploreImg">
-
-                                                <p class="help-block">
-                                                    <strong>Note:</strong>Picture size is <strong>360 x 360</strong>.type is<strong>JPG、PNG</strong>。
-                                                </p>
-
-                                                <p class="help-block">
-                                                    <?php @$exploreImg = check_file_path($row->exploreImg);?>
-                                                    <img id="preview" src="<?= $exploreImg ?>"<?= !$exploreImg ? 'display:none;' : '' ?>>
-                                                </p>
-                                            </div>
-                                        </div>
+                                        </div>                                       
                                           
                                         <div class="form-group">
                                             <label class="col-sm-2 control-label">Sort</label>
@@ -158,11 +94,11 @@
                                     <?php foreach ($this->langList as $lrow): ?>
                                         <?php $langData = @$row->langList[$lrow->langId]; ?>
                                         <div class="tab-pane" id="hb<?= $i++ ?>">  
-                                            <input type="hidden" name="langList[<?= $lrow->langId ?>][eventId]" value="<?= $eventId ?>">
+                                            <input type="hidden" name="langList[<?= $lrow->langId ?>][iId]" value="<?= $inspirationId ?>">
                                             <input type="hidden" name="langList[<?= $lrow->langId ?>][langId]" value="<?= $lrow->langId ?>">
 
                                             <fieldset data-id="<?= $lrow->langId ?>">
-                                                <legend>Events Content</legend>
+                                                <legend>Inspiration Content</legend>
 
                                                 <div class="form-group">
                                                     <label class="col-sm-2 control-label" for="title-<?= $lrow->langId ?>">Title</label>
@@ -176,7 +112,8 @@
                                                     <label class="col-sm-2 control-label">Content</label>
 
                                                     <div class="col-sm-9">
-                                                        <textarea class="form-control" name="langList[<?= $lrow->langId ?>][content]" rows="15" data-bv-notempty="true" data-bv-notempty-message=" "><?= @$langData->content ?></textarea>
+                                                        <div id="content-edit"><?= @$langData->content ?></div>
+                                                        <input type="hidden" id="content" name="langList[<?= $lrow->langId ?>][content]"  data-bv-notempty="true" data-bv-notempty-message=" ">
                                                     </div>
                                                 </div>
                                             </fieldset>
@@ -250,23 +187,27 @@
             });
         });
 
-        $('#category').on('change',function(){
-            if($(this).val() == 0){
-                $('#exploreImg').css('display','block');
-                $('#data-form').bootstrapValidator('resetField', 'collectionyoutube');
-                $("#data-form").bootstrapValidator('enableFieldValidators', 'collectionyoutube', false);
-                $('#collectionImg').css('display','none');
-                $('#collectionyoutube').css('display','none');
-            }else{
-                $('#collectionImg').css('display','block');
-                $('#collectionyoutube').css('display','block');
-                $("#data-form").bootstrapValidator('enableFieldValidators', 'collectionyoutube', true);  
-                $('#exploreImg').css('display','none');
-            }
-        });
 
         $('form').bootstrapValidator({
             excluded: ""
         });         
     });
+
+    function sendFile(file, editor) {
+        var data = new FormData();
+        data.append('inspirationId', '<?= $row->inspirationId ?>');
+        data.append("file", file);
+
+        return $.ajax({
+            data: data,
+            type: "POST",
+            url: "<?= site_url("backend/ajax/homepage/inspiration/upload") ?>",
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function (url) {
+                editor.summernote('editor.insertImage', url);
+            }
+        });
+    }
 </script>

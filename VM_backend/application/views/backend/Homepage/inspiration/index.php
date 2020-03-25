@@ -12,7 +12,7 @@
         padding-bottom: 5px;
     }
     #preview img{
-        width:200px;
+        height:200px;
     }
 </style>
 <section id="widget-grid" class="">
@@ -31,7 +31,7 @@
                 <header>
                     <span class="widget-icon"><i class="fa fa-table"></i></span>
 
-                    <h2>Events List</h2>
+                    <h2>Inspiration List</h2>
                 </header>
 
                 <div>
@@ -44,7 +44,6 @@
                                         <th width="30" class="text-center">Visible</th>
                                         <th width="120" class="text-center hidden-tablet">Image</th>
                                         <th width="200" class="text-center">Title</th>
-                                        <th width="120" class="text-center">Date</th>
                                         <th width="60" class="text-center hidden-tablet">Sort</th>
                                         <th width="160" class="text-center">Action</th>
                                     </tr>
@@ -93,7 +92,7 @@
                     }
                 },{
                     "sExtends": "text",
-                    "sButtonText": '<i class="fa fa-plus" style="color:white"></i> <span class="hidden-mobile" style="color:white">Add Events</span>',
+                    "sButtonText": '<i class="fa fa-plus" style="color:white"></i> <span class="hidden-mobile" style="color:white">Add Inspiration</span>',
                     "sButtonClass": "btn-lg btn-primary",
                     "fnInit": function (nButton, oConfig) {
                         $(nButton).css('margin-left', 5).attr('href', '<?= site_url(uri_string() . "/add") ?>').css('text-shadow','0 -1px 0 rgba(0, 0, 0, 0.5), 0 1px 0 rgba(255, 255, 255, 0.3)');
@@ -101,7 +100,7 @@
                 }]
             },
             "ajax": {
-                "url": "<?= site_url("backend/ajax/events/events/get_events_data") ?>",
+                "url": "<?= site_url("backend/ajax/homepage/inspiration/get_inspiration_data") ?>",
                 "data": function (data) {
                 }
             },
@@ -109,7 +108,6 @@
                 {class: "", data:"visible"},
                 {class: "hidden-tablet", data:"preview"},
                 {class: "", data:"title"},
-                {class: "", data:"date"},
                 {class: "hidden-tablet", data: "order"},
                 {class: "", data: "action"}
             ],
@@ -138,13 +136,4 @@
             }
         });
     });
-
-    function get_country_option(selectId) {
-        return $.ajax({
-            url: '<?= site_url('backend/ajax/designer/designer/get_country_option') ?>',
-            data: {selectId: selectId},
-            type: 'get',
-            dataType: 'json'
-        });
-    }
 </script>

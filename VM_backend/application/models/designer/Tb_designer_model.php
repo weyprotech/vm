@@ -63,15 +63,19 @@ class Tb_designer_model extends MY_Model
             $insert['designImg'] = $this->uploadFile('design', $post['designerId'] . '/', 540);
         endif;
         if (isset($_FILES['hometownpost1Img']) && !$_FILES['hometownpost1Img']['error']):
-            $insert['hometownpost1Img'] = $this->uploadFile('hometownpost1', $post['designerId'] . '/', 540);
+            $insert['hometownpost1Img'] = $this->uploadFile('hometownpost1', $post['designerId'] . '/', 360);
         endif;
 
         if (isset($_FILES['hometownpost2Img']) && !$_FILES['hometownpost2Img']['error']):
-            $insert['hometownpost2Img'] = $this->uploadFile('hometownpost2', $post['designerId'] . '/', 540);
+            $insert['hometownpost2Img'] = $this->uploadFile('hometownpost2', $post['designerId'] . '/', 360);
         endif;
 
         if (isset($_FILES['hometownpost3Img']) && !$_FILES['hometownpost3Img']['error']):
-            $insert['hometownpost3Img'] = $this->uploadFile('hometownpost3', $post['designerId'] . '/', 540);
+            $insert['hometownpost3Img'] = $this->uploadFile('hometownpost3', $post['designerId'] . '/', 360);
+        endif;
+
+        if (isset($_FILES['designerstoryImg']) && !$_FILES['designerstoryImg']['error']):
+            $insert['designerstoryImg'] = $this->uploadFile('designerstory', $post['designerId'] . '/', 510);
         endif;
 
         if (isset($post['langList'])):
@@ -96,15 +100,19 @@ class Tb_designer_model extends MY_Model
             $update['designImg'] = $this->uploadFile('design', $designer->designerId . '/', 540);
         endif;
         if (isset($_FILES['hometownpost1Img']) && !$_FILES['hometownpost1Img']['error']):
-            $update['hometownpost1Img'] = $this->uploadFile('hometownpost1', $designer->designerId . '/', 540);
+            $update['hometownpost1Img'] = $this->uploadFile('hometownpost1', $designer->designerId . '/', 360);
         endif;
 
         if (isset($_FILES['hometownpost2Img']) && !$_FILES['hometownpost2Img']['error']):
-            $update['hometownpost2Img'] = $this->uploadFile('hometownpost2', $designer->designerId . '/', 540);
+            $update['hometownpost2Img'] = $this->uploadFile('hometownpost2', $designer->designerId . '/', 360);
         endif;
 
         if (isset($_FILES['hometownpost3Img']) && !$_FILES['hometownpost3Img']['error']):
-            $update['hometownpost3Img'] = $this->uploadFile('hometownpost3', $designer->designerId . '/', 540);
+            $update['hometownpost3Img'] = $this->uploadFile('hometownpost3', $designer->designerId . '/', 360);
+        endif;
+
+        if (isset($_FILES['designerstoryImg']) && !$_FILES['designerstoryImg']['error']):
+            $update['designerstoryImg'] = $this->uploadFile('designerstory', $designer->designerId . '/', 510);
         endif;
         if (isset($post['langList'])):
             foreach ($post['langList'] as $i => $lrow):

@@ -65,24 +65,21 @@
                                             </div>
                                         </div>
 
-                                        <!-- <div class="form-group">
-                                            <label class="col-sm-2 control-label" for="cId">類別</label>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">Designer Story</label>
 
-                                            <div class="col-sm-9 col-lg-4">
-                                                <select class="form-control" id="cId" name="cId"></select>
+                                            <div class="col-sm-9">
+                                                <label class="radio radio-inline">
+                                                    <input type="radio" class="radiobox designer_story" name="is_designer_story" value="1" <?= $row->is_designer_story == 1 ? 'checked="checked"' : '' ?>>
+                                                    <span>Yes</span>
+                                                </label>
+
+                                                <label class="radio radio-inline">
+                                                    <input type="radio" class="radiobox designer_story" name="is_designer_story" value="0" <?= $row->is_designer_story == 0 ? 'checked="checked"' : '' ?>>
+                                                    <span>No</span>
+                                                </label>
                                             </div>
-                                        </div> -->
-
-                                        <!-- <div class="form-group">
-                                            <label class="col-sm-2 control-label" for="date">日期</label>
-
-                                            <div class="col-sm-9 col-lg-3">
-                                                <div class="input-group">
-                                                    <input type="text" class="form-control datepicker" id="date" name="date" value="<?= $row->date ?>" data-dateformat="yy-mm-dd" placeholder="選擇日期" required>
-                                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                                </div>
-                                            </div>
-                                        </div> -->
+                                        </div>
 
                                         <div class="form-group">
                                             <label class="col-sm-2 control-label">Icon</label>
@@ -101,7 +98,7 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="col-sm-2 control-label">Img</label>
+                                            <label class="col-sm-2 control-label">Image</label>
 
                                             <div class="col-sm-9">
                                                 <input type="file" class="btn btn-default" id="uploadImg" name="designImg">
@@ -116,6 +113,29 @@
                                                 </p>
                                             </div>
                                         </div>
+
+                                        <div class="form-group designer_story_img" <?= $row->is_designer_story == 1 ? 'style="display:block"' : 'style="display:none;"'  ?>>
+                                            <label class="col-sm-2 control-label">Designer Story Image</label>
+
+                                            <div class="col-sm-9">
+                                                <input type="file" class="btn btn-default" id="uploadImg" name="designerstoryImg"
+                                                    data-bv-notempty="true" data-bv-notempty-message=" "
+                                                    data-bv-file="true"
+                                                    data-bv-file-extension="jpeg,jpg,png,gif"
+                                                    data-bv-file-type="image/jpeg,image/png,image/gif"
+                                                    data-bv-file-message="Type error">
+
+                                                <p class="help-block">
+                                                    <strong>Note:</strong>Picture size is <strong>510 x 288</strong>.type is<strong>JPG、PNG</strong>。
+                                                </p>
+
+                                                <p class="help-block">                                                    
+                                                    <?php $designerstoryImg = check_file_path($row->designerstoryImg); ?>
+                                                    <img id="preview" src="<?= $designerstoryImg ?>"<?= !$designerstoryImg ? "display:none;" : "" ?>>
+                                                </p>
+                                            </div>
+                                        </div>
+
                                         <legend>My Hometown</legend>
 
                                             <div class="form-group">
@@ -374,6 +394,8 @@
 
     var $cId = $("#cId");
     $(document).ready(function () {
+        $('#data-form').bootstrapValidator('resetField', 'designerstoryImg');
+        $("#data-form").bootstrapValidator('enableFieldValidators', 'designerstoryImg', false);
         $('input#uploadImg').change(function () {
             var $this = $(this);
             var reader = new FileReader();
@@ -453,6 +475,18 @@
                     }
                 }
             });
+        });
+
+        $('body').on('click','.designer_story',function(){
+            if($(this).val() == 1){
+                $('.designer_story_img').css('display','block');
+                $("#data-form").bootstrapValidator('enableFieldValidators', 'designerstoryImg', true);  
+            }else{
+                $('.designer_story_img').css('display','none');
+                $('#data-form').bootstrapValidator('resetField', 'designerstoryImg');
+                $("#data-form").bootstrapValidator('enableFieldValidators', 'designerstoryImg', false);
+            }
+            console.log($(this).val());
         });
     });
 

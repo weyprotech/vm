@@ -65,6 +65,22 @@
                                         </div>
 
                                         <div class="form-group">
+                                            <label class="col-sm-2 control-label">Designer Story</label>
+
+                                            <div class="col-sm-9">
+                                                <label class="radio radio-inline">
+                                                    <input type="radio" class="radiobox designer_story" name="is_designer_story" value="1">
+                                                    <span>Yes</span>
+                                                </label>
+
+                                                <label class="radio radio-inline">
+                                                    <input type="radio" class="radiobox designer_story" name="is_designer_story" value="0" checked>
+                                                    <span>No</span>
+                                                </label>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
                                             <label class="col-sm-2 control-label">Icon</label>
 
                                             <div class="col-sm-9">
@@ -85,7 +101,7 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="col-sm-2 control-label">Img</label>
+                                            <label class="col-sm-2 control-label">Image</label>
 
                                             <div class="col-sm-9">
                                                 <input type="file" class="btn btn-default" id="uploadImg" name="designImg"
@@ -97,6 +113,27 @@
 
                                                 <p class="help-block">
                                                     <strong>Note:</strong>Picture size is <strong>540 x 720</strong>.type is<strong>JPG、PNG</strong>。
+                                                </p>
+
+                                                <p class="help-block">                                                    
+                                                    <img id="preview" src="">
+                                                </p>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group designer_story_img" style="display:none;">
+                                            <label class="col-sm-2 control-label">Designer Story Img</label>
+
+                                            <div class="col-sm-9">
+                                                <input type="file" class="btn btn-default" id="uploadImg" name="designerstoryImg"
+                                                    data-bv-notempty="true" data-bv-notempty-message=" "
+                                                    data-bv-file="true"
+                                                    data-bv-file-extension="jpeg,jpg,png,gif"
+                                                    data-bv-file-type="image/jpeg,image/png,image/gif"
+                                                    data-bv-file-message="Type error">
+
+                                                <p class="help-block">
+                                                    <strong>Note:</strong>Picture size is <strong>510 x 288</strong>.type is<strong>JPG、PNG</strong>。
                                                 </p>
 
                                                 <p class="help-block">                                                    
@@ -118,7 +155,7 @@
                                                     data-bv-file-type="image/jpeg,image/png,image/gif"
                                                     data-bv-file-message="Type error">
                                                 <p class="help-block">
-                                                    <strong>Note:</strong>Picture size is <strong>540 x 720</strong>.type is<strong>JPG、PNG</strong>。
+                                                    <strong>Note:</strong>Picture size is <strong>360 x 270</strong>.type is<strong>JPG、PNG</strong>。
                                                 </p>
 
                                                 <p class="help-block">                                                    
@@ -138,7 +175,7 @@
                                                     data-bv-file-type="image/jpeg,image/png,image/gif"
                                                     data-bv-file-message="Type error">
                                                 <p class="help-block">
-                                                    <strong>Note:</strong>Picture size is <strong>540 x 720</strong>.type is<strong>JPG、PNG</strong>。
+                                                    <strong>Note:</strong>Picture size is <strong>360 x 270</strong>.type is<strong>JPG、PNG</strong>。
                                                 </p>
 
                                                 <p class="help-block">                                                    
@@ -158,7 +195,7 @@
                                                     data-bv-file-type="image/jpeg,image/png,image/gif"
                                                     data-bv-file-message="Type error">
                                                 <p class="help-block">
-                                                    <strong>Note:</strong>Picture size is <strong>540 x 720</strong>.type is<strong>JPG、PNG</strong>。
+                                                    <strong>Note:</strong>Picture size is <strong>360 x 270</strong>.type is<strong>JPG、PNG</strong>。
                                                 </p>
 
                                                 <p class="help-block">                                                    
@@ -225,7 +262,7 @@
                                                     <label class="col-sm-2 control-label" for="title-<?= $lrow->langId ?>">Designer Name</label>
 
                                                     <div class="col-sm-9">
-                                                        <input type="text" class="form-control designer_name" name="langList[<?= $lrow->langId ?>][name]" data-bv-notempty="true" data-bv-notempty-message=" ">                                                        
+                                                        <input type="text" class="form-control designer_name" name="langList[<?= $lrow->langId ?>][name]" data-bv-notempty="true" data-bv-notempty-message=" " required>                                                        
                                                     </div>
                                                 </div>
 
@@ -247,7 +284,7 @@
 
                                                     <div class="col-sm-9">
                                                         <div id="content-edit"><?= @$langData->description ?></div>
-                                                        <input type="hidden" id="content" name="langList[<?= $lrow->langId ?>][description]">
+                                                        <input type="hidden" id="content" name="langList[<?= $lrow->langId ?>][description]" data-bv-notempty="true" data-bv-notempty-message=" ">
                                                     </div>
                                                 </div>
 
@@ -264,7 +301,7 @@
                                                     <label class="col-sm-2 control-label" for="title-<?= $lrow->langId ?>">Story Content</label>
 
                                                     <div class="col-sm-9">
-                                                        <textarea class="form-control" name="langList[<?= $lrow->langId ?>][my_story_content]" rows="10"></textarea>
+                                                        <textarea class="form-control" name="langList[<?= $lrow->langId ?>][my_story_content]" rows="10" data-bv-notempty="true" data-bv-notempty-message=" "></textarea>
                                                     </div>
                                                 </div>
 
@@ -310,7 +347,7 @@
                                                     <label class="col-sm-2 control-label" for="title-<?= $lrow->langId ?>">Hometown Post1 Content</label>
 
                                                     <div class="col-sm-9">
-                                                        <textarea class="form-control" name="langList[<?= $lrow->langId ?>][hometown_post1_content]" rows="10"></textarea>
+                                                        <textarea class="form-control" name="langList[<?= $lrow->langId ?>][hometown_post1_content]" rows="10" data-bv-notempty="true" data-bv-notempty-message=" "></textarea>
                                                     </div>
                                                 </div>
 
@@ -326,7 +363,7 @@
                                                     <label class="col-sm-2 control-label" for="title-<?= $lrow->langId ?>">Hometown Post2 Content</label>
 
                                                     <div class="col-sm-9">
-                                                        <textarea class="form-control" name="langList[<?= $lrow->langId ?>][hometown_post2_content]" rows="10"></textarea>
+                                                        <textarea class="form-control" name="langList[<?= $lrow->langId ?>][hometown_post2_content]" rows="10" data-bv-notempty="true" data-bv-notempty-message=" "></textarea>
                                                     </div>
                                                 </div>
 
@@ -341,7 +378,7 @@
                                                     <label class="col-sm-2 control-label" for="title-<?= $lrow->langId ?>">Hometown Post3 Content</label>
 
                                                     <div class="col-sm-9">
-                                                        <textarea class="form-control" name="langList[<?= $lrow->langId ?>][hometown_post3_content]" rows="10"></textarea>
+                                                        <textarea class="form-control" name="langList[<?= $lrow->langId ?>][hometown_post3_content]" rows="10" data-bv-notempty="true" data-bv-notempty-message=" "></textarea>
                                                     </div>
                                                 </div>
                                             </fieldset>
@@ -373,6 +410,8 @@
 
     var $cId = $("#cId");
     $(document).ready(function () {
+        $('#data-form').bootstrapValidator('resetField', 'designerstoryImg');
+        $("#data-form").bootstrapValidator('enableFieldValidators', 'designerstoryImg', false);
         $('input#uploadImg').change(function () {
             var $this = $(this);
             var reader = new FileReader();
@@ -452,6 +491,17 @@
                     }
                 }
             });
+        });
+        $('body').on('click','.designer_story',function(){
+            if($(this).val() == 1){
+                $('.designer_story_img').css('display','block');
+                $("#data-form").bootstrapValidator('enableFieldValidators', 'designerstoryImg', true);  
+            }else{
+                $('.designer_story_img').css('display','none');
+                $('#data-form').bootstrapValidator('resetField', 'designerstoryImg');
+                $("#data-form").bootstrapValidator('enableFieldValidators', 'designerstoryImg', false);
+            }
+            console.log($(this).val());
         });
     });
 

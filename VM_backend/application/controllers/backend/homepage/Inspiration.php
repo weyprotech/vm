@@ -44,8 +44,9 @@ class Inspiration extends Backend_Controller
         if (!$row = $this->inspiration_model->get_inspiration_by_id($inspirationId, false, array('enable' => false, 'visible' => false))):
             $this->set_active_status('danger', 'The data does not exist!');
             redirect('backend/inspiration/inspiration');
-        endif;        
+        endif;
 
+        $relateproductList = $this->inspiration_model->get_inspiration_related_product_select(array(array('field' => 'relate_product.iId','value' => $inspirationId)),false,false,3);
         if ($post = $this->input->post(null, true)):
             $this->check_action_auth($this->menuId, 'edit', true); // Check Auth
 
@@ -65,6 +66,7 @@ class Inspiration extends Backend_Controller
         
         $data = array(
             'inspirationId' => $inspirationId,
+            'relateproductList' => $relateproductList,
             'row' => $row
         );
 

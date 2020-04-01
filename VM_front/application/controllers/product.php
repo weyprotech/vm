@@ -1,6 +1,6 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
-class Designers extends Frontend_Controller
+class Product extends Frontend_Controller
 {
     public function __construct()
     {
@@ -15,13 +15,33 @@ class Designers extends Frontend_Controller
 
     public function index()
     {
-        $productList = $this->tb_product_model->get_product_select(array(array('field' => 'product.is_visible','value' => 1)),array(array('field' => 'product.order','dir' => 'desc')),array('start' => 0,'limit' => 20),$this->langId);
+        $baseId = $this->input->get('baseId',true);
+        $subId = $this->input->get('subId',true);
+        $categoryId = $this->input->get('categoryId',true);
+        if(!empty($categoryId)){
+            $category = $this->tb_category_model->get_category_by_id($categoryId,$this->langId);
+            $productList = $this->tb_product_model->get_product_select(array(array('field' => 'product.is_visible','value' => 1),array('field' => 'product.cId','value' => $categoryId)),array(array('field' => 'product.order','dir' => 'desc')),array('start' => 0,'limit' => 20),$this->langId);
+            $product_count = $this->tb_product_model->count_product(array(array('field' => 'product.is_visible','value' => 1),array('field' => 'product.cId','value' => $categoryId)),$this->langId);
+        }else if(!empty($subId)){
+            $temp = $this->tb_category_model->get_category_select(array(array('field' => 'category.prevId','value' => $subId)),array(array('field' => 'category.order','dir' => 'RANDOM')),array('start' => 0,'limit' => 1),$this->langId);
+            $category = $temp[0];
+            $productList = $this->tb_product_model->get_product_select(array(array('field' => 'product.is_visible','value' => 1),array('field' => 'product.subId','value' => $subId)),array(array('field' => 'product.order','dir' => 'desc')),array('start' => 0,'limit' => 20),$this->langId);
+            $product_count = $this->tb_product_model->count_product(array(array('field' => 'product.is_visible','value' => 1),array('field' => 'product.subId','value' => $subId)),$this->langId);
+        }else{
+            $sub_temp = $this->tb_category_model->get_category_select(array(array('field' => 'category.prevId','value' => $baseId)),array(array('field' => 'category.order','dir' => 'RANDOM')),array('start' => 0,'limit' => 1),$this->langId);
+            $temp = $this->tb_category_model->get_category_select(array(array('field' => 'category.prevId','value' => $sub_temp[0]->categoryUd)),array(array('field' => 'category.order','dir' => 'RANDOM'),array('start' => 0,'limit' => 1)),$this->langId);
+            $category = $temp[0];
+            $productList = $this->tb_product_model->get_product_select(array(array('field' => 'product.is_visible','value' => 1),array('field' => 'product.baseId','value' => $baseId)),array(array('field' => 'product.order','dir' => 'desc')),array('start' => 0,'limit' => 20),$this->langId);
+            $product_count = $this->tb_product_model->count_product(array(array('field' => 'product.is_visible','value' => 1),array('field' => 'product.subId','value' => $subId)),$this->langId);
+        }
 
         $data = array(
-            'productList' => $productList
+            'productList' => $productList,
+            'category' => $category,
+            'product_count' => $product_count
         );
 
-        $this->get_view('designers/index', $data);
+        $this->get_view('product/index', $data);
     }
 
     public function home(){

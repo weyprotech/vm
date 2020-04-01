@@ -70,7 +70,7 @@
                                             <label class="col-sm-2 control-label" for="baseId">Base Category</label>
 
                                             <div class="col-sm-9 col-lg-4">
-                                                <select class="form-control" id="baseId" name="subId" data-bv-notempty="true" data-bv-notempty-message=" ">
+                                                <select class="form-control" id="baseId" name="baseId" data-bv-notempty="true" data-bv-notempty-message=" ">
                                                     <option value="" selected>None</option>
                                                     <?php if ($topList): ?>
                                                         <?php foreach ($topList as $crow): ?>

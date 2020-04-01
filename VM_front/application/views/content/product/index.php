@@ -1,32 +1,37 @@
 <main id="main">
     <div class="filter_sort_bar">
         <div class="bar_inner">
-        <div class="filter_selects">
-            <!--篩選項目-->
-        </div>
-        <div class="results_sort">
-            <div class="results_count">5982 items</div>
-            <div class="dropdown_menu dropdown_select">
-            <div class="dropdown_head">Sort by: <span class="sortText">Price</span></div>
-            <ul class="dropdown_list">
-                <li><a class="current" href="javascript:;">Price</a></li>
-                <li><a href="javascript:;">Popularity</a></li>
-            </ul>
+            <div class="filter_selects">
+                <!--篩選項目-->
             </div>
-        </div>
+            <div class="results_sort">
+                <div class="results_count"><?= $product_count ?> items</div>
+                <div class="dropdown_menu dropdown_select">
+                    <div class="dropdown_head">Sort by: <span class="sortText">Price</span></div>
+                    <ul class="dropdown_list">
+                        <li><a class="current" href="javascript:;">Price</a></li>
+                        <li><a href="javascript:;">Popularity</a></li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
     <div class="products_show_wrapper page_block">
         <div class="block_inner">
-        <div class="products_show">
-            <div class="master_vision"><img src="images/img_master_vision.jpg" alt=""></div>
-            <div class="products_list span5">
-            <div class="item"><a href="product_detail.html">
-                <div class="thumb">
-                    <div class="pic" style="background-image: url(images/img_product01.jpg)"><img class="size" src="images/size_3x4.png"></div>
-                </div>
-                <h3>Lemite - Sleeveless Eyelet-Lace Dress</h3>
-                <div class="price">NT$ 98800</div></a></div>
+            <div class="products_show">
+                <div class="master_vision"><img src="<?= backend_url($category->categoryImg) ?>" alt=""></div>
+                <div class="products_list span5">
+                    <?php for($i=0;$i<4;$i++){ ?>
+                        <div class="item">
+                            <a href="product_detail.html">
+                                <div class="thumb">
+                                    <div class="pic" style="background-image: url(images/img_product01.jpg)"><img class="size" src="images/size_3x4.png"></div>
+                                </div>
+                                <h3>Lemite - Sleeveless Eyelet-Lace Dress</h3>
+                                <div class="price">NT$ 98800</div>
+                            </a>
+                        </div>
+                    <?php } ?>
             <div class="item"><a href="product_detail.html">
                 <div class="thumb">
                     <div class="pic" style="background-image: url(https://via.placeholder.com/300x400)"><img class="size" src="images/size_3x4.png"></div>

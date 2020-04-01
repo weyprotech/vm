@@ -48,7 +48,7 @@
                                                 <input type="file" class="btn btn-default" id="uploadImg" name="personalImg">
 
                                                 <p class="help-block">
-                                                    <strong>Note:</strong> Picture size is <strong>1426 x 363</strong>.type is<strong>JPG、PNG</strong>。
+                                                    <strong>Note:</strong> Picture size is <strong>1920 X 490</strong>.type is<strong>JPG、PNG</strong>。
                                                 </p>                                            
                                                 <p class="help-block">
                                                     <?php $personalImg = check_file_path(@$langData->personalImg); ?>

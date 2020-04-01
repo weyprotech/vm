@@ -5,7 +5,7 @@ class tb_designer_banner_model extends MY_Model
     public function __construct()
     {
         parent::__construct();
-        $this->uploadPath .= 'designer/designer_banner/';
+        $this->checkUploadPath('designer/designer_banner/'); // 上傳路徑
     }
 
     /******************** Banner Model ********************/

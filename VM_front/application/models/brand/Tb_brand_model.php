@@ -160,10 +160,12 @@ class Tb_brand_model extends MY_Model
     /******************** Private Function ********************/
     private function set_brand_join($langId)
     {
-        $this->db->select('brand.*');
+        $this->db->select('brand.*,designer.grade');
+        $this->db->join('tb_designer as designer','designer.designerId = brand.designerId','left');
         if ($langId):
-            $this->db->select('lang.name');
+            $this->db->select('lang.name,lang.content,lang.brand_story_title,lang.brand_story_content,lang.brand_story_title2,lang.brand_story_content2,designer_lang.name as designer_name');
             $this->db->join('tb_brand_lang as lang', 'lang.brandId = brand.brandId AND lang.langId = ' . $langId);
+            $this->db->join('tb_designer_lang as designer_lang','designer_lang.designerId = designer.designerId AND designer_lang.langId = ' . $langId,'inner');
         endif;
         return true;
     }
@@ -177,6 +179,9 @@ class Tb_brand_model extends MY_Model
             if (!in_array($field, array('langList', 'uuid'))):
                 switch ($field):
                     case 'detail':
+                        $data[$field] = check_input_value(html_entity_decode($value));
+                        break;
+                    case 'brand_story_content':
                         $data[$field] = check_input_value(html_entity_decode($value));
                         break;
                     default:

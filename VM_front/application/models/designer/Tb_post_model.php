@@ -16,6 +16,7 @@ class Tb_post_model extends MY_Model
             $this->db->select('post.*, lang.title, lang.content');
             $this->db->join('tb_designer_post_lang as lang', 'lang.postId = post.postId AND lang.langId = ' . $langId, 'left');
         endif;
+        
         $this->set_filter($filter);
         $this->set_order($order);
         $this->set_limit($limit);
@@ -184,15 +185,10 @@ class Tb_post_model extends MY_Model
     /********* Start post message model *******/
     public function get_post_message_select($filter = false, $order = false, $limit = false, $langId = false)
     {
-        if ($langId):
-            $this->db->select('post.*, lang.title, lang.content');
-            $this->db->join('tb_designer_post_lang as lang', 'lang.postId = post.postId AND lang.langId = ' . $langId, 'left');
-            $this->db->join('tb_designer_post_message as message','message.postId = post.postid','left');
-        endif;
         $this->set_filter($filter);
         $this->set_order($order);
         $this->set_limit($limit);
-        $query = $this->db->where('post.is_enable', 1)->get('tb_designer_post as post');
+        $query = $this->db->get('tb_designer_post_message as message');
 
         if ($query->num_rows() > 0):
             return $query->result();

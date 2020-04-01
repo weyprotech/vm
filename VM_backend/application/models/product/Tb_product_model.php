@@ -5,7 +5,7 @@ class Tb_product_model extends MY_Model
     public function __construct()
     {
         parent::__construct();
-        $this->uploadPath .= 'product/';
+        $this->checkUploadPath('product/product/'); // 上傳路徑
     }
 
     /******************** Product Model ********************/

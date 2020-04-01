@@ -25,7 +25,7 @@
 
                     <h2>Edit</h2>
                     <ul class="nav nav-tabs pull-right in"><?php $i = 1; ?>
-                        <li><a data-toggle="tab" href="#hb<?= $i++ ?>">Content</a></li>
+                        <li class="active"><a data-toggle="tab" href="#hb<?= $i++ ?>">Content</a></li>
                         <?php if ($this->langList): ?>
                             <?php foreach ($this->langList as $lrow): ?>
                                 <li><a data-toggle="tab" href="#hb<?= $i++ ?>"><?= $lrow->name ?></a></li>
@@ -44,7 +44,7 @@
                             <input type="hidden" name="is_enable" value="1">
                             <input type="hidden" name="brandId" value="<?= $brandId ?>">
                             <div id="content" class="tab-content"><?php $i = 1; ?>
-                                <div class="tab-pane" id="hb<?= $i++ ?>">
+                                <div class="tab-pane active" id="hb<?= $i++ ?>">
                                     <fieldset>
                                         <legend>Brand</legend>
                                         <div class="form-group">
@@ -119,7 +119,7 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="col-sm-2 control-label">Img</label>
+                                            <label class="col-sm-2 control-label">Image</label>
 
                                             <div class="col-sm-9">
                                                 <input type="file" class="btn btn-default" id="uploadImg" name="brandImg"
@@ -140,7 +140,7 @@
                                         </div>
 
                                         <div class="form-group">
-                                            <label class="col-sm-2 control-label">List Img</label>
+                                            <label class="col-sm-2 control-label">List Image</label>
 
                                             <div class="col-sm-9">
                                                 <input type="file" class="btn btn-default" id="uploadImg" name="brandindexImg"
@@ -152,6 +152,69 @@
 
                                                 <p class="help-block">
                                                     <strong>Note:</strong>Picture size is <strong>360 x 360</strong>.type is<strong>JPG、PNG</strong>。
+                                                </p>
+
+                                                <p class="help-block">                                                    
+                                                    <img id="preview" src="">
+                                                </p>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">Brand Story2 Image-1</label>
+
+                                            <div class="col-sm-9">
+                                                <input type="file" class="btn btn-default" id="uploadImg" name="brandstory2_1Img"
+                                                    data-bv-notempty="true" data-bv-notempty-message=" "
+                                                    data-bv-file="true"
+                                                    data-bv-file-extension="jpeg,jpg,png,gif"
+                                                    data-bv-file-type="image/jpeg,image/png,image/gif"
+                                                    data-bv-file-message="圖示格式不符">
+
+                                                <p class="help-block">
+                                                    <strong>Note:</strong>Picture size is <strong>940 x 1154</strong>.type is<strong>JPG、PNG</strong>。
+                                                </p>
+
+                                                <p class="help-block">                                                    
+                                                    <img id="preview" src="">
+                                                </p>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">Bramd Story2 Image-2</label>
+
+                                            <div class="col-sm-9">
+                                                <input type="file" class="btn btn-default" id="uploadImg" name="brandstory2_2Img"
+                                                    data-bv-notempty="true" data-bv-notempty-message=" "
+                                                    data-bv-file="true"
+                                                    data-bv-file-extension="jpeg,jpg,png,gif"
+                                                    data-bv-file-type="image/jpeg,image/png,image/gif"
+                                                    data-bv-file-message="圖示格式不符">
+
+                                                <p class="help-block">
+                                                    <strong>Note:</strong>Picture size is <strong>941 x 968</strong>.type is<strong>JPG、PNG</strong>。
+                                                </p>
+
+                                                <p class="help-block">                                                    
+                                                    <img id="preview" src="">
+                                                </p>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">Brand Stroy2 Image-3</label>
+
+                                            <div class="col-sm-9">
+                                                <input type="file" class="btn btn-default" id="uploadImg" name="brandstory2_3Img"
+                                                    data-bv-notempty="true" data-bv-notempty-message=" "
+                                                    data-bv-file="true"
+                                                    data-bv-file-extension="jpeg,jpg,png,gif"
+                                                    data-bv-file-type="image/jpeg,image/png,image/gif"
+                                                    data-bv-file-message="圖示格式不符">
+
+                                                <p class="help-block">
+                                                    <strong>Note:</strong>Picture size is <strong>940 x 865</strong>.type is<strong>JPG、PNG</strong>。
                                                 </p>
 
                                                 <p class="help-block">                                                    
@@ -188,29 +251,37 @@
 
                                                 <legend>Brand Story</legend>
                                                 <div class="form-group">
-                                                    <label class="col-sm-2 control-label" for="title-<?= $lrow->langId ?>">Story Title</label>
+                                                    <label class="col-sm-2 control-label" for="title-<?= $lrow->langId ?>">Story1 Title</label>
 
                                                     <div class="col-sm-9">
                                                         <input type="text" class="form-control" name="langList[<?= $lrow->langId ?>][brand_story_title]" data-bv-notempty="true" data-bv-notempty-message=" ">                                                                                                                
                                                     </div>
                                                 </div>
 
-                                                <!-- <div class="form-group">
-                                                    <label class="col-sm-2 control-label" for="title-<?= $lrow->langId ?>">Story Youtube</label>
-
-                                                    <div class="col-sm-9">
-                                                        <input type="text" class="form-control" name="langList[<?= $lrow->langId ?>][brand_story_youtube]">                                                                                                                
-                                                    </div>
-                                                </div> -->
-
                                                 <div class="form-group">
-                                                    <label class="col-sm-2 control-label" for="title-<?= $lrow->langId ?>">Story Content</label>
+                                                    <label class="col-sm-2 control-label" for="title-<?= $lrow->langId ?>">Story1 Content</label>
 
                                                     <div class="col-sm-9">
                                                         <div id="content-edit"></div>
                                                         <input type="hidden" id="content" name="langList[<?= $lrow->langId ?>][brand_story_content]">
                                                     </div>
-                                                </div>                                                
+                                                </div>      
+
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label" for="title-<?= $lrow->langId ?>">Story2 Title</label>
+
+                                                    <div class="col-sm-9">
+                                                        <input type="text" class="form-control" name="langList[<?= $lrow->langId ?>][brand_story_title2]" data-bv-notempty="true" data-bv-notempty-message=" ">
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label" for="title-<?= $lrow->langId ?>">Story2 Content</label>
+
+                                                    <div class="col-sm-9">
+                                                        <textarea class="form-control" name="langList[<?= $lrow->langId ?>][brand_story_content2]" rows="10" data-bv-notempty="true" data-bv-notempty-message=" "></textarea>
+                                                    </div>
+                                                </div>                                             
                                             </fieldset>
                                         </div>
                                     <?php endforeach; ?>
@@ -235,8 +306,6 @@
 <script type="text/javascript" src="<?= base_url("assets/backend/js/plugin/summernote/summernote-zh-TW.js") ?>"></script>
 <script>
     var hash = window.location.hash;
-    $('ul.nav-tabs li').eq(hash.substr(1)).addClass('active');
-    $('.tab-pane').eq(hash.substr(1)).addClass('active');
 
     var $cId = $("#cId");
     $(document).ready(function () {
@@ -286,4 +355,22 @@
             excluded: ""
         });
     });
+
+    function sendFile(file, editor) {
+        var data = new FormData();
+        data.append('brandId', '<?= $brandId ?>');
+        data.append("file", file);
+
+        return $.ajax({
+            data: data,
+            type: "POST",
+            url: "<?= site_url("backend/ajax/brand/brand/upload") ?>",
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function (url) {
+                editor.summernote('editor.insertImage', url);
+            }
+        });
+    }
 </script>

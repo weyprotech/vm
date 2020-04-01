@@ -23,7 +23,7 @@
                 <header>
                     <span class="widget-icon"> <i class="fa fa-edit"></i> </span>
 
-                    <h2>Edit</h2>
+                    <h2>Add</h2>
                     <ul class="nav nav-tabs pull-right in"><?php $i = 1; ?>
                         <li><a data-toggle="tab" href="#hb<?= $i++ ?>">Content</a></li>
                         <?php if ($this->langList): ?>
@@ -141,6 +141,21 @@
                                                 </p>
                                             </div>
                                         </div>
+
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label" for="title-<?= $lrow->langId ?>">About Designer Image</label>
+
+                                            <div class="col-sm-9">
+                                                <input class="btn btn-default" type="file" id="uploadImg" name="aboutImg">
+                                                <p class="help-block">
+                                                    <strong>Note:</strong>Picture size is <strong>600 x 600</strong>.type is<strong>JPG、PNG</strong>。
+                                                </p>
+
+                                                <p class="help-block">
+                                                    <img id="preview" src="">
+                                                </p>
+                                            </div>
+                                        </div> 
 
                                         <legend>My Hometown</legend>
 
@@ -283,8 +298,7 @@
                                                     <label class="col-sm-2 control-label">Description</label>
 
                                                     <div class="col-sm-9">
-                                                        <div id="content-edit"><?= @$langData->description ?></div>
-                                                        <input type="hidden" id="content" name="langList[<?= $lrow->langId ?>][description]" data-bv-notempty="true" data-bv-notempty-message=" ">
+                                                        <textarea class="form-control" name="langList[<?= $lrow->langId ?>][description]" rows="10" data-bv-notempty="true" data-bv-notempty-message=" "></textarea>
                                                     </div>
                                                 </div>
 
@@ -301,7 +315,8 @@
                                                     <label class="col-sm-2 control-label" for="title-<?= $lrow->langId ?>">Story Content</label>
 
                                                     <div class="col-sm-9">
-                                                        <textarea class="form-control" name="langList[<?= $lrow->langId ?>][my_story_content]" rows="10" data-bv-notempty="true" data-bv-notempty-message=" "></textarea>
+                                                        <div id="content-edit"><?= @$langData->description ?></div>
+                                                        <input type="hidden" id="content" name="langList[<?= $lrow->langId ?>][my_story_content]" data-bv-notempty="true" data-bv-notempty-message=" ">
                                                     </div>
                                                 </div>
 
@@ -315,14 +330,6 @@
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <label class="col-sm-2 control-label" for="title-<?= $lrow->langId ?>">Hometown Content</label>
-
-                                                    <div class="col-sm-9">
-                                                        <input type="text" class="form-control" name="langList[<?= $lrow->langId ?>][hometown_content]" data-bv-notempty="true" data-bv-notempty-message=" ">                                                                                                                
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group">
                                                     <label class="col-sm-2 control-label" for="title-<?= $lrow->langId ?>">Country</label>
 
                                                     <div class="col-sm-9">
@@ -332,6 +339,22 @@
                                                                 <option value="<?= $countryKey ?>"><?= $countryValue ?></option>
                                                             <?php } ?> 
                                                         </select>                                                       
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label" for="title-<?= $lrow->langId ?>">Hometown Area</label>
+
+                                                    <div class="col-sm-9">
+                                                        <input type="text" class="form-control" name="langList[<?= $lrow->langId ?>][hometown_area]" data-bv-notempty="true" data-bv-notempty-message=" ">                                                                                                                
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label" for="title-<?= $lrow->langId ?>">Hometown Content</label>
+
+                                                    <div class="col-sm-9">
+                                                        <textarea class="form-control" name="langList[<?= $lrow->langId ?>][hometown_content]" rows="10"></textarea>                                                                                                            
                                                     </div>
                                                 </div>
 
@@ -431,45 +454,7 @@
             }); 
         });
 
-        $('form').bootstrapValidator({
-            excluded: "",
-            fields: {
-                url: {
-                    message: 'The URL is not valid',
-                    validators: {                        
-                        remote: {
-                            message: 'The URL has been registered',
-                            url: '<?= site_url('backend/ajax/designer/designer/check_url') ?>',
-                            data: function(validator) {
-                                return {
-                                    id:'<?= $designerId ?>',
-                                    url: validator.getFieldElements('url').val()
-                                };
-                            },
-                        },
-                        regexp: {
-                            regexp: /[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/,
-                            message: 'The URL is not valid'
-                        }
-                    }
-                },
-                account: {
-                    message: 'The account is not valid',
-                    validators: {                        
-                        remote: {
-                            message: 'The account has been registered',
-                            url: '<?= site_url('backend/ajax/designer/designer/check_account') ?>',
-                            data: function(validator) {
-                                return {
-                                    id:'<?= $designerId ?>',
-                                    account: validator.getFieldElements('account').val()
-                                };
-                            },
-                        }
-                    }
-                }
-            }
-        });
+        
         $('div#content-edit').each(function () {
             $(this).summernote({
                 height: 500,
@@ -501,7 +486,6 @@
                 $('#data-form').bootstrapValidator('resetField', 'designerstoryImg');
                 $("#data-form").bootstrapValidator('enableFieldValidators', 'designerstoryImg', false);
             }
-            console.log($(this).val());
         });
     });
 
@@ -522,4 +506,44 @@
             }
         });
     }
+
+    $('form').bootstrapValidator({
+        excluded: "",
+        fields: {
+            url: {
+                message: 'The URL is not valid',
+                validators: {                        
+                    remote: {
+                        message: 'The URL has been registered',
+                        url: '<?= site_url('backend/ajax/designer/designer/check_url') ?>',
+                        data: function(validator) {
+                            return {
+                                id:'<?= $designerId ?>',
+                                url: validator.getFieldElements('url').val()
+                            };
+                        },
+                    },
+                    regexp: {
+                        regexp: /[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/,
+                        message: 'The URL is not valid'
+                    }
+                }
+            },
+            account: {
+                message: 'The account is not valid',
+                validators: {                        
+                    remote: {
+                        message: 'The account has been registered',
+                        url: '<?= site_url('backend/ajax/designer/designer/check_account') ?>',
+                        data: function(validator) {
+                            return {
+                                id:'<?= $designerId ?>',
+                                account: validator.getFieldElements('account').val()
+                            };
+                        },
+                    }
+                }
+            }
+        }
+    });
 </script>

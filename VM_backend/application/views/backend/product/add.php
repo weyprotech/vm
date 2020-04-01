@@ -70,7 +70,7 @@
                                             <label class="col-sm-2 control-label" for="baseId">Base Category</label>
 
                                             <div class="col-sm-9 col-lg-4">
-                                                <select class="form-control" id="baseId"  data-bv-notempty="true" data-bv-notempty-message=" ">
+                                                <select class="form-control" id="baseId" name="subId" data-bv-notempty="true" data-bv-notempty-message=" ">
                                                     <option value="" selected>None</option>
                                                     <?php if ($topList): ?>
                                                         <?php foreach ($topList as $crow): ?>
@@ -85,7 +85,7 @@
                                             <label class="col-sm-2 control-label" for="subId">Sub Category</label>
 
                                             <div class="col-sm-9 col-lg-4">
-                                                <select class="form-control" id="subId" data-bv-notempty="true" data-bv-notempty-message=" ">
+                                                <select class="form-control" id="subId" name="subId" data-bv-notempty="true" data-bv-notempty-message=" ">
                                                 </select>
                                             </div>
                                         </div>
@@ -95,6 +95,18 @@
 
                                             <div class="col-sm-9 col-lg-4">
                                                 <select class="form-control" id="category" name="cId" data-bv-notempty="true" data-bv-notempty-message=" ">                                                    
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label" for="category">Brand</label>
+
+                                            <div class="col-sm-9 col-lg-4">
+                                                <select class="form-control" name="brandId" data-bv-notempty="true" data-bv-notempty-message=" ">                                                    
+                                                    <?php foreach ($brandList as $brandKey => $brandValue){ ?>
+                                                        <option value="<?= $brandValue->brandId ?>"><?= $brandValue->name ?></option>
+                                                    <?php } ?>
                                                 </select>
                                             </div>
                                         </div>
@@ -121,7 +133,12 @@
                                             <label class="col-sm-2 control-label">Image</label>
 
                                             <div class="col-sm-9">
-                                                <input type="file" class="btn btn-default" id="uploadImg" name="productImg">
+                                                <input type="file" class="btn btn-default" id="uploadImg" name="productImg"
+                                                    data-bv-notempty="true" data-bv-notempty-message=" "
+                                                    data-bv-file="true"
+                                                    data-bv-file-extension="jpeg,jpg,png,gif"
+                                                    data-bv-file-type="image/jpeg,image/png,image/gif"
+                                                    data-bv-file-message="圖示格式不符">
 
                                                 <p class="help-block">
                                                     <strong>Note:</strong>Picture size is <strong>300 x 400</strong>.type is<strong>JPG、PNG</strong>。
@@ -158,52 +175,6 @@
                                         <div class="tab-pane" id="hb<?= $i++ ?>">
                                             <input type="hidden" name="langList[<?= $lrow->langId ?>][pId]" value="<?= $productId ?>">
                                             <input type="hidden" name="langList[<?= $lrow->langId ?>][langId]" value="<?= $lrow->langId ?>">
-                                            <fieldset>
-                                                <legend><?= $lrow->name ?></legend>
-
-                                                <div class="form-group">
-                                                    <label class="col-sm-2 control-label" for="name-<?= $lrow->langId ?>">Name</label>
-
-                                                    <div class="col-sm-9">
-                                                        <input class="form-control" type="text" id="name-<?= $lrow->langId ?>" name="langList[<?= $lrow->langId ?>][name]" data-bv-notempty="true" data-bv-notempty-message=" ">
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label class="col-sm-2 control-label" for="name-<?= $lrow->langId ?>">Introduction</label>
-
-                                                    <div class="col-sm-9">
-                                                        <input class="form-control" type="text" id="name-<?= $lrow->langId ?>" name="langList[<?= $lrow->langId ?>][introduction]" data-bv-notempty="true" data-bv-notempty-message=" ">
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label class="col-sm-2 control-label" for="name-<?= $lrow->langId ?>">Description</label>
-
-                                                    <div class="col-sm-9">
-                                                        <textarea class="form-control" name="langList[<?= $lrow->langId ?>][description]" rows="10" data-bv-notempty="true" data-bv-notempty-message=" "></textarea>                                                        
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label class="col-sm-2 control-label" for="name-<?= $lrow->langId ?>">Return</label>
-
-                                                    <div class="col-sm-9">
-                                                        <textarea class="form-control" name="langList[<?= $lrow->langId ?>][return]" rows="10" data-bv-notempty="true" data-bv-notempty-message=" "></textarea>                                                        
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label class="col-sm-2 control-label" for="name-<?= $lrow->langId ?>">Detail</label>
-
-                                                    <div class="col-sm-9">
-                                                        <div id="content-edit"></div>
-                                                        <input type="hidden" id="content" name="langList[<?= $lrow->langId ?>][detail]">
-                                                    </div>
-                                                </div>
-                                               
-                                            </fieldset>
-
                                             <fieldset>
                                                 <legend><?= $lrow->name ?></legend>
 
@@ -481,13 +452,13 @@
 
     function sendFile(file, editor) {
         var data = new FormData();
-        data.append('postId', '<?= $postId ?>');
+        data.append('productId', '<?= $productId ?>');
         data.append("file", file);
 
         return $.ajax({
             data: data,
             type: "POST",
-            url: "<?= site_url("backend/ajax/brand/post/upload") ?>",
+            url: "<?= site_url("backend/ajax/product/product/upload") ?>",
             cache: false,
             contentType: false,
             processData: false,

@@ -18,7 +18,6 @@ class Post_message extends Backend_Controller
     public function index($postId)
     {
         $this->check_action_auth($this->menuId, 'view', true); // Check Auth
-
         $this->get_view('index',array('postId' => $postId));
     }
 

@@ -5,22 +5,20 @@ class Designers extends Frontend_Controller
     public function __construct()
     {
         parent::__construct();
+        $this->load->model('product/tb_category_model','tb_category_model');
+        $this->load->model('product/tb_product_model','tb_product_model');
         $this->load->model('designer/tb_designer_model','tb_designer_model');
         $this->load->model('designer/tb_designer_banner_model','tb_designer_banner_model');
-        $this->load->model('designer/tb_runway_model','tb_runway_model');        
-        $this->load->model('designer/tb_post_model','tb_post_model');
+        $this->load->model('designer/tb_post_model','tb_post_model');        
         $this->load->model('brand/tb_brand_model','tb_brand_model');
     }
 
     public function index()
     {
-        $top_designerList = $this->tb_designer_model->get_designer_select(array(array('field' => 'designer.is_visible','value' => 1)),array(array('field'=>'designer.order','dir' => 'desc')),array('start' => 0,'limit' => 4),$this->langId);      
-        $designerList = $this->tb_designer_model->get_designer_select(array(array('field'=>'designer.is_visible','value' => 1)),array(array('field'=>'designer.order','dir' => 'desc')),array('start' => 4,'limit' =>'20'),$this->langId);
-        $designer_story = $this->tb_designer_model->get_designer_select(array(array('field' => 'designer.is_visible','value' => 1),array('field' => 'designer.is_designer_story','value' => 1)),array(array('field' => 'designer.designerId','dir' => 'RANDOM')),false,$this->langId);
+        $productList = $this->tb_product_model->get_product_select(array(array('field' => 'product.is_visible','value' => 1)),array(array('field' => 'product.order','dir' => 'desc')),array('start' => 0,'limit' => 20),$this->langId);
+
         $data = array(
-            'top_designerList' => $top_designerList,
-            'designerList' => $designerList,
-            'designer_story' => $designer_story
+            'productList' => $productList
         );
 
         $this->get_view('designers/index', $data);

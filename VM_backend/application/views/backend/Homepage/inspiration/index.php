@@ -91,7 +91,7 @@
                         $(nButton).css('margin-left', 5).css('text-shadow','0 -1px 0 rgba(0, 0, 0, 0.5), 0 1px 0 rgba(255, 255, 255, 0.3)');
                     },
                     "fnClick": function (nButton, oConfig, oFlash) {
-                        $(nButton).parents('form:first').attr('action', 'events/save').submit();
+                        $(nButton).parents('form:first').attr('action', 'inspiration/save').submit();
                     }
                 },{
                     "sExtends": "text",

@@ -76,15 +76,17 @@ class Post extends Ajax_Controller
         $postId = $post['postId'];
         $Id = $post['Id'];
         $youtube = $post['youtube'];
-        $file = 'assets/uploads/designer/post/'.$postId;        
-        $filePath = '';
+        $this->checkUploadPath('designer/post/'); // 上傳路徑
+
+        // $file = 'assets/uploads/designer/post/'.$postId;        
+        // $filePath = '';
         $this->load->model('designer/tb_post_model', 'post_model');
 
         if($_FILES){
-            if (!is_dir($this->uploadPath .= $file.'/')) mkdir($this->uploadPath, 0777,true);
+            // if (!is_dir($this->uploadPath .= $file.'/')) mkdir($this->uploadPath, 0777,true);
             foreach ($_FILES as $key => $value) {
-                $config['upload_path'] = 'assets/uploads/'.$file.'/';
-                $file = $this->uploadImg($_FILES[0],'/',510);
+                // $config['upload_path'] = 'assets/uploads/'.$file.'/';
+                $file = $this->uploadImg($_FILES[0],$postId.'/',685);
                 
                 if($Id == 'new'){                    
                     $this->post_model->insert_post_img(array('postImg' => $file['thumbPath'],'postId' => $postId,'youtube' => $youtube));
@@ -114,9 +116,10 @@ class Post extends Ajax_Controller
     public function upload()
     {
         $postId = $this->input->post('postId', true);
+        $this->checkUploadPath('designer/post/'); // 上傳路徑
         if ($postId && isset($_FILES['file'])):
             if (!$_FILES['file']['error']):
-                $this->uploadPath = 'assets/uploads/designer/post/'.$postId;
+                // $this->uploadPath = 'assets/uploads/designer/post/'.$postId;
                 $filePath = $this->uploadImg($_FILES['file'], $postId . '/');
                 echo base_url($filePath['imagePath']);
             else:

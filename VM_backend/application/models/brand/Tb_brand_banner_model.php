@@ -5,7 +5,7 @@ class tb_brand_banner_model extends MY_Model
     public function __construct()
     {
         parent::__construct();
-        $this->uploadPath .= 'brand/brand_banner/';
+        $this->checkUploadPath('brand/brand_banner/'); // 上傳路徑
     }
 
     /******************** Banner Model ********************/

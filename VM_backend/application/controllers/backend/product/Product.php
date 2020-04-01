@@ -13,6 +13,7 @@ class Product extends Backend_Controller
 
         $this->load->model('product/tb_product_model', 'product_model');
         $this->load->model('product/tb_category_model','category_model');
+        $this->load->model('brand/tb_brand_model', 'brand_model');
         $this->query = $this->set_http_query(array('search' => $this->input->get('search', true)));
     }
 
@@ -29,6 +30,7 @@ class Product extends Backend_Controller
         $productId = uniqid();
         $size_chart = $this->product_model->get_size_chart();
         $topList = $this->category_model->get_category_select(array(array('field' => 'category.lv','value' => '1')),false,false,$this->langId);    
+        $brandList = $this->brand_model->get_brand_select(array(array('field' => 'is_visible','value' => 1)),false,false,$this->langId);
         if($post = $this->input->post(null,true)){
             $this->set_active_status('success', 'Success');
             unset($post['image_list_length']);
@@ -43,7 +45,8 @@ class Product extends Backend_Controller
         $data = array(
             'topList' => $topList,
             'productId' => $productId,
-            'size_chart' => $size_chart            
+            'size_chart' => $size_chart,
+            'brandList' => $brandList
         );
         $this->get_view('add',$data);
     }
@@ -63,6 +66,8 @@ class Product extends Backend_Controller
         $categoryList = $this->category_model->get_category_select(array(array('field' => 'category.prevId','value' => $sub_category->categoryId)),false,false,$this->langId);
         $sizeList = $this->product_model->get_product_size_select(array(array('field' => 'product_size.pId','value' => $productId)),false,false);
         $size_chart = $this->product_model->get_size_chart();
+        $brandList = $this->brand_model->get_brand_select(array(array('field' => 'is_visible','value' => 1)),false,false,$this->langId);
+
         if ($post = $this->input->post(null, true)):
             $this->check_action_auth($this->menuId, 'edit', true); // Check Auth
             if ($row->uuid != $post['uuid']):
@@ -78,7 +83,6 @@ class Product extends Backend_Controller
 
             redirect('backend/product/product/edit/' . $productId . $this->query);
         endif;
-
         $data = array(
             'productId' => $productId,
             'row' => $row,            
@@ -89,7 +93,8 @@ class Product extends Backend_Controller
             'sub_category' => $sub_category,
             'base_category' => $base_category,
             'subList' => $subList,
-            'categoryList' => $categoryList
+            'categoryList' => $categoryList,
+            'brandList' => $brandList
         );
 
         $this->get_view('edit', $data);

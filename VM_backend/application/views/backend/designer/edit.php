@@ -136,10 +136,26 @@
                                             </div>
                                         </div>
 
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label" for="title-<?= $lrow->langId ?>">About Designer Image</label>
+
+                                            <div class="col-sm-9">
+                                                <input class="btn btn-default" type="file" id="uploadImg" name="aboutImg">
+                                                <p class="help-block">
+                                                    <strong>Note:</strong>Picture size is <strong>600 x 600</strong>.type is<strong>JPG、PNG</strong>。
+                                                </p>
+
+                                                <p class="help-block">                                                    
+                                                    <?php $aboutImg = check_file_path($row->aboutImg);?>
+                                                    <img id="preview" src="<?= $aboutImg ?>"<?= !$aboutImg ? 'display:none;' : '' ?>>
+                                                </p>
+                                            </div>
+                                        </div> 
+
                                         <legend>My Hometown</legend>
 
                                             <div class="form-group">
-                                                <label class="col-sm-2 control-label" for="title-<?= $lrow->langId ?>">Hometown Post1 Img</label>
+                                                <label class="col-sm-2 control-label" for="title-<?= $lrow->langId ?>">Hometown Post1 Image</label>
 
                                                 <div class="col-sm-9">
                                                     <input class="btn btn-default" type="file" id="uploadImg" name="hometownpost1Img">
@@ -155,7 +171,7 @@
                                             </div>
 
                                             <div class="form-group">
-                                                <label class="col-sm-2 control-label" for="title-<?= $lrow->langId ?>">Hometown Post2 Img</label>
+                                                <label class="col-sm-2 control-label" for="title-<?= $lrow->langId ?>">Hometown Post2 Image</label>
 
                                                 <div class="col-sm-9">
                                                     <input class="btn btn-default" type="file" id="uploadImg" name="hometownpost2Img">
@@ -171,7 +187,7 @@
                                             </div>
 
                                             <div class="form-group">
-                                                <label class="col-sm-2 control-label" for="title-<?= $lrow->langId ?>">Hometown Post3 Img</label>
+                                                <label class="col-sm-2 control-label" for="title-<?= $lrow->langId ?>">Hometown Post3 Image</label>
 
                                                 <div class="col-sm-9">
                                                     <input class="btn btn-default" type="file" id="uploadImg" name="hometownpost3Img">
@@ -184,7 +200,7 @@
                                                         <img id="preview" src="<?= $hometownpost3Img ?>"<?= !$hometownpost3Img ? 'display:none;' : '' ?>>
                                                     </p>
                                                 </div>
-                                            </div>
+                                            </div>                                           
 
                                             <legend>Account</legend>
 
@@ -267,8 +283,7 @@
                                                     <label class="col-sm-2 control-label">Description</label>
 
                                                     <div class="col-sm-9">
-                                                        <div id="content-edit"><?= @$langData->description ?></div>
-                                                        <input type="hidden" id="content" name="langList[<?= $lrow->langId ?>][description]">
+                                                        <textarea class="form-control" name="langList[<?= $lrow->langId ?>][description]" rows="10" data-bv-notempty="true" data-bv-notempty-message=" "><?= @$langData->description ?></textarea>
                                                     </div>
                                                 </div>
 
@@ -285,7 +300,8 @@
                                                     <label class="col-sm-2 control-label" for="title-<?= $lrow->langId ?>">Story Content</label>
 
                                                     <div class="col-sm-9">
-                                                        <textarea class="form-control" name="langList[<?= $lrow->langId ?>][my_story_content]" rows="10"><?= @$langData->my_story_content ?></textarea>
+                                                        <div id="content-edit"><?= @$langData->my_story_content ?></div>
+                                                        <input type="hidden" id="content" name="langList[<?= $lrow->langId ?>][my_story_content]" data-bv-notempty="true" data-bv-notempty-message=" ">
                                                     </div>
                                                 </div>
 
@@ -295,14 +311,6 @@
 
                                                     <div class="col-sm-9">
                                                         <input type="text" class="form-control" name="langList[<?= $lrow->langId ?>][hometown_title]" value="<?= @$langData->hometown_title ?>" data-bv-notempty="true" data-bv-notempty-message=" ">
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label class="col-sm-2 control-label" for="title-<?= $lrow->langId ?>">Hometown Content</label>
-
-                                                    <div class="col-sm-9">
-                                                        <textarea class="form-control" name="langList[<?= $lrow->langId ?>][hometown_content]" rows="10"><?= @$langData->hometown_content ?></textarea>
                                                     </div>
                                                 </div>
 
@@ -319,6 +327,22 @@
                                                     </div>
                                                 </div>
 
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label" for="title-<?= $lrow->langId ?>">Hometown Area</label>
+
+                                                    <div class="col-sm-9">
+                                                        <input type="text" class="form-control" name="langList[<?= $lrow->langId ?>][hometown_area]" value="<?= @$langData->hometown_area ?>" data-bv-notempty="true" data-bv-notempty-message=" ">                                                                                                                
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label" for="title-<?= $lrow->langId ?>">Hometown Content</label>
+
+                                                    <div class="col-sm-9">
+                                                        <textarea class="form-control" name="langList[<?= $lrow->langId ?>][hometown_content]" rows="10"><?= @$langData->hometown_content ?></textarea>
+                                                    </div>
+                                                </div>
+                                            
                                                 <div class="form-group">
                                                     <label class="col-sm-2 control-label" for="title-<?= $lrow->langId ?>">Hometown Post1 Title</label>
 
@@ -486,7 +510,6 @@
                 $('#data-form').bootstrapValidator('resetField', 'designerstoryImg');
                 $("#data-form").bootstrapValidator('enableFieldValidators', 'designerstoryImg', false);
             }
-            console.log($(this).val());
         });
     });
 

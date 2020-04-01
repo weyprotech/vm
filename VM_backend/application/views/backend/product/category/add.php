@@ -94,6 +94,69 @@
                                                 </select>
                                             </div>
                                         </div>
+
+                                        <div class="form-group sub_group" style="display:none;">
+                                            <label class="col-sm-2 control-label">Image</label>
+
+                                            <div class="col-sm-9">
+                                                <input type="file" class="btn btn-default" id="uploadImg" name="categoryImg"
+                                                    data-bv-notempty="true" data-bv-notempty-message=" "
+                                                    data-bv-file="true"
+                                                    data-bv-file-extension="jpeg,jpg,png,gif"
+                                                    data-bv-file-type="image/jpeg,image/png,image/gif"
+                                                    data-bv-file-message="Type error">
+
+                                                <p class="help-block">
+                                                    <strong>Note:</strong>Picture size is <strong>710 x 946</strong>.type is<strong>JPG、PNG</strong>。
+                                                </p>
+
+                                                <p class="help-block">
+                                                    <img id="preview" src="" style="display:none;">
+                                                </p>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group sub_group"  style="display:none;">
+                                            <label class="col-sm-2 control-label">Image</label>
+
+                                            <div class="col-sm-9">
+                                                <input type="file" class="btn btn-default" id="uploadImg" name="category2Img"
+                                                    data-bv-notempty="true" data-bv-notempty-message=" "
+                                                    data-bv-file="true"
+                                                    data-bv-file-extension="jpeg,jpg,png,gif"
+                                                    data-bv-file-type="image/jpeg,image/png,image/gif"
+                                                    data-bv-file-message="Type error">
+
+                                                <p class="help-block">
+                                                    <strong>Note:</strong>Picture size is <strong>631 x 400</strong>.type is<strong>JPG、PNG</strong>。
+                                                </p>
+
+                                                <p class="help-block">
+                                                    <img id="preview" src="" style="display:none;">
+                                                </p>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group sub_group" style="display:none;">
+                                            <label class="col-sm-2 control-label">Image</label>
+
+                                            <div class="col-sm-9">
+                                                <input type="file" class="btn btn-default" id="uploadImg" name="category3Img"
+                                                    data-bv-notempty="true" data-bv-notempty-message=" "
+                                                    data-bv-file="true"
+                                                    data-bv-file-extension="jpeg,jpg,png,gif"
+                                                    data-bv-file-type="image/jpeg,image/png,image/gif"
+                                                    data-bv-file-message="Type error">
+
+                                                <p class="help-block">
+                                                    <strong>Note:</strong>Picture size is <strong>631 x 400</strong>.type is<strong>JPG、PNG</strong>。
+                                                </p>
+
+                                                <p class="help-block">
+                                                    <img id="preview" src="" style="display:none;">
+                                                </p>
+                                            </div>
+                                        </div>
                                     </fieldset>
                                 </div>
 
@@ -137,6 +200,12 @@
     $('.tab-pane').eq(hash.substr(1)).addClass('active');
 
     $(document).ready(function () {
+        $('#data-form').bootstrapValidator('resetField', 'categoryImg');
+        $("#data-form").bootstrapValidator('enableFieldValidators', 'categoryImg', false);
+        $('#data-form').bootstrapValidator('resetField', 'category2Img');
+        $("#data-form").bootstrapValidator('enableFieldValidators', 'category2Img', false);
+        $('#data-form').bootstrapValidator('resetField', 'category3Img');
+        $("#data-form").bootstrapValidator('enableFieldValidators', 'category3Img', false);
         $('input#uploadImg').change(function () {
             var $this = $(this);
             var reader = new FileReader();
@@ -163,4 +232,13 @@
             }
         })
     });
+    
+    $('#subId').on('change',function(){
+        if($(this).val() != 0){
+            $('.sub_group').css('display','block');
+        }
+    });
+    $('form').bootstrapValidator({
+        excluded: ""
+    });    
 </script>

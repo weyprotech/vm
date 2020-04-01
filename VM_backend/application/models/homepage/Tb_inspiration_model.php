@@ -7,7 +7,7 @@ class Tb_inspiration_model extends MY_Model
     {
         parent::__construct();
         $this->model = get_class($this); // 本身Model
-        $this->checkUploadPath('inspiration/'); // 上傳路徑
+        $this->checkUploadPath('homepage/inspiration/'); // 上傳路徑
     }
 
     /******************** inspiration Model ********************/
@@ -82,7 +82,7 @@ class Tb_inspiration_model extends MY_Model
         $update = $this->check_db_data($post);
 
         if (isset($_FILES['inspirationImg']) && !$_FILES['inspirationImg']['error']):
-            $insert['inspirationImg'] = $this->uploadFile('inspiration',  $inspiration->inspirationId . '/', 240);
+            $update['inspirationImg'] = $this->uploadFile('inspiration',  $inspiration->inspirationId . '/', 240);
         endif;
 
         if (isset($post['langList'])):

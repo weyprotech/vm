@@ -99,7 +99,6 @@ class Category extends Backend_Controller
 
             redirect('backend/product/category/edit/' . $categoryId . $this->query);
         endif;
-
         $data = array(
             'row' => $row,
             'first' => $first,

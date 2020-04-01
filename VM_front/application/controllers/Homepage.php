@@ -21,7 +21,7 @@ class Homepage extends Frontend_Controller
             'inspirationList' => $inspirationList
         );
 
-        $this->get_view('index', $data);
+        $this->get_view('index', $data,$this->load->view('shared/script/_index_script','',true));
     }
 
     private function get_view($page, $data = array(), $script = "")

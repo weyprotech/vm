@@ -45,15 +45,14 @@ class Runway extends Ajax_Controller
         $runwayId = $post['runwayId'];
         $Id = $post['Id'];
         $youtube = $post['youtube'];
-        $file = 'designer/runway/'.$runwayId;        
-        $filePath = '';
+        $this->checkUploadPath('designer/runway/'); // 上傳路徑
         $this->load->model('designer/tb_runway_model', 'runway_model');
 
         if($_FILES){
-            if (!is_dir($this->uploadPath .= $file.'/')) mkdir($this->uploadPath, 0777,true);
+            // if (!is_dir($this->uploadPath .= $file.'/')) mkdir($this->uploadPath, 0777,true);
             foreach ($_FILES as $key => $value) {
-                $config['upload_path'] = 'assets/uploads/'.$file.'/';
-                $file = $this->uploadImg($_FILES[0],'/',510);
+                // $config['upload_path'] = 'assets/uploads/'.$file.'/';
+                $file = $this->uploadImg($_FILES[0],$runwayId.'/',685);
                 
                 if($Id == 'new'){                    
                     $this->runway_model->insert_runway_img(array('runwayImg' => $file['thumbPath'],'runwayId' => $runwayId,'youtube' => $youtube));
@@ -82,10 +81,12 @@ class Runway extends Ajax_Controller
 
     public function upload()
     {
+        $this->checkUploadPath('designer/runway/'); // 上傳路徑
+
         $runwayId = $this->input->post('runwayId', true);
         if ($runwayId && isset($_FILES['file'])):
             if (!$_FILES['file']['error']):
-                $this->uploadPath = 'assets/uploads/designer/runway/'.$runwayId;
+                // $this->uploadPath = 'assets/uploads/designer/runway/'.$runwayId;
                 $filePath = $this->uploadImg($_FILES['file'], $runwayId . '/');
                 echo base_url($filePath['imagePath']);
             else:

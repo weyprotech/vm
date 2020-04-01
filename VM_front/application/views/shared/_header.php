@@ -8,7 +8,7 @@
                     <button type="button" onclick="location.href='search_products.html'"><i class="icon_search"></i></button>
                 </div>
             </div>
-            <a class="header_logo" href="index.html">
+            <a class="header_logo" href="<?= website_url() ?>">
                 <img class="retina" src="<?= base_url('assets/images/logo.png') ?>">
             </a>
             <div class="user_options">
@@ -86,90 +86,30 @@
     <div class="header_nav_wrap">
         <nav class="header_nav">
             <ul>
-                <li><a href="designers.html">Designers</a></li>
-                <li><a href="brands.html">Brands</a></li>
-                <li><a href="products.html">Women</a>
-                <div class="sub_menu">
-                    <ul>
-                        <li><a href="products.html">CLOTHING</a>
+                <li><a class="<?= (stripos($_SERVER['REQUEST_URI'],'designers') ? 'current active' : '') ?>" href="<?= website_url('designers') ?>">Designers</a></li>
+                <li><a class="<?= (stripos($_SERVER['REQUEST_URI'],'brand') ? 'current active' : '') ?>" href="<?= website_url('brand') ?>">Brands</a></li>
+                <?php foreach($categoryList as $firstKey => $firstValue){ ?>
+                    <li><a href="products.html"><?= $firstValue->name ?></a>
+                        <div class="sub_menu">
                             <ul>
-                                <li><a href="products.html">Jeaens</a></li>
-                                <li><a href="products.html">Trench Coats</a></li>
-                                <li><a href="products.html">Jackets</a></li>
-                                <li><a href="products.html">Coats</a></li>
-                                <li><a href="products.html">Quilts &amp; Puffers</a></li>
-                                <li><a href="products.html">Suits</a></li>
-                                <li><a href="products.html">Blazers</a></li>
-                                <li><a href="products.html">Formal Shirts</a></li>
+                                <?php if(!empty($categoryList[$firstKey]->categoryList)){ ?>
+                                    <?php foreach($categoryList[$firstKey]->categoryList as $baseKey => $baseValue){ ?>
+                                        <li>
+                                            <a href="products.html"><?= $baseValue->name ?></a>
+                                            <ul>
+                                                <?php if(!empty($categoryList[$firstKey]->categoryList[$baseKey]->categoryList)){ ?>
+                                                    <?php foreach($categoryList[$firstKey]->categoryList[$baseKey]->categoryList as $categoryKey => $categoryValue){ ?>
+                                                        <li><a href="products.html"><?= $categoryValue->name ?></a></li>
+                                                    <?php } ?>
+                                                <?php } ?>
+                                            </ul>
+                                        </li>
+                                    <?php } ?>
+                                <?php } ?>
                             </ul>
-                        </li>
-                        <li><a href="products.html">BAGS</a>
-                            <ul>
-                                <li><a href="products.html">Bags</a></li>
-                                <li><a href="products.html">Scarves</a></li>
-                                <li><a href="products.html">Wallets &amp; Card Cases</a></li>
-                                <li><a href="products.html">Travel Accessories</a></li>
-                                <li><a href="products.html">Ties &amp; Cunfflinks</a></li>
-                                <li><a href="products.html">Key Rings</a></li>
-                                <li><a href="products.html">Hats &amp; Gloves</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="products.html">ACCESSORIES</a>
-                            <ul>
-                                <li><a href="products.html">Scarves</a></li>
-                                <li><a href="products.html">Wallets &amp; Card Cases</a></li>
-                                <li><a href="products.html">Key &amp; Bag Charms</a></li>
-                                <li><a href="products.html">Travel Accessories</a></li>
-                                <li><a href="products.html">Belts</a></li>
-                                <li><a href="products.html">Jewellery</a></li>
-                                <li><a href="products.html">Hats &amp; Gloves</a></li>
-                                <li><a href="products.html">Eyewear</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-                </li>
-                <li><a href="products.html">Men</a>
-                <div class="sub_menu">
-                    <ul>
-                        <li><a href="products.html">CLOTHING</a>
-                            <ul>
-                                <li><a href="products.html">Jeaens</a></li>
-                                <li><a href="products.html">Trench Coats</a></li>
-                                <li><a href="products.html">Jackets</a></li>
-                                <li><a href="products.html">Coats</a></li>
-                                <li><a href="products.html">Quilts &amp; Puffers</a></li>
-                                <li><a href="products.html">Suits</a></li>
-                                <li><a href="products.html">Blazers</a></li>
-                                <li><a href="products.html">Formal Shirts</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="products.html">BAGS</a>
-                            <ul>
-                                <li><a href="products.html">Bags</a></li>
-                                <li><a href="products.html">Scarves</a></li>
-                                <li><a href="products.html">Wallets &amp; Card Cases</a></li>
-                                <li><a href="products.html">Travel Accessories</a></li>
-                                <li><a href="products.html">Ties &amp; Cunfflinks</a></li>
-                                <li><a href="products.html">Key Rings</a></li>
-                                <li><a href="products.html">Hats &amp; Gloves</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="products.html">ACCESSORIES</a>
-                            <ul>
-                                <li><a href="products.html">Scarves</a></li>
-                                <li><a href="products.html">Wallets &amp; Card Cases</a></li>
-                                <li><a href="products.html">Key &amp; Bag Charms</a></li>
-                                <li><a href="products.html">Travel Accessories</a></li>
-                                <li><a href="products.html">Belts</a></li>
-                                <li><a href="products.html">Jewellery</a></li>
-                                <li><a href="products.html">Hats &amp; Gloves</a></li>
-                                <li><a href="products.html">Eyewear</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-                </li>
+                        </div>
+                    </li>
+                <?php } ?>
                 <li><a href="sale.html">Sale</a></li>
                 <li><a href="events.html">Events</a></li>
                 <li><a href="popular_designers.html">Popular Designers</a></li>

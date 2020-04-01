@@ -5,7 +5,7 @@ class tb_homepage_banner_model extends MY_Model
     public function __construct()
     {
         parent::__construct();
-        $this->uploadPath .= 'homepage/homepage_banner/';
+        $this->checkUploadPath('homepage/homepage_banner/'); // 上傳路徑
     }
 
     /******************** Banner Model ********************/

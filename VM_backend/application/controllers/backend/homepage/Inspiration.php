@@ -84,23 +84,22 @@ class Inspiration extends Backend_Controller
             $this->set_active_status('success', 'Success');
         endif;
 
-        redirect('backend/inspiration/inspiration' . $this->query);
+        redirect('backend/homepage/inspiration' . $this->query);
     }
 
     public function save()
     {
-        if ($order = $this->input->post('eventOrder', true)):
+        if ($order = $this->input->post('inspirationOrder', true)):
             $this->check_action_auth($this->menuId, 'edit', true); // Check Auth
 
             foreach ($order as $i => $row):
                 $order[$i] = array_merge($row, array('uuid' => uniqid(), 'update_at' => date('Y-m-d H:i:s')));
             endforeach;
-
-            $this->db->update_batch('tb_inspiration', $order, 'eventId');
+            $this->db->update_batch('tb_inspiration', $order, 'inspirationId');
             $this->set_active_status('success', 'Success');
         endif;
 
-        redirect('backend/inspiration/inspiration' . $this->query);
+        redirect('backend/homepage/inspiration' . $this->query);
     }
 
     /******************** Private Function ********************/

@@ -27,8 +27,8 @@ class Designer extends Ajax_Controller
         /***** Order *****/
         $order = array(array('field' => 'designer.order', 'dir' => 'asc'));
 
-        $designerList = $this->designer->get_designer_select($filter, $order, array('limit' => $limit, 'start' => $start), $this->langId);
-        $recordsTotal = $this->designer->count_designer($filter, $this->langId);
+        $designerList = $this->designer->get_designer_select($filter, $order, array('limit' => $limit, 'start' => $start), 3);
+        $recordsTotal = $this->designer->count_designer($filter, 3);
         if ($designerList):
             foreach ($designerList as $row):
                 $data[] = array(

@@ -71,7 +71,7 @@
                                             <label class="col-sm-2 control-label" for="baseId">Base Category</label>
 
                                             <div class="col-sm-9 col-lg-4">
-                                                <select class="form-control" id="baseId">
+                                                <select class="form-control" id="baseId" name="baseId">
                                                     <option value="0" selected>None</option>
                                                     <?php if ($topList): ?>
                                                         <?php foreach ($topList as $crow): ?>
@@ -85,7 +85,7 @@
                                         <div class="form-group">
                                             <label class="col-sm-2 control-label" for="subId">Sub Category</label>
                                             <div class="col-sm-9 col-lg-4">
-                                                <select class="form-control" id="subId">
+                                                <select class="form-control" id="subId" name="subId">
                                                     <?php if($subList): ?>
                                                         <?php foreach($subList as $subKey => $subValue): ?>
                                                             <option value="<?= $subValue->categoryId ?>" <?= $sub_category->categoryId == $subValue->categoryId ? 'selected' : '' ?>><?= $subValue->name ?></option>
@@ -105,6 +105,18 @@
                                                             <option value="<?= $categoryValue->categoryId ?>" <?= $categoryValue->categoryId == $category->categoryId ? 'selected' : '' ?>><?= $categoryValue->name ?></option>
                                                         <?php endforeach; ?>
                                                     <?php endif; ?>                                                  
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label" for="category">Brand</label>
+
+                                            <div class="col-sm-9 col-lg-4">
+                                                <select class="form-control" name="brandId" data-bv-notempty="true" data-bv-notempty-message=" ">                                                    
+                                                    <?php foreach ($brandList as $brandKey => $brandValue){ ?>
+                                                        <option value="<?= $brandValue->brandId ?>" <?= $row->brandId == $brandValue->brandId ? "selected" : '' ?>><?= $brandValue->name ?></option>
+                                                    <?php } ?>
                                                 </select>
                                             </div>
                                         </div>

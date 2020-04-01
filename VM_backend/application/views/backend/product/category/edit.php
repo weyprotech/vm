@@ -87,6 +87,57 @@
                                             </div>
                                         </div>
 
+                                        <div class="form-group sub_group" <?= empty($second) ? 'style="display:none;"' : '' ?>>
+                                            <label class="col-sm-2 control-label">Image</label>
+
+                                            <div class="col-sm-9">
+                                                <input type="file" class="btn btn-default" id="uploadImg" name="categoryImg">
+
+                                                <p class="help-block">
+                                                    <strong>Note:</strong>Picture size is <strong>710 x 946</strong>.type is<strong>JPG、PNG</strong>。
+                                                </p>
+
+                                                <p class="help-block">
+                                                    <?php $categoryImg = check_file_path($row->categoryImg);?>
+                                                    <img id="preview" src="<?= $categoryImg ?>"<?= !$categoryImg ? 'display:none;' : '' ?>>
+                                                </p>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group sub_group" <?= empty($second) ? 'style="display:none;"' : '' ?>>
+                                            <label class="col-sm-2 control-label">Image</label>
+
+                                            <div class="col-sm-9">
+                                                <input type="file" class="btn btn-default" id="uploadImg" name="category2Img">
+
+                                                <p class="help-block">
+                                                    <strong>Note:</strong>Picture size is <strong>631 x 400</strong>.type is<strong>JPG、PNG</strong>。
+                                                </p>
+
+                                                <p class="help-block">
+                                                    <?php $category2Img = check_file_path($row->category2Img);?>
+                                                    <img id="preview" src="<?= $category2Img ?>"<?= !$category2Img ? 'display:none;' : '' ?>>
+                                                </p>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group sub_group" <?= empty($second) ? 'style="display:none;"' : '' ?>>
+                                            <label class="col-sm-2 control-label">Image</label>
+
+                                            <div class="col-sm-9">
+                                                <input type="file" class="btn btn-default" id="uploadImg" name="category3Img">
+
+                                                <p class="help-block">
+                                                    <strong>Note:</strong>Picture size is <strong>631 x 400</strong>.type is<strong>JPG、PNG</strong>。
+                                                </p>
+
+                                                <p class="help-block">
+                                                    <?php $category3Img = check_file_path($row->category3Img);?>
+                                                    <img id="preview" src="<?= $category3Img ?>"<?= !$category3Img ? 'display:none;' : '' ?>>
+                                                </p>
+                                            </div>
+                                        </div>
+
                                         <div class="form-group">
                                             <label class="col-sm-2 control-label" for="order">Sort</label>
 
@@ -152,6 +203,7 @@
         $("#save, #back").click(function (e) {
         });    
     });
+    
     baseId.change(function(){
         var first = baseId.val();
         var second = subId.val();
@@ -164,5 +216,11 @@
                 subId.html(response['option']);              
             }
         });
+    });
+
+    $('#subId').on('change',function(){
+        if($(this).val() != 0){
+            $('.sub_group').css('display','block');
+        }
     });
 </script>

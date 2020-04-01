@@ -6,7 +6,8 @@ class Tb_runway_model extends MY_Model
     public function __construct()
     {
         parent::__construct();
-        $this->uploadPath .= 'runway/';
+        $this->checkUploadPath('designer/runway/'); // 上傳路徑
+
     }
 
     /******************** runway Model ********************/

@@ -15,7 +15,6 @@ class tb_designer_banner_model extends MY_Model
         $this->set_order($order);
         $this->set_limit($limit);
         $query = $this->db->where('banner.is_enable', 1)->get('tb_designer_banner as banner');
-
         if ($query->num_rows() > 0):
             return $query->result();
         endif;

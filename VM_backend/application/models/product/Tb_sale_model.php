@@ -5,7 +5,7 @@ class Tb_sale_model extends MY_Model
     public function __construct()
     {
         parent::__construct();
-        $this->uploadPath .= 'sale/';
+        $this->checkUploadPath('product/sale/'); // 上傳路徑
     }
 
     /******************** sale Model ********************/

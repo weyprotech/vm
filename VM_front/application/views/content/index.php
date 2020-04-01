@@ -41,7 +41,7 @@
                 <div class="top_designers_slider">
                     <?php foreach ($designerList as $designerKey => $designerValue){ ?>
                         <div class="slide">
-                            <a class="slide_inner" href="designer_home.html">
+                            <a class="slide_inner" href="<?= website_url('designers/home?designerId='.$designerValue->designerId) ?>">
                                 <div class="thumb">
                                     <!--↓ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓-->
                                     <div class="pic" style="background-image: url(<?= backend_url($designerValue->designImg) ?>);"><img class="size" src="<?= base_url('assets/images/size_3x4.png') ?>"></div>

@@ -102,10 +102,12 @@ class Inspiration extends Ajax_Controller
 
     public function upload()
     {
+        $this->checkUploadPath('homepage/inspiration/'); // 上傳路徑
+
         $inspirationId = $this->input->post('inspirationId', true);
         if ($inspirationId && isset($_FILES['file'])):
             if (!$_FILES['file']['error']):
-                $this->uploadPath = 'assets/uploads/homepage/inspiration/';
+                // $this->uploadPath = 'assets/uploads/homepage/inspiration/';
                 $filePath = $this->uploadImg($_FILES['file'], $inspirationId . '/');
                 echo base_url($filePath['imagePath']);
             else:

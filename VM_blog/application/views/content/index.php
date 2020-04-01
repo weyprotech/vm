@@ -21,7 +21,7 @@
                 <?php } ?>
                 <span><?= $name ?></span>
                 </div>
-                <div class="country"><img class="flag" src="<?= base_url('assets/images/flag/flag_italy.png') ?>"><span><?= get_all_country($country) ?></span></div>
+                <div class="country"><img class="flag" src="<?= base_url('assets/images/flag/'.$country.'.png') ?>"><span><?= get_all_country($country) ?></span></div>
             </div>
             </div>
             <div class="share_links">Share:<a class="facebook" href="javascript:;" target="_blank"><i class="icon_share_facebook"></i></a><a class="pinterest" href="javascript:;" target="_blank"><i class="icon_share_pinterest"></i></a><a class="twitter" href="javascript:;" target="_blank"><i class="icon_share_twitter"></i></a><a class="weibo" href="javascript:;" target="_blank"><i class="icon_share_weibo"></i></a></div>

@@ -51,8 +51,9 @@ if (!function_exists('website_url')) {
 
 /********************  取得後台網址 ***********************/
 if(!function_exists('backend_url')){
-    function backend_url($url = ''){
-        return 'http://localhost/vm/vm_backend/'.$url;
+    function backend_url($url = ''){        
+        
+        return 'http://localhost/vm/VM_backend/'.$url;
     }
 }
 

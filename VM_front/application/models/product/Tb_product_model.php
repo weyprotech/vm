@@ -688,7 +688,7 @@ class Tb_product_model extends MY_Model
         $this->db->select('product_fabric.*');
         if($langId):
             $this->db->select('product_fabric_lang.location,product_fabric_lang.title1,product_fabric_lang.content1,product_fabric_lang.title2,product_fabric_lang.content2,product_fabric_lang.title3,product_fabric_lang.content3');
-            $this->db->join('tb_product_fabric_lang as product_fabric_lang','product_fabric_lang.mId = product_manufacture.Id AND product_fabric_lang.langId = '.$langId,'left');
+            $this->db->join('tb_product_fabric_lang as product_fabric_lang','product_fabric_lang.fId = product_fabric.Id AND product_fabric_lang.langId = '.$langId,'left');
         endif;
     }
     /******************** End Private Function ********************/

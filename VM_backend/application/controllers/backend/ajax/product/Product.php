@@ -88,7 +88,7 @@ class Product extends Ajax_Controller
         $productId = check_input_value($this->input->get('productId',true));
 
         $filter = array(array('field' => 'product_img.pId', 'value' => $productId));
-        $order = array(array('field' => 'product_img.order', 'dir' => 'asc'));
+        $order = array(array('field' => 'product_img.order', 'dir' => 'desc'));
 
         $this->load->model('product/tb_product_model', 'product_model');
         $productList = $this->product_model->get_product_img_select($filter, $order, array('limit' => $limit, 'start' => $start), $this->langId);

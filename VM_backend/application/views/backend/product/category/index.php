@@ -20,6 +20,11 @@
     .dataTables_filter {
         float: none;
     }
+
+    .category-select, .area-select{
+        padding-left: 5px;
+        padding-bottom: 5px;
+    }
 </style>
 <section id="widget-grid" class="">
     <div class="row">
@@ -75,7 +80,7 @@
             tablet: 1024,
             phone: 480
         };
-
+        var secondId;
         var prevId = '<?= check_input_value($this->input->get('prevId', true), true, 0) ?>';
         var $Table = $('#dt_basic').DataTable({
             "displayStart": <?= $start = check_input_value($this->input->get('start', true), true, 0) ?>,
@@ -113,7 +118,7 @@
                 "data": function (data) {
                     var firstId = $('div.category-select select').val();
                     data.firstId = firstId != undefined ? firstId : '<?= $this->input->get('firstId', true) ?>';
-                    var secondId = $('div.area-select select').val();
+                    secondId = $('div.area-select select').val();
                     data.secondId = secondId != undefined ? secondId : '<?= $this->input->get('secondId',true) ?>';
                 }
             },
@@ -148,20 +153,20 @@
             },
             "initComplete": function () {
                 $categorySelect = $('div.category-select').html('<span class="input-group-addon">Base Category</span><select class="form-control"></select>')
-                    .find("select").html("<option value='all'>All</option><option value=''>None</option>").change(function () {
+                    .find("select").html("<option value=''>None</option><option value='all'>All</option>").change(function () {
                         var category = $(this).val();
                         var result = '';
                         $Table.draw();
-                        get_area_option(category).done(function(response){    
+                        get_area_option(category,secondId).done(function(response){    
                             result += '';
                             result += response['option'];
 
                             $areaList.html(result);
                         });
-                    });
+                    }).trigger("change");
 
-                get_category_option('<?= $this->input->get('cId', true) ?>').done(function (respone) {
-                    $categorySelect.append(respone['option']);
+                get_category_option('<?= $this->input->get('firstId', true) ?>').done(function (respone) {
+                    $categorySelect.append(respone['option']);                    
                 });
 
                 $areaList = $('div.area-select').html('<span class="input-group-addon">Sub Category</span><select class="form-control"></select>')
@@ -169,7 +174,7 @@
                         $Table.draw();
                     });
 
-                get_area_option('<?= $this->input->get('cId', true) ?>').done(function(response){   
+                get_area_option('<?= $this->input->get('firstId', true) ?>','<?= $this->input->get('secondId', true) ?>').done(function(response){   
                     result = '';
                     result += response['option'];
                     $areaList.html(result);
@@ -186,11 +191,11 @@
             });
         }
 
-        function get_area_option(category){
+        function get_area_option(category,selectId){
             return $.ajax({
                 url:'<?= site_url('backend/ajax/product/category/get_category_option') ?>',
                 type:'get',
-                data:{selected : '',cId : category},
+                data:{selected : selectId,cId : category},
                 dataType:'json',
             });
         }

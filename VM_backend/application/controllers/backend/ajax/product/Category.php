@@ -17,6 +17,7 @@ class Category extends Ajax_Controller
     {
         header('Content-Type: application/json; charset=utf-8');
         $this->load->model('product/tb_category_model', 'category');
+        $this->load->model('product/tb_product_model','product_model');
 
         $start = $this->input->get('start', true);
         $limit = $this->input->get('length', true);
@@ -33,16 +34,15 @@ class Category extends Ajax_Controller
                 $prevId = $secondId;                
             }
         }
-        // print_r($firstId);exit;
+
         if($firstId === 'all'){
             $prevId = false;
         }
         $filter = array(array('field' => 'category.prevId', 'value' => $prevId), 'like' => array('field' => 'lang.name', 'value' => $search));
         $order = array(array('field' => 'category.order', 'dir' => 'asc'));
-        $query = $this->set_http_query(array('prevId' => $prevId, 'search' => $search));
-
+        $query = $this->set_http_query(array('firstId' => $firstId,'secondId' => $secondId, 'search' => $search));
         $categoryList = $this->category->get_category_select($filter, $order, array('limit' => $limit, 'start' => $start), $this->langId);
-        $recordsTotal = $this->category->count_category($filter);
+        $recordsTotal = $this->category->count_category($filter,$this->langId);
         $prevList = $this->category->get_category_select(false,$order,array());
         if ($categoryList):
             foreach ($categoryList as $row):
@@ -53,6 +53,7 @@ class Category extends Ajax_Controller
                     case 2:
                         $basecategory = check_input_value($row->prevName, false, "None");
                         $subcategory = '';
+                        $productList = $this->product_model->get_product_select(array(array('field' => 'product.baseId','value' => $row->prevId),array('field' => 'product.subId','value' => $row->categoryId)));
                     break;
                     case 3:
                         foreach($prevList as $prevKey => $prevValue){
@@ -62,8 +63,18 @@ class Category extends Ajax_Controller
                                 $subcategory = check_input_value($row->prevName, false, "None");
                             }
                         }
+                        $productList = $this->product_model->get_product_select(array(array('field' => 'product.subId','value' => $row->prevId),array('field' => 'product.cId','value' => $row->categoryId)));
                     break;
-                }            
+                    case 1:
+                        $productList = $this->product_model->get_product_select(array(array('field' => 'product.baseId','value' => $row->categoryId)));
+                    break;
+                }
+
+                if(!$productList){
+                    $action = $this->get_button('edit', 'backend/product/category/edit/' . $row->categoryId . $query) . $this->get_button('delete', 'backend/product/category/delete/' . $row->categoryId . $query);
+                }else{
+                    $action = $this->get_button('edit', 'backend/product/category/edit/' . $row->categoryId . $query);
+                }
 
                 $data[] = array(
                     'visible' => '<td><img src="' . show_enable_image($row->is_visible) . '" width="25"></td>',
@@ -72,7 +83,7 @@ class Category extends Ajax_Controller
                     'base_category' => $basecategory,
                     'sub_category' => $subcategory,                    
                     'order' => $this->get_order('category', $row->categoryId, $row->order),
-                    'action' => $this->get_button('edit', 'backend/product/category/edit/' . $row->categoryId . $query) . $this->get_button('delete', 'backend/product/category/delete/' . $row->categoryId . $query)
+                    'action' => $action
                 );
             endforeach;
         endif;
@@ -119,7 +130,7 @@ class Category extends Ajax_Controller
             $option = '<option value=0>None</option>';
             if($categoryList){
                 foreach($categoryList as $categoryKey => $categoryValue){
-                    $option .= '<option value="'.$categoryValue->categoryId.'" '.($selected == $categoryValue->categoryId ? 'checked' : '').'>'.$categoryValue->name.'</option>';
+                    $option .= '<option value="'.$categoryValue->categoryId.'" '.($selected == $categoryValue->categoryId ? 'selected' : '').'>'.$categoryValue->name.'</option>';
                 }
             }
             echo json_encode(array('option' => $option));

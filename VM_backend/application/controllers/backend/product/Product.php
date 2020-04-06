@@ -14,7 +14,7 @@ class Product extends Backend_Controller
         $this->load->model('product/tb_product_model', 'product_model');
         $this->load->model('product/tb_category_model','category_model');
         $this->load->model('brand/tb_brand_model', 'brand_model');
-        $this->query = $this->set_http_query(array('search' => $this->input->get('search', true)));
+        $this->query = $this->set_http_query(array('search' => $this->input->get('search', true),'baseCategory' => $this->input->get('baseCategory',true),'subCategory' => $this->input->get('subCategory',true),'category' => $this->input->get('category',true)));
     }
 
     public function index()

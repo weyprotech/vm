@@ -12,7 +12,7 @@ class Category extends Backend_Controller
         endif;
 
         $this->load->model('product/tb_category_model', 'category');
-        $this->query = $this->set_http_query(array('search' => $this->input->get('search', true), 'prevId' => $this->input->get('prevId', true)));
+        $this->query = $this->set_http_query(array('search' => $this->input->get('search', true), 'prevId' => $this->input->get('prevId', true),'firstId' => $this->input->get('firstId', true),'secondId' => $this->input->get('secondId', true)));
     }
 
     public function index()

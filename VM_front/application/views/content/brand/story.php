@@ -7,7 +7,7 @@
                         <div class="pic" style="background-image: url(<?= backend_url($row->brandImg) ?>);"><img class="size" src="<?= base_url('assets/images/size_4x3.png') ?>"></div>
                     </div>
                     <div class="designer_name">
-                        <a href="designer_home.html">
+                        <a href="<?= website_url('designers/home').'?designerId='.$row->designerId ?>">
                             <div class="profile_picture">
                                 <div class="pic" style="background-image: url(<?= backend_url($designer->designiconImg) ?>);"><img class="size" src="<?= base_url('assets/images/size_1x1.png') ?>"></div>
                             </div>

@@ -94,7 +94,7 @@
                                                 <input type="file" class="btn btn-default" id="uploadImg" name="eventImg">
 
                                                 <p class="help-block">
-                                                    <strong>Note:</strong>Picture size is <strong>600 x 600</strong>.type is<strong>JPG、PNG</strong>。
+                                                    <strong>Note:</strong>Resolution is <strong>600 x 600</strong>. Format is JPG and PNG</strong>。
                                                 </p>
                                                 <p class="help-block">
                                                     <?php $eventImg = check_file_path($row->eventImg); ?>
@@ -110,7 +110,7 @@
                                                 <input type="file" class="btn btn-default" id="uploadImg" name="collectionImg">
 
                                                 <p class="help-block">
-                                                    <strong>Note:</strong>Picture size is <strong>510 x 288</strong>.type is<strong>JPG、PNG</strong>。
+                                                    <strong>Note:</strong>Resolution is <strong>510 x 288</strong>. Format is JPG and PNG</strong>。
                                                 </p>
 
                                                 <p class="help-block">                                                    
@@ -135,7 +135,7 @@
                                                 <input type="file" class="btn btn-default" id="uploadImg" name="exploreImg">
 
                                                 <p class="help-block">
-                                                    <strong>Note:</strong>Picture size is <strong>360 x 360</strong>.type is<strong>JPG、PNG</strong>。
+                                                    <strong>Note:</strong>Resolution is <strong>360 x 360</strong>. Format is JPG and PNG</strong>。
                                                 </p>
 
                                                 <p class="help-block">

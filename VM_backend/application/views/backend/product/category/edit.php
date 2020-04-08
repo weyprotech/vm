@@ -94,7 +94,7 @@
                                                 <input type="file" class="btn btn-default" id="uploadImg" name="categoryImg">
 
                                                 <p class="help-block">
-                                                    <strong>Note:</strong>Picture size is <strong>710 x 946</strong>.type is<strong>JPG、PNG</strong>。
+                                                    <strong>Note:</strong>Resolution is <strong>710 x 946</strong>. Format is JPG and PNG</strong>。
                                                 </p>
 
                                                 <p class="help-block">
@@ -111,7 +111,7 @@
                                                 <input type="file" class="btn btn-default" id="uploadImg" name="category2Img">
 
                                                 <p class="help-block">
-                                                    <strong>Note:</strong>Picture size is <strong>631 x 400</strong>.type is<strong>JPG、PNG</strong>。
+                                                    <strong>Note:</strong>Resolution is <strong>631 x 400</strong>. Format is JPG and PNG</strong>。
                                                 </p>
 
                                                 <p class="help-block">
@@ -128,7 +128,7 @@
                                                 <input type="file" class="btn btn-default" id="uploadImg" name="category3Img">
 
                                                 <p class="help-block">
-                                                    <strong>Note:</strong>Picture size is <strong>631 x 400</strong>.type is<strong>JPG、PNG</strong>。
+                                                    <strong>Note:</strong>Resolution is <strong>631 x 400</strong>. Format is JPG and PNG</strong>。
                                                 </p>
 
                                                 <p class="help-block">

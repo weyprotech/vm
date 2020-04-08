@@ -56,13 +56,29 @@
 
                                             <div class="col-sm-9">
                                                 <label class="radio radio-inline">
-                                                    <input type="radio" class="radiobox" name="is_visible" value="1" checked>
+                                                    <input type="radio" class="radiobox" name="is_visible" value="1" <?= $row->is_visible == 1 ? 'checked' : '' ?>>
                                                     <span>Yes</span>
                                                 </label>
 
                                                 <label class="radio radio-inline">
-                                                    <input type="radio" class="radiobox" name="is_visible" value="0">
+                                                    <input type="radio" class="radiobox" name="is_visible" value="0" <?= $row->is_visible == 0 ? 'checked' : '' ?>>
                                                     <span>No</span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">Status</label>
+
+                                            <div class="col-sm-9">
+                                                <label class="radio radio-inline">
+                                                    <input type="radio" class="radiobox" name="status" value="0" <?= $row->status == 0 ? 'checked' : '' ?>>
+                                                    <span>Spot</span>
+                                                </label>
+
+                                                <label class="radio radio-inline">
+                                                    <input type="radio" class="radiobox" name="status" value="1" <?= $row->status == 1 ? 'checked' : '' ?>>
+                                                    <span>Pre order</span>
                                                 </label>
                                             </div>
                                         </div>
@@ -152,12 +168,12 @@
                                                 <input type="file" class="btn btn-default" id="uploadImg" name="productImg">
 
                                                 <p class="help-block">
-                                                    <strong>Note:</strong>Picture size is <strong>300 x 400</strong>.type is<strong>JPG、PNG</strong>。
+                                                    <strong>Note:</strong>Resolution is <strong>300 x 400</strong>. Format is JPG and PNG</strong>。
                                                 </p>
                                                 
                                                 <p class="help-block">
                                                     <?php $productImg = check_file_path($row->productImg); ?>
-                                                    <img id="preview" src="<?= $productImg ?>"<?= !$productImg ? "display:none;" : "" ?>">
+                                                    <img id="preview" src="<?= $productImg ?>"<?= !$productImg ? "display:none;" : "" ?>>
                                                 </p>
                                             </div>
                                         </div>
@@ -172,7 +188,9 @@
                                             <table id="image_list" class="table table-bordered table-striped text-center">
                                                 <thead>
                                                     <tr>
-                                                        <th width="60%" class="text-center hidden-tablet hidden-md">Image</th>
+                                                        <th width="10%" class="text-center hidden-tablet hidden-md">small Image</th>
+                                                        <th width="10%" class="text-center hidden-tablet hidden-md">middle Image</th>
+                                                        <th width="10%" class="text-center hidden-tablet hidden-md">big Image</th>
                                                         <th width="20%" class="text-center hidden-tablet hidden-md">Youtube</th>
                                                         <!-- <th width="20%" class="text-center">Sort</th> -->
                                                         <th width="20%" class="text-center">Action</th>
@@ -210,7 +228,8 @@
                                                     <label class="col-sm-2 control-label" for="name-<?= $lrow->langId ?>">Description</label>
 
                                                     <div class="col-sm-9">
-                                                        <textarea class="form-control" name="langList[<?= $lrow->langId ?>][description]" rows="10" data-bv-notempty="true" data-bv-notempty-message=" "><?= $row->langList[$lrow->langId]->description ?></textarea>                                                        
+                                                        <div id="description-edit"><?= $row->langList[$lrow->langId]->description ?></div>
+                                                        <input type="hidden" id="description" name="langList[<?= $lrow->langId ?>][description]">                                                    
                                                     </div>
                                                 </div>
 
@@ -279,6 +298,14 @@
 
                 $(this).siblings('input#content').val(content);
             });
+
+            $('div#description-edit').each(function () {
+                var description = $(this).summernote('code').replace(/[\u00A0-\u9999<>\&]/gim, function (i) {
+                    return '&#' + i.charCodeAt(0) + ';';
+                });
+
+                $(this).siblings('input#description').val(description);
+            });
         });
 
         $('div#content-edit').each(function () {
@@ -303,6 +330,30 @@
                 }
             });
         });
+
+        $('div#description-edit').each(function () {
+            $(this).summernote({
+                height: 500,
+                lang: 'zh-TW',
+                toolbar: [
+                    // ['font', ['clear']],
+                    // ['insert', ['picture', 'link', 'video']],
+                    // ['misc', ['codeview']]
+                    //['font', ['fontname', 'fontsize', 'color', 'bold', 'italic', 'underline', 'strikethrough', 'superscript', 'subsript', 'clear']],
+                    ['para', ['ol', 'ul']],
+                    //['insert', ['picture', 'link', 'video', 'table', 'hr']],
+                    //['misc', ['fullscreen', 'codeview', 'undo', 'redo', 'help']]
+                ],
+                callbacks: {
+                    onImageUpload: function (files) {
+                        for (var i = 0; i < files.length; i++) {
+                            sendFile(files[i], $(this));
+                        }
+                    }
+                }
+            });
+        });
+
 
         var responsiveHelper_dt_basic = undefined;
         var breakpointDefinition = {
@@ -348,7 +399,9 @@
                 }
             },
             "columns": [
-                {class: "hidden-xs", data: "preview"},
+                {class: "hidden-xs", data: "small"},
+                {class: "", data: "middle"},
+                {class: "hidden-xs", data: "big"},
                 {class: "", data: "youtube"},
                 // {class: "", data: "order"},
                 {class: "", data: "action"}
@@ -376,6 +429,10 @@
             "initComplete": function () {
             }
         });
+        
+        $('form').bootstrapValidator({
+            excluded: ""
+        });     
     });
 
     $('input#uploadImg').change(function () {
@@ -419,14 +476,18 @@
     {        
         swal({
             title: 'Upload image',
-            html:'<input type="file" id="transactionImg" onchange="change_img()" class="swal2-file transactionImg" placeholder="" style="display: block;width:92%"><br><strong>Note:</strong> Picture size is <strong>300 x 400</strong>.type is<strong>JPG、PNG</strong><br><input type="file" id="transactionImg" onchange="change_img()" class="swal2-file transactionImg" placeholder="" style="display: block;width:92%"><br><strong>Note:</strong> Picture size is <strong>470 x 627</strong>.type is<strong>JPG、PNG</strong><br><input type="file" id="transactionImg" multiple="multiple" onchange="change_img()" class="swal2-file transactionImg" placeholder="" style="display: block;width:92%"><br><strong>Note:</strong> Picture size is <strong>600 x 800</strong>.type is<strong>JPG、PNG</strong><br><span stle="float:left">Youtube</span><input type="text" id="youtube" name="youtube" style="width:80%"></p>'
+            html:'<input type="file" id="transactionImg" onchange="change_small_img()" class="swal2-file transactionImg" placeholder="" style="display: block;width:92%"><br><strong>Note:</strong> Resolution is <strong>300 x 400</strong>. Format is JPG and PNG</strong><br><input type="file" id="transactionImg" onchange="change_middle_img()" class="swal2-file transactionImg" placeholder="" style="display: block;width:92%"><br><strong>Note:</strong> Resolution is <strong>470 x 627</strong>. Format is JPG and PNG</strong><br><input type="file" id="transactionImg" multiple="multiple" onchange="change_big_img()" class="swal2-file transactionImg" placeholder="" style="display: block;width:92%"><br><strong>Note:</strong> Resolution is <strong>600 x 800</strong>. Format is JPG and PNG</strong><br><span stle="float:left">Youtube</span><input type="text" id="youtube" name="youtube" style="width:80%"></p>'
         }).then(function (e) {
             var data = new FormData();
-            if(file != undefined && file != ''){
-                $.each(file,function(key,value){
-                    data.append(key,value);
-                });
-            }        
+            if(small_file != undefined && small_file != ''){
+                data.append('small_file',small_file[0]);
+            }  
+            if(middle_file != undefined && middle_file != ''){
+                data.append('middle_file',middle_file[0]);
+            }
+            if(big_file != undefined && big_file != ''){
+                data.append('big_file',big_file[0]);
+            }      
             data.append('youtube',$('#youtube').val());
             data.append('productId','<?= $productId ?>');
             data.append('Id',Id);
@@ -469,8 +530,16 @@
         });    
     }
 
-    function change_img(){
-        file = event.target.files;
+    function change_small_img(){
+        small_file = event.target.files;
+    };
+
+    function change_middle_img(){
+        middle_file = event.target.files;
+    };
+
+    function change_big_img(){
+        big_file = event.target.files;
     };
 
     function sendFile(file, editor) {

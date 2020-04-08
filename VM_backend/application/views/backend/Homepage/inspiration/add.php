@@ -94,7 +94,7 @@
                                                     data-bv-file-message="Type error">
 
                                                 <p class="help-block">
-                                                    <strong>Note:</strong>Picture width is <strong>240</strong>.type is<strong>JPG、PNG</strong>。
+                                                    <strong>Note:</strong>Picture width is <strong>240</strong>. Format is JPG and PNG</strong>。
                                                 </p>
 
                                                 <p class="help-block">

@@ -107,7 +107,7 @@
                                                     data-bv-file-message="Type error">
 
                                                 <p class="help-block">
-                                                    <strong>Note:</strong>Picture size is <strong>710 x 946</strong>.type is<strong>JPG、PNG</strong>。
+                                                    <strong>Note:</strong>Resolution is <strong>710 x 946</strong>. Format is JPG and PNG</strong>。
                                                 </p>
 
                                                 <p class="help-block">
@@ -128,7 +128,7 @@
                                                     data-bv-file-message="Type error">
 
                                                 <p class="help-block">
-                                                    <strong>Note:</strong>Picture size is <strong>631 x 400</strong>.type is<strong>JPG、PNG</strong>。
+                                                    <strong>Note:</strong>Resolution is <strong>631 x 400</strong>. Format is JPG and PNG</strong>。
                                                 </p>
 
                                                 <p class="help-block">
@@ -149,7 +149,7 @@
                                                     data-bv-file-message="Type error">
 
                                                 <p class="help-block">
-                                                    <strong>Note:</strong>Picture size is <strong>631 x 400</strong>.type is<strong>JPG、PNG</strong>。
+                                                    <strong>Note:</strong>Resolution is <strong>631 x 400</strong>. Format is JPG and PNG</strong>。
                                                 </p>
 
                                                 <p class="help-block">

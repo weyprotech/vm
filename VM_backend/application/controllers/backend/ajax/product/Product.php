@@ -96,7 +96,9 @@ class Product extends Ajax_Controller
         if ($productList):
             foreach ($productList as $row):
                 $data[] = array(
-                    'preview' => '<div id="preview">' . (!empty($row->thumbPath) ? '<img src="' . base_url($row->thumbPath) . '" style="width:100px">' : '') . '</div>',
+                    'small' => '<div id="preview">' . (!empty($row->small_thumbPath) ? '<img src="' . base_url($row->small_thumbPath) . '" style="width:100px">' : '') . '</div>',
+                    'middle' => '<div id="preview">' . (!empty($row->middle_thumbPath) ? '<img src="' . base_url($row->middle_thumbPath) . '" style="width:100px">' : '') . '</div>',
+                    'big' => '<div id="preview">' . (!empty($row->big_thumbPath) ? '<img src="' . base_url($row->big_thumbPath) . '" style="width:100px">' : '') . '</div>',
                     'youtube' => $row->youtube,
                     'order' => $this->get_order('image', $row->imageId, $row->order),
                     'action' => '<button type="button" class="btn btn-primary" onclick="imgUpload(\''.$row->imageId.'\')"><i class="fa fa-gear"></i><span class="hidden-mobile"> Edit</span></button>'.'<button type="button" class="btn btn-danger" onclick="delete_imgList(\''.$row->imageId.'\')"><i class="glyphicon glyphicon-trash"></i><span class="hidden-mobile"> Delete</span></button>'
@@ -120,16 +122,17 @@ class Product extends Ajax_Controller
 
         if($_FILES){
             if (!is_dir($this->uploadPath .= $file.'/')) mkdir($this->uploadPath, 0777,true);
-            foreach ($_FILES as $key => $value) {
-                $config['upload_path'] = 'assets/uploads/'.$file.'/';
-                $file = $this->uploadImg($_FILES[0],'/',470);
-                if($Id == 'new'){
-                    $this->product_model->insert_product_img(array('thumbPath' => $file['thumbPath'],'imagePath' => $file['imagePath'],'pId' => $productId,'youtube' => $youtube));
-                }else{
-                    $old_file = $this->product_model->get_product_img_by_id($Id);
-                    $this->product_model->update_product_img($old_file,array('thumbPath' => $file['thumbPath'],'imagePath' => $file['imagePath'],'pId' => $productId,'youtube' => $youtube));
-                }
-            }     
+            $config['upload_path'] = 'assets/uploads/'.$file.'/';
+            $small_file = $this->uploadImg($_FILES['small_file'],'/',300);
+            $middle_file = $this->uploadImg($_FILES['middle_file'],'/',470);
+            $big_file = $this->uploadImg($_FILES['big_file'],'/',600);
+
+            if($Id == 'new'){
+                $this->product_model->insert_product_img(array('small_thumbPath' => $small_file['thumbPath'],'small_imagePath' => $small_file['imagePath'],'middle_thumbPath' => $middle_file['thumbPath'],'middle_imagePath' => $middle_file['imagePath'],'big_thumbPath' => $big_file['thumbPath'],'big_imagePath' => $big_file['imagePath'],'pId' => $productId,'youtube' => $youtube));
+            }else{
+                $old_file = $this->product_model->get_product_img_by_id($Id);
+                $this->product_model->update_product_img($old_file,array('small_thumbPath' => $small_file['thumbPath'],'small_imagePath' => $small_file['imagePath'],'middle_thumbPath' => $middle_file['thumbPath'],'middle_imagePath' => $middle_file['imagePath'],'big_thumbPath' => $big_file['thumbPath'],'big_imagePath' => $big_file['imagePath'],'pId' => $productId,'youtube' => $youtube));
+            }
         }else{
             $old_file = $this->product_model->get_product_img_by_id($Id);
             $this->product_model->update_product_img($old_file,array('pId' => $productId,'youtube' => $youtube));

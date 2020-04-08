@@ -328,7 +328,7 @@
         var runwayId = $('#runwayId').val();
         swal({
             title: 'Upload image or video',                                                    
-            html:'<input type="file" id="transactionImg" multiple="multiple" onchange="change_img()" class="swal2-file transactionImg" placeholder="" style="display: block;width:92%"><span style="font-size:8px"><strong>Note:</strong> Picture size is <strong>510 x 288</strong>.type is<strong>JPG、PNG</strong>。</span><br><br><span stle="float:left">Youtube</span>&nbsp;<input type="text" id="youtube" name="youtube" style="width:80%"></p>'
+            html:'<input type="file" id="transactionImg" multiple="multiple" onchange="change_img()" class="swal2-file transactionImg" placeholder="" style="display: block;width:92%"><span style="font-size:8px"><strong>Note:</strong> Resolution is <strong>510 x 288</strong>. Format is JPG and PNG</strong>。</span><br><br><span stle="float:left">Youtube</span>&nbsp;<input type="text" id="youtube" name="youtube" style="width:80%"></p>'
         }).then(function (e) {
             var data = new FormData();
             if(file != undefined && file != ''){

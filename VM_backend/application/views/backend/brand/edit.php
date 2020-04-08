@@ -96,7 +96,7 @@
                                                 <input type="file" class="btn btn-default" id="uploadImg" name="brandiconImg">
 
                                                 <p class="help-block">
-                                                    <strong>Note:</strong>Picture size is <strong>100 x 100</strong>.type is<strong>JPG、PNG</strong>。
+                                                    <strong>Note:</strong>Resolution is <strong>100 x 100</strong>. Format is JPG and PNG</strong>。
                                                 </p>
                                                 <p class="help-block">
                                                     <?php $brandiconImg = check_file_path($row->brandiconImg); ?>
@@ -111,7 +111,7 @@
                                                 <input type="file" class="btn btn-default" id="uploadImg" name="brandImg">
 
                                                 <p class="help-block">
-                                                    <strong>Note:</strong>Picture size is <strong>600 x 600</strong>.type is<strong>JPG、PNG</strong>。
+                                                    <strong>Note:</strong>Resolution is <strong>600 x 600</strong>. Format is JPG and PNG</strong>。
                                                 </p>
 
                                                 <p class="help-block">
@@ -128,7 +128,7 @@
                                                 <input type="file" class="btn btn-default" id="uploadImg" name="brandindexImg">
 
                                                 <p class="help-block">
-                                                    <strong>Note:</strong>Picture size is <strong>360 x 360</strong>.type is<strong>JPG、PNG</strong>。
+                                                    <strong>Note:</strong>Resolution is <strong>360 x 360</strong>. Format is JPG and PNG</strong>。
                                                 </p>
 
                                                 <p class="help-block">
@@ -149,7 +149,7 @@
                                                     data-bv-file-message="圖示格式不符">
 
                                                 <p class="help-block">
-                                                    <strong>Note:</strong>Picture size is <strong>940 x 1154</strong>.type is<strong>JPG、PNG</strong>。
+                                                    <strong>Note:</strong>Resolution is <strong>940 x 1154</strong>. Format is JPG and PNG</strong>。
                                                 </p>
 
                                                 <p class="help-block">
@@ -170,7 +170,7 @@
                                                     data-bv-file-message="圖示格式不符">
 
                                                 <p class="help-block">
-                                                    <strong>Note:</strong>Picture size is <strong>941 x 968</strong>.type is<strong>JPG、PNG</strong>。
+                                                    <strong>Note:</strong>Resolution is <strong>941 x 968</strong>. Format is JPG and PNG</strong>。
                                                 </p>
 
                                                 <p class="help-block">                                                    
@@ -191,7 +191,7 @@
                                                     data-bv-file-message="圖示格式不符">
 
                                                 <p class="help-block">
-                                                    <strong>Note:</strong>Picture size is <strong>940 x 865</strong>.type is<strong>JPG、PNG</strong>。
+                                                    <strong>Note:</strong>Resolution is <strong>940 x 865</strong>. Format is JPG and PNG</strong>。
                                                 </p>
 
                                                 <p class="help-block">                                                    

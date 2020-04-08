@@ -83,7 +83,7 @@
                                                     data-bv-file-message="圖示格式不符">
 
                                                 <p class="help-block">
-                                                    <strong>Note:</strong> Picture size is <strong>1920 x 830</strong>.type is <strong>JPG、PNG</strong>。
+                                                    <strong>Note:</strong> Resolution is <strong>1920 x 830</strong>.type is <strong>JPG、PNG</strong>。
                                                 </p>
 
                                                 <p class="help-block">                                                    

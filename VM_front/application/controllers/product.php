@@ -92,7 +92,11 @@ class Product extends Frontend_Controller
         $total_review_count = $this->tb_product_review_model->count_product_review(array(array('field' => 'review.productId','value' => $productId)));
         $total_review_page = ceil(($total_review_count/10));
         $saleinformation = $this->tb_sale_model->get_sale_information();
-        $sale = $this->tb_sale_model->get_sale_product_by_pId($productId);
+        if($saleinformation->is_visible == 1){
+            $sale = $this->tb_sale_model->get_sale_product_by_pId($productId);
+        }else{
+            $sale = false;
+        }
         
         if($postList = $this->tb_post_model->get_post_select(array(array('field' => 'post.is_visible', 'value' => 1),array('field' => 'post.designerId','value' => $brand->designerId)),array(array('field' => 'post.order','dir' => 'desc')),false,$this->langId)){
             foreach($postList as $postKey => $postValue){
@@ -107,11 +111,14 @@ class Product extends Frontend_Controller
         if(!empty($viewedArray)){
             foreach($viewedArray as $viewKey => $viewValue){
                 if($viewKey != 0){
-                    $viewList[] = $this->tb_product_model->get_product_by_id($viewValue,$this->langId);
+                    if($temp = $this->tb_product_model->get_product_by_id($viewValue,$this->langId)){
+                        $viewList[] = $temp;
+                    }
                 }
             }
         }
 
+        //紀載此產品至cookie
         if(strpos($viewed,$productId) == false){
             $viewed .= '###'.$productId;
             $array = array(
@@ -121,6 +128,11 @@ class Product extends Frontend_Controller
             );
             $this->input->set_cookie($array);
         }
+        
+        //記累計產品次數
+        $click = $row->click+1;
+        $this->product_model->update_product($row,array('click' => $click));
+
         $data = array(
             'row' => $row,
             'product_banner' => $product_banner,
@@ -143,7 +155,7 @@ class Product extends Frontend_Controller
             'reviewpage' => $reviewpage,
             'designer_bannerList' => $designer_bannerList
         );
-        $this->get_view('product/detail',$data,$this->load->view('shared/script/designers/_profile_script','',true));
+        $this->get_view('product/detail',$data,$this->load->view('shared/script/designers/_profile_script','',true),$productId);
     }
 
     public function popup_detail($productId){
@@ -170,8 +182,8 @@ class Product extends Frontend_Controller
         $this->load->view('content/product/fabric_popup',$data);
     }
 
-    private function get_view($page, $data = array(), $script = "")
+    private function get_view($page, $data = array(), $script = "",$productId = false)
     {
-        $this->load->view("webPage", $this->get_frontend_view($page, $data, $script));
+        $this->load->view("webPage", $this->get_frontend_view($page, $data, $script,$productId));
     }
 }

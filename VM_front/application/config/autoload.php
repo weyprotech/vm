@@ -137,4 +137,4 @@ $autoload['language'] = array();
 |	$autoload['model'] = array('first_model' => 'first');
 */
 
-$autoload['model'] = array('tb_menu_model' => 'menu', 'tb_admin_model' => 'admin', 'tb_website_model' => 'website','homepage/tb_set_website_color_model' => 'website_color','product/tb_category_model' => 'product_category_model');
+$autoload['model'] = array('tb_menu_model' => 'menu', 'tb_admin_model' => 'admin', 'tb_website_model' => 'website','homepage/tb_set_website_color_model' => 'website_color','product/tb_category_model' => 'product_category_model','product/tb_product_model' => 'product_model');

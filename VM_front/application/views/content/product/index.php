@@ -44,7 +44,7 @@
                     <?php for($i=4;$i<15;$i++){
                         if(isset($productList[$i])){ ?>
                             <div class="item">
-                                <a href="product_detail.html">
+                                <a href="<?= website_url('product/detail').'?productId='.$productList[$i]->productId ?>">
                                     <div class="thumb">
                                         <div class="pic" style="background-image: url(<?= backend_url($productList[$i]->productImg) ?>)"><img class="size" src="<?= base_url('assets/images/size_3x4.png') ?>"></div>
                                     </div>
@@ -64,7 +64,7 @@
                     <?php for($i=15;$i<20;$i++){
                         if(isset($productList[$i])){ ?>
                         <div class="item">
-                            <a href="product_detail.html">
+                            <a href="<?= website_url('product/detail').'?productId='.$productList[$i]->productId ?>">
                                 <div class="thumb">
                                     <div class="pic" style="background-image: url(<?= backend_url($productList[$i]->productImg) ?>)"><img class="size" src="<?= base_url('assets/images/size_3x4.png') ?>"></div>
                                 </div>

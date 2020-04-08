@@ -44,7 +44,7 @@
                 <h1 class="product_title"><?= $row->name ?></h1>
                 <div class="product_intro"><?= $row->introduction ?></div>
                 <div class="product_price">
-                    <?php if(empty($saleinformation)){ ?>
+                    <?php if(!$sale){ ?>
                         $<?= $row->price ?>
                     <?php }else{ ?>
                         <span class="strikethrough">$<?= $row->price ?></span>

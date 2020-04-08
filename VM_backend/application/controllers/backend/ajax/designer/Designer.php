@@ -10,6 +10,7 @@ class Designer extends Ajax_Controller
         endif;
 
         $this->load->model('designer/tb_designer_model', 'designer');
+        $this->load->model('brand/tb_brand_model','brand');
     }
 
     /******************** designer ********************/
@@ -31,6 +32,12 @@ class Designer extends Ajax_Controller
         $recordsTotal = $this->designer->count_designer($filter, 3);
         if ($designerList):
             foreach ($designerList as $row):
+                $brandList = $this->brand->get_brand_select(array(array('field' => 'brand.designerId','value' => $row->designerId)),false,false);
+                if($brandList){
+                    $action = $this->get_button('edit', 'backend/designer/designer/edit/' . $row->designerId . $query);
+                }else{
+                    $action = $this->get_button('edit', 'backend/designer/designer/edit/' . $row->designerId . $query) . $this->get_button('delete', 'backend/designer/designer/delete/' . $row->designerId . $query);
+                }
                 $data[] = array(
                     'visible' => '<td><img src="' . show_enable_image($row->is_visible) . '" width="25"></td>',
                     'icon' => (!empty($row->designiconImg) ? '<div id="preview"><img src="' . base_url($row->designiconImg) . '"></div>' : ''),
@@ -40,7 +47,7 @@ class Designer extends Ajax_Controller
                     'banner' => '<a class="btn btn-warning" href="'.site_url('backend/designer/banner/index/'.$row->designerId).'"><i class="fa fa-picture-o"></i><span class="hidden-mobile"> Banner</span></a>',
                     'post' => '<a class="btn btn-success" href="'.site_url('backend/designer/post/index/'.$row->designerId).'"><i class="fa fa-book"></i><span class="hidden-mobile"> Post</span></button>',
                     'runway' => '<a class="btn btn-primary" href="'.site_url('backend/designer/runway/index/'.$row->designerId).'"><i class="fa fa-clock-o"></i><span class="hidden-mobile"> Runway new event</span></button>',
-                    'action' => $this->get_button('edit', 'backend/designer/designer/edit/' . $row->designerId . $query) . $this->get_button('delete', 'backend/designer/designer/delete/' . $row->designerId . $query)
+                    'action' => $action
                 );
             endforeach;
         endif;

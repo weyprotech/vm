@@ -42,11 +42,11 @@
                             data-bv-feedbackicons-invalid="glyphicon glyphicon-remove"
                             data-bv-feedbackicons-validating="glyphicon glyphicon-refresh">
                             <input type="hidden" name="is_enable" value="1">
-                            <input type="hidden" name="brandId" value="<?= $brandId ?>">
+                            <input type="hidden" name="eventId" value="<?= $eventId ?>">
                             <div id="content" class="tab-content"><?php $i = 1; ?>
                                 <div class="tab-pane" id="hb<?= $i++ ?>">
                                     <fieldset>
-                                        <legend>Brand</legend>
+                                        <legend>Events</legend>
                                         <div class="form-group">
                                             <label class="col-sm-2 control-label">Visible</label>
 
@@ -64,65 +64,34 @@
                                         </div>
 
                                         <div class="form-group">
-                                            <label class="col-sm-2 control-label" for="designerId">Designer</label>
+                                            <label class="col-sm-2 control-label">Category</label>
 
-                                            <div class="col-sm-9 col-lg-4">
-                                                <select class="form-control" id="designerId" name="designerId">
-                                                    <?php foreach($designerList as $designKey => $designValue){ ?>
-                                                        <option value="<?= $designValue->designerId ?>"><?= $designValue->name ?></option>
-                                                    <?php } ?>
-                                                </select>
+                                            <div class="col-sm-9">
+                                                <select class="form-control" id="category" name="category"
+                                                    data-bv-notempty="true" data-bv-notempty-message=" ">
+                                                    <option value="">Choose</option>
+                                                    <option value="0">Explore Events</option>
+                                                    <option value="1">New Collections</option>
+                                                </select> 
                                             </div>
                                         </div>
 
                                         <div class="form-group">
-                                            <label class="col-sm-2 control-label" for="country">Country</label>
-                                            <div class="col-sm-9 col-lg-4">
-                                                <select class="form-control" name="country">
-                                                    <?php $countryList = get_all_country();
-                                                    foreach($countryList as $countryKey => $countryValue){ ?>
-                                                        <option value="<?= $countryKey ?>"><?= $countryValue ?></option>
-                                                    <?php } ?>  
-                                                </select>                                                      
-                                            </div>
-                                        </div>
-
-                                        <!-- <div class="form-group">
-                                            <label class="col-sm-2 control-label" for="date">日期</label>
+                                            <label class="col-sm-2 control-label" for="date">Date</label>
 
                                             <div class="col-sm-9 col-lg-3">
                                                 <div class="input-group">
-                                                    <input type="text" class="form-control datepicker" id="date" name="date" value="<?= $row->date ?>" data-dateformat="yy-mm-dd" placeholder="選擇日期" required>
+                                                    <input type="text" class="form-control datepicker" id="date" name="date" data-dateformat="yy-mm-dd" placeholder="選擇日期" autocomplete="off" value="<?= date('Y-m-d') ?>" data-bv-notempty="true" data-bv-notempty-message=" ">
                                                     <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
                                                 </div>
                                             </div>
-                                        </div> -->
-
-                                        <div class="form-group">
-                                            <label class="col-sm-2 control-label">Icon</label>
-
-                                            <div class="col-sm-9">
-                                                <input type="file" class="btn btn-default" id="uploadImg" name="brandiconImg"
-                                                    data-bv-notempty="true" data-bv-notempty-message=" "
-                                                    data-bv-file="true"
-                                                    data-bv-file-extension="jpeg,jpg,png,gif"
-                                                    data-bv-file-type="image/jpeg,image/png,image/gif"
-                                                    data-bv-file-message="Type error">
-
-                                                <p class="help-block">
-                                                    <strong>Note:</strong>Picture size is <strong>100 x 100</strong>.type is<strong>JPG、PNG</strong>。
-                                                </p>
-
-                                                <p class="help-block">                                                   
-                                                    <img id="preview" src="">
-                                                </p>
-                                            </div>
                                         </div>
+
                                         <div class="form-group">
-                                            <label class="col-sm-2 control-label">Img</label>
+                                            <label class="col-sm-2 control-label">Content Image</label>
 
                                             <div class="col-sm-9">
-                                                <input type="file" class="btn btn-default" id="uploadImg" name="brandImg"
+                                                <input type="file" class="btn btn-default" id="uploadImg" name="eventImg"
                                                     data-bv-notempty="true" data-bv-notempty-message=" "
                                                     data-bv-file="true"
                                                     data-bv-file-extension="jpeg,jpg,png,gif"
@@ -139,11 +108,40 @@
                                             </div>
                                         </div>
 
-                                        <div class="form-group">
-                                            <label class="col-sm-2 control-label">List Img</label>
+                                        <div class="form-group" id="collectionImg" style="display:none;">
+                                            <label class="col-sm-2 control-label">New Collections Image</label>
 
                                             <div class="col-sm-9">
-                                                <input type="file" class="btn btn-default" id="uploadImg" name="brandindexImg"
+                                                <input type="file" class="btn btn-default" id="uploadImg" name="collectionImg"
+                                                    data-bv-notempty="true" data-bv-notempty-message=" "
+                                                    data-bv-file="true"
+                                                    data-bv-file-extension="jpeg,jpg,png,gif"
+                                                    data-bv-file-type="image/jpeg,image/png,image/gif"
+                                                    data-bv-file-message="ype error">
+
+                                                <p class="help-block">
+                                                    <strong>Note:</strong>Picture size is <strong>510 x 288</strong>.type is<strong>JPG、PNG</strong>。
+                                                </p>
+
+                                                <p class="help-block">                                                    
+                                                    <img id="preview" src="">
+                                                </p>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group" id="collectionyoutube" style="display:none;">
+                                            <label class="col-sm-2 control-label">New Collections Youtube</label>
+
+                                            <div class="col-sm-9 col-lg-6">
+                                                <input type="text" class="form-control" name="collectionyoutube" data-bv-notempty="true" data-bv-notempty-message=" ">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group" id="exploreImg" style="display:none;">
+                                            <label class="col-sm-2 control-label">Explore Events Image</label>
+
+                                            <div class="col-sm-9">
+                                                <input type="file" class="btn btn-default" id="uploadImg" name="exploreImg"
                                                     data-bv-notempty="true" data-bv-notempty-message=" "
                                                     data-bv-file="true"
                                                     data-bv-file-extension="jpeg,jpg,png,gif"
@@ -164,17 +162,17 @@
                                 <?php if ($this->langList): ?>
                                     <?php foreach ($this->langList as $lrow): ?>
                                         <div class="tab-pane" id="hb<?= $i++ ?>">  
-                                            <input type="hidden" name="langList[<?= $lrow->langId ?>][brandId]" value="<?= $brandId ?>">
+                                            <input type="hidden" name="langList[<?= $lrow->langId ?>][eventId]" value="<?= $eventId ?>">
                                             <input type="hidden" name="langList[<?= $lrow->langId ?>][langId]" value="<?= $lrow->langId ?>">
 
                                             <fieldset data-id="<?= $lrow->langId ?>">
-                                                <legend>Brand Information</legend>
+                                                <legend>Events Content</legend>
 
                                                 <div class="form-group">
-                                                    <label class="col-sm-2 control-label" for="title-<?= $lrow->langId ?>">Brand Name</label>
+                                                    <label class="col-sm-2 control-label" for="title-<?= $lrow->langId ?>">Title</label>
 
                                                     <div class="col-sm-9">
-                                                        <input type="text" class="form-control brand_name" name="langList[<?= $lrow->langId ?>][name]" data-bv-notempty="true" data-bv-notempty-message=" ">                                                        
+                                                        <input type="text" class="form-control events_title" name="langList[<?= $lrow->langId ?>][title]" data-bv-notempty="true" data-bv-notempty-message=" ">                                                        
                                                     </div>
                                                 </div>
 
@@ -182,33 +180,7 @@
                                                     <label class="col-sm-2 control-label">Content</label>
 
                                                     <div class="col-sm-9">
-                                                        <textarea class="form-control" name="langList[<?= $lrow->langId ?>][content]" rows="10" data-bv-notempty="true" data-bv-notempty-message=" "></textarea>
-                                                    </div>
-                                                </div>
-
-                                                <legend>Brand Story</legend>
-                                                <div class="form-group">
-                                                    <label class="col-sm-2 control-label" for="title-<?= $lrow->langId ?>">Story Title</label>
-
-                                                    <div class="col-sm-9">
-                                                        <input type="text" class="form-control" name="langList[<?= $lrow->langId ?>][brand_story_title]" data-bv-notempty="true" data-bv-notempty-message=" ">                                                                                                                
-                                                    </div>
-                                                </div>
-
-                                                <!-- <div class="form-group">
-                                                    <label class="col-sm-2 control-label" for="title-<?= $lrow->langId ?>">Story Youtube</label>
-
-                                                    <div class="col-sm-9">
-                                                        <input type="text" class="form-control" name="langList[<?= $lrow->langId ?>][brand_story_youtube]">                                                                                                                
-                                                    </div>
-                                                </div> -->
-
-                                                <div class="form-group">
-                                                    <label class="col-sm-2 control-label" for="title-<?= $lrow->langId ?>">Story Content</label>
-
-                                                    <div class="col-sm-9">
-                                                        <div id="content-edit"></div>
-                                                        <input type="hidden" id="content" name="langList[<?= $lrow->langId ?>][brand_story_content]">
+                                                        <textarea class="form-control" name="langList[<?= $lrow->langId ?>][content]" rows="15" data-bv-notempty="true" data-bv-notempty-message=" "></textarea>
                                                     </div>
                                                 </div>                                                
                                             </fieldset>
@@ -220,7 +192,7 @@
                             <div class="widget-footer">
                                 <button type="submit" class="btn btn-primary" id="save" form="data-form">Save</button>
                                 <button type="submit" class="btn btn-primary" id="back" form="data-form" onclick="$('#data-form').attr('action', '<?= $this->query . (!empty($this->query) ? '&' : '?') ?>back=1');">Return After Saving</button>
-                                <button type="button" class="btn btn-default" onclick="location.href='<?= site_url("backend/brand/brand" . $this->query) ?>';">Return</button>
+                                <button type="button" class="btn btn-default" onclick="location.href='<?= site_url("backend/events/events" . $this->query) ?>';">Return</button>
                             </div>
                         </form>
                     </div>
@@ -280,6 +252,27 @@
                     }
                 }
             });
+        });
+
+        $('#category').on('change',function(){
+            if($(this).val() == 0){
+                $('#exploreImg').css('display','block');
+                $('#data-form').bootstrapValidator('resetField', 'collectionImg');
+                $('#data-form').bootstrapValidator('resetField', 'collectionyoutube');
+                $("#data-form").bootstrapValidator('enableFieldValidators', 'exploreImg', true);
+                $("#data-form").bootstrapValidator('enableFieldValidators', 'collectionImg', false);
+                $("#data-form").bootstrapValidator('enableFieldValidators', 'collectionyoutube', false);
+                $('#collectionImg').css('display','none');
+                $('#collectionyoutube').css('display','none');
+            }else{
+                $('#collectionImg').css('display','block');
+                $('#collectionyoutube').css('display','block');
+                $('#data-form').bootstrapValidator('resetField', 'exploreImg');
+                $("#data-form").bootstrapValidator('enableFieldValidators', 'exploreImg', false);                
+                $("#data-form").bootstrapValidator('enableFieldValidators', 'collectionImg', true);  
+                $("#data-form").bootstrapValidator('enableFieldValidators', 'collectionyoutube', true);  
+                $('#exploreImg').css('display','none');
+            }
         });
 
         $('form').bootstrapValidator({

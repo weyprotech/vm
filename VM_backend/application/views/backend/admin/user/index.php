@@ -40,8 +40,7 @@
                                 <tr>
                                     <th width="30" class="text-center hidden-mobile">Enable</th>
                                     <th class="text-center">Name</th>
-                                    <th width="200" class="text-center hidden-xs">Group</th>
-                                    <th width="140" class="text-center">Action</th>
+                                    <th width="160" class="text-center">Action</th>
                                 </tr>
                                 </thead>
                             </table>
@@ -68,14 +67,14 @@
             "autoWidth": false,
             "ordering": false,
             "serverSide": true,
-            "sDom": "<'dt-toolbar'<'col-sm-7 hidden-xs' f<'group-select input-group'>><'col-xs-12 col-sm-5'Tl>>" + "t" + "<'dt-toolbar-footer'<'col-sm-6 col-xs-12 hidden-xs'i><'col-xs-12 col-sm-6'p>>",
+            "sDom": "<'dt-toolbar'<'col-sm-7 hidden-xs' f><'col-xs-12 col-sm-5'Tl>>" + "t" + "<'dt-toolbar-footer'<'col-sm-6 col-xs-12 hidden-xs'i><'col-xs-12 col-sm-6'p>>",
             "oTableTools": {
                 "aButtons": [{
                     "sExtends": "text",
-                    "sButtonText": '<i class="fa fa-plus"></i> <span class="hidden-mobile">Add Manager</span>',
-                    "sButtonClass": "btn-lg",
+                    "sButtonText": '<i class="fa fa-plus" style="color:white"></i> <span class="hidden-mobile" style="color:white">Add Manager</span>',
+                    "sButtonClass": "btn-lg btn-primary",
                     "fnInit": function (nButton, oConfig) {
-                        $(nButton).css('margin-left', 5).attr('href', '<?= site_url(uri_string() . "/add") ?>');
+                        $(nButton).css('margin-left', 5).attr('href', '<?= site_url(uri_string() . "/add") ?>').css('text-shadow','0 -1px 0 rgba(0, 0, 0, 0.5), 0 1px 0 rgba(255, 255, 255, 0.3)');;
                     }
                 }]
             },
@@ -88,7 +87,6 @@
             "columns": [
                 {class: "hidden-mobile", data: "visible"},
                 {class: "", data: "name"},
-                {class: "hidden-xs", data: "groupName"},
                 {class: "", data: "action"}
             ],
             "preDrawCallback": function () {

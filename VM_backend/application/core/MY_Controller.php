@@ -251,6 +251,24 @@ class Ajax_Controller extends MY_Controller
         return $order;
     }
 
+    protected function checkUploadPath($path, $is_create = true, $is_set = true)
+    {
+        $is_dir = is_dir($this->uploadPath . $path);
+        // echo $this->uploadPath . $path;exit;
+        if ($is_create && !$is_dir) {
+            mkdir($this->uploadPath . $path, 0777,true);
+            return $this->checkUploadPath($path, false, $is_set);
+        }
+
+        if ($is_set) {
+            $this->uploadPath .= $path;
+
+            return $this->checkUploadPath('', false, false);
+        }
+
+        return $is_dir;
+    }
+
     public function uploadImg($imageData, $dir = '', $width = false)
     {
         $uploadPath = $this->uploadPath;

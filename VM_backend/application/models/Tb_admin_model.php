@@ -161,8 +161,8 @@ class Tb_admin_model extends MY_Model
     private function setUserJoin($join = 'inner')
     {
         $this->db->select('user.*');
-        $this->db->select('group.name as groupName, group.order as groupOrder');
-        $this->db->join('tb_admin_group as group', 'group.groupId = user.gId', $join);
+        // $this->db->select('group.name as groupName, group.order as groupOrder');
+        // $this->db->join('tb_admin_group as group', 'group.groupId = user.gId', $join);
     }
 
     /**

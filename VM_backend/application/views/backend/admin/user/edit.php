@@ -62,20 +62,6 @@
                                         </div>
 
                                         <div class="form-group">
-                                            <label class="col-sm-2 control-label" for="gId">Group</label>
-
-                                            <div class="col-sm-9 col-lg-4">
-                                                <select class="form-control" id="gId" name="gId">
-                                                    <?php if ($groupList) : ?>
-                                                        <?php foreach ($groupList as $grow) : ?>
-                                                            <option value="<?= $grow->groupId ?>" <?= $grow->groupId == $row->gId ? 'selected' : '' ?>><?= $grow->name ?></option>
-                                                        <?php endforeach; ?>
-                                                    <?php endif; ?>
-                                                </select>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
                                             <label class="col-sm-2 control-label" for="account">Account</label>
 
                                             <div class="col-sm-9 col-lg-4">
@@ -119,7 +105,7 @@
                             <div class="widget-footer">
                                 <button type="submit" class="btn btn-primary" id="save">Save</button>
                                 <button type="submit" class="btn btn-primary" id="back" onclick="$('#data-form').attr('action', '?back=1');">Return After Saving</button>
-                                <button type="button" class="btn btn-default" onclick="location.href='<?= site_url('admin/user') ?>';">Return</button>
+                                <button type="button" class="btn btn-default" onclick="location.href='<?= site_url('backend/admin') ?>';">Return</button>
                             </div>
                         </form>
                     </div>

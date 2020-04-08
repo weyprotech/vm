@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <!--<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">-->
-    <title> VETRINA MIA - 後台管理系統 </title>
+    <title> VETRINA MIA - Management system </title>
     <meta name="description" content="">
     <meta name="author" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -31,7 +31,7 @@
 <body class="animated fadeInDown">
 <header id="header">
     <div id="logo-group">
-        <span id="logo" style="margin: 5px;"><img src="<?= check_file_path('assets/backend/img/logo.png') ?>" alt="VETRINA MIA - 後台管理系統" style="width: auto; height: 60px;"></span>
+        <span id="logo" style="margin: 5px;"><img src="<?= check_file_path('assets/backend/img/logo.png') ?>" alt="VETRINA MIA - Management system " style="width: auto; height: 60px;"></span>
     </div>
 </header>
 <div id="main" role="main">

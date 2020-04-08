@@ -67,6 +67,16 @@ class Tb_brand_model extends MY_Model
             $insert['brandindexImg'] = $this->uploadFile('brandindex',  $post['brandId'] . '/', 360);
         endif;
 
+        if (isset($_FILES['brandstory2_1Img']) && !$_FILES['brandstory2_1Img']['error']):
+            $insert['brandstory2_1Img'] = $this->uploadFile('brandstory2_1', $post['brandId'] . '/', 940);
+        endif;
+        if (isset($_FILES['brandstory2_2Img']) && !$_FILES['brandstory2_2Img']['error']):
+            $insert['brandstory2_2Img'] = $this->uploadFile('brandstory2_2',  $post['brandId'] . '/', 941);
+        endif;
+        if (isset($_FILES['brandstory2_3Img']) && !$_FILES['brandstory2_3Img']['error']):
+            $insert['brandstory2_3Img'] = $this->uploadFile('brandstory2_3',  $post['brandId'] . '/', 940);
+        endif;
+
         if (isset($post['langList'])):
             foreach ($post['langList'] as $i => $lrow):
                 $post['langList'][$i] = $this->check_db_data($lrow);
@@ -90,7 +100,18 @@ class Tb_brand_model extends MY_Model
         endif;
         if (isset($_FILES['brandindexImg']) && !$_FILES['brandindexImg']['error']):
             $update['brandindexImg'] = $this->uploadFile('brandindex', $brand->brandId . '/', 360);
-        endif;        
+        endif;       
+        
+        if (isset($_FILES['brandstory2_1Img']) && !$_FILES['brandstory2_1Img']['error']):
+            $update['brandstory2_1Img'] = $this->uploadFile('brandstory2_1', $brand->brandId . '/', 940);
+        endif;
+        if (isset($_FILES['brandstory2_2Img']) && !$_FILES['brandstory2_2Img']['error']):
+            $update['brandstory2_2Img'] = $this->uploadFile('brandstory2_2',  $brand->brandId . '/', 941);
+        endif;
+        if (isset($_FILES['brandstory2_3Img']) && !$_FILES['brandstory2_3Img']['error']):
+            $update['brandstory2_3Img'] = $this->uploadFile('brandstory2_3',  $brand->brandId . '/', 940);
+        endif;
+
         if (isset($post['langList'])):
             foreach ($post['langList'] as $i => $lrow):
                 $post['langList'][$i] = $this->check_db_data($lrow);
@@ -177,6 +198,9 @@ class Tb_brand_model extends MY_Model
             if (!in_array($field, array('langList', 'uuid'))):
                 switch ($field):
                     case 'detail':
+                        $data[$field] = check_input_value(html_entity_decode($value));
+                        break;
+                    case 'brand_story_content':
                         $data[$field] = check_input_value(html_entity_decode($value));
                         break;
                     default:

@@ -31,7 +31,7 @@
                 <header>
                     <span class="widget-icon"><i class="fa fa-table"></i></span>
 
-                    <h2>Brand List</h2>
+                    <h2>Events List</h2>
                 </header>
 
                 <div>
@@ -42,12 +42,10 @@
                                     <thead>
                                     <tr>
                                         <th width="30" class="text-center">Visible</th>
-                                        <th width="120" class="text-center hidden-tablet">Icon</th>
-                                        <th width="220" class="text-center hidden-tablet">Image</th>
-                                        <th width="200" class="text-center">Name</th>
+                                        <th width="120" class="text-center hidden-tablet">Image</th>
+                                        <th width="200" class="text-center">Title</th>
+                                        <th width="120" class="text-center">Date</th>
                                         <th width="60" class="text-center hidden-tablet">Sort</th>
-                                        <th width="20" class="text-center">Banner</th>
-                                        <th width="20" class="text-center">Post</th>
                                         <th width="160" class="text-center">Action</th>
                                     </tr>
                                     </thead>
@@ -81,7 +79,7 @@
             "autoWidth": false,
             "ordering": false,
             "serverSide": true,
-            "sDom": "<'dt-toolbar'<'col-sm-7 hidden-xs' f<'country-select input-group'>><'col-xs-12 col-sm-5'Tl>>" + "t" + "<'dt-toolbar-footer'<'col-sm-6 col-xs-12 hidden-xs'i><'col-xs-12 col-sm-6'p>>",
+            "sDom": "<'dt-toolbar'<'col-sm-7 hidden-xs' f><'col-xs-12 col-sm-5'Tl>>" + "t" + "<'dt-toolbar-footer'<'col-sm-6 col-xs-12 hidden-xs'i><'col-xs-12 col-sm-6'p>>",
             "oTableTools": {
                 "aButtons": [{
                     "sExtends": "text",
@@ -91,11 +89,11 @@
                         $(nButton).css('margin-left', 5).css('text-shadow','0 -1px 0 rgba(0, 0, 0, 0.5), 0 1px 0 rgba(255, 255, 255, 0.3)');
                     },
                     "fnClick": function (nButton, oConfig, oFlash) {
-                        $(nButton).parents('form:first').attr('action', 'brand/save').submit();
+                        $(nButton).parents('form:first').attr('action', 'events/save').submit();
                     }
                 },{
                     "sExtends": "text",
-                    "sButtonText": '<i class="fa fa-plus" style="color:white"></i> <span class="hidden-mobile" style="color:white">Add Brand</span>',
+                    "sButtonText": '<i class="fa fa-plus" style="color:white"></i> <span class="hidden-mobile" style="color:white">Add Events</span>',
                     "sButtonClass": "btn-lg btn-primary",
                     "fnInit": function (nButton, oConfig) {
                         $(nButton).css('margin-left', 5).attr('href', '<?= site_url(uri_string() . "/add") ?>').css('text-shadow','0 -1px 0 rgba(0, 0, 0, 0.5), 0 1px 0 rgba(255, 255, 255, 0.3)');
@@ -103,20 +101,16 @@
                 }]
             },
             "ajax": {
-                "url": "<?= site_url("backend/ajax/brand/brand/get_brand_data") ?>",
+                "url": "<?= site_url("backend/ajax/events/events/get_events_data") ?>",
                 "data": function (data) {
-                    var country = $('div.country-select select').val();
-                    data.country = country != undefined ? country : '<?= $this->input->get('country', true) ?>';
                 }
             },
             "columns": [
                 {class: "", data:"visible"},
-                {class: "hidden-tablet", data:"icon"},
                 {class: "hidden-tablet", data:"preview"},
-                {class: "", data:"name"},
+                {class: "", data:"title"},
+                {class: "", data:"date"},
                 {class: "hidden-tablet", data: "order"},
-                {class: "", data:"banner"},
-                {class: "", data:"post"},
                 {class: "", data: "action"}
             ],
             "preDrawCallback": function () {
@@ -141,14 +135,6 @@
                 );
             },
             "initComplete": function () {
-                $countrySelect = $('div.country-select').html('<span class="input-group-addon">Country</span><select class="form-control"></select>')
-                    .find("select").html("<option value=''>All</option>").change(function () {
-                        $Table.draw();
-                    });
-
-                get_country_option('<?= $this->input->get('countryId', true) ?>').done(function (respone) {
-                    $countrySelect.append(respone['option']);
-                });
             }
         });
     });

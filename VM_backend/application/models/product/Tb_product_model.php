@@ -5,7 +5,7 @@ class Tb_product_model extends MY_Model
     public function __construct()
     {
         parent::__construct();
-        $this->uploadPath .= 'product/';
+        $this->checkUploadPath('product/product/'); // 上傳路徑
     }
 
     /******************** Product Model ********************/
@@ -16,7 +16,6 @@ class Tb_product_model extends MY_Model
         $this->set_order($order);
         $this->set_limit($limit);
         $query = $this->db->where('product.is_enable', 1)->get('tb_product as product');
-
         if ($query->num_rows() > 0):
             return $query->result();
         endif;

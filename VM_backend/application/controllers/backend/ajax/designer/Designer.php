@@ -27,8 +27,8 @@ class Designer extends Ajax_Controller
         /***** Order *****/
         $order = array(array('field' => 'designer.order', 'dir' => 'asc'));
 
-        $designerList = $this->designer->get_designer_select($filter, $order, array('limit' => $limit, 'start' => $start), $this->langId);
-        $recordsTotal = $this->designer->count_designer($filter, $this->langId);
+        $designerList = $this->designer->get_designer_select($filter, $order, array('limit' => $limit, 'start' => $start), 3);
+        $recordsTotal = $this->designer->count_designer($filter, 3);
         if ($designerList):
             foreach ($designerList as $row):
                 $data[] = array(
@@ -104,6 +104,22 @@ class Designer extends Ajax_Controller
                 ));
             }
         }
+    }
+
+    public function upload()
+    {
+        $designerId = $this->input->post('designerId', true);
+        if ($designerId && isset($_FILES['file'])):
+            if (!$_FILES['file']['error']):
+                $config['upload_path'] = 'assets/uploads/designer/designer/';
+                $filePath = $this->uploadImg($_FILES['file'], $designerId . '/');
+                echo base_url($filePath['imagePath']);
+            else:
+                echo 'Ooops!  Your upload triggered the following error:  ' . $_FILES['file']['error'];
+            endif;
+        endif;
+
+        return true;
     }
     /******************** End designer ********************/
 }

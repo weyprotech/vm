@@ -137,6 +137,69 @@
                                                 </p>
                                             </div>
                                         </div>
+
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">Brand Story2 Image-1</label>
+
+                                            <div class="col-sm-9">
+                                                <input type="file" class="btn btn-default" id="uploadImg" name="brandstory2_1Img"
+                                                    data-bv-file="true"
+                                                    data-bv-file-extension="jpeg,jpg,png,gif"
+                                                    data-bv-file-type="image/jpeg,image/png,image/gif"
+                                                    data-bv-file-message="圖示格式不符">
+
+                                                <p class="help-block">
+                                                    <strong>Note:</strong>Picture size is <strong>940 x 1154</strong>.type is<strong>JPG、PNG</strong>。
+                                                </p>
+
+                                                <p class="help-block">
+                                                    <?php $brandstory2_1Img = check_file_path($row->brandstory2_1Img);?>
+                                                    <img id="preview" src="<?= $brandstory2_1Img ?>"<?= !$brandstory2_1Img ? 'display:none;' : '' ?>>
+                                                </p>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">Bramd Story2 Image-2</label>
+
+                                            <div class="col-sm-9">
+                                                <input type="file" class="btn btn-default" id="uploadImg" name="brandstory2_2Img"
+                                                    data-bv-file="true"
+                                                    data-bv-file-extension="jpeg,jpg,png,gif"
+                                                    data-bv-file-type="image/jpeg,image/png,image/gif"
+                                                    data-bv-file-message="圖示格式不符">
+
+                                                <p class="help-block">
+                                                    <strong>Note:</strong>Picture size is <strong>941 x 968</strong>.type is<strong>JPG、PNG</strong>。
+                                                </p>
+
+                                                <p class="help-block">                                                    
+                                                    <?php $brandstory2_2Img = check_file_path($row->brandstory2_2Img);?>
+                                                    <img id="preview" src="<?= $brandstory2_2Img ?>"<?= !$brandstory2_2Img ? 'display:none;' : '' ?>>
+                                                </p>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">Brand Stroy2 Image-3</label>
+
+                                            <div class="col-sm-9">
+                                                <input type="file" class="btn btn-default" id="uploadImg" name="brandstory2_3Img"
+                                                    data-bv-file="true"
+                                                    data-bv-file-extension="jpeg,jpg,png,gif"
+                                                    data-bv-file-type="image/jpeg,image/png,image/gif"
+                                                    data-bv-file-message="圖示格式不符">
+
+                                                <p class="help-block">
+                                                    <strong>Note:</strong>Picture size is <strong>940 x 865</strong>.type is<strong>JPG、PNG</strong>。
+                                                </p>
+
+                                                <p class="help-block">                                                    
+                                                    <?php $brandstory2_3Img = check_file_path($row->brandstory2_3Img);?>
+                                                    <img id="preview" src="<?= $brandstory2_3Img ?>"<?= !$brandstory2_3Img ? 'display:none;' : '' ?>>
+                                                </p>
+                                            </div>
+                                        </div>
                                           
                                         <div class="form-group">
                                             <label class="col-sm-2 control-label">Sort</label>
@@ -180,14 +243,6 @@
                                                         <input type="text" class="form-control" name="langList[<?= $lrow->langId ?>][brand_story_title]" value="<?= @$langData->brand_story_title ?>" data-bv-notempty="true" data-bv-notempty-message=" ">                                                                                                                
                                                     </div>
                                                 </div>
-                                        
-                                                <!-- <div class="form-group">
-                                                    <label class="col-sm-2 control-label" for="title-<?= $lrow->langId ?>">Story Youtube</label>
-
-                                                    <div class="col-sm-9">
-                                                        <input type="text" class="form-control" name="langList[<?= $lrow->langId ?>][brand_story_youtube]" value="<?= @$langData->brand_story_youtube ?>">
-                                                    </div>
-                                                </div> -->
 
                                                 <div class="form-group">
                                                     <label class="col-sm-2 control-label" for="title-<?= $lrow->langId ?>">Story Content</label>
@@ -196,7 +251,23 @@
                                                         <div id="content-edit"><?= @$langData->brand_story_content ?></div>
                                                         <input type="hidden" id="content" name="langList[<?= $lrow->langId ?>][brand_story_content]">
                                                     </div>
-                                                </div>              
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label" for="title-<?= $lrow->langId ?>">Story2 Title</label>
+
+                                                    <div class="col-sm-9">
+                                                        <input type="text" class="form-control" name="langList[<?= $lrow->langId ?>][brand_story_title2]" value="<?= @$langData->brand_story_title2 ?>" data-bv-notempty="true" data-bv-notempty-message=" ">                                                                                                                
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label" for="title-<?= $lrow->langId ?>">Story2 Content</label>
+
+                                                    <div class="col-sm-9">
+                                                        <textarea class="form-control" name="langList[<?= $lrow->langId ?>][brand_story_content2]" rows="10"><?= @$langData->brand_story_content2 ?></textarea>
+                                                    </div>
+                                                </div>
                                             </fieldset>
                                         </div>
                                     <?php endforeach; ?>
@@ -272,4 +343,22 @@
             excluded: ""
         });         
     });
+
+    function sendFile(file, editor) {
+        var data = new FormData();
+        data.append('brandId', '<?= $row->brandId ?>');
+        data.append("file", file);
+
+        return $.ajax({
+            data: data,
+            type: "POST",
+            url: "<?= site_url("backend/ajax/brand/brand/upload") ?>",
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function (url) {
+                editor.summernote('editor.insertImage', url);
+            }
+        });
+    }
 </script>

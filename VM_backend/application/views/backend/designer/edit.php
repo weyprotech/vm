@@ -65,24 +65,21 @@
                                             </div>
                                         </div>
 
-                                        <!-- <div class="form-group">
-                                            <label class="col-sm-2 control-label" for="cId">類別</label>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">Designer Story</label>
 
-                                            <div class="col-sm-9 col-lg-4">
-                                                <select class="form-control" id="cId" name="cId"></select>
+                                            <div class="col-sm-9">
+                                                <label class="radio radio-inline">
+                                                    <input type="radio" class="radiobox designer_story" name="is_designer_story" value="1" <?= $row->is_designer_story == 1 ? 'checked="checked"' : '' ?>>
+                                                    <span>Yes</span>
+                                                </label>
+
+                                                <label class="radio radio-inline">
+                                                    <input type="radio" class="radiobox designer_story" name="is_designer_story" value="0" <?= $row->is_designer_story == 0 ? 'checked="checked"' : '' ?>>
+                                                    <span>No</span>
+                                                </label>
                                             </div>
-                                        </div> -->
-
-                                        <!-- <div class="form-group">
-                                            <label class="col-sm-2 control-label" for="date">日期</label>
-
-                                            <div class="col-sm-9 col-lg-3">
-                                                <div class="input-group">
-                                                    <input type="text" class="form-control datepicker" id="date" name="date" value="<?= $row->date ?>" data-dateformat="yy-mm-dd" placeholder="選擇日期" required>
-                                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                                </div>
-                                            </div>
-                                        </div> -->
+                                        </div>
 
                                         <div class="form-group">
                                             <label class="col-sm-2 control-label">Icon</label>
@@ -101,7 +98,7 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="col-sm-2 control-label">Img</label>
+                                            <label class="col-sm-2 control-label">Image</label>
 
                                             <div class="col-sm-9">
                                                 <input type="file" class="btn btn-default" id="uploadImg" name="designImg">
@@ -116,10 +113,49 @@
                                                 </p>
                                             </div>
                                         </div>
+
+                                        <div class="form-group designer_story_img" <?= $row->is_designer_story == 1 ? 'style="display:block"' : 'style="display:none;"'  ?>>
+                                            <label class="col-sm-2 control-label">Designer Story Image</label>
+
+                                            <div class="col-sm-9">
+                                                <input type="file" class="btn btn-default" id="uploadImg" name="designerstoryImg"
+                                                    data-bv-notempty="true" data-bv-notempty-message=" "
+                                                    data-bv-file="true"
+                                                    data-bv-file-extension="jpeg,jpg,png,gif"
+                                                    data-bv-file-type="image/jpeg,image/png,image/gif"
+                                                    data-bv-file-message="Type error">
+
+                                                <p class="help-block">
+                                                    <strong>Note:</strong>Picture size is <strong>510 x 288</strong>.type is<strong>JPG、PNG</strong>。
+                                                </p>
+
+                                                <p class="help-block">                                                    
+                                                    <?php $designerstoryImg = check_file_path($row->designerstoryImg); ?>
+                                                    <img id="preview" src="<?= $designerstoryImg ?>"<?= !$designerstoryImg ? "display:none;" : "" ?>>
+                                                </p>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label" for="title-<?= $lrow->langId ?>">About Designer Image</label>
+
+                                            <div class="col-sm-9">
+                                                <input class="btn btn-default" type="file" id="uploadImg" name="aboutImg">
+                                                <p class="help-block">
+                                                    <strong>Note:</strong>Picture size is <strong>600 x 600</strong>.type is<strong>JPG、PNG</strong>。
+                                                </p>
+
+                                                <p class="help-block">                                                    
+                                                    <?php $aboutImg = check_file_path($row->aboutImg);?>
+                                                    <img id="preview" src="<?= $aboutImg ?>"<?= !$aboutImg ? 'display:none;' : '' ?>>
+                                                </p>
+                                            </div>
+                                        </div> 
+
                                         <legend>My Hometown</legend>
 
                                             <div class="form-group">
-                                                <label class="col-sm-2 control-label" for="title-<?= $lrow->langId ?>">Hometown Post1 Img</label>
+                                                <label class="col-sm-2 control-label" for="title-<?= $lrow->langId ?>">Hometown Post1 Image</label>
 
                                                 <div class="col-sm-9">
                                                     <input class="btn btn-default" type="file" id="uploadImg" name="hometownpost1Img">
@@ -135,7 +171,7 @@
                                             </div>
 
                                             <div class="form-group">
-                                                <label class="col-sm-2 control-label" for="title-<?= $lrow->langId ?>">Hometown Post2 Img</label>
+                                                <label class="col-sm-2 control-label" for="title-<?= $lrow->langId ?>">Hometown Post2 Image</label>
 
                                                 <div class="col-sm-9">
                                                     <input class="btn btn-default" type="file" id="uploadImg" name="hometownpost2Img">
@@ -151,7 +187,7 @@
                                             </div>
 
                                             <div class="form-group">
-                                                <label class="col-sm-2 control-label" for="title-<?= $lrow->langId ?>">Hometown Post3 Img</label>
+                                                <label class="col-sm-2 control-label" for="title-<?= $lrow->langId ?>">Hometown Post3 Image</label>
 
                                                 <div class="col-sm-9">
                                                     <input class="btn btn-default" type="file" id="uploadImg" name="hometownpost3Img">
@@ -164,7 +200,7 @@
                                                         <img id="preview" src="<?= $hometownpost3Img ?>"<?= !$hometownpost3Img ? 'display:none;' : '' ?>>
                                                     </p>
                                                 </div>
-                                            </div>
+                                            </div>                                           
 
                                             <legend>Account</legend>
 
@@ -185,7 +221,7 @@
                                             </div>
 
                                             <div class="form-group">
-                                                <label class="col-sm-2 control-label">URL</label>
+                                                <label class="col-sm-2 control-label">Url</label>
 
                                                 <div class="col-sm-5">
                                                     <input class="form-control" name="url" value="<?= $row->url ?>" data-bv-remote-name="url" data-bv-remote-name-message=" "data-bv-notempty="true" data-bv-notempty-message=" ">
@@ -247,15 +283,7 @@
                                                     <label class="col-sm-2 control-label">Description</label>
 
                                                     <div class="col-sm-9">
-                                                        <textarea class="form-control" name="langList[<?= $lrow->langId ?>][description]" rows="10" data-bv-notempty="true" data-bv-notempty-message=" "><?= @$langData->description ?></textarea>                                                        
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label class="col-sm-2 control-label">Content</label>
-
-                                                    <div class="col-sm-9">
-                                                        <textarea class="form-control" name="langList[<?= $lrow->langId ?>][content]" rows="10" data-bv-notempty="true" data-bv-notempty-message=" "><?= @$langData->content ?></textarea>
+                                                        <textarea class="form-control" name="langList[<?= $lrow->langId ?>][description]" rows="10" data-bv-notempty="true" data-bv-notempty-message=" "><?= @$langData->description ?></textarea>
                                                     </div>
                                                 </div>
 
@@ -269,18 +297,11 @@
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <label class="col-sm-2 control-label" for="title-<?= $lrow->langId ?>">Story Youtube</label>
-
-                                                    <div class="col-sm-9">
-                                                        <input type="text" class="form-control" name="langList[<?= $lrow->langId ?>][my_story_youtube]" value="<?= @$langData->my_story_youtube ?>">                                                                                                                
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group">
                                                     <label class="col-sm-2 control-label" for="title-<?= $lrow->langId ?>">Story Content</label>
 
                                                     <div class="col-sm-9">
-                                                        <textarea class="form-control" name="langList[<?= $lrow->langId ?>][my_story_content]" rows="10"><?= @$langData->my_story_content ?></textarea>
+                                                        <div id="content-edit"><?= @$langData->my_story_content ?></div>
+                                                        <input type="hidden" id="content" name="langList[<?= $lrow->langId ?>][my_story_content]" data-bv-notempty="true" data-bv-notempty-message=" ">
                                                     </div>
                                                 </div>
 
@@ -290,14 +311,6 @@
 
                                                     <div class="col-sm-9">
                                                         <input type="text" class="form-control" name="langList[<?= $lrow->langId ?>][hometown_title]" value="<?= @$langData->hometown_title ?>" data-bv-notempty="true" data-bv-notempty-message=" ">
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label class="col-sm-2 control-label" for="title-<?= $lrow->langId ?>">Hometown Content</label>
-
-                                                    <div class="col-sm-9">
-                                                        <textarea class="form-control" name="langList[<?= $lrow->langId ?>][hometown_content]" rows="10"><?= @$langData->hometown_content ?></textarea>
                                                     </div>
                                                 </div>
 
@@ -314,6 +327,22 @@
                                                     </div>
                                                 </div>
 
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label" for="title-<?= $lrow->langId ?>">Hometown Area</label>
+
+                                                    <div class="col-sm-9">
+                                                        <input type="text" class="form-control" name="langList[<?= $lrow->langId ?>][hometown_area]" value="<?= @$langData->hometown_area ?>" data-bv-notempty="true" data-bv-notempty-message=" ">                                                                                                                
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label" for="title-<?= $lrow->langId ?>">Hometown Content</label>
+
+                                                    <div class="col-sm-9">
+                                                        <textarea class="form-control" name="langList[<?= $lrow->langId ?>][hometown_content]" rows="10"><?= @$langData->hometown_content ?></textarea>
+                                                    </div>
+                                                </div>
+                                            
                                                 <div class="form-group">
                                                     <label class="col-sm-2 control-label" for="title-<?= $lrow->langId ?>">Hometown Post1 Title</label>
 
@@ -389,6 +418,8 @@
 
     var $cId = $("#cId");
     $(document).ready(function () {
+        $('#data-form').bootstrapValidator('resetField', 'designerstoryImg');
+        $("#data-form").bootstrapValidator('enableFieldValidators', 'designerstoryImg', false);
         $('input#uploadImg').change(function () {
             var $this = $(this);
             var reader = new FileReader();
@@ -398,7 +429,14 @@
             };
         });
 
-        $("#save, #back").click(function (e) {        
+        $("#save, #back").click(function (e) {       
+            $('div#content-edit').each(function () {
+                var content = $(this).summernote('code').replace(/[\u00A0-\u9999<>\&]/gim, function (i) {
+                    return '&#' + i.charCodeAt(0) + ';';
+                });
+
+                $(this).siblings('input#content').val(content);
+            }); 
         });   
 
         $('form').bootstrapValidator({
@@ -440,5 +478,56 @@
                 }
             }
         });
+        $('div#content-edit').each(function () {
+            $(this).summernote({
+                height: 500,
+                lang: 'zh-TW',
+                toolbar: [
+                    ['font', ['clear']],
+                    ['insert', ['picture', 'link', 'video']],
+                    ['misc', ['codeview']]
+                    //['font', ['fontname', 'fontsize', 'color', 'bold', 'italic', 'underline', 'strikethrough', 'superscript', 'subsript', 'clear']],
+                    //['para', ['style', 'ol', 'ul', 'paragraph', 'height']],
+                    //['insert', ['picture', 'link', 'video', 'table', 'hr']],
+                    //['misc', ['fullscreen', 'codeview', 'undo', 'redo', 'help']]
+                ],
+                callbacks: {
+                    onImageUpload: function (files) {
+                        for (var i = 0; i < files.length; i++) {
+                            sendFile(files[i], $(this));
+                        }
+                    }
+                }
+            });
+        });
+
+        $('body').on('click','.designer_story',function(){
+            if($(this).val() == 1){
+                $('.designer_story_img').css('display','block');
+                $("#data-form").bootstrapValidator('enableFieldValidators', 'designerstoryImg', true);  
+            }else{
+                $('.designer_story_img').css('display','none');
+                $('#data-form').bootstrapValidator('resetField', 'designerstoryImg');
+                $("#data-form").bootstrapValidator('enableFieldValidators', 'designerstoryImg', false);
+            }
+        });
     });
+
+    function sendFile(file, editor) {
+        var data = new FormData();
+        data.append('designerId', '<?= $row->designerId ?>');
+        data.append("file", file);
+
+        return $.ajax({
+            data: data,
+            type: "POST",
+            url: "<?= site_url("backend/ajax/designer/designer/upload") ?>",
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function (url) {
+                editor.summernote('editor.insertImage', url);
+            }
+        });
+    }
 </script>

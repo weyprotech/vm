@@ -26,7 +26,7 @@
                     <h2>Edit</h2>
                     <ul class="nav nav-tabs pull-right in"><?php $i = 1; ?>
                         <li><a data-toggle="tab" href="#hb<?= $i++ ?>">Content</a></li>
-                        <li><a data-toggle="tab" href="#hb<?= $i++ ?>">Image</a></li>
+                        <li class="youtube_group"><a data-toggle="tab" href="#hb<?= $i++ ?>">Image</a></li>
                         <?php if ($this->langList): ?>
                             <?php foreach ($this->langList as $lrow): ?>
                                 <li><a data-toggle="tab" href="#hb<?= $i++ ?>"><?= $lrow->name ?></a></li>
@@ -64,7 +64,51 @@
                                                     <span>No</span>
                                                 </label>
                                             </div>
-                                        </div>                                                                                
+                                        </div>          
+                                        
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">Live</label>
+
+                                            <div class="col-sm-9">
+                                                <label class="radio radio-inline">
+                                                    <input type="radio" class="radiobox live" name="live" value="1">
+                                                    <span>Yes</span>
+                                                </label>
+
+                                                <label class="radio radio-inline">
+                                                    <input type="radio" class="radiobox live" name="live" value="0" checked>
+                                                    <span>No</span>
+                                                </label>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group live_youtube_group" style="display:none;">
+                                            <label class="col-sm-2 control-label">Live Youtube Url</label>
+
+                                            <div class="col-sm-9">
+                                               <input type="text" class="form-control" name="live_youtube"  data-bv-notempty="true" data-bv-notempty-message=" ">
+                                            </div>
+                                        </div>   
+                                        
+                                        <div class="form-group youtube_group">
+                                            <label class="col-sm-2 control-label">Date Time</label>
+
+                                            <div class="col-sm-9 col-lg-4">
+                                                Date:
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control datepicker"  data-dateformat="yy-mm-dd"  name="date"  data-bv-notempty="true" data-bv-notempty-message=" " autocomplete="off">
+                                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-9 col-lg-4">
+                                                Time:
+                                                <div class="input-group">
+                                                    <input class="form-control" id="clockpicker" type="text" name="time" placeholder="Select time" data-autoclose="true" data-bv-notempty="true" data-bv-notempty-message=" ">
+                                                    <span class="input-group-addon"><i class="fa fa-clock-o"></i></span>
+                                                </div>
+                                               <!-- <input type="text" class="form-control datepicker"  data-dateformat="yy-mm-dd"  name="live_youtube"  data-bv-notempty="true" data-bv-notempty-message=" "> -->
+                                            </div>
+                                        </div> 
                                     </fieldset>
                                 </div>
                                 <div class="tab-pane" id="hb<?= $i++ ?>">
@@ -113,7 +157,7 @@
 
                             <div class="widget-footer">
                                 <button type="submit" class="btn btn-primary" id="save">Save</button>
-                                <button type="submit" class="btn btn-primary" id="back" onclick="$('#data-form').attr('action', '<?= $this->query . (!empty($this->query) ? '&' : '?') ?>back=1');">Return After Saving</button>
+                                <!-- <button type="submit" class="btn btn-primary" id="back" onclick="$('#data-form').attr('action', '<?= $this->query . (!empty($this->query) ? '&' : '?') ?>back=1');">Return After Saving</button> -->
                                 <button type="button" class="btn btn-default" onclick="location.href='<?= site_url("backend/designer/designer/index/".$designerId . $this->query) ?>';">Return</button>
                             </div>
                         </form>
@@ -138,6 +182,15 @@
     var file;
 
     $(document).ready(function () {
+        
+        $('#data-form').bootstrapValidator('resetField', 'live_youtube');
+        $("#data-form").bootstrapValidator('enableFieldValidators', 'live_youtube', false);
+
+        $('#clockpicker').clockpicker({
+            placement: 'top',
+            donetext: 'Done'
+        });
+
         $('input#uploadImg').change(function () {
             var $this = $(this);
             var reader = new FileReader();
@@ -152,10 +205,10 @@
                 height: 500,
                 lang: 'zh-TW',
                 toolbar: [
-                    ['font', ['clear']],
-                    ['insert', ['picture', 'link', 'video']],
-                    ['misc', ['codeview']]
-                    //['font', ['fontname', 'fontsize', 'color', 'bold', 'italic', 'underline', 'strikethrough', 'superscript', 'subsript', 'clear']],
+                    // ['font', ['clear']],
+                    // ['insert', ['picture', 'link', 'video']],
+                    // ['misc', ['codeview']]
+                    // ['font', ['fontname', 'fontsize', 'color', 'bold', 'italic', 'underline', 'strikethrough', 'superscript', 'subsript', 'clear']],
                     //['para', ['style', 'ol', 'ul', 'paragraph', 'height']],
                     //['insert', ['picture', 'link', 'video', 'table', 'hr']],
                     //['misc', ['fullscreen', 'codeview', 'undo', 'redo', 'help']]
@@ -180,16 +233,16 @@
             });
 
             
-            $.each($('.runway_title'),function(){
-                if($(this).val() == ''){
-                    swal({
-                        title:'The title of each language cannot be empty!',
-                        type:'error'
-                    }).then(function (result) {
-                        $(this).css()
-                    }) 
-                }
-            });
+            // $.each($('.runway_title'),function(){
+            //     if($(this).val() == ''){
+            //         swal({
+            //             title:'The title of each language cannot be empty!',
+            //             type:'error'
+            //         }).then(function (result) {
+            //             $(this).css()
+            //         }) 
+            //     }
+            // });
         });
 
         var responsiveHelper_dt_basic = undefined;
@@ -332,5 +385,25 @@
 
     $('form').bootstrapValidator({
         excluded: ""
+    });
+
+    $('body').on('click','.live',function(){
+        if($(this).val() == '1'){
+            $('.live_youtube_group').css('display','block');
+            $('.youtube_group').css('display','none');
+            $("#data-form").bootstrapValidator('enableFieldValidators', 'live_youtube', true); 
+            $('#data-form').bootstrapValidator('resetField','date');
+            $('#data-form').bootstrapValidator('enableFieldValidators','date',false);
+            $('#data-form').bootstrapValidator('resetField','time');
+            $('#data-form').bootstrapValidator('enableFieldValidators','time',false);
+        }else{
+            $('.live_youtube_group').css('display','none');
+            $('.youtube_group').css('display','block');
+            $('#data-form').bootstrapValidator('resetField', 'live_youtube');
+            $("#data-form").bootstrapValidator('enableFieldValidators', 'live_youtube', false);
+            $("#data-form").bootstrapValidator('enableFieldValidators', 'date', true); 
+            $("#data-form").bootstrapValidator('enableFieldValidators', 'time', true); 
+
+        }
     });
 </script>

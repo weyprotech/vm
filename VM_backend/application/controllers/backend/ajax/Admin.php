@@ -32,11 +32,9 @@ class Admin extends Ajax_Controller
 
         $start = $this->input->get('start', TRUE);
         $limit = $this->input->get('length', TRUE);
-        $gId = $this->input->get('gId', TRUE);
         $search = $this->input->get('search[value]', TRUE);
-        $filter = array(array('field' => 'user.gId', 'value' => $gId), 'like' => array('field' => 'user.name', 'value' => $search));
-        $order = array(array('field' => 'group.order', 'dir' => 'asc'), array('field' => 'user.create_at', 'dir' => 'desc'));
-
+        $filter = array('like' => array('field' => 'user.name', 'value' => $search));
+        $order = array(array('field' => 'user.create_at', 'dir' => 'desc'));
         $userList = $this->admin->get_user_select($filter, $order, array('limit' => $limit, 'start' => $start));
         $recordsTotal = $this->admin->count_user($filter);
         if ($userList) {
@@ -44,7 +42,6 @@ class Admin extends Ajax_Controller
                 $data[] = array(
                     'visible' => '<img src="' . show_enable_image($urow->is_visible) . '" width="25">',
                     'name' => $urow->name,
-                    'groupName' => check_input_value($urow->groupName, FALSE, "未選擇"),
                     'action' => $this->get_button('edit', 'backend/admin/edit/' . $urow->userId) . $this->get_button('delete', 'backend/admin/delete/' . $urow->userId)
                 );
             }

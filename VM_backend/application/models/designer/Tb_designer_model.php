@@ -59,19 +59,29 @@ class Tb_designer_model extends MY_Model
         if (isset($_FILES['designiconImg']) && !$_FILES['designiconImg']['error']):
             $insert['designiconImg'] = $this->uploadFile('designicon', $post['designerId'] . '/', 100);
         endif;
+        
         if (isset($_FILES['designImg']) && !$_FILES['designImg']['error']):
             $insert['designImg'] = $this->uploadFile('design', $post['designerId'] . '/', 540);
         endif;
+
         if (isset($_FILES['hometownpost1Img']) && !$_FILES['hometownpost1Img']['error']):
-            $insert['hometownpost1Img'] = $this->uploadFile('hometownpost1', $post['designerId'] . '/', 540);
+            $insert['hometownpost1Img'] = $this->uploadFile('hometownpost1', $post['designerId'] . '/', 360);
         endif;
 
         if (isset($_FILES['hometownpost2Img']) && !$_FILES['hometownpost2Img']['error']):
-            $insert['hometownpost2Img'] = $this->uploadFile('hometownpost2', $post['designerId'] . '/', 540);
+            $insert['hometownpost2Img'] = $this->uploadFile('hometownpost2', $post['designerId'] . '/', 360);
         endif;
 
         if (isset($_FILES['hometownpost3Img']) && !$_FILES['hometownpost3Img']['error']):
-            $insert['hometownpost3Img'] = $this->uploadFile('hometownpost3', $post['designerId'] . '/', 540);
+            $insert['hometownpost3Img'] = $this->uploadFile('hometownpost3', $post['designerId'] . '/', 360);
+        endif;
+
+        if (isset($_FILES['designerstoryImg']) && !$_FILES['designerstoryImg']['error']):
+            $insert['designerstoryImg'] = $this->uploadFile('designerstory', $post['designerId'] . '/', 510);
+        endif;
+
+        if (isset($_FILES['aboutImg']) && !$_FILES['aboutImg']['error']):
+            $insert['aboutImg'] = $this->uploadFile('about', $post['designerId'] . '/', 600);
         endif;
 
         if (isset($post['langList'])):
@@ -96,16 +106,25 @@ class Tb_designer_model extends MY_Model
             $update['designImg'] = $this->uploadFile('design', $designer->designerId . '/', 540);
         endif;
         if (isset($_FILES['hometownpost1Img']) && !$_FILES['hometownpost1Img']['error']):
-            $update['hometownpost1Img'] = $this->uploadFile('hometownpost1', $designer->designerId . '/', 540);
+            $update['hometownpost1Img'] = $this->uploadFile('hometownpost1', $designer->designerId . '/', 360);
         endif;
 
         if (isset($_FILES['hometownpost2Img']) && !$_FILES['hometownpost2Img']['error']):
-            $update['hometownpost2Img'] = $this->uploadFile('hometownpost2', $designer->designerId . '/', 540);
+            $update['hometownpost2Img'] = $this->uploadFile('hometownpost2', $designer->designerId . '/', 360);
         endif;
 
         if (isset($_FILES['hometownpost3Img']) && !$_FILES['hometownpost3Img']['error']):
-            $update['hometownpost3Img'] = $this->uploadFile('hometownpost3', $designer->designerId . '/', 540);
+            $update['hometownpost3Img'] = $this->uploadFile('hometownpost3', $designer->designerId . '/', 360);
         endif;
+
+        if (isset($_FILES['designerstoryImg']) && !$_FILES['designerstoryImg']['error']):
+            $update['designerstoryImg'] = $this->uploadFile('designerstory', $designer->designerId . '/', 510);
+        endif;
+
+        if (isset($_FILES['aboutImg']) && !$_FILES['aboutImg']['error']):
+            $update['aboutImg'] = $this->uploadFile('about', $designer->designerId . '/', 600);
+        endif;
+
         if (isset($post['langList'])):
             foreach ($post['langList'] as $i => $lrow):
                 $post['langList'][$i] = $this->check_db_data($lrow);
@@ -157,7 +176,7 @@ class Tb_designer_model extends MY_Model
     private function update_designer_lang($designerId, $update)
     {
         if (isset($_FILES['personalImg']) && !$_FILES['personalImg']['error']):
-            $update[3]['personalImg'] = $this->uploadFile('personal', $designerId . '/', 1426);
+            $update[3]['personalImg'] = $this->uploadFile('personal', $designerId . '/personal/', 1920);
         endif;
         $this->db->where('designerId', $designerId)->update_batch('tb_designer_lang', $update, 'langId');
       
@@ -201,6 +220,10 @@ class Tb_designer_model extends MY_Model
                         $data[$field] = check_input_value(html_entity_decode($value));
                         break;
 
+                    case 'my_story_content':
+                        $data[$field] = check_input_value(html_entity_decode($value));
+                        break;
+                        
                     default:
                         $int_array = array(
                             'is_enable', 'is_visible', 'langId', 'order', /* Common Field */

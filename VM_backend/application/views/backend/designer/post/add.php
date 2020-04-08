@@ -101,8 +101,9 @@
                                                     <label class="col-sm-2 control-label">Content</label>
 
                                                     <div class="col-sm-9">
-                                                        <div id="content-edit"></div>
-                                                        <input type="hidden" id="content" name="langList[<?= $lrow->langId ?>][content]" data-bv-notempty="true" data-bv-notempty-message=" ">
+                                                        <textarea class="form-control" name="langList[<?= $lrow->langId ?>][content]" rows="10" data-bv-notempty="true" data-bv-notempty-message=" "></textarea>
+                                                        <!-- <div id="content-edit"></div>
+                                                        <input type="hidden" id="content" name="langList[<?= $lrow->langId ?>][content]" data-bv-notempty="true" data-bv-notempty-message=" "> -->
                                                     </div>
                                                 </div>
                                             </fieldset>

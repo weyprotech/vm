@@ -6,7 +6,7 @@ class Tb_category_model extends MY_Model
     public function __construct()
     {
         parent::__construct();
-        $this->uploadPath .= 'category/';
+        $this->checkUploadPath('product/category/'); // 上傳路徑
     }
 
     /******************** Category Model ********************/
@@ -67,6 +67,19 @@ class Tb_category_model extends MY_Model
         $post['lv'] = $post['prevId'] ? $this->get_category_by_id($post['prevId'])->lv + 1 : 1;
         $post['order'] = $this->count_category(array(array('field' => 'category.prevId', 'value' => $post['prevId']))) + 1;
         $post['create_at'] = date("Y-m-d H:i:s");
+
+        if (isset($_FILES['categoryImg']) && !$_FILES['categoryImg']['error']):
+            $post['categoryImg'] = $this->uploadFile('category', $post['categoryId'] . '/', 710);
+        endif;
+
+        if (isset($_FILES['category2Img']) && !$_FILES['category2Img']['error']):
+            $post['category2Img'] = $this->uploadFile('category2', $post['categoryId'] . '/', 631);
+        endif;
+
+        if (isset($_FILES['category3Img']) && !$_FILES['category3Img']['error']):
+            $post['category3Img'] = $this->uploadFile('category3', $post['categoryId'] . '/', 631);
+        endif;
+
         if (isset($post['langList'])):
             foreach ($post['langList'] as $i => $lrow):
                 $post['langList'][$i] = $this->check_db_data($lrow);
@@ -84,6 +97,20 @@ class Tb_category_model extends MY_Model
     {
         $post['lv'] = $post['prevId'] ? $this->get_category_by_id($post['prevId'])->lv + 1 : 1;
         $update = $this->check_db_data($post);
+        if (isset($_FILES['categoryImg']) && !$_FILES['categoryImg']['error']):
+            $update['categoryImg'] = $this->uploadFile('category', $category->categoryId . '/', 710);
+            @unlink($category->categoryImg);
+        endif;
+
+        if (isset($_FILES['category2Img']) && !$_FILES['category2Img']['error']):
+            $update['category2Img'] = $this->uploadFile('category2', $category->categoryId . '/', 631);
+            @unlink($category->category2Img);
+        endif;
+
+        if (isset($_FILES['category3Img']) && !$_FILES['category3Img']['error']):
+            $update['category3Img'] = $this->uploadFile('category3', $category->categoryId . '/', 631);
+            @unlink($category->category3Img);
+        endif;
         
         if (isset($post['langList'])):
             foreach ($post['langList'] as $i => $lrow):
@@ -99,8 +126,8 @@ class Tb_category_model extends MY_Model
 
     public function delete_category($category)
     {
-        $this->update_category($category, array('is_enable' => 0));
-        return $this->reorder_category($category->prevId);
+        $this->db->update('tb_product_category', array('is_enable' => 0), array('categoryId' => $category->categoryId));
+        return true;
     }
 
     /*************** 重新排序 ***************/

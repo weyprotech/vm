@@ -15,8 +15,9 @@ class Blog extends Ajax_Controller
         $designerId = $this->input->post('designerId', true);
         if ($designerId && isset($_FILES['file'])):
             if (!$_FILES['file']['error']):
-                $config['upload_path'] = 'assets/uploads/designer/blog/';
-                $filePath = $this->uploadImg($_FILES['file'], $designerId . '/');
+                $this->checkUploadPath('designer/designer/'); // 上傳路徑
+
+                $filePath = $this->uploadImg($_FILES['file'], $designerId . '/personal/');
                 echo base_url($filePath['imagePath']);
             else:
                 echo 'Ooops!  Your upload triggered the following error:  ' . $_FILES['file']['error'];

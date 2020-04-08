@@ -47,7 +47,7 @@
                             <div id="content" class="tab-content"><?php $i = 1; ?>
                                 <div class="tab-pane" id="hb<?= $i++ ?>">
                                     <fieldset>
-                                        <legend>Brand</legend>
+                                        <legend>Events</legend>
                                         <div class="form-group">
                                             <label class="col-sm-2 control-label">Visible</label>
 
@@ -65,75 +65,82 @@
                                         </div>
 
                                         <div class="form-group">
-                                            <label class="col-sm-2 control-label" for="designerId">Designer</label>
-
-                                            <div class="col-sm-9 col-lg-4">
-                                                <select class="form-control" id="designerId" name="designerId">
-                                                    <?php foreach($designerList as $designKey => $designValue){ ?>
-                                                        <option value="<?= $designValue->designerId ?>" <?= $designValue->designerId == $row->designerId ?>><?= $designValue->name ?></option>
-                                                    <?php } ?>
-                                                </select>
+                                            <label class="col-sm-2 control-label">Category</label>
+                                            <div class="col-sm-9">
+                                                <select class="form-control" id="category" name="category"
+                                                    data-bv-notempty="true" data-bv-notempty-message=" ">
+                                                    <option value="">Choose</option>
+                                                    <option value="0" <?= $row->category == '0' ? 'selected' : '' ?>>Explore Events</option>
+                                                    <option value="1" <?= $row->category == '1' ? 'selected' : '' ?>>New Collections</option>
+                                                </select> 
                                             </div>
                                         </div>
 
                                         <div class="form-group">
-                                            <label class="col-sm-2 control-label" for="country">Country</label>
+                                            <label class="col-sm-2 control-label" for="date">Date</label>
 
-                                            <div class="col-sm-9 col-lg-4">
-                                                <select class="form-control" name="country">
-                                                    <?php $countryList = get_all_country();
-                                                    foreach($countryList as $countryKey => $countryValue){ ?>
-                                                        <option value="<?= $countryKey ?>" <?= (@$row->country == $countryKey) ? 'selected' : '' ?>><?= $countryValue ?></option>
-                                                    <?php } ?>  
-                                                </select>                                                      
+                                            <div class="col-sm-9 col-lg-3">
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control datepicker" id="date" name="date" data-dateformat="yy-mm-dd" placeholder="選擇日期" autocomplete="off" value="<?= $row->date ?>" data-bv-notempty="true" data-bv-notempty-message=" ">
+                                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                </div>
                                             </div>
                                         </div>
 
                                         <div class="form-group">
-                                            <label class="col-sm-2 control-label">Icon</label>
+                                            <label class="col-sm-2 control-label">Content Image</label>
 
                                             <div class="col-sm-9">
-                                                <input type="file" class="btn btn-default" id="uploadImg" name="brandiconImg">
-
-                                                <p class="help-block">
-                                                    <strong>Note:</strong>Picture size is <strong>100 x 100</strong>.type is<strong>JPG、PNG</strong>。
-                                                </p>
-                                                <p class="help-block">
-                                                    <?php $brandiconImg = check_file_path($row->brandiconImg); ?>
-                                                    <img id="preview" src="<?= $brandiconImg ?>"<?= !$brandiconImg ? "display:none;" : "" ?>>
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="col-sm-2 control-label">Image</label>
-
-                                            <div class="col-sm-9">
-                                                <input type="file" class="btn btn-default" id="uploadImg" name="brandImg">
+                                                <input type="file" class="btn btn-default" id="uploadImg" name="eventImg">
 
                                                 <p class="help-block">
                                                     <strong>Note:</strong>Picture size is <strong>600 x 600</strong>.type is<strong>JPG、PNG</strong>。
                                                 </p>
-
                                                 <p class="help-block">
-                                                    <?php $brandImg = check_file_path($row->brandImg); ?>
-                                                    <img id="preview" src="<?= $brandImg ?>"<?= !$brandImg ? "display:none;" : "" ?>>
+                                                    <?php $eventImg = check_file_path($row->eventImg); ?>
+                                                    <img id="preview" src="<?= $eventImg ?>"<?= !$eventImg ? "display:none;" : "" ?>>
                                                 </p>
                                             </div>
-                                        </div>                                       
+                                        </div>
 
-                                        <div class="form-group">
-                                            <label class="col-sm-2 control-label">List Img</label>
+                                        <div class="form-group" id="collectionImg" style="display:<?= $row->category == 0 ? 'none;' : 'block' ?>">
+                                            <label class="col-sm-2 control-label">New Collections Image</label>
 
                                             <div class="col-sm-9">
-                                                <input type="file" class="btn btn-default" id="uploadImg" name="brandindexImg">
+                                                <input type="file" class="btn btn-default" id="uploadImg" name="collectionImg">
+
+                                                <p class="help-block">
+                                                    <strong>Note:</strong>Picture size is <strong>510 x 288</strong>.type is<strong>JPG、PNG</strong>。
+                                                </p>
+
+                                                <p class="help-block">                                                    
+                                                    <?php @$collectionImg = check_file_path($row->collectionImg);?>
+                                                    <img id="preview" src="<?= $collectionImg ?>"<?= !$collectionImg ? 'display:none;' : '' ?>>
+                                                </p>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group" id="collectionyoutube" style="display:<?= $row->category == 0 ? 'none;' : 'block' ?>">
+                                            <label class="col-sm-2 control-label">New Collections Youtube</label>
+
+                                            <div class="col-sm-9 col-lg-6">
+                                                <input type="text" class="form-control" name="collectionyoutube" value="<?=$row->collectionyoutube ?>" <?= $row->category == 1 ? 'data-bv-notempty="true" data-bv-notempty-message=" "' : '' ?> >
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group" id="exploreImg" style="display:<?= $row->category == 1 ? 'none;' : 'block' ?>">
+                                            <label class="col-sm-2 control-label">Explore Events Image</label>
+
+                                            <div class="col-sm-9">
+                                                <input type="file" class="btn btn-default" id="uploadImg" name="exploreImg">
 
                                                 <p class="help-block">
                                                     <strong>Note:</strong>Picture size is <strong>360 x 360</strong>.type is<strong>JPG、PNG</strong>。
                                                 </p>
 
                                                 <p class="help-block">
-                                                    <?php $brandindexImg = check_file_path($row->brandindexImg);?>
-                                                    <img id="preview" src="<?= $brandindexImg ?>"<?= !$brandindexImg ? 'display:none;' : '' ?>>
+                                                    <?php @$exploreImg = check_file_path($row->exploreImg);?>
+                                                    <img id="preview" src="<?= $exploreImg ?>"<?= !$exploreImg ? 'display:none;' : '' ?>>
                                                 </p>
                                             </div>
                                         </div>
@@ -151,17 +158,17 @@
                                     <?php foreach ($this->langList as $lrow): ?>
                                         <?php $langData = @$row->langList[$lrow->langId]; ?>
                                         <div class="tab-pane" id="hb<?= $i++ ?>">  
-                                            <input type="hidden" name="langList[<?= $lrow->langId ?>][brandId]" value="<?= $brandId ?>">
+                                            <input type="hidden" name="langList[<?= $lrow->langId ?>][eventId]" value="<?= $eventId ?>">
                                             <input type="hidden" name="langList[<?= $lrow->langId ?>][langId]" value="<?= $lrow->langId ?>">
 
                                             <fieldset data-id="<?= $lrow->langId ?>">
-                                                <legend>Brand Information</legend>
+                                                <legend>Events Content</legend>
 
                                                 <div class="form-group">
-                                                    <label class="col-sm-2 control-label" for="title-<?= $lrow->langId ?>">Brand Name</label>
+                                                    <label class="col-sm-2 control-label" for="title-<?= $lrow->langId ?>">Title</label>
 
                                                     <div class="col-sm-9">
-                                                        <input type="text" class="form-control brand_name" name="langList[<?= $lrow->langId ?>][name]" value="<?= @$langData->name ?>" data-bv-notempty="true" data-bv-notempty-message=" ">                                                        
+                                                        <input type="text" class="form-control brand_name" name="langList[<?= $lrow->langId ?>][title]" value="<?= @$langData->title ?>" data-bv-notempty="true" data-bv-notempty-message=" ">                                                        
                                                     </div>
                                                 </div>
 
@@ -169,34 +176,9 @@
                                                     <label class="col-sm-2 control-label">Content</label>
 
                                                     <div class="col-sm-9">
-                                                        <textarea class="form-control" name="langList[<?= $lrow->langId ?>][content]" rows="10" data-bv-notempty="true" data-bv-notempty-message=" "><?= @$langData->content ?></textarea>
+                                                        <textarea class="form-control" name="langList[<?= $lrow->langId ?>][content]" rows="15" data-bv-notempty="true" data-bv-notempty-message=" "><?= @$langData->content ?></textarea>
                                                     </div>
                                                 </div>
-
-                                                <div class="form-group">
-                                                    <label class="col-sm-2 control-label" for="title-<?= $lrow->langId ?>">Story Title</label>
-
-                                                    <div class="col-sm-9">
-                                                        <input type="text" class="form-control" name="langList[<?= $lrow->langId ?>][brand_story_title]" value="<?= @$langData->brand_story_title ?>" data-bv-notempty="true" data-bv-notempty-message=" ">                                                                                                                
-                                                    </div>
-                                                </div>
-                                        
-                                                <!-- <div class="form-group">
-                                                    <label class="col-sm-2 control-label" for="title-<?= $lrow->langId ?>">Story Youtube</label>
-
-                                                    <div class="col-sm-9">
-                                                        <input type="text" class="form-control" name="langList[<?= $lrow->langId ?>][brand_story_youtube]" value="<?= @$langData->brand_story_youtube ?>">
-                                                    </div>
-                                                </div> -->
-
-                                                <div class="form-group">
-                                                    <label class="col-sm-2 control-label" for="title-<?= $lrow->langId ?>">Story Content</label>
-
-                                                    <div class="col-sm-9">
-                                                        <div id="content-edit"><?= @$langData->brand_story_content ?></div>
-                                                        <input type="hidden" id="content" name="langList[<?= $lrow->langId ?>][brand_story_content]">
-                                                    </div>
-                                                </div>              
                                             </fieldset>
                                         </div>
                                     <?php endforeach; ?>
@@ -206,7 +188,7 @@
                             <div class="widget-footer">
                                 <button type="submit" class="btn btn-primary" id="save" form="data-form">Save</button>
                                 <button type="submit" class="btn btn-primary" id="back" form="data-form" onclick="$('#data-form').attr('action', '<?= $this->query . (!empty($this->query) ? '&' : '?') ?>back=1');">Return After Saving</button>
-                                <button type="button" class="btn btn-default" onclick="location.href='<?= site_url("backend/brand/brand" . $this->query) ?>';">Return</button>
+                                <button type="button" class="btn btn-default" onclick="location.href='<?= site_url("backend/events/events" . $this->query) ?>';">Return</button>
                             </div>
                         </form>
                     </div>
@@ -266,6 +248,21 @@
                     }
                 }
             });
+        });
+
+        $('#category').on('change',function(){
+            if($(this).val() == 0){
+                $('#exploreImg').css('display','block');
+                $('#data-form').bootstrapValidator('resetField', 'collectionyoutube');
+                $("#data-form").bootstrapValidator('enableFieldValidators', 'collectionyoutube', false);
+                $('#collectionImg').css('display','none');
+                $('#collectionyoutube').css('display','none');
+            }else{
+                $('#collectionImg').css('display','block');
+                $('#collectionyoutube').css('display','block');
+                $("#data-form").bootstrapValidator('enableFieldValidators', 'collectionyoutube', true);  
+                $('#exploreImg').css('display','none');
+            }
         });
 
         $('form').bootstrapValidator({

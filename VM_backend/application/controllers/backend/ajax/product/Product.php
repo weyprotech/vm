@@ -57,7 +57,7 @@ class Product extends Ajax_Controller
                     'color' => '<a class="btn btn-primary" href="'.site_url('backend/product/color/index/'.$row->productId).'"><i class="fa fa-dashboard"></i><span class="hidden-mobile"> Color</span></button>',                
                     'manufacture' => '<a class="btn btn-success" href="'.site_url('backend/product/manufacture/edit/'.$row->productId).'"><i class="fa fa-home"></i><span class="hidden-mobile"> Manufacture</span></button>',
                     'fabric' => '<a class="btn btn-success" href="'.site_url('backend/product/fabric/edit/'.$row->productId).'"><i class="fa fa-slack"></i><span class="hidden-mobile"> Fabric</span></button>',
-                    'review' => '<a class="btn btn-warning" href="'.site_url('backend/product/color/index/'.$row->productId).'"><i class="fa fa-weixin"></i><span class="hidden-mobile"> Reviews</span></button>',
+                    'review' => '<a class="btn btn-warning" href="javascript:;"><i class="fa fa-weixin"></i><span class="hidden-mobile"> Reviews</span></button>',
                     'order' => $this->get_order('product', $row->productId, $row->order),
                     'action' => $this->get_button('edit', 'backend/product/product/edit/' . $row->productId . $query) . $this->get_button('delete', 'backend/product/product/delete/' . $row->productId . $query)
                 );
@@ -88,7 +88,7 @@ class Product extends Ajax_Controller
         $productId = check_input_value($this->input->get('productId',true));
 
         $filter = array(array('field' => 'product_img.pId', 'value' => $productId));
-        $order = array(array('field' => 'product_img.order', 'dir' => 'asc'));
+        $order = array(array('field' => 'product_img.order', 'dir' => 'desc'));
 
         $this->load->model('product/tb_product_model', 'product_model');
         $productList = $this->product_model->get_product_img_select($filter, $order, array('limit' => $limit, 'start' => $start), $this->langId);

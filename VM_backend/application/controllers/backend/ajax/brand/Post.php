@@ -77,15 +77,17 @@ class Post extends Ajax_Controller
         $postId = $post['postId'];
         $Id = $post['Id'];
         $youtube = $post['youtube'];
-        $file = 'assets/uploads/brand/post/'.$postId;        
-        $filePath = '';
+        $this->checkUploadPath('brand/post/'); // 上傳路徑
+
+        // $file = 'assets/uploads/brand/post/'.$postId;        
+        // $filePath = '';
         $this->load->model('brand/tb_post_model', 'post_model');
 
         if($_FILES){
-            if (!is_dir($this->uploadPath .= $file.'/')) mkdir($this->uploadPath, 0777,true);
+            // if (!is_dir($this->uploadPath .= $file.'/')) mkdir($this->uploadPath, 0777,true);
             foreach ($_FILES as $key => $value) {
 
-                $file = $this->uploadImg($_FILES[0],'/',510);
+                $file = $this->uploadImg($_FILES[0],$postId.'/',510);
 
 
                 if($Id == 'new'){                    
@@ -118,7 +120,8 @@ class Post extends Ajax_Controller
         $postId = $this->input->post('postId', true);
         if ($postId && isset($_FILES['file'])):
             if (!$_FILES['file']['error']):
-                $this->uploadPath = 'assets/uploads/brand/post/';
+                $this->checkUploadPath('brand/post/'); // 上傳路徑
+                
                 $filePath = $this->uploadImg($_FILES['file'], $postId . '/');
                 echo base_url($filePath['imagePath']);
             else:
@@ -143,6 +146,7 @@ class Post extends Ajax_Controller
 
         $this->load->model('brand/tb_post_model', 'post');
         $messageList = $this->post->get_post_message_select($filter, $order, array('limit' => $limit, 'start' => $start), $this->langId);
+        print_r($messageList);exit;
         $recordsTotal = $this->post->count_post_message($filter, $this->langId);
         if ($messageList):
             foreach ($messageList as $row):

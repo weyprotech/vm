@@ -38,7 +38,7 @@ class Brand extends Ajax_Controller
                     'name' => $row->name,
                     'order' => $this->get_order('brand', $row->brandId, $row->order),
                     'banner' => '<a class="btn btn-warning" href="'.site_url('backend/brand/banner/index/'.$row->brandId).'"><i class="fa fa-picture-o"></i><span class="hidden-mobile"> Banner</span></a>',
-                    'post' => '<a class="btn btn-success" href="'.site_url('backend/brand/post/index/'.$row->brandId).'"><i class="fa fa-book"></i><span class="hidden-mobile"> Post</span></button>',
+                    // 'post' => '<a class="btn btn-success" href="'.site_url('backend/brand/post/index/'.$row->brandId).'"><i class="fa fa-book"></i><span class="hidden-mobile"> Post</span></button>',
                     'action' => $this->get_button('edit', 'backend/brand/brand/edit/' . $row->brandId . $query) . $this->get_button('delete', 'backend/brand/brand/delete/' . $row->brandId . $query)
                 );
             endforeach;
@@ -48,6 +48,22 @@ class Brand extends Ajax_Controller
         return true;
     }
 
+    public function upload()
+    {
+        $brandId = $this->input->post('brandId', true);
+        if ($brandId && isset($_FILES['file'])):
+            if (!$_FILES['file']['error']):
+                $this->checkUploadPath('brand/brand/'); // 上傳路徑
+                
+                $filePath = $this->uploadImg($_FILES['file'], $brandId . '/');
+                echo base_url($filePath['imagePath']);
+            else:
+                echo 'Ooops!  Your upload triggered the following error:  ' . $_FILES['file']['error'];
+            endif;
+        endif;
+
+        return true;
+    }
 
     
     /******************** End brand ********************/

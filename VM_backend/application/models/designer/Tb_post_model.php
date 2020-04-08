@@ -6,7 +6,7 @@ class Tb_post_model extends MY_Model
     public function __construct()
     {
         parent::__construct();
-        $this->uploadPath .= 'post/';
+        $this->checkUploadPath('designer/post/'); // 上傳路徑
     }
 
     /******************** post Model ********************/
@@ -282,9 +282,9 @@ class Tb_post_model extends MY_Model
         foreach ($post as $field => $value):
             if (!in_array($field, array('langList', 'uuid'))):
                 switch ($field):
-                    case 'content':
-                        $data[$field] = check_input_value(html_entity_decode($value));
-                        break;
+                    // case 'content':
+                    //     $data[$field] = check_input_value(html_entity_decode($value));
+                    //     break;
 
                     default:
                         $int_array = array(

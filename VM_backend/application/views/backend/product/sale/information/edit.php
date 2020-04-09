@@ -26,6 +26,11 @@
                     <h2>Sale</h2>
                     <ul class="nav nav-tabs pull-right in"><?php $i = 1; ?>
                         <li><a data-toggle="tab" href="#hb<?= $i++ ?>">Content</a></li>
+                        <?php if ($this->langList): ?>
+                            <?php foreach ($this->langList as $lrow): ?>
+                                <li><a data-toggle="tab" href="#hb<?= $i++ ?>"><?= $lrow->name ?></a></li>
+                            <?php endforeach; ?>
+                        <?php endif; ?>
                     </ul>
                 </header>
 
@@ -77,9 +82,53 @@
                                             <div class="col-sm-9 col-lg-2" style="padding-top:10px;margin-left:-20px">
                                                 %
                                             </div>
+                                        </div>  
+
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">Image</label>
+
+                                            <div class="col-sm-9">
+                                                <input type="file" class="btn btn-default" id="uploadImg" name="informationImg">
+
+                                                <p class="help-block">
+                                                    <strong>Note:</strong> Resolution is <strong>631 x 400</strong>. Format is JPG and PNG</strong>。
+                                                </p>
+
+                                                <p class="help-block">
+                                                    <?php $informationImg = check_file_path($row->informationImg); ?>
+                                                    <img id="preview" src="<?= $informationImg ?>"<?= !$informationImg ? "display:none;" : "" ?>>
+                                                </p>
+                                            </div>
                                         </div>
                                     </fieldset>
                                 </div>
+                                <?php if ($this->langList): ?>
+                                    <?php foreach ($this->langList as $lrow): ?>
+                                        <div class="tab-pane" id="hb<?= $i++ ?>">
+                                            <input type="hidden" name="langList[<?= $lrow->langId ?>][iId]" value="<?= $row->Id ?>">
+                                            <input type="hidden" name="langList[<?= $lrow->langId ?>][langId]" value="<?= $lrow->langId ?>">
+                                            <fieldset>
+                                                <legend><?= $lrow->name ?></legend>
+
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label" for="name-<?= $lrow->langId ?>">Title</label>
+
+                                                    <div class="col-sm-9 col-lg-4">
+                                                        <input class="form-control" type="text" id="name-<?= $lrow->langId ?>" name="langList[<?= $lrow->langId ?>][title]" value="<?= @$row->langList[$lrow->langId]->title ?>" data-bv-notempty="true" data-bv-notempty-message=" ">
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label" for="name-<?= $lrow->langId ?>">Content</label>
+
+                                                    <div class="col-sm-9">
+                                                        <input class="form-control" type="text" id="name-<?= $lrow->langId ?>" name="langList[<?= $lrow->langId ?>][content]" value="<?= @$row->langList[$lrow->langId]->content ?>" data-bv-notempty="true" data-bv-notempty-message=" ">
+                                                    </div>
+                                                </div>                                                
+                                            </fieldset>
+                                        </div>
+                                    <?php endforeach; ?>
+                                <?php endif; ?>
                             </div>
 
                             <div class="widget-footer">
@@ -103,6 +152,14 @@
     $('.tab-pane').eq(hash.substr(1)).addClass('active');
 
     $(document).ready(function () {
+        $('input#uploadImg').change(function () {
+            var $this = $(this);
+            var reader = new FileReader();
+            reader.readAsDataURL(this.files[0]);
+            reader.onload = function (e) {
+                $this.siblings('p:last').children('img#preview').attr('src', e.target.result).show();
+            };
+        });
 
         $("#save, #back").click(function (e) {
         });

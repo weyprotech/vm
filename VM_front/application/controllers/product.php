@@ -31,22 +31,44 @@ class Product extends Frontend_Controller
             $sort = array(array('field' => 'product.click','dir' => 'desc'));
         }
 
-        //如果有第三層類別
+        //如果是第三層類別
         if(!empty($categoryId)){
-            $category = $this->tb_category_model->get_category_by_id($categoryId,$this->langId);            
+            $category = $this->tb_category_model->get_category_by_id($categoryId,$this->langId);
+            $subcategory = $this->tb_category_model->get_category_by_id($category->prevId,$this->langId);
+            $menu_subcategory = $subcategory->categoryId;
+            $menu_basecategory = $subcategory->prevId;
+            $menu_category = $category;
             $productList = $this->tb_product_model->get_product_select(array(array('field' => 'product.is_visible','value' => 1),array('field' => 'product.cId','value' => $categoryId)),$sort,array('start' => ($page-1)*20,'limit' => 20),$this->langId);
             $product_count = $this->tb_product_model->count_product(array(array('field' => 'product.is_visible','value' => 1),array('field' => 'product.cId','value' => $categoryId)),$this->langId);
-        }else if(!empty($subId)){  //如果有第二層類別
+        }else if(!empty($subId)){  //如果是第二層類別
             $temp = $this->tb_category_model->get_category_select(array(array('field' => 'category.prevId','value' => $subId)),array(array('field' => 'category.order','dir' => 'RANDOM')),array('start' => 0,'limit' => 1),$this->langId);
             $category = $temp[0];
+            $subcategory = $this->tb_category_model->get_category_by_id($subId,$this->langId);
+            $menu_subcategory = $subcategory;
+            $menu_basecategory = $subcategory->prevId;
+            $menu_category = '';
             $productList = $this->tb_product_model->get_product_select(array(array('field' => 'product.is_visible','value' => 1),array('field' => 'product.subId','value' => $subId)),$sort,array('start' => ($page-1)*20,'limit' => 20),$this->langId);
             $product_count = $this->tb_product_model->count_product(array(array('field' => 'product.is_visible','value' => 1),array('field' => 'product.subId','value' => $subId)),$this->langId);
-        }else{ //如果只有第一層類別
+        }else{ //如果是第一層類別
             $sub_temp = $this->tb_category_model->get_category_select(array(array('field' => 'category.prevId','value' => $baseId)),array(array('field' => 'category.order','dir' => 'RANDOM')),array('start' => 0,'limit' => 1),$this->langId);
             $temp = $this->tb_category_model->get_category_select(array(array('field' => 'category.prevId','value' => $sub_temp[0]->categoryId)),array(array('field' => 'category.order','dir' => 'RANDOM')),array('start' => 0,'limit' => 1),$this->langId);
             $category = $temp[0];
+            $menu_subcategory = '';
+            $menu_basecategory = $baseId;
+            $menu_category = '';
             $productList = $this->tb_product_model->get_product_select(array(array('field' => 'product.is_visible','value' => 1),array('field' => 'product.baseId','value' => $baseId)),$sort,array('start' => ($page-1)*20,'limit' => 20),$this->langId);
             $product_count = $this->tb_product_model->count_product(array(array('field' => 'product.is_visible','value' => 1),array('field' => 'product.baseId','value' => $baseId)),$this->langId);
+        }
+
+        $saleinformation = $this->tb_sale_model->get_sale_information();
+        if($productList){
+            foreach ($productList as $productKey => $productValue){
+                if($saleinformation->is_visible == 1){
+                    $productList[$productKey]->sale = $this->tb_sale_model->get_sale_product_by_pId($productValue->productId);
+                }else{
+                    $productList[$productKey]->sale = false;
+                }
+            }
         }
 
         $total_page = ceil($product_count/20);
@@ -59,10 +81,11 @@ class Product extends Frontend_Controller
             'baseId' => $baseId,
             'subId' => $subId,
             'categoryId' => $categoryId,
+            'saleinformation' => $saleinformation,
             'sort' => ($this->input->get('sort',true) == null ? '' : $this->input->get('sort',true))
         );
 
-        $this->get_view('product/index', $data);
+        $this->get_view('product/index', $data,"",false,array('menu_basecategory' => $menu_basecategory,'menu_subcategory' => $menu_subcategory,'menu_category' => $menu_category));
     }
 
 
@@ -182,8 +205,8 @@ class Product extends Frontend_Controller
         $this->load->view('content/product/fabric_popup',$data);
     }
 
-    private function get_view($page, $data = array(), $script = "",$productId = false)
+    private function get_view($page, $data = array(), $script = "",$productId = false,$category = array('menu_basecategory' => '','menu_subcategory' => '','menu_category' => ''))
     {
-        $this->load->view("webPage", $this->get_frontend_view($page, $data, $script,$productId));
+        $this->load->view("webPage", $this->get_frontend_view($page, $data, $script,$productId,$category));
     }
 }

@@ -45,7 +45,7 @@ if (!function_exists('website_url')) {
 
         if (empty($url)) return site_url($lang);
 
-        return site_url($lang . '/' . $url);
+        return site_url($url);
     }
 }
 
@@ -53,7 +53,7 @@ if (!function_exists('website_url')) {
 if(!function_exists('backend_url')){
     function backend_url($url = ''){        
         
-        return 'http://localhost/vm/VM_backend/'.$url;
+        return 'http://localhost/VM/VM_backend/'.$url;
     }
 }
 

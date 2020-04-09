@@ -64,7 +64,7 @@
                             </a>
                         </div>
                     <?php } ?>
-                </div><a class="btn common more" href="designers.html">All designers</a>
+                </div><a class="btn common more" href="<?= website_url('designers') ?>">All designers</a>
             </div>
         </div>
     </div>
@@ -181,19 +181,21 @@
         </div>
     </div>
     <div class="ads_banner">
-        <?php foreach ($homepageBanner as $bannerKey => $bannerValue){ ?>
-            <div class="slide">
-                <div class="pic"><img src="<?= base_url('assets/images/img_ad_banner.jpg') ?>"></div>
-                <!--↓ 後台可設定網站五個顏色 ↓ -- bg_brown、bg_red、bg_purple、bg_blue、bg_green-->
-                <div class="text <?= $website_color->color ?>">
-                    <div class="text_inner">
-                        <div class="title"><?= $bannerValue->title ?></div>
-                        <div class="subtitle"><?= $bannerValue->sub_title ?></div>
-                        <p><?= $bannerValue->content ?></p><a class="btn common more" href="javascript:;">SHOP NOW</a>
+        <?php if($homepageBanner){
+            foreach ($homepageBanner as $bannerKey => $bannerValue){ ?>
+                <div class="slide">
+                    <div class="pic"><img src="<?= base_url('assets/images/img_ad_banner.jpg') ?>"></div>
+                    <!--↓ 後台可設定網站五個顏色 ↓ -- bg_brown、bg_red、bg_purple、bg_blue、bg_green-->
+                    <div class="text <?= $website_color->color ?>">
+                        <div class="text_inner">
+                            <div class="title"><?= $bannerValue->title ?></div>
+                            <div class="subtitle"><?= $bannerValue->sub_title ?></div>
+                            <p><?= $bannerValue->content ?></p><a class="btn common more" href="javascript:;">SHOP NOW</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-        <?php } ?>
+            <?php }
+        } ?>
     </div>
     <div class="ootd_list_wrapper page_block">
         <div class="block_inner wide">

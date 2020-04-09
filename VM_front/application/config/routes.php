@@ -52,15 +52,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 $route['default_controller'] = 'homepage';
 $route['search'] = 'homepage/search';
-$route['(:any)'] = function ($lang) {
-    return in_array($lang, array('admin')) ? $lang : 'homepage';
+$route['(:any)'] = function ($url) {
+    return in_array($url, array('admin')) ? $url : $url;
 };
 $route['(:any)/(:any)/(:num)'] = function ($lang, $action, $id) {
     return $action . '/detail/' . $id;
 };
 $route['(:any)/(.+)'] = function ($action, $uri) {
+
     if (in_array($action, array('backend'))) return $action . '/' . $uri;
-    return $uri;
+    return $action . '/' . $uri;
 };
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

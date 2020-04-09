@@ -113,7 +113,7 @@
         <div class="controls_group">
           <label>Currency</label>
           <div class="select_wrapper">
-            <select>
+            <select id="money_type_select">
               <option selected>€ EUR</option>
               <option>$ TWD</option>
               <option>¥ CNY</option>
@@ -123,13 +123,13 @@
         <div class="controls_group">
           <label>Languange</label>
           <div class="select_wrapper">
-            <select>
-              <option selected>English</option>
-              <option>繁體中文</option>
-              <option>简体中文</option>
+            <select id="languange_select">
+              <option value='en' selected>English</option>
+              <option value='tw'>繁體中文</option>
+              <option value='cn'>简体中文</option>
             </select>
           </div>
         </div>
-        <button class="btn confirm popup_modal_dismiss" type="button">Save</button>
+        <button class="btn confirm popup_modal_dismiss" id="website_set" type="button">Save</button>
       </div>
     </div>

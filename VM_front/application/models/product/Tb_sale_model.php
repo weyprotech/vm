@@ -5,24 +5,70 @@ class Tb_sale_model extends MY_Model
     public function __construct()
     {
         parent::__construct();
-        $this->uploadPath .= 'sale/';
+        $this->checkUploadPath('product/sale/'); // 上傳路徑
     }
 
     /******************** sale Model ********************/
     /******************** start sale_information **************/
-    public function get_sale_information(){
+    public function get_sale_information($langId = false){
+        if($langId){
+            $this->db->select('sale_information.*,lang.title,lang.content');
+            $this->db->join('tb_sale_information_lang as lang','sale_information.Id = lang.iId AND lang.langId = '.$langId,'left');
+        }
         $query = $this->db->where('sale_information.Id',1)->get('tb_sale_information as sale_information');
+
         if($query->num_rows() > 0){
-            return $query->row();            
+            $sale_information = $query->row();
+            if (!$langId):
+                $sale_information->langList = $this->get_sale_information_lang(array(array('field' => 'iId', 'value' => $sale_information->Id)));
+            endif;
+
+            return $sale_information;
         }
         return false;
     }
 
     public function update_sale_information($post){
         $update = $this->check_db_data($post);
+        if (isset($_FILES['informationImg']) && !$_FILES['informationImg']['error']):
+            $update['informationImg'] = $this->uploadFile('information', 'information' . '/', 631);
+        endif;
+        $this->update_product_lang($post['langList']);
         $this->db->update('tb_sale_information',$update,array('Id' => 1));
         return true;
     }
+
+    /*************** Product Lang Model ***************/
+    private function get_sale_information_lang($filter = false)
+    {
+        $langList = array();
+        $this->set_filter($filter);
+        $query = $this->db->get('tb_sale_information_lang');
+        if ($query->num_rows() > 0):
+            foreach ($query->result() as $lrow):
+                $langList[$lrow->langId] = $lrow;
+            endforeach;
+        endif;
+        return $langList;
+    }
+
+    private function update_product_lang($update)
+    {
+        $this->db->where('iId', 1)->update_batch('tb_sale_information_lang', $update, 'langId');
+
+        $langList = $this->get_sale_information_lang(array(array('field' => 'iId', 'value' => 1)));
+        $insert = array_diff_key($update, $langList);
+        if (!empty($insert)):
+            foreach ($insert as $i => $lrow):
+                $insert[$i] = array_merge($lrow, array('create_at' => date("Y-m-d H:i:s")));
+            endforeach;
+
+            return $this->db->insert_batch('tb_sale_information_lang', $insert);
+        endif;
+
+        return true;
+    }
+
     /********************* end sale_information *****************/
     /********************* start sale product *******************/
     public function get_sale_product_select($filter = false, $order = false, $limit = false, $langId = false)

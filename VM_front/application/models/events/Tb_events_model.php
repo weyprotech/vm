@@ -90,11 +90,11 @@ class Tb_events_model extends MY_Model
         endif;
 
         if (isset($_FILES['exploreImg']) && !$_FILES['exploreImg']['error']):
-            $insert['exploreImg'] = $this->uploadFile('explore',  $events->eventId . '/', 360);
+            $update['exploreImg'] = $this->uploadFile('explore',  $events->eventId . '/', 360);
         endif;
   
         if (isset($_FILES['collectionImg']) && !$_FILES['collectionImg']['error']):
-            $insert['collectionImg'] = $this->uploadFile('collection',  $events->eventId . '/', 510);
+            $update['collectionImg'] = $this->uploadFile('collection',  $events->eventId . '/', 510);
         endif;
 
         if (isset($post['langList'])):
@@ -168,7 +168,7 @@ class Tb_events_model extends MY_Model
     {
         $this->db->select('events.*');
         if ($langId):
-            $this->db->select('lang.title,lang.Content');
+            $this->db->select('lang.title,lang.content');
             $this->db->join('tb_events_lang as lang', 'lang.eventId = events.eventId AND lang.langId = ' . $langId);
         endif;
         return true;

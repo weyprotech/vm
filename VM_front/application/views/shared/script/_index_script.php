@@ -1,9 +1,11 @@
 <script>
 
 $(function() {
-    // 開啟選擇語言和幣別的跳窗
-    popupEntrance();
-    
+    <?php $language = $this->input->cookie('language',true); 
+    if(empty($language)){?>
+        // 開啟選擇語言和幣別的跳窗
+        popupEntrance();
+    <?php } ?>
     // Map
     var streetImgs = {
         daymode: website.Base_url('assets/images/leaflet/street.png'),

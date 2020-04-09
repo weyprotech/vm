@@ -117,7 +117,9 @@ block main
                       img.size(src="images/size_3x4.png")
                   .text
                     h3 The Chelsea Heritage Trench Coat
-                    .price NT$ 98800
+                    .price
+                      span.strikethrough NT$ 98800
+                      span.sale_price NT$ 79000
               each i inArray(2)
                 .slide
                   a(href="product_detail.html")

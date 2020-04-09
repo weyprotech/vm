@@ -1941,7 +1941,27 @@ a.thumb {
     }
     .price {
       color: $main;
-      letter-spacing: 0.021em;
+      line-height: 1.25;
+      span {
+        display: inline-block;
+        &.strikethrough {
+          position: relative;
+          margin-right: 1em;
+          &:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            display: block;
+            width: 100%;
+            height: 1px;
+            background-color: $red;
+          }
+        }
+        &.sale_price {
+          color: $red;
+        }
+      }
     }
   }
   .slick-prev,

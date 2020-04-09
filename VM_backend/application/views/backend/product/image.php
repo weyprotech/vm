@@ -69,7 +69,7 @@
                                             <input type="file" class="btn btn-default" id="uploadImg" name="thumbImg">
 
                                             <p class="help-block">
-                                                <strong>Note:</strong> 建議上傳圖片尺寸為 <strong>300 x 200</strong> .type is<strong>JPG、PNG</strong> 。
+                                                <strong>Note:</strong> 建議上傳圖片尺寸為 <strong>300 x 200</strong> . Format is JPG and PNG</strong> 。
                                             </p>
 
                                             <p class="help-block">

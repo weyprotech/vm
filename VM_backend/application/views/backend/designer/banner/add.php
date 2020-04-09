@@ -83,7 +83,7 @@
                                                     data-bv-file-message="type is error">
 
                                                 <p class="help-block">
-                                                    <strong>Note:</strong> Picture size is <strong>1920 x 826</strong>.type is <strong>JPG、PNG</strong>。
+                                                    <strong>Note:</strong> Resolution is <strong>1920 x 826</strong>.type is <strong>JPG、PNG</strong>。
                                                 </p>
 
                                                 <p class="help-block">                                                    

@@ -88,7 +88,7 @@
                                                 <input type="file" class="btn btn-default" id="uploadImg" name="designiconImg">
 
                                                 <p class="help-block">
-                                                    <strong>Note:</strong>Picture size is <strong>100 x 100</strong>.type is<strong>JPG、PNG</strong>。
+                                                    <strong>Note:</strong>Resolution is <strong>100 x 100</strong>. Format is JPG and PNG</strong>。
                                                 </p>
 
                                                 <p class="help-block">
@@ -104,7 +104,7 @@
                                                 <input type="file" class="btn btn-default" id="uploadImg" name="designImg">
 
                                                 <p class="help-block">
-                                                    <strong>Note:</strong>Picture size is <strong>540 x 720</strong>.type is<strong>JPG、PNG</strong>。
+                                                    <strong>Note:</strong>Resolution is <strong>540 x 720</strong>. Format is JPG and PNG</strong>。
                                                 </p>
 
                                                 <p class="help-block">
@@ -126,7 +126,7 @@
                                                     data-bv-file-message="Type error">
 
                                                 <p class="help-block">
-                                                    <strong>Note:</strong>Picture size is <strong>510 x 288</strong>.type is<strong>JPG、PNG</strong>。
+                                                    <strong>Note:</strong>Resolution is <strong>510 x 288</strong>. Format is JPG and PNG</strong>。
                                                 </p>
 
                                                 <p class="help-block">                                                    
@@ -142,7 +142,7 @@
                                             <div class="col-sm-9">
                                                 <input class="btn btn-default" type="file" id="uploadImg" name="aboutImg">
                                                 <p class="help-block">
-                                                    <strong>Note:</strong>Picture size is <strong>600 x 600</strong>.type is<strong>JPG、PNG</strong>。
+                                                    <strong>Note:</strong>Resolution is <strong>600 x 600</strong>. Format is JPG and PNG</strong>。
                                                 </p>
 
                                                 <p class="help-block">                                                    
@@ -160,7 +160,7 @@
                                                 <div class="col-sm-9">
                                                     <input class="btn btn-default" type="file" id="uploadImg" name="hometownpost1Img">
                                                     <p class="help-block">
-                                                        <strong>Note:</strong>Picture size is <strong>540 x 720</strong>.type is<strong>JPG、PNG</strong>。
+                                                        <strong>Note:</strong>Resolution is <strong>540 x 720</strong>. Format is JPG and PNG</strong>。
                                                     </p>
 
                                                     <p class="help-block">
@@ -176,7 +176,7 @@
                                                 <div class="col-sm-9">
                                                     <input class="btn btn-default" type="file" id="uploadImg" name="hometownpost2Img">
                                                     <p class="help-block">
-                                                        <strong>Note:</strong>Picture size is <strong>540 x 720</strong>.type is<strong>JPG、PNG</strong>。
+                                                        <strong>Note:</strong>Resolution is <strong>540 x 720</strong>. Format is JPG and PNG</strong>。
                                                     </p>
 
                                                     <p class="help-block">                                                    
@@ -192,7 +192,7 @@
                                                 <div class="col-sm-9">
                                                     <input class="btn btn-default" type="file" id="uploadImg" name="hometownpost3Img">
                                                     <p class="help-block">
-                                                        <strong>Note:</strong>Picture size is <strong>540 x 720</strong>.type is<strong>JPG、PNG</strong>。
+                                                        <strong>Note:</strong>Resolution is <strong>540 x 720</strong>. Format is JPG and PNG</strong>。
                                                     </p>
 
                                                     <p class="help-block">                                                    

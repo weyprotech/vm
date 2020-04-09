@@ -184,14 +184,31 @@ class Tb_product_model extends MY_Model
 
     public function delete_product_img($img){
         //刪除圖檔
-        if(file_exists($this->uploadPath .$img->imagePath)){
-            @chmod($this->uploadPath .$img->imagePath, 0777);
-            @unlink($this->uploadPath .$img->imagePath);
+        if(file_exists($this->uploadPath .$img->small_imagePath)){
+            @chmod($this->uploadPath .$img->small_imagePath, 0777);
+            @unlink($this->uploadPath .$img->small_imagePath);
         }
-        if(file_exists($this->uploadPath .$img->thumbPath)){
-            @chmod($this->uploadPath .$img->thumbPath, 0777);
-            @unlink($this->uploadPath .$img->thumbPath);
+        if(file_exists($this->uploadPath .$img->small_thumbPath)){
+            @chmod($this->uploadPath .$img->small_thumbPath, 0777);
+            @unlink($this->uploadPath .$img->small_thumbPath);
         }
+        if(file_exists($this->uploadPath .$img->middle_imagePath)){
+            @chmod($this->uploadPath .$img->middle_imagePath, 0777);
+            @unlink($this->uploadPath .$img->middle_imagePath);
+        }
+        if(file_exists($this->uploadPath .$img->middle_thumbPath)){
+            @chmod($this->uploadPath .$img->middle_thumbPath, 0777);
+            @unlink($this->uploadPath .$img->middle_thumbPath);
+        }
+        if(file_exists($this->uploadPath .$img->big_imagePath)){
+            @chmod($this->uploadPath .$img->big_imagePath, 0777);
+            @unlink($this->uploadPath .$img->big_imagePath);
+        }
+        if(file_exists($this->uploadPath .$img->big_thumbPath)){
+            @chmod($this->uploadPath .$img->big_thumbPath, 0777);
+            @unlink($this->uploadPath .$img->big_thumbPath);
+        }
+
         $this->db->delete('tb_product_image',array('imageId' => $img->imageId));
 
         return true;
@@ -419,7 +436,7 @@ class Tb_product_model extends MY_Model
         endif;
 
         if (isset($_FILES['iconImg']) && !$_FILES['iconImg']['error']):
-            $update['iconImg'] = $this->uploadFile('icon', $manufacture->Id . '/', 80);
+            $update['iconImg'] = $this->uploadFile('icon', $manufacture->Id . '/', 100);
         endif;
 
         if (isset($_FILES['content1Img']) && !$_FILES['content1Img']['error']):
@@ -435,15 +452,15 @@ class Tb_product_model extends MY_Model
         endif;
 
         if (isset($_FILES['popup1Img']) && !$_FILES['popup1Img']['error']):
-            $update['popup1Img'] = $this->uploadFile('popup1', $manufacture->Id . '/', 676);
+            $update['popup1Img'] = $this->uploadFile('popup1', $manufacture->Id . '/', 936);
         endif;
 
         if (isset($_FILES['popup2Img']) && !$_FILES['popup2Img']['error']):
-            $update['popup2Img'] = $this->uploadFile('popup2', $manufacture->Id . '/', 676);
+            $update['popup2Img'] = $this->uploadFile('popup2', $manufacture->Id . '/', 936);
         endif;
 
         if (isset($_FILES['popup3Img']) && !$_FILES['popup3Img']['error']):
-            $update['popup3Img'] = $this->uploadFile('popup3', $manufacture->Id . '/', 676);
+            $update['popup3Img'] = $this->uploadFile('popup3', $manufacture->Id . '/', 936);
         endif;
         $this->db->update('tb_product_manufacture',$update,array('Id' => $manufacture->Id));
         return true;
@@ -547,7 +564,7 @@ class Tb_product_model extends MY_Model
         endif;
 
         if (isset($_FILES['iconImg']) && !$_FILES['iconImg']['error']):
-            $update['iconImg'] = $this->uploadFile('icon', $fabric->Id . '/', 80);
+            $update['iconImg'] = $this->uploadFile('icon', $fabric->Id . '/', 100);
         endif;
 
         if (isset($_FILES['content1Img']) && !$_FILES['content1Img']['error']):
@@ -563,15 +580,15 @@ class Tb_product_model extends MY_Model
         endif;
 
         if (isset($_FILES['popup1Img']) && !$_FILES['popup1Img']['error']):
-            $update['popup1Img'] = $this->uploadFile('popup1', $fabric->Id . '/', 676);
+            $update['popup1Img'] = $this->uploadFile('popup1', $fabric->Id . '/', 936);
         endif;
 
         if (isset($_FILES['popup2Img']) && !$_FILES['popup2Img']['error']):
-            $update['popup2Img'] = $this->uploadFile('popup2', $fabric->Id . '/', 676);
+            $update['popup2Img'] = $this->uploadFile('popup2', $fabric->Id . '/', 936);
         endif;
 
         if (isset($_FILES['popup3Img']) && !$_FILES['popup3Img']['error']):
-            $update['popup3Img'] = $this->uploadFile('popup3', $fabric->Id . '/', 676);
+            $update['popup3Img'] = $this->uploadFile('popup3', $fabric->Id . '/', 936);
         endif;
         $this->db->update('tb_product_fabric',$update,array('Id' => $fabric->Id));
         return true;
@@ -637,6 +654,10 @@ class Tb_product_model extends MY_Model
                         $data[$field] = check_input_value(html_entity_decode($value));
                         break;
 
+                    case 'description':
+                        $data[$field] = check_input_value(html_entity_decode($value));
+                        break;
+                    
                     default:
                         $int_array = array(
                             'is_enable', 'is_visible', 'langId', 'order', /* Common Field */

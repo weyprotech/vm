@@ -57,7 +57,7 @@
                                                 <input type="file" class="btn btn-default" id="uploadImg" name="firstbannerImg">
 
                                                 <p class="help-block">
-                                                    <strong>Note:</strong> Picture size is <strong>1920 x 582</strong>.type is<strong>JPG、PNG</strong>。
+                                                    <strong>Note:</strong> Resolution is <strong>1920 x 582</strong>. Format is JPG and PNG</strong>。
                                                 </p>
 
                                                 <p class="help-block">
@@ -74,7 +74,7 @@
                                                 <input type="file" class="btn btn-default" id="uploadImg" name="iconImg">
 
                                                 <p class="help-block">
-                                                    <strong>Note:</strong> Picture size is <strong>80 x 80</strong>.type is<strong>JPG、PNG</strong>。
+                                                    <strong>Note:</strong> Resolution is <strong>100 x 100</strong>. Format is JPG and PNG</strong>。
                                                 </p>
 
                                                 <p class="help-block">
@@ -91,7 +91,7 @@
                                                 <input type="file" class="btn btn-default" id="uploadImg" name="content1Img">
 
                                                 <p class="help-block">
-                                                    <strong>Note:</strong> Picture size is <strong>380 x 507</strong>.type is<strong>JPG、PNG</strong>。
+                                                    <strong>Note:</strong> Resolution is <strong>380 x 507</strong>. Format is JPG and PNG</strong>。
                                                 </p>
 
                                                 <p class="help-block">
@@ -108,7 +108,7 @@
                                                 <input type="file" class="btn btn-default" id="uploadImg" name="content2Img">
 
                                                 <p class="help-block">
-                                                    <strong>Note:</strong> Picture size is <strong>380 x 507</strong>.type is<strong>JPG、PNG</strong>。
+                                                    <strong>Note:</strong> Resolution is <strong>380 x 507</strong>. Format is JPG and PNG</strong>。
                                                 </p>
 
                                                 <p class="help-block">
@@ -125,7 +125,7 @@
                                                 <input type="file" class="btn btn-default" id="uploadImg" name="secondbannerImg">
 
                                                 <p class="help-block">
-                                                    <strong>Note:</strong> Picture size is <strong>1920 x 582</strong>.type is<strong>JPG、PNG</strong>。
+                                                    <strong>Note:</strong> Resolution is <strong>1920 x 582</strong>. Format is JPG and PNG</strong>。
                                                 </p>
 
                                                 <p class="help-block">
@@ -142,7 +142,7 @@
                                                 <input type="file" class="btn btn-default" id="uploadImg" name="popup1Img">
 
                                                 <p class="help-block">
-                                                    <strong>Note:</strong> Picture size is <strong>676 x 380</strong>.type is<strong>JPG、PNG</strong>。
+                                                    <strong>Note:</strong> Resolution is <strong>936 x 526</strong>. Format is JPG and PNG</strong>。
                                                 </p>
 
                                                 <p class="help-block">
@@ -167,7 +167,7 @@
                                                 <input type="file" class="btn btn-default" id="uploadImg" name="popup2Img">
 
                                                 <p class="help-block">
-                                                    <strong>Note:</strong> Picture size is <strong>676 x 380</strong>.type is<strong>JPG、PNG</strong>。
+                                                    <strong>Note:</strong> Resolution is <strong>936 x 526</strong>. Format is JPG and PNG</strong>。
                                                 </p>
 
                                                 <p class="help-block">
@@ -192,7 +192,7 @@
                                                 <input type="file" class="btn btn-default" id="uploadImg" name="popup3Img">
 
                                                 <p class="help-block">
-                                                    <strong>Note:</strong> Picture size is <strong>676 x 380</strong>.type is<strong>JPG、PNG</strong>。
+                                                    <strong>Note:</strong> Resolution is <strong>936 x 526</strong>. Format is JPG and PNG</strong>。
                                                 </p>
 
                                                 <p class="help-block">
@@ -218,6 +218,14 @@
                                             <input type="hidden" name="langList[<?= $lrow->langId ?>][langId]" value="<?= $lrow->langId ?>">
                                             <fieldset>
                                                 <legend><?= $lrow->name ?></legend>
+
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label" for="name-<?= $lrow->langId ?>">Main Title</label>
+
+                                                    <div class="col-sm-9">
+                                                        <input class="form-control" type="text" id="name-<?= $lrow->langId ?>" name="langList[<?= $lrow->langId ?>][main_title]" value="<?= @$row->langList[$lrow->langId]->main_title ?>" data-bv-notempty="true" data-bv-notempty-message=" ">
+                                                    </div>
+                                                </div>
 
                                                 <div class="form-group">
                                                     <label class="col-sm-2 control-label" for="name-<?= $lrow->langId ?>">Location</label>

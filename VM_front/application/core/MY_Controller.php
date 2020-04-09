@@ -40,7 +40,7 @@ class Frontend_Controller extends MY_Controller
         );
     }
 
-    public function get_frontend_view($page, $data = array(), $script = "")
+    public function get_frontend_view($page, $data = array(), $script = "",$productId = false)
     {
         $website_color = $this->website_color->get_set_website_color();
         $data['website_color'] = $website_color;
@@ -58,11 +58,20 @@ class Frontend_Controller extends MY_Controller
             }
         }
         /***end 產品類別 ***/
+        if($productId){
+            $product = $this->product_model->get_product_by_id($productId);            
+        }else{
+            $product = (object)array();
+            $product->baseId = '';
+            $product->subId = '';
+            $product->cId = '';
+
+        }
         return array(
             'pageMeta' => $this->pageMeta,
             'loading' => $this->load->view('shared/_loading','',true),
             'header_top' => $this->load->view('shared/_header_top',array('website_color' => $website_color),true),
-            'header' => $this->load->view('shared/_header', array('categoryList' => $categoryList), true),
+            'header' => $this->load->view('shared/_header', array('categoryList' => $categoryList,'product' => $product), true),
             'main' => $this->load->view('content/' . $page, $data, true),
             'footer' => $this->load->view('shared/_footer', '', true),
             'sidebar' => $this->load->view('shared/_sidebar', '', true),

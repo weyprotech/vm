@@ -89,17 +89,17 @@
                 <li><a class="<?= (stripos($_SERVER['REQUEST_URI'],'designers') ? 'current active' : '') ?>" href="<?= website_url('designers') ?>">Designers</a></li>
                 <li><a class="<?= (stripos($_SERVER['REQUEST_URI'],'brand') ? 'current active' : '') ?>" href="<?= website_url('brand') ?>">Brands</a></li>
                 <?php foreach($categoryList as $firstKey => $firstValue){ ?>
-                    <li><a href="<?= website_url('product/index?baseId='.$firstValue->categoryId) ?>"><?= $firstValue->name ?></a>
+                    <li><a class="<?= (stripos($_SERVER['REQUEST_URI'],$firstValue->categoryId) ? 'current active' : (($product->baseId == $firstValue->categoryId) ? 'current active' :'')) ?>" href="<?= website_url('product/index?baseId='.$firstValue->categoryId) ?>"><?= $firstValue->name ?></a>
                         <div class="sub_menu">
                             <ul>
                                 <?php if(!empty($categoryList[$firstKey]->categoryList)){ ?>
                                     <?php foreach($categoryList[$firstKey]->categoryList as $subKey => $subValue){ ?>
                                         <li>
-                                            <a href="<?= website_url('product/index?subId='.$subValue->categoryId) ?>"><?= $subValue->name ?></a>
+                                            <a class="<?= (stripos($_SERVER['REQUEST_URI'],$subValue->categoryId) ? 'current active' : (($product->subId == $subValue->categoryId) ? 'current active' :'')) ?>" href="<?= website_url('product/index?subId='.$subValue->categoryId.'&baseId='.$firstValue->categoryId) ?>"><?= $subValue->name ?></a>
                                             <ul>
                                                 <?php if(!empty($categoryList[$firstKey]->categoryList[$subKey]->categoryList)){ ?>
                                                     <?php foreach($categoryList[$firstKey]->categoryList[$subKey]->categoryList as $categoryKey => $categoryValue){ ?>
-                                                        <li><a href="<?= website_url('product/index?categoryId='.$categoryValue->categoryId) ?>"><?= $categoryValue->name ?></a></li>
+                                                        <li><a class="<?= (stripos($_SERVER['REQUEST_URI'],$categoryValue->categoryId) ? 'current active' : (($product->cId == $categoryValue->categoryId) ? 'current active' :'')) ?>" href="<?= website_url('product/index?categoryId='.$categoryValue->categoryId.'&subId='.$subValue->categoryId.'&baseId='.$firstValue->categoryId) ?>"><?= $categoryValue->name ?></a></li>
                                                     <?php } ?>
                                                 <?php } ?>
                                             </ul>

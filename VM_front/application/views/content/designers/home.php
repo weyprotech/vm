@@ -198,9 +198,9 @@
                                                     <?php if(!empty($messageValue->response)){ ?>
                                                         <div class="msg reply">
                                                             <div class="profile_picture">
-                                                            <div class="pic" style="background-image: url(<?= backend_url($row->designiconImg) ?>);">
-                                                                <img class="size" src="<?= base_url('assets/images/size_1x1.png') ?>">
-                                                            </div>
+                                                                <div class="pic" style="background-image: url(<?= backend_url($row->designiconImg) ?>);">
+                                                                    <img class="size" src="<?= base_url('assets/images/size_1x1.png') ?>">
+                                                                </div>
                                                             </div>
                                                             <div class="msg_content">
                                                             <div class="title">

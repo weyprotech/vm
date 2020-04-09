@@ -8,10 +8,11 @@ class Product extends Frontend_Controller
         $this->load->model('product/tb_category_model','tb_category_model');
         $this->load->model('product/tb_product_model','tb_product_model');
         $this->load->model('product/tb_product_review_model','tb_product_review_model');
+        $this->load->model('product/tb_sale_model','tb_sale_model');
         $this->load->model('designer/tb_designer_model','tb_designer_model');
         $this->load->model('designer/tb_designer_banner_model','tb_designer_banner_model');
-        $this->load->model('designer/tb_post_model','tb_post_model');        
-        $this->load->model('brand/tb_brand_model','tb_brand_model');
+        $this->load->model('designer/tb_post_model','tb_post_model');
+        $this->load->model('brand/tb_brand_model','tb_brand_model');        
     }
 
     public function index()
@@ -64,39 +65,12 @@ class Product extends Frontend_Controller
         $this->get_view('product/index', $data);
     }
 
-    public function home(){
-        $designerId = $this->input->get('designerId',true);
-        if($designerId == ''){
-            redirect('designers/index');
-        }
-        $row = $this->tb_designer_model->get_designer_by_id($designerId,$this->langId);
-        if($runway = $this->tb_runway_model->get_runway_select(array(array('field' => 'runway.designerId','value' => $designerId)),false,false,$this->langId)){
-            $runway_imgList = $this->tb_runway_model->get_runway_img_select(array(array('field' => 'runway_img.runwayId','value' => $runway[0]->runwayId)),array(array('field' => 'runway_img.order','dir' => 'desc')),false);        
-        }else{
-            $runway_imgList = array();
-        }
-        $brandList = $this->tb_brand_model->get_brand_select(array(array('field' => 'brand.designerId','value' => $designerId)),array(array('field' => 'brand.order','dir' => 'desc')),false,$this->langId);
-        $designer_bannerList = $this->tb_designer_banner_model->get_designer_banner_select(array(array('field' => 'banner.designerId','value' => $designerId),'other' => array('value' => 'banner.date > \''.date("Y-m-d").'\'')));
-        if($postList = $this->tb_post_model->get_post_select(array(array('field' => 'post.designerId','value' => $designerId)),array(array('field' => 'post.order','dir' => 'desc')),false,$this->langId)){
-            foreach($postList as $postKey => $postValue){
-                $postList[$postKey]->imgList = $this->tb_post_model->get_post_img_select(array(array('field' => 'post_img.postId','value' => $postValue->postId)));
-                $postList[$postKey]->message = $this->tb_post_model->get_post_message_select(array(array('field' => 'message.postId','value' => $postValue->postId)));
-            }
-        }
-        $data = array(
-            'row' => $row,
-            'designer_bannerList' => $designer_bannerList,
-            'runway' => $runway[0],
-            'runway_imgList' => $runway_imgList,
-            'postList' => $postList,
-            'brandList' => $brandList
-        );
-        $this->get_view('designers/home',$data,$this->load->view('shared/script/designers/_home_script','',true));
-    }
 
     public function detail(){
         $productId = $this->input->get('productId',true);
+        $reviewpage = ($this->input->get('reviewpage',true) == null ? 1 : $this->input->get('reviewpage',true));
         $row = $this->tb_product_model->get_product_by_id($productId,$this->langId);
+
         if(!$productId && !$row){
             redirect('homepage/index');
         }
@@ -108,22 +82,43 @@ class Product extends Frontend_Controller
         $product_color = $this->tb_product_model->get_product_color_select(array(array('field' => 'product_color.is_visible','value' => 1),array('field' => 'product_color.pId','value' => $productId)),false,false,$this->langId);
         $product_size = $this->tb_product_model->get_product_size_select(array(array('field' => 'product_size.pId','value' => $productId)),array(array('field' => 'product_size.Id','dir' => 'asc')));
         $brand = $this->tb_brand_model->get_brand_by_id($row->brandId,$this->langId);
-        $designer = $this->tb_designer_model->get_designer_by_id($brand->designerId);
-        $postList = $this->tb_post_model->get_post_select(array(array('field' => 'post.is_visible','value' => 1),array('field' => 'post.designerId','value' => $designer->designerId)));
+        $designer = $this->tb_designer_model->get_designer_by_id($brand->designerId,$this->langId);
+        $designer_bannerList = $this->tb_designer_banner_model->get_designer_banner_select(array(array('field' => 'banner.designerId','value' => $brand->designerId),array('field' => 'banner.is_visible','value' => 1),'other' => array('value' => 'banner.date > \''.date("Y-m-d").'\'')),array(array('field' => 'banner.order','dir' => 'desc')),false);
+        $postList = $this->tb_post_model->get_post_select(array(array('field' => 'post.is_visible','value' => 1),array('field' => 'post.designerId','value' => $designer->designerId)),array(array('field' => 'post.order','dir' => 'desc')),array('start' => 0,'limit' => 3),$this->langId);
         $manufacture = $this->tb_product_model->get_product_manufacture_select(array(array('field' => 'product_manufacture.pId','value' => $productId)),false,false,$this->langId);
         $fabric = $this->tb_product_model->get_product_fabric_select(array(array('field' => 'product_fabric.pId','value' => $productId)),false,false,$this->langId);
-        $productList = $this->tb_product_model->get_product_select(array(array('field' => 'product.is_visible','value' => 1),'other' => array('value' =>'product.productId != \''.$productId.'\''),array('field' => 'product.subId','value' => $row->subId)),array(array('field' => 'product.Id','dir' => 'RANDOM')),false,false,$this->langId);
+        $productList = $this->tb_product_model->get_product_select(array(array('field' => 'product.is_visible','value' => 1),'other' => array('value' =>'product.productId != \''.$productId.'\''),array('field' => 'product.subId','value' => $row->subId)),array(array('field' => 'product.Id','dir' => 'RANDOM')),false,$this->langId);
         $reviewList = $this->tb_product_review_model->get_product_review_select(array(array('field' => 'review.productId','value' => $productId)));
+        $total_review_count = $this->tb_product_review_model->count_product_review(array(array('field' => 'review.productId','value' => $productId)));
+        $total_review_page = ceil(($total_review_count/10));
+        $saleinformation = $this->tb_sale_model->get_sale_information();
+        if($saleinformation->is_visible == 1){
+            $sale = $this->tb_sale_model->get_sale_product_by_pId($productId);
+        }else{
+            $sale = false;
+        }
         
+        if($postList = $this->tb_post_model->get_post_select(array(array('field' => 'post.is_visible', 'value' => 1),array('field' => 'post.designerId','value' => $brand->designerId)),array(array('field' => 'post.order','dir' => 'desc')),false,$this->langId)){
+            foreach($postList as $postKey => $postValue){
+                $postList[$postKey]->imgList = $this->tb_post_model->get_post_img_select(array(array('field' => 'post_img.postId','value' => $postValue->postId)));
+                $postList[$postKey]->message = $this->tb_post_model->get_post_message_select(array(array('field' => 'message.postId','value' => $postValue->postId)));
+            }
+        }
         //最新瀏覽過的產品(cookie存檔)
         $viewed = $this->input->cookie('viewed_product',true);
         $viewedArray = explode('###',$viewed);
         $viewList = array();
-        if(!empty($viewArray)){
+        if(!empty($viewedArray)){
             foreach($viewedArray as $viewKey => $viewValue){
-                $viewList[] = $this->tb_product_model->get_product_by_id($viewValue);
+                if($viewKey != 0){
+                    if($temp = $this->tb_product_model->get_product_by_id($viewValue,$this->langId)){
+                        $viewList[] = $temp;
+                    }
+                }
             }
         }
+
+        //紀載此產品至cookie
         if(strpos($viewed,$productId) == false){
             $viewed .= '###'.$productId;
             $array = array(
@@ -133,7 +128,10 @@ class Product extends Frontend_Controller
             );
             $this->input->set_cookie($array);
         }
-
+        
+        //記累計產品次數
+        $click = $row->click+1;
+        $this->product_model->update_product($row,array('click' => $click));
 
         $data = array(
             'row' => $row,
@@ -142,36 +140,50 @@ class Product extends Frontend_Controller
             'product_size' => $product_size,
             'brand' => $brand,
             'designer' => $designer,
-            'menufacture' => $manufacture,
-            'fabric' => $fabric,
+            'manufacture' => $manufacture[0],
+            'fabric' => $fabric[0],
             'postList' => $postList,
             'productList' => $productList,
             'base_category' => $base_category,
             'sub_category' => $sub_category,
             'category' => $category,
-            'reviewList' => $reviewList
+            'reviewList' => $reviewList,
+            'viewList' => $viewList,
+            'saleinformation' => $saleinformation,
+            'sale' => $sale,
+            'total_review_page' => ($total_review_page == 0) ? '1' : $total_review_page,
+            'reviewpage' => $reviewpage,
+            'designer_bannerList' => $designer_bannerList
         );
-        $this->get_view('product/detail',$data,$this->load->view('shared/script/designers/_profile_script','',true));
+        $this->get_view('product/detail',$data,$this->load->view('shared/script/designers/_profile_script','',true),$productId);
     }
 
-    public function popup($type,$Id){
-        switch($type){
-            case 'event':
-                $list = $this->tb_runway_model->get_runway_img_select(array(array('field' => 'runway_img.runwayId', 'value' => $Id)),array(array('field' => 'runway_img.order','dir' => 'asc')),false);
-                break;
-            case 'post':
-                $list = $this->tb_post_model->get_post_img_select(array(array('field' => 'post_img.postId', 'value' => $Id)),array(array('field' => 'post_img.order','dir' => 'asc')),false);
-                break;
-        }
+    public function popup_detail($productId){
+        $imgList = $this->tb_product_model->get_product_img_select(array(array('field' => 'product_img.pId','value' => $productId)),false,false,$this->langId);
         $data = array(
-            'type' => $type,
-            'list' => $list
+            'imgList' => $imgList
         );
-        $this->load->view('content/designers/_popup',$data);
+        $this->load->view('content/product/detail_popup',$data);
     }
 
-    private function get_view($page, $data = array(), $script = "")
+    public function popup_manufacture($productId){
+        $manufacture = $this->tb_product_model->get_product_manufacture_select(array(array('field' => 'product_manufacture.pId','value' => $productId)),false,false,$this->langId);
+        $data = array(
+            'manufacture' => $manufacture[0]
+        );
+        $this->load->view('content/product/manufacture_popup',$data);
+    }
+
+    public function popup_fabric($productId){
+        $fabric = $this->tb_product_model->get_product_fabric_select(array(array('field' => 'product_fabric.pId','value' => $productId)),false,false,$this->langId);
+        $data = array(
+            'fabric' => $fabric[0]
+        );
+        $this->load->view('content/product/fabric_popup',$data);
+    }
+
+    private function get_view($page, $data = array(), $script = "",$productId = false)
     {
-        $this->load->view("webPage", $this->get_frontend_view($page, $data, $script));
+        $this->load->view("webPage", $this->get_frontend_view($page, $data, $script,$productId));
     }
 }

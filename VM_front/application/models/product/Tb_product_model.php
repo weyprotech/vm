@@ -419,7 +419,7 @@ class Tb_product_model extends MY_Model
         endif;
 
         if (isset($_FILES['iconImg']) && !$_FILES['iconImg']['error']):
-            $update['iconImg'] = $this->uploadFile('icon', $manufacture->Id . '/', 80);
+            $update['iconImg'] = $this->uploadFile('icon', $manufacture->Id . '/', 100);
         endif;
 
         if (isset($_FILES['content1Img']) && !$_FILES['content1Img']['error']):
@@ -547,7 +547,7 @@ class Tb_product_model extends MY_Model
         endif;
 
         if (isset($_FILES['iconImg']) && !$_FILES['iconImg']['error']):
-            $update['iconImg'] = $this->uploadFile('icon', $fabric->Id . '/', 80);
+            $update['iconImg'] = $this->uploadFile('icon', $fabric->Id . '/', 100);
         endif;
 
         if (isset($_FILES['content1Img']) && !$_FILES['content1Img']['error']):
@@ -563,15 +563,15 @@ class Tb_product_model extends MY_Model
         endif;
 
         if (isset($_FILES['popup1Img']) && !$_FILES['popup1Img']['error']):
-            $update['popup1Img'] = $this->uploadFile('popup1', $fabric->Id . '/', 676);
+            $update['popup1Img'] = $this->uploadFile('popup1', $fabric->Id . '/', 936);
         endif;
 
         if (isset($_FILES['popup2Img']) && !$_FILES['popup2Img']['error']):
-            $update['popup2Img'] = $this->uploadFile('popup2', $fabric->Id . '/', 676);
+            $update['popup2Img'] = $this->uploadFile('popup2', $fabric->Id . '/', 936);
         endif;
 
         if (isset($_FILES['popup3Img']) && !$_FILES['popup3Img']['error']):
-            $update['popup3Img'] = $this->uploadFile('popup3', $fabric->Id . '/', 676);
+            $update['popup3Img'] = $this->uploadFile('popup3', $fabric->Id . '/', 936);
         endif;
         $this->db->update('tb_product_fabric',$update,array('Id' => $fabric->Id));
         return true;
@@ -679,7 +679,7 @@ class Tb_product_model extends MY_Model
     private function set_product_manufacture_join($langId){
         $this->db->select('product_manufacture.*');
         if($langId):
-            $this->db->select('product_manufacture_lang.location,product_manufacture_lang.title1,product_manufacture_lang.content1,product_manufacture_lang.title2,product_manufacture_lang.content2,product_manufacture_lang.title3,product_manufacture_lang.content3');
+            $this->db->select('product_manufacture_lang.location,product_manufacture_lang.main_title,product_manufacture_lang.title1,product_manufacture_lang.content1,product_manufacture_lang.title2,product_manufacture_lang.content2,product_manufacture_lang.title3,product_manufacture_lang.content3');
             $this->db->join('tb_product_manufacture_lang as product_manufacture_lang','product_manufacture_lang.mId = product_manufacture.Id AND product_manufacture_lang.langId = '.$langId,'left');
         endif;
     }
@@ -687,7 +687,7 @@ class Tb_product_model extends MY_Model
     private function set_product_fabric_join($langId){
         $this->db->select('product_fabric.*');
         if($langId):
-            $this->db->select('product_fabric_lang.location,product_fabric_lang.title1,product_fabric_lang.content1,product_fabric_lang.title2,product_fabric_lang.content2,product_fabric_lang.title3,product_fabric_lang.content3');
+            $this->db->select('product_fabric_lang.main_title,product_fabric_lang.location,product_fabric_lang.title1,product_fabric_lang.content1,product_fabric_lang.title2,product_fabric_lang.content2,product_fabric_lang.title3,product_fabric_lang.content3');
             $this->db->join('tb_product_fabric_lang as product_fabric_lang','product_fabric_lang.fId = product_fabric.Id AND product_fabric_lang.langId = '.$langId,'left');
         endif;
     }

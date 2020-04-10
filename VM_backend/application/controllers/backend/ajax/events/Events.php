@@ -20,7 +20,7 @@ class Events extends Ajax_Controller
         $search = check_input_value($this->input->get('search[value]', true));
         $eventId = $this->input->get('eventId',true);
         $filter = array('like' => array('field' => 'lang.title', 'value' => $search),array('field' => 'events.eventId','value' => $eventId));
-        $order = array(array('field' => 'events.order', 'dir' => 'asc'));
+        $order = array(array('field' => 'events.order', 'dir' => 'desc'));
         $query = $this->set_http_query(array('search' => $search));
 
         $this->load->model('events/tb_events_model', 'events');

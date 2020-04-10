@@ -3,7 +3,7 @@
         <div class="block_inner">
             <div class="topping_header">
                 <div class="event_topping_header">
-                    <a class="header_content" href="event_detail.html">
+                    <a class="header_content" href="<?= website_url('events/detail').'?eventId='.$top[0]->eventId ?>">
                         <div class="thumb">
                         <!--↓ 1:1，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓-->
                         <div class="pic" style="background-image: url(<?= backend_url($top[0]->eventImg) ?>);">
@@ -17,7 +17,7 @@
                             <p><?= $top[0]->content ?></p>
                         </div>
                     </a>
-                    <a class="btn common more" href="event_detail.html">View More</a>
+                    <a class="btn common more" href="<?= website_url('events/detail').'?eventId='.$top[0]->eventId ?>">View More</a>
                 </div>
             </div>
             <div class="topping_main">
@@ -25,7 +25,7 @@
                     <?php for($i = 1;$i <= 3;$i++){
                         if(isset($top[$i])){ ?>
                             <div class="item">
-                                <a class="item_content" href="event_detail.html">
+                                <a class="item_content" href="<?= website_url('events/detail').'?eventId='.$top[$i]->eventId ?>">
                                     <div class="thumb">
                                         <!--↓ 1:1，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓-->
                                         <div class="pic" style="background-image: url(<?= backend_url($top[$i]->exploreImg) ?>)">
@@ -54,7 +54,7 @@
                     <div class="list_slider">
                         <?php foreach ($collections as $collectionKey => $collectionValue){ ?>
                             <div class="slide">
-                                <a href="event_detail.html">
+                                <a href="<?= website_url('events/detail').'?eventId='.$collectionValue->eventId ?>">
                                     <div class="date"><?= $collectionValue->date ?></div>
                                     <div class="thumb <?= !empty($collectionValue->collectionyoutube) ? 'is_video' : '' ?>">
                                         <div class="pic" style="background-image: url(<?= backend_url($collectionValue->collectionImg) ?>);">
@@ -78,7 +78,7 @@
                     <div class="list_items" id="explore_list">                    
                         <?php foreach($explore as $exploreKey => $exploreValue){ ?>
                             <div class="item">
-                                <a href="event_detail.html">
+                                <a href="<?= website_url('events/detail').'?eventId='.$exploreValue->eventId ?>">
                                     <div class="date"><?= $exploreValue->date ?></div>
                                     <div class="thumb">
                                         <div class="pic" style="background-image: url(<?= backend_url($exploreValue->exploreImg) ?>);">
@@ -89,7 +89,7 @@
                                 </a>
                             </div>
                         <?php } ?>
-                    </div><a class="btn common more" id="event_more" href="javascript:;">View More</a>
+                    </div><a class="btn common more" id="event_more" data-count="14" data-notin="<?= $notin ?>" href="javascript:;">View More</a>
                 </div>
             </div>    
         </div>

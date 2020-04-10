@@ -64,13 +64,13 @@ var website = function () {
         });
 
         $event_more.on('click',function(){
-            var page = $(this).data('page');
+            var count = $(this).data('count');
             var notin = $(this).data('notin');
             $.ajax({ 
                 url:site_url('ajax/events/get_more'),
                 type:'get',
                 dataType:'json',
-                data:{page : page,notin : notin},
+                data:{count : count,notin : notin},
                 success:function(response){
                     $.each(response['events'], function(key,value){
                         $('#explore_list').append('<div class="item">'+
@@ -85,6 +85,8 @@ var website = function () {
                         '</a>'+
                     '</div>');
                     });
+                    $event_more.data('count',count+10);
+                    console.log($event_more.data('count'));
                 }
             });
         });
@@ -95,7 +97,7 @@ var website = function () {
         //有效時間保存 2 天 2*24*60*60*1000
         expires.setTime(expires.getTime() + 172800000);
         document.cookie = name + "=" + escape(value) + ";expires=" + expires.toGMTString()
-      }
+    }
 
     function change_lang(lang) {
         return $.get(site_url("ajax/switchLang"), {lang: lang, url: location.href}, 'json');

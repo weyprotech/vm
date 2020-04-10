@@ -47,7 +47,7 @@ if ($this->langFile != 'cn') { ?>
 <script src="<?= base_url("assets/scripts/storeMap.js") ?>"></script>
 <script src="<?= base_url("assets/scripts/custom.js") ?>"></script>
 <script>
-    website.Init('<?= website_url() ?>', '<?= base_url() ?>');
+    website.Init('<?= site_url() ?>', '<?= base_url() ?>');
 </script>
 <?= $this->load->view('shared/_script', '', true) ?>
 

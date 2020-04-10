@@ -79,7 +79,7 @@
 
                                                 <p class="help-block">
                                                     <?php $bannerImg = check_file_path($row->bannerImg); ?>
-                                                    <img id="preview" src="<?= $bannerImg ?>"<?= !$bannerImg ? "display:none;" : "" ?>">
+                                                    <img id="preview" src="<?= $bannerImg ?>"<?= !$bannerImg ? "display:none;" : "" ?>>
                                                 </p>
                                             </div>
                                         </div>

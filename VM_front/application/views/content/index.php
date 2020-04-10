@@ -208,18 +208,20 @@
                     <?php foreach($inspirationList as $inspirationKey => $inspirationValue){ ?>
                         <div class="item">
                             <div class="item_inner">
-                                <!--↓ 愛心加'active'，表示為有加入最愛 ↓--><a class="btn_favorite active" data-ootdId="ootd<?= $inspirationKey ?>" href="javascript:;"><i class="icon_favorite_heart"></i></a>
-                                <!--↑ 愛心加'active'，表示為有加入最愛 ↑--><a href="ootd_detail.html">
+                                <!--↓ 愛心加'active'，表示為有加入最愛 ↓-->
+                                <a class="btn_favorite active" data-ootdId="ootd<?= $inspirationKey ?>" href="javascript:;"><i class="icon_favorite_heart"></i></a>
+                                <!--↑ 愛心加'active'，表示為有加入最愛 ↑-->
+                                <a href="ootd_detail.html">
                                     <div class="thumb"><img src="<?= backend_url($inspirationValue->inspirationImg) ?>"></div>
                                     <div class="text">
-                                    <h3><?= $inspirationValue->title ?></h3>
+                                        <h3><?= $inspirationValue->title ?></h3>
                                     </div>
                                 </a>
                             </div>
                         </div>
                     <?php } ?>
                 <!--↑ 穿搭的list，15筆 ↑-->
-                </div><a class="btn common more" href="ootd.html">MORE</a>
+                </div><a class="btn common more" href="<?= website_url('inspiration/index') ?>">MORE</a>
             </div>
         </div>
     </div>

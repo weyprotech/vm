@@ -17,7 +17,7 @@
                 </div>
                 <!--↓ 上線時，class加'online'，並且連結至'member_account.html'; 未上線時，連結至'login.html' ↓-->
                 <div class="option_member">
-                    <a href="login.html"><i class="icon_member"></i></a>
+                    <a href="<?= website_url('login') ?>"><i class="icon_member"></i></a>
                 </div>
                 <!--↑ 上線時，class加'online'，並且連結至'member_account.html'; 未上線時，連結至'login.html' ↑-->
                 <!--↓ 有產品在購物車時時，class加'have' ↓-->

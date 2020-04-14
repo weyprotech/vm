@@ -77,7 +77,7 @@
                 <!--↑ 有產品在購物車時時，class加'have' ↑-->
                 <!--↓ 登入後顯示，按下即登出 ↓-->
                 <div class="option_logout">
-                    <a href="javascript:;"><i class="icon_logout"></i></a>
+                    <a href="<?= website_url('logout') ?>"><i class="icon_logout"></i></a>
                 </div>
                 <!--↑ 登入後顯示，按下即登出 ↑-->
             </div>

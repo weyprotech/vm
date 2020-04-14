@@ -16,6 +16,7 @@ class Tb_member_model extends MY_Model
         $this->set_order($order);
         $this->set_limit($limit);
         $query=$this->db->where('member.is_enable',1)->get('tb_member as member');
+        // echo $this->db->last_query();exit;
         if($query->num_rows() > 0):
             return $query->result();
         endif;
@@ -52,9 +53,22 @@ class Tb_member_model extends MY_Model
     public function update_member($member,$post)
     {        
         $update = $this->check_db_data($post);
+        if(!empty($post['memberImg'])){
+            $decoded = base64_decode(preg_replace('[removed]', '', $post['memberImg']));
+            $config['upload_path'] = $this->uploadPath . $member->memberId;
+            $config['allowed_types'] = 'gif|jpg|jpeg|png|pdf';
+
+            $this->load->library('upload', $config);
+
+            $uploadData = $this->upload->data();
+            $file_name = $uploadData['full_path']. uniqid('member').'.jpg';
+            file_put_contents($file_name,$decoded);
+            $update['memberImg'] = $file_name;
+        }
         if (isset($_FILES['memberImg']) && !$_FILES['memberImg']['error']):
             $update['memberImg'] = $this->uploadFile('member', $member->memberId . '/', 100);            
         endif;
+        
         $this->update('tb_member',$update, array('memberId' => $member->memberId));
         return true;
     }

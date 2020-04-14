@@ -8,6 +8,9 @@ var website = function () {
 
         var $langSelect = $('#select-lang'), $searchText = $('#text-search'), $searchBtn = $('#btn-search');
         var $brand_more = $('#brand_more'),$website_set = $('#website_set'),$event_more = $('#event_more');
+        var $login = $('#login');
+
+        var error = 0;
 
         $langSelect.change(function () {
             change_lang($(this).val()).done(function (response) {
@@ -89,6 +92,49 @@ var website = function () {
                     console.log($event_more.data('count'));
                 }
             });
+        });
+
+        $login.on('click',function(){
+            error = 0;
+            $('#email').css('border-color','#b4a189');
+            $('#password').css('border-color','#b4a189');
+
+            if($('#email').val() == ''){
+                $('#email').css('border-color','red');
+                error = 1;
+            }
+            if($('#password').val() == ''){
+                $('#password').css('border-color','red');
+                error = 1;
+            }
+            var email = $('#email').val();
+            var password = $('#password').val();
+            var remember = '';
+            if ($("#remember").is(":checked")) {  
+                remember = 1;
+            } else {
+                remember = '';            
+            }
+            if(error == 0){
+                $.ajax({
+                    url:site_url('ajax/member/check_member'),
+                    data:{email : email,password : password,remember : remember},
+                    type:'post',
+                    dataType:'json',
+                    success:function(response){
+                        if(response.status == 'error'){
+                           swal({
+                                html:'Incorrect account password',
+                                type:'error',                                
+                           });
+                           $('.swal2-container').css('z-index','100000');
+                           $('#password').val('');                                              
+                        }else{
+                            location.href= site_url('member');
+                        }
+                    }
+                });
+            }
         });
     };
     

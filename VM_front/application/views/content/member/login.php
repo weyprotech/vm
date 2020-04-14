@@ -9,25 +9,25 @@
                             <div class="controls_group">
                                 <label>Account</label>
                                 <div class="controls">
-                                    <input type="email" placeholder="Email">
+                                    <input type="email" placeholder="Email" id="email">
                                 </div>
                             </div>
                             <div class="controls_group">
                                 <label>Password</label>
                                 <div class="controls">
-                                    <input type="password" placeholder="Password">
+                                    <input type="password" placeholder="Password" id="password">
                                 </div>
                             </div>
                             <div class="remember_forgot">
                                 <label class="check_wrapper">
-                                    <input type="checkBox"><span>Remember Me</span>
+                                    <input type="checkBox" id="remember" value=1><span>Remember Me</span>
                                 </label>
                                 <div class="divide_line"></div>
                                 <a href="forgot_password.html">Forgot Password</a>
                             </div>
                         </div>
                         <div class="call_action">
-                            <button class="btn confirm" onClick="location.href='member_account.html'">Sign In</button>
+                            <button class="btn confirm" id="login">Sign In</button>
                         </div>
                         <div class="create_link">Not a member? &nbsp; <a class="popup" href="popup_create.html">Create Account</a></div>
                     </div>

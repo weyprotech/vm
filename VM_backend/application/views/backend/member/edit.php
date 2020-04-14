@@ -166,7 +166,7 @@
                             </div>
 
                             <div class="widget-footer">
-                                <button type="submit" class="btn btn-primary" id="save">儲存</button>
+                                <button type="submit" class="btn btn-primary" id="save">Save</button>
                                 <button type="submit" class="btn btn-primary" id="back" onclick="$('#data-form').attr('action', '<?= @$this->query . (!empty($this->query) ? '&' : '?') ?>back=1');">Return After Saving</button>
                                 <button type="button" class="btn btn-default" onclick="location.href='<?= site_url("backend/member" . @$this->query) ?>';">Return</button>
                             </div>

@@ -38,7 +38,7 @@
                                         <label class="col-sm-2 control-label" for="email">Email</label>
 
                                         <div class="col-sm-9 col-lg-6">
-                                            <input class="form-control" type="text" id="email" name="email" data-bv-notempty="true" data-bv-notempty-message=" ">
+                                            <input class="form-control" type="text" id="email" name="email" data-bv-remote-name="email" data-bv-remote-name-message=" " data-bv-notempty="true" data-bv-notempty-message=" ">
                                         </div>
                                     </div>
 
@@ -164,7 +164,7 @@
                             </div>
 
                             <div class="widget-footer">
-                                <button type="submit" class="btn btn-primary" id="save">儲存</button>
+                                <button type="submit" class="btn btn-primary" id="save">Save</button>
                                 <button type="submit" class="btn btn-primary" id="back" onclick="$('#data-form').attr('action', '<?= @$this->query . (!empty($this->query) ? '&' : '?') ?>back=1');">Return After Saving</button>
                                 <button type="button" class="btn btn-default" onclick="location.href='<?= site_url("backend/member" . @$this->query) ?>';">Return</button>
                             </div>
@@ -199,7 +199,23 @@
         });
 
         $('form').bootstrapValidator({
-            excluded: ""
+            excluded: "",
+            fields: {
+                email: {
+                    message: 'The email is not valid',
+                    validators: {                        
+                        remote: {
+                            message: 'The email has been registered',
+                            url: '<?= site_url('backend/ajax/member/check_email') ?>',
+                            data: function(validator) {
+                                return {                                
+                                    email: validator.getFieldElements('email').val()
+                                };
+                            }
+                        }
+                    }
+                }
+            }
         });
     });
 

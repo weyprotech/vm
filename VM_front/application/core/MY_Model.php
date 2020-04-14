@@ -152,7 +152,7 @@ class MY_Model extends CI_Model
         return $filePath;
     }
 
-    protected function checkUploadPath($path, $is_create = true, $is_set = true)
+    public function checkUploadPath($path, $is_create = true, $is_set = true)
     {
         $is_dir = is_dir($this->uploadPath . $path);
         // echo $this->uploadPath . $path;exit;

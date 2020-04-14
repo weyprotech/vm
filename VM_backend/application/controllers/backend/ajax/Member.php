@@ -46,132 +46,24 @@ class Member extends Ajax_Controller
         return true;
     }
 
-    function get_member_order()
-    {
-        header('Content-Type: application/json; charset=utf-8');
-        $this->load->model('tb_member_model', 'member');
+    public function check_email(){
+        $email = $this->input->post('email',true);
+        $this->load->model('tb_member_model', 'member_model');
 
-        $minorId = $this->input->get('minorId');
-        echo json_encode(array('order' => $this->member->count_member(array(array('field' => 'member.cId', 'value' => $minorId))) + 1));
-        return true;
-    }
-    /******************** End member ********************/
-    /******************** member image ******************/
-    public function get_member_img($data = array())
-    {
-        header('Content-Type: application/json; charset=utf-8');
-
-        $start = $this->input->get('start', true);
-        $limit = $this->input->get('length', true);
-        $memberId = check_input_value($this->input->get('memberId',true));
-
-        $filter = array(array('field' => 'member_img.pId', 'value' => $memberId));
-        $order = array(array('field' => 'member_img.order', 'dir' => 'desc'));
-
-        $this->load->model('member/tb_member_model', 'member_model');
-        $memberList = $this->member_model->get_member_img_select($filter, $order, array('limit' => $limit, 'start' => $start), $this->langId);
-        $recordsTotal = $this->member_model->count_member_img($filter, $this->langId);
-        if ($memberList):
-            foreach ($memberList as $row):
-                $data[] = array(
-                    'small' => '<div id="preview">' . (!empty($row->small_thumbPath) ? '<img src="' . base_url($row->small_thumbPath) . '" style="width:100px">' : '') . '</div>',
-                    'middle' => '<div id="preview">' . (!empty($row->middle_thumbPath) ? '<img src="' . base_url($row->middle_thumbPath) . '" style="width:100px">' : '') . '</div>',
-                    'big' => '<div id="preview">' . (!empty($row->big_thumbPath) ? '<img src="' . base_url($row->big_thumbPath) . '" style="width:100px">' : '') . '</div>',
-                    'youtube' => $row->youtube,
-                    'order' => $this->get_order('image', $row->imageId, $row->order),
-                    'action' => '<button type="button" class="btn btn-primary" onclick="imgUpload(\''.$row->imageId.'\')"><i class="fa fa-gear"></i><span class="hidden-mobile"> Edit</span></button>'.'<button type="button" class="btn btn-danger" onclick="delete_imgList(\''.$row->imageId.'\')"><i class="glyphicon glyphicon-trash"></i><span class="hidden-mobile"> Delete</span></button>'
-                );
-            endforeach;
-        endif;
-
-        echo json_encode(array('draw' => $this->input->get('draw', true), 'data' => $data, 'recordsFiltered' => $recordsTotal, 'recordsTotal' => $recordsTotal));
-        return true;
-    }
-
-    
-    public function upload_img(){
-        $post = $this->input->post(null,true);
-        $memberId = $post['memberId'];
-        $Id = $post['Id'];
-        $youtube = $post['youtube'];
-        $file = 'member/member/'.$memberId;        
-        $filePath = '';
-        $this->load->model('member/tb_member_model', 'member_model');
-
-        if($_FILES){
-            if (!is_dir($this->uploadPath .= $file.'/')) mkdir($this->uploadPath, 0777,true);
-            $config['upload_path'] = 'assets/uploads/'.$file.'/';
-            $small_file = $this->uploadImg($_FILES['small_file'],'/',300);
-            $middle_file = $this->uploadImg($_FILES['middle_file'],'/',470);
-            $big_file = $this->uploadImg($_FILES['big_file'],'/',600);
-
-            if($Id == 'new'){
-                $this->member_model->insert_member_img(array('small_thumbPath' => $small_file['thumbPath'],'small_imagePath' => $small_file['imagePath'],'middle_thumbPath' => $middle_file['thumbPath'],'middle_imagePath' => $middle_file['imagePath'],'big_thumbPath' => $big_file['thumbPath'],'big_imagePath' => $big_file['imagePath'],'pId' => $memberId,'youtube' => $youtube));
-            }else{
-                $old_file = $this->member_model->get_member_img_by_id($Id);
-                $this->member_model->update_member_img($old_file,array('small_thumbPath' => $small_file['thumbPath'],'small_imagePath' => $small_file['imagePath'],'middle_thumbPath' => $middle_file['thumbPath'],'middle_imagePath' => $middle_file['imagePath'],'big_thumbPath' => $big_file['thumbPath'],'big_imagePath' => $big_file['imagePath'],'pId' => $memberId,'youtube' => $youtube));
-            }
+        if($email == null){
+            echo json_encode(array(
+                'valid' => false
+            ));
         }else{
-            $old_file = $this->member_model->get_member_img_by_id($Id);
-            $this->member_model->update_member_img($old_file,array('pId' => $memberId,'youtube' => $youtube));
+            if($this->member_model->get_member_select(array(array('field' => 'member.is_enable','value' => 1),array('field' => 'member.email','value' => $email)))){
+                echo json_encode(array(
+                    'valid' => false
+                ));
+            }else{
+                echo json_encode(array(
+                    'valid' => true
+                ));
+            }
         }
-        echo json_encode(array('status' => true));
-        return true;
-    }
-
-    public function upload()
-    {
-        $memberId = $this->input->post('memberId', true);
-        if ($memberId && isset($_FILES['file'])):
-            if (!$_FILES['file']['error']):
-                $this->uploadPath = 'assets/uploads/member/member/';
-                $filePath = $this->uploadImg($_FILES['file'], $memberId . '/');
-                echo base_url($filePath['imagePath']);
-            else:
-                echo 'Ooops!  Your upload triggered the following error:  ' . $_FILES['file']['error'];
-            endif;
-        endif;
-
-        return true;
-    }
-
-    public function delete_img(){
-        $this->load->model('member/tb_member_model', 'member_model');
-
-        $Id = $this->input->post('Id',true);
-        $old_file = $this->member_model->get_member_img_by_id($Id);
-        $this->member_model->delete_member_img($old_file);
-        echo json_encode(array('status' => true));
-        return true;
-    }
-    /************** End member img *******************/
-
-    /************** Start member color **********/
-    public function get_member_color($data = array())
-    {
-        header('Content-Type: application/json; charset=utf-8');
-
-        $start = $this->input->get('start', true);
-        $limit = $this->input->get('length', true);
-        $memberId = check_input_value($this->input->get('memberId',true));
-
-        $filter = array(array('field' => 'member_color.pId', 'value' => $memberId));
-        $order = array(array('field' => 'member_color.order', 'dir' => 'asc'));
-
-        $this->load->model('member/tb_member_model', 'member_model');
-        $memberList = $this->member_model->get_member_color_select($filter, $order, array('limit' => $limit, 'start' => $start), 3);
-        $recordsTotal = $this->member_model->count_member_color($filter, $this->langId);
-        if ($memberList):
-            foreach ($memberList as $row):
-                $data[] = array(  
-                    'visible' => '<td><img src="' . show_enable_image($row->is_visible) . '" width="25"></td>',                    
-                    'color' => $row->color,
-                    'action' => $this->get_button('edit', 'backend/member/color/edit/' . $row->colorId) . $this->get_button('delete', 'backend/member/color/delete/' . $row->colorId.'/'.$row->pId)
-                );
-            endforeach;
-        endif;
-
-        echo json_encode(array('draw' => $this->input->get('draw', true), 'data' => $data, 'recordsFiltered' => $recordsTotal, 'recordsTotal' => $recordsTotal));
-        return true;
     }
 }

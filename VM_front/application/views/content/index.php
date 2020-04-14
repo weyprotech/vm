@@ -71,113 +71,44 @@
     <div class="what_next page_block">
         <h2 class="block_title">What's Next</h2>
         <div class="what_next_main scrollbar_x">
-        <div class="items">
-            <div class="item">
-            <div class="video_type">
-                <div class="dot red"></div>
-                <h3>Live Stream</h3>
-                <div class="mark_live">Live</div>
+            <div class="items">
+                <?php foreach ($runwayList as $runwayKey => $runwayValue){ ?>
+                    <div class="item">
+                        <?php if($runwayValue->live == 1){ ?>
+                            <div class="video_type">
+                                <div class="dot red"></div>
+                                <h3><?= $runwayValue->title ?></h3>
+                                <div class="mark_live">Live</div>
+                            </div>
+                        <?php }else if($runwayValue->date.' '.$runwayValue->time > date('Y-m-d H:i:s')){ ?>
+                            <div class="video_type">
+                                <div class="dot yellow"></div>
+                                <h3><?= $runwayValue->title ?></h3>
+                                <!--↓ 如果是 youtube 的影片，class 要加 'video_youtube' ↓-->
+                            </div>
+                        <?php }else{ ?>
+                            <div class="video_type">
+                                <div class="dot green"></div>
+                                <h3><?= $runwayValue->title ?></h3>
+                                <!--↓ 如果是 youtube 的影片，class 要加 'video_youtube' ↓-->
+                            </div>
+                        <?php } ?>
+                        <!--↓ 如果是 youtube 的影片，class 要加 'video_youtube' ↓-->
+                        <div class="video video_youtube">
+                            <?php if($runwayValue->live == 1){ ?>
+                                <iframe width="560" height="315" src="https://www.youtube.com/embed/<?= youtube_id($runwayValue->live_youtube) ?>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            <?php }else{
+                                foreach($runwayValue->imgList as $imgKey => $imgValue){
+                                    if(!empty($imgValue->youtube)){ ?>
+                                        <iframe width="560" height="315" src="https://www.youtube.com/embed/<?= youtube_id($imgValue->youtube) ?>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                    <?php break;}
+                                }
+                            } ?>
+                        </div>
+                        <!--↑ 如果是 youtube 的影片，class 要加 'video_youtube' ↑-->
+                    </div>
+                <?php } ?>                
             </div>
-            <!--↓ 如果是 youtube 的影片，class 要加 'video_youtube' ↓-->
-            <div class="video video_youtube">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/FbjUyCDrHI0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
-            <!--↑ 如果是 youtube 的影片，class 要加 'video_youtube' ↑-->
-            </div>
-            <div class="item">
-            <div class="video_type">
-                <div class="dot green"></div>
-                <h3>Summer Collection</h3>
-                <!--↓ 如果是 youtube 的影片，class 要加 'video_youtube' ↓-->
-            </div>
-            <!--↓ 如果是 youtube 的影片，class 要加 'video_youtube' ↓-->
-            <div class="video video_youtube">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/FbjUyCDrHI0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
-            <!--↑ 如果是 youtube 的影片，class 要加 'video_youtube' ↑-->
-            </div>
-            <div class="item">
-            <div class="video_type">
-                <div class="dot yellow"></div>
-                <h3>Pre Sale</h3>
-            </div>
-            <!--↓ 如果是 youtube 的影片，class 要加 'video_youtube' ↓-->
-            <div class="video video_youtube">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/FbjUyCDrHI0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
-            <!--↑ 如果是 youtube 的影片，class 要加 'video_youtube' ↑-->
-            </div>
-            <div class="item">
-            <div class="video_type">
-                <div class="dot red"></div>
-                <h3>Live Stream</h3>
-                <div class="mark_live">Live</div>
-            </div>
-            <!--↓ 如果是 youtube 的影片，class 要加 'video_youtube' ↓-->
-            <div class="video video_youtube">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/FbjUyCDrHI0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
-            <!--↑ 如果是 youtube 的影片，class 要加 'video_youtube' ↑-->
-            </div>
-            <div class="item">
-            <div class="video_type">
-                <div class="dot green"></div>
-                <h3>Summer Collection</h3>
-                <!--↓ 如果是 youtube 的影片，class 要加 'video_youtube' ↓-->
-            </div>
-            <!--↓ 如果是 youtube 的影片，class 要加 'video_youtube' ↓-->
-            <div class="video video_youtube">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/FbjUyCDrHI0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
-            <!--↑ 如果是 youtube 的影片，class 要加 'video_youtube' ↑-->
-            </div>
-            <div class="item">
-            <div class="video_type">
-                <div class="dot yellow"></div>
-                <h3>Pre Sale</h3>
-            </div>
-            <!--↓ 如果是 youtube 的影片，class 要加 'video_youtube' ↓-->
-            <div class="video video_youtube">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/FbjUyCDrHI0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
-            <!--↑ 如果是 youtube 的影片，class 要加 'video_youtube' ↑-->
-            </div>
-            <div class="item">
-            <div class="video_type">
-                <div class="dot red"></div>
-                <h3>Live Stream</h3>
-                <div class="mark_live">Live</div>
-            </div>
-            <!--↓ 如果是 youtube 的影片，class 要加 'video_youtube' ↓-->
-            <div class="video video_youtube">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/FbjUyCDrHI0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
-            <!--↑ 如果是 youtube 的影片，class 要加 'video_youtube' ↑-->
-            </div>
-            <div class="item">
-            <div class="video_type">
-                <div class="dot green"></div>
-                <h3>Summer Collection</h3>
-                <!--↓ 如果是 youtube 的影片，class 要加 'video_youtube' ↓-->
-            </div>
-            <!--↓ 如果是 youtube 的影片，class 要加 'video_youtube' ↓-->
-            <div class="video video_youtube">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/FbjUyCDrHI0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
-            <!--↑ 如果是 youtube 的影片，class 要加 'video_youtube' ↑-->
-            </div>
-            <div class="item">
-            <div class="video_type">
-                <div class="dot yellow"></div>
-                <h3>Pre Sale</h3>
-            </div>
-            <!--↓ 如果是 youtube 的影片，class 要加 'video_youtube' ↓-->
-            <div class="video video_youtube">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/FbjUyCDrHI0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
-            <!--↑ 如果是 youtube 的影片，class 要加 'video_youtube' ↑-->
-            </div>
-        </div>
         </div>
     </div>
     <div class="ads_banner">

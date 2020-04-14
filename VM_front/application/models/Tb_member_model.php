@@ -52,9 +52,22 @@ class Tb_member_model extends MY_Model
     public function update_member($member,$post)
     {        
         $update = $this->check_db_data($post);
+        if(!empty($post['memberImg'])){
+            $decoded = base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $post['memberImg']));
+            $config['upload_path'] = $this->uploadPath . $member->memberId;
+            $config['allowed_types'] = 'gif|jpg|jpeg|png|pdf';
+
+            $this->load->library('upload', $config);
+
+            $uploadData = $this->upload->data();
+            $file_name = $uploadData['full_path']. uniqid('member').'.jpg';
+            file_put_contents($file_name,$decoded);
+            $update['memberImg'] = $file_name;
+        }
         if (isset($_FILES['memberImg']) && !$_FILES['memberImg']['error']):
             $update['memberImg'] = $this->uploadFile('member', $member->memberId . '/', 100);            
         endif;
+
         $this->update('tb_member',$update, array('memberId' => $member->memberId));
         return true;
     }

@@ -438,7 +438,7 @@ $(document).ready(function () {
               popupSliderTime = setTimeout(function () {
                 var setHeight = $('.popup_slider').find('.slide.slick-current').outerHeight();
                 $('.popup_slider').find('.slick-track').css('height', setHeight + 'px');
-              }, 300);
+              }, 800);
             });
             $('.popup_slider').on('afterChange', function (event, slick, currentSlide) {
               clearTimeout(popupSliderTime);

@@ -151,7 +151,7 @@
                             </div>
                         </div>
                     <?php } ?>
-                <!--↑ 穿搭的list，15筆 ↑-->
+                    <!--↑ 穿搭的list，15筆 ↑-->
                 </div><a class="btn common more" href="<?= website_url('inspiration/index') ?>">MORE</a>
             </div>
         </div>

@@ -8,7 +8,7 @@ var website = function () {
 
         var $langSelect = $('#select-lang'), $searchText = $('#text-search'), $searchBtn = $('#btn-search');
         var $brand_more = $('#brand_more'),$website_set = $('#website_set'),$event_more = $('#event_more');
-        var $login = $('#login');
+        var $login = $('#login'),$edit_account_save = $('#edit_account_save');
 
         var error = 0;
 
@@ -134,6 +134,91 @@ var website = function () {
                         }
                     }
                 });
+            }
+        });
+
+        $edit_account_save.on('click',function(){
+            var password = $('#password').val();
+            var password_confirm = $('#confirm_password').val();
+            var error = 0;
+            if(password == ''){
+                $('#password').css('border-color','red');
+                error = 1;
+            }
+            if(password_confirm == ''){
+                $('#password_confirm').css('border-color','red');
+                error = 1;
+            }
+            if(error == 0){
+                if(password == password_confirm){
+                    $('#edit_account_form').submit();
+                }else{
+                    swal({
+                        html:'password and password confirmation is not match',
+                        type:'error'
+                    });
+                    // $('#password').val('');
+                    // $('#password_confirm').val('');
+                    $('.swal2-container').css('z-index','100000');
+                }
+            }
+        });
+
+        $('body').on('click','#create_account',function(){
+            var email = $('#create_email').val();
+            var password = $('#create_password').val();
+            var password_confirm = $('#create_password_confirm').val();
+            var error = 0;
+            emailRule = /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z]+$/;
+            if(email == ''){
+                $('#create_email').css('border-color','red');
+                error = 1;
+            }
+            if(password == ''){
+                $('#create_password').css('border-color','red');
+                error = 1;
+            }
+            if(password_confirm == ''){
+                $('#create_password_confirm').css('border-color','red');
+                error = 1;
+            }
+            if(error == 0){
+                if(email.search(emailRule)!= -1){
+                    if(password != password_confirm){
+                        swal({
+                            html:'password and password confirmation is not match',
+                            type:'error'
+                        });
+                    }else{
+                        $.ajax({
+                            url:website.Site_url('ajax/create_account/index'),
+                            data:{email : email,password : password},
+                            type: 'post',
+                            dataType: 'json',
+                            success:function(response){
+                                if(response['status'] == 'success'){
+                                    swal({                    
+                                        html:'Send validate email to your email',
+                                        type:'success'
+                                    });
+                                }else{
+                                    swal({                    
+                                        html:response['message'],
+                                        type:'error'
+                                    });
+                                }
+                                $('.mfp-close').click();
+                                $('.swal2-container').css('z-index','100000');
+                            }
+                        })
+                    }
+                }else{
+                    swal({
+                        html:'Email is illegal',
+                        type:'error'
+                    });
+                    $('.swal2-container').css('z-index','100000');
+                }
             }
         });
     };

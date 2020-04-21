@@ -3,10 +3,13 @@
         <div class="header_main_inner">
             <a id="btn_menu" href="javascript:;"><span></span></a>
             <div class="header_search">
-                <div class="search_form">
-                    <input type="search" placeholder="What are you looking for?">
-                    <button type="button" onclick="location.href='search_products.html'"><i class="icon_search"></i></button>
-                </div>
+                <form class="form-control" method="get" action="<?= website_url('search/index') ?>">
+                    <div class="search_form">
+                        <input type="search" name="search" value="<?= $this->input->get('search') ?>" placeholder="What are you looking for?">
+                        <input type="hidden" name="type" value="product">
+                        <button type="submit"><i class="icon_search"></i></button>
+                    </div>
+                </form>
             </div>
             <a class="header_logo" href="<?= website_url('homepage') ?>">
                 <img class="retina" src="<?= base_url('assets/images/logo.png') ?>">
@@ -64,22 +67,22 @@
                                     </div>
                                 </div>
                             </div>
-                        <div class="cart_foot">
-                            <div class="total_calculation">
-                                <div class="label">Subtotal</div>
-                                <div class="total_amount">NTD $2,296</div>
+                            <div class="cart_foot">
+                                <div class="total_calculation">
+                                    <div class="label">Subtotal</div>
+                                    <div class="total_amount">NTD $2,296</div>
+                                </div>
+                                <a class="btn confirm" href="order.html">CHECKOUT</a>
                             </div>
-                            <a class="btn confirm" href="order.html">CHECKOUT</a>
-                        </div>
                         </div>
                     </div>
                 </div>
                 <!--↑ 有產品在購物車時時，class加'have' ↑-->
-                <!--↓ 登入後顯示，按下即登出 ↓-->
-                <div class="option_logout">
-                    <a href="<?= website_url('logout') ?>"><i class="icon_logout"></i></a>
-                </div>
-                <!--↑ 登入後顯示，按下即登出 ↑-->
+                <?php if(isset($this->session->userdata('memberinfo')['memberId'])){ ?>
+                    <div class="option_logout">
+                        <a href="<?= website_url('logout') ?>"><i class="icon_logout"></i></a>
+                    </div>
+                <?php } ?>
             </div>
         </div>
     </div>
@@ -111,7 +114,7 @@
                     </li>
                 <?php } ?>
                 <li><a class="<?= (stripos($_SERVER['REQUEST_URI'],'sale') ? 'current active' : '') ?>" href="<?= website_url('sale') ?>">Sale</a></li>
-                <li><a class="<?= (stripos($_SERVER['REQUEST_URI'],'events') ? 'current active' : '') ?>" href="<?= website_url('events') ?>">Events</a></li>
+                <li><a class="<?= ((stripos($_SERVER['REQUEST_URI'],'events')) && (!stripos($_SERVER['REQUEST_URI'],'type=events')) ? 'current active' : '') ?>" href="<?= website_url('events') ?>">Events</a></li>
                 <li><a href="popular_designers.html">Popular Designers</a></li>
             </ul>
         </nav>

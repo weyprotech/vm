@@ -53,7 +53,7 @@ if (!function_exists('website_url')) {
 if(!function_exists('backend_url')){
     function backend_url($url = ''){        
         
-        return 'http://localhost/VM/VM_backend/'.$url;
+        return 'http://vm-backend.4webdemo.com/'.$url;
     }
 }
 
@@ -176,6 +176,21 @@ if (!function_exists('get_all_zone')) {
         }
     }
 }
+
+//google驗證
+if(!function_exists('siteverify')){
+    function siteverify($captcha)
+    {
+        $url = 'https://www.google.com/recaptcha/api/siteverify';
+        $data = array(
+            'secret' => '6Le8HewUAAAAAA69SZi709SIrf_tcZxGCiayvyp1',
+            'response' => $captcha
+        );
+        $result = cUrlPost($url, $data);
+        return json_decode($result, TRUE)['success'];
+    }
+}
+
 
 /**************** 取得所有付款方式(綠界) ********************/
 if(!function_exists('get_payway')) {

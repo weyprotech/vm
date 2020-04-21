@@ -75,7 +75,7 @@ class Frontend_Controller extends MY_Controller
             'header_top' => $this->load->view('shared/_header_top',array('website_color' => $website_color),true),
             'header' => $this->load->view('shared/_header', array('categoryList' => $categoryList,'product' => $product,'category' => $category), true),
             'main' => $this->load->view('content/' . $page, $data, true),
-            'footer' => $this->load->view('shared/_footer', '', true),
+            'footer' => $this->load->view('shared/_footer', array('categoryList' => $categoryList), true),
             'sidebar' => $this->load->view('shared/_sidebar', '', true),
             'script' => $script
         );

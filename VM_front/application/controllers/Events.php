@@ -12,7 +12,6 @@ class Events extends Frontend_Controller
         $this->load->model('designer/tb_designer_model','tb_designer_model');
         $this->load->model('designer/tb_post_model','tb_post_model');
         $this->load->model('product/tb_sale_model','tb_sale_model');
-
     }
 
     public function index()

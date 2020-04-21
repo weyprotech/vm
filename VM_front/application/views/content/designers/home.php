@@ -51,9 +51,11 @@
                             <li><a href="<?= website_url('designers/profile').'?designerId='.$row->designerId ?>">Designer Profile</a></li>
                             <li><a href="javascript:;">Brand Story</a>
                                 <ul>
-                                    <?php foreach ($brandList as $brandKey => $brandValue){ ?>
-                                        <li><a href="<?= website_url('brand/story?brandId='.$brandValue->brandId); ?>"><?= $brandValue->name ?></a></li>
-                                    <?php } ?>
+                                    <?php if(!empty($brandList)){
+                                        foreach ($brandList as $brandKey => $brandValue){ ?>
+                                            <li><a href="<?= website_url('brand/story?brandId='.$brandValue->brandId); ?>"><?= $brandValue->name ?></a></li>
+                                        <?php }
+                                    } ?>
                                 </ul>
                             </li>
                             <li><a href="designer_products.html">Product</a></li>

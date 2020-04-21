@@ -61,6 +61,8 @@ class Tb_member_model extends MY_Model
             $this->load->library('upload', $config);
 
             $uploadData = $this->upload->data();
+            $this->checkUploadPath($member->memberId); // 上傳路徑
+
             $file_name = $uploadData['full_path']. uniqid('member').'.jpg';
             file_put_contents($file_name,$decoded);
             $update['memberImg'] = $file_name;

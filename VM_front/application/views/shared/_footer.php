@@ -13,47 +13,48 @@
             <li>
             <h4>COMPANY</h4>
             <ul>
-                <li><a href="about.html">About us</a></li>
-                <li><a href="physical_stores.html">Physical Stores</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="policy.html">Terms and Policy</a></li>
-                <li><a href="cooperation.html">Cooperation</a></li>
+                <li><a class="<?= (stripos($_SERVER['REQUEST_URI'],'about') ? 'current' : '') ?>" href="<?= website_url('company/about') ?>">About us</a></li>
+                <li><a class="<?= (stripos($_SERVER['REQUEST_URI'],'physical_store') ? 'current' : '') ?>" href="<?= website_url('company/physical_store') ?>">Physical Stores</a></li>
+                <li><a class="<?= (stripos($_SERVER['REQUEST_URI'],'contact') ? 'current' : '') ?>" href="<?= website_url('company/contact') ?>">Contact</a></li>
+                <li><a class="<?= (stripos($_SERVER['REQUEST_URI'],'policy') ? 'current' : '') ?>" href="<?= website_url('company/policy') ?>">Terms and Policy</a></li>
+                <li><a class="<?= (stripos($_SERVER['REQUEST_URI'],'cooperation') ? 'current' : '') ?>" href="<?= website_url('company/cooperation') ?>">Cooperation</a></li>
             </ul>
             </li>
             <li>
             <h4>HELP</h4>
             <ul>
-                <li><a href="faq.html">FAQ</a></li>
-                <li><a href="delivery.html">Delivery</a></li>
-                <li><a href="refunds_exchanges.html">Refunds &amp; Exchanges</a></li>
-                <li><a href="customer_service.html">Customer Service</a></li>
-                <li><a href="feedback.html">Feedback</a></li>
+                <li><a class="<?= (stripos($_SERVER['REQUEST_URI'],'faq') ? 'current' : '') ?>" href="<?= website_url('help/faq') ?>">FAQ</a></li>
+                <li><a class="<?= (stripos($_SERVER['REQUEST_URI'],'delivery') ? 'current' : '') ?>" href="<?= website_url('help/delivery') ?>">Delivery</a></li>
+                <li><a class="<?= (stripos($_SERVER['REQUEST_URI'],'exchange') ? 'current' : '') ?>" href="<?= website_url('help/exchange') ?>">Refunds &amp; Exchanges</a></li>
+                <li><a class="<?= (stripos($_SERVER['REQUEST_URI'],'customer') ? 'current' : '') ?>" href="<?= website_url('help/customer') ?>">Customer Service</a></li>
+                <li><a class="<?= (stripos($_SERVER['REQUEST_URI'],'feedback') ? 'current' : '') ?>" href="<?= website_url('help/feedback') ?>">Feedback</a></li>
             </ul>
             </li>
             <li>
             <h4>SHOP</h4>
             <ul>
-                <li><a href="designers.html">Designers</a></li>
-                <li><a href="brands.html">Brands</a></li>
-                <li><a href="events.html">Events</a></li>
+                <li><a class="<?= (stripos($_SERVER['REQUEST_URI'],'designers') ? 'current active' : '') ?>" href="<?= website_url('designers') ?>">Designers</a></li>
+                <li><a class="<?= (stripos($_SERVER['REQUEST_URI'],'brand') ? 'current active' : '') ?>" href="<?= website_url('brand') ?>">Brands</a></li>
+                <li><a class="<?= (stripos($_SERVER['REQUEST_URI'],'events') ? 'current active' : '') ?>" href="<?= website_url('events') ?>">Events</a></li>
                 <li><a href="popular_designers.html">Popular designers</a></li>
             </ul>
             </li>
             <li>
             <h4>PRODUCT</h4>
             <ul>
-                <li><a href="products.html">Women</a></li>
-                <li><a href="products.html">Men</a></li>
-                <li><a href="sale.html">Sale</a></li>
+                <?php foreach($categoryList as $firstKey => $firstValue){ ?>
+                    <li><a class="<?= (stripos($_SERVER['REQUEST_URI'],$firstValue->categoryId) ? 'current active' : '') ?>" href="<?= website_url('product/index?baseId='.$firstValue->categoryId) ?>"><?= $firstValue->name ?></a></li>
+                <?php } ?>
+                <li><a class="<?= (stripos($_SERVER['REQUEST_URI'],'sale') ? 'current active' : '') ?>" href="<?= website_url('sale') ?>">Sale</a></li>
             </ul>
             </li>
             <li>
             <h4>MEMBER</h4>
             <ul>
-                <li><a href="member_favorite.html">My Favorite</a></li>
-                <li><a href="member_account.html">My Account</a></li>
-                <li><a href="member_points.html">My Points</a></li>
-                <li><a href="member_model.html">Be Our Model</a></li>
+                <li><a href="<?= website_url('login') ?>">My Favorite</a></li>
+                <li><a href="<?= website_url('login') ?>">My Account</a></li>
+                <li><a href="<?= website_url('login') ?>">My Points</a></li>
+                <li><a href="<?= website_url('login') ?>">Be Our Model</a></li>
             </ul>
             </li>
         </ul>

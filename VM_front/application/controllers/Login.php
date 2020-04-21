@@ -32,7 +32,7 @@ class Login extends Frontend_Controller
                 redirect('member');
             }
         }
-        $this->get_view('member/login');
+        $this->get_view('member/login',array(),$this->load->view('shared/script/member/_login_script',array(),true));
     }
 
     private function get_view($page, $data = array(), $script = "")

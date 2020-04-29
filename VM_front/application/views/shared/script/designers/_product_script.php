@@ -13,22 +13,9 @@
             
                 $(this).removeClass('active');
                 $(this).find('.count').text(countNumber - 1);
-            } else {
+                } else {
                 // 加入最愛寫這裡
-                $.ajax({
-                    url:'<?= website_url('') ?>',
-                    type:'post',
-                    dataType:'json',
-                    data:{designerId : designerId},
-                    success: function(response){
-                        if(response['status'] == 'error'){
-                            swal({
-                                title:'please login',
-                                type:'error',
-                            });
-                        }
-                    }
-                })
+            
                 $(this).addClass('active');
                 $(this).find('.count').text(countNumber + 1);
             }

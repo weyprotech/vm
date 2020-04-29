@@ -1,6 +1,6 @@
 var website = function () {
     var siteUrl = '', baseUrl = '';
-    var backendUrl = "http://localhost/vm/vm_backend/";
+    var backendUrl = "http://vm-backend.4webdemo.com/";
 
     var init = function (site, base) {
         siteUrl = site;
@@ -8,7 +8,7 @@ var website = function () {
 
         var $langSelect = $('#select-lang'), $searchText = $('#text-search'), $searchBtn = $('#btn-search');
         var $brand_more = $('#brand_more'),$website_set = $('#website_set'),$event_more = $('#event_more');
-        var $login = $('#login'),$edit_account_save = $('#edit_account_save');
+        var $login = $('#login'),$edit_account_save = $('#edit_account_save'),$more_popular_designers = $('#more_popular_designers');
 
         var error = 0;
 
@@ -61,11 +61,62 @@ var website = function () {
             });
         });
 
+        //更多有名的設計師
+        $more_popular_designers.on('click',function(){
+            var start = $more_popular_designers.data('start');
+            var result = '';
+            $.ajax({
+                url:site_url('ajax/popular_designers/get_popular_data'),
+                data:{start : start},
+                type:'get',
+                dataType:'json',
+                success:function(response){
+                    if(response['designerList']){
+                        $.each(response['designerList'], function(key,value){
+                            result += '<div class="popular_block">'+
+                            '<div class="popular_block_inner">'+
+                                '<div class="popular_picture">'+
+                                    '<a class="thumb" href="'+site_url('designers/home')+'?designerId='+value.designerId+'">'+
+                                        '<div class="pic" style="background-image: url('+backend_url(value.designImg)+');">'+
+                                            '<img class="size" src="'+base_url('assets/images/size_3x4.png')+'">'+
+                                        '</div>'+
+                                    '</a>'+
+                                    '<a class="btn common" href="'+site_url('designers/home')+'?designerId='+value.designerId+'">Read more</a>'+
+                                '</div>'+
+                                '<div class="popular_content">'+
+                                    '<a class="designer_info" href="'+site_url('designers/home')+'?designerId='+value.designerId+'">'+
+                                        '<div class="profile_picture">'+
+                                            '<div class="pic" style="background-image: url('+backend_url(value.designiconImg)+')">'+
+                                                '<img class="size" src="'+base_url('assets/images/size_1x1.png')+'">'+
+                                            '</div>'+
+                                        '</div>'+
+                                        '<div class="designer_name">'+
+                                            (value.grade == 1 ? '<i class="icon_diamond_b"></i>' : '')+
+                                            '<span>'+value.name+'</span>'+
+                                        '</div>'+
+                                    '</a>'+
+                                    '<div class="text">'+value.description+'</div>'+
+                                    value.first_img+                                
+                                '</div>'+
+                            '</div>'+
+                        '</div>'
+                        });
+                        $.getScript(base_url('assets/scripts/main.js')); //重讀js
+                        
+                        $('.popular_block_wrapper').append(result);
+                        $more_popular_designers.data('start',start+10);                    
+                    };
+                }
+            })
+        });
+
+        //語言
         $website_set.on('click',function(){
             doCookieSetup('language',$('#languange_select').val());
             doCookieSetup('money_type',$('#languange_select').val());        
         });
 
+        //消息更多
         $event_more.on('click',function(){
             var count = $(this).data('count');
             var notin = $(this).data('notin');
@@ -94,6 +145,7 @@ var website = function () {
             });
         });
 
+        //登入
         $login.on('click',function(){
             error = 0;
             $('#email').css('border-color','#b4a189');
@@ -137,6 +189,7 @@ var website = function () {
             }
         });
 
+        //編輯帳號儲存
         $edit_account_save.on('click',function(){
             var password = $('#password').val();
             var password_confirm = $('#confirm_password').val();
@@ -164,6 +217,95 @@ var website = function () {
             }
         });
 
+        //just for you寄出
+        $('body').on('click','#just_send',function(){
+            var data = $('#just_form').serializeArray();
+            var error = 0;
+            emailRule = /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z]+$/;
+            $.each(data,function(key,value){
+                if(value.value == ''){
+                    console.log(value);
+                    error = 1;
+                    swal({
+                        title:"cann't empty",
+                        type:'error'
+                    });
+                    $('.swal2-container').css('z-index','100000');
+
+                }else if(value.name == 'email'){
+                    if(value.value.search(emailRule)== -1){
+                        error = 1;
+                        swal({
+                            title:"Email is illegal",
+                            type:'error'
+                        });
+                        $('.swal2-container').css('z-index','100000');
+
+                    }
+                }
+            });
+            if(error == 0){
+                $('.mfp-close').click();
+                $.ajax({
+                    url:site_url('ajax/designers/set_just'),          
+                    data:data,
+                    type:'post',
+                    dataType:'json',
+                    success:function(response){
+                        swal({
+                            title:response['response'],
+                            type:'success'
+                        });
+                    }
+                });
+            }
+        });
+
+        //message寄出
+        $('body').on('click','#message_send',function(){
+            var data = $('#message_form').serializeArray();
+            var error = 0;
+            emailRule = /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z]+$/;
+            $.each(data,function(key,value){
+                if(value.value == ''){
+                    console.log(value);
+                    error = 1;
+                    swal({
+                        title:"cann't empty",
+                        type:'error'
+                    });
+                    $('.swal2-container').css('z-index','100000');
+
+                }else if(value.name == 'email'){
+                    if(value.value.search(emailRule)== -1){
+                        error = 1;
+                        swal({
+                            title:"Email is illegal",
+                            type:'error'
+                        });
+                        $('.swal2-container').css('z-index','100000');
+
+                    }
+                }
+            });
+            if(error == 0){
+                $('.mfp-close').click();
+                $.ajax({
+                    url:site_url('ajax/designers/set_message'),          
+                    data:data,
+                    type:'post',
+                    dataType:'json',
+                    success:function(response){
+                        swal({
+                            title:response['response'],
+                            type:'success'
+                        });
+                    }
+                });
+            }
+        });
+
+        //辦帳號
         $('body').on('click','#create_account',function(){
             var email = $('#create_email').val();
             var password = $('#create_password').val();
@@ -223,6 +365,7 @@ var website = function () {
         });
     };
     
+    //cookie保存
     function doCookieSetup(name, value) {
         var expires = new Date();
         //有效時間保存 2 天 2*24*60*60*1000
@@ -247,6 +390,7 @@ var website = function () {
         if (url == undefined) return baseUrl;
         return baseUrl + "/" + url;
     };
+
 
     var backend_url = function (url) {
         if(url == undefined) return backendUrl;

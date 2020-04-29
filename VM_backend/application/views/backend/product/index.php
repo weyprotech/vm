@@ -45,11 +45,12 @@
                                     <thead>
                                         <tr>
                                             <th width="30" class="text-center hidden-xs">Visible</th>
-                                            <th width="10%" class="text-center hidden-tablet hidden-md">Image</th>
+                                            <th width="8%" class="text-center hidden-tablet hidden-md">Image</th>
                                             <th width="10%" class="text-center">Name</th>
                                             <th width="8%" class="text-center">Base Category</th>
                                             <th width="9%" class="text-center">Sub Category</th>
                                             <th width="9%" class="text-center">Category</th>
+                                            <th width="8%" class="text-center">Brand</th>
                                             <th width="120" class="text-center">Price</th>
                                             <th width="50" class="text-center">Color</th>
                                             <th width="50" class="text-center">Manufacture</th>
@@ -127,6 +128,7 @@
                 {class: "", data: "base_category"},
                 {class: "", data: "sub_category"},
                 {class: "", data: "category"},
+                {class: "", data: "brand"},
                 {class: "", data: "price"},
                 {class: "", data:"color"},
                 {class: "", data:"manufacture"},

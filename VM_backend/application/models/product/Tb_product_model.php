@@ -675,15 +675,17 @@ class Tb_product_model extends MY_Model
     private function set_product_join($langId)
     {
         $this->db->select('product.*, minor.prevId as mainId, product.cId as minorId');
-        $this->db->join('tb_product_category as minor', 'minor.categoryId = product.cId AND minor.is_enable', 'left');
-        $this->db->join('tb_product_category as main', 'main.categoryId = minor.prevId AND main.is_enable', 'left');
-        $this->db->join('tb_product_category as base','base.categoryId = main.prevId AND base.is_enable','left');
+        $this->db->join('tb_product_category as minor', 'minor.categoryId = product.cId', 'left');
+        $this->db->join('tb_product_category as main', 'main.categoryId = minor.prevId', 'left');
+        $this->db->join('tb_product_category as base','base.categoryId = main.prevId','left');
+        $this->db->join('tb_brand as brand','brand.brandId = product.brandId','left');
         if ($langId):
-            $this->db->select('lang.*, main_lang.name as mainName, minor_lang.name as minorName,base_lang.name as baseName');
+            $this->db->select('lang.*, main_lang.name as mainName, minor_lang.name as minorName,base_lang.name as baseName,brand_lang.name as brandName');
             $this->db->join('tb_product_lang as lang', 'lang.pId = product.productId AND lang.langId = ' . $langId, 'left');
             $this->db->join('tb_product_category_lang as main_lang', 'main_lang.cId = minor.prevId AND main_lang.langId = ' . $langId, 'left');
             $this->db->join('tb_product_category_lang as minor_lang', 'minor_lang.cId = product.cId AND minor_lang.langId = ' . $langId, 'left');
             $this->db->join('tb_product_category_lang as base_lang','base_lang.cId = base.categoryId AND base_lang.langId = '.$langId,'left');
+            $this->db->join('tb_brand_lang as brand_lang','brand.brandId = brand_lang.brandId AND brand_lang.langId = '.$langId,'left');
         endif;
 
         return true;

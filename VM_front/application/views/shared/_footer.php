@@ -33,10 +33,10 @@
             <li>
             <h4>SHOP</h4>
             <ul>
-                <li><a class="<?= (stripos($_SERVER['REQUEST_URI'],'designers') ? 'current active' : '') ?>" href="<?= website_url('designers') ?>">Designers</a></li>
+                <li><a class="<?= ((stripos($_SERVER['REQUEST_URI'],'designers') && !stripos($_SERVER['REQUEST_URI'],'popular_designers')) ? 'current active' : '') ?>" href="<?= website_url('designers') ?>">Designers</a></li>
                 <li><a class="<?= (stripos($_SERVER['REQUEST_URI'],'brand') ? 'current active' : '') ?>" href="<?= website_url('brand') ?>">Brands</a></li>
-                <li><a class="<?= (stripos($_SERVER['REQUEST_URI'],'events') ? 'current active' : '') ?>" href="<?= website_url('events') ?>">Events</a></li>
-                <li><a href="popular_designers.html">Popular designers</a></li>
+                <li><a class="<?= ((stripos($_SERVER['REQUEST_URI'],'events')) && (!stripos($_SERVER['REQUEST_URI'],'type=events')) ? 'current active' : '') ?>" href="<?= website_url('events') ?>">Events</a></li>
+                <li><a class="<?= (stripos($_SERVER['REQUEST_URI'],'popular_designers') ? 'current active' : '') ?>" href="<?= website_url('popular_designers') ?>">Popular designers</a></li>
             </ul>
             </li>
             <li>

@@ -26,7 +26,14 @@
                                             <div class="pic" style="background-image: url(<?= backend_url($resulttValue->productImg) ?>)"><img class="size" src="<?= base_url('assets/images/size_3x4.png') ?>"></div>
                                         </div>
                                         <h3><?= $resulttValue->name ?></h3>
-                                        <div class="price">NT$ <?= $resulttValue->price ?></div>
+                                        <?php if($resulttValue->sale){ ?>
+                                            <div class="price">
+                                                <span class="strikethrough">NT$ <?= $resulttValue->price ?></span>
+                                                <span class="sale_price">NT$ <?= (($resulttValue->price)-($resulttValue->price*($saleinformation->discount/100))) ?></span>
+                                            </div>                                    
+                                        <?php }else{ ?>
+                                            <div class="price">NT$ <?= $resulttValue->price ?></div>
+                                        <?php } ?>
                                     </a>
                                 </div>
                             <?php }

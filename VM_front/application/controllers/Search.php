@@ -8,6 +8,8 @@ class Search extends Frontend_Controller
         $this->load->model('product/tb_category_model','tb_category_model');
         $this->load->model('product/tb_product_model','tb_product_model');
         $this->load->model('events/tb_events_model','tb_events_model');
+        $this->load->model('product/tb_sale_model','tb_sale_model');
+
     }
 
     public function index()
@@ -16,11 +18,22 @@ class Search extends Frontend_Controller
         $type = $this->input->get('type',true);
         if($type == 'product'){
             $result = $this->tb_product_model->get_product_select(array(array('field' => 'product.is_visible','value' => 1),'like' => array('field' => 'lang.name','value' => $search)),array(array('field'=>'product.order','dir' => 'desc')),false,$this->langId);
+            $saleinformation = $this->tb_sale_model->get_sale_information();
+            if($result){
+                foreach ($result as $productKey => $productValue){
+                    if($saleinformation->is_visible == 1){
+                        $result[$productKey]->sale = $this->tb_sale_model->get_sale_product_by_pId($productValue->productId);
+                    }else{
+                        $result[$productKey]->sale = false;
+                    }
+                }
+            }
             $count = $this->tb_product_model->count_product(array(array('field' => 'product.is_visible','value' => 1),'like' => array('field' => 'lang.name','value' => $search)),$this->langId);
             $data = array(
                 'search' => $search,
                 'result' => $result,
-                'count' => $count
+                'count' => $count,
+                'saleinformation' => $saleinformation
             );
     
             $this->get_view('search_products', $data);

@@ -87,6 +87,17 @@
                                             </div>
                                         </div>
 
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label" for="locationId">Map location</label>
+                                            <div class="col-sm-9 col-lg-4">
+                                                <select class="form-control" name="locationId">
+                                                    <?php foreach($locationList as $locationKey => $locationValue){ ?>
+                                                        <option value="<?= $locationValue->Id ?>"><?=  $locationValue->number.' '.$locationValue->stree ?></option>
+                                                    <?php } ?>  
+                                                </select>                                                      
+                                            </div>
+                                        </div>
+
                                         <!-- <div class="form-group">
                                             <label class="col-sm-2 control-label" for="date">日期</label>
 

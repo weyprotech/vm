@@ -16,6 +16,7 @@ class Brand extends Backend_Controller
 
         $this->load->model('brand/tb_brand_model', 'brand_model');
         $this->load->model('designer/tb_designer_model','designer_model');
+        $this->load->model('tb_location_model','location_model');
         $this->query = $this->set_http_query(array('search' => $this->input->get('search', true)));
     }
 
@@ -28,30 +29,41 @@ class Brand extends Backend_Controller
     {
         $this->check_action_auth($this->menuId, 'add', true); // Check Auth
         $brandId = uniqid();
+        $locationList = $this->location_model->get_location_select(array(array('field' => 'tb_location.is_use','value' => 0)),false,false);
+
         $designerList = $this->designer_model->get_designer_select(array(array('field' => 'designer.is_visible','value' => 1)),false,false,$this->langId);
         if($post = $this->input->post(null,true)){
-            $this->brand_model->insert_brand($post);
+            $location = $this->location_model->get_location_by_id($post['locationId']);
+            $this->location_model->update_location($location,array('is_use' => 1));
+            $this->brand_model->insert_brand($post);            
             $brandId = $post['brandId'];
-            if($this->input->get('back',true)){
-                // exit;
+            if($this->input->get('back',true)){                
                 redirect("backend/brand/brand");
-            }
-            // exit;
+            }            
             redirect('backend/brand/brand/edit/' . $brandId . $this->query);
         }
-        $this->get_view('add',array('brandId' => $brandId,'designerList' => $designerList));
+        $this->get_view('add',array('brandId' => $brandId,'designerList' => $designerList,'locationList' => $locationList));
     }
 
     public function edit($brandId = false)
     {
-        if (!$row = $this->brand_model->get_brand_by_id($brandId, false, array('enable' => false, 'visible' => false))):
+        if(!$row = $this->brand_model->get_brand_by_id($brandId, false, array('enable' => false, 'visible' => false))):
             $this->set_active_status('danger', 'The data does not exist!');
             redirect('backend/brand/brand');
         endif;
         $designerList = $this->designer_model->get_designer_select(array(array('field' => 'designer.is_visible','value' => 1)),false,false,$this->langId);
+        $location = $this->location_model->get_location_by_id($row->locationId);
+        $locationList = $this->location_model->get_location_select(array(array('field' => 'tb_location.is_use','value' => 0)),false,false);
 
         if ($post = $this->input->post(null, true)):
             $this->check_action_auth($this->menuId, 'edit', true); // Check Auth
+            //先把原本的地點更新沒使用
+            $location = $this->location_model->get_location_by_id($row->locationId);
+            $this->location_model->update_location($location,array('is_use' => 0));
+            
+            //把選取的換成使用中
+            $location = $this->location_model->get_location_by_id($post['locationId']);
+            $this->location_model->update_location($location,array('is_use' => 1));
 
             if ($row->uuid != $post['uuid']):
                 $this->set_active_status('danger', 'Date has been changed');
@@ -70,7 +82,9 @@ class Brand extends Backend_Controller
         $data = array(
             'brandId' => $brandId,
             'row' => $row,
-            'designerList' => $designerList
+            'designerList' => $designerList,
+            'locationList' => $locationList,
+            'location' => $location
         );
 
         $this->get_view('edit', $data);

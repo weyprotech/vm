@@ -161,7 +161,7 @@
                                                         <div class="name">Lily Allen</div>
                                                     </div>
                                                 </div>
-                                                <div class="purchase_info">Size: <span>L</span> &nbsp; &nbsp; &nbsp;Color: <span>White</span></div>
+                                                <!-- <div class="purchase_info">Size: <span>L</span> &nbsp; &nbsp; &nbsp;Color: <span>White</span></div> -->
                                                 <div class="rate_date">
                                                     <div class="rate_star" data-rateyo-read-only="true" data-rateyo-rating="5"></div>
                                                     <div class="date">2019.08.01</div>
@@ -297,7 +297,7 @@
                                                     <h2><?= is_array($postValue->message) ? count($postValue->message) : 0 ?> comments</h2><i class="arrow_down"></i>
                                                 </div>
                                                 <div class="comments_content">
-                                                    <!-- <div class="comments_form">
+                                                    <div class="comments_form">
                                                         <div class="profile_picture">
                                                             <div class="pic" style="background-image: url(https://source.unsplash.com/rDEOVtE7vOs/100x100);"><img class="size" src="<?= base_url('assets/images/size_1x1.png') ?>"></div>
                                                         </div>
@@ -305,7 +305,7 @@
                                                             <input type="text" placeholder="Leave us a message...">
                                                             <button type="button">Send</button>
                                                         </div>
-                                                    </div> -->
+                                                    </div>
                                                     <div class="comments_messages">
                                                         <?php if(!empty($postValue->message)):
                                                             foreach ($postValue->message as $messageKey => $messageValue): ?>

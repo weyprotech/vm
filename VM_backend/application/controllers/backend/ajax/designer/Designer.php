@@ -47,6 +47,9 @@ class Designer extends Ajax_Controller
                     'banner' => '<a class="btn btn-warning" href="'.site_url('backend/designer/banner/index/'.$row->designerId).'"><i class="fa fa-picture-o"></i><span class="hidden-mobile"> Banner</span></a>',
                     'post' => '<a class="btn btn-success" href="'.site_url('backend/designer/post/index/'.$row->designerId).'"><i class="fa fa-book"></i><span class="hidden-mobile"> Post</span></button>',
                     'runway' => '<a class="btn btn-primary" href="'.site_url('backend/designer/runway/index/'.$row->designerId).'"><i class="fa fa-clock-o"></i><span class="hidden-mobile"> Runway new event</span></button>',
+                    'just_for_you' => '<a class="btn bg-color-pink" href="'.site_url('backend/designer/just/index/'.$row->designerId).'" style="color:white"><i class="fa fa-comment-o" style="color:white"></i><span class="hidden-mobile" style="color:white"> Just for you</span></a>',
+                    'message' => '<a class="btn bg-color-redLight" href="'.site_url('backend/designer/message/index/'.$row->designerId).'" style="color:white"><i class="fa fa-comment" style="color:white"></i><span class="hidden-mobile" style="color:white"> Message</span></a>',
+                    'review' => '<a class="btn bg-color-magenta" href="'.site_url('backend/designer/review/index/'.$row->designerId).'" style="color:white"><i class="fa fa-comments" style="color:white"></i><span class="hidden-mobile" style="color:white"> Review</span></a>',
                     'action' => $action
                 );
             endforeach;

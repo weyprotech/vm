@@ -15,7 +15,7 @@ $(function() {
     var currentStreetId;
     
     $.ajax({
-        url: website.Base_url('assets/json/stores.json'),
+        url: website.Site_url('ajax/homepage/get_location'),
         dataType: 'json',
         error: function() {
         console.log('ajax error!')

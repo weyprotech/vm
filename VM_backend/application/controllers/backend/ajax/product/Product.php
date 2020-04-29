@@ -53,6 +53,7 @@ class Product extends Ajax_Controller
                     'base_category' => $row->baseName,
                     'sub_category' => $row->mainName,
                     'category' => $row->minorName,
+                    'brand' => $row->brandName,
                     'price' => $row->price,
                     'color' => '<a class="btn btn-primary" href="'.site_url('backend/product/color/index/'.$row->productId).'"><i class="fa fa-dashboard"></i><span class="hidden-mobile"> Color</span></button>',                
                     'manufacture' => '<a class="btn btn-success" href="'.site_url('backend/product/manufacture/edit/'.$row->productId).'"><i class="fa fa-home"></i><span class="hidden-mobile"> Manufacture</span></button>',

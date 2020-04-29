@@ -13,10 +13,11 @@ class Tb_category_model extends MY_Model
     public function get_category_select($filter = false, $order = false, $limit = false, $langId = false)
     {
         if ($langId):
-            $this->db->select('category.*,prev.categoryId as prev_categoryId, lang.name, prev_lang.name as prevName');
+            $this->db->select('category.*,prev.categoryId as prev_categoryId,base_category.categoryId as base_categoryId, lang.name, prev_lang.name as prevName');
             $this->db->join('tb_product_category_lang as lang', 'lang.cId = category.categoryId AND lang.langId = ' . $langId, 'left');
             $this->db->join('tb_product_category_lang as prev_lang', 'prev_lang.cId = category.prevId AND prev_lang.langId = ' . $langId, 'left');   
-            $this->db->join('tb_product_category as prev','prev.categoryId = category.prevId','left');         
+            $this->db->join('tb_product_category as prev','prev.categoryId = category.prevId','left');    
+            $this->db->join('tb_product_category as base_category','base_category.categoryId = prev.prevId','left');     
         endif;
         $this->set_filter($filter);
         $this->set_order($order);

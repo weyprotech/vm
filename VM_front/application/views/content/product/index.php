@@ -55,8 +55,15 @@
                                     <div class="thumb">
                                         <div class="pic" style="background-image: url(<?= backend_url($productList[$i]->productImg) ?>)"><img class="size" src="<?= base_url('assets/images/size_3x4.png') ?>"></div>
                                     </div>
-                                    <h3><?= $productList[$i]->name ?></h3>
-                                    <div class="price">NT$ <?= $productList[$i]->price ?></div>
+                                    <h3><?= $productList[$i]->name ?></h3>                                    
+                                    <?php if($productList[$i]->sale){ ?>
+                                        <div class="price">
+                                            <span class="strikethrough">NT$ <?= $productList[$i]->price ?></span>
+                                            <span class="sale_price">NT$ <?= (($productList[$i]->price)-($productList[$i]->price*($saleinformation->discount/100))) ?></span>
+                                        </div>                                    
+                                    <?php }else{ ?>
+                                        <div class="price">NT$ <?= $productList[$i]->price ?></div>
+                                    <?php } ?>
                                 </a>
                             </div>
                         <?php }
@@ -76,7 +83,14 @@
                                     <div class="pic" style="background-image: url(<?= backend_url($productList[$i]->productImg) ?>)"><img class="size" src="<?= base_url('assets/images/size_3x4.png') ?>"></div>
                                 </div>
                                 <h3><?= $productList[$i]->name ?></h3>
-                                <div class="price">NT$ <?= $productList[$i]->price ?></div>
+                                <?php if($productList[$i]->sale){ ?>
+                                    <div class="price">
+                                        <span class="strikethrough">NT$ <?= $productList[$i]->price ?></span>
+                                        <span class="sale_price">NT$ <?= (($productList[$i]->price)-($productList[$i]->price*($saleinformation->discount/100))) ?></span>
+                                    </div>                                    
+                                <?php }else{ ?>
+                                    <div class="price">NT$ <?= $productList[$i]->price ?></div>
+                                <?php } ?>
                             </a>
                         </div>
                     <?php }

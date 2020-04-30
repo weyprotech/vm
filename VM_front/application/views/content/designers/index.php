@@ -3,21 +3,21 @@
         <div class="bar_inner">
             <div class="filter_buttons">
                 <a class="active" href="<?= website_url('designers/index') ?>">All</a>
-                <a href="search_designers.html">A-Z</a>
+                <a href="<?= website_url('designers/search').'?alphabet=A' ?>">A-Z</a>
             </div>
-            <div class="search_form">
-                <input type="search" placeholder="Designer name">
-                <button type="button" onclick="location.href='search_designers.html'">
-                    <i class="icon_search"></i>
-                </button>
-            </div>
+            <form method="get" action="<?= website_url('designers/search') ?>">
+                <div class="search_form">
+                    <input type="search" name="search" placeholder="Designer name">
+                    <button type="submit"><i class="icon_search"></i></button>
+                </div>
+            </form>
         </div>
     </div>
     <div class="topping_block designer_topping">
         <div class="block_inner">
             <div class="topping_header">
                 <div class="designer_card">
-                    <a class="btn_favorite" data-designerId="01" href="javascript:;"><i class="icon_favorite_heart"></i></a>
+                    <a class="btn_favorite <?= ($top_designerList[0]->like != false) ? 'active' : '' ?>" data-designerId="<?= $top_designerList[0]->designerId ?>" href="javascript:;"><i class="icon_favorite_heart"></i></a>
                     <a class="card_content" href="<?= website_url('designers/home').'?designerId='.$top_designerList[0]->designerId ?>">
                         <div class="thumb">
                             <!--↓ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓-->
@@ -48,7 +48,7 @@
                                 if(isset($top_designerList[$designerKey])){ ?>
                                     <!--↓ 三篇 ↓-->
                                     <div class="item">
-                                        <a class="btn_favorite" data-designerId="02" href="javascript:;"><i class="icon_favorite_heart"></i></a>
+                                        <a class="btn_favorite <?= ($designerValue->like != false) ? 'active' : '' ?>" data-designerId="<?= $designerValue->designerId ?>" href="javascript:;"><i class="icon_favorite_heart"></i></a>
                                         <a class="item_content" href="<?= website_url('designers/home').'?designerId='.$designerValue->designerId ?>">
                                             <div class="thumb">
                                                 <!--↓ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓-->

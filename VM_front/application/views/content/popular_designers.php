@@ -9,7 +9,7 @@
                             if(isset($designerList[$i])){ ?>        
                                 <div class="slide">
                                     <div class="designer_card">
-                                        <a class="btn_favorite" data-designerId="<?= $i ?>" href="javascript:;">
+                                        <a class="btn_favorite <?= ($designerList[$i]->like != false) ? 'active' : '' ?>" data-designerId="<?= $designerList[$i]->designerId ?>" href="javascript:;">
                                             <i class="icon_favorite_heart"></i>
                                         </a>
                                         <a class="card_content" href="<?= website_url('designers/home').'?designerId='.$designerList[$i]->designerId ?>">

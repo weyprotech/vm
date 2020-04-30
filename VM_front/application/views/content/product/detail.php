@@ -100,7 +100,8 @@
                             <button class="btn" type="button">Preorder Now</button>
                             <!--↑ 如果是預購改用這個 button ↑ -->
                         <?php } ?>
-                        <!--↓ class 加 'active' 表示加入最愛 ↓--><a class="btn_favorite" href="javascript:;" data-productId="product001" title="Favorite"><i class="icon_favorite_heart"></i></a>
+                        <!--↓ class 加 'active' 表示加入最愛 ↓-->
+                        <a class="btn_favorite <?= $like != false ? 'active' : '' ?>" href="javascript:;" data-productId="<?= $row->productId ?>" title="Favorite"><i class="icon_favorite_heart"></i></a>
                         <!--↑ class 加 'active' 表示加入最愛 ↑-->
                     </div>
                 </div>

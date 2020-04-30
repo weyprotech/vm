@@ -27,6 +27,23 @@ class Brand extends Frontend_Controller
         $this->get_view('brand/index', $data);
     }
 
+    //A-Z及搜尋頁
+    public function search(){
+        $alphabet = $this->input->get('alphabet',true);
+        $search = $this->input->get('search',true);
+        if(!empty($alphabet)){
+            $brandList = $this->tb_brand_model->get_brand_select(array(array('field' => 'brand.is_visible','value' => 1),'other' => array('value' => 'lang.name like "'.$alphabet.'%"')),FALSE,FALSE,$this->langId);
+        }elseif(!empty($search)){
+            $brandList = $this->tb_brand_model->get_brand_select(array(array('field' => 'brand.is_visible','value' => 1),'other' => array('value' => 'lang.name like "%'.$search.'%"')),FALSE,FALSE,$this->langId);
+        }
+        $data = array(
+            'brandList' => $brandList,            
+            'alphabet' => $alphabet,
+            'search' => $search
+        );
+        $this->get_view('brand/search',$data);
+    }
+
     public function story(){
         $brandId = $this->input->get('brandId',true);
         if($brandId == ''){

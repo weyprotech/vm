@@ -10,13 +10,8 @@
         
             if ($(this).hasClass('active')) {
                 // 取消最愛寫這裡
-            
-                $(this).removeClass('active');
-                $(this).find('.count').text(countNumber - 1);
-            } else {
-                // 加入最愛寫這裡
                 $.ajax({
-                    url:'<?= website_url('') ?>',
+                    url:'<?= website_url('ajax/designers/set_like') ?>',
                     type:'post',
                     dataType:'json',
                     data:{designerId : designerId},
@@ -24,8 +19,33 @@
                         if(response['status'] == 'error'){
                             swal({
                                 title:'please login',
-                                type:'error',
+                                type:'warning',
+                            }).then(function(response){
+                                window.location = '<?= website_url('login') ?>';
                             });
+                           $('.swal2-container').css('z-index','100000');
+                        }
+                    }
+                })
+                
+                $(this).removeClass('active');
+                $(this).find('.count').text(countNumber - 1);
+            } else {
+                // 加入最愛寫這裡
+                $.ajax({
+                    url:'<?= website_url('ajax/designers/set_like') ?>',
+                    type:'post',
+                    dataType:'json',
+                    data:{designerId : designerId},
+                    success: function(response){
+                        if(response['status'] == 'error'){
+                            swal({
+                                title:'please login',
+                                type:'warning',
+                            }).then(function(response){
+                                window.location = '<?= website_url('login') ?>';
+                            });
+                           $('.swal2-container').css('z-index','100000');
                         }
                     }
                 })

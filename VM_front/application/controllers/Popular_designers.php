@@ -10,6 +10,7 @@ class Popular_designers extends Frontend_Controller
         $this->load->model('designer/tb_runway_model','tb_runway_model');        
         $this->load->model('designer/tb_post_model','tb_post_model');
         $this->load->model('brand/tb_brand_model','tb_brand_model');
+        $this->load->model('designer/tb_designer_like_model','tb_designer_like_model');
     }
 
     public function index()
@@ -21,6 +22,12 @@ class Popular_designers extends Frontend_Controller
                     $designerList[$designerKey]->runway[0]->imgList = $this->tb_runway_model->get_runway_img_select(array(array('field' => 'runway_img.runwayId','value' => $designerList[$designerKey]->runway[0]->runwayId)),array(array('field' => 'runway_img.order','dir' => 'desc')),false);
                 }else{
                     @$designerList[$designerKey]->runway[0]->imgList = array();                    
+                }
+                //愛心
+                if(!$this->session->userdata('memberinfo')){                    
+                    $designerList[$designerKey]->like = false;                              
+                }else{
+                    $designerList[$designerKey]->like = $this->tb_designer_like_model->get_designer_like_select(array(array('field' => 'designer_like.designerId','value' => $designerValue->designerId),array('field' => 'designer_like.memberId','value' => $this->session->userdata('memberinfo')['memberId'])));                    
                 }
             }    
         }

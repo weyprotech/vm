@@ -654,9 +654,9 @@ class Tb_product_model extends MY_Model
     private function set_product_join($langId)
     {
         $this->db->select('product.*, minor.prevId as mainId, product.cId as minorId');
-        $this->db->join('tb_product_category as minor', 'minor.categoryId = product.cId AND minor.is_enable', 'left');
-        $this->db->join('tb_product_category as main', 'main.categoryId = minor.prevId AND main.is_enable', 'left');
-        $this->db->join('tb_product_category as base','base.categoryId = main.prevId AND base.is_enable','left');
+        $this->db->join('tb_product_category as minor', 'minor.categoryId = product.cId AND minor.is_enable = 1', 'left');
+        $this->db->join('tb_product_category as main', 'main.categoryId = minor.prevId AND main.is_enable = 1', 'left');
+        $this->db->join('tb_product_category as base','base.categoryId = main.prevId AND base.is_enable = 1','left');
         if ($langId):
             $this->db->select('lang.*, main_lang.name as mainName, minor_lang.name as minorName,base_lang.name as baseName');
             $this->db->join('tb_product_lang as lang', 'lang.pId = product.productId AND lang.langId = ' . $langId, 'left');

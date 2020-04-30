@@ -3,11 +3,11 @@
         <div class="bar_inner">
             <div class="filter_buttons">
                 <a class="active" href="<?= website_url('brand/index') ?>">All</a>
-                <a href="search_brands.html">A-Z</a>
+                <a href="<?= website_url('brand/search').'?alphabet=A' ?>">A-Z</a>
             </div>
             <div class="search_form">
                 <input type="search" placeholder="Designer / Brand name">
-                <button type="button" onclick="location.href='search_brands.html'"><i class="icon_search"></i></button>
+                <button type="button"><i class="icon_search"></i></button>
             </div>
         </div>
     </div>
@@ -34,31 +34,34 @@
             <div class="topping_main">
                 <div class="topping_list brand_topping_list scrollbar_y">
                 <!--↓ 三篇 ↓-->
-                <?php foreach ($top_brandList as $topKey => $topValue):
-                    if($topKey != 0): ?>
-                    <div class="item">
-                        <a class="item_content" href="<?= website_url('brand/story?brandId='.$topValue->brandId) ?>">
-                            <div class="thumb">
-                                <!--↓ 1:1，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓-->
-                                <div class="pic" style="background-image: url(<?= backend_url($topValue->brandindexImg) ?>);">
-                                    <img class="size" src="<?= base_url('assets/images/size_1x1.png') ?>">
+                <?php 
+                if($top_brandList):
+                    foreach ($top_brandList as $topKey => $topValue):
+                        if($topKey != 0): ?>
+                        <div class="item">
+                            <a class="item_content" href="<?= website_url('brand/story?brandId='.$topValue->brandId) ?>">
+                                <div class="thumb">
+                                    <!--↓ 1:1，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓-->
+                                    <div class="pic" style="background-image: url(<?= backend_url($topValue->brandindexImg) ?>);">
+                                        <img class="size" src="<?= base_url('assets/images/size_1x1.png') ?>">
+                                    </div>
+                                    <!--↑ 1:1，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑-->
                                 </div>
-                                <!--↑ 1:1，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑-->
-                            </div>
-                            <div class="intro">
-                                <h3><?= $topValue->name ?></h3>
-                                <p><?= mb_substr(strip_tags(str_replace("<br>","", html_entity_decode($topValue->content, ENT_QUOTES, "UTF-8"))),"0","100","UTF-8") ?></p>
-                                <h4 class="designer_name">
-                                    <?php if($topValue->grade == 1){ ?> 
-                                        <!--↓ 知名設計才會有鑽石icon ↓--><i class="icon_diamond_s"></i>
-                                    <?php } ?>
-                                    <img class="flag" src="<?= base_url('assets/images/flag/'.$topValue->country.'.png') ?>"><span><?= $topValue->designer_name ?></span>
-                                </h4>
-                            </div>
-                        </a>
-                    </div>
-                    <?php endif;
-                endforeach; ?>
+                                <div class="intro">
+                                    <h3><?= $topValue->name ?></h3>
+                                    <p><?= mb_substr(strip_tags(str_replace("<br>","", html_entity_decode($topValue->content, ENT_QUOTES, "UTF-8"))),"0","100","UTF-8") ?></p>
+                                    <h4 class="designer_name">
+                                        <?php if($topValue->grade == 1){ ?> 
+                                            <!--↓ 知名設計才會有鑽石icon ↓--><i class="icon_diamond_s"></i>
+                                        <?php } ?>
+                                        <img class="flag" src="<?= base_url('assets/images/flag/'.$topValue->country.'.png') ?>"><span><?= $topValue->designer_name ?></span>
+                                    </h4>
+                                </div>
+                            </a>
+                        </div>
+                        <?php endif;
+                    endforeach;
+                endif; ?>
                 <!--↑ 三篇 ↑-->
                 </div>
             </div>

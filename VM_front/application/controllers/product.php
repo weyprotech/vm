@@ -9,6 +9,7 @@ class Product extends Frontend_Controller
         $this->load->model('product/tb_product_model','tb_product_model');
         $this->load->model('product/tb_product_review_model','tb_product_review_model');
         $this->load->model('product/tb_sale_model','tb_sale_model');
+        $this->load->model('product/tb_product_like_model','tb_product_like_model');
         $this->load->model('designer/tb_designer_model','tb_designer_model');
         $this->load->model('designer/tb_designer_banner_model','tb_designer_banner_model');
         $this->load->model('designer/tb_post_model','tb_post_model');
@@ -156,6 +157,13 @@ class Product extends Frontend_Controller
         $click = $row->click+1;
         $this->product_model->update_product($row,array('click' => $click));
 
+        //讀取愛心
+        if(!$this->session->userdata('memberinfo')){
+            $like = false;
+        }else{
+            $like = $this->tb_product_like_model->get_product_like_select(array(array('field' => 'product_like.productId','value' => $productId)),false,false);
+        }
+
         $data = array(
             'row' => $row,
             'product_banner' => $product_banner,
@@ -176,13 +184,15 @@ class Product extends Frontend_Controller
             'sale' => $sale,
             'total_review_page' => ($total_review_page == 0) ? '1' : $total_review_page,
             'reviewpage' => $reviewpage,
-            'designer_bannerList' => $designer_bannerList
+            'designer_bannerList' => $designer_bannerList,
+            'like' => $like
         );
-        $this->get_view('product/detail',$data,$this->load->view('shared/script/designers/_profile_script','',true),$productId);
+        $this->get_view('product/detail',$data,$this->load->view('shared/script/product/_detail_script','',true),$productId);
     }
 
     public function popup_detail($productId){
         $imgList = $this->tb_product_model->get_product_img_select(array(array('field' => 'product_img.pId','value' => $productId)),false,false,$this->langId);
+
         $data = array(
             'imgList' => $imgList
         );

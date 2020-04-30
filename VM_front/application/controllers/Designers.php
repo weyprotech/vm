@@ -23,13 +23,40 @@ class Designers extends Frontend_Controller
         $top_designerList = $this->tb_designer_model->get_designer_select(array(array('field' => 'designer.is_visible','value' => 1)),array(array('field'=>'designer.order','dir' => 'desc')),array('start' => 0,'limit' => 4),$this->langId);      
         $designerList = $this->tb_designer_model->get_designer_select(array(array('field'=>'designer.is_visible','value' => 1)),array(array('field'=>'designer.order','dir' => 'desc')),array('start' => 4,'limit' =>'20'),$this->langId);
         $designer_story = $this->tb_designer_model->get_designer_select(array(array('field' => 'designer.is_visible','value' => 1),array('field' => 'designer.is_designer_story','value' => 1)),array(array('field' => 'designer.designerId','dir' => 'RANDOM')),false,$this->langId);
+        //讀取愛心
+        if(!$this->session->userdata('memberinfo')){
+            foreach ($top_designerList as $designerKey => $designerValue){
+                $top_designerList[$designerKey]->like = false;
+            }            
+        }else{
+            foreach ($top_designerList as $designerKey => $designerValue){
+                $top_designerList[$designerKey]->like = $this->tb_designer_like_model->get_designer_like_select(array(array('field' => 'designer_like.designerId','value' => $designerValue->designerId),array('field' => 'designer_like.memberId','value' => $this->session->userdata('memberinfo')['memberId'])));
+            }
+        }
         $data = array(
             'top_designerList' => $top_designerList,
             'designerList' => $designerList,
             'designer_story' => $designer_story
         );
 
-        $this->get_view('designers/index', $data);
+        $this->get_view('designers/index', $data,$this->load->view('shared/script/designers/_index_script','',true));
+    }
+
+    //A-Z及搜尋頁
+    public function search(){
+        $alphabet = $this->input->get('alphabet',true);
+        $search = $this->input->get('search',true);
+        if(!empty($alphabet)){
+            $designerList = $this->tb_designer_model->get_designer_select(array(array('field' => 'designer.is_visible','value' => 1),'other' => array('value' => 'lang.name like "'.$alphabet.'%"')),FALSE,FALSE,$this->langId);
+        }elseif(!empty($search)){
+            $designerList = $this->tb_designer_model->get_designer_select(array(array('field' => 'designer.is_visible','value' => 1),'other' => array('value' => 'lang.name like "%'.$search.'%"')),FALSE,FALSE,$this->langId);
+        }
+        $data = array(
+            'designerList' => $designerList,
+            'alphabet' => $alphabet,
+            'search' => $search
+        );
+        $this->get_view('designers/search',$data);
     }
 
     public function home(){

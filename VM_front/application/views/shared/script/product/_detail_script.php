@@ -1,18 +1,17 @@
 <script>
     $(function() {
-        // 愛心的點擊事件
+    // 愛心的點擊事件
         $(document).on('click', '.btn_favorite', function(event) {
-            // designerId 取得設計師的 ID
-            var designerId = $(this).attr('data-designerId');
-            var countNumber = parseInt($(this).find('.count').text());
+            // productId 取得設計師的 ID
+            var productId = $(this).attr('data-productId');
         
             if ($(this).hasClass('active')) {
                 // 取消最愛寫這裡
                 $.ajax({
-                    url:'<?= website_url('ajax/designers/set_like') ?>',
+                    url:'<?= website_url('ajax/product/set_like') ?>',
                     type:'post',
                     dataType:'json',
-                    data:{designerId : designerId},
+                    data:{productId : productId},
                     success: function(response){
                         if(response['status'] == 'error'){
                             swal({
@@ -26,14 +25,13 @@
                     }
                 })
                 $(this).removeClass('active');
-                $(this).find('.count').text(countNumber - 1);
             } else {
                 // 加入最愛寫這裡
                 $.ajax({
-                    url:'<?= website_url('ajax/designers/set_like') ?>',
+                    url:'<?= website_url('ajax/product/set_like') ?>',
                     type:'post',
                     dataType:'json',
-                    data:{designerId : designerId},
+                    data:{productId : productId},
                     success: function(response){
                         if(response['status'] == 'error'){
                             swal({
@@ -42,12 +40,11 @@
                             }).then(function(response){
                                 window.location = '<?= website_url('login') ?>';
                             });
-                           $('.swal2-container').css('z-index','100000');
+                           $('.swal2-container').css('z-index','100000');                            
                         }
                     }
                 })
                 $(this).addClass('active');
-                $(this).find('.count').text(countNumber + 1);
             }
         });
     });

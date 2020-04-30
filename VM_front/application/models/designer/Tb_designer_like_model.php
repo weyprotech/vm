@@ -16,6 +16,9 @@ class Tb_designer_like_model extends MY_Model
         $this->set_filter($filter);
         $this->set_order($order);
         $this->set_limit($limit);
+        if($langId){
+            $this->set_designer_join($langId);
+        }
         $query = $this->db->get('tb_designer_like as designer_like');
         if ($query->num_rows() > 0):
             return $query->result();
@@ -56,7 +59,19 @@ class Tb_designer_like_model extends MY_Model
 
     public function delete_designer_like($designer_like)
     {
-        $this->delete('tb_designer_like', array('is_enable' => 0), array('Id' => $designer_like->Id));
+        $this->db->delete('tb_designer_like',array('Id' => $designer_like->Id));        
+        return true;
+    }
+
+    /******************** Private Function ********************/
+    private function set_designer_join($langId)
+    {
+        $this->db->select('designer.*');
+        $this->db->join('tb_designer as designer','designer.designerId = designer_like.designerId','left');
+        if ($langId):
+            $this->db->select('lang.*');
+            $this->db->join('tb_designer_lang as lang', 'lang.designerId = designer.designerId AND lang.langId = ' . $langId);
+        endif;
         return true;
     }
 }

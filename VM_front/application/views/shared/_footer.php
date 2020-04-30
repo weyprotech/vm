@@ -51,8 +51,8 @@
             <li>
             <h4>MEMBER</h4>
             <ul>
-                <li><a href="<?= website_url('login') ?>">My Favorite</a></li>
-                <li><a href="<?= website_url('login') ?>">My Account</a></li>
+                <li><a href="<?= website_url('member/favorite') ?>">My Favorite</a></li>
+                <li><a href="<?= website_url('member') ?>">My Account</a></li>
                 <li><a href="<?= website_url('login') ?>">My Points</a></li>
                 <li><a href="<?= website_url('login') ?>">Be Our Model</a></li>
             </ul>

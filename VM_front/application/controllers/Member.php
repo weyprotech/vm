@@ -70,6 +70,14 @@ class Member extends Frontend_Controller
         );
         $this->get_view('member/edit_account',$data,$this->load->view('shared/script/member/_edit_account_script',array('type' => $type),true));
     }
+
+    public function be_vm_model(){
+        if(!$this->session->userdata('memberinfo')['memberId']){
+            js_warn('請重新登入，謝謝!');
+            redirect(website_url());
+        }
+        $this->get_view('member/be_vm_model');
+    }
     
     //My favorite
     public function favorite(){

@@ -32,6 +32,7 @@ $susy: (
 @import "../../bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar";
 @import "../../bower_components/magnific-popup/dist/magnific-popup";
 @import "../../bower_components/rateyo/src/jquery.rateyo";
+@import "../../bower_components/noty/lib/noty";
 
 // Plugins Setting
 // leaflet
@@ -182,4 +183,9 @@ $susy: (
 }
 .mfp-wrap {
   z-index: 99991;
+}
+
+// Noty
+.noty_theme__nest.noty_bar .noty_body {
+  font-size: 1.25em;
 }

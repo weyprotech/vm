@@ -102,9 +102,9 @@ block main
                 input.quantity(type="number", value="1", min="1", readOnly="true")
                 button.plus(type="button") &plus;
           .call_action
-            button.btn.confirm(type="button") Add to cart
+            button.btn.confirm.addCart(type="button") Add to cart
             //↓ 如果是預購改用這個 button ↓
-            // <button class="btn" type="button">Preorder Now</button>
+            // <button class="btn addCart" type="button">Preorder Now</button>
             //↑ 如果是預購改用這個 button ↑
             //↓ class 加 'active' 表示加入最愛 ↓
             a.btn_favorite(href="javascript:;", data-productId="product001", title="Favorite")
@@ -629,4 +629,31 @@ block js
           $(this).addClass('active');
         }
       });
+
+      // 加入購物車
+      $('.btn.addCart').on('click', function(event) {
+        if(!$(this).hasClass('processing')) {
+          var $btn = $(this);
+          $btn.addClass('processing');
+
+          // setTimeout 為假設傳遞資料完成
+          setTimeout(function() {
+            processingCompleted($($btn));
+          }, 3000);
+        }
+      })
     });
+
+    function processingCompleted($btn) {
+      $btn.removeClass('processing');
+
+      // Noty - https://ned.im/noty/
+      new Noty({
+        type: 'success',
+        layout: 'bottomCenter',
+        theme: 'nest',
+        text: 'Added to bag.', //可以在這裡改變顯示的文字
+        timeout: 5000,
+        closeWith: ['click', 'button']
+      }).show();
+    }

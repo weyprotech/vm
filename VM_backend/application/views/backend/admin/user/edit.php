@@ -124,12 +124,13 @@
         <?php
         if (empty($row->auth)) { ?>
             get_auth_list($gId.val()).done(set_checkbox_action);
-            <?
+            <?php
         }
         else { ?>
             set_checkbox_action();
-            <?
-        } ?>
+            <?php
+        } 
+        ?>
 
         $gId.change(function () {
             if (confirm('群組已變更，是否套用所選群組的預設權限?')) {

@@ -21,8 +21,7 @@ if ($this->langFile != 'cn') { ?>
 <meta property="og:description" content="<?= $pageMeta['description'] ?>"/>
 <meta property="og:image" content="<?= $pageMeta['image'] ?>"/>
 <meta property="og:url" content="<?= $pageMeta['url'] ?>"/>
-<?
-} ?>
+<?php } ?>
 </head>
 <body><!--[if lt IE 9]>
 <div class="old_browser">

@@ -22,8 +22,7 @@ if ($this->langFile != 'cn') { ?>
 <meta property="og:description" content="<?= $pageMeta['description'] ?>"/>
 <meta property="og:image" content="<?= $pageMeta['image'] ?>"/>
 <meta property="og:url" content="<?= $pageMeta['url'] ?>"/>
-<?php
-} ?>
+<?php } ?>
 </head>
 <body><!--[if lt IE 9]>
 <div class="old_browser">
@@ -54,8 +53,6 @@ if ($this->langFile != 'cn') { ?>
     website.Init('<?= site_url() ?>', '<?= base_url() ?>');
 </script>
 <?= $this->load->view('shared/_script', '', true) ?>
-
-    <?= $script ?>
-
+<?= $script ?>
 </body>
 </html>

@@ -42,20 +42,20 @@ class Frontend_Controller extends MY_Controller
         );
     }
 
-    public function get_frontend_view($page, $data = array(), $script = "",$productId = false,$category = array('menu_basecategory' => '','menu_subcategory' => '','menu_category' => ''))
+    public function get_frontend_view($page, $data = array(), $script = "", $productId = false, $category = array('menu_basecategory' => '', 'menu_subcategory' => '', 'menu_category' => ''))
     {
         $website_color = $this->website_color->get_set_website_color();
         $data['website_color'] = $website_color;
         /***產品類別 ***/
         //第一層
-        $categoryList = $this->product_category_model->get_category_select(array(array('field' => 'category.is_visible','value' => 1),array('field' => 'category.lv','value' => 1)),array(array('field' => 'category.order','dir' => 'desc')),false,$this->langId);        
+        $categoryList = $this->product_category_model->get_category_select(array(array('field' => 'category.is_visible', 'value' => 1), array('field' => 'category.lv', 'value' => 1)), array(array('field' => 'category.order', 'dir' => 'desc')), false, $this->langId);        
         //第二層
         foreach($categoryList as $categoryKey => $categoryValue){
-            $categoryList[$categoryKey]->categoryList = $this->product_category_model->get_category_select(array(array('field' => 'category.is_visible','value' => 1),array('field' => 'category.prevId','value' => $categoryValue->categoryId)),array(array('field' => 'category.order','dir' => 'desc')),false,$this->langId);
+            $categoryList[$categoryKey]->categoryList = $this->product_category_model->get_category_select(array(array('field' => 'category.is_visible','value' => 1), array('field' => 'category.prevId', 'value' => $categoryValue->categoryId)), array(array('field' => 'category.order', 'dir' => 'desc')), false, $this->langId);
             //第三層
             if($categoryList[$categoryKey]->categoryList){
                 foreach($categoryList[$categoryKey]->categoryList as $base_key => $base_value){
-                    $categoryList[$categoryKey]->categoryList[$base_key]->categoryList = $this->product_category_model->get_category_select(array(array('field' => 'category.is_visible','value' => 1),array('field' => 'category.prevId','value' => $base_value->categoryId)),array(array('field' => 'category.order','dir' => 'desc')),false,$this->langId);
+                    $categoryList[$categoryKey]->categoryList[$base_key]->categoryList = $this->product_category_model->get_category_select(array(array('field' => 'category.is_visible', 'value' => 1),array('field' => 'category.prevId', 'value' => $base_value->categoryId)), array(array('field' => 'category.order', 'dir' => 'desc')), false, $this->langId);
                 }
             }
         }
@@ -71,9 +71,9 @@ class Frontend_Controller extends MY_Controller
         }
         return array(
             'pageMeta' => $this->pageMeta,
-            'loading' => $this->load->view('shared/_loading','',true),
-            'header_top' => $this->load->view('shared/_header_top',array('website_color' => $website_color),true),
-            'header' => $this->load->view('shared/_header', array('categoryList' => $categoryList,'product' => $product,'category' => $category), true),
+            'loading' => $this->load->view('shared/_loading', '', true),
+            'header_top' => $this->load->view('shared/_header_top', array('website_color' => $website_color), true),
+            'header' => $this->load->view('shared/_header', array('categoryList' => $categoryList,'product' => $product, 'category' => $category), true),
             'main' => $this->load->view('content/' . $page, $data, true),
             'footer' => $this->load->view('shared/_footer', array('categoryList' => $categoryList), true),
             'sidebar' => $this->load->view('shared/_sidebar', '', true),

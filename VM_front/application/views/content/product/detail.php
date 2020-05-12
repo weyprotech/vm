@@ -56,7 +56,7 @@
                         <label>Size</label>
                         <div class="controls">
                             <div class="select_wrapper">
-                                <select>
+                                <select id="size">
                                     <?php if($product_size){
                                         foreach($product_size as $sizeKey => $sizeValue){ ?>
                                             <option value="<?= $sizeValue->Id ?>"><?= $sizeValue->size ?></option>
@@ -71,7 +71,7 @@
                         <label>Color</label>
                         <div class="controls">
                             <div class="select_wrapper">
-                                <select>
+                                <select id="color">
                                     <option>Select a color</option>
                                     <?php if($product_color){
                                         foreach($product_color as $colorKey => $colorValue){ ?>
@@ -87,14 +87,14 @@
                         <div class="controls">
                             <div class="quantity_counter">
                                 <button class="minus" type="button">&minus;</button>
-                                <input class="quantity" type="number" value="1" min="1" readOnly="true">
+                                <input id="quantity" class="quantity" type="number" value="1" min="1" readOnly="true">
                                 <button class="plus" type="button">&plus;</button>
                             </div>
                         </div>
                     </div>
                     <div class="call_action">
                         <?php if($row->status == 0){ ?>
-                            <button class="btn confirm" type="button">Add to cart</button>
+                            <button class="btn confirm addtocart" type="button" data-productId = "<?=$row->productId?>">Add to cart</button>
                         <?php }else{ ?>
                             <!-- ↓ 如果是預購改用這個 button ↓-->
                             <button class="btn" type="button">Preorder Now</button>

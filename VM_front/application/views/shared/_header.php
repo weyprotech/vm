@@ -19,12 +19,12 @@
                     <a href="javascript:;"><i class="icon_search"></i></a>
                 </div>
                 <!--↓ 上線時，class加'online'，並且連結至'member_account.html'; 未上線時，連結至'login.html' ↓-->
-                <div class="option_member">
+                <div class="option_member <?=(isset($this->session->userdata('memberinfo')['memberId']))?"onlin":""?>">
                     <a href="<?= website_url('login') ?>"><i class="icon_member"></i></a>
                 </div>
                 <!--↑ 上線時，class加'online'，並且連結至'member_account.html'; 未上線時，連結至'login.html' ↑-->
                 <!--↓ 有產品在購物車時時，class加'have' ↓-->
-                <div class="option_cart have">
+                <div class="option_cart <?=($this->cart->total_items()>0)?"have":""?>">
                     <a class="cart_toggle" href="javascript:;"><i class="icon_cart"></i></a>
                     <div class="cart_drop">
                         <div class="cart_view scrollbar_y">

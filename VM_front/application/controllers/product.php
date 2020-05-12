@@ -187,7 +187,7 @@ class Product extends Frontend_Controller
             'designer_bannerList' => $designer_bannerList,
             'like' => $like
         );
-        $this->get_view('product/detail',$data,$this->load->view('shared/script/product/_detail_script','',true),$productId);
+        $this->get_view('product/detail', $data, $this->load->view('shared/script/product/_detail_script', '', true), $productId);
     }
 
     public function popup_detail($productId){
@@ -196,27 +196,27 @@ class Product extends Frontend_Controller
         $data = array(
             'imgList' => $imgList
         );
-        $this->load->view('content/product/detail_popup',$data);
+        $this->load->view('content/product/detail_popup', $data);
     }
 
     public function popup_manufacture($productId){
-        $manufacture = $this->tb_product_model->get_product_manufacture_select(array(array('field' => 'product_manufacture.pId','value' => $productId)),false,false,$this->langId);
+        $manufacture = $this->tb_product_model->get_product_manufacture_select(array(array('field' => 'product_manufacture.pId', 'value' => $productId)), false, false, $this->langId);
         $data = array(
             'manufacture' => $manufacture[0]
         );
-        $this->load->view('content/product/manufacture_popup',$data);
+        $this->load->view('content/product/manufacture_popup', $data);
     }
 
     public function popup_fabric($productId){
-        $fabric = $this->tb_product_model->get_product_fabric_select(array(array('field' => 'product_fabric.pId','value' => $productId)),false,false,$this->langId);
+        $fabric = $this->tb_product_model->get_product_fabric_select(array(array('field' => 'product_fabric.pId', 'value' => $productId)), false, false, $this->langId);
         $data = array(
             'fabric' => $fabric[0]
         );
-        $this->load->view('content/product/fabric_popup',$data);
+        $this->load->view('content/product/fabric_popup', $data);
     }
 
-    private function get_view($page, $data = array(), $script = "",$productId = false,$category = array('menu_basecategory' => '','menu_subcategory' => '','menu_category' => ''))
+    private function get_view($page, $data = array(), $script = "", $productId = false, $category = array('menu_basecategory' => '', 'menu_subcategory' => '', 'menu_category' => ''))
     {
-        $this->load->view("webPage", $this->get_frontend_view($page, $data, $script,$productId,$category));
+        $this->load->view("webPage", $this->get_frontend_view($page, $data, $script, $productId, $category));
     }
 }

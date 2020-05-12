@@ -1,10 +1,27 @@
 <script>
+    function processingCompleted($btn) {
+        $btn.removeClass('processing');
+        
+        // Noty - https://ned.im/noty/
+        new Noty({
+            type: 'success',
+            layout: 'bottomCenter',
+            theme: 'nest',
+            text: 'Added to bag.', //可以在這裡改變顯示的文字
+            timeout: 5000,
+            closeWith: ['click', 'button']
+        }).show();
+    }
+
     $(function() {
         var cart;
-        $(".addtocart").on('click', function() {
+        $(".btn.addCart").on('click', function() {
+            var obj = $(this);
             clearTimeout(cart);
             cart = setTimeout(function() {
-                var productId = $(this).data('productId');
+                obj.addClass('processing');
+
+                var productid = obj.data('productid');
                 var size = $("#size").val();
                 var color = $("#color").val();
                 var quantity = $("#quantity").val();
@@ -12,7 +29,7 @@
                 $.post(
                     '<?=site_url('ajax/shopping/addtocart')?>',
                     { 
-                        'productId' : productId,
+                        'productid' : productid,
                         'quantity' : quantity,
                         'size' : size,
                         'color' : color
@@ -22,11 +39,11 @@
 
                         if(contact.code.trim() == "200")
                         {
-                            
+                            processingCompleted($(obj));
                         }
                     }
                 );
-            }, 1500);
+            }, 1000);
         });
 
         // 愛心的點擊事件

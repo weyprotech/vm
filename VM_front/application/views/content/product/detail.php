@@ -72,7 +72,7 @@
                         <div class="controls">
                             <div class="select_wrapper">
                                 <select id="color">
-                                    <option>Select a color</option>
+                                    <!--<option>Select a color</option>-->
                                     <?php if($product_color){
                                         foreach($product_color as $colorKey => $colorValue){ ?>
                                             <option value="<?= $colorValue->colorId ?>"><?= $colorValue->color ?></option>
@@ -94,7 +94,7 @@
                     </div>
                     <div class="call_action">
                         <?php if($row->status == 0){ ?>
-                            <button class="btn confirm addtocart" type="button" data-productId = "<?=$row->productId?>">Add to cart</button>
+                            <button class="btn confirm addCart" type="button" data-productid = "<?=$row->productId?>">Add to cart</button>
                         <?php }else{ ?>
                             <!-- ↓ 如果是預購改用這個 button ↓-->
                             <button class="btn" type="button">Preorder Now</button>

@@ -10,26 +10,30 @@ class Shopping extends Ajax_Controller
 
     public function addtocart()
 	{
-		if($this->input->post('productId'))
+		if($this->input->post('productid'))
 		{
-			$productId = $this->input->post('productId');
+			$productid = $this->input->post('productid');
 			$quantity = $this->input->post('quantity');
             $size = $this->input->post('size');
             $color = $this->input->post('color');
 			
-			$row = $this->tb_products_model->get_product_by_id($productId);
+			$row = $this->tb_product_model->get_product_by_id($productid, $this->langId);
 
 			$data = array(
 				'id' => $row->productId,
+				'name' => $row->name,
 				'qty' => $quantity,
+				'size' => $size,
+				'color' => $color,
 				'price' => $row->price,
 				'productImg' => $row->productImg
 			);
 			
 			$rowid = $this->cart->insert($data);
-			
+
 			$result = array(
-                'code' => "200",
+				'code' => "200",
+				'rowid' => $rowid,
                 'contents' => $this->cart->contents(),
 				'quantitytotal' => $this->cart->total_items()
 			);

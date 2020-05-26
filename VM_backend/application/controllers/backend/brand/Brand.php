@@ -51,6 +51,7 @@ class Brand extends Backend_Controller
             $this->set_active_status('danger', 'The data does not exist!');
             redirect('backend/brand/brand');
         endif;
+
         $designerList = $this->designer_model->get_designer_select(array(array('field' => 'designer.is_visible','value' => 1)),false,false,$this->langId);
         $location = $this->location_model->get_location_by_id($row->locationId);
         $locationList = $this->location_model->get_location_select(array(array('field' => 'tb_location.is_use','value' => 0)),false,false);
@@ -66,7 +67,7 @@ class Brand extends Backend_Controller
             $this->location_model->update_location($location,array('is_use' => 1));
 
             if ($row->uuid != $post['uuid']):
-                $this->set_active_status('danger', 'Date has been changed');
+                $this->set_active_status('danger', 'Data has been changed');
             else:
                 $this->brand_model->update_brand($row, $post);
                 $this->set_active_status('success', 'Success');

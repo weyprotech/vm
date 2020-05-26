@@ -46,6 +46,7 @@
             </div>
         </div>
     <?php } ?>    
+    <?php if($row->hometown_title != '') {?>
     <div class="designer_hometown page_block">
         <div class="block_inner">
             <div class="designer_hometown_main">
@@ -53,7 +54,7 @@
                 <div class="country_city"><img class="flag" src="<?= base_url('assets/images/flag/'.$row->hometown_country.'.png') ?>"><span><?= get_all_country($row->hometown_country) ?>, <?= $row->hometown_area ?></span></div>
                 <div class="intro_text"><?= $row->hometown_content ?></div>
                 <div class="hometown_characteristics">
-                    <?php for($i=1;$i<4;$i++){ 
+                    <?php for($i = 1; $i < 4; $i++){ 
                         $hometown_post_img = 'hometownpost'.$i.'Img';
                         $hometown_post_title = 'hometown_post'.$i.'_title';
                         $hometown_post_content = 'hometown_post'.$i.'_content';
@@ -70,6 +71,7 @@
             </div>
         </div>
     </div>
+    <?php }?>
     <?php if(!empty($postList)){ ?>
         <div class="designer_posts page_block" data-anchor="posts">
             <div class="block_inner">

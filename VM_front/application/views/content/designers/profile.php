@@ -50,6 +50,9 @@
             </div>
         </div>
     </div>
+    <?php
+    if($row->my_story_title != '' && $row->my_story_content != '') {
+    ?>
     <div class="designer_profile_story page_block">
         <div class="block_inner">
             <h2 class="block_title"><?= $row->my_story_title ?></h2>
@@ -58,6 +61,9 @@
             </div>
         </div>
     </div>
+    <?php
+    }
+    ?>
     <div class="designer_profile_brands page_block">
         <div class="block_inner">
             <h2 class="block_title">My Brands</h2>
@@ -66,7 +72,7 @@
                     <?php if($brandList){
                         foreach ($brandList as $brandKey => $brandValue){ ?>
                             <div class="item">
-                                <a href="brand_story.html">
+                                <a href="<?= website_url('brand/story?brandId='.$brandValue->brandId) ?>">
                                     <div class="thumb">
                                         <!--↓ 4:3，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓-->
                                         <div class="pic" style="background-image: url(<?= backend_url($brandValue->brandImg) ?>);"><img class="size" src="<?= base_url('assets/images/size_4x3.png') ?>"></div>

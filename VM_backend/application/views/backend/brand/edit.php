@@ -71,7 +71,7 @@
                                             <div class="col-sm-9 col-lg-4">
                                                 <select class="form-control" id="designerId" name="designerId">
                                                     <?php foreach($designerList as $designKey => $designValue){ ?>
-                                                        <option value="<?= $designValue->designerId ?>" <?= $designValue->designerId == $row->designerId ?>><?= $designValue->name ?></option>
+                                                        <option value="<?= $designValue->designerId ?>" <?= ($designValue->designerId == $row->designerId) ? "selected" : "" ?>><?= $designValue->name ?></option>
                                                     <?php } ?>
                                                 </select>
                                             </div>

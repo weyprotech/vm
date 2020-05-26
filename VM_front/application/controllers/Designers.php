@@ -60,17 +60,18 @@ class Designers extends Frontend_Controller
     }
 
     public function home(){
-        $designerId = $this->input->get('designerId',true);
+        $designerId = $this->input->get('designerId', true);
         if($designerId == ''){
             redirect('designers/index');
         }
-        $row = $this->tb_designer_model->get_designer_by_id($designerId,$this->langId);
+        $row = $this->tb_designer_model->get_designer_by_id($designerId, $this->langId);
+
         if($runway = $this->tb_runway_model->get_runway_select(array(array('field' => 'runway.designerId','value' => $designerId)),false,false,$this->langId)){
             $runway_imgList = $this->tb_runway_model->get_runway_img_select(array(array('field' => 'runway_img.runwayId','value' => $runway[0]->runwayId)),array(array('field' => 'runway_img.order','dir' => 'desc')),false);
         }else{
             $runway_imgList = array();
         }
-        $brandList = $this->tb_brand_model->get_brand_select(array(array('field' => 'brand.designerId','value' => $designerId)),array(array('field' => 'brand.order','dir' => 'desc')),false,$this->langId);
+        $brandList = $this->tb_brand_model->get_brand_select(array(array('field' => 'brand.designerId','value' => $designerId)), array(array('field' => 'brand.order', 'dir' => 'desc')),false,$this->langId);
         $designer_bannerList = $this->tb_designer_banner_model->get_designer_banner_select(array(array('field' => 'banner.designerId','value' => $designerId),array('field' => 'banner.is_visible','value' => 1),'other' => array('value' => 'banner.date > \''.date("Y-m-d").'\'')),array(array('field' => 'banner.order','dir' => 'desc')));
         if($postList = $this->tb_post_model->get_post_select(array(array('field' => 'post.is_visible', 'value' => 1),array('field' => 'post.designerId','value' => $designerId)),array(array('field' => 'post.order','dir' => 'desc')),false,$this->langId)){
             foreach($postList as $postKey => $postValue){
@@ -95,7 +96,7 @@ class Designers extends Frontend_Controller
             'runway_imgList' => $runway_imgList,
             'postList' => $postList,
             'brandList' => $brandList,
-            'link' => $this->load->view('content/designers/_links',array('row' => $row,'designer_bannerList' => $designer_bannerList,'like' => $like,'likecount' => $likecount),true)
+            'link' => $this->load->view('content/designers/_links', array('row' => $row, 'designer_bannerList' => $designer_bannerList, 'brandList' => $brandList, 'like' => $like, 'likecount' => $likecount), true)
         );
         $this->get_view('designers/home',$data,$this->load->view('shared/script/designers/_home_script','',true));
     }

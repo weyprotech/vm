@@ -47,6 +47,7 @@
             <?php } ?>        
         </div>
     <?php } ?>
+    <?php if($row->brand_story_title != '' && $row->brand_story_content != '') {?>
     <div class="brandStory_article article_center_block page_block">
         <div class="block_inner">
             <h2 class="block_title"><?= $row->brand_story_title ?></h2>
@@ -55,10 +56,11 @@
             </div>
         </div>
     </div>
+    <?php } ?>
     <div class="brandStory_wall">
         <div class="grid_sizer"></div>
         <div class="gutter_sizer"></div>
-        
+        <?php if($row->brandstory2_1Img != '') {?>
         <div class="item">
             <!-- 940px * 1154px--><img src="<?= backend_url($row->brandstory2_1Img) ?>">
         </div>
@@ -70,12 +72,17 @@
                 </div>
             </div>
         </div>
+        <?php }?>
+        <?php if($row->brandstory2_2Img != '') {?>
         <div class="item">
             <!-- 940px * 968px--><img src="<?= backend_url($row->brandstory2_2Img) ?>">
         </div>
+        <?php }?>
+        <?php if($row->brandstory2_3Img != '') {?>
         <div class="item">
             <!-- 940px * 865px--><img src="<?= backend_url($row->brandstory2_3Img) ?>">
         </div>
+        <?php }?>
         <div class="item">
             <div class="designer_link">
                 <h3>Brand Designer</h3>

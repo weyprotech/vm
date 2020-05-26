@@ -41,8 +41,10 @@
                             data-bv-feedbackicons-valid="glyphicon glyphicon-ok"
                             data-bv-feedbackicons-invalid="glyphicon glyphicon-remove"
                             data-bv-feedbackicons-validating="glyphicon glyphicon-refresh">
+
                             <input type="hidden" name="is_enable" value="1">
                             <input type="hidden" name="designerId" value="<?= $designerId ?>">
+
                             <div id="content" class="tab-content"><?php $i = 1; ?>
                                 <div class="tab-pane" id="hb<?= $i++ ?>">
                                     <fieldset>
@@ -85,11 +87,12 @@
 
                                             <div class="col-sm-9">
                                                 <input type="file" class="btn btn-default" id="uploadImg" name="designiconImg"
-                                                    data-bv-notempty="true" data-bv-notempty-message=" "
+                                                    data-bv-notempty="true" 
+                                                    data-bv-notempty-message="File required"
                                                     data-bv-file="true"
                                                     data-bv-file-extension="jpeg,jpg,png,gif"
                                                     data-bv-file-type="image/jpeg,image/png,image/gif"
-                                                    data-bv-file-message="Type error">
+                                                    data-bv-file-message="File invalid">
 
                                                 <p class="help-block">
                                                     <strong>Note:</strong>Resolution is <strong>100 x 100</strong>. Format is JPG and PNG</strong>。
@@ -105,11 +108,12 @@
 
                                             <div class="col-sm-9">
                                                 <input type="file" class="btn btn-default" id="uploadImg" name="designImg"
-                                                    data-bv-notempty="true" data-bv-notempty-message=" "
+                                                    data-bv-notempty="true" 
+                                                    data-bv-notempty-message="File required"
                                                     data-bv-file="true"
                                                     data-bv-file-extension="jpeg,jpg,png,gif"
                                                     data-bv-file-type="image/jpeg,image/png,image/gif"
-                                                    data-bv-file-message="Type error">
+                                                    data-bv-file-message="File invalid">
 
                                                 <p class="help-block">
                                                     <strong>Note:</strong>Resolution is <strong>540 x 720</strong>. Format is JPG and PNG</strong>。
@@ -126,11 +130,12 @@
 
                                             <div class="col-sm-9">
                                                 <input type="file" class="btn btn-default" id="uploadImg" name="designerstoryImg"
-                                                    data-bv-notempty="true" data-bv-notempty-message=" "
+                                                    data-bv-notempty="true" 
+                                                    data-bv-notempty-message="File required"
                                                     data-bv-file="true"
                                                     data-bv-file-extension="jpeg,jpg,png,gif"
                                                     data-bv-file-type="image/jpeg,image/png,image/gif"
-                                                    data-bv-file-message="Type error">
+                                                    data-bv-file-message="File invalide">
 
                                                 <p class="help-block">
                                                     <strong>Note:</strong>Resolution is <strong>510 x 288</strong>. Format is JPG and PNG</strong>。
@@ -164,7 +169,6 @@
 
                                             <div class="col-sm-9">
                                                 <input class="btn btn-default" type="file" id="uploadImg" name="hometownpost1Img" 
-                                                    data-bv-notempty="true" data-bv-notempty-message=" "
                                                     data-bv-file="true"
                                                     data-bv-file-extension="jpeg,jpg,png,gif"
                                                     data-bv-file-type="image/jpeg,image/png,image/gif"
@@ -184,7 +188,6 @@
 
                                             <div class="col-sm-9">
                                                 <input class="btn btn-default" type="file" id="uploadImg" name="hometownpost2Img"
-                                                    data-bv-notempty="true" data-bv-notempty-message=" "
                                                     data-bv-file="true"
                                                     data-bv-file-extension="jpeg,jpg,png,gif"
                                                     data-bv-file-type="image/jpeg,image/png,image/gif"
@@ -204,7 +207,6 @@
 
                                             <div class="col-sm-9">
                                                 <input class="btn btn-default" type="file" id="uploadImg" name="hometownpost3Img"
-                                                    data-bv-notempty="true" data-bv-notempty-message=" "
                                                     data-bv-file="true"
                                                     data-bv-file-extension="jpeg,jpg,png,gif"
                                                     data-bv-file-type="image/jpeg,image/png,image/gif"
@@ -224,7 +226,7 @@
                                             <label class="col-sm-2 control-label">Account</label>
 
                                             <div class="col-sm-5">
-                                                <input class="form-control" name="account" data-bv-remote-name="account" data-bv-remote-name-message=" " data-bv-notempty="true" data-bv-notempty-message=" ">                                                
+                                                <input class="form-control" name="account" data-bv-remote-name="account" data-bv-remote-name-message=" ">                                                
                                             </div>
                                         </div>
 
@@ -232,7 +234,7 @@
                                             <label class="col-sm-2 control-label">Password</label>
 
                                             <div class="col-sm-5">
-                                                <input class="form-control" name="password" data-bv-remote-name="password" data-bv-remote-name-message=" " data-bv-notempty="true" data-bv-notempty-message=" ">                                                
+                                                <input class="form-control" name="password" data-bv-remote-name="password" data-bv-remote-name-message=" ">                                                
                                             </div>
                                         </div>
 
@@ -240,7 +242,7 @@
                                             <label class="col-sm-2 control-label">Url</label>
 
                                             <div class="col-sm-5">
-                                                <input class="form-control" name="url" data-bv-remote-name="url" data-bv-remote-name-message=" " data-bv-notempty="true" data-bv-notempty-message=" ">
+                                                <input class="form-control" name="url" data-bv-remote-name="url" data-bv-remote-name-message=" ">
                                             </div>
                                         </div>
 
@@ -298,7 +300,7 @@
                                                     <label class="col-sm-2 control-label">Description</label>
 
                                                     <div class="col-sm-9">
-                                                        <textarea class="form-control" name="langList[<?= $lrow->langId ?>][description]" rows="10" data-bv-notempty="true" data-bv-notempty-message=" "></textarea>
+                                                        <textarea class="form-control" name="langList[<?= $lrow->langId ?>][description]" rows="10"></textarea>
                                                     </div>
                                                 </div>
 
@@ -307,7 +309,7 @@
                                                     <label class="col-sm-2 control-label" for="title-<?= $lrow->langId ?>">Story Title</label>
 
                                                     <div class="col-sm-9">
-                                                        <input type="text" class="form-control" name="langList[<?= $lrow->langId ?>][my_story_title]" data-bv-notempty="true" data-bv-notempty-message=" ">                                                                                                                
+                                                        <input type="text" class="form-control" name="langList[<?= $lrow->langId ?>][my_story_title]">                                                                                                                
                                                     </div>
                                                 </div>
 
@@ -316,7 +318,7 @@
 
                                                     <div class="col-sm-9">
                                                         <div id="content-edit"><?= @$langData->description ?></div>
-                                                        <input type="hidden" id="content" name="langList[<?= $lrow->langId ?>][my_story_content]" data-bv-notempty="true" data-bv-notempty-message=" ">
+                                                        <input type="hidden" id="content" name="langList[<?= $lrow->langId ?>][my_story_content]">
                                                     </div>
                                                 </div>
 
@@ -325,7 +327,7 @@
                                                     <label class="col-sm-2 control-label" for="title-<?= $lrow->langId ?>">Hometown Title</label>
 
                                                     <div class="col-sm-9">
-                                                        <input type="text" class="form-control" name="langList[<?= $lrow->langId ?>][hometown_title]" data-bv-notempty="true" data-bv-notempty-message=" ">                                                                                                                
+                                                        <input type="text" class="form-control" name="langList[<?= $lrow->langId ?>][hometown_title]">                                                                                                                
                                                     </div>
                                                 </div>
 
@@ -346,7 +348,7 @@
                                                     <label class="col-sm-2 control-label" for="title-<?= $lrow->langId ?>">Hometown Area</label>
 
                                                     <div class="col-sm-9">
-                                                        <input type="text" class="form-control" name="langList[<?= $lrow->langId ?>][hometown_area]" data-bv-notempty="true" data-bv-notempty-message=" ">                                                                                                                
+                                                        <input type="text" class="form-control" name="langList[<?= $lrow->langId ?>][hometown_area]">                                                                                                                
                                                     </div>
                                                 </div>
 
@@ -362,7 +364,7 @@
                                                     <label class="col-sm-2 control-label" for="title-<?= $lrow->langId ?>">Hometown Post1 Title</label>
 
                                                     <div class="col-sm-9">
-                                                        <input class="form-control" type="text" name="langList[<?= $lrow->langId ?>][hometown_post1_title]" data-bv-notempty="true" data-bv-notempty-message=" ">
+                                                        <input class="form-control" type="text" name="langList[<?= $lrow->langId ?>][hometown_post1_title]">
                                                     </div>
                                                 </div>                                    
 
@@ -370,7 +372,7 @@
                                                     <label class="col-sm-2 control-label" for="title-<?= $lrow->langId ?>">Hometown Post1 Content</label>
 
                                                     <div class="col-sm-9">
-                                                        <textarea class="form-control" name="langList[<?= $lrow->langId ?>][hometown_post1_content]" rows="10" data-bv-notempty="true" data-bv-notempty-message=" "></textarea>
+                                                        <textarea class="form-control" name="langList[<?= $lrow->langId ?>][hometown_post1_content]" rows="10"></textarea>
                                                     </div>
                                                 </div>
 
@@ -378,7 +380,7 @@
                                                     <label class="col-sm-2 control-label" for="title-<?= $lrow->langId ?>">Hometown Post2 Title</label>
 
                                                     <div class="col-sm-9">
-                                                        <input class="form-control" type="text" name="langList[<?= $lrow->langId ?>][hometown_post2_title]" data-bv-notempty="true" data-bv-notempty-message=" ">
+                                                        <input class="form-control" type="text" name="langList[<?= $lrow->langId ?>][hometown_post2_title]">
                                                     </div>
                                                 </div>
 
@@ -386,14 +388,14 @@
                                                     <label class="col-sm-2 control-label" for="title-<?= $lrow->langId ?>">Hometown Post2 Content</label>
 
                                                     <div class="col-sm-9">
-                                                        <textarea class="form-control" name="langList[<?= $lrow->langId ?>][hometown_post2_content]" rows="10" data-bv-notempty="true" data-bv-notempty-message=" "></textarea>
+                                                        <textarea class="form-control" name="langList[<?= $lrow->langId ?>][hometown_post2_content]" rows="10"></textarea>
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group">
                                                     <label class="col-sm-2 control-label" for="title-<?= $lrow->langId ?>">Hometown Post3 Title</label>
                                                     <div class="col-sm-9">
-                                                        <input class="form-control" type="text" name="langList[<?= $lrow->langId ?>][hometown_post3_title]" data-bv-notempty="true" data-bv-notempty-message=" ">                                                   
+                                                        <input class="form-control" type="text" name="langList[<?= $lrow->langId ?>][hometown_post3_title]">                                                   
                                                     </div>
                                                 </div>
 
@@ -401,7 +403,7 @@
                                                     <label class="col-sm-2 control-label" for="title-<?= $lrow->langId ?>">Hometown Post3 Content</label>
 
                                                     <div class="col-sm-9">
-                                                        <textarea class="form-control" name="langList[<?= $lrow->langId ?>][hometown_post3_content]" rows="10" data-bv-notempty="true" data-bv-notempty-message=" "></textarea>
+                                                        <textarea class="form-control" name="langList[<?= $lrow->langId ?>][hometown_post3_content]" rows="10"></textarea>
                                                     </div>
                                                 </div>
                                             </fieldset>

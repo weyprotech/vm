@@ -41,8 +41,10 @@
                             data-bv-feedbackicons-valid="glyphicon glyphicon-ok"
                             data-bv-feedbackicons-invalid="glyphicon glyphicon-remove"
                             data-bv-feedbackicons-validating="glyphicon glyphicon-refresh">
+
                             <input type="hidden" name="is_enable" value="1">
                             <input type="hidden" name="brandId" value="<?= $brandId ?>">
+
                             <div id="content" class="tab-content"><?php $i = 1; ?>
                                 <div class="tab-pane active" id="hb<?= $i++ ?>">
                                     <fieldset>
@@ -114,11 +116,12 @@
 
                                             <div class="col-sm-9">
                                                 <input type="file" class="btn btn-default" id="uploadImg" name="brandiconImg"
-                                                    data-bv-notempty="true" data-bv-notempty-message=" "
+                                                    data-bv-notempty="true" 
+                                                    data-bv-notempty-message="File required"
                                                     data-bv-file="true"
                                                     data-bv-file-extension="jpeg,jpg,png,gif"
                                                     data-bv-file-type="image/jpeg,image/png,image/gif"
-                                                    data-bv-file-message="圖示格式不符">
+                                                    data-bv-file-message="File invalid">
 
                                                 <p class="help-block">
                                                     <strong>Note:</strong>Resolution is <strong>100 x 100</strong>. Format is JPG and PNG</strong>。
@@ -134,11 +137,12 @@
 
                                             <div class="col-sm-9">
                                                 <input type="file" class="btn btn-default" id="uploadImg" name="brandImg"
-                                                    data-bv-notempty="true" data-bv-notempty-message=" "
+                                                    data-bv-notempty="true" 
+                                                    data-bv-notempty-message="File required"
                                                     data-bv-file="true"
                                                     data-bv-file-extension="jpeg,jpg,png,gif"
                                                     data-bv-file-type="image/jpeg,image/png,image/gif"
-                                                    data-bv-file-message="圖示格式不符">
+                                                    data-bv-file-message="File invalid">
 
                                                 <p class="help-block">
                                                     <strong>Note:</strong>Resolution is <strong>600 x 600</strong>. Format is JPG and PNG</strong>。
@@ -155,11 +159,12 @@
 
                                             <div class="col-sm-9">
                                                 <input type="file" class="btn btn-default" id="uploadImg" name="brandindexImg"
-                                                    data-bv-notempty="true" data-bv-notempty-message=" "
+                                                    data-bv-notempty="true" 
+                                                    data-bv-notempty-message="File required"
                                                     data-bv-file="true"
                                                     data-bv-file-extension="jpeg,jpg,png,gif"
                                                     data-bv-file-type="image/jpeg,image/png,image/gif"
-                                                    data-bv-file-message="圖示格式不符">
+                                                    data-bv-file-message="File invalid">
 
                                                 <p class="help-block">
                                                     <strong>Note:</strong>Resolution is <strong>360 x 360</strong>. Format is JPG and PNG</strong>。
@@ -176,11 +181,10 @@
 
                                             <div class="col-sm-9">
                                                 <input type="file" class="btn btn-default" id="uploadImg" name="brandstory2_1Img"
-                                                    data-bv-notempty="true" data-bv-notempty-message=" "
                                                     data-bv-file="true"
                                                     data-bv-file-extension="jpeg,jpg,png,gif"
                                                     data-bv-file-type="image/jpeg,image/png,image/gif"
-                                                    data-bv-file-message="圖示格式不符">
+                                                    data-bv-file-message="File invalid">
 
                                                 <p class="help-block">
                                                     <strong>Note:</strong>Resolution is <strong>940 x 1154</strong>. Format is JPG and PNG</strong>。
@@ -197,11 +201,10 @@
 
                                             <div class="col-sm-9">
                                                 <input type="file" class="btn btn-default" id="uploadImg" name="brandstory2_2Img"
-                                                    data-bv-notempty="true" data-bv-notempty-message=" "
                                                     data-bv-file="true"
                                                     data-bv-file-extension="jpeg,jpg,png,gif"
                                                     data-bv-file-type="image/jpeg,image/png,image/gif"
-                                                    data-bv-file-message="圖示格式不符">
+                                                    data-bv-file-message="File invalid">
 
                                                 <p class="help-block">
                                                     <strong>Note:</strong>Resolution is <strong>941 x 968</strong>. Format is JPG and PNG</strong>。
@@ -218,11 +221,10 @@
 
                                             <div class="col-sm-9">
                                                 <input type="file" class="btn btn-default" id="uploadImg" name="brandstory2_3Img"
-                                                    data-bv-notempty="true" data-bv-notempty-message=" "
                                                     data-bv-file="true"
                                                     data-bv-file-extension="jpeg,jpg,png,gif"
                                                     data-bv-file-type="image/jpeg,image/png,image/gif"
-                                                    data-bv-file-message="圖示格式不符">
+                                                    data-bv-file-message="File invalid">
 
                                                 <p class="help-block">
                                                     <strong>Note:</strong>Resolution is <strong>940 x 865</strong>. Format is JPG and PNG</strong>。
@@ -256,7 +258,7 @@
                                                     <label class="col-sm-2 control-label">Content</label>
 
                                                     <div class="col-sm-9">
-                                                        <textarea class="form-control" name="langList[<?= $lrow->langId ?>][content]" rows="10" data-bv-notempty="true" data-bv-notempty-message=" "></textarea>
+                                                        <textarea class="form-control" name="langList[<?= $lrow->langId ?>][content]" rows="10"></textarea>
                                                     </div>
                                                 </div>
 
@@ -265,7 +267,7 @@
                                                     <label class="col-sm-2 control-label" for="title-<?= $lrow->langId ?>">Story1 Title</label>
 
                                                     <div class="col-sm-9">
-                                                        <input type="text" class="form-control" name="langList[<?= $lrow->langId ?>][brand_story_title]" data-bv-notempty="true" data-bv-notempty-message=" ">                                                                                                                
+                                                        <input type="text" class="form-control" name="langList[<?= $lrow->langId ?>][brand_story_title]">                                                                                                                
                                                     </div>
                                                 </div>
 
@@ -282,7 +284,7 @@
                                                     <label class="col-sm-2 control-label" for="title-<?= $lrow->langId ?>">Story2 Title</label>
 
                                                     <div class="col-sm-9">
-                                                        <input type="text" class="form-control" name="langList[<?= $lrow->langId ?>][brand_story_title2]" data-bv-notempty="true" data-bv-notempty-message=" ">
+                                                        <input type="text" class="form-control" name="langList[<?= $lrow->langId ?>][brand_story_title2]">
                                                     </div>
                                                 </div>
 
@@ -290,7 +292,7 @@
                                                     <label class="col-sm-2 control-label" for="title-<?= $lrow->langId ?>">Story2 Content</label>
 
                                                     <div class="col-sm-9">
-                                                        <textarea class="form-control" name="langList[<?= $lrow->langId ?>][brand_story_content2]" rows="10" data-bv-notempty="true" data-bv-notempty-message=" "></textarea>
+                                                        <textarea class="form-control" name="langList[<?= $lrow->langId ?>][brand_story_content2]" rows="10"></textarea>
                                                     </div>
                                                 </div>                                             
                                             </fieldset>

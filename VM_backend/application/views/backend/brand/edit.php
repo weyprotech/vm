@@ -41,6 +41,7 @@
                             data-bv-feedbackicons-valid="glyphicon glyphicon-ok"
                             data-bv-feedbackicons-invalid="glyphicon glyphicon-remove"
                             data-bv-feedbackicons-validating="glyphicon glyphicon-refresh">
+
                             <input type="hidden" name="is_enable" value="1">
                             <input type="hidden" name="uuid" value="<?= $row->uuid ?>">
 
@@ -105,7 +106,11 @@
                                             <label class="col-sm-2 control-label">Icon</label>
 
                                             <div class="col-sm-9">
-                                                <input type="file" class="btn btn-default" id="uploadImg" name="brandiconImg">
+                                                <input type="file" class="btn btn-default" id="uploadImg" name="brandiconImg"
+                                                    data-bv-file="true"
+                                                    data-bv-file-extension="jpeg,jpg,png,gif"
+                                                    data-bv-file-type="image/jpeg,image/png,image/gif"
+                                                    data-bv-file-message="File invalid">
 
                                                 <p class="help-block">
                                                     <strong>Note:</strong>Resolution is <strong>100 x 100</strong>. Format is JPG and PNG</strong>。
@@ -120,7 +125,11 @@
                                             <label class="col-sm-2 control-label">Image</label>
 
                                             <div class="col-sm-9">
-                                                <input type="file" class="btn btn-default" id="uploadImg" name="brandImg">
+                                                <input type="file" class="btn btn-default" id="uploadImg" name="brandImg"
+                                                    data-bv-file="true"
+                                                    data-bv-file-extension="jpeg,jpg,png,gif"
+                                                    data-bv-file-type="image/jpeg,image/png,image/gif"
+                                                    data-bv-file-message="File invalid">
 
                                                 <p class="help-block">
                                                     <strong>Note:</strong>Resolution is <strong>600 x 600</strong>. Format is JPG and PNG</strong>。
@@ -137,7 +146,11 @@
                                             <label class="col-sm-2 control-label">List Img</label>
 
                                             <div class="col-sm-9">
-                                                <input type="file" class="btn btn-default" id="uploadImg" name="brandindexImg">
+                                                <input type="file" class="btn btn-default" id="uploadImg" name="brandindexImg"
+                                                    data-bv-file="true"
+                                                    data-bv-file-extension="jpeg,jpg,png,gif"
+                                                    data-bv-file-type="image/jpeg,image/png,image/gif"
+                                                    data-bv-file-message="File invalid">
 
                                                 <p class="help-block">
                                                     <strong>Note:</strong>Resolution is <strong>360 x 360</strong>. Format is JPG and PNG</strong>。
@@ -158,7 +171,7 @@
                                                     data-bv-file="true"
                                                     data-bv-file-extension="jpeg,jpg,png,gif"
                                                     data-bv-file-type="image/jpeg,image/png,image/gif"
-                                                    data-bv-file-message="圖示格式不符">
+                                                    data-bv-file-message="File invalid">
 
                                                 <p class="help-block">
                                                     <strong>Note:</strong>Resolution is <strong>940 x 1154</strong>. Format is JPG and PNG</strong>。
@@ -179,7 +192,7 @@
                                                     data-bv-file="true"
                                                     data-bv-file-extension="jpeg,jpg,png,gif"
                                                     data-bv-file-type="image/jpeg,image/png,image/gif"
-                                                    data-bv-file-message="圖示格式不符">
+                                                    data-bv-file-message="File invalid">
 
                                                 <p class="help-block">
                                                     <strong>Note:</strong>Resolution is <strong>941 x 968</strong>. Format is JPG and PNG</strong>。
@@ -200,7 +213,7 @@
                                                     data-bv-file="true"
                                                     data-bv-file-extension="jpeg,jpg,png,gif"
                                                     data-bv-file-type="image/jpeg,image/png,image/gif"
-                                                    data-bv-file-message="圖示格式不符">
+                                                    data-bv-file-message="File invalid">
 
                                                 <p class="help-block">
                                                     <strong>Note:</strong>Resolution is <strong>940 x 865</strong>. Format is JPG and PNG</strong>。
@@ -236,7 +249,7 @@
                                                     <label class="col-sm-2 control-label" for="title-<?= $lrow->langId ?>">Brand Name</label>
 
                                                     <div class="col-sm-9">
-                                                        <input type="text" class="form-control brand_name" name="langList[<?= $lrow->langId ?>][name]" value="<?= @$langData->name ?>" data-bv-notempty="true" data-bv-notempty-message=" ">                                                        
+                                                        <input type="text" class="form-control brand_name" name="langList[<?= $lrow->langId ?>][name]" value="<?= @$langData->name ?>">                                                        
                                                     </div>
                                                 </div>
 
@@ -244,7 +257,7 @@
                                                     <label class="col-sm-2 control-label">Content</label>
 
                                                     <div class="col-sm-9">
-                                                        <textarea class="form-control" name="langList[<?= $lrow->langId ?>][content]" rows="10" data-bv-notempty="true" data-bv-notempty-message=" "><?= @$langData->content ?></textarea>
+                                                        <textarea class="form-control" name="langList[<?= $lrow->langId ?>][content]" rows="10"><?= @$langData->content ?></textarea>
                                                     </div>
                                                 </div>
 
@@ -252,7 +265,7 @@
                                                     <label class="col-sm-2 control-label" for="title-<?= $lrow->langId ?>">Story Title</label>
 
                                                     <div class="col-sm-9">
-                                                        <input type="text" class="form-control" name="langList[<?= $lrow->langId ?>][brand_story_title]" value="<?= @$langData->brand_story_title ?>" data-bv-notempty="true" data-bv-notempty-message=" ">                                                                                                                
+                                                        <input type="text" class="form-control" name="langList[<?= $lrow->langId ?>][brand_story_title]" value="<?= @$langData->brand_story_title ?>">                                                                                                                
                                                     </div>
                                                 </div>
 
@@ -269,7 +282,7 @@
                                                     <label class="col-sm-2 control-label" for="title-<?= $lrow->langId ?>">Story2 Title</label>
 
                                                     <div class="col-sm-9">
-                                                        <input type="text" class="form-control" name="langList[<?= $lrow->langId ?>][brand_story_title2]" value="<?= @$langData->brand_story_title2 ?>" data-bv-notempty="true" data-bv-notempty-message=" ">                                                                                                                
+                                                        <input type="text" class="form-control" name="langList[<?= $lrow->langId ?>][brand_story_title2]" value="<?= @$langData->brand_story_title2 ?>">                                                                                                                
                                                     </div>
                                                 </div>
 

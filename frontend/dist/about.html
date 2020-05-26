@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="images/favicon.ico">
     <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css">
     <link rel="stylesheet" href="styles/main.css">
   </head>
   <body><!--[if lt IE 10]>
@@ -430,6 +431,43 @@
       </div>
     </div>
     <div id="fixedButtons"><a id="backTop" href="javascript:;"><img src="images/arrow_back_top.png"><span>top</span></a></div>
+    <!-- Cookie宣告-->
+    <script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js"></script>
+    <script>
+      //偵測要宣告的語言
+      if(window.location.href.indexOf('tw') > -1){
+        pageLang = 'tw';
+      } else {
+        pageLang = 'en';
+      }
+      switch(pageLang) {
+        case 'tw':
+          cookiePopup = '為提供使用者最佳體驗，本公司網站使用瀏覽器Cookie。使用本網站即表示您同意cookie的放置。有關更多使用Cookie詳情，請參閱我們的隱私政策。';
+          break;
+        default:
+          cookiePopup = 'We use cookies to provide the best possible user experience for visiting our web. By using this website you agree to the placement of cookies. For more detail about using cookies, visit privacy policy.';
+      }
+      window.addEventListener('load', function(){
+        window.cookieconsent.initialise({
+          'palette': {
+            'popup': {
+              'background': '#B4A189',
+              'text': '#ffffff'
+            },
+            'button': {
+              'background': '#D5C9B0'
+            }
+          },
+          'theme': 'classic',
+          'type': 'opt-out',
+          'content': {
+            'message': cookiePopup,
+            'href': 'javascript:;'
+          }
+        });
+      });
+    </script>
+    <!-- Cookie宣告結束-->
     <script src="scripts/vendor.js"></script>
     <script src="scripts/plugins.js"></script>
     <script src="scripts/main.js"></script>

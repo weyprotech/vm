@@ -349,19 +349,6 @@
 
   // Designer
   .designer_header {
-    // .designer_header_mian {
-    //   display: flex;
-    //   align-items: center;
-    //   justify-content: space-between;
-    // }
-    // .designer_info {
-    //   flex: 1 1 auto;
-    //   margin-bottom: 0;
-    // }
-    // .links {
-    //   flex: 0 0 auto;
-    //   margin-left: 1rem;
-    // }
     .designer_navigation {
       padding: 1.125em 0;
     }
@@ -395,9 +382,11 @@
             position: absolute;
             top: 100%;
             left: 50%;
-            width: 150px;
             margin-top: 0.5em;
-            margin-left: -75px;
+            transform: translateX(-50%);
+            > li > a {
+              white-space: nowrap;
+            }
           }
         }
       }

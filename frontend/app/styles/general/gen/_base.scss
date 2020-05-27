@@ -44,6 +44,10 @@ img {
   height: auto;
 }
 
+#wrapper {
+  height: auto !important;
+}
+
 .bg_brown {
   background-color: $bg-brown;
 }

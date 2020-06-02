@@ -52,36 +52,36 @@
                     <?php } ?>
                 </div>
                 <div class="products_sku">
+                    <?php if($product_size) { ?>
                     <div class="controls_group">
                         <label>Size</label>
                         <div class="controls">
                             <div class="select_wrapper">
                                 <select id="size">
-                                    <?php if($product_size){
-                                        foreach($product_size as $sizeKey => $sizeValue){ ?>
-                                            <option value="<?= $sizeValue->Id ?>"><?= $sizeValue->size ?></option>
-                                        <?php }
-                                    } ?>
+                                    <?php foreach($product_size as $sizeKey => $sizeValue) { ?>
+                                        <option value="<?= $sizeValue->Id ?>"><?= $sizeValue->size ?></option>
+                                    <?php } ?>
                                 </select>
                             </div>
                             <div class="note">(size guide)</div>
                         </div>
                     </div>
+                    <?php } ?>
+                    <?php if($product_color) {?>
                     <div class="controls_group">
                         <label>Color</label>
                         <div class="controls">
                             <div class="select_wrapper">
                                 <select id="color">
                                     <!--<option>Select a color</option>-->
-                                    <?php if($product_color){
-                                        foreach($product_color as $colorKey => $colorValue){ ?>
-                                            <option value="<?= $colorValue->colorId ?>"><?= $colorValue->color ?></option>
-                                        <?php } 
-                                    } ?>                                
+                                    <?php foreach($product_color as $colorKey => $colorValue){ ?>
+                                        <option value="<?= $colorValue->colorId ?>"><?= $colorValue->color ?></option>
+                                    <?php } ?>                                
                                 </select>
                             </div>
                         </div>
                     </div>
+                    <?php }?>
                     <div class="controls_group">
                         <label>Quantity</label>
                         <div class="controls">

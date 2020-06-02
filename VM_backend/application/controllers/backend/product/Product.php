@@ -29,17 +29,20 @@ class Product extends Backend_Controller
         $this->check_action_auth($this->menuId, 'add', true); // Check Auth
         $productId = uniqid();
         $size_chart = $this->product_model->get_size_chart();
-        $topList = $this->category_model->get_category_select(array(array('field' => 'category.lv','value' => '1')),false,false,$this->langId);    
-        $brandList = $this->brand_model->get_brand_select(array(array('field' => 'is_visible','value' => 1)),false,false,$this->langId);
+        $topList = $this->category_model->get_category_select(array(array('field' => 'category.lv','value' => '1')), false, false,$this->langId);    
+        $brandList = $this->brand_model->get_brand_select(array(array('field' => 'is_visible','value' => 1)), false, false, $this->langId);
         if($post = $this->input->post(null,true)){
             $this->set_active_status('success', 'Success');
             unset($post['image_list_length']);
             $productId = $post['productId'];
+
             $this->product_model->insert_product($post);
-            $this->product_model->insert_product_size($post['size'],$post['productId']);
+            $this->product_model->insert_product_size($post['size'], $post['productId']);
+            
             if ($this->input->get('back', true)):
                 redirect('backend/product/product' . $this->query);
             endif;
+
             redirect("backend/product/product/edit/" . $productId);            
         }
         $data = array(
@@ -58,23 +61,23 @@ class Product extends Backend_Controller
             redirect('backend/product');
         endif;
 
-        $topList = $this->category_model->get_category_select(array(array('field' => 'category.lv','value' => '1')),false,false,$this->langId); 
+        $topList = $this->category_model->get_category_select(array(array('field' => 'category.lv', 'value' => '1')), false, false, $this->langId); 
         $category = $this->category_model->get_category_by_id($row->cId,$this->langId);
         $sub_category = $this->category_model->get_category_by_id($category->prevId);
         $base_category = $this->category_model->get_category_by_id($sub_category->prevId);
-        $subList = $this->category_model->get_category_select(array(array('field' => 'category.prevId','value' => $base_category->categoryId)),false,false,$this->langId);
-        $categoryList = $this->category_model->get_category_select(array(array('field' => 'category.prevId','value' => $sub_category->categoryId)),false,false,$this->langId);
-        $sizeList = $this->product_model->get_product_size_select(array(array('field' => 'product_size.pId','value' => $productId)),false,false);
+        $subList = $this->category_model->get_category_select(array(array('field' => 'category.prevId', 'value' => $base_category->categoryId)), false, false, $this->langId);
+        $categoryList = $this->category_model->get_category_select(array(array('field' => 'category.prevId', 'value' => $sub_category->categoryId)), false, false, $this->langId);
+        $sizeList = $this->product_model->get_product_size_select(array(array('field' => 'product_size.pId', 'value' => $productId)), false, false);
         $size_chart = $this->product_model->get_size_chart();
-        $brandList = $this->brand_model->get_brand_select(array(array('field' => 'is_visible','value' => 1)),false,false,$this->langId);
+        $brandList = $this->brand_model->get_brand_select(array(array('field' => 'is_visible','value' => 1)), false, false, $this->langId);
 
         if ($post = $this->input->post(null, true)):
             $this->check_action_auth($this->menuId, 'edit', true); // Check Auth
             if ($row->uuid != $post['uuid']):
-                $this->set_active_status('danger', 'Date has been changed');
+                $this->set_active_status('danger', 'Data has been changed');
             else:
                 $this->product_model->update_product($row, $post);
-                $this->product_model->update_product_size($sizeList,$post['size'],$productId);
+                $this->product_model->update_product_size($sizeList, $post['size'], $productId);
                 $this->set_active_status('success', 'Success');
                 if ($this->input->get('back', true)):
                     redirect('backend/product/product' . $this->query);
@@ -83,6 +86,7 @@ class Product extends Backend_Controller
 
             redirect('backend/product/product/edit/' . $productId . $this->query);
         endif;
+        
         $data = array(
             'productId' => $productId,
             'row' => $row,            

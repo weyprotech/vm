@@ -140,7 +140,7 @@
                                         <div class="form-group">
                                             <label class="col-sm-2 control-label" for="price">Price</label>
 
-                                            <div class="col-sm-9 col-lg-2">
+                                            <div class="col-sm-2 col-lg-2">
                                                 <input type="integer" class="form-control" name="price" value="<?= $row->price ?>" data-bv-notempty="true" data-bv-notempty-message=" ">
                                             </div>
                                         </div>
@@ -150,13 +150,10 @@
 
                                             <div class="col-sm-9">
                                                 <?php foreach($size_chart as $sizeKey => $sizeValue){ ?>
-                                                    <?php $selected = 0; ?>
-                                                    <?php foreach($sizeList as $productKey => $productValue){ ?>
-                                                        <?php if($sizeValue->size == $productValue->size){ ?>
-                                                            <?php $selected = 1; ?>
-                                                        <?php } ?>
-                                                    <?php } ?>
-                                                    <input type="checkbox" value="<?= $sizeValue->size ?>" name='size[]' <?= $selected == 1 ? 'checked' : '' ?>> <?= $sizeValue->size ?>&nbsp;&nbsp;&nbsp;
+                                                    <label class="checkbox checkbox-inline">
+                                                        <input name="size[]" type="checkbox" value="<?= $sizeValue->size ?>" <?= ($sizeList && in_array($sizeValue, $sizeList)) ? 'checked' : '' ?>>
+                                                        <?= $sizeValue->size ?>
+                                                    </label>
                                                 <?php } ?>
                                             </div>
                                         </div>

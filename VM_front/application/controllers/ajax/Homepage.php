@@ -43,7 +43,7 @@ class Homepage extends Ajax_Controller
                                 'brandImg' => backend_url($brandValue->brandiconImg),
                                 'brandPic' => backend_url($brandValue->brandImg),
                                 'description' => $description[0],
-                                'productsLink' => '',
+                                'productsLink' => website_url('brand/story').'?brandId='.$brandValue->brandId,
                                 'designerLink' => website_url('designers/home').'?designerId='.$brandValue->designerId,
                                 'designerImg' => backend_url($brandValue->designiconImg),
                                 'designerName' => $brandValue->designer_name,

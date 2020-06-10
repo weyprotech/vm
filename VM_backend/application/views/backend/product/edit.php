@@ -151,7 +151,7 @@
                                             <div class="col-sm-9">
                                                 <?php foreach($size_chart as $sizeKey => $sizeValue){ ?>
                                                     <label class="checkbox checkbox-inline">
-                                                        <input name="size[]" type="checkbox" value="<?= $sizeValue->size ?>" <?= ($sizeList && in_array($sizeValue, $sizeList)) ? 'checked' : '' ?>>
+                                                        <input name="size[]" type="checkbox" value="<?= $sizeValue->size ?>" <?= ($sizeList && in_array($sizeValue->size, $sizeList)) ? 'checked' : '' ?>>
                                                         <?= $sizeValue->size ?>
                                                     </label>
                                                 <?php } ?>
@@ -476,13 +476,13 @@
             html:'<input type="file" id="transactionImg" onchange="change_small_img()" class="swal2-file transactionImg" placeholder="" style="display: block;width:92%"><br><strong>Note:</strong> Resolution is <strong>300 x 400</strong>. Format is JPG and PNG</strong><br><input type="file" id="transactionImg" onchange="change_middle_img()" class="swal2-file transactionImg" placeholder="" style="display: block;width:92%"><br><strong>Note:</strong> Resolution is <strong>470 x 627</strong>. Format is JPG and PNG</strong><br><input type="file" id="transactionImg" multiple="multiple" onchange="change_big_img()" class="swal2-file transactionImg" placeholder="" style="display: block;width:92%"><br><strong>Note:</strong> Resolution is <strong>600 x 800</strong>. Format is JPG and PNG</strong><br><span stle="float:left">Youtube</span><input type="text" id="youtube" name="youtube" style="width:80%"></p>'
         }).then(function (e) {
             var data = new FormData();
-            if(small_file != undefined && small_file != ''){
+            if(typeof small_file != undefined && small_file != ''){
                 data.append('small_file',small_file[0]);
             }  
-            if(middle_file != undefined && middle_file != ''){
+            if(typeof middle_file != undefined && middle_file != ''){
                 data.append('middle_file',middle_file[0]);
             }
-            if(big_file != undefined && big_file != ''){
+            if(typeof big_file != undefined && big_file != ''){
                 data.append('big_file',big_file[0]);
             }      
             data.append('youtube',$('#youtube').val());

@@ -71,6 +71,11 @@ class Product extends Backend_Controller
         $size_chart = $this->product_model->get_size_chart();
         $brandList = $this->brand_model->get_brand_select(array(array('field' => 'is_visible','value' => 1)), false, false, $this->langId);
 
+        $sizeArr = false;
+        foreach($sizeList as $size) {
+            $sizeArr[] = $size->size;
+        }
+
         if ($post = $this->input->post(null, true)):
             $this->check_action_auth($this->menuId, 'edit', true); // Check Auth
             if ($row->uuid != $post['uuid']):
@@ -91,7 +96,7 @@ class Product extends Backend_Controller
             'productId' => $productId,
             'row' => $row,            
             'size_chart' => $size_chart,
-            'sizeList' => $sizeList,
+            'sizeList' => $sizeArr,
             'topList' => $topList,
             'category' => $category,
             'sub_category' => $sub_category,

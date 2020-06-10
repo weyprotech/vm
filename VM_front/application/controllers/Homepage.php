@@ -16,11 +16,13 @@ class Homepage extends Frontend_Controller
         $designerList = $this->tb_designer_model->get_designer_select(array(array('field' => 'designer.is_visible','value' => 1)),array(array('field'=>'designer.order','dir' => 'desc')),array('start' => 0,'limit' => 14),$this->langId);
         $homepageBanner = $this->tb_homepage_banner_model->get_homepage_banner_select(array(array('field' => 'banner.is_visible','value' =>1)),array(array('field' => 'banner.order','dir' => 'desc')),false,$this->langId);
         $inspirationList = $this->inspiration_model->get_inspiration_select(array(array('field' => 'inspiration.is_visible','value' => 1)),array(array('field' => 'inspiration.order','dir' => 'desc')),array('start' => 0,'limit' =>15),$this->langId);
+        
+        $runwayList = false;
         foreach ($designerList as $designerKey => $designerValue){
-            $temp = $this->tb_runway_model->get_runway_select(array(array('field' => 'runway.designerId','value' => $designerValue->designerId)),array(array('field' => 'runway.runwayId','dir' => 'RANDOM')),false,$this->langId);
+            $temp = $this->tb_runway_model->get_runway_select(array(array('field' => 'runway.designerId', 'value' => $designerValue->designerId)), array(array('field' => 'runway.runwayId', 'dir' => 'RANDOM')), false, $this->langId);
             if(!empty($temp)){
                 $runwayList[$designerKey] = $temp[0];
-                $runwayList[$designerKey]->imgList = $this->tb_runway_model->get_runway_img_select(array(array('field' => 'runway_img.runwayId','value' => $temp[0]->runwayId)),array(array('field' => 'runway_img.runwayId','dir' => 'asc')));
+                $runwayList[$designerKey]->imgList = $this->tb_runway_model->get_runway_img_select(array(array('field' => 'runway_img.runwayId', 'value' => $temp[0]->runwayId)), array(array('field' => 'runway_img.runwayId', 'dir' => 'asc')));
             }
         }
 

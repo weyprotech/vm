@@ -68,6 +68,7 @@
             </div>
         </div>
     </div>
+    <?php if($runwayList) {?>
     <div class="what_next page_block">
         <h2 class="block_title">What's Next</h2>
         <div class="what_next_main scrollbar_x">
@@ -111,6 +112,7 @@
             </div>
         </div>
     </div>
+    <?php } ?>
     <div class="ads_banner">
         <?php if($homepageBanner){
             foreach ($homepageBanner as $bannerKey => $bannerValue){ ?>

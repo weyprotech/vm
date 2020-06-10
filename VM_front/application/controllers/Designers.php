@@ -72,7 +72,7 @@ class Designers extends Frontend_Controller
             $runway_imgList = array();
         }
         $brandList = $this->tb_brand_model->get_brand_select(array(array('field' => 'brand.designerId','value' => $designerId)), array(array('field' => 'brand.order', 'dir' => 'desc')),false,$this->langId);
-        $designer_bannerList = $this->tb_designer_banner_model->get_designer_banner_select(array(array('field' => 'banner.designerId', 'value' => $designerId), array('field' => 'banner.is_visible', 'value' => 1), 'other' => array('value' => 'banner.date > \''.date("Y-m-d").'\'')), array(array('field' => 'banner.order','dir' => 'desc')));
+        $designer_bannerList = $this->tb_designer_banner_model->get_designer_banner_select(array(array('field' => 'banner.designerId', 'value' => $designerId), array('field' => 'banner.is_visible', 'value' => 1), 'other' => array('value' => '(banner.date = \'\' || banner.date is NULL || banner.date > \''.date("Y-m-d").'\')')), array(array('field' => 'banner.order','dir' => 'desc')));
         if($postList = $this->tb_post_model->get_post_select(array(array('field' => 'post.is_visible', 'value' => 1),array('field' => 'post.designerId','value' => $designerId)),array(array('field' => 'post.order','dir' => 'desc')),false,$this->langId)){
             foreach($postList as $postKey => $postValue){
                 $postList[$postKey]->imgList = $this->tb_post_model->get_post_img_select(array(array('field' => 'post_img.postId','value' => $postValue->postId)));
@@ -129,7 +129,7 @@ class Designers extends Frontend_Controller
     public function product(){
         $designerId = $this->input->get('designerId',true);
         $row = $this->tb_designer_model->get_designer_by_id($designerId,$this->langId);
-        $designer_bannerList = $this->tb_designer_banner_model->get_designer_banner_select(array(array('field' => 'banner.designerId','value' => $designerId),array('field' => 'banner.is_visible','value' => 1),'other' => array('value' => 'banner.date > \''.date("Y-m-d").'\'')),array(array('field' => 'banner.order','dir' => 'desc')));
+        $designer_bannerList = $this->tb_designer_banner_model->get_designer_banner_select(array(array('field' => 'banner.designerId', 'value' => $designerId), array('field' => 'banner.is_visible', 'value' => 1), 'other' => array('value' => '(banner.date = \'\' || banner.date is NULL || banner.date > \''.date("Y-m-d").'\')')), array(array('field' => 'banner.order', 'dir' => 'desc')));
 
         if($designerId == ''){
             redirect('designers/index');
@@ -208,7 +208,7 @@ class Designers extends Frontend_Controller
     public function review(){
         $designerId = $this->input->get('designerId',true);
         $row = $this->tb_designer_model->get_designer_by_id($designerId,$this->langId);
-        $designer_bannerList = $this->tb_designer_banner_model->get_designer_banner_select(array(array('field' => 'banner.designerId','value' => $designerId),array('field' => 'banner.is_visible','value' => 1),'other' => array('value' => 'banner.date > \''.date("Y-m-d").'\'')),array(array('field' => 'banner.order','dir' => 'desc')));
+        $designer_bannerList = $this->tb_designer_banner_model->get_designer_banner_select(array(array('field' => 'banner.designerId', 'value' => $designerId), array('field' => 'banner.is_visible', 'value' => 1), 'other' => array('value' => '(banner.date = \'\' || banner.date is NULL || banner.date > \''.date("Y-m-d").'\')')), array(array('field' => 'banner.order', 'dir' => 'desc')));
 
         //讀取愛心
         $likecount = $this->tb_designer_like_model->count_designer_like(array(array('field' => 'designer_like.designerId','value' => $designerId)));

@@ -26,7 +26,7 @@
                 </div>
                 <div class="brand_name">
                     <div class="brand_logo">
-                        <div class="pic" style="background-image: url(<?= backend_url($row->brandImg) ?>);"><img class="size" src="<?= base_url('assets/images/size_1x1.png') ?>"></div>
+                        <div class="pic" style="background-image: url(<?= backend_url($row->brandiconImg) ?>);"><img class="size" src="<?= base_url('assets/images/size_1x1.png') ?>"></div>
                     </div>
                     <h2><?= $row->name ?></h2>
                 </div>

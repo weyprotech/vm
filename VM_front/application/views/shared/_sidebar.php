@@ -1,93 +1,32 @@
 <div id="sidebar">
       <nav class="sidebar_menu">
         <ul>
-          <li><a href="designers.html">Designers</a></li>
-          <li><a href="brands.html">Brands</a></li>
-          <li><a href="products.html">Women</a>
+          <li><a href="<?= website_url('designers') ?>">Designers</a></li>
+          <li><a href="<?= website_url('brand') ?>">Brands</a></li>
+          <?php foreach($categoryList as $firstKey => $firstValue){ ?>
+          <li><a href="<?= website_url('product/index?baseId='.$firstValue->categoryId) ?>"><?= $firstValue->name ?></a>
             <div class="sub_menu">
               <ul>
-                <li><a href="products.html">CLOTHING</a>
+              <?php if(!empty($categoryList[$firstKey]->categoryList)){ ?>
+                <?php foreach($categoryList[$firstKey]->categoryList as $subKey => $subValue){ ?>
+                <li><a href="<?= website_url('product/index?subId='.$subValue->categoryId) ?>"><?= $subValue->name ?></a>
                   <ul>
-                    <li><a href="products.html">Jeaens</a></li>
-                    <li><a href="products.html">Trench Coats</a></li>
-                    <li><a href="products.html">Jackets</a></li>
-                    <li><a href="products.html">Coats</a></li>
-                    <li><a href="products.html">Quilts &amp; Puffers</a></li>
-                    <li><a href="products.html">Suits</a></li>
-                    <li><a href="products.html">Blazers</a></li>
-                    <li><a href="products.html">Formal Shirts</a></li>
+                  <?php if(!empty($categoryList[$firstKey]->categoryList[$subKey]->categoryList)){ ?>
+                    <?php foreach($categoryList[$firstKey]->categoryList[$subKey]->categoryList as $categoryKey => $categoryValue){ ?>
+                    <li><a href="<?= website_url('product/index?categoryId='.$categoryValue->categoryId) ?>"><?= $categoryValue->name ?></a></li>
+                    <?php } ?>
+                  <?php } ?>
                   </ul>
                 </li>
-                <li><a href="products.html">BAGS</a>
-                  <ul>
-                    <li><a href="products.html">Bags</a></li>
-                    <li><a href="products.html">Scarves</a></li>
-                    <li><a href="products.html">Wallets &amp; Card Cases</a></li>
-                    <li><a href="products.html">Travel Accessories</a></li>
-                    <li><a href="products.html">Ties &amp; Cunfflinks</a></li>
-                    <li><a href="products.html">Key Rings</a></li>
-                    <li><a href="products.html">Hats &amp; Gloves</a></li>
-                  </ul>
-                </li>
-                <li><a href="products.html">ACCESSORIES</a>
-                  <ul>
-                    <li><a href="products.html">Scarves</a></li>
-                    <li><a href="products.html">Wallets &amp; Card Cases</a></li>
-                    <li><a href="products.html">Key &amp; Bag Charms</a></li>
-                    <li><a href="products.html">Travel Accessories</a></li>
-                    <li><a href="products.html">Belts</a></li>
-                    <li><a href="products.html">Jewellery</a></li>
-                    <li><a href="products.html">Hats &amp; Gloves</a></li>
-                    <li><a href="products.html">Eyewear</a></li>
-                  </ul>
-                </li>
+                <?php } ?>
+              <?php } ?>
               </ul>
             </div>
           </li>
-          <li><a href="products.html">Men</a>
-            <div class="sub_menu">
-              <ul>
-                <li><a href="products.html">CLOTHING</a>
-                  <ul>
-                    <li><a href="products.html">Jeaens</a></li>
-                    <li><a href="products.html">Trench Coats</a></li>
-                    <li><a href="products.html">Jackets</a></li>
-                    <li><a href="products.html">Coats</a></li>
-                    <li><a href="products.html">Quilts &amp; Puffers</a></li>
-                    <li><a href="products.html">Suits</a></li>
-                    <li><a href="products.html">Blazers</a></li>
-                    <li><a href="products.html">Formal Shirts</a></li>
-                  </ul>
-                </li>
-                <li><a href="products.html">BAGS</a>
-                  <ul>
-                    <li><a href="products.html">Bags</a></li>
-                    <li><a href="products.html">Scarves</a></li>
-                    <li><a href="products.html">Wallets &amp; Card Cases</a></li>
-                    <li><a href="products.html">Travel Accessories</a></li>
-                    <li><a href="products.html">Ties &amp; Cunfflinks</a></li>
-                    <li><a href="products.html">Key Rings</a></li>
-                    <li><a href="products.html">Hats &amp; Gloves</a></li>
-                  </ul>
-                </li>
-                <li><a href="products.html">ACCESSORIES</a>
-                  <ul>
-                    <li><a href="products.html">Scarves</a></li>
-                    <li><a href="products.html">Wallets &amp; Card Cases</a></li>
-                    <li><a href="products.html">Key &amp; Bag Charms</a></li>
-                    <li><a href="products.html">Travel Accessories</a></li>
-                    <li><a href="products.html">Belts</a></li>
-                    <li><a href="products.html">Jewellery</a></li>
-                    <li><a href="products.html">Hats &amp; Gloves</a></li>
-                    <li><a href="products.html">Eyewear</a></li>
-                  </ul>
-                </li>
-              </ul>
-            </div>
-          </li>
-          <li><a href="sale.html">Sale</a></li>
-          <li><a href="events.html">Events</a></li>
-          <li><a href="popular_designers.html">Popular Designers</a></li>
+          <?php } ?>
+          <li><a href="<?= website_url('sale') ?>">Sale</a></li>
+          <li><a href="<?= website_url('events') ?>">Events</a></li>
+          <li><a href="<?= website_url('popular_designers') ?>">Popular Designers</a></li>
         </ul>
         <div class="links"><a href="javascript:;">SHIPPING</a><i class="divide_line"></i><a href="javascript:;">REFUND</a></div>
         <div class="currency_language">

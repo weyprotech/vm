@@ -7,8 +7,9 @@ var website = function () {
         baseUrl = base;
 
         var $langSelect = $('#select-lang'), $searchText = $('#text-search'), $searchBtn = $('#btn-search');
-        var $brand_more = $('#brand_more'),$website_set = $('#website_set'),$event_more = $('#event_more');
-        var $login = $('#login'),$edit_account_save = $('#edit_account_save'),$more_popular_designers = $('#more_popular_designers');
+        var $brand_more = $('#brand_more'), $website_set = $('#website_set'), $event_more = $('#event_more');
+        var $login = $('#login'), $edit_account_save = $('#edit_account_save'), $more_popular_designers = $('#more_popular_designers');
+        var $money_type_select = $('.money_type_select'), $languange_select = $('.languange_select');
 
         var error = 0;
 
@@ -112,8 +113,24 @@ var website = function () {
 
         //語言
         $website_set.on('click',function(){
-            doCookieSetup('language',$('#languange_select').val());
-            doCookieSetup('money_type',$('#languange_select').val());        
+            doCookieSetup('language', $('#languange_select').val());
+            doCookieSetup('money_type', $('#money_type_select').val()); 
+            change_lang($('#languange_select').val()).done(function (response) {
+                if (response['status']) location.href = response['url'];
+            });       
+        });
+
+        //語言
+        $languange_select.on('change',function(){
+            doCookieSetup('language', $(this).val());     
+            change_lang($(this).val()).done(function (response) {
+                if (response['status']) location.href = response['url'];
+            });  
+        });
+
+        //幣值
+        $money_type_select.on('change',function(){
+            doCookieSetup('money_type', $(this).val());       
         });
 
         //消息更多
@@ -370,11 +387,11 @@ var website = function () {
         var expires = new Date();
         //有效時間保存 2 天 2*24*60*60*1000
         expires.setTime(expires.getTime() + 172800000);
-        document.cookie = name + "=" + escape(value) + ";expires=" + expires.toGMTString()
+        document.cookie = name + "=" + escape(value) + ";expires=" + expires.toGMTString() + ";SameSite=None;Secure";
     }
 
     function change_lang(lang) {
-        return $.get(site_url("ajax/switchLang"), {lang: lang, url: location.href}, 'json');
+        return $.get(site_url("ajax/SwitchLang"), {lang: lang, url: location.href}, 'json');
     }
 
     function isEmpty(value) {

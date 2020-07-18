@@ -17,6 +17,7 @@ class Contact extends Frontend_Controller
         $topicList = $this->topic_model->get_topic_select(array(array('field' => 'topic.is_visible','value' => 1)),false,false,$this->langId);
 
         if($post = $this->input->post(null,true)){
+            unset($post['g-recaptcha-response']);
             $captcha = $this->input->post('g-recaptcha-response',TRUE);   
             if($captcha && siteverify($captcha)){ 
                 header('Content-Type: application/json; charset=utf-8');
@@ -51,8 +52,6 @@ class Contact extends Frontend_Controller
                 $this->email->send(false);
 
                 $post['is_enable'] = 1;
-                unset($post['g-recaptcha-response']);
-
                 $this->contact_model->insert_contact($post);
                 redirect(website_url('company/contact/index').'?type=success');
             }else{

@@ -13,6 +13,7 @@ class Homepage extends Ajax_Controller
     public function get_location()
     {
         header('Content-Type: application/json; charset=utf-8');
+        header('Set-Cookie: cross-site-cookie=name; SameSite=None; Secure');
         $count = $this->input->get('count',true);
         $notin = $this->input->get('notin',true);
 

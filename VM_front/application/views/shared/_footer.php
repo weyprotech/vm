@@ -1,7 +1,7 @@
 <footer id="footer">
     <div class="footer_inner">
         <div class="footer_information"><a class="footer_logo" href="index.html"><img class="retina" src="<?= base_url('assets/images/logo_footer.png') ?>"></a>
-        <div class="copyright">© 2019 Vetrina Mia INC.</div>
+        <div class="copyright">© 2019 ymyx INC.</div>
         <div class="social_apps_links">
             <div class="social"><a href="mailto:xxx@test.com"><i class="icon_email"></i></a><a href="javascript:;" target="_blank"><i class="icon_facebook"></i></a><a href="javascript:;" target="_blank"><i class="icon_instagram"></i></a></div>
             <div class="apps"><a href="javascript:;" target="_blank"><img src="<?= base_url('assets/images/app_ios.png') ?>"></a><a href="javascript:;" target="_blank"><img src="<?= base_url('assets/images/app_android.png') ?>"></a></div>

@@ -31,11 +31,11 @@ class Frontend_Controller extends MY_Controller
     public function __construct()
     {
         parent::__construct();
-        $language = $this->input->cookie('language',true);
+        $language = $this->input->cookie('language', true);
         // print_r($language);exit;
         $this->set_lang($language);
         $this->pageMeta = array(
-            'title' => array('VETRINA MIA'),
+            'title' => array('YMYX'),
             'description' => '',
             'image' => '',
             'url' => current_url()

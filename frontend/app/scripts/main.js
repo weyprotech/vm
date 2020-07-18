@@ -5,7 +5,7 @@ $(document).ready(function () {
   $('.retina').retina();
   
   // Sticky
-  sticky();
+  //sticky();
 
   // Main
   mainHeight();
@@ -620,9 +620,9 @@ $(window).on('resize', function () {
     }
 
     // Sticky
-    $('#header').unstick();
-    $('#header .header_nav_wrap').unstick();
-    sticky();
+    //$('#header').unstick();
+    //$('#header .header_nav_wrap').unstick();
+    //sticky();
 
     // Main
     mainHeight();

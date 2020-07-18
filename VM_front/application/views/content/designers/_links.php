@@ -45,20 +45,24 @@
                     </a>
                 </div>
                 <div class="nav_menu">
-                    <ul>
-                        <li><a <?= (stripos($_SERVER['REQUEST_URI'],'home') ? 'current active' : '') ? 'class="current"' : '' ?> href="<?= website_url('designers/home').'?designerId='.$row->designerId ?>">Home</a></li>
-                        <li><a href="<?= website_url('designers/profile').'?designerId='.$row->designerId ?>">Designer Profile</a></li>
-                        <li><a href="javascript:;">Brand Story</a>
+                    <ul> 
+                        <li><a <?= (stripos($_SERVER['REQUEST_URI'], 'home') ? 'current active' : '') ? 'class="current"' : '' ?> href="<?= website_url('designers/home').'?designerId='.$row->designerId ?>">Home</a></li>
+                        <li><a href="javascript:;">Brands of <?= $row->name ?></a>
                             <ul>
-                                <?php if(!empty($brandList)){
-                                    foreach ($brandList as $brandKey => $brandValue){ ?>
-                                        <li><a href="<?= website_url('brand/story?brandId='.$brandValue->brandId); ?>"><?= $brandValue->name ?></a></li>
-                                    <?php }
-                                } ?>
+                                <?php 
+                                if(!empty($brandList)) {
+                                    foreach ($brandList as $brandKey => $brandValue) { 
+                                ?>
+                                    <li><a href="<?= website_url('brand/story?brandId='.$brandValue->brandId); ?>"><?= $brandValue->name ?></a></li>
+                                <?php 
+                                    }
+                                } 
+                                ?>
                             </ul>
                         </li>
-                        <li><a <?= (stripos($_SERVER['REQUEST_URI'],'product') ? 'current active' : '') ? 'class="current"' : '' ?> href="<?= website_url('designers/product').'?designerId='.$row->designerId ?>">Product</a></li>
-                        <li><a <?= (stripos($_SERVER['REQUEST_URI'],'review') ? 'current active' : '') ? 'class="current"' : '' ?> href="<?= website_url('designers/review').'?designerId='.$row->designerId ?>">Review</a></li>
+                        <li><a href="<?= website_url('designers/profile').'?designerId='.$row->designerId ?>"><?= $row->name ?></a></li>
+                        <li><a <?= (stripos($_SERVER['REQUEST_URI'], 'product') ? 'current active' : '') ? 'class="current"' : '' ?> href="<?= website_url('designers/product').'?designerId='.$row->designerId ?>">Product</a></li>
+                        <li><a <?= (stripos($_SERVER['REQUEST_URI'], 'review') ? 'current active' : '') ? 'class="current"' : '' ?> href="<?= website_url('designers/review').'?designerId='.$row->designerId ?>">Review</a></li>
                     </ul>
                     <a class="toggle_menu" href="javascript:;">Menu</a>
                 </div>

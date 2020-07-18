@@ -51,7 +51,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 
 $route['default_controller'] = 'homepage';
-$route['search'] = 'homepage/search';
+$route['404_override'] = '';
+
+/*$route['search'] = 'homepage/search';
 $route['(:any)'] = function ($url) {
     return in_array($url, array('admin')) ? $url : $url;
 };
@@ -59,9 +61,16 @@ $route['(:any)/(:any)/(:num)'] = function ($lang, $action, $id) {
     return $action . '/detail/' . $id;
 };
 $route['(:any)/(.+)'] = function ($action, $uri) {
-
     if (in_array($action, array('backend'))) return $action . '/' . $uri;
     return $action . '/' . $uri;
-};
-$route['404_override'] = '';
+};*/
+
+
+$route['tw'] = '';
+$route['tw/(.+)'] = '$1';
+$route['cn'] = '';
+$route['cn/(.+)'] = '$1';
+$route['en'] = '';
+$route['en/(.+)'] = '$1';
 $route['translate_uri_dashes'] = FALSE;
+

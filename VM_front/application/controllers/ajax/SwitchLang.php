@@ -10,6 +10,7 @@ class SwitchLang extends Frontend_Controller
     public function index()
     {
         header('Content-Type: application/json; charset=utf-8');
+        header('Set-Cookie: cross-site-cookie=name; SameSite=None; Secure');
 
         if ($lang = $this->input->get('lang', true)) {
             $url = $this->input->get('url', true);

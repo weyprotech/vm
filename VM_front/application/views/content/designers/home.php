@@ -8,9 +8,9 @@
             </div>
         </div>
         <div class="designer_about_intro">
-            <h2 class="block_title">About Designer</h2>
+            <!--<h2 class="block_title">About Designer</h2>-->
             <div class="text">
-                <?php @$temp = explode('<br>',$row->description); ?>
+                <?php @$temp = explode('<br>', $row->description); ?>
                 <?= @$temp[0] ?>
             </div><a class="btn common more" href="<?= website_url('designers/profile').'?designerId='.$row->designerId ?>">My Profile</a>
         </div>

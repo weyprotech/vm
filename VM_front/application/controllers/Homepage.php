@@ -33,7 +33,7 @@ class Homepage extends Frontend_Controller
             'runwayList' => $runwayList
         );
 
-        $this->get_view('index', $data,$this->load->view('shared/script/_index_script','',true));
+        $this->get_view('index', $data, $this->load->view('shared/script/_index_script', '', true));
     }
 
     private function get_view($page, $data = array(), $script = "")

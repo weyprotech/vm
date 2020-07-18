@@ -1,8 +1,8 @@
 <div id="sidebar">
       <nav class="sidebar_menu">
         <ul>
-          <li><a href="<?= website_url('designers') ?>">Designers</a></li>
           <li><a href="<?= website_url('brand') ?>">Brands</a></li>
+          <li><a href="<?= website_url('designers') ?>">Designers</a></li>
           <?php foreach($categoryList as $firstKey => $firstValue){ ?>
           <li><a href="<?= website_url('product/index?baseId='.$firstValue->categoryId) ?>"><?= $firstValue->name ?></a>
             <div class="sub_menu">
@@ -31,17 +31,17 @@
         <div class="links"><a href="javascript:;">SHIPPING</a><i class="divide_line"></i><a href="javascript:;">REFUND</a></div>
         <div class="currency_language">
           <div class="select_wrapper">
-            <select>
+            <select class="money_type_select">
               <option>€ EUR</option>
               <option>$ TWD</option>
               <option>¥ CNY</option>
             </select>
           </div>
           <div class="select_wrapper">
-            <select>
-              <option selected>English</option>
-              <option>繁體中文</option>
-              <option>简体中文</option>
+            <select class="languange_select">
+              <option value='en' <?=($this->langFile=="en"?"selected":"")?>>English</option>
+              <option value='tw' <?=($this->langFile=="tw"?"selected":"")?>>繁體中文</option>
+              <option value='cn' <?=($this->langFile=="cn"?"selected":"")?>>简体中文</option>
             </select>
           </div>
         </div>
@@ -53,7 +53,7 @@
           <label>Currency</label>
           <div class="select_wrapper">
             <select id="money_type_select">
-              <option selected>€ EUR</option>
+              <option>€ EUR</option>
               <option>$ TWD</option>
               <option>¥ CNY</option>
             </select>
@@ -63,7 +63,7 @@
           <label>Languange</label>
           <div class="select_wrapper">
             <select id="languange_select">
-              <option value='en' selected>English</option>
+              <option value='en'>English</option>
               <option value='tw'>繁體中文</option>
               <option value='cn'>简体中文</option>
             </select>

@@ -47,7 +47,7 @@
                 <div class="nav_menu">
                     <ul> 
                         <li><a <?= (stripos($_SERVER['REQUEST_URI'], 'home') ? 'current active' : '') ? 'class="current"' : '' ?> href="<?= website_url('designers/home').'?designerId='.$row->designerId ?>">Home</a></li>
-                        <li><a href="javascript:;">Brands of <?= $row->name ?></a>
+                        <li><a href="javascript:;"><?= $row->name ?>'s Brands</a>
                             <ul>
                                 <?php 
                                 if(!empty($brandList)) {

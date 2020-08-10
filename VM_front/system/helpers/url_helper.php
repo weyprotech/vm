@@ -63,7 +63,11 @@ if ( ! function_exists('site_url'))
 	 */
 	function site_url($uri = '', $protocol = NULL)
 	{
-		return get_instance()->config->site_url($uri, $protocol);
+		//soco用
+        $CI =& get_instance();
+        $socoURL='/'.@$CI->locale.'/'.$uri;
+        //
+		return get_instance()->config->site_url($socoURL, $protocol);
 	}
 }
 

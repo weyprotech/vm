@@ -20,8 +20,8 @@ $config['language']['default_locale'] = 'en';
 //Default language folder, if locale folder not found
 $config['language']['locale']['default'] = 'en';
 
-$config['language']['locale']['zh-TW'] = 'tw';
-$config['language']['locale']['zh-CN'] = 'cn';
+$config['language']['locale']['tw'] = 'tw';
+$config['language']['locale']['cn'] = 'cn';
 $config['language']['locale']['en'] = 'en';
 $config['language']['locale']['fr'] = 'fr';
 $config['language']['locale']['de'] = 'de';

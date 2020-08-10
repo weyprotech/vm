@@ -110,18 +110,15 @@ class I18n
     public function get_current_locale($cookie_key = 'locale')
     {
         if (!$this->locale) {
-            $language = $this->get_language_config();
-            $locale = $language['locale'];
-
             if (isset($_SESSION[$cookie_key])) {
-                $lang = 'en';
-                // $lang = $this->CI->session->tempdata($cookie_key);
+                $lang = $_SESSION[$cookie_key];
             } else {
+                $language = $this->get_language_config();
                 if (isset($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
                     $lang = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 5);
-                    $lang = !isset($locale[$lang]) ? $locale['default'] : $lang;
+                    $lang = !in_array($lang, $language['locale']) ? $language['default_locale'] : $lang;
                 } else {
-                    $lang = $locale['default'];
+                    $lang = $language['default_locale'];
                 }
             }
 

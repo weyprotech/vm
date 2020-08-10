@@ -12,19 +12,21 @@ class SwitchLang extends Frontend_Controller
         header('Content-Type: application/json; charset=utf-8');
         header('Set-Cookie: cross-site-cookie=name; SameSite=None; Secure');
 
-        if ($lang = $this->input->get('lang', true)) {
-            $url = $this->input->get('url', true);
+        if ($lang = $this->input->post('lang', true)) {
+            $url = $this->input->post('url', true);
+            //取index.php後的第一個
             $old_lang = $this->uri->segment(1);
 
             $url_arr = explode('/', $url);
-            if ($key = array_search($old_lang, $url_arr)) {
-                $url_arr[$key] = $lang;
-                $new_url = site_url(array_slice($url_arr, $key));
+            if (in_array($old_lang, $url_arr)) {
+                $new_url = str_replace("/".$old_lang."/", "/".$lang."/", $url);
             }
             else {
-                $new_url = site_url($lang);
+                $new_url = $url . "/" . $lang;
             }
 
+            $this->session->set_userdata("language", $lang);
+            set_cookie("language", $lang, 10*86400);
             echo json_encode(array('status' => true, 'url' => $new_url));
             return true;
         }

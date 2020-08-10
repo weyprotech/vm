@@ -9,7 +9,7 @@ var website = function () {
         var $langSelect = $('#select-lang'), $searchText = $('#text-search'), $searchBtn = $('#btn-search');
         var $brand_more = $('#brand_more'), $website_set = $('#website_set'), $event_more = $('#event_more');
         var $login = $('#login'), $edit_account_save = $('#edit_account_save'), $more_popular_designers = $('#more_popular_designers');
-        var $money_type_select = $('.money_type_select'), $languange_select = $('.languange_select');
+        var $money_type_select = $('.money_type_select'), $language_select = $('.language_select');
 
         var error = 0;
 
@@ -112,19 +112,20 @@ var website = function () {
         });
 
         //語言
-        $website_set.on('click',function(){
-            doCookieSetup('language', $('#languange_select').val());
-            doCookieSetup('money_type', $('#money_type_select').val()); 
-            change_lang($('#languange_select').val()).done(function (response) {
+        $website_set.on('click', function(){
+            //doCookieSetup('language', $('.language_select').val());
+            //doCookieSetup('money_type', $('#money_type_select').val()); 
+            change_lang($('#language_select').val()).done(function (response) {
                 if (response['status']) location.href = response['url'];
             });       
         });
 
         //語言
-        $languange_select.on('change',function(){
-            doCookieSetup('language', $(this).val());     
-            change_lang($(this).val()).done(function (response) {
-                if (response['status']) location.href = response['url'];
+        $language_select.on('change', function() {
+            var obj = $(this);
+            //doCookieSetup('language', ovj.val());     
+            change_lang(obj.val()).done(function (response) {
+                if(response['status']) location.href = response['url'];
             });  
         });
 
@@ -391,7 +392,8 @@ var website = function () {
     }
 
     function change_lang(lang) {
-        return $.get(site_url("ajax/SwitchLang"), {lang: lang, url: location.href}, 'json');
+        console.log(lang);
+        return $.post(site_url("ajax/SwitchLang"), { lang: lang, url: location.href }, 'json');
     }
 
     function isEmpty(value) {

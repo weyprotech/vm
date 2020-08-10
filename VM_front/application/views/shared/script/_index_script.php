@@ -1,11 +1,15 @@
 <script>
 
 $(function() {
-    <?php $language = $this->input->cookie('language',true); 
-    if(empty($language)){?>
+    <?php 
+    if(empty($this->session->userdata('language'))) {
+    ?>
         // 開啟選擇語言和幣別的跳窗
         popupEntrance();
-    <?php } ?>
+    <?php 
+    } 
+    ?>
+    
     // Map
     var streetImgs = {
         daymode: website.Base_url('assets/images/leaflet/street.png'),
@@ -15,7 +19,7 @@ $(function() {
     var currentStreetId;
     
     $.ajax({
-        url: website.Site_url('ajax/homepage/get_location'),
+        url: '<?=site_url('ajax/homepage/get_location')?>',
         dataType: 'json',
         error: function() {
         console.log('ajax error!')

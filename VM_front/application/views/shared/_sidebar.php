@@ -39,8 +39,8 @@
           </div>
           <div class="select_wrapper">
             <select class="language_select">
-              <option value='en' <?=($this->session->userdata('language')=="en"?"selected":"")?>>English</option>
-              <option value='tw' <?=($this->session->userdata('language')=="tw"?"selected":"")?>>繁體中文</option>
+              <option value='en' <?=($this->langFile=="en"?"selected":"")?>>English</option>
+              <option value='tw' <?=($this->langFile=="tw"?"selected":"")?>>繁體中文</option>
               <!--<option value='cn' <?=($this->langFile=="cn"?"selected":"")?>>简体中文</option>-->
             </select>
           </div>
@@ -63,8 +63,8 @@
           <label>Language</label>
           <div class="select_wrapper">
             <select id="language_select">
-              <option value='en'>English</option>
-              <option value='tw'>繁體中文</option>
+              <option value='en' <?=($this->langFile=="en")?"selected":""?>>English</option>
+              <option value='tw' <?=($this->langFile=="tw")?"selected":""?>>繁體中文</option>
               <!--<option value='cn'>简体中文</option>-->
             </select>
           </div>

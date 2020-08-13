@@ -14,6 +14,7 @@ class Homepage extends Ajax_Controller
     {
         header('Content-Type: application/json; charset=utf-8');
         header('Set-Cookie: cross-site-cookie=name; SameSite=None; Secure');
+        
         $count = $this->input->get('count',true);
         $notin = $this->input->get('notin',true);
 

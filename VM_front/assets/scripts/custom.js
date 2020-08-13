@@ -113,8 +113,8 @@ var website = function () {
 
         //語言
         $website_set.on('click', function(){
-            //doCookieSetup('language', $('.language_select').val());
-            //doCookieSetup('money_type', $('#money_type_select').val()); 
+            doCookieSetup('language', $('#language_select').val());
+            doCookieSetup('money_type', $('#money_type_select').val()); 
             change_lang($('#language_select').val()).done(function (response) {
                 if (response['status']) location.href = response['url'];
             });       
@@ -123,7 +123,7 @@ var website = function () {
         //語言
         $language_select.on('change', function() {
             var obj = $(this);
-            //doCookieSetup('language', ovj.val());     
+            doCookieSetup('language', obj.val());     
             change_lang(obj.val()).done(function (response) {
                 if(response['status']) location.href = response['url'];
             });  
@@ -385,14 +385,15 @@ var website = function () {
     
     //cookie保存
     function doCookieSetup(name, value) {
+        console.log("cookie " + value);
         var expires = new Date();
         //有效時間保存 2 天 2*24*60*60*1000
         expires.setTime(expires.getTime() + 172800000);
-        document.cookie = name + "=" + escape(value) + ";expires=" + expires.toGMTString() + ";SameSite=None;Secure";
+        document.cookie = name + "=" + escape(value) + ";expires=" + expires.toGMTString() + "; SameSite=None; Secure";
     }
 
     function change_lang(lang) {
-        console.log(lang);
+        console.log("change " + lang);
         return $.post(site_url("ajax/SwitchLang"), { lang: lang, url: location.href }, 'json');
     }
 

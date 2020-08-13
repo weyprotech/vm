@@ -110,8 +110,8 @@ class I18n
     public function get_current_locale($cookie_key = 'locale')
     {
         if (!$this->locale) {
-            if (isset($_SESSION[$cookie_key])) {
-                $lang = $_SESSION[$cookie_key];
+            if (isset($_COOKIE[$cookie_key])) {
+                $lang = $_COOKIE[$cookie_key];
             } else {
                 $language = $this->get_language_config();
                 if (isset($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {

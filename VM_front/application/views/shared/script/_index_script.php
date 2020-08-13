@@ -2,7 +2,7 @@
 
 $(function() {
     <?php 
-    if(empty($this->session->userdata('language'))) {
+    if(empty($this->langFile)) {
     ?>
         // 開啟選擇語言和幣別的跳窗
         popupEntrance();

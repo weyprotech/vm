@@ -1,8 +1,8 @@
 <div id="sidebar">
       <nav class="sidebar_menu">
         <ul>
-          <li><a href="<?= site_url('brand') ?>">Brands</a></li>
-          <li><a href="<?= site_url('designers') ?>">Designers</a></li>
+          <li><a href="<?= site_url('brand') ?>"><?=langText('header', 'brands') ?></a></li>
+          <li><a href="<?= site_url('designers') ?>"><?=langText('header', 'designers') ?></a></li>
           <?php foreach($categoryList as $firstKey => $firstValue){ ?>
           <li><a href="<?= site_url('product/index?baseId='.$firstValue->categoryId) ?>"><?= $firstValue->name ?></a>
             <div class="sub_menu">
@@ -24,9 +24,9 @@
             </div>
           </li>
           <?php } ?>
-          <li><a href="<?= site_url('sale') ?>">Sale</a></li>
-          <li><a href="<?= site_url('events') ?>">Events</a></li>
-          <li><a href="<?= site_url('popular_designers') ?>">Popular Designers</a></li>
+          <li><a href="<?= site_url('sale') ?>"><?=langText('header', 'sale') ?></a></li>
+          <li><a href="<?= site_url('events') ?>"><?=langText('header', 'events') ?></a></li>
+          <li><a href="<?= site_url('popular_designers') ?>"><?=langText('header', 'popular_designers') ?></a></li>
         </ul>
         <div class="links"><a href="javascript:;">SHIPPING</a><i class="divide_line"></i><a href="javascript:;">REFUND</a></div>
         <div class="currency_language">

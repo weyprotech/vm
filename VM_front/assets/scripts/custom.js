@@ -113,7 +113,7 @@ var website = function () {
 
         //語言
         $website_set.on('click', function(){
-            doCookieSetup('language', $('#language_select').val());
+            doCookieSetup('front', $('#language_select').val());
             doCookieSetup('money_type', $('#money_type_select').val()); 
             change_lang($('#language_select').val()).done(function (response) {
                 if (response['status']) location.href = response['url'];
@@ -123,7 +123,7 @@ var website = function () {
         //語言
         $language_select.on('change', function() {
             var obj = $(this);
-            doCookieSetup('language', obj.val());     
+            doCookieSetup('front', obj.val());     
             change_lang(obj.val()).done(function (response) {
                 if(response['status']) location.href = response['url'];
             });  

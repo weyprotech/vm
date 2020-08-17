@@ -96,7 +96,8 @@ class I18n
      */
     public function set_current_locale($locale, $expire = 60, $cookie_key = 'locale')
     {
-        $this->CI->session->set_tempdata($cookie_key, $locale, $expire);
+        //$this->CI->session->set_tempdata($cookie_key, $locale, $expire);
+        set_cookie($cookie_key, $locale, $expire);
         $this->locale = $locale;
     }
 
@@ -110,20 +111,24 @@ class I18n
     public function get_current_locale($cookie_key = 'locale')
     {
         if (!$this->locale) {
+            $language = $this->get_language_config();
+            $locale = $language['locale'];
             if (isset($_COOKIE[$cookie_key])) {
+                //$lang = $this->CI->session->tempdata($cookie_key);
+                //$lang = 'en';   // 預設語言->英文
                 $lang = $_COOKIE[$cookie_key];
             } else {
-                $language = $this->get_language_config();
                 if (isset($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
                     $lang = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 5);
-                    $lang = !in_array($lang, $language['locale']) ? $language['default_locale'] : $lang;
+                    $lang = !isset($locale[$lang]) ? $locale['default'] : $lang;
                 } else {
-                    $lang = $language['default_locale'];
+                    $lang = $locale['default'];
                 }
             }
-
+            
             $this->locale = $lang;
         }
+        // print_r($this->locale);exit;
         return $this->locale;
     }
 

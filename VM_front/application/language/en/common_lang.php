@@ -10,6 +10,13 @@ $lang['common'] = array(
 );
 
 /******************** Header ********************/
+$lang['header'] = array(
+    'brands' => 'Brands',
+    'designers' => 'Designers',
+    'sale' => 'Sale',
+    'events' => 'Events',
+    'popular_designers' => 'Popular Designers'
+);
 
 /******************** Footer ********************/
 

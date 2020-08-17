@@ -18,12 +18,14 @@ class SwitchLang extends Frontend_Controller
             $old_lang = $this->uri->segment(1);
 
             $url_arr = explode('/', $url);
-            if (in_array($old_lang, $url_arr)) {
-                $new_url = str_replace("/".$old_lang, "/".$lang, $url);
+            if ($key = array_search($old_lang, $url_arr)) {
+                $url_arr[$key] = $lang;
+                $new_url = site_url(array_slice($url_arr, $key));
             }
             else {
-                $new_url = $url . "/" . $lang;
+                $new_url = site_url($lang);
             }
+            
             echo json_encode(array('status' => true, 'url' => $new_url));
             return true;
         }

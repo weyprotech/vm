@@ -43,9 +43,9 @@ if (!function_exists('website_url')) {
         $CI = &get_instance();
         $lang = $CI->langFile;
 
-        if (empty($url)) return site_url();
+        if (empty($url)) return site_url($lang);
 
-        return site_url($url);
+        return site_url($lang . '/' . $url);
     }
 }
 

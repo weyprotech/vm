@@ -31,11 +31,7 @@ class Frontend_Controller extends MY_Controller
     public function __construct()
     {
         parent::__construct();
-        //取language cookie
-        $language = $this->input->cookie("language");
-        //print_r($language);
-        //exit;
-        $this->set_lang($language);
+        $this->set_lang($this->uri->segment(1));
         $this->pageMeta = array(
             'title' => array('YMYX'),
             'description' => '',
@@ -86,8 +82,16 @@ class Frontend_Controller extends MY_Controller
     // 設定當前語系
     private function set_lang($lang)
     {
-        $this->i18n->load_language('language');
-        $this->locale = $this->i18n->get_current_locale('language');
+        if ($lang) {
+            $this->i18n->set_current_locale($this->get_value_from_field('lang', 'locale', $lang), 300, 'front');
+        }
+        else {
+            $lang = $this->get_value_from_field('locale', 'lang', $this->i18n->get_current_locale('front'));
+            // $lang = 'en';
+        }
+        // print_r($lang);exit;
+        $this->i18n->load_language('front');
+        $this->locale = $this->i18n->get_current_locale('front');
         $this->langId = $this->get_value_from_field('lang', 'langId', $lang);
         $this->langFile = $lang;
     }

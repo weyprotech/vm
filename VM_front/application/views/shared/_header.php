@@ -89,8 +89,8 @@
     <div class="header_nav_wrap">
         <nav class="header_nav">
             <ul>
-                <li><a class="<?= ((stripos($_SERVER['REQUEST_URI'],'brand') && !stripos($_SERVER['REQUEST_URI'],'designers'))? 'current active' : '') ?>" href="<?= website_url('brand') ?>">Brands</a></li>
-                <li><a class="<?= ((stripos($_SERVER['REQUEST_URI'],'designers') && !stripos($_SERVER['REQUEST_URI'],'popular_designers')) ? 'current active' : '') ?>" href="<?= website_url('designers') ?>">Designers</a></li>
+                <li><a class="<?= ((stripos($_SERVER['REQUEST_URI'],'brand') && !stripos($_SERVER['REQUEST_URI'],'designers'))? 'current active' : '') ?>" href="<?= website_url('brand') ?>"><?=langText('header', 'brands') ?></a></li>
+                <li><a class="<?= ((stripos($_SERVER['REQUEST_URI'],'designers') && !stripos($_SERVER['REQUEST_URI'],'popular_designers')) ? 'current active' : '') ?>" href="<?= website_url('designers') ?>"><?=langText('header', 'designers') ?></a></li>
                 <?php foreach($categoryList as $firstKey => $firstValue){ ?>
                     <li><a class="<?= (stripos($_SERVER['REQUEST_URI'],$firstValue->categoryId) ? 'current active' : (($product->baseId == $firstValue->categoryId) ? 'current active' :(($category['menu_basecategory'] == $firstValue->categoryId) ? 'current active' : ''))) ?>" href="<?= website_url('product/index?baseId='.$firstValue->categoryId) ?>"><?= $firstValue->name ?></a>
                         <div class="sub_menu">
@@ -113,9 +113,9 @@
                         </div>
                     </li>
                 <?php } ?>
-                <li><a class="<?= (stripos($_SERVER['REQUEST_URI'],'sale') ? 'current active' : '') ?>" href="<?= website_url('sale') ?>">Sale</a></li>
-                <li><a class="<?= ((stripos($_SERVER['REQUEST_URI'],'events')) && (!stripos($_SERVER['REQUEST_URI'],'type=events')) ? 'current active' : '') ?>" href="<?= website_url('events') ?>">Events</a></li>
-                <li><a class="<?= (stripos($_SERVER['REQUEST_URI'],'popular_designers') ? 'current active' : '') ?>" href="<?= website_url('popular_designers') ?>">Popular Designers</a></li>
+                <li><a class="<?= (stripos($_SERVER['REQUEST_URI'],'sale') ? 'current active' : '') ?>" href="<?= website_url('sale') ?>"><?=langText('header', 'sale') ?></a></li>
+                <li><a class="<?= ((stripos($_SERVER['REQUEST_URI'],'events')) && (!stripos($_SERVER['REQUEST_URI'],'type=events')) ? 'current active' : '') ?>" href="<?= website_url('events') ?>"><?=langText('header', 'events') ?></a></li>
+                <li><a class="<?= (stripos($_SERVER['REQUEST_URI'],'popular_designers') ? 'current active' : '') ?>" href="<?= website_url('popular_designers') ?>"><?=langText('header', 'popular_designers') ?></a></li>
             </ul>
         </nav>
     </div>

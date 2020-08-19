@@ -24,53 +24,39 @@
                 </div>
                 <!--↑ 上線時，class加'online'，並且連結至'member_account.html'; 未上線時，連結至'login.html' ↑-->
                 <!--↓ 有產品在購物車時時，class加'have' ↓-->
-                <div class="option_cart <?=($this->cart->total_items()>0)?"have":""?>">
+                <div class="option_cart <?= (!empty($cart_productList) ? 'have' : '') ?>">
                     <a class="cart_toggle" href="javascript:;"><i class="icon_cart"></i></a>
                     <div class="cart_drop">
                         <div class="cart_view scrollbar_y">
-                            <div class="title">2 Items</div>
+                            <div class="title"><?= $cart_amount ?> Items</div>
                             <div class="cart_items">
-                                <div class="item">
-                                    <a class="btn_delete" href="javascript:;"><i class="icon_delete"></i></a>
-                                    <a class="thumb" href="product_detail.html">
-                                        <!--↓ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓-->
-                                        <div class="pic" style="background-image: url(images/img_product01.jpg);">
-                                            <img class="size" src="<?= base_url('assets/images/size_3x4.png') ?>">
+                                <?php if(!empty($cart_productList)){
+                                    foreach($cart_productList as $cartKey => $cartValue){ ?>
+                                        <div class="item">
+                                            <a class="btn_delete" href="javascript:;"><i class="icon_delete"></i></a>
+                                            <a class="thumb" href="<?= website_url('product/detail').'?productId='.$cartValue['productId'] ?>">
+                                                <!--↓ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓-->
+                                                <div class="pic" style="background-image: url(<?= backend_url($cartValue['productImg']) ?>);">
+                                                    <img class="size" src="<?= base_url('assets/images/size_3x4.png') ?>">
+                                                </div>
+                                                <!--↑ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑-->
+                                            </a>
+                                            <div class="content">
+                                                <div class="price">$ <?= $cartValue['productPrice'] ?></div>
+                                                <ul>
+                                                    <li>size: <?= $cartValue['productSize'] ?></li>
+                                                    <li>color: <?= $cartValue['productColor'] ?></li>
+                                                    <li>Qty: <?= $cartValue['productQty'] ?></li>
+                                                </ul>
+                                            </div>
                                         </div>
-                                        <!--↑ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑-->
-                                    </a>
-                                    <div class="content">
-                                        <div class="price">$ 1148</div>
-                                        <ul>
-                                            <li>size: M</li>
-                                            <li>color: dot</li>
-                                            <li>Qty: 1</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <a class="btn_delete" href="javascript:;"><i class="icon_delete"></i></a>
-                                    <a class="thumb" href="product_detail.html">
-                                        <!--↓ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓-->
-                                        <div class="pic" style="background-image: url(https://via.placeholder.com/300x400);">
-                                            <img class="size" src="<?= base_url('assets/images/size_3x4.png') ?>">
-                                        </div>
-                                        <!--↑ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑-->
-                                    </a>
-                                    <div class="content">
-                                        <div class="price">$ 1148</div>
-                                        <ul>
-                                            <li>size: M</li>
-                                            <li>color: dot</li>
-                                            <li>Qty: 1</li>
-                                        </ul>
-                                    </div>
-                                </div>
+                                    <?php }
+                                } ?>
                             </div>
                             <div class="cart_foot">
                                 <div class="total_calculation">
                                     <div class="label">Subtotal</div>
-                                    <div class="total_amount">NTD $2,296</div>
+                                    <div class="total_amount">NTD $<?= $cart_total ?></div>
                                 </div>
                                 <a class="btn confirm" href="order.html">CHECKOUT</a>
                             </div>

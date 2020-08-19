@@ -94,7 +94,7 @@
                     </div>
                     <div class="call_action">
                         <?php if($row->status == 0){ ?>
-                            <button class="btn confirm addCart" type="button" data-productid = "<?=$row->productId?>">Add to cart</button>
+                            <button class="btn confirm addCart add_cart" type="button" data-productid = "<?=$row->productId?>">Add to cart</button>
                         <?php }else{ ?>
                             <!-- ↓ 如果是預購改用這個 button ↓-->
                             <button class="btn" type="button">Preorder Now</button>

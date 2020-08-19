@@ -14,7 +14,8 @@ class Homepage extends Ajax_Controller
     {
         header('Content-Type: application/json; charset=utf-8');
         header('Set-Cookie: cross-site-cookie=name; SameSite=None; Secure');
-        
+        $this->load->helper('cookie');
+        $lang = get_cookie('front');
         $count = $this->input->get('count',true);
         $notin = $this->input->get('notin',true);
 
@@ -41,12 +42,12 @@ class Homepage extends Ajax_Controller
                                 'latlng' => array($brandValue->location_x,$brandValue->location_y),
                                 'number' => $i,
                                 'storeName' => $brandValue->name,
-                                'brandLink' => website_url('brand/story').'?brandId='.$brandValue->brandId,
+                                'brandLink' => Site_url($lang.'/brand/story').'?brandId='.$brandValue->brandId,
                                 'brandImg' => backend_url($brandValue->brandiconImg),
                                 'brandPic' => backend_url($brandValue->brandImg),
                                 'description' => $description[0],
-                                'productsLink' => website_url('brand/story').'?brandId='.$brandValue->brandId,
-                                'designerLink' => website_url('designers/home').'?designerId='.$brandValue->designerId,
+                                'productsLink' => Site_url($lang.'/brand/story').'?brandId='.$brandValue->brandId,
+                                'designerLink' => Site_url($lang.'/designers/home').'?designerId='.$brandValue->designerId,
                                 'designerImg' => backend_url($brandValue->designiconImg),
                                 'designerName' => $brandValue->designer_name,
                                 'diamond' => true,

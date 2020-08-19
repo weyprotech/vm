@@ -5,7 +5,10 @@ class Shopping extends Ajax_Controller
     public function __construct()
     {        
         parent::__construct();
-        $this->load->model('product/tb_product_model','tb_product_model');
+		$this->load->model('product/tb_product_model','tb_product_model');
+        $this->load->model('product/tb_sale_model','tb_sale_model');
+
+		$this->load->library('my_cart');
     }
 
     public function addtocart()
@@ -14,31 +17,30 @@ class Shopping extends Ajax_Controller
 		{
 			$productid = $this->input->post('productid');
 			$quantity = $this->input->post('quantity');
-            $size = $this->input->post('size');
-            $color = $this->input->post('color');
+            $sizeid = $this->input->post('size');
+            $colorid = $this->input->post('color');
 			
 			$row = $this->tb_product_model->get_product_by_id($productid, $this->langId);
+			$color = $this->tb_product_model->get_product_color_by_id($colorid,$this->langId);
+			$size = $this->tb_product_model->get_product_size_by_id($sizeid,$this->langId);
+			$saleinformation = $this->tb_sale_model->get_sale_information();
+			if($saleinformation->is_visible == 1){
+				$sale = $this->tb_sale_model->get_sale_product_by_pId($productid);
+			}else{
+				$sale = false;
+			}
+			if($sale){
+				$this->my_cart->add_cart(array('productId' => $productid,'price' =>(($row->price)-($row->price*($saleinformation->discount/100))) ,'size' => $size->size,'qty' => $quantity,'color' => $color->color));				
+			}else{
+				$this->my_cart->add_cart(array('productId' => $productid,'price' => $row->price,'size' => $size->size,'qty' => $quantity,'color' => $color->color));
+			}
 
-			$data = array(
-				'id' => $row->productId,
-				'name' => $row->name,
-				'qty' => $quantity,
-				'size' => $size,
-				'color' => $color,
-				'price' => $row->price,
-				'productImg' => $row->productImg
-			);
-			
-			$rowid = $this->cart->insert($data);
+			//購物車
+			$cart_productList = $this->my_cart->get_product_list();
+			$cart_amount = $this->my_cart->amount();
+			$cart_total = $this->my_cart->total();
 
-			$result = array(
-				'code' => "200",
-				'rowid' => $rowid,
-                'contents' => $this->cart->contents(),
-				'quantitytotal' => $this->cart->total_items()
-			);
-			
-			echo json_encode($result);
+			echo json_encode(array('status' => 'success','cart_productList' => $cart_productList,'cart_amount' => $cart_amount,'cart_total' => $cart_total));
 			return false;
 		}
     }
@@ -49,13 +51,13 @@ class Shopping extends Ajax_Controller
 		{
 			$rowid = $this->input->post('rowid');
 			
-			$this->cart->remove($rowid);
+			$this->my_cart->remove($rowid);
 
 			$result = array(
                 'code' => "200",
-                'contents' => $this->cart->contents(),
-				'quantitytotal' => $this->cart->total_items(),
-				'total' => $this->cart->total()
+                'contents' => $this->my_cart->contents(),
+				'quantitytotal' => $this->my_cart->total_items(),
+				'total' => $this->my_cart->total()
 			);
 			
 			echo json_encode($result);
@@ -75,13 +77,13 @@ class Shopping extends Ajax_Controller
 				'qty' => $qty
 			);
 			
-			$this->cart->update($data);
+			$this->my_cart->update($data);
 			
 			$result = array(
                 'code' => "200",
-                'contents' => $this->cart->contents(),
-				'quantitytotal' => $this->cart->total_items(),
-				'total' => $this->cart->total()
+                'contents' => $this->my_cart->contents(),
+				'quantitytotal' => $this->my_cart->total_items(),
+				'total' => $this->my_cart->total()
 			);
 			
 			echo json_encode($result);

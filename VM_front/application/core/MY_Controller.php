@@ -57,6 +57,13 @@ class Frontend_Controller extends MY_Controller
                 }
             }
         }
+
+        //購物車內容
+        $cart_productList = $this->my_cart->get_product_list();
+        $cart_amount = $this->my_cart->amount();
+        $cart_total = $this->my_cart->total();
+
+
         /***end 產品類別 ***/
         if($productId){
             $product = $this->product_model->get_product_by_id($productId);            
@@ -71,7 +78,7 @@ class Frontend_Controller extends MY_Controller
             'pageMeta' => $this->pageMeta,
             'loading' => $this->load->view('shared/_loading', '', true),
             'header_top' => $this->load->view('shared/_header_top', array('website_color' => $website_color), true),
-            'header' => $this->load->view('shared/_header', array('categoryList' => $categoryList,'product' => $product, 'category' => $category), true),
+            'header' => $this->load->view('shared/_header', array('categoryList' => $categoryList,'product' => $product, 'category' => $category,'cart_productList' => $cart_productList,'cart_amount' => $cart_amount,'cart_total' => $cart_total), true),
             'main' => $this->load->view('content/' . $page, $data, true),
             'footer' => $this->load->view('shared/_footer', array('categoryList' => $categoryList), true),
             'sidebar' => $this->load->view('shared/_sidebar', '', true),

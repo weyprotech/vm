@@ -26,23 +26,47 @@
                 var color = $("#color").val();
                 var quantity = $("#quantity").val();
 
-                $.post(
-                    '<?=site_url('ajax/shopping/addtocart')?>',
-                    { 
+                $.ajax({
+                    url:'<?=site_url('ajax/shopping/addtocart')?>',
+                    data: { 
                         'productid' : productid,
                         'quantity' : quantity,
                         'size' : size,
                         'color' : color
                     }, 
-                    function (res) {
-                        var contact = JSON.parse(res);
-
-                        if(contact.code.trim() == "200")
-                        {
+                    type:'post',
+                    dataType:'json',
+                    success: function (res) {
+                        console.log(res);
+                        if(res['status']){
                             processingCompleted($(obj));
+                            $('.cart_view').find('.title').html(res['cart_amount']+' Items');
+                            console.log(res['cart_productList']);
+                            $('.cart_view').find('.cart_items').html('');
+                            $.each(res['cart_productList'],function(key,value){
+                                $('.cart_view').find('.cart_items').append(
+                                    '<div class="item">'+
+                                        '<a class="btn_delete" href="javascript:;"><i class="icon_delete"></i></a>'+
+                                        '<a class="thumb" href="<?= website_url('product/detail').'?productId='?>'+value.productId+'">'+
+                                            '<div class="pic" style="background-image: url(<?= backend_url() ?>'+value.productImg+');">'+
+                                                '<img class="size" src="<?= base_url('assets/images/size_3x4.png') ?>">'+
+                                            '</div>'+                                            
+                                        '</a>'+
+                                        '<div class="content">'+
+                                            '<div class="price">$ '+value.productPrice+'</div>'+
+                                            '<ul>'+
+                                                '<li>size: '+value.productSize+'</li>'+
+                                                '<li>color: '+value.productColor+'</li>'+
+                                                '<li>Qty: '+value.productQty+'</li>'+
+                                            '</ul>'+
+                                        '</div>'+
+                                    '</div>'
+                                );
+                            });
+                            $('.total_calculation').find('.total_amount').html('NTD $'+res['cart_total']);
                         }
                     }
-                );
+                });
             }, 1000);
         });
 

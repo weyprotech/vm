@@ -6,6 +6,7 @@ class Product extends Ajax_Controller
     {        
         parent::__construct();
         $this->load->model('product/tb_product_like_model','tb_product_like_model');
+        $this->load->library('my_cart');
     }
 
     public function set_like(){

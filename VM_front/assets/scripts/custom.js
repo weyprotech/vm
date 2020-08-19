@@ -381,6 +381,43 @@ var website = function () {
                 }
             }
         });
+
+        //移除購物車產品
+        $('body').on('click',".btn_delete",function(){
+            var productid = $(this).data('productid');
+            $.ajax({
+                url:site_url('ajax/shopping/deletetocart'),
+                data:{'productid' : productid},
+                dataType:'json',
+                type:'post',
+                success:function(response){
+                    $('.cart_view').find('.title').html(response['cart_amount']+' Items');
+                    $('.option_cart').addClass('have');
+                    $('.cart_view').find('.cart_items').html('');
+                    $.each(response['cart_productList'],function(key,value){
+                        $('.cart_view').find('.cart_items').append(
+                            '<div class="item">'+
+                                '<a class="btn_delete" href="javascript:;" data-productid='+value.productId+'><i class="icon_delete"></i></a>'+
+                                '<a class="thumb" href="'+site_url('product/detail')+'?productId='+value.productId+'">'+
+                                    '<div class="pic" style="background-image: url('+backend_url(value.productImg)+');">'+
+                                        '<img class="size" src="'+base_url('assets/images/size_3x4.png')+'">'+
+                                    '</div>'+                                            
+                                '</a>'+
+                                '<div class="content">'+
+                                    '<div class="price">$ '+value.productPrice+'</div>'+
+                                    '<ul>'+
+                                        '<li>size: '+value.productSize+'</li>'+
+                                        '<li>color: '+value.productColor+'</li>'+
+                                        '<li>Qty: '+value.productQty+'</li>'+
+                                    '</ul>'+
+                                '</div>'+
+                            '</div>'
+                        );
+                    });
+                    $('.total_calculation').find('.total_amount').html('NTD $'+response['cart_total']);
+                }
+            })
+        });
     };
     
     //cookie保存

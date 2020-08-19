@@ -167,14 +167,14 @@ class My_cart
     /**
      * 刪除購物車
      * 
-     * @param array('$prductId')
+     * @param array('$productId')
      */
     public function delete_cart($item){
         if(!is_array($item)){
             return $this->_set_result('Item error');
         }
         try{
-            unset($this->_cart_contents['product_list'][$item['prductId']]);
+            unset($this->_cart_contents['product_list'][$item['productId']]);
             $this->_calc_cart();
         }catch(Exception $e){
             return $this->_set_result($e->getMessage());

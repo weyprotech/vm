@@ -45,22 +45,20 @@ class Shopping extends Ajax_Controller
 		}
     }
     
-    public function removecart()
+    public function deletetocart()
 	{
-		if($this->input->post('rowid'))
+		if($this->input->post('productid'))
 		{
-			$rowid = $this->input->post('rowid');
+			$productid = $this->input->post('productid');
 			
-			$this->my_cart->remove($rowid);
+			$this->my_cart->delete_cart(array('productId' => $productid));
 
-			$result = array(
-                'code' => "200",
-                'contents' => $this->my_cart->contents(),
-				'quantitytotal' => $this->my_cart->total_items(),
-				'total' => $this->my_cart->total()
-			);
+			//購物車
+			$cart_productList = $this->my_cart->get_product_list();
+			$cart_amount = $this->my_cart->amount();
+			$cart_total = $this->my_cart->total();
 			
-			echo json_encode($result);
+			echo json_encode(array('status' => 'success','cart_productList' => $cart_productList,'cart_amount' => $cart_amount,'cart_total' => $cart_total));
 			return false;
 		}
 	}

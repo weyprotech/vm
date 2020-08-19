@@ -33,7 +33,7 @@
                                 <?php if(!empty($cart_productList)){
                                     foreach($cart_productList as $cartKey => $cartValue){ ?>
                                         <div class="item">
-                                            <a class="btn_delete" href="javascript:;"><i class="icon_delete"></i></a>
+                                            <a class="btn_delete" href="javascript:;" data-productid=<?= $cartValue['productId'] ?>><i class="icon_delete"></i></a>
                                             <a class="thumb" href="<?= website_url('product/detail').'?productId='.$cartValue['productId'] ?>">
                                                 <!--↓ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓-->
                                                 <div class="pic" style="background-image: url(<?= backend_url($cartValue['productImg']) ?>);">

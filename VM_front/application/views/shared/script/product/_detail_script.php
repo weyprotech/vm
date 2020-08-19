@@ -36,17 +36,16 @@
                     }, 
                     type:'post',
                     dataType:'json',
-                    success: function (res) {
-                        console.log(res);
-                        if(res['status']){
+                    success: function (response) {
+                        if(response['status']){
                             processingCompleted($(obj));
-                            $('.cart_view').find('.title').html(res['cart_amount']+' Items');
-                            console.log(res['cart_productList']);
+                            $('.cart_view').find('.title').html(response['cart_amount']+' Items');
+                            $('.option_cart').addClass('have');
                             $('.cart_view').find('.cart_items').html('');
-                            $.each(res['cart_productList'],function(key,value){
+                            $.each(response['cart_productList'],function(key,value){
                                 $('.cart_view').find('.cart_items').append(
                                     '<div class="item">'+
-                                        '<a class="btn_delete" href="javascript:;"><i class="icon_delete"></i></a>'+
+                                        '<a class="btn_delete" href="javascript:;" data-productid='+value.productId+'><i class="icon_delete"></i></a>'+
                                         '<a class="thumb" href="<?= website_url('product/detail').'?productId='?>'+value.productId+'">'+
                                             '<div class="pic" style="background-image: url(<?= backend_url() ?>'+value.productImg+');">'+
                                                 '<img class="size" src="<?= base_url('assets/images/size_3x4.png') ?>">'+
@@ -63,7 +62,7 @@
                                     '</div>'
                                 );
                             });
-                            $('.total_calculation').find('.total_amount').html('NTD $'+res['cart_total']);
+                            $('.total_calculation').find('.total_amount').html('NTD $'+response['cart_total']);
                         }
                     }
                 });

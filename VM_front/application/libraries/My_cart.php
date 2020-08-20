@@ -151,13 +151,13 @@ class My_cart
             return $this->_set_result('Item error');            
         }
         $productList = $this->_cart_contents['product_list'];
-        if(!isset($productList['productId'])){
+        if(!isset($productList[$item['productId']])){
             return $this->_set_result('not found product');
         }
-        try{
-            $this->_cart_contents['product_list'][$item['prductId']]['qty'] = $item['qty'];
-            $this->_cart_contents['product_list'][$item['prductId']]['size'] = $item['size'];
-            $this->_cart_contents['product_list'][$item['prductId']]['color'] = $item['color'];
+        try{ 
+            $this->_cart_contents['product_list'][$item['productId']]['qty'] = $item['qty'];
+            $this->_cart_contents['product_list'][$item['productId']]['size'] = $item['size'];
+            $this->_cart_contents['product_list'][$item['productId']]['color'] = $item['color'];   
             $this->_calc_cart();
         }catch(Exception $e){
             $this->_set_result($e->getMessage());

@@ -88,7 +88,7 @@ if ($this->langFile != 'cn') { ?>
     <script src="<?= base_url("assets/scripts/sweetalert2.all.min.js") ?>"></script>
 
     <script>
-        website.Init('<?= site_url() ?>', '<?= base_url() ?>');
+        website.Init('<?= site_url() ?>', '<?= base_url() ?>','<?= $this->langFile ?>');
     </script>
     <?= $this->load->view('shared/_script', '', true) ?>
     <?= $script ?>

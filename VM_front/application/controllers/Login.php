@@ -13,7 +13,7 @@ class Login extends Frontend_Controller
         $login = $this->input->cookie('login', true);
         $this->encryption->initialize(array('driver' => 'mcrypt'));
         if($this->session->userdata('memberinfo')['memberId']){
-            redirect('member');
+            redirect(website_url('member'));
         }
         if($login != null){
             $temp = $this->encryption->decrypt($login);
@@ -29,7 +29,7 @@ class Login extends Frontend_Controller
                     'memberFirst_name' => $member[0]->first_name,
                     'memberLast_name' => $member[0]->last_name                
                 ));
-                redirect('member');
+                redirect(website_url('member'));
             }
         }
         $this->get_view('member/login', array(), $this->load->view('shared/script/member/_login_script', array(), true));

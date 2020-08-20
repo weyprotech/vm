@@ -25,12 +25,12 @@ class Create_account extends Frontend_Controller
                     'memberFirst_name' => $member[0]->first_name,
                     'memberLast_name' => $member[0]->last_name                
                 ));
-                redirect('member');
+                redirect(website_url('member'));
             }else{
-                redirect('login');
+                redirect(website_url('login'));
             }
         }else{
-            redirect('login');
+            redirect(website_url('login'));
         }
     }
 }

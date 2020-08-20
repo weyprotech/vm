@@ -96,7 +96,7 @@ class Product extends Frontend_Controller
         $row = $this->tb_product_model->get_product_by_id($productId,$this->langId);
 
         if(!$productId && !$row){
-            redirect('homepage/index');
+            redirect(website_url('homepage/index'));
         }
 
         $base_category = $this->tb_category_model->get_category_by_id($row->baseId,$this->langId);

@@ -32,7 +32,7 @@ class Shopping extends Ajax_Controller
 			if($sale){
 				$this->my_cart->add_cart(array('productId' => $productid,'price' =>(($row->price)-($row->price*($saleinformation->discount/100))) ,'size' => $size->size,'qty' => $quantity,'color' => $color->color));				
 			}else{
-				$this->my_cart->add_cart(array('productId' => $productid,'price' => $row->price,'size' => $size->size,'qty' => $quantity,'color' => $color->color));
+				$this->my_cart->add_cart(array('productId' => $productid,'price' => $row->price,'size' => $size->size,'qty' => $quantity,'color' => @$color->color));
 			}
 
 			//購物車
@@ -61,30 +61,30 @@ class Shopping extends Ajax_Controller
 			echo json_encode(array('status' => 'success','cart_productList' => $cart_productList,'cart_amount' => $cart_amount,'cart_total' => $cart_total));
 			return false;
 		}
-	}
-	
+	}		
+
 	public function updatecart()
 	{
-		if($this->input->post('rowid'))
+		if($this->input->post('productid'))
 		{
-			$rowid = $this->input->post('rowid');
-			$qty = $this->input->post('qty');
+			$productid = $this->input->post('productid');
+			$size = $this->input->post('size');
+			$color = $this->input->post('color');
+			$quantity = $this->input->post('quantity');
 
-			$data = array(
-				'rowid' => $rowid,
-				'qty' => $qty
-			);
-			
-			$this->my_cart->update($data);
-			
-			$result = array(
-                'code' => "200",
-                'contents' => $this->my_cart->contents(),
-				'quantitytotal' => $this->my_cart->total_items(),
-				'total' => $this->my_cart->total()
-			);
-			
-			echo json_encode($result);
+			$this->my_cart->update_cart(array(
+				'productId' => $productid,
+				'size' => $size,
+				'color' => $color,
+				'qty' => $quantity
+ 			));
+
+			 //購物車
+			 $cart_productList = $this->my_cart->get_product_list();
+			 $cart_amount = $this->my_cart->amount();
+			 $cart_total = $this->my_cart->total();
+
+			 echo json_encode(array('status' => 'success','cart_productList' => $cart_productList,'cart_amount' => $cart_amount,'cart_total' => $cart_total));
 			return false;
 		}	
     }

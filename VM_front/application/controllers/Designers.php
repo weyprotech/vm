@@ -62,7 +62,7 @@ class Designers extends Frontend_Controller
     public function home(){
         $designerId = $this->input->get('designerId', true);
         if($designerId == ''){
-            redirect('designers/index');
+            redirect(website_url('designers/index'));
         }
         $row = $this->tb_designer_model->get_designer_by_id($designerId, $this->langId);
 
@@ -104,7 +104,7 @@ class Designers extends Frontend_Controller
     public function profile(){
         $designerId = $this->input->get('designerId',true);
         if(!$designerId){
-            redirect('designers/index');
+            redirect(website_url('designers/index'));
         }
         $row = $this->tb_designer_model->get_designer_by_id($designerId,$this->langId);
         $brandList = $this->tb_brand_model->get_brand_select(array(array('field' => 'brand.designerId','value' => $designerId)),false,false,$this->langId);
@@ -132,7 +132,7 @@ class Designers extends Frontend_Controller
         $designer_bannerList = $this->tb_designer_banner_model->get_designer_banner_select(array(array('field' => 'banner.designerId', 'value' => $designerId), array('field' => 'banner.is_visible', 'value' => 1), 'other' => array('value' => '(banner.date = \'\' || banner.date is NULL || banner.date > \''.date("Y-m-d").'\')')), array(array('field' => 'banner.order', 'dir' => 'desc')));
 
         if($designerId == ''){
-            redirect('designers/index');
+            redirect(website_url('designers/index'));
         }
         $brandList = $this->tb_brand_model->get_brand_select(array(array('field' => 'brand.designerId','value' => $designerId)),array(array('field' => 'brand.order','dir' => 'desc')),false,$this->langId);        
         //打折%數

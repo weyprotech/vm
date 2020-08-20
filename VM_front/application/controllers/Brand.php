@@ -47,7 +47,7 @@ class Brand extends Frontend_Controller
     public function story(){
         $brandId = $this->input->get('brandId',true);
         if($brandId == ''){
-            redirect('brand/index');
+            redirect(website_url('brand/index'));
         }
         $row = $this->tb_brand_model->get_brand_by_id($brandId,$this->langId);
         $designer = $this->tb_designer_model->get_designer_by_id($row->designerId,$this->langId);

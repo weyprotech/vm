@@ -1,8 +1,8 @@
 var website = function () {
     var siteUrl = '', baseUrl = '';
     var backendUrl = "http://vm-backend.4webdemo.com/";
-
-    var init = function (site, base) {
+    var lang;
+    var init = function (site, base,normal_lang) {
         siteUrl = site;
         baseUrl = base;
 
@@ -10,7 +10,7 @@ var website = function () {
         var $brand_more = $('#brand_more'), $website_set = $('#website_set'), $event_more = $('#event_more');
         var $login = $('#login'), $edit_account_save = $('#edit_account_save'), $more_popular_designers = $('#more_popular_designers');
         var $money_type_select = $('.money_type_select'), $language_select = $('.language_select');
-
+        lang = normal_lang;
         var error = 0;
 
         $langSelect.change(function () {
@@ -113,6 +113,7 @@ var website = function () {
 
         //語言
         $website_set.on('click', function(){
+            lang = $('#language_select').val();
             doCookieSetup('front', $('#language_select').val());
             doCookieSetup('money_type', $('#money_type_select').val()); 
             change_lang($('#language_select').val()).done(function (response) {
@@ -200,7 +201,7 @@ var website = function () {
                            $('.swal2-container').css('z-index','100000');
                            $('#password').val('');                                              
                         }else{
-                            location.href= site_url('member');
+                            location.href= site_url(lang+'/member');
                         }
                     }
                 });
@@ -398,7 +399,7 @@ var website = function () {
                         $('.cart_view').find('.cart_items').append(
                             '<div class="item">'+
                                 '<a class="btn_delete" href="javascript:;" data-productid='+value.productId+'><i class="icon_delete"></i></a>'+
-                                '<a class="thumb" href="'+site_url('product/detail')+'?productId='+value.productId+'">'+
+                                '<a class="thumb" href="'+site_url(lang+'/product/detail')+'?productId='+value.productId+'">'+
                                     '<div class="pic" style="background-image: url('+backend_url(value.productImg)+');">'+
                                         '<img class="size" src="'+base_url('assets/images/size_3x4.png')+'">'+
                                     '</div>'+                                            
@@ -422,7 +423,6 @@ var website = function () {
     
     //cookie保存
     function doCookieSetup(name, value) {
-        console.log("cookie " + value);
         var expires = new Date();
         //有效時間保存 2 天 2*24*60*60*1000
         expires.setTime(expires.getTime() + 172800000);
@@ -437,6 +437,93 @@ var website = function () {
     function isEmpty(value) {
         return (value == undefined) || (value == null) || (value == "");
     }
+
+    //更新購物車產品
+    function change_cart(productid){
+        var size = $('#size_'+productid).val();
+        var color = $('#color_'+productid).val();
+        var quantity = $('#quantity_'+productid).val();
+        $.ajax({
+            url:site_url('ajax/shopping/updatecart'),
+            data:{'productid' : productid, 'size' : size, 'color' : color,'quantity' : quantity},
+            type: 'POST',
+            dataType: 'json',
+            success: function(response){         
+                $('.cart_view').find('.title').html(response['cart_amount']+' Items');
+                $('.option_cart').addClass('have');
+                $('.cart_view').find('.cart_items').html('');
+                $.each(response['cart_productList'],function(key,value){
+                    $('.cart_view').find('.cart_items').append(
+                        '<div class="item">'+
+                            '<a class="btn_delete" href="javascript:;" data-productid='+value.productId+'><i class="icon_delete"></i></a>'+
+                            '<a class="thumb" href="'+site_url(lang+'/product/detail')+'?productId='+value.productId+'">'+
+                                '<div class="pic" style="background-image: url('+backend_url(value.productImg)+');">'+
+                                    '<img class="size" src="'+base_url('assets/images/size_3x4.png')+'">'+
+                                '</div>'+                                            
+                            '</a>'+
+                            '<div class="content">'+
+                                '<div class="price">$ '+value.productPrice+'</div>'+
+                                '<ul>'+
+                                    '<li>size: '+value.productSize+'</li>'+
+                                    '<li>color: '+value.productColor+'</li>'+
+                                    '<li>Qty: '+value.productQty+'</li>'+
+                                '</ul>'+
+                            '</div>'+
+                        '</div>'
+                    );
+                });
+                $('.total_calculation').find('.total_amount').html('NTD $'+response['cart_total']);                
+            }
+        });
+    }
+
+    //更新數量
+    function change_count(productid,type){
+        var size = $('#size_'+productid).val();
+        var color = $('#color_'+productid).val();
+        var quantity = $('#quantity_'+productid).val();
+        var qty;
+        if(type=="add"){
+            qty = parseInt(quantity)+1;
+        }else{
+            qty = parseInt(quantity)-1
+        }
+        $.ajax({
+            url:site_url('ajax/shopping/updatecart'),
+            data:{'productid' : productid, 'size' : size, 'color' : color,'quantity' : qty},
+            type: 'POST',
+            dataType: 'json',
+            success: function(response){      
+                $('.cart_view').find('.title').html(response['cart_amount']+' Items');
+                $('.option_cart').addClass('have');
+                $('.cart_view').find('.cart_items').html('');
+                $.each(response['cart_productList'],function(key,value){
+                    $('.cart_view').find('.cart_items').append(
+                        '<div class="item">'+
+                            '<a class="btn_delete" href="javascript:;" data-productid='+value.productId+'><i class="icon_delete"></i></a>'+
+                            '<a class="thumb" href="'+site_url(lang+'/product/detail')+'?productId='+value.productId+'">'+
+                                '<div class="pic" style="background-image: url('+backend_url(value.productImg)+');">'+
+                                    '<img class="size" src="'+base_url('assets/images/size_3x4.png')+'">'+
+                                '</div>'+
+                            '</a>'+
+                            '<div class="content">'+
+                                '<div class="price">$ '+value.productPrice+'</div>'+
+                                '<ul>'+
+                                    '<li>size: '+value.productSize+'</li>'+
+                                    '<li>color: '+value.productColor+'</li>'+
+                                    '<li>Qty: '+value.productQty+'</li>'+
+                                '</ul>'+
+                            '</div>'+
+                        '</div>'
+                    );
+                    $('#total_'+value.productId).html('$ '+(value.productPrice*value.productQty));
+                });
+                $('.total_calculation').find('.total_amount').html('NTD $'+response['cart_total']);            
+                $('.total_amount').html('$ '+response['cart_total']);
+            }
+        });
+    }
+    
 
     var site_url = function (url) {
         if (url == undefined) return siteUrl;
@@ -459,6 +546,8 @@ var website = function () {
         Site_url: site_url,
         Base_url: base_url,
         IsEmpty: isEmpty,
+        change_cart : change_cart,
+        change_count : change_count,
         Ajax: function (url, data, type) {
             return $.ajax({ url: site_url(url), data: data || {}, type: type || 'get', dataType: 'json' });
         }

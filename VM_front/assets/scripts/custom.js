@@ -415,12 +415,41 @@ var website = function () {
                             '</div>'
                         );
                     });
-                    $('.total_calculation').find('.total_amount').html('NTD $'+response['cart_total']);
+                    $('.total_calculation').find('.total_amount').html('NTD $'+response['all_total']);
                     $('.total_amount').html('$ '+response['cart_total']);
                     $('#item_total').html('$ '+response['cart_total']);
                     $('#item_'+productid).remove();
                 }
             })
+        });
+
+        //選擇運費
+        $('body').on('change',"#shipping_select",function(){
+            var shipping = $(this).val();
+            $.ajax({
+                url:site_url('ajax/shopping/update_cart_shipping'),
+                data:{'shipping' : shipping},
+                dataType:'json',
+                type:'POST',
+                success:function(response){
+                    $('.total_calculation').find('.total_amount').html('NTD $'+response['all_total']);
+                    $('#shipping_money').html("$ "+shipping);
+                }
+            });
+        });
+
+        //下單
+        $('body').on('click',"",function(){
+            var shipping = $('#shipping_select').val();
+            if(shipping == ""){
+                swal({
+                    title:'Error',
+                    type:'error',
+                    html:'please choose shipping'
+                });
+            }else{
+                
+            }
         });
     };
     
@@ -475,7 +504,7 @@ var website = function () {
                         '</div>'
                     );
                 });
-                $('.total_calculation').find('.total_amount').html('NTD $'+response['cart_total']);                
+                $('.total_calculation').find('.total_amount').html('NTD $'+response['all_total']);                
             }
         });
     }
@@ -521,7 +550,7 @@ var website = function () {
                     );
                     $('#total_'+value.productId).html('$ '+(value.productPrice*value.productQty));
                 });
-                $('.total_calculation').find('.total_amount').html('NTD $'+response['cart_total']);            
+                $('.total_calculation').find('.total_amount').html('NTD $'+response['all_total']);            
                 $('.total_amount').html('$ '+response['cart_total']);
                 $('#item_total').html('$ '+response['cart_total']);
             }

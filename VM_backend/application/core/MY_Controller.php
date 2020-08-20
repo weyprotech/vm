@@ -80,7 +80,7 @@ class Backend_Controller extends MY_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->locale = $this->i18n->get_current_locale('backend');
+        $this->locale = 'en';
         $this->langId = $this->get_value_from_field('locale', 'langId', $this->locale);
         $this->i18n->set_current_locale($this->locale, 300, 'backend');
 

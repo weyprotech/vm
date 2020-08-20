@@ -81,14 +81,17 @@
                                 <div class="controls_group">
                                     <label>Shipping to</label>
                                     <div class="controls">
-                                    <div class="select_wrapper">
-                                        <select>
-                                        <option>Denmark</option>
-                                        </select>
-                                    </div>
+                                        <div class="select_wrapper">
+                                            <select id="shipping_select">
+                                                <option value="">choose shipping</option>
+                                                <?php foreach ($shippingList as $shippingKey => $shippingValue){ ?>
+                                                    <option value="<?= $shippingValue->money ?>"><?= $shippingValue->name ?></option>
+                                                <?php } ?>
+                                            </select>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="price">$1,160</div>
+                                <div class="price" id="shipping_money">$ 0</div>
                                 </li>
                                 <li class="item">
                                 <div class="controls_group">

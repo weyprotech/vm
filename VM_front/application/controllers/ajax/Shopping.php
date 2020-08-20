@@ -11,6 +11,7 @@ class Shopping extends Ajax_Controller
 		$this->load->library('my_cart');
     }
 
+	//新增產品至購物車
     public function addtocart()
 	{
 		if($this->input->post('productid'))
@@ -41,10 +42,11 @@ class Shopping extends Ajax_Controller
 			$cart_total = $this->my_cart->total();
 
 			echo json_encode(array('status' => 'success','cart_productList' => $cart_productList,'cart_amount' => $cart_amount,'cart_total' => $cart_total));
-			return false;
+			return true;
 		}
     }
-    
+	
+	//刪除購物車產品
     public function deletetocart()
 	{
 		if($this->input->post('productid'))
@@ -57,12 +59,14 @@ class Shopping extends Ajax_Controller
 			$cart_productList = $this->my_cart->get_product_list();
 			$cart_amount = $this->my_cart->amount();
 			$cart_total = $this->my_cart->total();
+			$all_total = $this->my_cart->all_total();
 			
-			echo json_encode(array('status' => 'success','cart_productList' => $cart_productList,'cart_amount' => $cart_amount,'cart_total' => $cart_total));
-			return false;
+			echo json_encode(array('status' => 'success','cart_productList' => $cart_productList,'cart_amount' => $cart_amount,'cart_total' => $cart_total,'all_total' => $all_total));
+			return true;
 		}
-	}		
+	}
 
+	//更新購物車
 	public function updatecart()
 	{
 		if($this->input->post('productid'))
@@ -79,13 +83,23 @@ class Shopping extends Ajax_Controller
 				'qty' => $quantity
  			));
 
-			 //購物車
-			 $cart_productList = $this->my_cart->get_product_list();
-			 $cart_amount = $this->my_cart->amount();
-			 $cart_total = $this->my_cart->total();
+			//購物車			
+			$cart_productList = $this->my_cart->get_product_list();
+			$cart_amount = $this->my_cart->amount();
+			$cart_total = $this->my_cart->total();
+			$all_total = $this->my_cart->all_total();
 
-			 echo json_encode(array('status' => 'success','cart_productList' => $cart_productList,'cart_amount' => $cart_amount,'cart_total' => $cart_total));
-			return false;
-		}	
-    }
+			echo json_encode(array('status' => 'success','cart_productList' => $cart_productList,'cart_amount' => $cart_amount,'cart_total' => $cart_total,'all_total' => $all_total));
+			return true;
+		}
+	}
+	
+	//更新購物車運費
+	public function update_cart_shipping(){
+		$shipping = $this->input->post('shipping');
+		$this->my_cart->update_shipping($shipping);
+		$all_total = $this->my_cart->all_total();
+		echo json_encode(array('status' => 'success','all_total' => $all_total));
+		return true;
+	}
 }

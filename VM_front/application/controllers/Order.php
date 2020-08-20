@@ -21,6 +21,9 @@ class Order extends Frontend_Controller{
         $cart_total = $this->my_cart->total();
         $all_total = $this->my_cart->all_total();
         $shipping = $this->my_cart->shipping();
+        if(empty($shipping)){
+            $shipping = array('shippingId' => "","money" => "");
+        }
         $data = array(
             'cart_productList' => $cart_productList,
             'cart_amount' => $cart_amount,

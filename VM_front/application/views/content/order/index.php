@@ -72,36 +72,36 @@
                         <div class="cart_summary">
                             <ul class="summary_items">
                                 <li class="item">
-                                <div class="controls_group">
-                                    <label>Item Total</label>
-                                </div>
-                                <div class="price" id="item_total">$ <?= $cart_total ?></div>
+                                    <div class="controls_group">
+                                        <label>Item Total</label>
+                                    </div>
+                                    <div class="price" id="item_total">$ <?= $cart_total ?></div>
                                 </li>
                                 <li class="item">
-                                <div class="controls_group">
-                                    <label>Shipping to</label>
-                                    <div class="controls">
-                                        <div class="select_wrapper">
-                                            <select id="shipping_select">
-                                                <option value="">choose shipping</option>
-                                                <?php foreach ($shippingList as $shippingKey => $shippingValue){ ?>
-                                                    <option value="<?= $shippingValue->shippingId ?>" <?= $shippingValue->shippingId == $shippingId ? 'selected' : '' ?>><?= $shippingValue->name ?></option>
-                                                <?php } ?>
-                                            </select>
+                                    <div class="controls_group">
+                                        <label>Shipping to</label>
+                                        <div class="controls">
+                                            <div class="select_wrapper">
+                                                <select id="shipping_select">
+                                                    <option value="">choose shipping</option>
+                                                    <?php foreach ($shippingList as $shippingKey => $shippingValue){ ?>
+                                                        <option value="<?= $shippingValue->shippingId ?>" <?= $shippingValue->shippingId == $shippingId ? 'selected' : '' ?>><?= $shippingValue->name ?></option>
+                                                    <?php } ?>
+                                                </select>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="price" id="shipping_money">$ <?= $money ?></div>
+                                    <div class="price" id="shipping_money">$ <?= $money ?></div>
                                 </li>
                                 <li class="item">
-                                <div class="controls_group">
-                                    <label>Add discout coupon</label>
-                                    <div class="controls coupon_controls">
-                                    <input type="text">
-                                    <button class="btn_check" type="button"><i class="icon_check"></i></button>
+                                    <div class="controls_group">
+                                        <label>Add discout coupon</label>
+                                        <div class="controls coupon_controls">
+                                        <input type="text">
+                                        <button class="btn_check" type="button"><i class="icon_check"></i></button>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="price">-$0</div>
+                                    <div class="price">-$0</div>
                                 </li>
                             </ul>
                             <div class="total_calculation">

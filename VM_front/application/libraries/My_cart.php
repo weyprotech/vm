@@ -223,7 +223,11 @@ class My_cart
             $amount += $productValue['qty'];
             $total += $productValue['qty']*$productValue['price'];            
         }
-        $alltotal = $total+$this->_cart_contents['shipping']['money'];
+        if(!empty($this->_cart_contents['shipping'])){
+            $alltotal = $total+$this->_cart_contents['shipping']['money'];
+        }else{
+            $alltotal = $total;
+        }
         $this->_cart_contents['amount'] = $amount;
         $this->_cart_contents['total'] = $total;
         $this->_cart_contents['all_total'] = $alltotal;

@@ -416,6 +416,9 @@ var website = function () {
                         );
                     });
                     $('.total_calculation').find('.total_amount').html('NTD $'+response['cart_total']);
+                    $('.total_amount').html('$ '+response['cart_total']);
+                    $('#item_total').html('$ '+response['cart_total']);
+                    $('#item_'+productid).remove();
                 }
             })
         });
@@ -520,6 +523,7 @@ var website = function () {
                 });
                 $('.total_calculation').find('.total_amount').html('NTD $'+response['cart_total']);            
                 $('.total_amount').html('$ '+response['cart_total']);
+                $('#item_total').html('$ '+response['cart_total']);
             }
         });
     }

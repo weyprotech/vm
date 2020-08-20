@@ -15,7 +15,7 @@
                         <div class="cart_container">
                             <ul class="cart_items">
                                 <?php foreach($cart_productList as $productKey => $productValue){ ?>
-                                    <li class="item">
+                                    <li class="item" id="item_<?= $productValue['productId'] ?>">
                                         <a class="thumb" href="<?= website_url('product/detail').'?productId='.$productValue['productId'] ?>">
                                             <!--↓ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓-->
                                             <div class="pic" style="background-image: url(<?= backend_url($productValue['productImg']) ?>);">
@@ -60,7 +60,7 @@
                                                 <i class="icon_favorite_heart_small"></i>
                                                 <span>save to heart</span>
                                             </a>
-                                            <a href="javascript:;">
+                                            <a class="btn_delete" data-productid="<?= $productValue['productId'] ?>" href="javascript:;">
                                                 <i class="icon_remove"></i>
                                                 <span>remove</span>
                                             </a>
@@ -75,7 +75,7 @@
                                 <div class="controls_group">
                                     <label>Item Total</label>
                                 </div>
-                                <div class="price">$ <?= $cart_total ?></div>
+                                <div class="price" id="item_total">$ <?= $cart_total ?></div>
                                 </li>
                                 <li class="item">
                                 <div class="controls_group">

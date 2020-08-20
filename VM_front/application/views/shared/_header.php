@@ -58,9 +58,7 @@
                                     <div class="label">Subtotal</div>
                                     <div class="total_amount">NTD $<?= $cart_total ?></div>
                                 </div>
-                                <?php if(isset($this->session->userdata('memberinfo')['memberId'])){ ?>
-                                    <a class="btn confirm" href="<?= website_url('order/index') ?>">CHECKOUT</a>
-                                <?php } ?>                                    
+                                <a class="btn confirm" href="<?= website_url('order/index') ?>">CHECKOUT</a>                               
                             </div>
                         </div>
                     </div>

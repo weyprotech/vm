@@ -7,7 +7,7 @@ class Shopping extends Ajax_Controller
         parent::__construct();
 		$this->load->model('product/tb_product_model','tb_product_model');
         $this->load->model('product/tb_sale_model','tb_sale_model');
-
+		$this->load->model('shipping/tb_shipping_model','tb_shipping_model');
 		$this->load->library('my_cart');
     }
 
@@ -96,10 +96,12 @@ class Shopping extends Ajax_Controller
 	
 	//更新購物車運費
 	public function update_cart_shipping(){
-		$shipping = $this->input->post('shipping');
-		$this->my_cart->update_shipping($shipping);
+		$shippingId = $this->input->post('shipping');
+		$shipping = $this->tb_shipping_model->get_shipping_by_id($shippingId,$this->langId);
+		$shipping_array = array('shippingId' => $shippingId,'money' => $shipping->money);
+		$this->my_cart->update_shipping($shipping_array);
 		$all_total = $this->my_cart->all_total();
-		echo json_encode(array('status' => 'success','all_total' => $all_total));
+		echo json_encode(array('status' => 'success','all_total' => $all_total,'money' => $shipping->money));
 		return true;
 	}
 }

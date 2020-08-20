@@ -415,8 +415,8 @@ var website = function () {
                             '</div>'
                         );
                     });
-                    $('.total_calculation').find('.total_amount').html('NTD $'+response['all_total']);
-                    $('.total_amount').html('$ '+response['cart_total']);
+                    $('.total_calculation').find('.total_amount').html('NTD $'+response['total']);
+                    $('#all_total').html('NTD$'+response['all_total']);
                     $('#item_total').html('$ '+response['cart_total']);
                     $('#item_'+productid).remove();
                 }
@@ -432,25 +432,25 @@ var website = function () {
                 dataType:'json',
                 type:'POST',
                 success:function(response){
-                    $('.total_calculation').find('.total_amount').html('NTD $'+response['all_total']);
-                    $('#shipping_money').html("$ "+shipping);
+                    $('#all_total').html("NTD$"+response['all_total']);                    
+                    $('#shipping_money').html("$ "+response['money']);
                 }
             });
         });
 
         //下單
-        $('body').on('click',"",function(){
-            var shipping = $('#shipping_select').val();
-            if(shipping == ""){
-                swal({
-                    title:'Error',
-                    type:'error',
-                    html:'please choose shipping'
-                });
-            }else{
-                
-            }
-        });
+        // $('body').on('click',"",function(){
+        //     var shipping = $('#shipping_select').val();
+        //     if(shipping == ""){
+        //         swal({
+        //             title:'Error',
+        //             type:'error',
+        //             html:'please choose shipping'
+        //         });
+        //     }else{
+
+        //     }
+        // });
     };
     
     //cookie保存
@@ -504,7 +504,8 @@ var website = function () {
                         '</div>'
                     );
                 });
-                $('.total_calculation').find('.total_amount').html('NTD $'+response['all_total']);                
+                $('.total_calculation').find('.total_amount').html('NTD $'+response['total']);  
+                $('#all_total').html('NTD$'+response['all_total']);
             }
         });
     }
@@ -550,8 +551,8 @@ var website = function () {
                     );
                     $('#total_'+value.productId).html('$ '+(value.productPrice*value.productQty));
                 });
-                $('.total_calculation').find('.total_amount').html('NTD $'+response['all_total']);            
-                $('.total_amount').html('$ '+response['cart_total']);
+                $('.total_calculation').find('.total_amount').html('NTD $'+response['total']);        
+                $('#all_total').html('NTD$'+response['all_total']);
                 $('#item_total').html('$ '+response['cart_total']);
             }
         });

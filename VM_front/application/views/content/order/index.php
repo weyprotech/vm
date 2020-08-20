@@ -85,13 +85,13 @@
                                             <select id="shipping_select">
                                                 <option value="">choose shipping</option>
                                                 <?php foreach ($shippingList as $shippingKey => $shippingValue){ ?>
-                                                    <option value="<?= $shippingValue->money ?>"><?= $shippingValue->name ?></option>
+                                                    <option value="<?= $shippingValue->shippingId ?>" <?= $shippingValue->shippingId == $shippingId ? 'selected' : '' ?>><?= $shippingValue->name ?></option>
                                                 <?php } ?>
                                             </select>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="price" id="shipping_money">$ 0</div>
+                                <div class="price" id="shipping_money">$ <?= $money ?></div>
                                 </li>
                                 <li class="item">
                                 <div class="controls_group">
@@ -106,7 +106,7 @@
                             </ul>
                             <div class="total_calculation">
                                 <label>TOTAL</label>
-                                <div class="total_amount">NTD$<?= $cart_total ?></div>
+                                <div class="total_amount" id="all_total">NTD$<?= $all_total ?></div>
                             </div>
                         </div>
                     </div>

@@ -44,7 +44,7 @@ class My_cart
 
         $this->_cart_contents = $this->CI->session->userdata('cart_contents');
         if($this->_cart_contents == NULL){
-            $this->_cart_contents = array('product_list' => array(),'shipping' => 0,'amount' => 0,'total' => 0,'all_total' => 0);
+            $this->_cart_contents = array('product_list' => array(),'shipping' => array(),'amount' => 0,'total' => 0,'all_total' => 0);
         }
 
         $this->CI->load->model(array(
@@ -86,6 +86,15 @@ class My_cart
      */
     public function all_total(){
         return $this->_cart_contents['all_total'];
+    }
+
+    /**
+     * 取得運費
+     * 
+     * @return array()
+     */
+    public function shipping(){
+        return $this->_cart_contents['shipping'];
     }
 
     /**
@@ -193,10 +202,11 @@ class My_cart
     /**
      * 更新運費
      * 
-     * @param array('$shipping')
+     * @param array('shippingId','money')
      */
     public function update_shipping($shipping){
         $this->_cart_contents['shipping'] = $shipping;
+
         $this->_calc_cart();
     }
 
@@ -213,7 +223,7 @@ class My_cart
             $amount += $productValue['qty'];
             $total += $productValue['qty']*$productValue['price'];            
         }
-        $alltotal = $total+$this->_cart_contents['shipping'];
+        $alltotal = $total+$this->_cart_contents['shipping']['money'];
         $this->_cart_contents['amount'] = $amount;
         $this->_cart_contents['total'] = $total;
         $this->_cart_contents['all_total'] = $alltotal;

@@ -19,11 +19,16 @@ class Order extends Frontend_Controller{
         $shippingList = $this->shipping_model->get_shipping_select(false,array(array('field' => 'shipping.order','dir' => 'asc')),false,$this->langId);
         $cart_amount = $this->my_cart->amount();
         $cart_total = $this->my_cart->total();
+        $all_total = $this->my_cart->all_total();
+        $shipping = $this->my_cart->shipping();
         $data = array(
             'cart_productList' => $cart_productList,
             'cart_amount' => $cart_amount,
             'cart_total' => $cart_total,
-            'shippingList' => $shippingList
+            'all_total' => $all_total,
+            'shippingList' => $shippingList,
+            'shippingId' => $shipping['shippingId'],
+            'money' => $shipping['money']
         );
         $this->get_view('order/index',$data);        
     }

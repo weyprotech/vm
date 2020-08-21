@@ -60,7 +60,7 @@ class Order extends Backend_Controller
     {
         $this->check_action_auth($this->menuId, 'delete', true); // Check Auth
 
-        if (!$row = $this->order_model->get_order_by_id($orderId, $this->langId, array('enable' => true, 'visible' => false))):
+        if (!$row = $this->order_model->get_order_by_id($orderId, false, array('enable' => true, 'visible' => false))):
             $this->set_active_status('danger', 'The data does not exist!');
         else:
             $this->order_model->delete_order($row);

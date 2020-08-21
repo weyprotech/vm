@@ -44,7 +44,7 @@
                             <div id="content" class="tab-content">
                                 <div class="tab-pane active" id="hb1">
                                     <fieldset>
-                                        <legend>訂單資料</legend>
+                                        <legend>Order information</legend>
 
                                         <div class="form-group">
                                             <label class="col-sm-2 control-label">OrderId</label>
@@ -111,16 +111,16 @@
                                         </div>
 
                                         <div class="form-group">
-                                            <label class="col-sm-2 control-label">Status</label>
+                                            <label class="col-sm-2 control-label">P</label>
 
                                             <div class="col-sm-9 col-lg-8">
                                                 <label class="radio radio-inline">
                                                     <input type="radio" class="radiobox status" id="status1" name="status" value="0">
-                                                    <span>Credit Card</span>
+                                                    <span>not paid yet</span>
                                                 </label>
                                                 <label class="radio radio-inline">
-                                                    <input type="radio" class="radiobox status" id="status1" name="status" value="0" checked="">
-                                                    <span>ATM</span>
+                                                    <input type="radio" class="radiobox status" id="status1" name="status" value="1">
+                                                    <span>Paid</span>
                                                 </label>                                                                                         
                                             </div>
                                         </div>
@@ -129,7 +129,7 @@
                                 </div>
                                 <div class="tab-pane" id="hb2">
                                     <fieldset>
-                                        <legend>商品資訊</legend>
+                                        <legend>Order product</legend>
 
                                         <table class="table table-hover">
                                             <thead>
@@ -163,7 +163,7 @@
                             <div class="widget-footer">
                                 <button type="submit" class="btn btn-primary" id="save">Save</button>
                                 <button type="submit" class="btn btn-primary" id="back" onclick="$('#data-form').attr('action', '<?= $this->query . (!empty($this->query) ? '&' : '?') ?>back=1');">Return After Saving</button>
-                                <button type="button" class="btn btn-default" onclick="location.href='<?= site_url("backend/shipping/shipping" . $this->query) ?>';">Return</button>
+                                <button type="button" class="btn btn-default" onclick="location.href='<?= site_url("backend/order/order" . $this->query) ?>';">Return</button>
                             </div>
                         </form>
                     </div>

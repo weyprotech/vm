@@ -196,7 +196,16 @@ class My_cart
             $this->_calc_cart();
         }catch(Exception $e){
             return $this->_set_result($e->getMessage());
-        }            
+        }
+    }
+
+    /**
+     * 重置購物車
+     * 
+     * 
+     */
+    public function reset_cart(){
+        $this->CI->session->set_userdata('cart_contents','');
     }
 
     /**

@@ -36,6 +36,27 @@ class Order extends Frontend_Controller{
         $this->get_view('order/index',$data);        
     }
 
+    public function order_information(){
+        //購物車內容
+        $cart_productList = $this->my_cart->get_product_list();
+        foreach($cart_productList as $cartKey => $cartValue){
+            $cart_productList[$cartKey]['sizeList'] = $this->product_model->get_product_size_select(array(array('field' => 'product_size.pId','value' => $cartValue['productId'])),false,false,$this->langId);
+            $cart_productList[$cartKey]['colorList'] = $this->product_model->get_product_color_select(array(array('field' => 'product_color.pId','value' => $cartValue['productId'])),false,false,$this->langId);
+        }
+        $cart_amount = $this->my_cart->amount();
+        $cart_total = $this->my_cart->total();
+        $all_total = $this->my_cart->all_total();
+        $all_country = get_all_country();
+        $data = array(
+            'cart_productList' => $cart_productList,
+            'cart_amount' => $cart_amount,
+            'cart_total' => $cart_total,
+            'all_total' => $all_total,
+            'all_country' => $all_country
+        );
+        $this->get_view('order/information',$data);
+    }
+
     private function get_view($page, $data = array(), $script = "")
     {
         $this->load->view("webPage", $this->get_frontend_view($page, $data, $script));

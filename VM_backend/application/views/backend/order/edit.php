@@ -23,13 +23,10 @@
                 <header>
                     <span class="widget-icon"> <i class="fa fa-edit"></i> </span>
 
-                    <h2>Add</h2>
-                    <ul class="nav nav-tabs pull-right in"><?php $i = 1; ?>
-                        <?php if ($this->langList): ?>
-                            <?php foreach ($this->langList as $lrow): ?>
-                                <li <?= $i == 1 ? 'class="active"' : '' ?>><a data-toggle="tab" href="#hb<?= $i++ ?>"><?= $lrow->name ?></a></li>
-                            <?php endforeach; ?>
-                        <?php endif; ?>
+                    <h2>Edit</h2>
+                    <ul class="nav nav-tabs pull-right in">
+                        <li class="active"><a data-toggle="tab" href="#hb1">訂單資料</a></li>
+                        <li><a data-toggle="tab" href="#hb2">商品資訊</a></li>
                     </ul>
                 </header>
 
@@ -41,37 +38,126 @@
                             data-bv-feedbackicons-invalid="glyphicon glyphicon-remove"
                             data-bv-feedbackicons-validating="glyphicon glyphicon-refresh">
                             <input type="hidden" name="is_enable" value="1">
-                            <input type="hidden" name="shippingId" value="<?= $shippingId ?>">
+                            <input type="hidden" name="orderId" value="<?= $orderId ?>">
                             <input type="hidden" name="uuid" value="<?= $row->uuid ?>">
 
-                            <div id="content" class="tab-content"><?php $i = 1; ?>
-                                <?php if ($this->langList): ?>
-                                    <?php foreach ($this->langList as $lrow): ?>
-                                        <div class="tab-pane <?= $i == 1 ? 'active' : '' ?>" id="hb<?= $i++ ?>">
-                                            <input type="hidden" name="langList[<?= $lrow->langId ?>][sId]" value="<?= $shippingId ?>">
-                                            <input type="hidden" name="langList[<?= $lrow->langId ?>][langId]" value="<?= $lrow->langId ?>">
-                                            <fieldset>
-                                                <legend><?= $lrow->name ?></legend>
+                            <div id="content" class="tab-content">
+                                <div class="tab-pane active" id="hb1">
+                                    <fieldset>
+                                        <legend>訂單資料</legend>
 
-                                                <div class="form-group">
-                                                    <label class="col-sm-2 control-label" for="name-<?= $lrow->langId ?>">Name</label>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">OrderId</label>
 
-                                                    <div class="col-sm-5">
-                                                        <input class="form-control" type="text" id="name-<?= $lrow->langId ?>" name="langList[<?= $lrow->langId ?>][name]" value="<?= $row->langList[$lrow->langId]->name ?>" data-bv-notempty="true" data-bv-notempty-message=" ">
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label class="col-sm-2 control-label" for="name-<?= $lrow->langId ?>">Money</label>
-
-                                                    <div class="col-sm-3">
-                                                        <input class="form-control" type="text" id="name-<?= $lrow->langId ?>" name="langList[<?= $lrow->langId ?>][money]" value="<?= $row->langList[$lrow->langId]->money ?>" data-bv-notempty="true" data-bv-notempty-message=" ">
-                                                    </div>
-                                                </div>                                                
-                                            </fieldset>
+                                            <div class="col-sm-5">
+                                                <input class="form-control" type="text" name="name" value="<?= $row->orderId ?>" readonly>
+                                            </div>
                                         </div>
-                                    <?php endforeach; ?>
-                                <?php endif; ?>
+
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">Date</label>
+
+                                            <div class="col-sm-5">
+                                                <input class="form-control" type="text" name="name" value="<?= $row->date ?>" readonly>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">First name</label>
+
+                                            <div class="col-sm-5">
+                                                <input class="form-control" type="text" name="name" value="<?= $row->first_name ?>" readonly>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">Last name</label>
+
+                                            <div class="col-sm-5">
+                                                <input class="form-control" type="text" name="name" value="<?= $row->last_name ?>" readonly>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">Country</label>
+
+                                            <div class="col-sm-5">
+                                                <input class="form-control" type="text" name="name" value="<?= $row->country ?>" readonly>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">state</label>
+
+                                            <div class="col-sm-5">
+                                                <input class="form-control" type="text" name="money" value="<?= $row->state ?>" readonly>
+                                            </div>
+                                        </div>     
+
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">Address</label>
+
+                                            <div class="col-sm-5">
+                                                <input class="form-control" type="text" name="name" value="<?= $row->address ?>" readonly>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">Phone</label>
+
+                                            <div class="col-sm-5">
+                                                <input class="form-control" type="text" name="name" value="<?= $row->phone ?>" readonly>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">Status</label>
+
+                                            <div class="col-sm-9 col-lg-8">
+                                                <label class="radio radio-inline">
+                                                    <input type="radio" class="radiobox status" id="status1" name="status" value="0">
+                                                    <span>Credit Card</span>
+                                                </label>
+                                                <label class="radio radio-inline">
+                                                    <input type="radio" class="radiobox status" id="status1" name="status" value="0" checked="">
+                                                    <span>ATM</span>
+                                                </label>                                                                                         
+                                            </div>
+                                        </div>
+
+                                    </fieldset>
+                                </div>
+                                <div class="tab-pane" id="hb2">
+                                    <fieldset>
+                                        <legend>商品資訊</legend>
+
+                                        <table class="table table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th>Product</th>
+                                                    <th>Size</th>
+                                                    <th>Color</th>
+                                                    <th>Quantity</th>
+                                                    <th>Price</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php foreach ($productList as $productKey => $productValue){ ?>
+                                                    <tr>
+                                                        <td>
+                                                            <img class="size" src="<?= backend_url($productValue->productImg) ?>" style="width:120px">                                                            
+                                                            <?= $productValue->name ?>
+                                                        </td>
+                                                        <td><?= $productValue->size ?></td>
+                                                        <td><?= $productValue->color ?></td>
+                                                        <td><?= $productValue->qty ?></td>
+                                                        <td><?= $productValue->price ?></td>
+                                                    </tr>
+                                                <?php } ?>                                               
+                                            </tbody>
+                                        </table>
+                                    </fieldset>
+                                </div>
                             </div>
 
                             <div class="widget-footer">

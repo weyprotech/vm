@@ -59,6 +59,14 @@ if (!function_exists('website_url')) {
     }
 }
 
+/********************  取得後台網址 ***********************/
+if(!function_exists('backend_url')){
+    function backend_url($url = ''){        
+        
+        return 'http://vm-backend.4webdemo.com/'.$url;
+    }
+}
+
 /******************** 檢查數值 *************************/
 if (!function_exists('check_input_value')) {
     function check_input_value($value, $is_num = false, $default = NULL)

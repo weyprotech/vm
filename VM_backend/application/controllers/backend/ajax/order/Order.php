@@ -43,15 +43,13 @@ class Order extends Ajax_Controller
                         break;
                 }
                 $data[] = array(
-                    'visible' => '<td><img src="' . show_enable_image($row->is_visible) . '" width="25"></td>',
                     'orderid' => $row->orderId,
                     'date' => $row->date,
                     'total' => $row->total,
                     'status' => $status,
                     'country' => $row->country,
-                    'name' => $row->name,
-                    'money' => $row->money,
-                    'order' => $this->get_order('order', $row->orderId, $row->order),
+                    'name' => $row->first_name.' '.$row->last_name,
+                    'phone' => $row->phone,
                     'action' => $this->get_button('edit', 'backend/order/order/edit/' . $row->orderId . $query) . $this->get_button('delete', 'backend/order/order/delete/' . $row->orderId . $query)
                 );
             endforeach;

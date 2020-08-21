@@ -82,6 +82,15 @@ class Tb_order_model extends MY_Model
     }
 
     /*************** order product Model ***************/
+    public function get_backend_product($filter,$langId){
+        $this->set_product_join($langId);
+        $this->set_filter($filter);
+        $query = $this->db->get('tb_order_product as order_product');
+        if($query->num_rows() > 0){
+            return $query->result();
+        }
+    }
+
     private function get_order_product_select($filter = false)
     {
         $productList = array();
@@ -98,13 +107,13 @@ class Tb_order_model extends MY_Model
 
     private function update_order_product($orderId, $update)
     {
-        $this->db->where('sId', $orderId)->update_batch('tb_order_product', $update, 'productId');
+        $this->db->where('orderId', $orderId)->update_batch('tb_order_product', $update, 'productId');
         $productList = $this->get_order_product_select(array(array('field' => 'orderId', 'value' => $orderId)));
 
         $insert = array_diff_key($update, $productList);
         if (!empty($insert)):
             foreach ($insert as $i => $lrow):
-                $lrow['sId'] = $orderId;
+                $lrow['orderId'] = $orderId;
                 $insert[$i] = array_merge($lrow, array('create_at' => date("Y-m-d H:i:s")));
             endforeach;
 
@@ -147,6 +156,12 @@ class Tb_order_model extends MY_Model
         endforeach;
 
         return $data;
+    }
+
+    private function set_product_join($langId){
+        $this->db->select('order_product.*,product.*,lang.*');
+        $this->db->join('tb_product as product','product.productId = order_product.productId','left');
+        $this->db->join('tb_product_lang as lang', 'lang.pId = product.productId AND lang.langId = ' . $langId, 'left');
     }
     /******************** End Private Function ********************/
 }

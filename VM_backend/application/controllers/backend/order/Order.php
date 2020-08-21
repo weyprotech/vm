@@ -23,20 +23,6 @@ class Order extends Backend_Controller
         $this->get_view('index');
     }
 
-    public function add()
-    {
-        $this->check_action_auth($this->menuId, 'add', true); // Check Auth
-    
-        if($post = $this->input->post(null,true)){
-            $orderId = $this->order_model->insert_order($post);
-            if($this->input->get('back',true)){
-                redirect("backend/order/order/");
-            }
-            redirect('backend/order/order/edit/' . $orderId . $this->query);
-        }
-        $this->get_view('add');
-    }
-
     public function edit($orderId = false)
     {
         if (!$row = $this->order_model->get_order_by_id($orderId, false, array('enable' => false, 'visible' => false))):
@@ -60,10 +46,11 @@ class Order extends Backend_Controller
 
             redirect('backend/order/order/edit/' . $orderId . $this->query);
         endif;
-        
+        $productList = $this->order_model->get_backend_product(array(array('field' => 'order_product.orderId','value' => $orderId)),$this->langId);
         $data = array(
             'orderId' => $orderId,
-            'row' => $row
+            'row' => $row, 
+            'productList' => $productList
         );
 
         $this->get_view('edit', $data);

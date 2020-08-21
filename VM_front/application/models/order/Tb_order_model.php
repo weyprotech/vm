@@ -48,18 +48,17 @@ class Tb_order_model extends MY_Model
         unset($post['productList']);
         $insert = $this->check_db_data($post);
         $this->db->insert('tb_order', $insert);
-        $orderId = $this->db->insert_id();
         
         if (isset($productList)):
             foreach ($productList as $i => $lrow):
-                $productList[$i]['orderId'] = $orderId;
+                $productList[$i]['orderId'] = $post['orderId'];
                 $productList[$i] = $this->check_db_data($lrow);
             endforeach;
 
-            $this->update_order_product($orderId, $productList);
+            $this->update_order_product($post['orderId'], $productList);
         endif;
 
-        return $orderId;
+        return $post['orderId'];
     }
 
     public function update_order($order, $post)

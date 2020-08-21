@@ -44,7 +44,6 @@
                                 <table id="dt_basic" class="table table-bordered table-striped text-center">
                                     <thead>
                                         <tr>
-                                            <th width="5%" class="text-center hidden-xs">Visible</th>
                                             <th width="15%" class="text-center">OrderId</th>
                                             <th width="10%" class="text-center">Date</th>
                                             <th width="10%" class="text-center">Total</th>
@@ -106,7 +105,6 @@
                 "type":'post'
             },
             "columns": [
-                {class: "hidden-xs", data: "visible"},
                 {class: "", data: "orderid"},
                 {class: "", data: "date"},
                 {class: "", data: "total"},

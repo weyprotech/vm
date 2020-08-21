@@ -154,8 +154,9 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="accept_captcha">
+                        </div>                                             
+                    <?php } ?>
+                    <div class="accept_captcha">
                             <label class="check_wrapper accept_check">
                                 <input type="checkBox" id="agree" name="agree" required>
                                 <span>I accept the “Terms &amp; Conditions” and “Privacy Statement”</span>
@@ -165,8 +166,7 @@
                                     <div class="g-recaptcha" data-sitekey="6LcHGhITAAAAABIgEAplK2EWsVFkaE5o0DWUpsIs"></div>
                                 </div>
                             </div>
-                        </div>                        
-                    <?php } ?>
+                        </div>   
                     <div class="call_action space_between">
                         <a class="btn common" href="<?= website_url('order') ?>">Cancel</a>
                         <button class="btn confirm" id="information_btn" type="button">Continue</button>

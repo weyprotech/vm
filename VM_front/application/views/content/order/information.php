@@ -6,7 +6,7 @@
                 <div class="step"><span>Payment</span></div>
                 <div class="step"><span>Review</span></div>
             </div>
-            <form class="container">
+            <form id="information_form" class="container" method="post">
                 <div class="container_aside">
                     <h2 class="block_subtitle">Payment Summary</h2>
                     <div class="aside_block">
@@ -47,7 +47,7 @@
                     </div>
                     <div class="aside_block has_padding">
                         <h3 class="aside_title">Customer Notes</h3>
-                        <textarea class="note_textarea"></textarea>
+                        <textarea class="note_textarea" name="notes"></textarea>
                     </div>
                 </div>
                 <div class="container_main">
@@ -59,7 +59,7 @@
                                     <div class="controls_group">
                                         <label>*First Name</label>
                                         <div class="controls">
-                                            <input type="text" required>
+                                            <input type="text" name="first_name" required>
                                         </div>
                                     </div>
                                 </div>
@@ -67,7 +67,7 @@
                                     <div class="controls_group">
                                         <label>*Last Name</label>
                                         <div class="controls">
-                                            <input type="text" required>
+                                            <input type="text" name="last_name" required>
                                         </div>
                                     </div>
                                 </div>
@@ -78,7 +78,7 @@
                                         <label>*Country</label>
                                         <div class="controls">
                                             <div class="select_wrapper">
-                                                <select>
+                                                <select name="country">
                                                     <?php foreach($all_country as $countryKey => $countryValue){ ?>
                                                         <option><?= $countryValue['en'] ?></option>
                                                     <?php } ?>
@@ -92,7 +92,7 @@
                                         <label>*State/Region</label>
                                         <div class="controls">
                                             <div class="select_wrapper">
-                                                <input type="text" required>
+                                                <input type="text" name="state" required>
                                             </div>
                                         </div>
                                     </div>
@@ -103,7 +103,7 @@
                                     <div class="controls_group">
                                         <label>*Address</label>
                                         <div class="controls">
-                                            <input type="text" required>
+                                            <input type="text" name="address" required>
                                         </div>
                                     </div>
                                 </div>
@@ -115,7 +115,7 @@
                                         <div class="controls row phone_controls">
                                             <div class="grid g_6_12">
                                                 <div class="select_wrapper">
-                                                    <select>
+                                                    <select name="phone_code">
                                                         <?php foreach($all_country as $countryKey => $countryValue){ ?>
                                                             <option value="<?= $countryValue['code'] ?>"><?= $countryValue['en'] ?>(<?= $countryValue['code'] ?>)</option>
                                                         <?php } ?>
@@ -123,7 +123,7 @@
                                                 </div>
                                             </div>
                                             <div class="grid g_6_12">
-                                                <input type="text" required>
+                                                <input type="text" name="phone" required>
                                             </div>
                                         </div>
                                     </div>
@@ -131,43 +131,46 @@
                             </div>
                         </div>
                     </div>
-                    <div class="form_wrapper">
-                        <h2 class="block_subtitle">Email account</h2>
-                        <div class="form_block">
-                            <div class="controls_group">
-                                <label>*Email</label>
-                                <div class="controls">
-                                    <input type="email" required>
+                    <?php if(!isset($this->session->userdata('memberinfo')['memberId'])){ ?>
+                        <div class="form_wrapper">
+                            <h2 class="block_subtitle">Email account</h2>
+                            <div class="form_block">
+                                <div class="controls_group">
+                                    <label>*Email</label>
+                                    <div class="controls">
+                                        <input type="email" name="email" required>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="controls_group">
-                                <label>*Password</label>
-                                <div class="controls">
-                                    <input type="password" required>
+                                <div class="controls_group">
+                                    <label>*Password</label>
+                                    <div class="controls">
+                                        <input type="password" id="password" name="password" required>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="controls_group">
-                                <label>*Password confirmed</label>
-                                <div class="controls">
-                                    <input type="password" required>
+                                <div class="controls_group">
+                                    <label>*Password confirmed</label>
+                                    <div class="controls">
+                                        <input type="password" id="password_confirmed" name="password_confirmed" required>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="accept_captcha">
-                        <label class="check_wrapper accept_check">
-                            <input type="checkBox" required>
-                            <span>I accept the “Terms &amp; Conditions” and “Privacy Statement”</span>
-                        </label>
-                        <div class="captcha">
-                            <div class="captcha_inner">
-                                <div class="g-recaptcha" data-sitekey="6LcHGhITAAAAABIgEAplK2EWsVFkaE5o0DWUpsIs"></div>
+                        <div class="accept_captcha">
+                            <label class="check_wrapper accept_check">
+                                <input type="checkBox" id="agree" name="agree" required>
+                                <span>I accept the “Terms &amp; Conditions” and “Privacy Statement”</span>
+                            </label>
+                            <div class="captcha">
+                                <div class="captcha_inner">
+                                    <div class="g-recaptcha" data-sitekey="6LcHGhITAAAAABIgEAplK2EWsVFkaE5o0DWUpsIs"></div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
+                        </div>                        
+                    <?php } ?>
                     <div class="call_action space_between">
-                        <a class="btn common" href="order.html">Cancel</a>
-                        <a class="btn confirm" href="order_payment.html">Continue</a>
+                        <a class="btn common" href="<?= website_url('order') ?>">Cancel</a>
+                        <button class="btn confirm" id="information_btn" type="button">Continue</button>
+                        <button type="submit" class="hide" style="display:none;"></button>
                     </div>
                 </div>
             </form>

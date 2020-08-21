@@ -112,7 +112,7 @@
                     </div>
                     <div class="call_action space_between">
                         <a class="btn common" href="<?= website_url('product') ?>">Continue Shopping</a>
-                        <a class="btn confirm" href="<?= website_url('order/order_information') ?>">Checkout</a>
+                        <a class="btn confirm" id="order_confirm">Checkout</a>
                     </div>
                 </form>
             </div>

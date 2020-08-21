@@ -438,19 +438,48 @@ var website = function () {
             });
         });
 
-        //下單
-        // $('body').on('click',"",function(){
-        //     var shipping = $('#shipping_select').val();
-        //     if(shipping == ""){
-        //         swal({
-        //             title:'Error',
-        //             type:'error',
-        //             html:'please choose shipping'
-        //         });
-        //     }else{
+        //購物車下單
+        $('body').on('click',"#order_confirm",function(){
+            var shipping = $('#shipping_select').val();
+            if(shipping == ""){
+                swal({
+                    title:'Error',
+                    type:'error',
+                    html:'please choose shipping'
+                });
+            }else{
+                window.location=site_url(lang+'/order/order_information');
+            }
+        });
 
-        //     }
-        // });
+        //order_information
+        $('body').on('click',"#information_btn",function(){
+            var password = $('#password').val();
+            var password_confirmed = $('#password_confirmed').val();
+            var error = 0;
+            if($('#agree').prop('checked')){
+            }else{
+                error = 1;
+                swal({
+                    title:'warning',
+                    type:'warning',
+                    html:'Please accept the "Terms & Conditions" and "Privacy Statement"'
+                });
+            }
+
+            if(password != password_confirmed){
+                error = 1;
+                swal({
+                    title:'warning',
+                    type:'error',
+                    html:'The password is different from the confirmed password'
+                });
+            }
+
+            if(error == 0){
+                $('#information_form').find('[type="submit"]').trigger('click');
+            }
+        });
     };
     
     //cookie保存

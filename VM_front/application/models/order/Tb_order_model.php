@@ -43,17 +43,20 @@ class Tb_order_model extends MY_Model
     public function insert_order($post)
     {
         $post['create_at'] = date("Y-m-d H:i:s");
-        $post['order'] = $this->count_order(false,false)+1;
+        $post['orderId'] = uniqid();
+        $productList = $post['productList'];
+        unset($post['productList']);
         $insert = $this->check_db_data($post);
         $this->db->insert('tb_order', $insert);
         $orderId = $this->db->insert_id();
         
-        if (isset($post['productList'])):
-            foreach ($post['productList'] as $i => $lrow):
-                $post['productList'][$i] = $this->check_db_data($lrow);
+        if (isset($productList)):
+            foreach ($productList as $i => $lrow):
+                $productList[$i]['orderId'] = $orderId;
+                $productList[$i] = $this->check_db_data($lrow);
             endforeach;
 
-            $this->update_order_product($orderId, $post['productList']);
+            $this->update_order_product($orderId, $productList);
         endif;
 
         return $orderId;
@@ -98,13 +101,12 @@ class Tb_order_model extends MY_Model
 
     private function update_order_product($orderId, $update)
     {
-        $this->db->where('sId', $orderId)->update_batch('tb_order_product', $update, 'productId');
+        $this->db->where('orderId', $orderId)->update_batch('tb_order_product', $update, 'productId');
         $productList = $this->get_order_product_select(array(array('field' => 'orderId', 'value' => $orderId)));
-
         $insert = array_diff_key($update, $productList);
         if (!empty($insert)):
             foreach ($insert as $i => $lrow):
-                $lrow['sId'] = $orderId;
+                $lrow['orderId'] = $orderId;
                 $insert[$i] = array_merge($lrow, array('create_at' => date("Y-m-d H:i:s")));
             endforeach;
 
@@ -121,7 +123,7 @@ class Tb_order_model extends MY_Model
         $data = array('uuid' => uniqid(), 'update_at' => date("Y-m-d H:i:s"));
 
         foreach ($post as $field => $value):
-            if (!in_array($field, array('mainId', 'imageOrder', 'productList', 'uuid','size','image_list_length'))):
+            if (!in_array($field, array('mainId', 'imageOrder', 'productList', 'uuid','image_list_length'))):
                 switch ($field):
                     case 'minorId':
                         $data['cId'] = check_input_value($value, true);

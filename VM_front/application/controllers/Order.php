@@ -102,7 +102,7 @@ class Order extends Frontend_Controller{
         $cart_amount = $this->my_cart->amount();
         $cart_total = $this->my_cart->total();
         $all_total = $this->my_cart->all_total();
-        $all_country = get_all_country();
+        $all_country = get_code_country();
         $data = array(
             'cart_productList' => $cart_productList,
             'cart_amount' => $cart_amount,

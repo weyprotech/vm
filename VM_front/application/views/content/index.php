@@ -58,7 +58,7 @@
                                             <!--↓ 知名設計才會有鑽石icon ↓--><i <?= $designerValue->grade == 1 ? 'class="icon_diamond_s"' : '' ?>></i>
                                             <!--↑ 知名設計才會有鑽石icon ↑--><span><?= $designerValue->name ?></span>
                                         </h3>
-                                        <div class="country"><img class="flag" src="<?= base_url('assets/images/flag/'.$designerValue->country.'.png') ?>"><span><?= get_country($designerValue->country) ?></span></div>
+                                        <div class="country"><img class="flag" src="<?= base_url('assets/images/flag/'.$designerValue->country.'.png') ?>"><span><?= get_all_country($designerValue->country) ?></span></div>
                                     </div>
                                 </div>
                             </a>

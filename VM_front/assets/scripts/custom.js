@@ -490,9 +490,9 @@ var website = function () {
         document.cookie = name + "=" + escape(value) + ";expires=" + expires.toGMTString();
     }
 
-    function change_lang(lang) {
-        console.log("change " + lang);
-        return $.post(site_url("ajax/SwitchLang"), { lang: lang, url: location.href }, 'json');
+    function change_lang(new_lang) {
+        console.log("change " + new_lang);
+        return $.post(site_url("ajax/SwitchLang"), { lang : lang,new_lang: new_lang, url: location.href }, 'json');
     }
 
     function isEmpty(value) {

@@ -14,13 +14,11 @@ class SwitchLang extends Frontend_Controller
 
         if ($lang = $this->input->post('lang', true)) {
             $url = $this->input->post('url', true);
+            $new_lang = $this->input->post('new_lang', true);
             //取index.php後的第一個
-            $old_lang = $this->uri->segment(1);
-
             $url_arr = explode('/', $url);
-            if ($key = array_search($old_lang, $url_arr)) {
-                $url_arr[$key] = $lang;
-                $new_url = site_url(array_slice($url_arr, $key));
+            if (in_array($lang, $url_arr)) {
+                $new_url = str_replace('/'.$lang.'/','/'.$new_lang.'/',$url);
             }
             else {
                 $new_url = site_url($lang);

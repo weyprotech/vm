@@ -20,7 +20,7 @@
                 <div class="breadcrumbs">
                     <div class="breadcrumbs_inner">
                         <i class="icon_story"></i>
-                        <a href="<?= website_url('designer/story?designerId='.$designer->designerId) ?>">Designer</a>
+                        <a href="<?= website_url('designers/home?designerId='.$designer->designerId) ?>">Designer</a>
                         <span>/</span><span class="current">Brand</span>
                     </div>
                 </div>

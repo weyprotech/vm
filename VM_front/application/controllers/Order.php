@@ -44,6 +44,14 @@ class Order extends Frontend_Controller{
             $cart_productList[$cartKey]['sizeList'] = $this->product_model->get_product_size_select(array(array('field' => 'product_size.pId','value' => $cartValue['productId'])),false,false,$this->langId);
             $cart_productList[$cartKey]['colorList'] = $this->product_model->get_product_color_select(array(array('field' => 'product_color.pId','value' => $cartValue['productId'])),false,false,$this->langId);
         }
+        
+        if(isset($this->session->userdata('memberinfo')['memberId'])){
+            $member = $this->member_model->get_member_by_id($this->session->userdata('memberinfo')['memberId']);
+        }else{
+            js_warn("請登入會員，謝謝!");
+            redirect(website_url('login'));
+        }
+
         if($post = $this->input->post(null,true)){
             if(!isset($this->session->userdata('memberinfo')['memberId'])){
                 $memberId = uniqid();
@@ -60,7 +68,6 @@ class Order extends Frontend_Controller{
                         'phone' => $post['phone_code'].'-'.$post['phone']
                     )
                 );
-                $member = $this->member_model->get_member_by_id($memberId);
                 $this->session->set_userdata('memberinfo', array(
                     'memberId' => $memberId,
                     'memberEmail' => $member->email,
@@ -97,7 +104,7 @@ class Order extends Frontend_Controller{
             $this->order_model->insert_order($insert);
             //重置購物車
             $this->my_cart->reset_cart();
-            // redirect();
+            redirect(website_url("order/order_payment"));
         }
         $cart_amount = $this->my_cart->amount();
         $cart_total = $this->my_cart->total();
@@ -108,9 +115,22 @@ class Order extends Frontend_Controller{
             'cart_amount' => $cart_amount,
             'cart_total' => $cart_total,
             'all_total' => $all_total,
-            'all_country' => $all_country
+            'all_country' => $all_country,
+            'member' => $member
         );
         $this->get_view('order/information',$data);
+    }
+
+    public function order_payment($orderId){
+        $data = array();
+        if(isset($this->session->userdata('memberinfo')['memberId'])){
+            $member = $this->member_model->get_member_by_id($this->session->userdata('memberinfo')['memberId']);
+        }else{
+            js_warn("請登入會員，謝謝!");
+            redirect(website_url('login'));
+        }
+
+        $this->get_view('order/payment',$data);
     }
 
     private function get_view($page, $data = array(), $script = "")

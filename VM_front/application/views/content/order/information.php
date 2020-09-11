@@ -59,7 +59,7 @@
                                     <div class="controls_group">
                                         <label>*First Name</label>
                                         <div class="controls">
-                                            <input type="text" name="first_name" required>
+                                            <input type="text" name="first_name" value="<?= !empty($member) ? $member->first_name : "" ?>" required>
                                         </div>
                                     </div>
                                 </div>
@@ -67,7 +67,7 @@
                                     <div class="controls_group">
                                         <label>*Last Name</label>
                                         <div class="controls">
-                                            <input type="text" name="last_name" required>
+                                            <input type="text" name="last_name" value="<?= !empty($member) ? $member->last_name : "" ?>" required>
                                         </div>
                                     </div>
                                 </div>
@@ -80,7 +80,7 @@
                                             <div class="select_wrapper">
                                                 <select name="country">
                                                     <?php foreach($all_country as $countryKey => $countryValue){ ?>
-                                                        <option><?= $countryValue['en'] ?></option>
+                                                        <option <?= !empty($member) ? ($member->country == $countryValue ? "selected" : "") : "" ?>><?= $countryValue['en'] ?></option>
                                                     <?php } ?>
                                                 </select>
                                             </div>
@@ -92,7 +92,7 @@
                                         <label>*State/Region</label>
                                         <div class="controls">
                                             <div class="select_wrapper">
-                                                <input type="text" name="state" required>
+                                                <input type="text" name="state" value="<?= !empty($member) ? $member->state : "" ?>" required>
                                             </div>
                                         </div>
                                     </div>
@@ -103,7 +103,7 @@
                                     <div class="controls_group">
                                         <label>*Address</label>
                                         <div class="controls">
-                                            <input type="text" name="address" required>
+                                            <input type="text" name="address" value="<?= !empty($member) ? $member->address : "" ?>" required>
                                         </div>
                                     </div>
                                 </div>
@@ -117,13 +117,13 @@
                                                 <div class="select_wrapper">
                                                     <select name="phone_code">
                                                         <?php foreach($all_country as $countryKey => $countryValue){ ?>
-                                                            <option value="<?= $countryValue['code'] ?>"><?= $countryValue['en'] ?>(<?= $countryValue['code'] ?>)</option>
+                                                            <option value="<?= $countryValue['code'] ?>" <?= !empty($member) ? ($countryValue['code'] == $member->phone_area_code ? "selected" : "") : "" ?>><?= $countryValue['en'] ?>(<?= $countryValue['code'] ?>)</option>
                                                         <?php } ?>
                                                     </select>
                                                 </div>
                                             </div>
                                             <div class="grid g_6_12">
-                                                <input type="text" name="phone" required>
+                                                <input type="text" name="phone" value="<?= !empty($member) ? $member->phone : "" ?>" required>
                                             </div>
                                         </div>
                                     </div>

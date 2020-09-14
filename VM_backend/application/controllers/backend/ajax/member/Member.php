@@ -18,7 +18,7 @@ class Member extends Ajax_Controller
         $start = $this->input->post('start', true);
         $limit = $this->input->post('length', true);
         $search = check_input_value($this->input->post('search[value]', true));
-        $this->load->model('tb_member_model', 'member_model');
+        $this->load->model('member/tb_member_model', 'member_model');
         $filter['like'] = array('field' => 'lang.name', 'value' => $search);        
         $order = array(array('field' => 'member.create_at', 'dir' => 'asc'));
         $query = $this->set_http_query(array('search' => $search));
@@ -34,10 +34,11 @@ class Member extends Ajax_Controller
                     'email' => $row->email,
                     'first_name' => $row->first_name,
                     'last_name' => $row->last_name,
-                    'gender' => $row->gender == 0 ? '男' : '女',
+                    'gender' => $row->gender == 0 ? 'man' : 'Women',
                     'age' => $row->age,
                     'point' => $row->point,
-                    'action' => $this->get_button('edit', 'backend/member/edit/' . $row->memberId . $query) . $this->get_button('delete', 'backend/member/delete/' . $row->memberId . $query)
+                    'dividend' => '<a class="btn btn-warning" href="'.site_url('backend/member/dividend/index/'.$row->memberId).'"><i class="fa fa-book"></i><span class="hidden-mobile">dividend record</span></a>',
+                    'action' => $this->get_button('edit', 'backend/member/member/edit/' . $row->memberId . $query) . $this->get_button('delete', 'backend/member/member/delete/' . $row->memberId . $query)
                 );
             endforeach;
         endif;
@@ -48,7 +49,7 @@ class Member extends Ajax_Controller
 
     public function check_email(){
         $email = $this->input->post('email',true);
-        $this->load->model('tb_member_model', 'member_model');
+        $this->load->model('member/tb_member_model', 'member_model');
 
         if($email == null){
             echo json_encode(array(

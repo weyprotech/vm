@@ -5,7 +5,7 @@ class Login extends Frontend_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('tb_member_model', 'member_model');
+        $this->load->model('member/tb_member_model', 'member_model');
     }
 
     public function index()
@@ -13,7 +13,7 @@ class Login extends Frontend_Controller
         $login = $this->input->cookie('login', true);
         $this->encryption->initialize(array('driver' => 'mcrypt'));
         if($this->session->userdata('memberinfo')['memberId']){
-            redirect(website_url('member'));
+            redirect(website_url('member/member'));
         }
         if($login != null){
             $temp = $this->encryption->decrypt($login);
@@ -29,7 +29,7 @@ class Login extends Frontend_Controller
                     'memberFirst_name' => $member[0]->first_name,
                     'memberLast_name' => $member[0]->last_name                
                 ));
-                redirect(website_url('member'));
+                redirect(website_url('member/member'));
             }
         }
         $this->get_view('member/login', array(), $this->load->view('shared/script/member/_login_script', array(), true));

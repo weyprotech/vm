@@ -103,6 +103,17 @@
                                     </div>
                                     <div class="price">-$0</div>
                                 </li>
+                                <?php if($cart_total >= 2000){ ?>
+                                    <li class="item">
+                                        <div class="controls_group">
+                                            <label>Use dividend</label>
+                                            <div class="controls coupon_controls">
+                                                <input type="text" id="dividend">                                               
+                                            </div>
+                                        </div>
+                                        <div class="dividend_price price">-$0</div>
+                                    </li>
+                                <?php } ?>
                             </ul>
                             <div class="total_calculation">
                                 <label>TOTAL</label>

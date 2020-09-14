@@ -4,10 +4,11 @@ class Order extends Frontend_Controller{
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('tb_member_model','member_model');
+        $this->load->model('member/tb_member_model','member_model');
         $this->load->model('product/tb_product_model','product_model');
         $this->load->model('shipping/tb_shipping_model','shipping_model');
         $this->load->model('order/tb_order_model','order_model');
+        $this->load->model('member/tb_dividend_model','dividend_model');
     }
 
     public function index(){
@@ -101,10 +102,10 @@ class Order extends Frontend_Controller{
                     'qty' => $cartValue['productQty']
                 );
             }
-            $this->order_model->insert_order($insert);
+            $orderId = $this->order_model->insert_order($insert);
             //重置購物車
             $this->my_cart->reset_cart();
-            redirect(website_url("order/order_payment"));
+            redirect(website_url("order/order_payment/".$orderId));
         }
         $cart_amount = $this->my_cart->amount();
         $cart_total = $this->my_cart->total();
@@ -125,12 +126,33 @@ class Order extends Frontend_Controller{
         $data = array();
         if(isset($this->session->userdata('memberinfo')['memberId'])){
             $member = $this->member_model->get_member_by_id($this->session->userdata('memberinfo')['memberId']);
+            $order = $this->order_model->get_order_by_id($orderId);
+            if($post = $this->input->post(null,true)){
+                $this->order_model->update_order($order,array('payway' => $post['payway']));
+                redirect(website_url("order/order_view/".$orderId));
+            }
         }else{
             js_warn("請登入會員，謝謝!");
             redirect(website_url('login'));
         }
-
+        $data = array(
+            'member' => $member,
+            'order' => $order
+        );
         $this->get_view('order/payment',$data);
+    }
+
+    public function order_view($orderId){
+        $order = $this->order_model->get_order_by_id($orderId);        
+        $member = $this->member_model->get_member_by_id($order->memberId);
+        $this->order_model->update_order($order,array('status' => 1));
+        $dividend = intval(($order->total-$order->shipping)/10);
+        $this->member_model->update_member($member,array('dividend' => $dividend));
+        $this->dividend_model->insert_dividend(array('orderId' => $orderId,'dividend' => $dividend,'memberId' => $order->memberId));
+        $data = array(
+            'order' => $order
+        );
+        $this->get_view('order/view',$data);
     }
 
     private function get_view($page, $data = array(), $script = "")

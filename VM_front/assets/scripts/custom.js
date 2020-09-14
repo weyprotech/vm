@@ -250,7 +250,6 @@ var website = function () {
                         type:'error'
                     });
                     $('.swal2-container').css('z-index','100000');
-
                 }else if(value.name == 'email'){
                     if(value.value.search(emailRule)== -1){
                         error = 1;
@@ -259,7 +258,6 @@ var website = function () {
                             type:'error'
                         });
                         $('.swal2-container').css('z-index','100000');
-
                     }
                 }
             });
@@ -452,6 +450,29 @@ var website = function () {
             }
         });
 
+        //order index 紅利
+        $('body').on('change',"#dividend",function(){
+            var dividend = $('#dividend').val();
+            $.ajax({
+                url:site_url('ajax/member/check_dividend'),
+                data:{dividend:dividend},
+                dataType:'json',
+                type:'POST',
+                success:function(response){
+                    if(response['status'] == 'success'){
+                        $('#all_total').html("NTD$"+response['all_total']);
+                        $('.dividend_price').html("-$"+dividend);
+                    }else{
+                        swal({
+                            title:"Insufficient dividends or Greater than the maximum usage limit",
+                            type:"error"
+                        })
+                        $('#dividend').val('');
+                    }
+                }
+            });
+        });
+
         //order_information
         $('body').on('click',"#information_btn",function(){
             var password = $('#password').val();
@@ -480,6 +501,7 @@ var website = function () {
                 $('#information_form').find('[type="submit"]').trigger('click');
             }
         });
+
     };
     
     //cookie保存

@@ -44,7 +44,7 @@ class My_cart
 
         $this->_cart_contents = $this->CI->session->userdata('cart_contents');
         if($this->_cart_contents == NULL){
-            $this->_cart_contents = array('product_list' => array(),'shipping' => array(),'amount' => 0,'total' => 0,'all_total' => 0);
+            $this->_cart_contents = array('product_list' => array(),'shipping' => array(),'dividend' => 0,'amount' => 0,'total' => 0,'all_total' => 0);
         }
 
         $this->CI->load->model(array(
@@ -95,6 +95,15 @@ class My_cart
      */
     public function shipping(){
         return $this->_cart_contents['shipping'];
+    }
+
+    /**
+     * 取得紅利
+     * 
+     * @return int
+     */
+    public function dividend(){
+        return $this->_cart_contents['dividend'];
     }
 
     /**
@@ -219,6 +228,17 @@ class My_cart
         $this->_calc_cart();
     }
 
+    /**
+     * 使用紅利
+     * 
+     * @param int
+     */
+    public function update_dividend($dividend){
+        $this->_cart_contents['dividend'] = $dividend;
+        $this->_calc_cart();
+    }
+
+
 
     /**
      * 計算總金額
@@ -232,11 +252,19 @@ class My_cart
             $amount += $productValue['qty'];
             $total += $productValue['qty']*$productValue['price'];            
         }
+        //運費
         if(!empty($this->_cart_contents['shipping'])){
             $alltotal = $total+$this->_cart_contents['shipping']['money'];
         }else{
             $alltotal = $total;
         }
+        //紅利
+        if(!empty($this->_cart_contents['dividend'])){
+            $alltotal = $alltotal-$this->_cart_contents['dividend'];
+        }else{
+            $alltotal = $alltotal;
+        }
+        
         $this->_cart_contents['amount'] = $amount;
         $this->_cart_contents['total'] = $total;
         $this->_cart_contents['all_total'] = $alltotal;

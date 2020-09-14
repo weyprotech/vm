@@ -6,7 +6,7 @@
                 <div class="container_main">
                     <h1 class="block_title">My Account</h1>
                     <div class="form_wrapper common_form account_form">
-                        <a class="link_edit" href="<?= website_url('member/edit_account') ?>"><i class="icon_edit"></i>edit</a>
+                        <a class="link_edit" href="<?= website_url('member/member/edit_account') ?>"><i class="icon_edit"></i>edit</a>
                         <div class="form_block">
                             <div class="controls_group">
                                 <label>*Email</label>
@@ -24,7 +24,7 @@
                     </div>
                     <h1 class="block_title">My Profile</h1>
                     <div class="form_wrapper common_form account_form">
-                        <a class="link_edit" href="<?= website_url('member/edit_profile') ?>"><i class="icon_edit"></i>edit</a>
+                        <a class="link_edit" href="<?= website_url('member/member/edit_profile') ?>"><i class="icon_edit"></i>edit</a>
                         <div class="form_block">
                             <div class="row">
                                 <div class="grid">

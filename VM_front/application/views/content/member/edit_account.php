@@ -27,7 +27,7 @@
                             </div>
                         </div>
                         <div class="call_action right">
-                            <a class="btn common" href="<?= website_url('member') ?>">Cancel</a>
+                            <a class="btn common" href="<?= website_url('member/member') ?>">Cancel</a>
                             <button class="btn confirm" id="edit_account_save" type="button">Save</button>
                         </div>
                     </form>

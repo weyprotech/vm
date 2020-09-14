@@ -5,7 +5,7 @@ class Logout extends Frontend_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('tb_member_model','member_model');
+        $this->load->model('member/tb_member_model','member_model');
     }
 
     public function index()

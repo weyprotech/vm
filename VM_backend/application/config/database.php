@@ -64,9 +64,9 @@ $query_builder = TRUE;
 
 $db['default'] = array(
     'dsn'	=> '',
-    'hostname' => '192.168.0.188',
+    'hostname' => 'localhost',
     'username' => 'root',
-    'password' => 'root12ab',
+    'password' => 'test12ab',
     'database' => 'ci_vetrinamia',
     'dbdriver' => 'mysqli',
     'dbprefix' => '',

@@ -5,7 +5,7 @@ class Member extends Frontend_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('tb_member_model','member_model');
+        $this->load->model('member/tb_member_model','member_model');
         $this->load->model('designer/tb_designer_like_model','tb_designer_like_model');
         $this->load->model('product/tb_product_like_model','tb_product_like_model');
         $this->load->model('designer/tb_runway_model','tb_runway_model');
@@ -44,7 +44,7 @@ class Member extends Frontend_Controller
             }
 
             $this->member_model->update_member($member,$post);
-            redirect('member/edit_profile?type=success');
+            redirect(website_url('member/member/edit_profile?type=success'));
         }
         $data = array(
             'member' => $member            
@@ -63,7 +63,7 @@ class Member extends Frontend_Controller
         $member = $this->member_model->get_member_by_id($memberId);
         if($post = $this->input->post(null,true)){
             $this->member_model->update_member($member,$post);
-            redirect('member/edit_account?type=success');
+            redirect(website_url('member/member/edit_account?type=success'));
         }
         $data = array(
             'member' => $member

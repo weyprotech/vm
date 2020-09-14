@@ -60,6 +60,22 @@
                                     </div>
 
                                     <div class="form-group">
+                                        <label class="col-sm-2 control-label" for="point">point</label>
+
+                                        <div class="col-sm-9 col-lg-6">
+                                            <input type="text" class="form-control" id="point" name="point" value="<?= $row->point ?>">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label" for="dividend">Dividend</label>
+
+                                        <div class="col-sm-9 col-lg-6">
+                                            <input type="text" class="form-control" id="dividend" value="<?= $row->dividend ?>" readonly>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
                                         <label class="col-sm-2 control-label" for="first_name">First Name</label>
 
                                         <div class="col-sm-9 col-lg-6">
@@ -120,7 +136,7 @@
                                             </p>
                                         </div>
                                     </div>
-
+<!-- 
                                     <div class="form-group">
                                         <label class="col-sm-2 control-label" for="phone_area_code">Phone Area Code</label>
 
@@ -161,14 +177,14 @@
                                         <div class="col-sm-9 col-lg-6">
                                             <input type="text" class="form-control" id="address" name="address" value="<?= $row->address ?>" data-bv-notempty="true" data-bv-notempty-message=" ">
                                         </div>
-                                    </div>
+                                    </div> -->
                                 </fieldset>
                             </div>
 
                             <div class="widget-footer">
                                 <button type="submit" class="btn btn-primary" id="save">Save</button>
                                 <button type="submit" class="btn btn-primary" id="back" onclick="$('#data-form').attr('action', '<?= @$this->query . (!empty($this->query) ? '&' : '?') ?>back=1');">Return After Saving</button>
-                                <button type="button" class="btn btn-default" onclick="location.href='<?= site_url("backend/member" . @$this->query) ?>';">Return</button>
+                                <button type="button" class="btn btn-default" onclick="location.href='<?= site_url("backend/member/member" . @$this->query) ?>';">Return</button>
                             </div>
                         </form>
                     </div>

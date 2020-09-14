@@ -29,7 +29,7 @@ class Tb_order_model extends MY_Model
 
     public function get_order_by_id($orderId = false, $boolean = array('enable' => true, 'visible' => true))
     {
-        $this->set_filter(array(array('field' => 'order.is_enable', 'value' => $boolean['enable']), array('field' => 'order.is_visible', 'value' => $boolean['visible'])));
+        $this->set_filter(array(array('field' => 'order.is_enable', 'value' => $boolean['enable'])));
         $query = $this->db->where('order.orderId', $orderId)->get('tb_order as order');
 
         if ($query->num_rows() > 0):

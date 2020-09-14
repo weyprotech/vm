@@ -8,7 +8,7 @@ class Member extends Backend_Controller
         if (!is_logged_in()) {
             redirect('admin');
         }
-        $this->load->model('tb_member_model','member_model');
+        $this->load->model('member/tb_member_model','member_model');
     }
 
     public function index()
@@ -30,9 +30,9 @@ class Member extends Backend_Controller
             $post['memberId'] = $memberId;
             $this->member_model->insert_member($post);
             if($this->input->get('back',true)){
-                redirect("backend/member/index/");
+                redirect("backend/member/member/index/");
             }
-            redirect('backend/member/edit/' . $memberId);
+            redirect('backend/member/member/edit/' . $memberId);
         }
         $countryList = get_all_country();
         $data = array(
@@ -66,11 +66,11 @@ class Member extends Backend_Controller
                 }
 
                 if ($this->input->get('back', true)) {
-                    redirect('backend/member');
+                    redirect('backend/member/member');
                 }
             }
 
-            redirect('backend/member/edit/' . $memberId);
+            redirect('backend/member/member/edit/' . $memberId);
         }
         $countryList = get_all_country();
 
@@ -94,7 +94,7 @@ class Member extends Backend_Controller
             $this->set_active_status('success', 'Success');
         }
 
-        redirect('backend/member');
+        redirect('backend/member/member');
     }
 
     /******************** Private Function ********************/

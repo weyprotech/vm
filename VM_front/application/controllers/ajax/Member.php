@@ -6,7 +6,9 @@ class Member extends Ajax_Controller
     {
         parent::__construct();
 
-        $this->load->model('tb_member_model', 'member_model');
+        $this->load->model('member/tb_member_model', 'member_model');
+		$this->load->library('my_cart');
+
     }
 
     /******************** member ********************/
@@ -45,6 +47,20 @@ class Member extends Ajax_Controller
             echo json_encode(array(
                 'status' => 'error'
             ));
+        }
+    }
+
+    public function check_dividend(){
+        $dividend = $this->input->post('dividend',null);        
+        $member = $this->member_model->get_member_by_id($this->session->userdata('memberinfo')['memberId']);
+        $cart_total = $this->my_cart->total();
+
+        if($dividend <= $member->dividend && $dividend < ($cart_total/2)){
+            $this->my_cart->update_dividend($dividend);
+		    $all_total = $this->my_cart->all_total();
+            echo json_encode(array('status' => "success",'all_total' => $all_total));
+        }else{
+            echo json_encode(array('status' => "error"));
         }
     }
 

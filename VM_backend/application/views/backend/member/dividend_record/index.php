@@ -45,14 +45,8 @@
                                 <table id="dt_basic" class="table table-bordered table-striped text-center">
                                     <thead>
                                         <tr>                                            
-                                            <th class="text-center hidden-tablet">Image</th>
-                                            <th class="text-center">Email</th>
-                                            <th width="150" class="text-center">First Name</th>                                            
-                                            <th width="250" class="text-center">Last Name</th>
-                                            <th class="text-center">Gender</th>
-                                            <th class="text-center">Age</th> 
-                                            <th class="text-center">Point</th>      
-                                            <th class="text-center">Dividend Record</th>
+                                            <th class="text-center hidden-tablet">Order</th>
+                                            <th class="text-center">Dividend</th>
                                             <th width="160" class="text-center">Action</th>
                                         </tr>
                                     </thead>
@@ -84,31 +78,18 @@
             "autoWidth": false,
             "ordering": false,
             "serverSide": true,
-            "sDom": "<'dt-toolbar'<'col-sm-8 hidden-xs' f><'col-xs-12 col-sm-4'Tl>>" + "t" + "<'dt-toolbar-footer'<'col-sm-6 col-xs-12 hidden-xs'i><'col-xs-12 col-sm-6'p>>",  //功能表
+            "sDom": "<'dt-toolbar'<'col-sm-8 hidden-xs' <'back_button input-group'>><'col-xs-12 col-sm-4'Tl>>" + "t" + "<'dt-toolbar-footer'<'col-sm-6 col-xs-12 hidden-xs'i><'col-xs-12 col-sm-6'p>>",  //功能表
             "oTableTools": {
-                "aButtons": [{   //按鈕
-                    "sExtends": "text",
-                    "sButtonText": '<i class="fa fa-plus" style="color:white"></i> <span class="hidden-mobile" style="color:white">Add Member</span>',
-                    "sButtonClass": "btn-lg btn-primary",
-                    "fnInit": function (nButton, oConfig) {
-                        $(nButton).css('margin-left', 5).attr('href', '<?= site_url(uri_string() . "/add") ?>').css('text-shadow','0 -1px 0 rgba(0, 0, 0, 0.5), 0 1px 0 rgba(255, 255, 255, 0.3)');
-                    }
-                }]
+                "aButtons": []
             },
             "ajax": {
-                "url": "<?= site_url("backend/ajax/member/member/get_member_data") ?>",  //傳到路徑->ajax/member
+                "url": "<?= site_url("backend/ajax/member/dividend/get_dividend_data") ?>",  //傳到路徑->ajax/member
                 "data": function (data) {                    
                 }
             },
-            "columns": [
-                {class: "hidden-tablet", data: "preview"},                
-                {class: "", data:"email"},                
-                {class: "", data:"first_name"},
-                {class:"", data:"last_name"},
-                {class: "", data:"gender"},
-                {class: "", data:"age"},
-                {class: "", data:"point"},
-                {class: "", data:"dividend"},
+            "columns": [               
+                {class: "", data:"order"},                
+                {class: "", data:"dividend"}, 
                 {class: "", data: "action"}
             ],
             "preDrawCallback": function () {   //一載入的動作
@@ -133,6 +114,7 @@
                 );
             },
             "initComplete": function () {
+                $('div.back_button').html('<a class="btn btn-success" href="<?= site_url('backend/member/member') ?>"><i class="fa fa-reply" style="color:white"></i>Back member list</button>')
             }
         });
     });

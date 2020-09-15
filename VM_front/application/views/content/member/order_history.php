@@ -23,14 +23,16 @@
                             <!--↓ 使用刷卡付款 - 連結至 member_history_detail.html ↓-->
                             <!--↓ 使用ATM付款 - 連結至 member_history_detail_atm.html ↓-->
                             <a class="tr" href="member_history_detail.html">
-                                <div class="td" data-label="Order number"><span class="font_khaki">19028434923</span></div>
-                                <div class="td" data-label="Date">2019/07/08</div>
-                                <div class="td" data-label="Amount">$ 12,000</div>
+                                <div class="td" data-label="Order number">
+                                    <span class="font_khaki"><?= $orderValue->orderId ?></span>
+                                </div>
+                                <div class="td" data-label="Date"><?= $orderValue->date ?></div>
+                                <div class="td" data-label="Amount">$ <?= $orderValue->total ?></div>
                                 <div class="td" data-label="Payment">
-                                    <span class="font_khaki">Unpaid</span>
+                                    <span class="font_khaki"><?= $orderValue->status == 0 ? "Unpaid" : "Paid" ?></span>
                                 </div>
                                 <div class="td" data-label="Status">
-                                    <span class="font_khaki">Go to pay</span>
+                                    <span class="font_khaki"><?= $orderValue->status == 0 ? "Go to pay" : "Paid" ?></span>
                                 </div>
                             </a>
                             <?php } ?>    

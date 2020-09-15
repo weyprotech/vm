@@ -57,14 +57,10 @@
                                 </div>
                                 <div class="grid g_6_12">
                                     <div class="controls_group">
-                                        <label>Age</label>
+                                        <label>Birthday</label>
                                         <div class="controls">
                                             <div class="select_wrapper">
-                                                <select name="age">
-                                                    <?php for($i=1;$i<150;$i++){ ?>
-                                                        <option vilue="<?= $i ?>" <?= $i == $member->age ? 'selected' : ''?>><?= $i ?></option>
-                                                    <?php } ?>
-                                                </select>
+                                                <input type="text" value="<?= $member->birthday ?>" name="birthday" required>
                                             </div>
                                         </div>
                                     </div>

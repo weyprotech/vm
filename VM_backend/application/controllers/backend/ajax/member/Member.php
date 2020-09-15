@@ -35,7 +35,7 @@ class Member extends Ajax_Controller
                     'first_name' => $row->first_name,
                     'last_name' => $row->last_name,
                     'gender' => $row->gender == 0 ? 'man' : 'Women',
-                    'age' => $row->age,
+                    'birthday' => $row->birthday,
                     'point' => $row->point,
                     'dividend' => '<a class="btn btn-warning" href="'.site_url('backend/member/dividend/index/'.$row->memberId).'"><i class="fa fa-book"></i><span class="hidden-mobile">dividend record</span></a>',
                     'action' => $this->get_button('edit', 'backend/member/member/edit/' . $row->memberId . $query) . $this->get_button('delete', 'backend/member/member/delete/' . $row->memberId . $query)

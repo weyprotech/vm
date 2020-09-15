@@ -10,7 +10,7 @@
                             <div class="controls_group">
                                 <label>*Email</label>
                                 <div class="controls">
-                                    <input type="email" value="<?= $member->email ?>" required>
+                                    <input type="email" value="<?= $member->email ?>" readonly>
                                 </div>
                             </div>
                             <div class="controls_group">

@@ -322,6 +322,29 @@ var website = function () {
             }
         });
 
+        //辦帳號確認email不可重複
+        $('body').on('change',"#create_email",function(){
+            var email = $('#create_email').val();
+
+            $.ajax({
+                url:website.Site_url('ajax/create_account/check_email'),
+                data:{email : email},
+                type: 'post',
+                dataType: 'json',
+                success:function(response){
+                    if(response['status'] == 'success'){
+                        $('#create_email').css('border-color','#b4a189');
+                        $('#create_email').siblings('span').css('display','none');
+                        $('#create_account').attr('disabled',false);
+                    }else{
+                        $('#create_email').css('border-color','red');
+                        $('#create_email').siblings('span').css('display','block').css('color','red');
+                        $('#create_account').attr('disabled',true);
+                    }
+                }
+            })
+        });
+
         //辦帳號
         $('body').on('click','#create_account',function(){
             var email = $('#create_email').val();
@@ -466,8 +489,31 @@ var website = function () {
                         swal({
                             title:"Insufficient dividends or Greater than the maximum usage limit",
                             type:"error"
-                        })
+                        });
                         $('#dividend').val('');
+                    }
+                }
+            });
+        });
+
+        //order coupon 折價券
+        $('body').on('click',"#check_coupon",function(){
+            var coupon = $("#coupon_code").val();
+            $.ajax({
+                url:site_url("ajax/coupon/check_coupon"),
+                type: "POST",
+                dataType:'json',
+                data:{coupon : coupon},
+                success:function(response){
+                    if(response['status'] == 'success'){
+                        $('#all_total').html("NTD$"+response['all_total']);
+                        $('.coupon_price').html("-$"+response['coupon']);
+                    }else{
+                        swal({
+                            title:"Coupon error",
+                            type:"error"
+                        });
+                        $('#coupon_code').val('');
                     }
                 }
             });

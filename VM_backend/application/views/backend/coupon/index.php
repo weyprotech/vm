@@ -3,20 +3,19 @@
         vertical-align: middle;
     }
 
-    #preview {
-        width: 100%;
-    }
 
     #preview img {
         width: 100px;
+        padding: 3px;
     }
 
     .dataTables_filter {
         float: none;
     }
 
-    #back_img{
-        position: absolute;left: 0;top: 30%;left:40%;width:20%;height: auto;opacity: 0.1;
+    .main-select, .minor-select, .category-select{
+        padding-left: 5px;
+        padding-bottom: 5px;
     }
 </style>
 <section id="widget-grid" class="">
@@ -35,7 +34,7 @@
                 <header>
                     <span class="widget-icon"><i class="fa fa-table"></i></span>
 
-                    <h2>Member List</h2>
+                    <h2>Shipping List</h2>
                 </header>
 
                 <div>
@@ -44,19 +43,13 @@
                             <div class="table-responsive">
                                 <table id="dt_basic" class="table table-bordered table-striped text-center">
                                     <thead>
-                                        <tr>                                            
-                                            <th class="text-center hidden-tablet">Image</th>
-                                            <th class="text-center">Email</th>
-                                            <th width="150" class="text-center">First Name</th>                                            
-                                            <th width="250" class="text-center">Last Name</th>
-                                            <th class="text-center">Gender</th>
-                                            <th class="text-center">Birthday</th> 
-                                            <th class="text-center">Point</th>      
-                                            <th width="160" class="text-center">Dividend Record</th>
-                                            <th width="160" class="text-center">Action</th>
+                                        <tr>
+                                            <th width="5%" class="text-center hidden-xs">Usable</th>
+                                            <th width="20%" class="text-center">Code</th>
+                                            <th width="15%" class="text-center">Coupon money</th>
+                                            <th width="15%" class="text-center">Action</th>
                                         </tr>
                                     </thead>
-                                    <img id="back_img" src="<?= base_url('assets/images/logo.png') ?>">
                                 </table>
                             </div>
                         </form>
@@ -77,50 +70,50 @@
             tablet: 1024,
             phone: 480
         };
+
         var $Table = $('#dt_basic').DataTable({
-            "displayStart": <?= $start = check_input_value($this->input->get('start', true), true, 0) ?>,   //總共幾筆
-            "pageLength": <?= $length = check_input_value($this->input->get('length', true), true, 25) ?>,  //每頁幾筆
-            "oSearch": {"sSearch": "<?= $this->input->get('search', true) ?>"},  //文字查詢
+            "displayStart": <?= $start = check_input_value($this->input->get('start', true), true, 0) ?>,
+            "pageLength": <?= $length = check_input_value($this->input->get('length', true), true, 25) ?>,
+            "oSearch": {"sSearch": "<?= $this->input->get('search', true) ?>"},
             "autoWidth": false,
             "ordering": false,
             "serverSide": true,
-            "sDom": "<'dt-toolbar'<'col-sm-8 hidden-xs' f><'col-xs-12 col-sm-4'Tl>>" + "t" + "<'dt-toolbar-footer'<'col-sm-6 col-xs-12 hidden-xs'i><'col-xs-12 col-sm-6'p>>",  //功能表
+            "sDom": "<'dt-toolbar'<'col-sm-9 hidden-xs' <'main-select input-group'><'minor-select input-group'><'category-select input-group'>><'col-xs-12 col-sm-3'Tl>>" + "t" + "<'dt-toolbar-footer'<'col-sm-6 col-xs-12 hidden-xs'i><'col-xs-12 col-sm-6'p>>",
             "oTableTools": {
-                "aButtons": [{   //按鈕
+                "aButtons": [{
                     "sExtends": "text",
-                    "sButtonText": '<i class="fa fa-plus" style="color:white"></i> <span class="hidden-mobile" style="color:white">Add Member</span>',
+                    "sButtonText": '<i class="fa fa-plus" style="color:white"></i> <span style="color:white">Add Coupon</span>',
                     "sButtonClass": "btn-lg btn-primary",
                     "fnInit": function (nButton, oConfig) {
-                        $(nButton).css('margin-left', 5).attr('href', '<?= site_url(uri_string() . "/add") ?>').css('text-shadow','0 -1px 0 rgba(0, 0, 0, 0.5), 0 1px 0 rgba(255, 255, 255, 0.3)');
+                        $(nButton).css('margin-left', 5).css('text-shadow','0 -1px 0 rgba(0, 0, 0, 0.5), 0 1px 0 rgba(255, 255, 255, 0.3)');
+                    },
+                    "fnClick": function (nButton, oConfig, oFlash) {
+                        $(nButton).attr('href', 'coupon/add/');                        
                     }
                 }]
             },
             "ajax": {
-                "url": "<?= site_url("backend/ajax/member/member/get_member_data") ?>",  //傳到路徑->ajax/member
-                "data": function (data) {                    
-                }
+                "url": "<?= site_url("backend/ajax/coupon/coupon/get_coupon_data") ?>",
+                "data": function (data) {
+                },
+                "type":'post'
             },
             "columns": [
-                {class: "hidden-tablet", data: "preview"},                
-                {class: "", data:"email"},                
-                {class: "", data:"first_name"},
-                {class:"", data:"last_name"},
-                {class: "", data:"gender"},
-                {class: "", data:"birthday"},
-                {class: "", data:"point"},
-                {class: "", data:"dividend"},
+                {class: "hidden-xs", data: "usable"},
+                {class: "", data: "code"},
+                {class: "", data: "money"},
                 {class: "", data: "action"}
             ],
-            "preDrawCallback": function () {   //一載入的動作
+            "preDrawCallback": function () {
                 // Initialize the responsive datatables helper once.
                 if (!responsiveHelper_dt_basic) {
                     responsiveHelper_dt_basic = new ResponsiveDatatablesHelper($('#dt_basic'), breakpointDefinition);
                 }
             },
-            "rowCallback": function (nRow) {  //每筆資料的動作
+            "rowCallback": function (nRow) {
                 responsiveHelper_dt_basic.createExpandIcon(nRow);
             },
-            "drawCallback": function (oSettings) {  //每更新存檔的動作
+            "drawCallback": function (oSettings) {
                 responsiveHelper_dt_basic.respond();
 
                 $("div#preview").hover(
@@ -132,7 +125,7 @@
                     }
                 );
             },
-            "initComplete": function () {
+            "initComplete": function () {                
             }
         });
     });

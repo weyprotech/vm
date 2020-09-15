@@ -31,7 +31,7 @@ class Create_account extends Frontend_Controller
                 $content .= " \n";            
                 $content .= 'Hello!';
                 $content .= " \n";            
-                $content .= 'Verification Url:'."\n".website_url('create_account/check_member/'.$member->uuid);
+                $content .= 'Verification Url:'."\n".site_url('en/create_account/check_member/'.$member->uuid);
                 
                 // $content .= '+---------------------------------------------+';
                 $this->load->library('email');
@@ -47,6 +47,16 @@ class Create_account extends Frontend_Controller
                 $this->email->send(false);
                 echo json_encode(array('status' => 'success'));
             }           
+        }
+    }
+
+    //判斷email是否重複
+    public function check_email(){
+        $email = $this->input->post('email',true);
+        if($memberList = $this->member_model->get_member_select(array(array('field' => 'member.email','value' => $email)))){
+            echo json_encode(array('status' => 'error'));
+        }else{
+            echo json_encode(array('status' => 'success'));
         }
     }
 }

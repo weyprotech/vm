@@ -9,6 +9,7 @@ class Member extends Frontend_Controller
         $this->load->model('designer/tb_designer_like_model','tb_designer_like_model');
         $this->load->model('product/tb_product_like_model','tb_product_like_model');
         $this->load->model('designer/tb_runway_model','tb_runway_model');
+        $this->load->model('order/tb_order_model','tb_order_model');
         $this->load->library('my_api');
     }
 
@@ -101,6 +102,16 @@ class Member extends Frontend_Controller
             'productList' => $productList
         );
         $this->get_view('member/favorite',$data);
+    }
+    
+    //歷史訂單
+    public function order_history(){
+        $memberId = $this->session->userdata('memberinfo')['memberId'];
+        $orderList = $this->tb_order_model->get_order_select(array(array('field' => 'order.memberId','value' => $memberId)),false,false);
+        $data = array(
+            'orderList' => $orderList
+        );
+        $this->get_view('member/order_history',$data);
     }
     
     private function get_view($page, $data = array(), $script = "")

@@ -73,7 +73,7 @@ class Coupon extends Backend_Controller
     {
         $this->check_action_auth($this->menuId, 'delete', true); // Check Auth
 
-        if (!$row = $this->coupon_model->get_coupon_by_id($couponId, $this->langId, array('enable' => true, 'visible' => false))):
+        if (!$row = $this->coupon_model->get_coupon_by_id($couponId,array('enable' => true, 'visible' => false))):
             $this->set_active_status('danger', 'The data does not exist!');
         else:
             $this->coupon_model->delete_coupon($row);

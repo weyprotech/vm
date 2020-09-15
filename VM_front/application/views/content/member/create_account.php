@@ -10,6 +10,7 @@
                         <label>Account</label>
                         <div class="controls">
                             <input type="email" id="create_email" name="email" placeholder="Email"/>
+                            <span style="display:none;">Email is already used</span>
                         </div>
                     </div>
                     <div class="controls_group">

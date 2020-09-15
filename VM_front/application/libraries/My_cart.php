@@ -44,7 +44,7 @@ class My_cart
 
         $this->_cart_contents = $this->CI->session->userdata('cart_contents');
         if($this->_cart_contents == NULL){
-            $this->_cart_contents = array('product_list' => array(),'shipping' => array(),'dividend' => 0,'amount' => 0,'total' => 0,'all_total' => 0);
+            $this->_cart_contents = array('product_list' => array(),'shipping' => array(),'dividend' => 0,'coupon' => array(),'amount' => 0,'total' => 0,'all_total' => 0);
         }
 
         $this->CI->load->model(array(
@@ -104,6 +104,15 @@ class My_cart
      */
     public function dividend(){
         return $this->_cart_contents['dividend'];
+    }
+
+    /**
+     * 取得折扣碼
+     * 
+     * @return int
+     */
+    public function coupon(){
+        return $this->_cart_contents['coupon'];
     }
 
     /**
@@ -238,6 +247,15 @@ class My_cart
         $this->_calc_cart();
     }
 
+    /**
+     * 使用折價券
+     * 
+     * @param array
+     */
+    public function update_coupon($coupon){
+        $this->_cart_contents['coupon'] = $coupon;
+        $this->_calc_cart();
+    }
 
 
     /**
@@ -261,6 +279,12 @@ class My_cart
         //紅利
         if(!empty($this->_cart_contents['dividend'])){
             $alltotal = $alltotal-$this->_cart_contents['dividend'];
+        }else{
+            $alltotal = $alltotal;
+        }
+        //折價券
+        if(!empty($this->_cart_contents['coupon'])){
+            $alltotal = $alltotal-$this->_cart_contents['coupon']['money'];
         }else{
             $alltotal = $alltotal;
         }

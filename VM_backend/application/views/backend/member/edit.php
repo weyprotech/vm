@@ -108,10 +108,10 @@
                                     </div>
                                     
                                     <div class="form-group">
-                                        <label class="col-sm-2 control-label" for="age">Age</label>
+                                        <label class="col-sm-2 control-label" for="birthday">Birthday</label>
 
                                         <div class="col-sm-9 col-lg-6">
-                                            <input class="form-control" type="number" id="age" name="age" value="<?= $row->age ?>" data-bv-notempty="true" data-bv-notempty-message=" ">
+                                            <input class="form-control" type="text" id="birthday" name="birthday" value="<?= $row->birthday ?>" data-bv-notempty="true" data-bv-notempty-message=" ">
                                         </div>
                                     </div>
 

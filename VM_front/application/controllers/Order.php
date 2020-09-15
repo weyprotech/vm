@@ -9,6 +9,7 @@ class Order extends Frontend_Controller{
         $this->load->model('shipping/tb_shipping_model','shipping_model');
         $this->load->model('order/tb_order_model','order_model');
         $this->load->model('member/tb_dividend_model','dividend_model');
+        $this->load->model('coupon/tb_coupon_model','coupon_model');
     }
 
     public function index(){
@@ -83,6 +84,8 @@ class Order extends Frontend_Controller{
                 'memberId' => $this->session->userdata('memberinfo')['memberId'],
                 'date' => date('Y-m-d'),
                 'total' => $this->my_cart->all_total(),
+                'dividend' => $this->my_cart->dividend(),
+                'couponId' => $this->my_cart->coupon()['couponId'],
                 'shipping' => $this->my_cart->shipping()['money'],
                 'status' => 0,
                 'notes' => $post['notes'],
@@ -103,6 +106,8 @@ class Order extends Frontend_Controller{
                 );
             }
             $orderId = $this->order_model->insert_order($insert);
+            $coupon = $this->coupon_model->get_coupon_by_id($this->my_cart->coupon()['couponId']);
+            $this->coupon_model->update_coupon($coupon,array('usable' => 0));
             //重置購物車
             $this->my_cart->reset_cart();
             redirect(website_url("order/order_payment/".$orderId));

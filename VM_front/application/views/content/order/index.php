@@ -97,11 +97,11 @@
                                     <div class="controls_group">
                                         <label>Add discout coupon</label>
                                         <div class="controls coupon_controls">
-                                        <input type="text">
-                                        <button class="btn_check" type="button"><i class="icon_check"></i></button>
+                                        <input type="text" id="coupon_code">
+                                        <button class="btn_check" id="check_coupon" type="button"><i class="icon_check"></i></button>
                                         </div>
                                     </div>
-                                    <div class="price">-$0</div>
+                                    <div class="coupon_price price">-$0</div>
                                 </li>
                                 <?php if($cart_total >= 2000){ ?>
                                     <li class="item">

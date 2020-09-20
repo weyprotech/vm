@@ -108,6 +108,10 @@ class Member extends Frontend_Controller
     
     //歷史訂單
     public function order_history(){
+        if(!$this->session->userdata('memberinfo')['memberId']){
+            js_warn('請重新登入，謝謝!');
+            redirect(website_url());
+        }
         $memberId = $this->session->userdata('memberinfo')['memberId'];
         $orderList = $this->tb_order_model->get_order_select(array(array('field' => 'order.memberId','value' => $memberId)),false,false);
         $data = array(
@@ -118,6 +122,10 @@ class Member extends Frontend_Controller
 
     //歷史訂單詳細資料
     public function order_history_detail($orderId){    
+        if(!$this->session->userdata('memberinfo')['memberId']){
+            js_warn('請重新登入，謝謝!');
+            redirect(website_url());
+        }
         if($order = $this->tb_order_model->get_order_by_id($orderId)){
             if(!empty($order->couponId)){
                 $coupon = $this->tb_coupon_model->get_coupon_by_id($order->couponId);
@@ -132,6 +140,15 @@ class Member extends Frontend_Controller
         }else{
             redirect(website_url("member/member/order_history"));
         }
+    }
+
+    //點數紀錄
+    public function mypoint(){
+        if(!$this->session->userdata('memberinfo')['memberId']){
+            js_warn('請重新登入，謝謝!');
+            redirect(website_url());
+        }
+        
     }
     
     private function get_view($page, $data = array(), $script = "")

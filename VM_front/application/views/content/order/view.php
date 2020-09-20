@@ -16,7 +16,7 @@
             <td><span class="font_red">NT $<?= $order->total ?></span></td>
             </tr>
         </table>
-        <div class="call_action"><a class="btn confirm" href="javascript:;">Order Detail</a></div>
+        <div class="call_action"><a class="btn confirm" href="<?= website_url('member/member/order_history_detail/'.$order->orderId) ?>">Order Detail</a></div>
         </div>
     </div>
 </main>

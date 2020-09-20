@@ -19,24 +19,36 @@
                         </div>
                         </div>
                         <div class="tbody">
-                            <?php foreach ($orderList as $orderKey => $orderValue){ ?>
-                            <!--↓ 使用刷卡付款 - 連結至 member_history_detail.html ↓-->
-                            <!--↓ 使用ATM付款 - 連結至 member_history_detail_atm.html ↓-->
-                            <a class="tr" href="member_history_detail.html">
-                                <div class="td" data-label="Order number">
-                                    <span class="font_khaki"><?= $orderValue->orderId ?></span>
-                                </div>
-                                <div class="td" data-label="Date"><?= $orderValue->date ?></div>
-                                <div class="td" data-label="Amount">$ <?= $orderValue->total ?></div>
-                                <div class="td" data-label="Payment">
-                                    <span class="font_khaki"><?= $orderValue->status == 0 ? "Unpaid" : "Paid" ?></span>
-                                </div>
-                                <div class="td" data-label="Status">
-                                    <span class="font_khaki"><?= $orderValue->status == 0 ? "Go to pay" : "Paid" ?></span>
-                                </div>
-                            </a>
-                            <?php } ?>    
-                                <a class="tr" href="member_history_detail_atm.html">
+                            <?php if(!empty($orderList)){
+                                foreach ($orderList as $orderKey => $orderValue){ ?>
+                                <!--↓ 使用刷卡付款 - 連結至 member_history_detail.html ↓-->
+                                <!--↓ 使用ATM付款 - 連結至 member_history_detail_atm.html ↓-->
+                                <a class="tr" href="<?= website_url('member/member/order_history_detail/'.$orderValue->orderId) ?>">
+                                    <div class="td" data-label="Order number">
+                                        <span class="font_khaki"><?= $orderValue->orderId ?></span>
+                                    </div>
+                                    <div class="td" data-label="Date"><?= $orderValue->date ?></div>
+                                    <div class="td" data-label="Amount">$ <?= $orderValue->total ?></div>
+                                    <div class="td" data-label="Payment">
+                                        <span class="font_khaki"><?= $orderValue->status == 0 ? "Unpaid" : "Paid" ?></span>
+                                    </div>
+                                    <div class="td" data-label="Status">
+                                        <?php switch($orderValue->status){ 
+                                            case 0: ?>                                            
+                                                <span class="font_khaki">Go to pay</span>                                            
+                                            <?php break;
+                                            case 1: ?>
+                                                <span class="font_red">In transit</span>
+                                            <?php break;
+                                            case 2: ?>
+                                                Delivered
+                                            <?php break;
+                                        } ?>
+                                    </div>
+                                </a>
+                                <?php }
+                            } ?>    
+                                <!-- <a class="tr" href="member_history_detail_atm.html">
                                 <div class="td" data-label="Order number"><span class="font_khaki">192304832579</span></div>
                                 <div class="td" data-label="Date">2019/08/19</div>
                                 <div class="td" data-label="Amount">$ 8,000</div>
@@ -51,7 +63,7 @@
                                 <div class="td" data-label="Date">2019/08/19</div>
                                 <div class="td" data-label="Amount">$ 10,800</div>
                                 <div class="td" data-label="Payment">Paid</div>
-                                <div class="td" data-label="Status">Delivered</div></a>
+                                <div class="td" data-label="Status">Delivered</div></a> -->
                             <!--↑ 使用刷卡付款 - 連結至 member_history_detail.html ↑-->
                             <!--↑ 使用ATM付款 - 連結至 member_history_detail_atm.html ↑-->
                         </div>

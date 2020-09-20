@@ -7,7 +7,7 @@
                     <?php $tmp = explode('/', $_SERVER['REQUEST_URI']); ?>
                     <ul>
                         <li><a <?= ($tmp[count($tmp) - 1] == 'member') ? 'class="current"' : '' ?> href="<?= website_url('member/member') ?>">Account</a></li>
-                        <li><a <?= ($tmp[count($tmp) - 1] == 'order_history') ? 'class="current"' : '' ?> href="<?= website_url('member/order_history') ?>">Order History</a></li>
+                        <li><a <?= ($tmp[count($tmp) - 1] == 'order_history') ? 'class="current"' : '' ?> href="<?= website_url('member/member/order_history') ?>">Order History</a></li>
                         <li><a href="member_points.html">My Points</a></li>
                         <li><a href="member_gift.html">Gift Designer</a></li>
                         <li><a href="member_model.html">Be VM Model</a></li>

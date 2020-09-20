@@ -77,7 +77,7 @@
                                                 <input class="form-control" type="text" name="name" value="<?= $row->last_name ?>" readonly>
                                             </div>
                                         </div>
-
+                                        
                                         <div class="form-group">
                                             <label class="col-sm-2 control-label">Country</label>
 
@@ -111,7 +111,15 @@
                                         </div>
 
                                         <div class="form-group">
-                                            <label class="col-sm-2 control-label">P</label>
+                                            <label class="col-sm-2 control-label">Notes</label>
+
+                                            <div class="col-sm-5">
+                                                <textarea class="form-control" readonly><?= $row->notes ?></textarea>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">Payment</label>
 
                                             <div class="col-sm-9 col-lg-8">
                                                 <label class="radio radio-inline">
@@ -124,7 +132,21 @@
                                                 </label>                                                                                         
                                             </div>
                                         </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">Delivery Date</label>
 
+                                            <div class="col-sm-5">
+                                                <input class="form-control datepicker" data-dateformat="yy-mm-dd" type="text" name="delivery_date" value="<?= $row->delivery_date ?>">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">Tracking</label>
+
+                                            <div class="col-sm-5">
+                                                <textarea class="form-control" name="tracking"><?= $row->tracking ?></textarea>
+                                            </div>
+                                        </div>
                                     </fieldset>
                                 </div>
                                 <div class="tab-pane" id="hb2">
@@ -184,7 +206,9 @@
     var hash = window.location.hash;
     $('ul.nav-tabs li').eq(hash.substr(1)).addClass('active');
     $('.tab-pane').eq(hash.substr(1)).addClass('active');
-
+    $("input.datepicker").click(function(){
+        $("#ui-datepicker-div").css('z-index','99');
+    });
     $(document).ready(function () {
         $('input#uploadImg').change(function () {
             var $this = $(this);

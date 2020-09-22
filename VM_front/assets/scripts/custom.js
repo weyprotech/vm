@@ -13,6 +13,7 @@ var website = function () {
         lang = normal_lang;
         var error = 0;
 
+
         $langSelect.change(function () {
             change_lang($(this).val()).done(function (response) {
                 if (response['status']) location.href = response['url'];

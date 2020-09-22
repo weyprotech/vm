@@ -49,7 +49,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="td" data-label="">
-                                                        <a class="btn confirm popup" href="popup_gift.html">Gift Designer</a>
+                                                        <a class="btn confirm popup" href="<?= website_url('member/member/popup_gift/'.$designerValue->designerId) ?>">Gift Designer</a>
                                                     </div>
                                                 </div>
                                             <?php }

@@ -70,14 +70,10 @@
                                 </div>
                                 <div class="grid g_6_12">
                                     <div class="controls_group">
-                                        <label>Age</label>
+                                        <label>Birthday</label>
                                         <div class="controls">
                                             <div class="select_wrapper">
-                                                <select disabled>
-                                                    <?php for($i=0; $i<=150;$i++){ ?>
-                                                        <option value="<?= $i ?>" <?= $i==$member->age ? 'selected' : '' ?>><?= $i ?></option>
-                                                    <?php } ?>
-                                                </select>
+                                                <input type="date" class="datepicker" data-dateformat="yy-mm-dd" data-toggle="datepicker" value="<?= $member->birthday ?>">
                                             </div>
                                         </div>
                                     </div>

@@ -60,7 +60,7 @@
                                         <label>Birthday</label>
                                         <div class="controls">
                                             <div class="select_wrapper">
-                                                <input type="text" value="<?= $member->birthday ?>" name="birthday" required>
+                                                <input type="date" class="datepicker" data-dateformat="yy-mm-dd" data-toggle="datepicker" placeholder="選擇日期" value="<?= $member->birthday ?>" name="birthday" required>
                                             </div>
                                         </div>
                                     </div>
@@ -76,3 +76,4 @@
         </div>
     </div>
 </main>
+<script type="text/javascript" src="<?= base_url("assets/scripts/plugins/clockpicker/clockpicker.min.js") ?>"></script>

@@ -8,9 +8,9 @@
                     <ul>
                         <li><a <?= ($tmp[count($tmp) - 1] == 'member') ? 'class="current"' : '' ?> href="<?= website_url('member/member') ?>">Account</a></li>
                         <li><a <?= ($tmp[count($tmp) - 1] == 'order_history') ? 'class="current"' : '' ?> href="<?= website_url('member/member/order_history') ?>">Order History</a></li>
-                        <li><a href="member_points.html">My Points</a></li>
-                        <li><a href="member_gift.html">Gift Designer</a></li>
-                        <li><a href="member_model.html">Be VM Model</a></li>
+                        <li><a <?= ($tmp[count($tmp) - 1] == 'mypoint') ? 'class="current"' : '' ?> href="<?= website_url('member/member/mypoint') ?>">My Points</a></li>
+                        <li><a <?= ($tmp[count($tmp) - 1] == 'gift') ? 'class="current"' : '' ?> href="<?= website_url('member/member/gift') ?>">Gift Designer</a></li>
+                        <li><a <?= ($tmp[count($tmp) - 1] == 'be_vm_model') ? 'class="current"' : '' ?> href="<?= website_url('member/member/be_vm_model') ?>">Be VM Model</a></li>
                     </ul>
                 </div>
             </div>

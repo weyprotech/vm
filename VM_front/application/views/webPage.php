@@ -11,6 +11,8 @@
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css">
 <link rel="stylesheet" href="<?= base_url('assets/styles/main.css') ?>">
 <link rel="stylesheet" type="text/css" href="<?= base_url("assets/styles/sweetalert2.min.css") ?>">
+<link rel="stylesheet" type="text/css" href="<?= base_url("assets/styles/datepicker.css") ?>">
+
 
 <?php
 if ($this->langFile != 'cn') { ?>
@@ -86,7 +88,7 @@ if ($this->langFile != 'cn') { ?>
     <script src="<?= base_url("assets/scripts/storeMap.js") ?>"></script>
     <script src="<?= base_url("assets/scripts/custom.js") ?>"></script>
     <script src="<?= base_url("assets/scripts/sweetalert2.all.min.js") ?>"></script>
-
+    <script src="<?= base_url("assets/scripts/datepicker.js") ?>"></script>
     <script>
         website.Init('<?= site_url() ?>', '<?= base_url() ?>','<?= $this->langFile ?>');
     </script>

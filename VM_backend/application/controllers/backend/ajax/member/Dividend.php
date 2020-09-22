@@ -32,7 +32,7 @@ class Dividend extends Ajax_Controller
                 $data[] = array(                    
                     'order' => '<a href="'.site_url('backend/order/order/edit/'.$row->orderId).'">'.$row->orderId.'</a>',
                     'dividend' => $row->dividend,
-                    'action' => $this->get_button('delete', 'backend/dividend/dividend/delete/' . $row->dividendId . $query)
+                    'action' => $this->get_button('delete', 'backend/dividend/dividend/delete/' . $row->Id . $query)
                 );
             endforeach;
         endif;

@@ -1,21 +1,22 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
-class Tb_member_point_record_model extends MY_Model
+class Tb_gift_designer_model extends MY_Model
 {
     public function __construct()
     {
         parent::__construct();
         $this->model = get_class($this); // 本身Model
-        $this->checkUploadPath('member/member_point_record/'); // 上傳路徑
+        $this->checkUploadPath('member/gift_designer/'); // 上傳路徑
     }
 
-    /*****member_point_record model******/
-    public function get_member_point_record_select($filter = false, $order = false, $limit = false,$all = false)
+    /*****gift_designer model******/
+    public function get_gift_designer_select($filter = false, $order = false, $limit = false,$langId = 3)
     {
         $this->set_filter($filter);
         $this->set_order($order);
         $this->set_limit($limit);
-        $query=$this->db->where('member_point_record.is_enable',1)->get('tb_member_point_record as member_point_record');
+        $this->set_product_join($langId);
+        $query=$this->db->where('gift_designer.is_enable',1)->get('tb_gift_designer as gift_designer');
         // echo $this->db->last_query();exit;
         if($query->num_rows() > 0):
             return $query->result();
@@ -24,14 +25,15 @@ class Tb_member_point_record_model extends MY_Model
         return false;
     }
 
-    public function count_member_point_record()
+    public function count_gift_designer()
     {
-        return $this->db->where('member_point_record.is_enable',1)->count_all_results('tb_member_point_record as member_point_record');
+        return $this->db->where('gift_designer.is_enable',1)->count_all_results('tb_gift_designer as gift_designer');
     }
 
-    public function get_member_point_record_by_id($member_point_recordId = false)
+    public function get_gift_designer_by_id($gift_designerId = false, $langId = 3)
     {
-        $query = $this->db->where('member_point_record.Id',$member_point_recordId)->get('tb_member_point_record as member_point_record');
+        $this->set_product_join($langId);
+        $query = $this->db->where('gift_designer.gift_designerId',$gift_designerId)->get('tb_gift_designer as gift_designer');
         if($query->num_rows() > 0):
             return $query->row();
         endif;
@@ -39,25 +41,24 @@ class Tb_member_point_record_model extends MY_Model
         return false;
     }
 
-    public function insert_member_point_record($post)
+    public function insert_gift_designer($post)
     {    
         $post['create_at'] = date('Y-m-d H:i:s');
         $insert = $this->check_db_data($post);
-        $this->insert('tb_member_point_record',$insert);
+        $this->insert('tb_gift_designer',$insert);
         return $this->db->insert_id();
     }
 
-    public function update_member_point_record($member_point_record,$post)
+    public function update_gift_designer($gift_designer,$post)
     {        
         $update = $this->check_db_data($post);
-        
-        $this->update('tb_member_point_record',$update, array('Id' => $member_point_record->Id));
+        $this->update('tb_gift_designer',$update, array('gift_designerId' => $gift_designer->gift_designerId));
         return true;
     }
 
-    public function delete_member_point_record($member_point_record)
+    public function delete_gift_designer($gift_designer)
     {
-        $this->update_member_point_record($member_point_record,array('is_enable' => 0));
+        $this->update_gift_designer($gift_designer,array('is_enable' => 0));
         return true;    
     }
 
@@ -98,4 +99,11 @@ class Tb_member_point_record_model extends MY_Model
         return $data;
     }
     /**資料處理***/
+
+    /*** join ***/
+    private function set_product_join($langId){
+        $this->db->select('gift_designer.*,designer.*,lang.*');
+        $this->db->join('tb_designer as designer', 'designer.designerId = gift_designer.designerId','left');
+        $this->db->join('tb_designer_lang as lang', 'lang.designerId = gift_designer.designerId AND lang.langId = ' . $langId, 'left');
+    }
 }

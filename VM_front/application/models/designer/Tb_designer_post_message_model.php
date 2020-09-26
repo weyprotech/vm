@@ -1,7 +1,7 @@
 <?php
 if (!defined('BASEPATH')) exit('No direct script access allowed');
 
-class Tb_designer_message_model extends MY_Model
+class Tb_designer_post_message_model extends MY_Model
 {
     public function __construct()
     {
@@ -11,12 +11,13 @@ class Tb_designer_message_model extends MY_Model
     }
 
     /******************** designer Model ********************/
-    public function get_designer_message_select($filter = false, $order = false, $limit = false, $langId = false)
+    public function get_designer_post_message_select($filter = false, $order = false, $limit = false, $langId = false)
     {
         $this->set_filter($filter);
         $this->set_order($order);
         $this->set_limit($limit);
-        $this->set_designer_join($langId);
+        $this->set_message_join();
+
         $query = $this->db->get('tb_designer_post_message as message');
         if ($query->num_rows() > 0):
             return $query->result();
@@ -25,16 +26,14 @@ class Tb_designer_message_model extends MY_Model
         return false;
     }
 
-    public function count_designer_message($filter = false, $langId = false)
+    public function count_designer_post_message($filter = false, $langId = false)
     {
         $this->set_filter($filter);
-        $this->set_designer_join($langId);
         return $this->db->count_all_results('tb_designer_post_message as message');
     }
 
-    public function get_designer_message_by_id($Id = false, $langId = false, $boolean = array('enable' => true, 'visible' => true))
+    public function get_designer_post_message_by_id($Id = false, $langId = false, $boolean = array('enable' => true, 'visible' => true))
     {
-        $this->set_designer_join($langId);
         $query = $this->db->where('message.Id', $Id)->get('tb_designer_post_message as message');
 
         if ($query->num_rows() > 0):
@@ -44,7 +43,7 @@ class Tb_designer_message_model extends MY_Model
         return false;
     }
 
-    public function insert_designer_message($post)
+    public function insert_designer_post_message($post)
     {
 
         $insert = $this->check_db_data($post);    
@@ -53,7 +52,7 @@ class Tb_designer_message_model extends MY_Model
         return $this->db->insert_id();
     }
 
-    public function update_designer_message($message, $post)
+    public function update_designer_post_message($message, $post)
     {
         $update = $this->check_db_data($post);
 
@@ -61,12 +60,17 @@ class Tb_designer_message_model extends MY_Model
         return true;
     }
 
-    public function delete_designer_message($message)
+    public function delete_designer_post_message($message)
     {
         $this->db->delete('tb_designer_post_message',array('Id' => $message->Id));
         return true;
     }
 
+    /******************** Private Function ********************/
+    private function set_message_join(){
+        $this->db->select('member.*,message.*,message.create_at as message_date');
+        $this->db->join('tb_member as member','message.memberId = member.memberId','left');
+    }
     /******************** End designer Model ********************/
     /*************** 處理資料 ***************/
     private function check_db_data($post)

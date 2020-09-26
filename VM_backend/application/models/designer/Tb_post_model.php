@@ -182,94 +182,94 @@ class Tb_post_model extends MY_Model
     }
     /********* End post img model *********/
     /********* Start post message model *******/
-    public function get_post_message_select($filter = false, $order = false, $limit = false, $langId = false)
-    {
-        if ($langId):
-            $this->db->select('post.*, lang.title, lang.content');
-            $this->db->join('tb_designer_post_lang as lang', 'lang.postId = post.postId AND lang.langId = ' . $langId, 'left');
-            $this->db->join('tb_designer_post_message as message','message.postId = post.postid','left');
-        endif;
-        $this->set_filter($filter);
-        $this->set_order($order);
-        $this->set_limit($limit);
-        $query = $this->db->where('post.is_enable', 1)->get('tb_designer_post as post');
+    // public function get_post_message_select($filter = false, $order = false, $limit = false, $langId = false)
+    // {
+    //     if ($langId):
+    //         $this->db->select('post.*, lang.title, lang.content');
+    //         $this->db->join('tb_designer_post_lang as lang', 'lang.postId = post.postId AND lang.langId = ' . $langId, 'left');
+    //         $this->db->join('tb_designer_post_message as message','message.postId = post.postid','left');
+    //     endif;
+    //     $this->set_filter($filter);
+    //     $this->set_order($order);
+    //     $this->set_limit($limit);
+    //     $query = $this->db->where('post.is_enable', 1)->get('tb_designer_post as post');
 
-        if ($query->num_rows() > 0):
-            return $query->result();
-        endif;
+    //     if ($query->num_rows() > 0):
+    //         return $query->result();
+    //     endif;
 
-        return false;
-    }
+    //     return false;
+    // }
 
-    public function count_post_message($filter = false, $langId = false)
-    {
-        if ($langId):
-            $this->db->select('post.*, lang.title, lang.content');
-            $this->db->join('tb_designer_post_lang as lang', 'lang.postId = post.postId AND lang.langId = ' . $langId, 'left');
-            $this->db->join('tb_designer_post_message as message','message.postId = post.postid','left');
-        endif;
-        $this->set_filter($filter);
-        return $this->db->where('post.is_enable', 1)->count_all_results('tb_designer_post as post');
-    }
+    // public function count_post_message($filter = false, $langId = false)
+    // {
+    //     if ($langId):
+    //         $this->db->select('post.*, lang.title, lang.content');
+    //         $this->db->join('tb_designer_post_lang as lang', 'lang.postId = post.postId AND lang.langId = ' . $langId, 'left');
+    //         $this->db->join('tb_designer_post_message as message','message.postId = post.postid','left');
+    //     endif;
+    //     $this->set_filter($filter);
+    //     return $this->db->where('post.is_enable', 1)->count_all_results('tb_designer_post as post');
+    // }
 
-    public function get_post_message_by_id($postId = false, $langId = false, $boolean = array('enable' => true, 'visible' => true))
-    {
-        if ($langId):
-            $this->db->select('post.*, lang.title, lang.content');
-            $this->db->join('tb_designer_post_lang as lang', 'lang.postId = post.postId AND lang.langId = ' . $langId, 'left');
-        endif;
-        $this->set_filter(array(array('field' => 'post.is_enable', 'value' => $boolean['enable']), array('field' => 'post.is_visible', 'value' => $boolean['visible'])));
-        $query = $this->db->where('post.postId', $postId)->get('tb_designer_post as post');
+    // public function get_post_message_by_id($postId = false, $langId = false, $boolean = array('enable' => true, 'visible' => true))
+    // {
+    //     if ($langId):
+    //         $this->db->select('post.*, lang.title, lang.content');
+    //         $this->db->join('tb_designer_post_lang as lang', 'lang.postId = post.postId AND lang.langId = ' . $langId, 'left');
+    //     endif;
+    //     $this->set_filter(array(array('field' => 'post.is_enable', 'value' => $boolean['enable']), array('field' => 'post.is_visible', 'value' => $boolean['visible'])));
+    //     $query = $this->db->where('post.postId', $postId)->get('tb_designer_post as post');
 
-        if ($query->num_rows() > 0):
-            $post = $query->row();
-            if (!$langId):
-                $post->langList = $this->get_post_lang_select(array(array('field' => 'postId', 'value' => $post->postId)));
-            endif;
+    //     if ($query->num_rows() > 0):
+    //         $post = $query->row();
+    //         if (!$langId):
+    //             $post->langList = $this->get_post_lang_select(array(array('field' => 'postId', 'value' => $post->postId)));
+    //         endif;
 
-            return $post;
-        endif;
+    //         return $post;
+    //     endif;
 
-        return false;
-    }
+    //     return false;
+    // }
 
-    public function insert_post_message($post)
-    {
-        $post['order'] = $this->count_post(array(array('field' => 'post.designerId','value' => $post['designerId'])))+1;
-        $insert = $this->check_db_data($post);        
+    // public function insert_post_message($post)
+    // {
+    //     $post['order'] = $this->count_post(array(array('field' => 'post.designerId','value' => $post['designerId'])))+1;
+    //     $insert = $this->check_db_data($post);        
 
-        if (isset($post['langList'])):
-            foreach ($post['langList'] as $i => $lrow):
-                $post['langList'][$i] = $this->check_db_data($lrow);
-            endforeach;
+    //     if (isset($post['langList'])):
+    //         foreach ($post['langList'] as $i => $lrow):
+    //             $post['langList'][$i] = $this->check_db_data($lrow);
+    //         endforeach;
 
-            $this->update_post_lang($post['postId'], $post['langList']);
-        endif;
-        $this->db->insert('tb_designer_post', $insert);
+    //         $this->update_post_lang($post['postId'], $post['langList']);
+    //     endif;
+    //     $this->db->insert('tb_designer_post', $insert);
 
-        return $this->db->insert_id();
-    }
+    //     return $this->db->insert_id();
+    // }
 
-    public function update_post_message($post, $update)
-    {
-        if (isset($update['langList'])):
-            foreach ($update['langList'] as $i => $lrow):
-                $update['langList'][$i] = $this->check_db_data($lrow);
-            endforeach;
+    // public function update_post_message($post, $update)
+    // {
+    //     if (isset($update['langList'])):
+    //         foreach ($update['langList'] as $i => $lrow):
+    //             $update['langList'][$i] = $this->check_db_data($lrow);
+    //         endforeach;
 
-            $this->update_post_lang($post->postId, $update['langList']);
-        endif;
-        $update = $this->check_db_data($update);
+    //         $this->update_post_lang($post->postId, $update['langList']);
+    //     endif;
+    //     $update = $this->check_db_data($update);
 
-        $this->db->update('tb_designer_post', $update, array('postId' => $post->postId));
-        return true;
-    }
+    //     $this->db->update('tb_designer_post', $update, array('postId' => $post->postId));
+    //     return true;
+    // }
 
-    public function delete_post_message($post)
-    {
-        $this->update_post($post, array('is_enable' => 0));
-        return true;
-    }
+    // public function delete_post_message($post)
+    // {
+    //     $this->update_post($post, array('is_enable' => 0));
+    //     return true;
+    // }
 
     /******************** End post Model ********************/
 

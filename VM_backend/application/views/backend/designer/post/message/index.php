@@ -91,7 +91,6 @@
                 }
             },
             "columns": [
-                {class: "hidden-xs", data: "visible"},
                 {class: "", data: "message"},
                 {class: "", data: "response"},
                 {class: "", data: "action"}

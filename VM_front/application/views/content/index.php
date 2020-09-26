@@ -142,7 +142,7 @@
                         <div class="item">
                             <div class="item_inner">
                                 <!--↓ 愛心加'active'，表示為有加入最愛 ↓-->
-                                <a class="btn_favorite active" data-ootdId="ootd<?= $inspirationKey ?>" href="javascript:;"><i class="icon_favorite_heart"></i></a>
+                                <a class="btn_favorite active" data-ootdId="ootd<?= $inspirationKey ?>" href="javascript:;" onclick="website.inspiration_favorite('<?= $inspirationValue->inspirationId ?>')"><i class="icon_favorite_heart"></i></a>
                                 <!--↑ 愛心加'active'，表示為有加入最愛 ↑-->
                                 <a href="ootd_detail.html">
                                     <div class="thumb"><img src="<?= backend_url($inspirationValue->inspirationImg) ?>"></div>

@@ -20,9 +20,9 @@
                 <div class="fold_content">
                     <ul>
                         <li><a <?= ($tmp[count($tmp) - 1] == 'favorite') ? 'class="current"' : '' ?> href="<?= website_url('member/member/favorite') ?>">My Favorite</a></li>
-                        <li><a href="member_style.html">Style Inpsiration</a></li>
-                        <li><a href="member_reviews.html">My Reviews</a></li>
-                        <li><a href="member_upcoming.html">Upcoming Events</a></li>
+                        <li><a <?= ($tmp[count($tmp) - 1] == 'style_inpsiration') ? 'class="current"' : '' ?> href="<?= website_url('member/member/style_inpsiration') ?>">Style Inspiration</a></li>
+                        <li><a <?= ($tmp[count($tmp) - 1] == 'member_reviews') ? 'class="current"' : '' ?> href="<?= website_url('member/member/member_reviews') ?>">My Reviews</a></li>
+                        <li><a <?= ($tmp[count($tmp) - 1] == 'member_upcoming') ? 'class="current"' : '' ?> href="<?= website_url('member/member/member_upcoming') ?>">Upcoming Events</a></li>
                     </ul>
                 </div>
             </div>

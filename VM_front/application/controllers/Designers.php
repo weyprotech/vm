@@ -16,6 +16,7 @@ class Designers extends Frontend_Controller
         $this->load->model('designer/tb_just_model','tb_just_model');
         $this->load->model('designer/tb_message_model','tb_message_model');
         $this->load->model('designer/tb_designer_like_model','tb_designer_like_model');
+        $this->load->model('designer/tb_designer_post_message_model','tb_designer_post_message_model');
     }
 
     public function index()
@@ -76,7 +77,7 @@ class Designers extends Frontend_Controller
         if($postList = $this->tb_post_model->get_post_select(array(array('field' => 'post.is_visible', 'value' => 1),array('field' => 'post.designerId','value' => $designerId)),array(array('field' => 'post.order','dir' => 'desc')),false,$this->langId)){
             foreach($postList as $postKey => $postValue){
                 $postList[$postKey]->imgList = $this->tb_post_model->get_post_img_select(array(array('field' => 'post_img.postId','value' => $postValue->postId)));
-                $postList[$postKey]->message = $this->tb_post_model->get_post_message_select(array(array('field' => 'message.postId','value' => $postValue->postId)));
+                $postList[$postKey]->message = $this->tb_designer_post_message_model->get_designer_post_message_select(array(array('field' => 'message.postId','value' => $postValue->postId)));
             }
         }
         //讀取愛心

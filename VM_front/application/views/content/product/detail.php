@@ -298,28 +298,31 @@
                                                     <h2><?= is_array($postValue->message) ? count($postValue->message) : 0 ?> comments</h2><i class="arrow_down"></i>
                                                 </div>
                                                 <div class="comments_content">
-                                                    <div class="comments_form">
-                                                        <div class="profile_picture">
-                                                            <div class="pic" style="background-image: url(https://source.unsplash.com/rDEOVtE7vOs/100x100);"><img class="size" src="<?= base_url('assets/images/size_1x1.png') ?>"></div>
+                                                    <?php if(isset($this->session->userdata('memberinfo')['memberId'])){  ?>
+                                                        <div class="comments_form">
+                                                            <div class="profile_picture">
+                                                                <div class="pic" style="background-image: url(<?= backend_url($this->session->userdata('memberinfo')['memberImg']) ?>);"><img class="size" src="<?= base_url('assets/images/size_1x1.png') ?>"></div>
+                                                            </div>
+                                                            <div class="controls">
+                                                                <input type="text" class="message_input" placeholder="Leave us a message...">
+                                                                <button type="button" class="message_send" data-postid="<?= $postValue->postId ?>">Send</button>
+                                                            </div>
                                                         </div>
-                                                        <div class="controls">
-                                                            <input type="text" placeholder="Leave us a message...">
-                                                            <button type="button">Send</button>
-                                                        </div>
-                                                    </div>
+                                                    <?php } ?>
                                                     <div class="comments_messages">
                                                         <?php if(!empty($postValue->message)):
                                                             foreach ($postValue->message as $messageKey => $messageValue): ?>
                                                                 <div class="item">
                                                                     <div class="msg">
                                                                         <div class="profile_picture">
-                                                                            <div class="pic" style="background-image: url(https://source.unsplash.com/JQDflNNnrEE/100x100);"><img class="size" src="<?= base_url('assets/images/size_1x1.png') ?>"></div>
+                                                                            <div class="pic" style="background-image: url(<?= backend_url($messageValue->memberImg) ?>);"><img class="size" src="<?= base_url('assets/images/size_1x1.png') ?>"></div>
                                                                         </div>
                                                                         <div class="msg_content">
                                                                             <div class="title">
-                                                                                <div class="name">Lily Allen</div>
+                                                                                <div class="name"><?= $messageValue->last_name.$messageValue->first_name ?></div>
                                                                                 <div class="divide_line"></div>
-                                                                                <div class="time"><?= $messageValue->create_at ?></div>
+                                                                                <?php $date = explode(" ",$messageValue->message_date); ?>
+                                                                                <div class="time"><?= $date[0] ?></div>
                                                                             </div>
                                                                             <div class="text"><?= $messageValue->message ?></div>
                                                                         </div>
@@ -340,7 +343,7 @@
                                                                                 <div class="text"><?= $messageValue->response ?></div>
                                                                             </div>
                                                                         </div>
-                                                                    <?php } ?>                                                                
+                                                                    <?php } ?>
                                                                 </div>
                                                             <?php endforeach;
                                                         endif; ?>

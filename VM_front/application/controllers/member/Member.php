@@ -11,10 +11,12 @@ class Member extends Frontend_Controller
         $this->load->model('designer/tb_runway_model','tb_runway_model');
         $this->load->model('order/tb_order_model','tb_order_model');
         $this->load->model('product/tb_product_model','tb_product_model');
+        $this->load->model('product/tb_product_review_model','tb_product_review_model');
         $this->load->model('coupon/tb_coupon_model','tb_coupon_model');
         $this->load->model('member/tb_member_point_record_model','tb_member_point_record_model');
         $this->load->model('member/tb_member_reward_record_model','tb_member_reward_record_model');
         $this->load->model('member/tb_gift_designer_model','tb_gift_designer_model');
+        $this->load->model('member/tb_member_inspiration_model','tb_member_inspiration_model');
         $this->load->library('my_api');
     }
 
@@ -180,7 +182,7 @@ class Member extends Frontend_Controller
             redirect(website_url());
         }
         $this->get_view('member/be_vm_model');
-    }
+    }    
 
     //贈送禮物
     public function popup_gift($designerId){
@@ -189,7 +191,6 @@ class Member extends Frontend_Controller
             redirect(website_url());
         }
         if($post = $this->input->post(null, true)){
-            print_r($post);exit;
             $designer = $this->tb_gift_designer_model->insert_gift_designer(array(
                 'designerId' => $designerId,
                 'memberId' => $this->session->userdata('memberinfo')['memberId'],
@@ -198,8 +199,65 @@ class Member extends Frontend_Controller
                 'money' => $post['money'],
                 'payway' => $post['payway']
             ));
+            redirect(website_url('member/member/favorite'));
         }
-        $this->load->view('content/member/popup_gift');
+        $data = array(
+            'designerId' => $designerId
+        );
+        $this->load->view('content/member/popup_gift',$data);
+    }
+
+    //Style Inspiration
+    public function style_inpsiration(){
+        if(!$this->session->userdata('memberinfo')['memberId']){
+            js_warn('請重新登入，謝謝!');
+            redirect(website_url());
+        }
+        $inspirationList = $this->tb_member_inspiration_model->get_member_inspiration_select(array(array('field' => 'member_inspiration.memberId','value' => $this->session->userdata('memberId')['memberId'])),false,false,$this->langId);
+        $data = array(
+            'inspirationList' => $inspirationList
+        );
+        $this->get_view('member/inspiration',$data);
+    }
+
+    //my reviews
+    public function member_reviews($page = 1){
+        if(!$this->session->userdata('memberinfo')['memberId']){
+            js_warn('請重新登入，謝謝!');
+            redirect(website_url());
+        }
+        $reviewList = $this->tb_product_review_model->get_product_review_select(array(array('field' => 'review.memberId','value' => $this->session->userdata('memberinfo')['memberId'])),false,array('start' => $page*6,'limit' => 6),$this->langId);
+        $reviewCount = $this->tb_product_review_model->count_product_review(array(array('field' => 'review.memberId','value' => $this->session->userdata('memberinfo')['memberId'])),$this->langId);
+        if(!empty($reviewList)){
+            foreach($reviewList as $reviewKey => $reviewValue){
+                $reviewList->brand = $this->tb_brand_model->get_brand_by_id($reviewValue->brandId,$this->langId);
+                $reviewList->designer = $this->tb_designer_model->get_designer_by_id($reviewList->brand->designerId,$this->langId);
+            }
+        }
+
+        $data = array(
+            'reviewList' => $reviewList,
+            'reviewCount' => $reviewCount,
+            'page' => $page
+        );
+        $this->get_view('member/my_review',$data);
+    }
+
+    //member_upcoming
+    public function member_upcoming($page = 1){
+        if(!$this->session->userdata('memberinfo')['memberId']){
+            js_warn('請重新登入，謝謝!');
+            redirect(website_url());
+        }
+        $eventList = $this->tb_runway_model->get_runway_select(array(array('field' => 'runway.is_visible','value' => 1)),array(array('field' => 'runway.date','dir' => 'asc')),array('start' => $page*10,'limit' => 10));
+        $eventCount = $this->tb_runway_model->count_runway(array(array('field' => 'runway.is_visible','value' =>1)));
+        $totalPage = ceil($eventCount/10);
+        $data = array(
+            'eventList' => $eventList,
+            'page' => $page,
+            'totalPage' => $totalPage
+        );
+        $this->get_view('member/upcoming_events',$data);
     }
 
     private function get_view($page, $data = array(), $script = "")

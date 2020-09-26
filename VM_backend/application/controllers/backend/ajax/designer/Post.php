@@ -93,8 +93,8 @@ class Post extends Ajax_Controller
                 }else{
                     $old_file = $this->post_model->get_post_img_by_id($Id);
                     $this->post_model->update_post_img_select($old_file,array('postImg' => $file['thumbPath'],'postId' => $postId,'youtube' => $youtube));
-                }      
-            }     
+                }
+            }
         }else{
             $old_file = $this->post_model->get_post_img_by_id($Id);
             $this->post_model->update_post_img_select($old_file,array('postId' => $postId,'youtube' => $youtube));
@@ -139,16 +139,16 @@ class Post extends Ajax_Controller
         $search = check_input_value($this->input->get('search[value]', true));
         $postId = $this->input->get('postId',true);
         $filter = array('like' => array('field' => 'lang.title', 'value' => $search),array('field' => 'message.postId','value' => $postId));
-        $order = array(array('field' => 'post.order', 'dir' => 'asc'));
+        $order = array(array('field' => 'message.create_at', 'dir' => 'desc'));
         $query = $this->set_http_query(array('search' => $search));
 
         $this->load->model('designer/tb_post_model', 'post');
-        $messageList = $this->post->get_post_message_select($filter, $order, array('limit' => $limit, 'start' => $start), $this->langId);
-        $recordsTotal = $this->post->count_post_message($filter, $this->langId);
+        $this->load->model('designer/tb_designer_post_message_model','tb_designer_post_model');
+        $messageList = $this->tb_designer_post_model->get_designer_post_message_select($filter, $order, array('limit' => $limit, 'start' => $start), $this->langId);
+        $recordsTotal = $this->tb_designer_post_model->count_designer_post_message($filter, $this->langId);
         if ($messageList):
             foreach ($messageList as $row):
-                $data[] = array(
-                    'visible' => '<td><img src="' . show_enable_image($row->is_visible) . '" width="25"></td>',                
+                $data[] = array(                                 
                     'message' => $row->message,
                     'response' => $row->response,                    
                     'action' => $this->get_button('edit', 'backend/designer/post/edit/' . $row->postId . $query) . $this->get_button('delete', 'backend/designer/post/delete/' . $row->postId . $query).'&nbsp;&nbsp;<a class="btn btn-success" href="'.site_url('backend/designer/post/message/'.$row->postId).'"><i class="fa fa-book"></i><span class="hidden-mobile"> Message</span></button>'

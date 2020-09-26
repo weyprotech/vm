@@ -10,6 +10,7 @@ var website = function () {
         var $brand_more = $('#brand_more'), $website_set = $('#website_set'), $event_more = $('#event_more');
         var $login = $('#login'), $edit_account_save = $('#edit_account_save'), $more_popular_designers = $('#more_popular_designers');
         var $money_type_select = $('.money_type_select'), $language_select = $('.language_select');
+        var $gift_send = $('#gift_send');
         lang = normal_lang;
         var error = 0;
 
@@ -235,6 +236,42 @@ var website = function () {
                     $('.swal2-container').css('z-index', '100000');
                 }
             }
+        });
+
+        //傳送設計師留言
+        $('.message_send').on('click',function(){
+            var postId = $(this).data('postid');
+            var message = $(this).siblings('input').val();
+            $.ajax({
+                url:site_url('ajax/designers/set_designer_post_message'),
+                data:{postId : postId,message : message},
+                type:'post',
+                dataType:'json',
+                success:function (response) {
+                    $('.comments_messages').append('<div class="item">'+
+                        '<div class="msg">'+
+                            '<div class="profile_picture">'+
+                                '<div class="pic" style="background-image: url('+response['img']+');"><img class="size" src="'+base_url('assets/images/size_1x1.png')+'"></div>'+
+                            '</div>'+
+                            '<div class="msg_content">'+
+                                '<div class="title">'+
+                                    '<div class="name">'+response['name']+'</div>'+
+                                    '<div class="divide_line"></div>'+
+                                    '<div class="time">'+response['create_at']+'</div>'+
+                                '</div>'+
+                                '<div class="text">'+message+'</div>'+
+                            '</div>'+
+                        '</div>'+
+                    '</div>');
+                    $('.message_input').val('');
+                }
+            });
+        });
+        
+        //送禮物給設計師
+        $('body').on('click', '#gift_send',function(){
+            console.log('gift_send');
+            $('#form').submit();
         });
 
         //just for you寄出
@@ -568,6 +605,49 @@ var website = function () {
         return (value == undefined) || (value == null) || (value == "");
     }
 
+    // inspiration favorite 加入愛心的點擊事件
+    function inspiration_favorite(id){
+        if ($(this).hasClass('active')) {
+        // 取消最愛寫這裡
+        $.ajax({
+            url:website.Site_url('ajax/inspiration/set_like'),
+            type:'post',
+            dataType:'json',
+            data:{id : id},
+            success: function(response){
+                if(response['status'] == 'error'){
+                    swal({
+                        title:'please login',
+                        type:'error',
+                    }).then(function(response){
+                        window.location = website.Site_url('login');
+                    });
+                }
+            }
+        })
+        $(this).removeClass('active');
+        } else {
+        // 加入最愛寫這裡
+        $.ajax({
+            url:website.Site_url('ajax/inspiration/set_like'),
+            type:'post',
+            dataType:'json',
+            data:{id : id},
+            success: function(response){
+                if(response['status'] == 'error'){
+                    swal({
+                        title:'please login',
+                        type:'error',
+                    }).then(function(response){
+                        window.location = website.Site_url('login');
+                    });
+                }
+            }
+        })        
+        $(this).addClass('active');
+        }
+    };
+
     //更新購物車產品
     function change_cart(productid) {
         var size = $('#size_' + productid).val();
@@ -680,6 +760,7 @@ var website = function () {
         IsEmpty: isEmpty,
         change_cart: change_cart,
         change_count: change_count,
+        inspiration_favorite : inspiration_favorite,
         Ajax: function (url, data, type) {
             return $.ajax({ url: site_url(url), data: data || {}, type: type || 'get', dataType: 'json' });
         }

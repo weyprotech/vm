@@ -12,10 +12,7 @@ class Tb_runway_model extends MY_Model
     /******************** runway Model ********************/
     public function get_runway_select($filter = false, $order = false, $limit = false, $langId = false)
     {
-        if ($langId):
-            $this->db->select('runway.*, lang.title, lang.content');
-            $this->db->join('tb_designer_runway_lang as lang', 'lang.runwayId = runway.runwayId AND lang.langId = ' . $langId, 'left');
-        endif;
+        $this->set_runway_event_join($langId);
         $this->set_filter($filter);
         $this->set_order($order);
         $this->set_limit($limit);
@@ -273,6 +270,16 @@ class Tb_runway_model extends MY_Model
     {
         $this->update_runway($runway, array('is_enable' => 0));
         return true;
+    }
+
+    private function set_runway_event_join($langId = false){
+        $this->db->select('designer.*,runway.*');
+        $this->db->join('tb_designer as designer','designer.designerId = runway.designerId','left');
+        if ($langId):
+            $this->db->select('lang.title, lang.content,designer_lang.name');
+            $this->db->join('tb_designer_runway_lang as lang', 'lang.runwayId = runway.runwayId AND lang.langId = ' . $langId, 'left');
+            $this->db->join('tb_designer_lang as designer_lang', 'designer_lang.designerId = designer.designerId AND lang.langId = ' . $langId);
+        endif;
     }
 
     /******************** End runway Model ********************/

@@ -13,7 +13,8 @@ class Product extends Frontend_Controller
         $this->load->model('designer/tb_designer_model','tb_designer_model');
         $this->load->model('designer/tb_designer_banner_model','tb_designer_banner_model');
         $this->load->model('designer/tb_post_model','tb_post_model');
-        $this->load->model('brand/tb_brand_model','tb_brand_model');        
+        $this->load->model('brand/tb_brand_model','tb_brand_model');   
+        $this->load->model('designer/tb_designer_post_message_model','tb_designer_post_message_model');
     }
 
     public function index()
@@ -125,7 +126,7 @@ class Product extends Frontend_Controller
         if($postList = $this->tb_post_model->get_post_select(array(array('field' => 'post.is_visible', 'value' => 1),array('field' => 'post.designerId','value' => $brand->designerId)),array(array('field' => 'post.order','dir' => 'desc')),false,$this->langId)){
             foreach($postList as $postKey => $postValue){
                 $postList[$postKey]->imgList = $this->tb_post_model->get_post_img_select(array(array('field' => 'post_img.postId','value' => $postValue->postId)));
-                $postList[$postKey]->message = $this->tb_post_model->get_post_message_select(array(array('field' => 'message.postId','value' => $postValue->postId)));
+                $postList[$postKey]->message = $this->tb_designer_post_message_model->get_designer_post_message_select(array(array('field' => 'message.postId','value' => $postValue->postId)));
             }
         }
         //最新瀏覽過的產品(cookie存檔)

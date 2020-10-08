@@ -84,67 +84,6 @@ class Admin extends Backend_Controller
         redirect('backend/admin');
     }
 
-    // public function insert_data(){
-    //     $json_string = file_get_contents('assets/stores.json');
-    //     $data = json_decode($json_string, true); 
-
-    //     foreach ($data as $dataKey => $dataValue){
-    //         switch ($dataValue['streetName']){
-    //             case 'Versailles Avenue':
-    //                 $streeId = 1;
-    //                 break;
-    //             case 'Berlin Lane':
-    //                 $streeId = 2;
-    //                 break;
-    //             case 'Victoria Lane':
-    //                 $streeId = 3;
-    //                 break;
-    //             case 'Bond Street':
-    //                 $streeId = 4;
-    //                 break;
-    //             case 'Barcelona Street':
-    //                 $streeId = 5;
-    //                 break;
-    //             case 'Prague Alley':
-    //                 $streeId = 6;
-    //                 break;
-    //             case 'Maiden Lane':
-    //                 $streeId = 7;
-    //                 break;
-    //             case 'Via Milano':
-    //                 $streeId = 8;
-    //                 break;
-    //             case 'Hyde Park Street':
-    //                 $streeId = 9;
-    //                 break;
-    //             case 'London Walk':
-    //                 $streeId = 10;
-    //                 break;
-    //             case 'Da Vinci Road':
-    //                 $streeId = 11;
-    //                 break;
-    //             case 'Paris Boulevard':
-    //                 $streeId = 12;
-    //                 break;
-    //             case 'Michaelangelo Lane':
-    //                 $streeId = 13;
-    //                 break;
-    //             case 'Piccadilly Way':
-    //                 $streeId = 14;
-    //                 break;
-    //             case 'Acropolis Way':
-    //                 $streeId = 15;
-    //                 break;
-    //             case 'Palermo Street':
-    //                 $streeId = 16;
-    //                 break;
-    //         }
-    //         foreach($dataValue['stores'] as $storeKey => $storeValue){
-    //             $this->db->insert('tb_location', array('streeId' => $streeId,'number' => $storeValue['number'],'location_x' => $storeValue['latlng'][0],'location_y' => $storeValue['latlng'][1]));                
-    //         }
-    //     }
-    // }
-
     /******************** Group Function ********************/
     public function group($action = 'view', $groupId = false)
     {

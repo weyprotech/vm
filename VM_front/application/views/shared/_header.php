@@ -12,7 +12,7 @@
                 </form>
             </div>
             <a class="header_logo" href="<?= website_url('homepage') ?>">
-                <img class="retina" src="<?= base_url('assets/images/logo.png') ?>">
+                <img class="retina" src="<?= base_url('assets/images/logo.gif') ?>">
             </a>
             <div class="user_options">
                 <div class="option_search">

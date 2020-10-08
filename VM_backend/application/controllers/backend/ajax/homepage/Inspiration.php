@@ -32,7 +32,36 @@ class Inspiration extends Ajax_Controller
                     'preview' => '<div id="preview">' . (!empty($row->inspirationImg) ? '<img src="' . base_url($row->inspirationImg) . '" width="200px">' : '') . '</div>',
                     'title' => $row->title,
                     'order' => $this->get_order('inspiration', $row->inspirationId, $row->order),
+                    'message' => '<a class="btn btn-success" href="'.site_url('backend/homepage/inspiration/message/' . $row->inspirationId).'"><i class="fa fa-paper-plane"></i><span class="hidden-mobile"> Message</span></a>',
                     'action' => $this->get_button('edit', 'backend/homepage/inspiration/edit/' . $row->inspirationId . $query) . $this->get_button('delete', 'backend/homepage/inspiration/delete/' . $row->inspirationId . $query)
+                );
+            endforeach;
+        endif;
+
+        echo json_encode(array('draw' => $this->input->get('draw', true), 'data' => $data, 'recordsFiltered' => $recordsTotal, 'recordsTotal' => $recordsTotal));
+        return true;
+    }
+
+    /******************** inspiration_message ********************/
+    public function get_inspiration_message_data($data = array())
+    {
+        header('Content-Type: application/json; charset=utf-8');
+        $inspirationId = $this->input->get('inspirationId', true);
+        $start = $this->input->get('start', true);
+        $limit = $this->input->get('length', true);
+        $search = check_input_value($this->input->get('search[value]', true));        
+        $filter = array('like' => array('field' => 'message.message', 'value' => $search), array('field' => 'message.inspirationId', 'value' => $inspirationId));
+        $order = array(array('field' => 'message.create_at', 'dir' => 'asc'));
+        $query = $this->set_http_query(array('search' => $search));
+
+        $this->load->model('homepage/tb_inspiration_message_model', 'inspiration_message');
+        $inspiration_messageList = $this->inspiration_message->get_inspiration_message_select($filter, $order, array('limit' => $limit, 'start' => $start));
+        $recordsTotal = $this->inspiration_message->count_inspiration_message($filter);
+        if ($inspiration_messageList):
+            foreach ($inspiration_messageList as $row):
+                $data[] = array(
+                    'message' => $row->message,
+                    'action' => $this->get_button('edit', 'backend/homepage/inspiration/message_edit/'. $inspirationId . '/' . $row->Id . $query)
                 );
             endforeach;
         endif;

@@ -15,6 +15,7 @@ class Inspiration extends Backend_Controller
         $this->check_action_auth($this->menuId, 'view', true); // Check Auth
 
         $this->load->model('homepage/tb_inspiration_model', 'inspiration_model');
+        $this->load->model('homepage/tb_inspiration_message_model', 'inspiration_message_model');
         $this->query = $this->set_http_query(array('search' => $this->input->get('search', true)));
     }
 
@@ -71,6 +72,46 @@ class Inspiration extends Backend_Controller
         );
 
         $this->get_view('edit', $data);
+    }
+
+    public function message($inspirationId = false)
+    {
+        $data = array(
+            'inspirationId' => $inspirationId
+        );
+        $this->get_view('message', $data);
+    }
+
+    public function message_edit($inspirationId, $messageId)
+    {
+        // print_r($inspirationId);exit;
+        if (!$row = $this->inspiration_message_model->get_inspiration_message_by_id($messageId)):
+            $this->set_active_status('danger', 'The data does not exist!');
+            redirect('backend/homepage/inspiration/message/' . $inspirationId);
+        endif;
+        
+        if ($post = $this->input->post(null, true)):
+            $this->check_action_auth($this->menuId, 'edit', true); // Check Auth
+
+            if ($row->uuid != $post['uuid']):
+                $this->set_active_status('danger', 'Date has been changed');
+            else:
+                $this->inspiration_message_model->update_inspiration_message($row, $post);
+                $this->set_active_status('success', 'Success');
+
+                if ($this->input->get('back', true)):
+                    redirect('backend/homepage/inspiration/message/' . $inspirationId . $this->query);
+                endif;
+            endif;
+
+            redirect('backend/homepage/inspiration/message_edit/' . $inspirationId . '/' . $messageId . $this->query);
+        endif;
+        
+        $data = array(
+            'inspirationId' => $inspirationId,
+            'row' => $row
+        );
+        $this->get_view('message_edit', $data);
     }
 
     public function delete($eventId = false)

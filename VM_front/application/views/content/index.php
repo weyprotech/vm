@@ -1,4 +1,21 @@
 <main id="main">
+    <div class="designer_banner banner_slider">
+        <?php foreach($top_brandList as $brandKey => $brandValue){ 
+            if(!empty($brandValue->brandBanner)){ ?>
+                <div class="slide index_banner">
+                    <div class="index_banner_icon">
+                    <button class="btn confirm addCart index_banner_icon_flex btn_search_map" data-brandid="<?= $brandValue->brandId ?>" type="button">
+                        Search by Map
+                    </button>
+                    <a class="btn confirm addCart index_banner_icon_flex " type="button" href="<?= website_url('brand/story').'?brandId='.$brandValue->brandId ?>">
+                        Search by Brand
+                    </a>
+                    </div>
+                    <img src="<?= backend_url($brandValue->brandBanner[0]->bannerImg) ?>" alt="" />
+                </div>
+            <?php }
+        } ?> 
+    </div>
     <div class="store_map_wrapper">
         <div class="store_map_main">
             <div id="storeMap"></div>
@@ -36,38 +53,33 @@
     </div>
     <div class="top_designers page_block">
         <div class="block_inner">
-            <h2 class="block_title">Top Designers</h2>
-            <div class="block_main">
-                <div class="top_designers_slider">
-                    <?php foreach ($designerList as $designerKey => $designerValue){ ?>
-                        <div class="slide">
-                            <a class="slide_inner" href="<?= website_url('designers/home?designerId='.$designerValue->designerId) ?>">
-                                <div class="thumb">
-                                    <!--↓ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓-->
-                                    <div class="pic" style="background-image: url(<?= backend_url($designerValue->designImg) ?>);"><img class="size" src="<?= base_url('assets/images/size_3x4.png') ?>"></div>
-                                    <!--↑ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑-->                                    
-                                </div>
-                                <div class="designer_info">
-                                    <div class="profile_picture">
-                                        <!--↓ 1:1，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓-->
-                                        <div class="pic" style="background-image: url(<?= backend_url($designerValue->designiconImg) ?>);"><img class="size" src="<?= base_url('assets/images/size_1x1.png') ?>"></div>
-                                        <!--↑ 1:1，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑-->
-                                    </div>
-                                    <div class="text">
-                                        <h3 class="designer_name">
-                                            <!--↓ 知名設計才會有鑽石icon ↓--><i <?= $designerValue->grade == 1 ? 'class="icon_diamond_s"' : '' ?>></i>
-                                            <!--↑ 知名設計才會有鑽石icon ↑--><span><?= $designerValue->name ?></span>
-                                        </h3>
-                                        <div class="country"><img class="flag" src="<?= base_url('assets/images/flag/'.$designerValue->country.'.png') ?>"><span><?= get_all_country($designerValue->country) ?></span></div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    <?php } ?>
-                </div><a class="btn common more" href="<?= website_url('designers') ?>">All designers</a>
+          <h2 class="block_title">TOP PRODUCTS</h2>
+          <div class="block_main">
+            <div class="products_list">
+                <?php foreach ($top_productList as $productKey => $productValue){ ?>
+                    <div class="item">
+                        <a href="<?= website_url('product/detail').'?productId='.$productValue->productId ?>">
+                            <div class="thumb">
+                                <div class="pic" style="background-image: url(<?= backend_url($productValue->productImg) ?>)"><img class="size" src="<?= base_url('assets/images/size_3x4.png') ?>"></div>
+                            </div>
+                            <h3><?= $productValue->name ?></h3>
+                            <?php if($productValue->sale){ ?>
+                                <div class="price">
+                                    <span class="strikethrough">NT$ <?= $productValue->price ?></span>
+                                    <span class="sale_price">NT$ <?= (($productValue->price)-($productValue->price*($saleinformation->discount/100))) ?></span>
+                                </div>                                    
+                            <?php }else{ ?>
+                                <div class="price">NT$ <?= $productValue->price ?></div>
+                            <?php } ?>
+                        </a>
+                    </div>                
+                <?php } ?>            
             </div>
+            <a class="btn common more" href="<?= website_url('product') ?>">All Products</a>
+          </div>
         </div>
     </div>
+    
     <?php if($runwayList) {?>
     <div class="what_next page_block">
         <h2 class="block_title">What's Next</h2>
@@ -142,9 +154,9 @@
                         <div class="item">
                             <div class="item_inner">
                                 <!--↓ 愛心加'active'，表示為有加入最愛 ↓-->
-                                <a class="btn_favorite active" data-ootdId="ootd<?= $inspirationKey ?>" href="javascript:;" onclick="website.inspiration_favorite('<?= $inspirationValue->inspirationId ?>')"><i class="icon_favorite_heart"></i></a>
+                                <a class="btn_favorite active" data-ootdId="ootd<?= $inspirationKey ?>" href="javascript:;"><i class="icon_favorite_heart"></i></a>
                                 <!--↑ 愛心加'active'，表示為有加入最愛 ↑-->
-                                <a href="ootd_detail.html">
+                                <a href="<?= website_url('inspiration/detail?inspirationId=' . $inspirationValue->inspirationId) ?>">
                                     <div class="thumb"><img src="<?= backend_url($inspirationValue->inspirationImg) ?>"></div>
                                     <div class="text">
                                         <h3><?= $inspirationValue->title ?></h3>

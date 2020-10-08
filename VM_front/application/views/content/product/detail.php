@@ -45,11 +45,25 @@
                 <div class="product_intro"><?= $row->introduction ?></div>
                 <div class="product_price">
                     <?php if(!$sale){ ?>
-                        $<?= $row->price ?>
+                        現貨價$<?= $row->price ?> / <span>十五天取貨價 $<?= $row->price ?></span>
+
                     <?php }else{ ?>
-                        <span class="strikethrough">$<?= $row->price ?></span>
+                        現貨價<span class="strikethrough">$<?= $row->price ?></span>
                         <span class="sale_price">$<?= (($row->price)-($row->price*($saleinformation->discount/100))) ?></span>
+                        / <span>十五天取貨價 $<?= (($row->price)-($row->price*($saleinformation->discount/100))) ?></span>
                     <?php } ?>
+                    <a
+                    href="#"
+                    role="button"
+                    tabindex="0"
+                    class="call_action tag01"
+                    >Manufacture</a>
+                    <a
+                    href="#"
+                    role="button"
+                    tabindex="0"
+                    class="call_action tag01"
+                    >Fabric</a>
                 </div>
                 <div class="products_sku">
                     <?php if($product_size) { ?>

@@ -146,6 +146,7 @@ class Post extends Ajax_Controller
 
         $this->load->model('brand/tb_post_model', 'post');
         $messageList = $this->post->get_post_message_select($filter, $order, array('limit' => $limit, 'start' => $start), $this->langId);
+        print_r($messageList);exit;
         $recordsTotal = $this->post->count_post_message($filter, $this->langId);
         if ($messageList):
             foreach ($messageList as $row):

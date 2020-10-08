@@ -25,6 +25,7 @@ $(function() {
         console.log('ajax error!')
         },
         success: function(data) {
+
         streetStores = data;
     
         var storeIcons = [];
@@ -47,6 +48,7 @@ $(function() {
             var $storeItems = $('<ul></ul>');
     
             for(j=0; j < streetStores[i].stores.length; j++) {
+                var storeicon = (j % 2 == 0 ? "store_icon" : (j % 3 == 0 ? "store_icon_w" : "store_icon_s"));
                 // 商店的標點
                 var store = streetStores[i].stores[j];
                 var diamondhtml = (streetStores[i].stores[j].diamond) ? '<i class="icon_diamond_s"></i>' : '';
@@ -54,57 +56,99 @@ $(function() {
                 storeId: store.id,
                 latlng: store.latlng,
                 storeName: store.storeName,
-                markerHtml: '<a href="javascript:;">' +
-                    '<i class="store_icon"></i>' +
+                markerHtml: '<a href="javascript:;" id="'+streetStores[i].stores[j].brandId+'">' +
+                    '<i class="' + storeicon + '"></i>' +
                 '</a>',
-                popupHtml: '<div class="map_popup">' +
+                popupHtml:
+                    '<div class="map_popup">' +
                     '<div class="map_popup_inner">' +
                     '<div class="map_popup_head">' +
-                        '<a class="brand_name" href="' + store.brandLink + '">' +
-                        '<div class="brand_logo">' +
-                            '<div class="pic" style="background-image: url(' +store.brandImg + ');">' + 
-                            '<img class="size" src="'+website.Base_url('assets/images/size_1x1.png')+'">' +
-                            '</div>' +
-                        '</div>' +
-                        '<h2>' + store.storeName + '</h2>' +
-                        '</a>' +
-                        '<div class="address">' +
-                        '<i class="icon_map_marker"></i>' +
-                        '<span>' + 'No.' + store.number + ', ' + streetStores[i].streetName + '</span>' +
-                        '</div>' +
-                    '</div>' +
+                    '<a class="brand_name" href="' +
+                    store.brandLink +
+                    '">' +
+                    '<div class="brand_logo">' +
+                    '<div class="pic" style="background-image: url(' +
+                    store.brandImg +
+                    ');">' +
+                    '<img class="size" src="<?= base_url('assets/images/size_1x1.png') ?>">' +
+                    "</div>" +
+                    "</div>" +
+                    "<h2>" +
+                    store.storeName +
+                    "</h2>" +
+                    "</a>" +
+                    '<div class="address">' +
+                    "<div>" +
+                    "<span>Hi Kate welcome back" +
+                    //store.optionID +
+                    "</span>" +
+                    "</div>" +
+                    '<i class="icon_map_marker"></i>' +
+                    "<span>" +
+                    "No." +
+                    store.number +
+                    ", " +
+                    streetStores[i].streetName +
+                    "</span>" +
+                    "</div>" +
+                    "</div>" +
                     '<div class="map_popup_content">' +
-                        '<div class="intro">' +
-                        '<a class="designer_info" href="' + store.designerLink + '">' +
-                            '<div class="profile_picture">' +
-                            '<div class="pic" style="background-image: url(' +store.designerImg + ')">' +
-                                '<img class="size" src="'+website.Base_url('assets/images/size_1x1.png')+'">' +
-                            '</div>' +
-                            '</div>' +
-                            '<h3 class="designer_name">' +
-                            diamondhtml +
-                            '<span class="name">' + store.designerName + '</span>' +
-                            '<div class="divide_line"></div>' +
-                            '<div class="country">' +
-                                '<img class="flag" src="' + store.flag + '">' +
-                                '<span class="country">' + store.country + '</span>' +
-                            '</div>' +
-                            '</h3>' +
-                        '</a>' +
-                        '<div class="text">' +  store.description + '</div>' +
-                        '<a class="btn common more" href="' + store.productsLink + '">' + 'Products' + '</a>' +
-                        '</div>' +
-                        '<div class="picture">' +
-                        '<div class="thumb">' +
-                            '<div class="pic" style="background-image: url(' + store.brandPic + ')">' +
-                            '<img class="size" src="'+website.Base_url('assets/images/size_4x3.png')+'">' +
-                            '</div>' +
-                        '</div>' +
-                        '</div>' +
-                    '</div>' +
-                    '</div>' +
-                '</div>'
-                }
+                    '<a class="btn_favorite" data-designerId="02" href="javascript:;"><i class="icon_favorite_heart"></i></a>' +
+                    '<div class="intro">' +
+                    '<a class="designer_info" href="' +
+                    store.designerLink +
+                    '">' +
+                    '<div class="profile_picture">' +
+                    '<div class="pic" style="background-image: url(' +
+                    store.designerImg +
+                    ')">' +
+                    '<img class="size" src="<?= base_url('assets/images/size_1x1.png') ?>">' +
+                    "</div>" +
+                    "</div>" +
+                    '<h3 class="designer_name">' +
+                    diamondhtml +
+                    '<img class="flag" src="' +
+                    store.flag +
+                    '">' +
+                    '<span class="name">' +
+                    store.designerName +
+                    "</span>" +
+                    //'<div class="divide_line"></div>' +
+                    //'<div class="country">' +
+                    //'<span class="country">' +
+                    //store.country +
+                    //"&nbsp;PRODUCTION&nbsp;" +
+                    //store.country +
+                    //"&nbsp;DESIGN" +
+                    //"</span>" +
+                    //"</div>" +
+                    "</h3>" +
+                    "</a>" +
+                    //'<div class="brand_name">' +
+                    //store.brandName +
+                    //"</div>" +
+                    '<div id="style-2" class="text">' +
+                    store.description +
+                    "</div>" +
+                    '<a class="btn common more" href="' +
+                    store.productsLink +
+                    '">' +
+                    "Products" +
+                    "</a>" +
+                    "</div>" +
+                    '<div class="picture">' +
+                    '<div class="thumb">' +
+                    '<div class="pic" style="background-image: url(' +
+                    store.brandPic +
+                    ')">' +
+                    '<img class="size" src="<?= base_url('assets/images/size_4x3.png') ?>">' +
+                    "</div>" +
+                    "</div>" +
+                    "</div>" +
+                    "</div>" +
+                    "</div>" +
+                    "</div>",
+                };
                 storeIcons.push(storeObj);
     
                 // Aside Store Item
@@ -119,6 +163,8 @@ $(function() {
     
             // Street Aside 塞入街道、店家
             $('#streetAside .street_list').append($streetItem);
+
+
         }
         
         // 設定地圖、加入商店的標點
@@ -250,4 +296,22 @@ $(function() {
         }
     });
     }); 
+
+
+
+    // Open a URL in a lightbox
+    var lightbox = lity(
+      "//www.youtube.com/embed/-pPHyof98kk?rel=0&autoplay=1"
+    );
+
+    // Bind as an event handler
+    $(document).on("click", "[data-lightbox]", lity);
+
+    $('body').on('click','.btn_search_map',function(){
+        $('html, body').animate({
+            scrollTop: $("#storeMap").offset().top
+        }, 1000);
+        $('#'+$(this).data('brandid')).parents('.leaflet-marker-icon').trigger('click');
+
+    });
 </script>

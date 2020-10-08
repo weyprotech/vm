@@ -33,7 +33,7 @@ class Frontend_Controller extends MY_Controller
         parent::__construct();
         $this->set_lang($this->uri->segment(1));
         $this->pageMeta = array(
-            'title' => array('YMYX'),
+            'title' => array('VETRINA MIA'),
             'description' => '',
             'image' => '',
             'url' => current_url()

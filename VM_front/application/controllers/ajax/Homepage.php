@@ -39,6 +39,7 @@ class Homepage extends Ajax_Controller
                             $json[$streeKey]['stores'][] =
                             array(
                                 'id' => 'store'.str_pad($i, 3, '0', STR_PAD_LEFT),
+                                'brandId' => $brandValue->brandId,
                                 'latlng' => array($brandValue->location_x,$brandValue->location_y),
                                 'number' => $i,
                                 'storeName' => $brandValue->name,

@@ -1,6 +1,6 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
-class Just extends Backend_Controller
+class just extends Backend_Controller
 {
     public $query;
 
@@ -71,6 +71,21 @@ class Just extends Backend_Controller
         redirect('backend/designer/just/index/'.$designerId . $this->query);
     }
 
+    public function save($designerId)
+    {
+        if ($order = $this->input->just('justOrder', true)):
+            $this->check_action_auth($this->menuId, 'edit', true); // Check Auth
+
+            foreach ($order as $i => $row):
+                $order[$i] = array_merge($row, array('uuid' => uniqid(), 'update_at' => date('Y-m-d H:i:s')));
+            endforeach;
+
+            $this->db->update_batch('tb_designer_just', $order, 'justId');
+            $this->set_active_status('success', 'Success');
+        endif;
+
+        redirect('backend/designer/just/index/'.$designerId . $this->query);
+    }
     /******************** Private Function ********************/
     private function get_view($page, $data = '')
     {

@@ -15,6 +15,8 @@ class Order extends Backend_Controller
         $this->check_action_auth($this->menuId, 'view', true); // Check Auth
 
         $this->load->model('order/tb_order_model', 'order_model');
+        $this->load->model('money/tb_money_model','money_model');
+        $this->load->model('coupon/tb_coupon_model','coupon_model');
         $this->query = $this->set_http_query(array('search' => $this->input->get('search', true)));
     }
 
@@ -46,11 +48,30 @@ class Order extends Backend_Controller
 
             redirect('backend/order/order/edit/' . $orderId . $this->query);
         endif;
+
+        //貨幣匯率
+        $this->moneyList = $this->money_model->get_money_select(false,false,false);
+        switch($row->currency){
+            case 'eur':
+                $currency = $this->moneyList[0]->eur_value;
+                break;
+            case 'twd':
+                $currency = $this->moneyList[0]->twd_value;
+                break;
+            default:
+                $currency = 1;
+        }
+
+        //折價券
+        $coupon = $this->coupon_model->get_coupon_by_id($row->couponId);
+
         $productList = $this->order_model->get_backend_product(array(array('field' => 'order_product.orderId','value' => $orderId)),$this->langId);
         $data = array(
             'orderId' => $orderId,
             'row' => $row, 
-            'productList' => $productList
+            'productList' => $productList,
+            'currency' => $currency,
+            'coupon' => $coupon
         );
 
         $this->get_view('edit', $data);

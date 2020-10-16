@@ -13,6 +13,7 @@ class Homepage extends Frontend_Controller
         $this->load->model('brand/tb_brand_banner_model','tb_brand_banner_model');   
         $this->load->model('product/tb_product_model','tb_product_model');
         $this->load->model('product/tb_sale_model','tb_sale_model');
+        $this->load->model('member/tb_member_inspiration_model','tb_member_inspiration_model');
     }
 
     public function index()
@@ -22,7 +23,7 @@ class Homepage extends Frontend_Controller
         $homepageBanner = $this->tb_homepage_banner_model->get_homepage_banner_select(array(array('field' => 'banner.is_visible','value' =>1)),array(array('field' => 'banner.order','dir' => 'desc')),false,$this->langId);
         $inspirationList = $this->inspiration_model->get_inspiration_select(array(array('field' => 'inspiration.is_visible','value' => 1)),array(array('field' => 'inspiration.order','dir' => 'desc')),array('start' => 0,'limit' =>15),$this->langId);
         $top_brandList = $this->tb_brand_model->get_brand_select(array(array('field' => 'brand.is_visible','value' => 1)),array(array('field'=>'brand.order','dir' => 'desc')),array('start' => 0,'limit' => 5),$this->langId);      
-        $top_productList = $this->tb_product_model->get_product_select(array(array('field' => 'product.is_visible','value' => 1)),array(array('field' => 'product.click','dir' => 'desc')),array('start' => 0,'limit' => 4),$this->langId);
+        $top_productList = $this->tb_product_model->get_product_select(array(array('field' => 'product.is_visible','value' => 1),array('field' => 'product.is_top','value' => 1)),array(array('field' => 'product.update_at','dir' => 'desc')),array('start' => 0,'limit' => 4),$this->langId);
         foreach($top_brandList as $brandKey => $brandValue){
             $top_brandList[$brandKey]->brandBanner = $this->tb_brand_banner_model->get_brand_banner_select(array(array('field' => 'banner.brandId','value' => $brandValue->brandId)),array(array('field' => 'banner.order','dir' => 'desc')));
         }
@@ -45,6 +46,10 @@ class Homepage extends Frontend_Controller
             }
         }
 
+        foreach($inspirationList as $inspirationKey => $inspirationValue){
+            $inspirationList[$inspirationKey]->like = $this->tb_member_inspiration_model->get_member_inspiration_select(array(array('field' => 'member_inspiration.inspirationId','value' => $inspirationValue->inspirationId),array('field' => 'member_inspiration.memberId','value' => $this->session->userdata('memberinfo')['memberId'])));
+        }
+
         $data = array(
             'designerList' => $designerList,
             'top_brandList' => $top_brandList,
@@ -55,7 +60,7 @@ class Homepage extends Frontend_Controller
             'runwayList' => $runwayList
         );
 
-        $this->get_view('index', $data, $this->load->view('shared/script/_index_script', '', true));
+        $this->get_view('index', $data, $this->load->view('shared/script/_index_script', array('currency' => $this->session->userdata('currency')), true));
     }
 
     private function get_view($page, $data = array(), $script = "")

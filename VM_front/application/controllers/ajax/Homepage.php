@@ -53,7 +53,8 @@ class Homepage extends Ajax_Controller
                                 'designerName' => $brandValue->designer_name,
                                 'diamond' => true,
                                 'flag' => base_url('assets/images/flag/'.$brandValue->country.'.png'),
-                                'country' => get_all_country($brandValue->country)
+                                'country' => get_all_country($brandValue->country),
+                                'storeicon' => isset($brandValue->store_icon) ? $brandValue->store_icon : 'store_icon'
                             );                    
                         }
                     }                    

@@ -27,7 +27,9 @@ class MY_Controller extends CI_Controller
 class Frontend_Controller extends MY_Controller
 {
     protected $pageMeta;
-
+    public $currency;
+    public $money_type;
+    public $moneyList;
     public function __construct()
     {
         parent::__construct();
@@ -38,10 +40,31 @@ class Frontend_Controller extends MY_Controller
             'image' => '',
             'url' => current_url()
         );
+        
+        $this->load->helper('cookie');
+        $this->money_type = get_cookie('money_type');
+        /***** 取得幣值 ******/
+        $this->moneyList = array();
+        if($this->money_type != null){ 
+            $this->moneyList = $this->money_model->get_money_select(false,false,false);
+            switch($this->money_type){
+                case 'eur':
+                    $this->currency = $this->moneyList[0]->eur_value;
+                    break;
+                case 'twd':
+                    $this->currency = $this->moneyList[0]->twd_value;
+                    break;
+                default:
+                    $this->currency = 1;
+            }
+            $this->session->set_userdata('currency',$this->currency);
+            $this->session->set_userdata('money_type',$this->money_type);
+        }
     }
 
     public function get_frontend_view($page, $data = array(), $script = "", $productId = false, $category = array('menu_basecategory' => '', 'menu_subcategory' => '', 'menu_category' => ''))
     {
+
         $website_color = $this->website_color->get_set_website_color();
         $data['website_color'] = $website_color;
         /***產品類別 ***/
@@ -58,11 +81,7 @@ class Frontend_Controller extends MY_Controller
             }
         }
 
-        //購物車內容
-        $cart_productList = $this->my_cart->get_product_list();
-        $cart_amount = $this->my_cart->amount();
-        $cart_total = $this->my_cart->total();
-
+        $data['currency'] = $this->currency;
 
         /***end 產品類別 ***/
         if($productId){
@@ -72,13 +91,26 @@ class Frontend_Controller extends MY_Controller
             $product->baseId = '';
             $product->subId = '';
             $product->cId = '';
-
         }
+
+
+        //購物車內容
+        $this->my_cart->_calc_cart();
+        $cart_productList = $this->my_cart->get_product_list();
+        $cart_amount = $this->my_cart->amount();
+        $cart_total = $this->my_cart->total();  
+
+        /*** 會員資訊 ****/
+        if($this->session->userdata('memberinfo')){
+            $member = $this->member_model->get_member_by_id($this->session->userdata('memberinfo')['memberId']);
+            $data['member'] = $member;
+        }   
+
         return array(
             'pageMeta' => $this->pageMeta,
             'loading' => $this->load->view('shared/_loading', '', true),
-            'header_top' => $this->load->view('shared/_header_top', array('website_color' => $website_color), true),
-            'header' => $this->load->view('shared/_header', array('categoryList' => $categoryList,'product' => $product, 'category' => $category,'cart_productList' => $cart_productList,'cart_amount' => $cart_amount,'cart_total' => $cart_total), true),
+            'header_top' => $this->load->view('shared/_header_top', array('website_color' => $website_color,'money_type' => $this->money_type), true),
+            'header' => $this->load->view('shared/_header', array('categoryList' => $categoryList,'product' => $product, 'category' => $category,'cart_productList' => $cart_productList,'cart_amount' => $cart_amount,'cart_total' => $cart_total, 'moneyList' => $this->moneyList,'currency' => $this->currency,'money_type' => $this->money_type), true),
             'main' => $this->load->view('content/' . $page, $data, true),
             'footer' => $this->load->view('shared/_footer', array('categoryList' => $categoryList), true),
             'sidebar' => $this->load->view('shared/_sidebar', '', true),

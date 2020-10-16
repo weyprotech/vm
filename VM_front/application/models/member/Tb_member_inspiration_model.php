@@ -59,7 +59,7 @@ class Tb_member_inspiration_model extends MY_Model
 
     public function delete_member_inspiration($member_inspiration)
     {
-        $this->db->delete('tb_product_like',array('Id' => $member_inspiration->Id));
+        $this->db->delete('tb_member_inspiration',array('Id' => $member_inspiration->Id));
         return true;    
     }
 

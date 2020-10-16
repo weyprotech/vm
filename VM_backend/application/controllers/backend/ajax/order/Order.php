@@ -45,6 +45,7 @@ class Order extends Ajax_Controller
                 $data[] = array(
                     'orderid' => $row->orderId,
                     'date' => $row->date,
+                    'currency' => strtoupper($row->currency),
                     'total' => $row->total,
                     'status' => $status,
                     'country' => $row->country,

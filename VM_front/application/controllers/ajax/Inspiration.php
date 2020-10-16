@@ -9,11 +9,11 @@ class Inspiration extends Ajax_Controller
     }
 
     public function set_like(){
-        $id = $this->input->post('id',true);
+        $inspirationId = $this->input->post('inspirationId',true);
         if($this->session->userdata('memberinfo')['memberId']){
-            $like = $this->tb_member_inspiration_model->get_member_inspiration_select(array(array('field' => 'member_inspiration.inspirationId','value' => $id)));
+            $like = $this->tb_member_inspiration_model->get_member_inspiration_select(array(array('field' => 'member_inspiration.inspirationId','value' => $inspirationId),array('field' => 'member_inspiration.memberId','value' => $this->session->userdata('memberinfo')['memberId'])));
             if(!$like){
-                $this->tb_member_inspiration_model->insert_member_inspiration(array('memberId' => $this->session->userdata('memberinfo')['memberId'],'inspirationId' => $id));
+                $this->tb_member_inspiration_model->insert_member_inspiration(array('memberId' => $this->session->userdata('memberinfo')['memberId'],'inspirationId' => $inspirationId));
             }else{
                 $this->tb_member_inspiration_model->delete_member_inspiration($like[0]);
             }

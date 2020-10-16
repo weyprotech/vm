@@ -46,6 +46,7 @@
                                         <tr>
                                             <th width="15%" class="text-center">OrderId</th>
                                             <th width="10%" class="text-center">Date</th>
+                                            <th width="10%" class="text-center">Currency</th>
                                             <th width="10%" class="text-center">Total</th>
                                             <th width="10%" class="text-center">Status</th>
                                             <th width="10%" class="text-center">Country</th>
@@ -107,6 +108,7 @@
             "columns": [
                 {class: "", data: "orderid"},
                 {class: "", data: "date"},
+                {class: "", data: "currency"},
                 {class: "", data: "total"},
                 {class: "", data: "status"},
                 {class: "", data: "country"},

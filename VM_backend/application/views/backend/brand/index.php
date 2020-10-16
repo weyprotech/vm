@@ -47,6 +47,7 @@
                                         <th width="200" class="text-center">Name</th>
                                         <th width="60" class="text-center hidden-tablet">Sort</th>
                                         <th width="20" class="text-center">Banner</th>
+                                        <th width="20" class="text-center">Message</th>
                                         <!-- <th width="20" class="text-center">Post</th> -->
                                         <th width="160" class="text-center">Action</th>
                                     </tr>
@@ -116,6 +117,7 @@
                 {class: "", data:"name"},
                 {class: "hidden-tablet", data: "order"},
                 {class: "", data:"banner"},
+                {class: "", data:"message"},
                 // {class: "", data:"post"},
                 {class: "", data: "action"}
             ],

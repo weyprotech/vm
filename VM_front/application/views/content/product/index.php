@@ -31,11 +31,11 @@
                                     <h3><?= $productList[$i]->name ?></h3>
                                     <?php if($productList[$i]->sale){ ?>
                                         <div class="price">
-                                            <span class="strikethrough">NT$ <?= $productList[$i]->price ?></span>
-                                            <span class="sale_price">NT$ <?= (($productList[$i]->price)-($productList[$i]->price*($saleinformation->discount/100))) ?></span>
+                                            <span class="strikethrough"><?= strtoupper($money_type) ?>$ <?= round($productList[$i]->price * $currency) ?></span>
+                                            <span class="sale_price"><?= strtoupper($money_type) ?>$ <?= round((($productList[$i]->price)-($productList[$i]->price*($saleinformation->discount/100))) * $currency) ?></span>
                                         </div>                                    
                                     <?php }else{ ?>
-                                        <div class="price">NT$ <?= $productList[$i]->price ?></div>
+                                        <div class="price"><?= strtoupper($money_type) ?>$ <?= round($productList[$i]->price * $currency) ?></div>
                                     <?php } ?>
                                 </a>
                             </div>
@@ -58,11 +58,11 @@
                                     <h3><?= $productList[$i]->name ?></h3>                                    
                                     <?php if($productList[$i]->sale){ ?>
                                         <div class="price">
-                                            <span class="strikethrough">NT$ <?= $productList[$i]->price ?></span>
-                                            <span class="sale_price">NT$ <?= (($productList[$i]->price)-($productList[$i]->price*($saleinformation->discount/100))) ?></span>
+                                            <span class="strikethrough"><?= strtoupper($money_type) ?>$ <?= round($productList[$i]->price * $currency) ?></span>
+                                            <span class="sale_price"><?= strtoupper($money_type) ?>$ <?= round((($productList[$i]->price)-($productList[$i]->price*($saleinformation->discount/100))) * $currency) ?></span>
                                         </div>                                    
                                     <?php }else{ ?>
-                                        <div class="price">NT$ <?= $productList[$i]->price ?></div>
+                                        <div class="price"><?= strtoupper($money_type) ?>$ <?= round($productList[$i]->price * $currency) ?></div>
                                     <?php } ?>
                                 </a>
                             </div>
@@ -85,11 +85,11 @@
                                 <h3><?= $productList[$i]->name ?></h3>
                                 <?php if($productList[$i]->sale){ ?>
                                     <div class="price">
-                                        <span class="strikethrough">NT$ <?= $productList[$i]->price ?></span>
-                                        <span class="sale_price">NT$ <?= (($productList[$i]->price)-($productList[$i]->price*($saleinformation->discount/100))) ?></span>
+                                        <span class="strikethrough"><?= strtoupper($money_type) ?>$ <?=round($productList[$i]->price * $currency) ?></span>
+                                        <span class="sale_price"><?= strtoupper($money_type) ?>$ <?= round((($productList[$i]->price)-($productList[$i]->price*($saleinformation->discount/100)))*$currency) ?></span>
                                     </div>                                    
                                 <?php }else{ ?>
-                                    <div class="price">NT$ <?= $productList[$i]->price ?></div>
+                                    <div class="price"><?= strtoupper($money_type) ?>$ <?= round($productList[$i]->price * $currency) ?></div>
                                 <?php } ?>
                             </a>
                         </div>
@@ -102,7 +102,7 @@
                 <ul class="pager_navigation">
                     <li class="prev"><a href="<?= website_url('product/index') ?><?= (($page != 1) ? '?page='.($page-1) : '?page='.$page ) ?><?= !empty($sort) ? '&sort='.$sort : '' ?><?= !empty($categoryId) ? '&categoryId='.$categoryId : '' ?><?= !empty($subId) ? '&subId='.$subId : '' ?><?= !empty($baseId) ? '&baseId='.$baseId : '' ?>">&lt; Previous</a></li>
                     <?php for($i=1;$i<=$total_page;$i++){ ?>
-                        <li <?= (($i == $page) ? 'class="current"' : '' )?>><a href="<?= website_url('product/index').'?page='.$page ?><?= !empty($categoryId) ? '&categoryId='.$categoryId : '' ?><?= !empty($subId) ? '&subId='.$subId : '' ?><?= !empty($baseId) ? '&baseId='.$baseId : '' ?>"><?= $i ?></a></li>
+                        <li <?= (($i == $page) ? 'class="current"' : '' )?>><a href="<?= website_url('product/index').'?page='.$i ?><?= !empty($categoryId) ? '&categoryId='.$categoryId : '' ?><?= !empty($subId) ? '&subId='.$subId : '' ?><?= !empty($baseId) ? '&baseId='.$baseId : '' ?>"><?= $i ?></a></li>
                     <?php } ?>
                     <li class="next"><a href="<?= website_url('product/index') ?><?= (($page != $total_page) ? '?page='.($page+1) : '?page='.$total_page ) ?><?= !empty($sort) ? '&sort='.$sort : '' ?><?= !empty($categoryId) ? '&categoryId='.$categoryId : '' ?><?= !empty($subId) ? '&subId='.$subId : '' ?><?= !empty($baseId) ? '&baseId='.$baseId : '' ?>">Next &gt;</a></li>
                 </ul>

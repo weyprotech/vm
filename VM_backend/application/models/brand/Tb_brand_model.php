@@ -92,7 +92,6 @@ class Tb_brand_model extends MY_Model
     public function update_brand($brand, $post)
     {
         $update = $this->check_db_data($post);
-
         if (isset($_FILES['brandiconImg']) && !$_FILES['brandiconImg']['error']):
             $update['brandiconImg'] = $this->uploadFile('brandicon', $brand->brandId . '/', 100);
         endif;

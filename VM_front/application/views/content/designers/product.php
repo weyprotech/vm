@@ -43,11 +43,11 @@
                                                 <h3><?= $productList[$i]->name ?></h3>                                            
                                                 <?php if($productList[$i]->sale){ ?>
                                                     <div class="price">
-                                                        <span class="strikethrough">NT$ <?= $productList[$i]->price ?></span>
-                                                        <span class="sale_price">NT$ <?= (($productList[$i]->price)-($productList[$i]->price*($saleinformation->discount/100))) ?></span>
-                                                    </div>                                    
+                                                        <span class="strikethrough"><?= strtoupper($money_type) ?>$ <?= round($productList[$i]->price * $currency)?></span>
+                                                        <span class="sale_price"><?= strtoupper($money_type) ?>$ <?= round((($productList[$i]->price)-($productList[$i]->price*($saleinformation->discount/100))) * $currency) ?></span>
+                                                    </div>
                                                 <?php }else{ ?>
-                                                    <div class="price">NT$ <?= $productList[$i]->price ?></div>
+                                                    <div class="price"><?= strtoupper($money_type) ?>$ <?= round($productList[$i]->price * $currency) ?></div>
                                                 <?php } ?>
                                             </a>
                                         </div>
@@ -68,11 +68,11 @@
                                                 <h3><?= $productList[$i]->name ?></h3>
                                                 <?php if($productList[$i]->sale){ ?>
                                                     <div class="price">
-                                                        <span class="strikethrough">NT$ <?= $productList[$i]->price ?></span>
-                                                        <span class="sale_price">NT$ <?= (($productList[$i]->price)-($productList[$i]->price*($saleinformation->discount/100))) ?></span>
+                                                        <span class="strikethrough"><?= strtoupper($money_type) ?>$ <?= round($productList[$i]->price * $currency) ?></span>
+                                                        <span class="sale_price"><?= strtoupper($money_type) ?>$ <?= round((($productList[$i]->price)-($productList[$i]->price*($saleinformation->discount/100))) * $currency) ?></span>
                                                     </div>                                    
                                                 <?php }else{ ?>
-                                                    <div class="price">NT$ <?= $productList[$i]->price ?></div>
+                                                    <div class="price"><?= strtoupper($money_type) ?>$ <?= round($productList[$i]->price * $currency) ?></div>
                                                 <?php } ?>
                                             </a>
                                         </div>
@@ -129,11 +129,11 @@
                                             <h3><?= $productList[$i]->name ?></h3>
                                             <?php if($productList[$i]->sale){ ?>
                                                 <div class="price">
-                                                    <span class="strikethrough">NT$ <?= $productList[$i]->price ?></span>
-                                                    <span class="sale_price">NT$ <?= (($productList[$i]->price)-($productList[$i]->price*($saleinformation->discount/100))) ?></span>
+                                                    <span class="strikethrough"><?= strtoupper($money_type) ?>$ <?= round($productList[$i]->price * $currency) ?></span>
+                                                    <span class="sale_price"><?= strtoupper($money_type) ?>$ <?= round((($productList[$i]->price)-($productList[$i]->price*($saleinformation->discount/100))) * $currency) ?></span>
                                                 </div>                                    
                                             <?php }else{ ?>
-                                                <div class="price">NT$ <?= $productList[$i]->price ?></div>
+                                                <div class="price"><?= strtoupper($money_type) ?>$ <?= round($productList[$i]->price * $currency) ?></div>
                                             <?php } ?>
                                         </a>                
                                     </div>
@@ -162,11 +162,11 @@
                                             <h3><?= $productList[$i]->name ?></h3>
                                             <?php if($productList[$i]->sale){ ?>
                                                 <div class="price">
-                                                    <span class="strikethrough">NT$ <?= $productList[$i]->price ?></span>
-                                                    <span class="sale_price">NT$ <?= (($productList[$i]->price)-($productList[$i]->price*($saleinformation->discount/100))) ?></span>
+                                                    <span class="strikethrough"><?= strtoupper($money_type) ?>$ <?= round($productList[$i]->price * $currency) ?></span>
+                                                    <span class="sale_price"><?= strtoupper($money_type) ?>$ <?= round((($productList[$i]->price)-($productList[$i]->price*($saleinformation->discount/100))) * $currency) ?></span>
                                                 </div>                                    
                                             <?php }else{ ?>
-                                                <div class="price">NT$ <?= $productList[$i]->price ?></div>
+                                                <div class="price"><?= strtoupper($money_type) ?>$ <?= round($productList[$i]->price * $currency) ?></div>
                                             <?php } ?>
                                         </a>
                                     </div>

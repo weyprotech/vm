@@ -48,7 +48,7 @@
                                             </div>
                                             <div class="ci_quantity">
                                                 <div class="quantity_counter">
-                                                    <button class="minus" type="button" onclick="website.change_count('<?= $productValue['productId'] ?>','minus')">&minus;</button>
+                                                    <button class="minus" id="minus_<?= $productValue['productId'] ?>" type="button" onclick="website.change_count('<?= $productValue['productId'] ?>','minus')">&minus;</button>
                                                     <input class="quantity" id="quantity_<?= $productValue['productId'] ?>" type="number" value="<?= $productValue['productQty'] ?>" min="1" readOnly="true">
                                                     <button class="plus" type="button" onclick="website.change_count('<?= $productValue['productId'] ?>','add')">&plus;</button>
                                                 </div>
@@ -103,7 +103,7 @@
                                     </div>
                                     <div class="coupon_price price">-$0</div>
                                 </li>
-                                <?php if($cart_total >= 2000){ ?>
+                                <?php if($cart_total >= (2000 * $currency)){ ?>
                                     <li class="item">
                                         <div class="controls_group">
                                             <label>Use dividend</label>
@@ -117,7 +117,7 @@
                             </ul>
                             <div class="total_calculation">
                                 <label>TOTAL</label>
-                                <div class="total_amount" id="all_total">NTD$<?= $all_total ?></div>
+                                <div class="total_amount" id="all_total"><?= strtoupper(strtoupper($money_type)) ?> $<?= $all_total ?></div>
                             </div>
                         </div>
                     </div>

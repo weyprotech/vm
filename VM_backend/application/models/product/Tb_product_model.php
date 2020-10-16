@@ -679,13 +679,17 @@ class Tb_product_model extends MY_Model
         $this->db->join('tb_product_category as main', 'main.categoryId = minor.prevId', 'left');
         $this->db->join('tb_product_category as base','base.categoryId = main.prevId','left');
         $this->db->join('tb_brand as brand','brand.brandId = product.brandId','left');
+        $this->db->join('tb_manufacturer as manufacturer','manufacturer.manufacturerId = product.manufacturerId','left');
+        $this->db->join('tb_fabric as fabric','fabric.fabricId = product.fabricId','left');
         if ($langId):
-            $this->db->select('lang.*, main_lang.name as mainName, minor_lang.name as minorName,base_lang.name as baseName,brand_lang.name as brandName');
+            $this->db->select('lang.*, main_lang.name as mainName, minor_lang.name as minorName,base_lang.name as baseName,brand_lang.name as brandName,manufacturer_lang.main_title as manufacturer_name,fabric_lang.main_title as fabric_name');
             $this->db->join('tb_product_lang as lang', 'lang.pId = product.productId AND lang.langId = ' . $langId, 'left');
             $this->db->join('tb_product_category_lang as main_lang', 'main_lang.cId = minor.prevId AND main_lang.langId = ' . $langId, 'left');
             $this->db->join('tb_product_category_lang as minor_lang', 'minor_lang.cId = product.cId AND minor_lang.langId = ' . $langId, 'left');
             $this->db->join('tb_product_category_lang as base_lang','base_lang.cId = base.categoryId AND base_lang.langId = '.$langId,'left');
             $this->db->join('tb_brand_lang as brand_lang','brand.brandId = brand_lang.brandId AND brand_lang.langId = '.$langId,'left');
+            $this->db->join('tb_manufacturer_lang as manufacturer_lang','manufacturer_lang.manufacturerId = manufacturer.manufacturerId AND manufacturer_lang.langId = '.$langId,'left');
+            $this->db->join('tb_fabric_lang as fabric_lang','fabric_lang.fabricId = fabric.fabricId AND fabric_lang.langId ='.$langId,'left');
         endif;
 
         return true;

@@ -43,27 +43,41 @@
             <div class="showcase_content">
                 <h1 class="product_title"><?= $row->name ?></h1>
                 <div class="product_intro"><?= $row->introduction ?></div>
-                <div class="product_price">
-                    <?php if(!$sale){ ?>
-                        現貨價$<?= $row->price ?> / <span>十五天取貨價 $<?= $row->price ?></span>
-
-                    <?php }else{ ?>
-                        現貨價<span class="strikethrough">$<?= $row->price ?></span>
-                        <span class="sale_price">$<?= (($row->price)-($row->price*($saleinformation->discount/100))) ?></span>
-                        / <span>十五天取貨價 $<?= (($row->price)-($row->price*($saleinformation->discount/100))) ?></span>
-                    <?php } ?>
-                    <a
-                    href="#"
-                    role="button"
-                    tabindex="0"
-                    class="call_action tag01"
-                    >Manufacture</a>
-                    <a
-                    href="#"
-                    role="button"
-                    tabindex="0"
-                    class="call_action tag01"
-                    >Fabric</a>
+                <div class="call_action">
+                    <div class="product_price">
+                        <?php if(!$sale){ ?>
+                            <?php if(!empty($row->price) && $row->price != 0){ ?>
+                                現貨價$<?= round($row->price * $currency) ?>
+                            <?php } ?> 
+                            <?php if(!empty($row->fifteen_price) && $row->fifteen_price != 0){ ?>
+                                / <span>十五天取貨價 $<?= round($row->fifteen_price * $currency) ?></span>
+                            <?php } ?>
+                        <?php }else{ ?>
+                            <?php if(!empty($row->price) && $row->price != 0){ ?>
+                                現貨價<span class="strikethrough">$<?= round($row->price * $currency) ?></span>
+                            <?php } ?>
+                            <span class="sale_price">$<?= round((($row->price)-($row->price*($saleinformation->discount/100))) * $currency) ?></span>
+                            <?php if(!empty($row->fifteen_price) && $row->fifteen_price != 0){ ?>
+                                / <span>十五天取貨價 $<?= round((($row->fifteen_price)-($row->fifteen_price*($saleinformation->discount/100))) * $currency) ?></span>
+                            <?php } ?>                       
+                        <?php } ?>
+                        <?php if(!empty($row->manufacturerId)){ ?>
+                            <a
+                            href="#"
+                            role="button"
+                            tabindex="0"
+                            class="call_action tag01"
+                            >Manufacture</a>
+                        <?php } ?>
+                        <?php if(!empty($row->fabricId)){ ?>
+                            <a
+                            href="#"
+                            role="button"
+                            tabindex="0"
+                            class="call_action tag01"
+                            >Fabric</a>
+                        <?php } ?>
+                    </div>
                 </div>
                 <div class="products_sku">
                     <?php if($product_size) { ?>
@@ -103,6 +117,21 @@
                                 <button class="minus" type="button">&minus;</button>
                                 <input id="quantity" class="quantity" type="number" value="1" min="1" readOnly="true">
                                 <button class="plus" type="button">&plus;</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="controls_group">
+                        <label>Goods</label>
+                        <div class="controls">
+                            <div class="select_wrapper">
+                                <select id="status">
+                                    <?php if(!empty($row->price) && $row->price != 0){ ?>
+                                        <option value="0">Stock now</option>
+                                    <?php } ?>
+                                    <?php if(!empty($row->fifteen_price) && $row->fifteen_price != 0){ ?>
+                                        <option value="1">15-day pickup</option>
+                                    <?php } ?>
+                                </select>
                             </div>
                         </div>
                     </div>
@@ -236,8 +265,12 @@
                 <div class="sort_menu">
                     <ul>
                         <li><a class="tabber-anchor active" href="javascript:;">About Designer</a></li>
-                        <li><a class="tabber-anchor" href="javascript:;">Manufacture</a></li>
-                        <li><a class="tabber-anchor" href="javascript:;">Fabric</a></li>
+                        <?php if(!empty($row->manufacturerId)){ ?>
+                            <li><a class="tabber-anchor" href="javascript:;">Manufacture</a></li>
+                        <?php } ?>
+                        <?php if(!empty($row->fabricId)){ ?>
+                            <li><a class="tabber-anchor" href="javascript:;">Fabric</a></li>
+                        <?php } ?>
                     </ul>
                 </div>
             </div>
@@ -247,7 +280,7 @@
                         <div class="designer_introduction">
                             <div class="intro_content">
                                 <div class="designer_info">
-                                    <a href="designer_profile.html">
+                                    <a href="<?= website_url('designer/home').'designerId='.$designer->designerId ?>">
                                         <div class="profile_picture">
                                             <!--↓ 1:1，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓-->
                                             <div class="pic" style="background-image: url(<?= backend_url($designer->designiconImg) ?>)"><img class="size" src="<?= base_url('assets/images/size_1x1.png') ?>"></div>
@@ -372,172 +405,176 @@
                             </div>
                         <?php } ?>
                     </div>    
-                </div>            
-                <div class="tabber-content">
-                <div class="product_about_cooperate">
-                    <h2 class="title"><?= @$manufacture->main_title ?></h2>
-                    <div class="banner"><img src="<?= backend_url(@$manufacture->firstbannerImg)  ?>"></div>
-                    <div class="cooperate_block">
-                        <div class="block_inner">
-                            <div class="cooperate_introduction">
-                                <div class="intro_block">
-                                    <div class="intro_image">
-                                        <div class="thumb">
-                                            <!--↓ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓-->
-                                            <div class="pic" style="background-image: url(<?= backend_url(@$manufacture->content1Img) ?>);">
-                                                <img class="size" src="<?= base_url('assets/images/size_3x4.png') ?>">
+                </div>    
+                <?php if(!empty($row->manufacturerId)){ ?>
+                    <div class="tabber-content">
+                        <div class="product_about_cooperate">
+                            <h2 class="title"><?= @$manufacture->main_title ?></h2>
+                            <div class="banner"><img src="<?= backend_url(@$manufacture->firstbannerImg)  ?>"></div>
+                            <div class="cooperate_block">
+                                <div class="block_inner">
+                                    <div class="cooperate_introduction">
+                                        <div class="intro_block">
+                                            <div class="intro_image">
+                                                <div class="thumb">
+                                                    <!--↓ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓-->
+                                                    <div class="pic" style="background-image: url(<?= backend_url(@$manufacture->content1Img) ?>);">
+                                                        <img class="size" src="<?= base_url('assets/images/size_3x4.png') ?>">
+                                                    </div>
+                                                    <!--↑ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑-->
+                                                </div>
                                             </div>
-                                            <!--↑ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑-->
+                                            <div class="intro_content">
+                                                <div class="intro_head">
+                                                    <div class="thumb">
+                                                    <!--↓ 1:1，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓-->
+                                                    <div class="pic" style="background-image: url(<?= backend_url(@$manufacture->iconImg) ?>);">
+                                                        <img class="size" src="<?= base_url('assets/images/size_1x1.png') ?>">
+                                                    </div>
+                                                    <!--↑ 1:1，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑-->
+                                                    </div>
+                                                    <div class="location"><i class="icon_map_marker"></i><span><?= @$manufacture->location ?></span></div>
+                                                </div>
+                                                <h3 class="subtitle"><?= @$manufacture->title1 ?></h3>
+                                                <div class="text"><?= @$manufacture->content1 ?></div>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="intro_content">
-                                        <div class="intro_head">
-                                            <div class="thumb">
-                                            <!--↓ 1:1，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓-->
-                                            <div class="pic" style="background-image: url(<?= backend_url(@$manufacture->iconImg) ?>);">
-                                                <img class="size" src="<?= base_url('assets/images/size_1x1.png') ?>">
+                                        <div class="intro_block">
+                                            <div class="intro_image">
+                                                <div class="thumb">
+                                                    <!--↓ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓-->
+                                                    <div class="pic" style="background-image: url(<?= backend_url(@$manufacture->content2Img) ?>);"><img class="size" src="<?= base_url('assets/images/size_3x4.png') ?>"></div>
+                                                    <!--↑ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑-->
+                                                </div>
                                             </div>
-                                            <!--↑ 1:1，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑-->
+                                            <div class="intro_content">
+                                                <h3 class="subtitle"><?= @$manufacture->title2 ?></h3>
+                                                <div class="text"><?= @$manufacture->content2 ?></div>
                                             </div>
-                                            <div class="location"><i class="icon_map_marker"></i><span><?= @$manufacture->location ?></span></div>
                                         </div>
-                                        <h3 class="subtitle"><?= @$manufacture->title1 ?></h3>
-                                        <div class="text"><?= @$manufacture->content1 ?></div>
                                     </div>
                                 </div>
-                                <div class="intro_block">
-                                    <div class="intro_image">
-                                        <div class="thumb">
-                                            <!--↓ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓-->
-                                            <div class="pic" style="background-image: url(<?= backend_url(@$manufacture->content2Img) ?>);"><img class="size" src="<?= base_url('assets/images/size_3x4.png') ?>"></div>
-                                            <!--↑ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑-->
-                                        </div>
-                                    </div>
-                                    <div class="intro_content">
-                                        <h3 class="subtitle"><?= @$manufacture->title2 ?></h3>
-                                        <div class="text"><?= @$manufacture->content2 ?></div>
-                                    </div>
-                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="banner"><img src="<?= backend_url(@$manufacture->secondbannerImg) ?>"></div>
-                    <div class="cooperate_block">
-                        <div class="block_inner">
-                            <div class="cooperate_brand">
-                                <h3 class="subtitle"><?= @$manufacture->title3 ?></h3>
-                                <div class="text">
-                                    <?= @$manufacture->content3 ?>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="cooperate_wall">
-                        <?php for($i=0;$i<3;$i++){
-                            $youtube = 'popup'.($i+1).'youtube';
-                            $img = 'popup'.($i+1).'Img';?>
-                            <div class="item">
-                                <a class="thumb <?= (!empty(@$manufacture->$youtube) ? 'is_video' : '') ?> popup" href="<?= website_url('product/popup_manufacture/'.$row->productId) ?>" data-index="<?= $i ?>">
-                                    <!--↓ 16:9，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓-->
-                                    <div class="pic" style="background-image: url(<?= backend_url(@$manufacture->$img) ?>);">
-                                        <img class="size" src="<?= base_url('assets/images/size_16x9.png') ?>">
-                                    </div>
-                                    <!--↑ 16:9，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑-->
-                                </a>
-                            </div>
-                        <?php } ?>                        
-                        <div class="item cooperate_link">
-                            <h3 class="subtitle">Fusce vehicul.</h3>
-                            <a class="btn common more" href="javascript:;" target="_blank">Find out</a>
-                        </div>
-                    </div>
-                </div>
-                </div>
-                <div class="tabber-content">
-                <div class="product_about_cooperate">
-                    <h2 class="title"><?= @$fabric->main_title ?></h2>
-                    <div class="banner"><img src="<?= backend_url(@$fabric->firstbannerImg) ?>"></div>
-                    <div class="cooperate_block">
-                        <div class="block_inner">
-                            <div class="cooperate_introduction">
-                                <div class="intro_block">
-                                    <div class="intro_image">
-                                        <div class="thumb">
-                                            <!--↓ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓-->
-                                            <div class="pic" style="background-image: url(<?= backend_url(@$fabric->content1Img) ?>);">
-                                            <img class="size" src="<?= base_url('assets/images/size_3x4.png') ?>"></div>
-                                            <!--↑ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑-->
-                                        </div>
-                                    </div>
-                                    <div class="intro_content">
-                                        <div class="intro_head">
-                                            <div class="thumb">
-                                            <!--↓ 1:1，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓-->
-                                                <div class="pic" style="background-image: url(<?= backend_url(@$fabric->iconImg) ?>);">
-                                                <img class="size" src="<?= base_url('assets/images/size_1x1.png') ?>"></div>
-                                            <!--↑ 1:1，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑-->
-                                            </div>
-                                            <div class="location"><i class="icon_map_marker"></i><span><?= @$fabric->location ?></span></div>
-                                        </div>
-                                        <h3 class="subtitle"><?= @$fabric->title1 ?></h3>
+                            <div class="banner"><img src="<?= backend_url(@$manufacture->secondbannerImg) ?>"></div>
+                            <div class="cooperate_block">
+                                <div class="block_inner">
+                                    <div class="cooperate_brand">
+                                        <h3 class="subtitle"><?= @$manufacture->title3 ?></h3>
                                         <div class="text">
-                                            <?= nl2br(@$fabric->content1) ?>
+                                            <?= @$manufacture->content3 ?>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="intro_block">
-                                    <div class="intro_image">
-                                        <div class="thumb">
-                                            <!--↓ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓-->
-                                            <div class="pic" style="background-image: url(<?= backend_url(@$fabric->content2Img) ?>);">
-                                            <img class="size" src="<?= base_url('assets/images/size_3x4.png') ?>"></div>
-                                            <!--↑ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑-->
+                            </div>
+                            <div class="cooperate_wall">
+                                <?php for($i=0;$i<3;$i++){
+                                    $youtube = 'popup'.($i+1).'youtube';
+                                    $img = 'popup'.($i+1).'Img';?>
+                                    <div class="item">
+                                        <a class="thumb <?= (!empty(@$manufacture->$youtube) ? 'is_video' : '') ?> popup" href="<?= website_url('product/popup_manufacture/'.$row->productId) ?>" data-index="<?= $i ?>">
+                                            <!--↓ 16:9，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓-->
+                                            <div class="pic" style="background-image: url(<?= backend_url(@$manufacture->$img) ?>);">
+                                                <img class="size" src="<?= base_url('assets/images/size_16x9.png') ?>">
+                                            </div>
+                                            <!--↑ 16:9，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑-->
+                                        </a>
+                                    </div>
+                                <?php } ?>                        
+                                <div class="item cooperate_link">
+                                    <h3 class="subtitle">Fusce vehicul.</h3>
+                                    <a class="btn common more" href="javascript:;" target="_blank">Find out</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <?php } ?>
+                <?php if(!empty($row->fabricId)){ ?>
+                    <div class="tabber-content">
+                        <div class="product_about_cooperate">
+                            <h2 class="title"><?= @$fabric->main_title ?></h2>
+                            <div class="banner"><img src="<?= backend_url(@$fabric->firstbannerImg) ?>"></div>
+                            <div class="cooperate_block">
+                                <div class="block_inner">
+                                    <div class="cooperate_introduction">
+                                        <div class="intro_block">
+                                            <div class="intro_image">
+                                                <div class="thumb">
+                                                    <!--↓ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓-->
+                                                    <div class="pic" style="background-image: url(<?= backend_url(@$fabric->content1Img) ?>);">
+                                                    <img class="size" src="<?= base_url('assets/images/size_3x4.png') ?>"></div>
+                                                    <!--↑ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑-->
+                                                </div>
+                                            </div>
+                                            <div class="intro_content">
+                                                <div class="intro_head">
+                                                    <div class="thumb">
+                                                    <!--↓ 1:1，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓-->
+                                                        <div class="pic" style="background-image: url(<?= backend_url(@$fabric->iconImg) ?>);">
+                                                        <img class="size" src="<?= base_url('assets/images/size_1x1.png') ?>"></div>
+                                                    <!--↑ 1:1，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑-->
+                                                    </div>
+                                                    <div class="location"><i class="icon_map_marker"></i><span><?= @$fabric->location ?></span></div>
+                                                </div>
+                                                <h3 class="subtitle"><?= @$fabric->title1 ?></h3>
+                                                <div class="text">
+                                                    <?= nl2br(@$fabric->content1) ?>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="intro_block">
+                                            <div class="intro_image">
+                                                <div class="thumb">
+                                                    <!--↓ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓-->
+                                                    <div class="pic" style="background-image: url(<?= backend_url(@$fabric->content2Img) ?>);">
+                                                    <img class="size" src="<?= base_url('assets/images/size_3x4.png') ?>"></div>
+                                                    <!--↑ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑-->
+                                                </div>
+                                            </div>
+                                            <div class="intro_content">
+                                                <h3 class="subtitle"><?= @$fabric->title2 ?></h3>
+                                                <div class="text">
+                                                    <?= nl2br(@$fabric->content2) ?>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="intro_content">
-                                        <h3 class="subtitle"><?= @$fabric->title2 ?></h3>
+                                </div>
+                            </div>
+                            <div class="banner">
+                                <img src="<?= backend_url(@$fabric->secondbannerImg) ?>">
+                            </div>
+                            <div class="cooperate_block">
+                                <div class="block_inner">
+                                    <div class="cooperate_brand">
+                                        <h3 class="subtitle"><?= @$fabric->title3 ?></h3>
                                         <div class="text">
-                                            <?= nl2br(@$fabric->content2) ?>
+                                            <?= @$fabric->content3 ?>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="banner">
-                        <img src="<?= backend_url(@$fabric->secondbannerImg) ?>">
-                    </div>
-                    <div class="cooperate_block">
-                        <div class="block_inner">
-                            <div class="cooperate_brand">
-                                <h3 class="subtitle"><?= @$fabric->title3 ?></h3>
-                                <div class="text">
-                                    <?= @$fabric->content3 ?>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="cooperate_wall">
-                        <?php for($i=0;$i<3;$i++){
-                            $youtube = 'popup'.($i+1).'youtube';
-                            $img = 'popup'.($i+1).'Img';?>
-                            <div class="item">
-                                <a class="thumb <?= (!empty(@$fabric->$youtube) ? 'is_video' : '') ?> popup" href="<?= website_url('product/popup_fabric/'.$row->productId) ?>" data-index="0">
-                                    <!--↓ 16:9，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓-->
-                                    <div class="pic" style="background-image: url(<?= backend_url(@$fabric->$img) ?>);">
-                                        <img class="size" src="<?= base_url('assets/images/size_16x9.png') ?>">
+                            <div class="cooperate_wall">
+                                <?php for($i=0;$i<3;$i++){
+                                    $youtube = 'popup'.($i+1).'youtube';
+                                    $img = 'popup'.($i+1).'Img';?>
+                                    <div class="item">
+                                        <a class="thumb <?= (!empty(@$fabric->$youtube) ? 'is_video' : '') ?> popup" href="<?= website_url('product/popup_fabric/'.$row->productId) ?>" data-index="0">
+                                            <!--↓ 16:9，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↓-->
+                                            <div class="pic" style="background-image: url(<?= backend_url(@$fabric->$img) ?>);">
+                                                <img class="size" src="<?= base_url('assets/images/size_16x9.png') ?>">
+                                            </div>
+                                            <!--↑ 16:9，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑-->
+                                        </a>
                                     </div>
-                                    <!--↑ 16:9，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑-->
-                                </a>
+                                <?php } ?>
+                            <div class="item cooperate_link">
+                                <h3 class="subtitle">Fusce vehicul.</h3>
+                                <a class="btn common more" href="javascript:;" target="_blank">Find out</a>
                             </div>
-                        <?php } ?>
-                    <div class="item cooperate_link">
-                        <h3 class="subtitle">Fusce vehicul.</h3>
-                        <a class="btn common more" href="javascript:;" target="_blank">Find out</a>
+                            </div>
+                        </div>
                     </div>
-                    </div>
-                </div>
-                </div>
+                <?php } ?>
             </div>
         </div>
     </div>
@@ -556,7 +593,7 @@
                                         </div>
                                     </div>
                                     <h3><?= $productList[$i]->name ?></h3>
-                                    <div class="price">NT$ <?= $productList[$i]->price ?></div>
+                                    <div class="price"><?= strtoupper($money_type) ?>$ <?= round($productList[$i]->price * $currency) ?></div>
                                 </a>
                             </div>
                         <?php }
@@ -579,7 +616,7 @@
                                     </div>
                                 </div>
                                 <h3><?= $viewValue->name ?></h3>
-                                <div class="price">NT$ <?= $viewValue->price ?></div>
+                                <div class="price"><?= strtoupper($money_type) ?>$ <?= round($viewValue->price * $currency) ?></div>
                             </a>
                         </div>
                     <?php } ?>            

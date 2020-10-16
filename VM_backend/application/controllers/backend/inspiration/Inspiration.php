@@ -14,8 +14,8 @@ class Inspiration extends Backend_Controller
         $this->check_action_auth($this->prevId, 'view', true); // Check Auth
         $this->check_action_auth($this->menuId, 'view', true); // Check Auth
 
-        $this->load->model('homepage/tb_inspiration_model', 'inspiration_model');
-        $this->load->model('homepage/tb_inspiration_message_model', 'inspiration_message_model');
+        $this->load->model('inspiration/tb_inspiration_model', 'inspiration_model');
+        $this->load->model('inspiration/tb_inspiration_message_model', 'inspiration_message_model');
         $this->query = $this->set_http_query(array('search' => $this->input->get('search', true)));
     }
 
@@ -33,9 +33,9 @@ class Inspiration extends Backend_Controller
             $this->inspiration_model->insert_inspiration($post);
             $inspirationId = $post['inspirationId'];
             if($this->input->get('back',true)){
-                redirect("backend/homepage/inspiration/");
+                redirect("backend/inspiration/inspiration/");
             }
-            redirect('backend/homepage/inspiration/edit/' . $inspirationId . $this->query);
+            redirect('backend/inspiration/inspiration/edit/' . $inspirationId . $this->query);
         }
         $this->get_view('add',array('inspirationId' => $inspirationId));
     }
@@ -58,11 +58,11 @@ class Inspiration extends Backend_Controller
                 $this->set_active_status('success', 'Success');
 
                 if ($this->input->get('back', true)):
-                    redirect('backend/homepage/inspiration' . $this->query);
+                    redirect('backend/inspiration/inspiration' . $this->query);
                 endif;
             endif;
 
-            redirect('backend/homepage/inspiration/edit/' . $inspirationId . $this->query);
+            redirect('backend/inspiration/inspiration/edit/' . $inspirationId . $this->query);
         endif;
         
         $data = array(
@@ -87,7 +87,7 @@ class Inspiration extends Backend_Controller
         // print_r($inspirationId);exit;
         if (!$row = $this->inspiration_message_model->get_inspiration_message_by_id($messageId)):
             $this->set_active_status('danger', 'The data does not exist!');
-            redirect('backend/homepage/inspiration/message/' . $inspirationId);
+            redirect('backend/inspiration/inspiration/message/' . $inspirationId);
         endif;
         
         if ($post = $this->input->post(null, true)):
@@ -100,11 +100,11 @@ class Inspiration extends Backend_Controller
                 $this->set_active_status('success', 'Success');
 
                 if ($this->input->get('back', true)):
-                    redirect('backend/homepage/inspiration/message/' . $inspirationId . $this->query);
+                    redirect('backend/inspiration/inspiration/message/' . $inspirationId . $this->query);
                 endif;
             endif;
 
-            redirect('backend/homepage/inspiration/message_edit/' . $inspirationId . '/' . $messageId . $this->query);
+            redirect('backend/inspiration/inspiration/message_edit/' . $inspirationId . '/' . $messageId . $this->query);
         endif;
         
         $data = array(
@@ -125,7 +125,7 @@ class Inspiration extends Backend_Controller
             $this->set_active_status('success', 'Success');
         endif;
 
-        redirect('backend/homepage/inspiration' . $this->query);
+        redirect('backend/inspiration/inspiration' . $this->query);
     }
 
     public function save()
@@ -140,13 +140,13 @@ class Inspiration extends Backend_Controller
             $this->set_active_status('success', 'Success');
         endif;
 
-        redirect('backend/homepage/inspiration' . $this->query);
+        redirect('backend/inspiration/inspiration' . $this->query);
     }
 
     /******************** Private Function ********************/
     private function get_view($page, $data = '')
     {
-        $content = $this->load->view('backend/homepage/inspiration/' . $page, $data, true);
+        $content = $this->load->view('backend/inspiration/' . $page, $data, true);
         $this->load->view('backend/index', $this->get_page_nav($content), false);
     }
 }

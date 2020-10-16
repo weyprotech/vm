@@ -155,7 +155,7 @@
                                                 data-bv-file-message="File invalide">
 
                                                 <p class="help-block">
-                                                    <strong>Note:</strong>Resolution is <strong>600 x 600</strong>. Format is JPG and PNG</strong>。
+                                                    <strong>Note:</strong>Resolution is <strong>540 x 405</strong>. Format is JPG and PNG</strong>。
                                                 </p>
 
                                                 <p class="help-block">                                                    

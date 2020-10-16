@@ -8,8 +8,8 @@ var website = function () {
 
         var $langSelect = $('#select-lang'), $searchText = $('#text-search'), $searchBtn = $('#btn-search');
         var $brand_more = $('#brand_more'), $website_set = $('#website_set'), $event_more = $('#event_more');
-        var $login = $('#login'), $edit_account_save = $('#edit_account_save'), $more_popular_designers = $('#more_popular_designers');
-        var $money_type_select = $('.money_type_select'), $language_select = $('.language_select');
+        var $login = $('#login'), $edit_account_save = $('#edit_account_save'), $more_popular_designers = $('#more_popular_designers');        
+        var $money_type_select = $('.money_type_select'), $language_select = $('.language_select'),$inspiration = $('.inspiration_favorite');
         var $gift_send = $('#gift_send');
         lang = normal_lang;
         var error = 0;
@@ -115,6 +115,7 @@ var website = function () {
 
         //語言
         $website_set.on('click', function () {
+            console.log(123);
             lang = $('#language_select').val();
             doCookieSetup('front', $('#language_select').val());
             doCookieSetup('money_type', $('#money_type_select').val());
@@ -135,6 +136,7 @@ var website = function () {
         //幣值
         $money_type_select.on('change', function () {
             doCookieSetup('money_type', $(this).val());
+            location.reload();
         });
 
         //消息更多
@@ -236,6 +238,20 @@ var website = function () {
                     $('.swal2-container').css('z-index', '100000');
                 }
             }
+        });
+
+        //inspiration
+        $inspiration.on('click', function(){
+            var inspirationId = $(this).data('id');
+            $.ajax({
+                url:site_url('ajax/inspiration/set_like'),
+                data:{inspirationId : inspirationId},
+                dataType: 'json',
+                type: 'POST',
+                success: function (response) {
+
+                }
+            });
         });
 
         //傳送設計師留言
@@ -590,10 +606,21 @@ var website = function () {
 
     //cookie保存
     function doCookieSetup(name, value) {
+        var exp = new Date();
+        exp.setTime(exp.getTime()-1);
+        if(getCookie(name) != null) {
+            document.cookie = name + "=" + getCookie(name)+";expires="+exp.toGMTString();
+        }
+
         var expires = new Date();
         //有效時間保存 2 天 2*24*60*60*1000
         expires.setTime(expires.getTime() + 172800000);
         document.cookie = name + "=" + escape(value) + ";expires=" + expires.toGMTString();
+    }
+
+    function getCookie(name){
+        var arr = document.cookie.match(new RegExp("(^| )"+name+"=([^;]*)(;|$)"));
+        if (arr != null) return unescape(arr[2]); return null;
     }
 
     function change_lang(new_lang) {
@@ -708,6 +735,11 @@ var website = function () {
                 $('.cart_view').find('.title').html(response['cart_amount'] + ' Items');
                 $('.option_cart').addClass('have');
                 $('.cart_view').find('.cart_items').html('');
+                console.log(response['cart_amount']);
+
+                if((response['cart_amount'] == 1) && (type == 'minus')){
+                    $('#minus_' + productid).attr('disabled', 'disabled');
+                }
                 $.each(response['cart_productList'], function (key, value) {
                     $('.cart_view').find('.cart_items').append(
                         '<div class="item">' +

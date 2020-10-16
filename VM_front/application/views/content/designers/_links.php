@@ -31,7 +31,7 @@
                 <li><a class="popup" href="<?= website_url('designers/just_popup/'.$row->designerId) ?>" title="Just for you"><i class="icon_just_for_you"></i><span>Just for you</span></a></li>
                 <li><a class="popup" href="<?= website_url('designers/message_popup/'.$row->designerId) ?>" title="Message"><i class="icon_message"></i><span>Message</span></a></li>
                 <li><a class="btn_favorite <?= ($like != false) ? 'active' : '' ?>" href="javascript:;" data-designerId="<?= $row->designerId ?>" title="Favorite"><i class="icon_favorite_heart_big"></i><span>(<span class="count"><?= $likecount ?></span>)</span></a></li>
-                <li><a class="popup" href="popup_gift.html" title="Gift Designer"><i class="icon_gift_designer"></i><span>Gift Designer</span></a></li>
+                <li><a class="popup" href="<?= website_url('designers/popup_gift/'.$row->designerId) ?>" title="Gift Designer"><i class="icon_gift_designer"></i><span>Gift Designer</span></a></li>
                 <li><a class="popup" href="popup_makeWish.html" title="Make a Wish"><i class="icon_make_wish"></i><span>Make a Wish</span></a></li>
             </ul>
         </div>

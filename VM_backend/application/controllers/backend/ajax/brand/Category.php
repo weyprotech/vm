@@ -27,12 +27,12 @@ class Category extends Ajax_Controller
         $order = array(array('field' => 'category.create_at', 'dir' => 'asc'));
 
         $brandCategoryList = $this->brand_category->get_category_select($filter, $order, array('limit' => $limit, 'start' => $start), $this->langId);
+
         $recordsTotal = $this->brand_category->count_category($filter, $this->langId);
         if ($brandCategoryList):
             foreach ($brandCategoryList as $row):
                 $data[] = array(
                     'visible' => '<td><img src="' . show_enable_image($row->is_visible) . '" width="25"></td>',
-                    'img' => (!empty($row->categoryImg) ? '<img src="' . base_url($row->categoryImg) . '">' : ''),
                     'name' => $row->name,                    
                     'action' => $this->get_button('edit', 'backend/brand/category/edit/' . $row->categoryId . $query) . $this->get_button('delete', 'backend/brand/category/delete/' . $row->categoryId . $query)
                 );

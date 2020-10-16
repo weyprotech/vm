@@ -49,8 +49,8 @@
                             </div>
                             <h3><?= $saleValue->name ?></h3>
                             <div class="price">
-                                <span class="strikethrough">NT$ <?= $saleValue->original_price ?></span>
-                                <span class="sale_price">NT$ <?= $saleValue->original_price-($saleValue->original_price*($saleinformation->discount/100)) ?></span>
+                                <span class="strikethrough"><?= strtoupper($money_type) ?>$ <?= round($saleValue->original_price * $currency) ?></span>
+                                <span class="sale_price"><?= strtoupper($money_type) ?>$ <?= round($saleValue->original_price-($saleValue->original_price*($saleinformation->discount/100))*$currency) ?></span>
                             </div>
                         </a>
                     </div>

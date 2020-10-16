@@ -66,6 +66,21 @@
                                         </div>
 
                                         <div class="form-group">
+                                            <label class="col-sm-2 control-label" for="category">Category</label>
+
+                                            <div class="col-sm-9 col-lg-4">
+                                                <select class="form-control" id="categoryId" name="categoryId" data-bv-notempty="true" data-bv-notempty-message=" ">
+                                                    <option value="" selected>None</option>
+                                                    <?php if ($categoryList): ?>
+                                                        <?php foreach ($categoryList as $categoryValue): ?>
+                                                            <option value="<?= $categoryValue->categoryId ?>"><?= $categoryValue->name ?></option>
+                                                        <?php endforeach; ?>
+                                                    <?php endif; ?>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
                                             <label class="col-sm-2 control-label" for="designerId">Designer</label>
 
                                             <div class="col-sm-9 col-lg-4">

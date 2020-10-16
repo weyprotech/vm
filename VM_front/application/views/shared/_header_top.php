@@ -8,8 +8,8 @@
             <div class="currency_language">
                 <div class="select_wrapper">
                     <select class="money_type_select">
-                        <option>€ EUR</option>
-                        <option>$ TWD</option>
+                        <option value="eur" <?= $money_type == 'eur' ? 'selected' : '' ?>>€ EUR</option>
+                        <option value="twd" <?= $money_type == 'twd' ? 'selected' : '' ?>>$ TWD</option>
                         <!--<option>¥ CNY</option>-->
                     </select>
                 </div><i class="divide_line"></i>

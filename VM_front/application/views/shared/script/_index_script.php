@@ -2,7 +2,7 @@
 
 $(function() {
     <?php 
-    if(empty($this->langFile)) {
+    if(empty($this->langFile) || empty($currency)) {
     ?>
         // 開啟選擇語言和幣別的跳窗
         popupEntrance();
@@ -57,7 +57,7 @@ $(function() {
                 latlng: store.latlng,
                 storeName: store.storeName,
                 markerHtml: '<a href="javascript:;" id="'+streetStores[i].stores[j].brandId+'">' +
-                    '<i class="' + storeicon + '"></i>' +
+                    '<i class="' + streetStores[i].stores[j].storeicon + '"></i>' +
                 '</a>',
                 popupHtml:
                     '<div class="map_popup">' +
@@ -79,7 +79,7 @@ $(function() {
                     "</a>" +
                     '<div class="address">' +
                     "<div>" +
-                    "<span>Hi Kate welcome back" +
+                    "<span>Hi <?= $this->session->userdata('memberinfo')['memberLast_name'].' '.$this->session->userdata('memberinfo')['memberFirst_name']  ?> welcome back" +
                     //store.optionID +
                     "</span>" +
                     "</div>" +

@@ -67,6 +67,22 @@
                                         </div>
 
                                         <div class="form-group">
+                                            <label class="col-sm-2 control-label">is_top</label>
+
+                                            <div class="col-sm-9">
+                                                <label class="radio radio-inline">
+                                                    <input type="radio" class="radiobox" name="is_top" value="1">
+                                                    <span>Yes</span>
+                                                </label>
+
+                                                <label class="radio radio-inline">
+                                                    <input type="radio" class="radiobox" name="is_top" value="0" checked>
+                                                    <span>No</span>
+                                                </label>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
                                             <label class="col-sm-2 control-label">Status</label>
 
                                             <div class="col-sm-9">
@@ -128,10 +144,45 @@
                                         </div>
 
                                         <div class="form-group">
-                                            <label class="col-sm-2 control-label" for="price">Price</label>
+                                            <label class="col-sm-2 control-label" for="category">Manufacturer</label>
+
+                                            <div class="col-sm-9 col-lg-4">
+                                                <select class="form-control" name="manufacturerId" data-bv-notempty="true" data-bv-notempty-message=" ">                                                    
+                                                    <?php foreach ($manufacturerList as $manufacturerKey => $manufacturerValue){ ?>
+                                                        <option value="<?= $manufacturerValue->manufacturerId ?>"><?= $manufacturerValue->main_title ?></option>
+                                                    <?php } ?>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label" for="category">Fabric</label>
+
+                                            <div class="col-sm-9 col-lg-4">
+                                                <select class="form-control" name="fabricId" data-bv-notempty="true" data-bv-notempty-message=" ">                                                    
+                                                    <?php foreach ($fabricList as $fabricKey => $fabricValue){ ?>
+                                                        <option value="<?= $fabricValue->fabricId ?>"><?= $fabricValue->main_title ?></option>
+                                                    <?php } ?>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label" for="price">Price(USD)</label>
 
                                             <div class="col-sm-9 col-lg-4">
                                                 <input type="integer" class="form-control" name="price" data-bv-notempty="true" data-bv-notempty-message=" ">
+                                                <p class="help-block">
+                                                    <strong>Note:</strong>If there is no stock, please enter 0
+                                                </p>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label" for="fifteen_price">15-day pickup price(USD)</label>
+
+                                            <div class="col-sm-9 col-lg-4">
+                                                <input type="integer" class="form-control" name="fifteen_price">
                                             </div>
                                         </div>
 

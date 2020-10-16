@@ -59,7 +59,8 @@ class Tb_just_model extends MY_Model
     }
 
     public function insert_just($just)
-    {      
+    {
+        $just['order'] = $this->count_just(array(array('field' => 'just.justId','value' => $just['justId'])))+1;
         $insert = $this->check_db_data($just);        
 
         $this->db->insert('tb_designer_just_for_you', $insert);

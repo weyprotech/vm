@@ -25,6 +25,7 @@
                 var size = $("#size").val();
                 var color = $("#color").val();
                 var quantity = $("#quantity").val();
+                var status = $('#status').val();
 
                 $.ajax({
                     url:'<?=site_url('ajax/shopping/addtocart')?>',
@@ -32,7 +33,8 @@
                         'productid' : productid,
                         'quantity' : quantity,
                         'size' : size,
-                        'color' : color
+                        'color' : color,
+                        'status' : status
                     }, 
                     type:'post',
                     dataType:'json',

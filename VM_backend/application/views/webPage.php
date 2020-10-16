@@ -9,7 +9,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/x-icon" href="<?= base_url('assets/images/favicon.ico') ?>">
 <link rel="stylesheet" href="<?= base_url('assets/styles/main.css') ?>">
-<link media="all" type="text/css" rel="stylesheet" href="<?= base_url("assets/styles/sweetalert2.min.css") ?>">
 <?php
 if ($this->langFile != 'cn') { ?>
 <!-- Schema.org markup for Google+ --> 
@@ -21,7 +20,8 @@ if ($this->langFile != 'cn') { ?>
 <meta property="og:description" content="<?= $pageMeta['description'] ?>"/>
 <meta property="og:image" content="<?= $pageMeta['image'] ?>"/>
 <meta property="og:url" content="<?= $pageMeta['url'] ?>"/>
-<?php } ?>
+<?
+} ?>
 </head>
 <body><!--[if lt IE 9]>
 <div class="old_browser">
@@ -39,7 +39,6 @@ if ($this->langFile != 'cn') { ?>
 </div>
 <?= $this->load->view('shared/_script', '', true) ?>
 <script src="<?= base_url("assets/scripts/custom.js") ?>"></script>
-<script src="<?= base_url("assets/scripts/sweetalert2.all.min.js") ?>"></script>
 <script>
     website.Init('<?= website_url() ?>', '<?= base_url() ?>');
     <?= $script ?>

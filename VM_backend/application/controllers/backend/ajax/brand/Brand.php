@@ -38,6 +38,8 @@ class Brand extends Ajax_Controller
                     'name' => $row->name,
                     'order' => $this->get_order('brand', $row->brandId, $row->order),
                     'banner' => '<a class="btn btn-warning" href="'.site_url('backend/brand/banner/index/'.$row->brandId).'"><i class="fa fa-picture-o"></i><span class="hidden-mobile"> Banner</span></a>',
+                    'message' => '<a class="btn bg-color-redLight" href="'.site_url('backend/brand/message/index/'.$row->brandId).'" style="color:white"><i class="fa fa-comments"></i><span class="hidden-mobile" style="color:white"> Message</span></a>',
+
                     // 'post' => '<a class="btn btn-success" href="'.site_url('backend/brand/post/index/'.$row->brandId).'"><i class="fa fa-book"></i><span class="hidden-mobile"> Post</span></button>',
                     'action' => $this->get_button('edit', 'backend/brand/brand/edit/' . $row->brandId . $query) . $this->get_button('delete', 'backend/brand/brand/delete/' . $row->brandId . $query)
                 );

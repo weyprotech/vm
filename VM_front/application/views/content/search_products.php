@@ -28,11 +28,11 @@
                                         <h3><?= $resulttValue->name ?></h3>
                                         <?php if($resulttValue->sale){ ?>
                                             <div class="price">
-                                                <span class="strikethrough">NT$ <?= $resulttValue->price ?></span>
-                                                <span class="sale_price">NT$ <?= (($resulttValue->price)-($resulttValue->price*($saleinformation->discount/100))) ?></span>
+                                                <span class="strikethrough"><?= strtoupper($money_type) ?>$ <?= round($resulttValue->price * $currency) ?></span>
+                                                <span class="sale_price"><?= strtoupper($money_type) ?>$ <?= round((($resulttValue->price)-($resulttValue->price*($saleinformation->discount/100))) * $currency) ?></span>
                                             </div>                                    
                                         <?php }else{ ?>
-                                            <div class="price">NT$ <?= $resulttValue->price ?></div>
+                                            <div class="price"><?= strtoupper($money_type) ?>$ <?= round($resulttValue->price * $currency) ?></div>
                                         <?php } ?>
                                     </a>
                                 </div>

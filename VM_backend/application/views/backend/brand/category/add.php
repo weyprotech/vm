@@ -62,7 +62,27 @@
                                                     <span>No</span>
                                                 </label>
                                             </div>
-                                        </div>                                        
+                                        </div>    
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">icon</label>
+
+                                            <div class="col-sm-9">
+                                                <select class="form-control" id="store_icon" name="store_icon">
+                                                    <option value="store_icon">Default</option>
+                                                    <option value="store_icon_w">store_icon_w</option>
+                                                    <option value="store_icon_s">store_icon_s</option>
+                                                </select>
+                                            </div>
+                                            <br>
+                                        </div>               
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label"></label>
+
+                                            <div class="col-sm-9">
+                                                <img id="store_icon_show" src="<?= base_url('assets/backend/img/leaflet/store_marker.svg') ?>" style="width:50px;height:50px">
+                                            </div>
+                                            <br>
+                                        </div>                                                   
                                     </fieldset>
                                 </div>   
                                 <?php if ($this->langList): ?>
@@ -119,5 +139,19 @@
         $('form').bootstrapValidator({
             excluded: ""
         });
+    });
+
+    $('#store_icon').on('change',function () {        
+        switch($(this).val()){
+            case 'store_icon':
+                $('#store_icon_show').attr('src','<?= base_url('assets/backend/img/leaflet/store_marker.svg') ?>');
+                break;
+            case 'store_icon_w':
+                $('#store_icon_show').attr('src','<?= base_url('assets/backend/img/leaflet/store_marker_w.svg') ?>');
+                break;
+            case 'store_icon_s':
+                $('#store_icon_show').attr('src','<?= base_url('assets/backend/img/leaflet/store_marker_s.svg') ?>');
+                break;
+        }
     });
 </script>

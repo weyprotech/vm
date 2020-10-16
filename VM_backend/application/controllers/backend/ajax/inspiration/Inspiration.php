@@ -22,7 +22,7 @@ class Inspiration extends Ajax_Controller
         $order = array(array('field' => 'inspiration.order', 'dir' => 'asc'));
         $query = $this->set_http_query(array('search' => $search));
 
-        $this->load->model('homepage/tb_inspiration_model', 'inspiration');
+        $this->load->model('inspiration/tb_inspiration_model', 'inspiration');
         $inspirationList = $this->inspiration->get_inspiration_select($filter, $order, array('limit' => $limit, 'start' => $start), $this->langId);
         $recordsTotal = $this->inspiration->count_inspiration($filter, $this->langId);
         if ($inspirationList):
@@ -32,8 +32,9 @@ class Inspiration extends Ajax_Controller
                     'preview' => '<div id="preview">' . (!empty($row->inspirationImg) ? '<img src="' . base_url($row->inspirationImg) . '" width="200px">' : '') . '</div>',
                     'title' => $row->title,
                     'order' => $this->get_order('inspiration', $row->inspirationId, $row->order),
-                    'message' => '<a class="btn btn-success" href="'.site_url('backend/homepage/inspiration/message/' . $row->inspirationId).'"><i class="fa fa-paper-plane"></i><span class="hidden-mobile"> Message</span></a>',
-                    'action' => $this->get_button('edit', 'backend/homepage/inspiration/edit/' . $row->inspirationId . $query) . $this->get_button('delete', 'backend/homepage/inspiration/delete/' . $row->inspirationId . $query)
+                    'banner' => '<a class="btn btn-warning" href="'.site_url('backend/inspiration/banner/index/'.$row->inspirationId).'"><i class="fa fa-picture-o"></i><span class="hidden-mobile"> Banner</span></a>',
+                    'comments' => '<a class="btn btn-success" href="'.site_url('backend/inspiration/inspiration/message/' . $row->inspirationId).'"><i class="fa fa-paper-plane"></i><span class="hidden-mobile"> Comments</span></a>',
+                    'action' => $this->get_button('edit', 'backend/inspiration/inspiration/edit/' . $row->inspirationId . $query) . $this->get_button('delete', 'backend/inspiration/inspiration/delete/' . $row->inspirationId . $query)
                 );
             endforeach;
         endif;
@@ -54,14 +55,14 @@ class Inspiration extends Ajax_Controller
         $order = array(array('field' => 'message.create_at', 'dir' => 'asc'));
         $query = $this->set_http_query(array('search' => $search));
 
-        $this->load->model('homepage/tb_inspiration_message_model', 'inspiration_message');
+        $this->load->model('inspiration/tb_inspiration_message_model', 'inspiration_message');
         $inspiration_messageList = $this->inspiration_message->get_inspiration_message_select($filter, $order, array('limit' => $limit, 'start' => $start));
         $recordsTotal = $this->inspiration_message->count_inspiration_message($filter);
         if ($inspiration_messageList):
             foreach ($inspiration_messageList as $row):
                 $data[] = array(
                     'message' => $row->message,
-                    'action' => $this->get_button('edit', 'backend/homepage/inspiration/message_edit/'. $inspirationId . '/' . $row->Id . $query)
+                    'action' => $this->get_button('edit', 'backend/inspiration/inspiration/message_edit/'. $inspirationId . '/' . $row->Id . $query)
                 );
             endforeach;
         endif;
@@ -83,7 +84,7 @@ class Inspiration extends Ajax_Controller
         $subId = $this->input->post('subId',true);
         $categoryId = $this->input->post('categoryId',true);
         $inspirationId = $this->input->post('inspirationId',true);
-        $this->load->model('homepage/tb_inspiration_model','inspiration_model');
+        $this->load->model('inspiration/tb_inspiration_model','inspiration_model');
         $this->load->model('product/tb_product_model', 'product');
         $this->load->model('product/tb_category_model','category');
 

@@ -52,9 +52,9 @@
                                             <th width="9%" class="text-center">Category</th>
                                             <th width="8%" class="text-center">Brand</th>
                                             <th width="120" class="text-center">Price</th>
-                                            <th width="50" class="text-center">Color</th>
                                             <th width="50" class="text-center">Manufacture</th>
-                                            <th width="50" class="text-center">Fabric</th>   
+                                            <th width="50" class="text-center">Fabric</th>
+                                            <th width="50" class="text-center">Color</th>
                                             <th width="50" class="text-center">Reviews</th>
                                             <th width="50" class="text-center hidden-tablet">Sort</th>
                                             <th width="160" class="text-center">Action</th>
@@ -130,9 +130,9 @@
                 {class: "", data: "category"},
                 {class: "", data: "brand"},
                 {class: "", data: "price"},
-                {class: "", data:"color"},
                 {class: "", data:"manufacture"},
                 {class: "", data:"fabric"}, 
+                {class: "", data:"color"},
                 {class: "", data:"review"},
                 {class: "hidden-tablet", data: "order"},
                 {class: "", data: "action"}

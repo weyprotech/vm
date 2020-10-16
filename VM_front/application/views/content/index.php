@@ -51,34 +51,36 @@
             <div class="stores_slider"></div>
         </div>
     </div>
-    <div class="top_designers page_block">
-        <div class="block_inner">
-          <h2 class="block_title">TOP PRODUCTS</h2>
-          <div class="block_main">
-            <div class="products_list">
-                <?php foreach ($top_productList as $productKey => $productValue){ ?>
-                    <div class="item">
-                        <a href="<?= website_url('product/detail').'?productId='.$productValue->productId ?>">
-                            <div class="thumb">
-                                <div class="pic" style="background-image: url(<?= backend_url($productValue->productImg) ?>)"><img class="size" src="<?= base_url('assets/images/size_3x4.png') ?>"></div>
-                            </div>
-                            <h3><?= $productValue->name ?></h3>
-                            <?php if($productValue->sale){ ?>
-                                <div class="price">
-                                    <span class="strikethrough">NT$ <?= $productValue->price ?></span>
-                                    <span class="sale_price">NT$ <?= (($productValue->price)-($productValue->price*($saleinformation->discount/100))) ?></span>
-                                </div>                                    
-                            <?php }else{ ?>
-                                <div class="price">NT$ <?= $productValue->price ?></div>
-                            <?php } ?>
-                        </a>
-                    </div>                
-                <?php } ?>            
+    <?php if(!empty($top_productList)){ ?>
+        <div class="top_designers page_block">
+            <div class="block_inner">
+            <h2 class="block_title">TOP PRODUCTS</h2>
+            <div class="block_main">
+                <div class="products_list">
+                    <?php foreach ($top_productList as $productKey => $productValue){ ?>
+                        <div class="item">
+                            <a href="<?= website_url('product/detail').'?productId='.$productValue->productId ?>">
+                                <div class="thumb">
+                                    <div class="pic" style="background-image: url(<?= backend_url($productValue->productImg) ?>)"><img class="size" src="<?= base_url('assets/images/size_3x4.png') ?>"></div>
+                                </div>
+                                <h3><?= $productValue->name ?></h3>
+                                <?php if($productValue->sale){ ?>
+                                    <div class="price">
+                                        <span class="strikethrough">NT$ <?= round($productValue->price * $currency) ?></span>
+                                        <span class="sale_price">NT$ <?= round((($productValue->price)-($productValue->price*($saleinformation->discount/100))) * $currency) ?></span>
+                                    </div>                                    
+                                <?php }else{ ?>
+                                    <div class="price">NT$ <?= round($productValue->price * $currency) ?></div>
+                                <?php } ?>
+                            </a>
+                        </div>                
+                    <?php } ?>            
+                </div>
+                <a class="btn common more" href="<?= website_url('product') ?>">All Products</a>
             </div>
-            <a class="btn common more" href="<?= website_url('product') ?>">All Products</a>
-          </div>
+            </div>
         </div>
-    </div>
+    <?php } ?>
     
     <?php if($runwayList) {?>
     <div class="what_next page_block">
@@ -129,7 +131,7 @@
         <?php if($homepageBanner){
             foreach ($homepageBanner as $bannerKey => $bannerValue){ ?>
                 <div class="slide">
-                    <div class="pic"><img src="<?= base_url('assets/images/img_ad_banner.jpg') ?>"></div>
+                    <div class="pic"><img src="<?= backend_url($bannerValue->bannerImg) ?>"></div>
                     <!--↓ 後台可設定網站五個顏色 ↓ -- bg_brown、bg_red、bg_purple、bg_blue、bg_green-->
                     <div class="text <?= $website_color->color ?>">
                         <div class="text_inner">
@@ -154,7 +156,7 @@
                         <div class="item">
                             <div class="item_inner">
                                 <!--↓ 愛心加'active'，表示為有加入最愛 ↓-->
-                                <a class="btn_favorite active" data-ootdId="ootd<?= $inspirationKey ?>" href="javascript:;"><i class="icon_favorite_heart"></i></a>
+                                <a class="btn_favorite inspiration_favorite <?= (!empty($inspirationValue->like) ? 'active' : '')?>" data-ootdId="ootd<?= $inspirationKey ?>" href="javascript:;" data-id="<?= $inspirationValue->inspirationId ?>"><i class="icon_favorite_heart"></i></a>
                                 <!--↑ 愛心加'active'，表示為有加入最愛 ↑-->
                                 <a href="<?= website_url('inspiration/detail?inspirationId=' . $inspirationValue->inspirationId) ?>">
                                     <div class="thumb"><img src="<?= backend_url($inspirationValue->inspirationImg) ?>"></div>

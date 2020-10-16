@@ -44,7 +44,7 @@ class My_cart
 
         $this->_cart_contents = $this->CI->session->userdata('cart_contents');
         if($this->_cart_contents == NULL){
-            $this->_cart_contents = array('product_list' => array(),'shipping' => array(),'dividend' => 0,'coupon' => array(),'amount' => 0,'total' => 0,'all_total' => 0);
+            $this->_cart_contents = array('product_list' => array(),'shipping' => array(),'dividend' => 0,'coupon' => array(),'amount' => 0,'total' => 0,'original_total' => 0,'all_total' => 0,'original_all_total' => 0,'currency' => '');
         }
 
         $this->CI->load->model(array(
@@ -71,12 +71,30 @@ class My_cart
     }
 
     /**
+     * 取得美金總額
+     * 
+     * @return int
+     */
+    public function original_total(){
+        return round($this->_cart_contents['original_total']);
+    }
+
+    /**
      * 取得商品總額
      * 
      * @return int
      */
     public function total(){
-        return $this->_cart_contents['total'];
+        return round($this->_cart_contents['total']);
+    }
+
+    /**
+     * 取得含運費的美金總額
+     * 
+     * @return int
+     */
+    public function original_all_total(){
+        return round($this->_cart_contents['original_all_total']);
     }
 
     /**
@@ -85,7 +103,7 @@ class My_cart
      * @return int
      */
     public function all_total(){
-        return $this->_cart_contents['all_total'];
+        return round($this->_cart_contents['all_total']);
     }
 
     /**
@@ -116,6 +134,15 @@ class My_cart
     }
 
     /**
+     * 取得貨幣類別
+     * 
+     * @return string
+     */
+    public function currency(){
+        return $this->_cart_contents['currency'];
+    }
+
+    /**
      * 取得購物車產品列表
      * 
      * @return array
@@ -133,7 +160,8 @@ class My_cart
                 $productArray[$productValue->productId] = array(
                     'productId' => $productValue->productId,
                     'productName' => $productValue->name,
-                    'productPrice' => $productList[$productValue->productId]['price'],
+                    'productPrice' => round($productList[$productValue->productId]['price'] * $this->CI->session->userdata('currency')),
+                    'productOriginalPrice' => $productList[$productValue->productId]['price'],
                     'productIntroduction' => $productValue->introduction,
                     'productmainName' => $productValue->mainName,
                     'productminorName' => $productValue->minorName,
@@ -141,12 +169,14 @@ class My_cart
                     'productImg' => $productValue->productImg,
                     'productSize' => $productList[$productValue->productId]['size'],
                     'productColor' => $productList[$productValue->productId]['color'],
-                    'productQty' => $productList[$productValue->productId]['qty']
+                    'productQty' => $productList[$productValue->productId]['qty'],
+                    'productStatus' => $productList[$productValue->productId]['status']
                 );
             }
         }
         return $productArray;
     }
+    
 
     /**
      * 加入購物車
@@ -166,7 +196,8 @@ class My_cart
                     'qty' => $item['qty'],
                     'price' => $item['price'],
                     'size' => $item['size'],
-                    'color' => $item['color']
+                    'color' => $item['color'],
+                    'status' => $item['status'],
                 );
                 $this->_calc_cart();
             }catch(Exception $e){
@@ -231,9 +262,13 @@ class My_cart
      * 
      * @param array('shippingId','money')
      */
-    public function update_shipping($shipping){
-        $this->_cart_contents['shipping'] = $shipping;
-
+    public function update_shipping($shipping = false){
+        if($shipping){
+            $this->_cart_contents['shipping'] = $shipping;
+        }
+        if(isset($this->_cart_contents['shipping']['money'])){
+            $this->_cart_contents['shipping']['money'] = round($this->_cart_contents['shipping']['original_money'] * $this->CI->session->userdata('currency'));            
+        }
         $this->_calc_cart();
     }
 
@@ -262,36 +297,46 @@ class My_cart
      * 計算總金額
      * 
      */
-    private function _calc_cart(){
-        $amount = $total = $alltotal = 0;
+    public function _calc_cart(){
+        $amount = $total = $alltotal = $original_total = $original_all_total = 0;
 
         $productList = $this->_cart_contents['product_list'];
         foreach ($productList as $productKey => $productValue){
             $amount += $productValue['qty'];
-            $total += $productValue['qty']*$productValue['price'];            
+            $original_total = $productValue['qty']*$productValue['price'];
+            $total += round($productValue['qty']*$productValue['price'] * $this->CI->session->userdata('currency'));
         }
         //運費
         if(!empty($this->_cart_contents['shipping'])){
             $alltotal = $total+$this->_cart_contents['shipping']['money'];
+            $original_all_total = $original_total+$this->_cart_contents['shipping']['original_money'];
         }else{
             $alltotal = $total;
+            $original_all_total = $original_total;
         }
         //紅利
         if(!empty($this->_cart_contents['dividend'])){
             $alltotal = $alltotal-$this->_cart_contents['dividend'];
+            $original_all_total = $original_all_total-$this->_cart_contents['dividend'];
         }else{
             $alltotal = $alltotal;
+            $original_all_total = $original_all_total;
         }
         //折價券
         if(!empty($this->_cart_contents['coupon'])){
             $alltotal = $alltotal-$this->_cart_contents['coupon']['money'];
+            $original_all_total = $original_all_total-$this->_cart_contents['coupon']['money'];
         }else{
             $alltotal = $alltotal;
+            $original_all_total = $original_all_total;
         }
         
         $this->_cart_contents['amount'] = $amount;
         $this->_cart_contents['total'] = $total;
         $this->_cart_contents['all_total'] = $alltotal;
+        $this->_cart_contents['currency'] = $this->CI->session->userdata('money_type');
+        $this->_cart_contents['original_total'] = $original_total;
+        $this->_cart_contents['original_all_total'] = $original_all_total;
         $this->CI->session->set_userdata('cart_contents',$this->_cart_contents);
     }
 

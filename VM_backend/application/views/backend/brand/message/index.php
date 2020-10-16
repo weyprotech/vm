@@ -99,6 +99,10 @@
                     }
                 );
             },
+            "initComplete": function () {
+                $('div.back_button').html('<a class="btn btn-success" href="<?= site_url('backend/brand/brand') ?>"><i class="fa fa-reply" style="color:white"></i>Back brand list</button>')
+                $('div.back_button').css('float','left');
+            }
         });
     });
 </script>

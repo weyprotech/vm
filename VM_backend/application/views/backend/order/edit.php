@@ -119,6 +119,46 @@
                                         </div>
 
                                         <div class="form-group">
+                                            <label class="col-sm-2 control-label">Currency</label>
+
+                                            <div class="col-sm-5">
+                                                <input class="form-control" type="text" value="<?= strtoupper($row->currency) ?>" readonly>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">Shipping</label>
+
+                                            <div class="col-sm-5">
+                                                <input class="form-control" type="text" value="<?= $row->shipping ?>" readonly>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">Dividend</label>
+
+                                            <div class="col-sm-5">
+                                                <input class="form-control" type="text" value="<?= $row->dividend ?>" readonly>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">Coupon</label>
+
+                                            <div class="col-sm-5">
+                                                <input class="form-control" type="text" value="<?= !empty($coupon) ? $coupon->coupon_money : '' ?>" readonly>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">Total</label>
+
+                                            <div class="col-sm-5">
+                                                <input class="form-control" type="text" value="<?= $row->total ?>" readonly>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
                                             <label class="col-sm-2 control-label">Payment</label>
 
                                             <div class="col-sm-9 col-lg-8">
@@ -173,7 +213,7 @@
                                                         <td><?= $productValue->size ?></td>
                                                         <td><?= $productValue->color ?></td>
                                                         <td><?= $productValue->qty ?></td>
-                                                        <td><?= $productValue->price ?></td>
+                                                        <td><?= strtoupper($row->currency) ?>$ <?= round($productValue->price * $currency) ?></td>
                                                     </tr>
                                                 <?php } ?>                                               
                                             </tbody>

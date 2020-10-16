@@ -9,7 +9,7 @@
         <form class="payment_block" method="post">
             <div class="total_calculation">
                 <label>TOTAL</label>
-                <div class="total_amount">NTD $<?= $order->total ?></div>
+                <div class="total_amount"><?= $money_type ?> $<?= $order->total ?></div>
                 </div>
                 <div class="payment_method">
                     <h2 class="block_subtitle">Payment method</h2>

@@ -56,8 +56,8 @@ class Product extends Ajax_Controller
                     'brand' => $row->brandName,
                     'price' => $row->price,
                     'color' => '<a class="btn btn-primary" href="'.site_url('backend/product/color/index/'.$row->productId).'"><i class="fa fa-dashboard"></i><span class="hidden-mobile"> Color</span></button>',                
-                    'manufacture' => '<a class="btn btn-success" href="'.site_url('backend/product/manufacture/edit/'.$row->productId).'"><i class="fa fa-home"></i><span class="hidden-mobile"> Manufacture</span></button>',
-                    'fabric' => '<a class="btn btn-success" href="'.site_url('backend/product/fabric/edit/'.$row->productId).'"><i class="fa fa-slack"></i><span class="hidden-mobile"> Fabric</span></button>',
+                    'manufacture' => $row->manufacturer_name,
+                    'fabric' => $row->fabric_name,
                     'review' => '<a class="btn btn-warning" href="javascript:;"><i class="fa fa-weixin"></i><span class="hidden-mobile"> Reviews</span></button>',
                     'order' => $this->get_order('product', $row->productId, $row->order),
                     'action' => $this->get_button('edit', 'backend/product/product/edit/' . $row->productId . $query) . $this->get_button('delete', 'backend/product/product/delete/' . $row->productId . $query)

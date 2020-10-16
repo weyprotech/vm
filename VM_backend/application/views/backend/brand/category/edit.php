@@ -60,6 +60,36 @@
                                                 </label>
                                             </div>
                                         </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">icon</label>
+
+                                            <div class="col-sm-9">
+                                                <select class="form-control" id="store_icon" name="store_icon">
+                                                    <option value="store_icon" <?= $row->store_icon == 'store_icon' ? 'selected' : '' ?>>Default</option>
+                                                    <option value="store_icon_w" <?= $row->store_icon == 'store_icon_w' ? 'selected' : '' ?>>store_icon_w</option>
+                                                    <option value="store_icon_s" <?= $row->store_icon == 'store_icon_s' ? 'selected' : '' ?>>store_icon_s</option>
+                                                </select>
+                                            </div>
+                                            <br>
+                                        </div>               
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label"></label>
+
+                                            <div class="col-sm-9">
+                                            <?php switch($row->store_icon){ 
+                                                case 'store_icon': ?>
+                                                    <img id="store_icon_show" src="<?= base_url('assets/backend/img/leaflet/store_marker.svg') ?>" style="width:50px;height:50px">
+                                                    <?php break;
+                                                case 'store_icon_w': ?>
+                                                    <img id="store_icon_show" src="<?= base_url('assets/backend/img/leaflet/store_marker_w.svg') ?>" style="width:50px;height:50px">
+                                                    <?php break;
+                                                case 'store_icon_s': ?>
+                                                    <img id="store_icon_show" src="<?= base_url('assets/backend/img/leaflet/store_marker_s.svg') ?>" style="width:50px;height:50px">
+                                                    <?php break;
+                                            } ?>
+                                            </div>
+                                            <br>
+                                        </div>
                                     </fieldset>
                                 </div>
                                 <?php if ($this->langList): ?>
@@ -113,5 +143,19 @@
 
         $("#save, #back").click(function (e) {
         });
+    });
+
+    $('#store_icon').on('change',function () {        
+        switch($(this).val()){
+            case 'store_icon':
+                $('#store_icon_show').attr('src','<?= base_url('assets/backend/img/leaflet/store_marker.svg') ?>');
+                break;
+            case 'store_icon_w':
+                $('#store_icon_show').attr('src','<?= base_url('assets/backend/img/leaflet/store_marker_w.svg') ?>');
+                break;
+            case 'store_icon_s':
+                $('#store_icon_show').attr('src','<?= base_url('assets/backend/img/leaflet/store_marker_s.svg') ?>');
+                break;
+        }
     });
 </script>

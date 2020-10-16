@@ -15,6 +15,8 @@ class Product extends Frontend_Controller
         $this->load->model('designer/tb_post_model','tb_post_model');
         $this->load->model('brand/tb_brand_model','tb_brand_model');   
         $this->load->model('designer/tb_designer_post_message_model','tb_designer_post_message_model');
+        $this->load->model('manufacturer/tb_manufacturer_model','tb_manufacturer_model');
+        $this->load->model('fabric/tb_fabric_model','tb_fabric_model');
     }
 
     public function index()
@@ -110,8 +112,8 @@ class Product extends Frontend_Controller
         $designer = $this->tb_designer_model->get_designer_by_id($brand->designerId,$this->langId);
         $designer_bannerList = $this->tb_designer_banner_model->get_designer_banner_select(array(array('field' => 'banner.designerId','value' => $brand->designerId),array('field' => 'banner.is_visible','value' => 1),'other' => array('value' => 'banner.date > \''.date("Y-m-d").'\'')),array(array('field' => 'banner.order','dir' => 'desc')),false);
         $postList = $this->tb_post_model->get_post_select(array(array('field' => 'post.is_visible','value' => 1),array('field' => 'post.designerId','value' => $designer->designerId)),array(array('field' => 'post.order','dir' => 'desc')),array('start' => 0,'limit' => 3),$this->langId);
-        $manufacture = $this->tb_product_model->get_product_manufacture_select(array(array('field' => 'product_manufacture.pId','value' => $productId)),false,false,$this->langId);
-        $fabric = $this->tb_product_model->get_product_fabric_select(array(array('field' => 'product_fabric.pId','value' => $productId)),false,false,$this->langId);
+        $manufacture = $this->tb_manufacturer_model->get_manufacturer_by_id($row->manufacturerId,$this->langId);
+        $fabric = $this->tb_fabric_model->get_fabric_by_id($row->fabricId,$this->langId);
         $productList = $this->tb_product_model->get_product_select(array(array('field' => 'product.is_visible','value' => 1),'other' => array('value' =>'product.productId != \''.$productId.'\''),array('field' => 'product.subId','value' => $row->subId)),array(array('field' => 'product.Id','dir' => 'RANDOM')),false,$this->langId);
         $reviewList = $this->tb_product_review_model->get_product_review_select(array(array('field' => 'review.productId','value' => $productId)));
         $total_review_count = $this->tb_product_review_model->count_product_review(array(array('field' => 'review.productId','value' => $productId)));
@@ -164,7 +166,7 @@ class Product extends Frontend_Controller
         }else{
             $like = $this->tb_product_like_model->get_product_like_select(array(array('field' => 'product_like.productId','value' => $productId)),false,false);
         }
-
+        
         $data = array(
             'row' => $row,
             'product_banner' => $product_banner,
@@ -172,8 +174,8 @@ class Product extends Frontend_Controller
             'product_size' => $product_size,
             'brand' => $brand,
             'designer' => $designer,
-            'manufacture' => $manufacture[0],
-            'fabric' => $fabric[0],
+            'manufacture' => $manufacture,
+            'fabric' => $fabric,
             'postList' => $postList,
             'productList' => $productList,
             'base_category' => $base_category,
@@ -201,17 +203,21 @@ class Product extends Frontend_Controller
     }
 
     public function popup_manufacture($productId){
-        $manufacture = $this->tb_product_model->get_product_manufacture_select(array(array('field' => 'product_manufacture.pId', 'value' => $productId)), false, false, $this->langId);
+        $row = $this->tb_product_model->get_product_by_id($productId,$this->langId);
+        $manufacture = $this->tb_manufacturer_model->get_manufacturer_by_id($row->manufacturerId,$this->langId);
+
         $data = array(
-            'manufacture' => $manufacture[0]
+            'manufacture' => $manufacture
         );
         $this->load->view('content/product/manufacture_popup', $data);
     }
 
     public function popup_fabric($productId){
-        $fabric = $this->tb_product_model->get_product_fabric_select(array(array('field' => 'product_fabric.pId', 'value' => $productId)), false, false, $this->langId);
+        $row = $this->tb_product_model->get_product_by_id($productId,$this->langId);
+        $fabric = $this->tb_fabric_model->get_fabric_by_id($row->fabricId,$this->langId);
+
         $data = array(
-            'fabric' => $fabric[0]
+            'fabric' => $fabric
         );
         $this->load->view('content/product/fabric_popup', $data);
     }

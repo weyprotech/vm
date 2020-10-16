@@ -80,7 +80,7 @@
             "autoWidth": false,
             "ordering": false,
             "serverSide": true,
-            "sDom": "<'dt-toolbar'<'col-sm-9 hidden-xs' f><'col-xs-12 col-sm-3'tl>>" + "t" + "<'dt-toolbar-footer'<'col-sm-6 col-xs-12 hidden-xs'i><'col-xs-12 col-sm-6'p>>",
+            "sDom": "<'dt-toolbar'<'col-sm-9 hidden-xs' f><'col-xs-12 col-sm-3'l>>" + "t" + "<'dt-toolbar-footer'<'col-sm-6 col-xs-12 hidden-xs'i><'col-xs-12 col-sm-6'p>>",
             "oTableTools": {
             },
             "ajax": {

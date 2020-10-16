@@ -43,14 +43,13 @@
 
                     <h2>Edit</h2>
                     <ul class="nav nav-tabs pull-right in"><?php $i = 1; ?>
-                        <li class="active"><a data-toggle="tab" href="#hb<?= $i++ ?>">Content</a></li>
+                        <li><a data-toggle="tab" href="#hb<?= $i++ ?>">Content</a></li>
                         <?php if ($this->langList): ?>
                             <?php foreach ($this->langList as $lrow): ?>
                                 <li><a data-toggle="tab" href="#hb<?= $i++ ?>"><?= $lrow->name ?></a></li>
                             <?php endforeach; ?>
                         <?php endif; ?>
                         <li><a data-toggle="tab" href="#hb<?= $i++ ?>">Related Products</a></li>
-
                     </ul>
                 </header>
 
@@ -62,23 +61,22 @@
                             data-bv-feedbackicons-invalid="glyphicon glyphicon-remove"
                             data-bv-feedbackicons-validating="glyphicon glyphicon-refresh">
                             <input type="hidden" name="is_enable" value="1">
-                            <input type="hidden" name="uuid" value="<?= $row->uuid ?>">
-
+                            <input type="hidden" name="inspirationId" value="<?= $inspirationId ?>">
                             <div id="content" class="tab-content"><?php $i = 1; ?>
-                                <div class="tab-pane active" id="hb<?= $i++ ?>">
+                                <div class="tab-pane" id="hb<?= $i++ ?>">
                                     <fieldset>
-                                        <legend>OOTD Inspiration</legend>
+                                        <legend>Inspiration</legend>
                                         <div class="form-group">
                                             <label class="col-sm-2 control-label">Visible</label>
 
                                             <div class="col-sm-9">
                                                 <label class="radio radio-inline">
-                                                    <input type="radio" class="radiobox" name="is_visible" value="1" <?= $row->is_visible ? "checked" : "" ?>>
+                                                    <input type="radio" class="radiobox" name="is_visible" value="1" checked>
                                                     <span>Yes</span>
                                                 </label>
 
                                                 <label class="radio radio-inline">
-                                                    <input type="radio" class="radiobox" name="is_visible" value="0" <?= !$row->is_visible ? "checked" : "" ?>>
+                                                    <input type="radio" class="radiobox" name="is_visible" value="0">
                                                     <span>No</span>
                                                 </label>
                                             </div>
@@ -88,31 +86,26 @@
                                             <label class="col-sm-2 control-label">Image</label>
 
                                             <div class="col-sm-9">
-                                                <input type="file" class="btn btn-default" id="uploadImg" name="inspirationImg">
+                                                <input type="file" class="btn btn-default" id="uploadImg" name="inspirationImg"
+                                                    data-bv-notempty="true" data-bv-notempty-message=" "
+                                                    data-bv-file="true"
+                                                    data-bv-file-extension="jpeg,jpg,png,gif"
+                                                    data-bv-file-type="image/jpeg,image/png,image/gif"
+                                                    data-bv-file-message="Type error">
 
                                                 <p class="help-block">
                                                     <strong>Note:</strong>Picture width is <strong>240</strong>. Format is JPG and PNG</strong>。
                                                 </p>
 
                                                 <p class="help-block">
-                                                    <?php $inspirationImg = check_file_path($row->inspirationImg); ?>
-                                                    <img id="preview" src="<?= $inspirationImg ?>"<?= !$inspirationImg ? "display:none;" : "" ?>>
+                                                    <img id="preview" src="">
                                                 </p>
-                                            </div>
-                                        </div>                                       
-                                          
-                                        <div class="form-group">
-                                            <label class="col-sm-2 control-label">Sort</label>
-
-                                            <div class="col-sm-1">
-                                                <input class="form-control" name="order" value="<?= $row->order ?>">
                                             </div>
                                         </div>
                                     </fieldset>
                                 </div>
                                 <?php if ($this->langList): ?>
                                     <?php foreach ($this->langList as $lrow): ?>
-                                        <?php $langData = @$row->langList[$lrow->langId]; ?>
                                         <div class="tab-pane" id="hb<?= $i++ ?>">  
                                             <input type="hidden" name="langList[<?= $lrow->langId ?>][iId]" value="<?= $inspirationId ?>">
                                             <input type="hidden" name="langList[<?= $lrow->langId ?>][langId]" value="<?= $lrow->langId ?>">
@@ -124,7 +117,7 @@
                                                     <label class="col-sm-2 control-label" for="title-<?= $lrow->langId ?>">Title</label>
 
                                                     <div class="col-sm-9">
-                                                        <input type="text" class="form-control brand_name" name="langList[<?= $lrow->langId ?>][title]" value="<?= @$langData->title ?>" data-bv-notempty="true" data-bv-notempty-message=" ">                                                        
+                                                        <input type="text" class="form-control" name="langList[<?= $lrow->langId ?>][title]" data-bv-notempty="true" data-bv-notempty-message=" ">                                                        
                                                     </div>
                                                 </div>
 
@@ -135,7 +128,7 @@
                                                         <div id="content-edit"><?= @$langData->content ?></div>
                                                         <input type="hidden" id="content" name="langList[<?= $lrow->langId ?>][content]"  data-bv-notempty="true" data-bv-notempty-message=" ">
                                                     </div>
-                                                </div>
+                                                </div>                                                
                                             </fieldset>
                                         </div>
                                     <?php endforeach; ?>
@@ -157,33 +150,17 @@
                                                 <th width="10%" class="text-center">Action</th>
                                             </tr>
                                             </thead>
-                                            <tbody>
-                                                <?php if($relateproductList){
-                                                    foreach ($relateproductList as $relateproductKey => $relateproductValue){ ?>
-                                                        <tr id="tr_<?= $relateproductValue->Id ?>">
-                                                            <td><img src="<?= base_url($relateproductValue->productImg) ?>" style="height:200px"></td>
-                                                            <td><?= $relateproductValue->name ?></td>
-                                                            <td><?= $relateproductValue->baseName ?></td>
-                                                            <td><?= $relateproductValue->mainName ?></td>
-                                                            <td><?= $relateproductValue->minorName ?></td>
-                                                            <td><button type="button" class="btn btn-danger" onclick="delete_product('tr_<?= $relateproductValue->Id ?>')"><i class="glyphicon glyphicon-trash"></i><span class="hidden-mobile"> Delete</span></button></td>
-                                                            <input type="hidden" name="related[<?= $relateproductValue->Id ?>][Id]" value="<?= $relateproductValue->Id ?>">
-                                                            <input type="hidden" name="related[<?= $relateproductValue->Id ?>][pid]" value="<?= $relateproductValue->productId ?>">
-                                                            <input type="hidden" name="related[<?= $relateproductValue->Id ?>][iId]" value="<?= $row->inspirationId ?>">
-                                                        </tr>
-                                                       
-                                                    <?php }
-                                                } ?>
+                                            <tbody>                                               
                                             </tbody>
                                         </table>
                                     </fieldset>
-                                </div>
+                                </div>                            
                             </div>
 
                             <div class="widget-footer">
                                 <button type="submit" class="btn btn-primary" id="save" form="data-form">Save</button>
                                 <button type="submit" class="btn btn-primary" id="back" form="data-form" onclick="$('#data-form').attr('action', '<?= $this->query . (!empty($this->query) ? '&' : '?') ?>back=1');">Return After Saving</button>
-                                <button type="button" class="btn btn-default" onclick="location.href='<?= site_url("backend/homepage/inspiration" . $this->query) ?>';">Return</button>
+                                <button type="button" class="btn btn-default" onclick="location.href='<?= site_url("backend/inspiration/inspiration" . $this->query) ?>';">Return</button>
                             </div>
                         </form>
                     </div>
@@ -251,8 +228,10 @@
         tablet: 1024,
         phone: 480
     };
-    var $cId = $("#cId");
     var count = 0;
+    $('ul.nav-tabs li').eq(hash.substr(1)).addClass('active');
+    $('.tab-pane').eq(hash.substr(1)).addClass('active');
+
     $(document).ready(function () {
         $('input#uploadImg').change(function () {
             var $this = $(this);
@@ -272,7 +251,7 @@
                 $(this).siblings('input#content').val(content);
             });
         });
-        
+
         $('div#content-edit').each(function () {
             $(this).summernote({
                 height: 500,
@@ -309,9 +288,9 @@
                 "aButtons": []
             },
             "ajax": {
-                "url": "<?= site_url("backend/ajax/homepage/inspiration/get_product_data") ?>",
+                "url": "<?= site_url("backend/ajax/inspiration/inspiration/get_product_data") ?>",
                 "data": function (data) {
-                    data.inspirationId = '<?= $row->inspirationId ?>';
+                    data.inspirationId = '<?= $inspirationId ?>';
                     data.baseId = $('#myModal').find('div.main-select select').val();
                     data.subId = $('#myModal').find('div.minor-select select').val();
                     data.categoryId = $('#myModal').find('div.category-select select').val();
@@ -386,10 +365,9 @@
             }
         });
 
-
         $('form').bootstrapValidator({
             excluded: ""
-        });  
+        });
 
         $('body').on('click','button.add_product', function (){
             var error = 0;
@@ -409,13 +387,13 @@
                 '<td><button type="button" class="btn btn-danger" onclick="delete_product(\'new'+count+'\')"><i class="glyphicon glyphicon-trash"></i><span class="hidden-mobile"> Delete</span></button></td>'+
                 '<input type="hidden" name="related[new'+count+'][Id]" value="new">'+
                 '<input type="hidden" name="related[new'+count+'][pid]" value="'+$(this).data('id')+'">'+
-                '<input type="hidden" name="related[new'+count+'][iId]" value="<?= $row->inspirationId ?>">'+
+                '<input type="hidden" name="related[new'+count+'][iId]" value="<?= $inspirationId ?>">'+
                 '</tr>'
                 );
             }
             count++;
             $('#myModal').find('.close').click();
-        });       
+        });     
     });
 
     function get_category_option(selectId) {
@@ -438,7 +416,7 @@
 
     function sendFile(file, editor) {
         var data = new FormData();
-        data.append('inspirationId', '<?= $row->inspirationId ?>');
+        data.append('inspirationId', '<?= $inspirationId ?>');
         data.append("file", file);
 
         return $.ajax({
@@ -452,9 +430,5 @@
                 editor.summernote('editor.insertImage', url);
             }
         });
-    }
-
-    function delete_product(tr_id){
-        $('#'+tr_id).remove();
     }
 </script>

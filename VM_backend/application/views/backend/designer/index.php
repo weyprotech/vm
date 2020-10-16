@@ -42,7 +42,7 @@
                                 <table id="dt_basic" class="table table-bordered table-striped text-center">
                                     <thead>
                                     <tr>
-                                        <th width="30" class="text-center">Visible</th>
+                                        <th width="20" class="text-center">Visible</th>
                                         <th width="120" class="text-center hidden-tablet">Icon</th>
                                         <th width="180" class="text-center hidden-tablet">Image</th>
                                         <th width="200" class="text-center">Name</th>
@@ -53,7 +53,8 @@
                                         <th width="40" class="text-center">Just for you</th>
                                         <th width="40" class="text-center">Message</th>
                                         <th width="40" class="text-center">Review</th>
-                                        <th width="160" class="text-center">Action</th>
+                                        <th width="40" class="text-center">Make a Wish</th>
+                                        <th width="100" class="text-center">Action</th>
                                     </tr>
                                     </thead>
                                 </table>
@@ -126,6 +127,7 @@
                 {class: "", data: "just_for_you"},
                 {class: "", data: "message"},
                 {class: "", data: "review"},
+                {class: "", data: "make_wish"},
                 {class: "", data: "action"}
             ],
             "preDrawCallback": function () {

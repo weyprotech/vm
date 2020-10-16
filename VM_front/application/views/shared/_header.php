@@ -22,6 +22,9 @@
                 <div class="option_member <?=(isset($this->session->userdata('memberinfo')['memberId']))?"onlin":""?>">
                     <a href="<?= website_url('login') ?>"><i class="icon_member"></i></a>
                 </div>
+                <?php if(isset($this->session->userdata('memberinfo')['memberId'])){ ?>
+                    <div class="option_ID">Hi <?= $this->session->userdata('memberinfo')['memberLast_name'].' '.$this->session->userdata('memberinfo')['memberFirst_name']  ?></div>
+                <?php } ?>
                 <!--↑ 上線時，class加'online'，並且連結至'member_account.html'; 未上線時，連結至'login.html' ↑-->
                 <!--↓ 有產品在購物車時時，class加'have' ↓-->                
                 <div class="option_cart <?= (!empty($cart_productList) ? 'have' : '') ?>">
@@ -42,11 +45,12 @@
                                                 <!--↑ 3:4，顯示的圖片放在 pic 的 background-image，img.size 是撐開用的透明圖 ↑-->
                                             </a>
                                             <div class="content">
-                                                <div class="price">$ <?= $cartValue['productPrice'] ?></div>
+                                                <div class="price">$ <?= ($cartValue['productPrice']) ?></div>
                                                 <ul>
-                                                    <li>size: <?= $cartValue['productSize'] ?></li>
-                                                    <li>color: <?= $cartValue['productColor'] ?></li>
-                                                    <li>Qty: <?= $cartValue['productQty'] ?></li>
+                                                    <li>size: <?= ($cartValue['productSize']) ?></li>
+                                                    <li>color: <?= ($cartValue['productColor']) ?></li>
+                                                    <li>Qty: <?= ($cartValue['productQty']) ?></li>
+                                                    <!-- <li>Goods: <?= ($cartValue['productStatus'] == 0 ? 'Stock now' : '15-day pickup') ?></li> -->
                                                 </ul>
                                             </div>
                                         </div>
@@ -56,7 +60,7 @@
                             <div class="cart_foot">
                                 <div class="total_calculation">
                                     <div class="label">Subtotal</div>
-                                    <div class="total_amount">NTD $<?= $cart_total ?></div>
+                                    <div class="total_amount"><?= $money_type ?> $<?= $cart_total ?></div>
                                 </div>
                                 <a class="btn confirm" href="<?= website_url('order/index') ?>">CHECKOUT</a>                               
                             </div>

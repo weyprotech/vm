@@ -109,7 +109,7 @@
         </div>
     <?php } ?>
     
-    <div class="list_items_wrapper page_block">
+    <div class="list_items_wrapper page_block" id="explore_world">
         <div class="block_inner">
             <h2 class="block_title">Explore world</h2>
             <div class="block_main">
@@ -131,7 +131,16 @@
                         <?php }
                     } ?>
                 </div>
-                <a class="btn common more" href="javascript:;">More Designers</a>
+                <div class="pager_bar">
+                    <div class="pages">Page <?= $page ?> of <?= $total_page ?></div>
+                    <ul class="pager_navigation">
+                        <li class="prev"><a href="<?= website_url('designers/index') ?><?= (($page != 1) ? '?page='.($page-1) : '?page='.$page ) ?>#explore_world">&lt; Previous</a></li>
+                        <?php for($i=1;$i<=$total_page;$i++){ ?>
+                            <li <?= (($i == $page) ? 'class="current"' : '' )?>><a href="<?= website_url('designers/index').'?page='.$i ?>#explore_world"><?= $i ?></a></li>
+                        <?php } ?>
+                        <li class="next"><a href="<?= website_url('designers/index') ?><?= (($page != $total_page) ? '?page='.($page+1) : '?page='.$total_page ) ?>#explore_world">Next &gt;</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>

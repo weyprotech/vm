@@ -15,6 +15,7 @@ class Brand extends Backend_Controller
         $this->check_action_auth($this->menuId, 'view', true); // Check Auth
 
         $this->load->model('brand/tb_brand_model', 'brand_model');
+        $this->load->model('brand/tb_brand_category_model', 'brand_category_model');
         $this->load->model('designer/tb_designer_model','designer_model');
         $this->load->model('tb_location_model','location_model');
         $this->query = $this->set_http_query(array('search' => $this->input->get('search', true)));
@@ -30,7 +31,7 @@ class Brand extends Backend_Controller
         $this->check_action_auth($this->menuId, 'add', true); // Check Auth
         $brandId = uniqid();
         $locationList = $this->location_model->get_location_select(array(array('field' => 'tb_location.is_use','value' => 0)),false,false);
-
+        $categoryList = $this->brand_category_model->get_category_select(false, false, false, $this->langId);
         $designerList = $this->designer_model->get_designer_select(array(array('field' => 'designer.is_visible','value' => 1)),false,false,$this->langId);
         if($post = $this->input->post(null,true)){
             $location = $this->location_model->get_location_by_id($post['locationId']);
@@ -42,7 +43,7 @@ class Brand extends Backend_Controller
             }            
             redirect('backend/brand/brand/edit/' . $brandId . $this->query);
         }
-        $this->get_view('add',array('brandId' => $brandId,'designerList' => $designerList,'locationList' => $locationList));
+        $this->get_view('add',array('brandId' => $brandId,'designerList' => $designerList,'locationList' => $locationList, 'categoryList' => $categoryList));
     }
 
     public function edit($brandId = false)
@@ -52,6 +53,7 @@ class Brand extends Backend_Controller
             redirect('backend/brand/brand');
         endif;
 
+        $categoryList = $this->brand_category_model->get_category_select(false, false, false, $this->langId);
         $designerList = $this->designer_model->get_designer_select(array(array('field' => 'designer.is_visible','value' => 1)),false,false,$this->langId);
         $location = $this->location_model->get_location_by_id($row->locationId);
         $locationList = $this->location_model->get_location_select(array(array('field' => 'tb_location.is_use','value' => 0)),false,false);
@@ -83,6 +85,7 @@ class Brand extends Backend_Controller
         $data = array(
             'brandId' => $brandId,
             'row' => $row,
+            'categoryList' => $categoryList,
             'designerList' => $designerList,
             'locationList' => $locationList,
             'location' => $location

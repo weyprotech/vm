@@ -160,9 +160,10 @@ class Tb_brand_model extends MY_Model
     /******************** Private Function ********************/
     private function set_brand_join($langId)
     {
-        $this->db->select('brand.*,designer.grade, designer.designiconImg,location.streeId,location.number,location.location_x,location.location_y');
+        $this->db->select('brand.*,category.store_icon,designer.grade, designer.designiconImg,location.streeId,location.number,location.location_x,location.location_y');
         $this->db->join('tb_designer as designer','designer.designerId = brand.designerId','left');
         $this->db->join('tb_location as location','location.Id = brand.locationId','left');
+        $this->db->join('tb_brand_category as category','category.categoryId = brand.categoryId','left');
         if ($langId):
             $this->db->select('lang.name,lang.content,lang.brand_story_title,lang.brand_story_content,lang.brand_story_title2,lang.brand_story_content2,designer_lang.name as designer_name,designer_lang.country as country');
             $this->db->join('tb_brand_lang as lang', 'lang.brandId = brand.brandId AND lang.langId = ' . $langId);

@@ -19,7 +19,8 @@ class Shopping extends Ajax_Controller
 			$productid = $this->input->post('productid');
 			$quantity = $this->input->post('quantity');
             $sizeid = $this->input->post('size');
-            $colorid = $this->input->post('color');
+			$colorid = $this->input->post('color');
+			$status = $this->input->post('status');
 			
 			$row = $this->tb_product_model->get_product_by_id($productid, $this->langId);
 			$color = $this->tb_product_model->get_product_color_by_id($colorid,$this->langId);
@@ -30,10 +31,17 @@ class Shopping extends Ajax_Controller
 			}else{
 				$sale = false;
 			}
-			if($sale){
-				$this->my_cart->add_cart(array('productId' => $productid,'price' =>(($row->price)-($row->price*($saleinformation->discount/100))) ,'size' => $size->size,'qty' => $quantity,'color' => $color->color));				
+			//現貨價格、15天後價格
+			if($status == 0){
+				$price = $row->price;
 			}else{
-				$this->my_cart->add_cart(array('productId' => $productid,'price' => $row->price,'size' => $size->size,'qty' => $quantity,'color' => @$color->color));
+				$price = $row->fifteen_price;
+			}
+
+			if($sale){
+				$this->my_cart->add_cart(array('productId' => $productid,'price' =>(($price)-($price*($saleinformation->discount/100))) ,'size' => $size->size,'qty' => $quantity,'color' => $color->color,'status' => $status));				
+			}else{
+				$this->my_cart->add_cart(array('productId' => $productid,'price' => $price,'size' => $size->size,'qty' => $quantity,'color' => @$color->color,'status' => $status));
 			}
 
 			//購物車
@@ -98,10 +106,10 @@ class Shopping extends Ajax_Controller
 	public function update_cart_shipping(){
 		$shippingId = $this->input->post('shipping');
 		$shipping = $this->tb_shipping_model->get_shipping_by_id($shippingId,$this->langId);
-		$shipping_array = array('shippingId' => $shippingId,'money' => $shipping->money);
+		$shipping_array = array('shippingId' => $shippingId,'money' => $shipping->money,'original_money' => $shipping->money);
 		$this->my_cart->update_shipping($shipping_array);
 		$all_total = $this->my_cart->all_total();
-		echo json_encode(array('status' => 'success','all_total' => $all_total,'money' => $shipping->money));
+		echo json_encode(array('status' => 'success','all_total' => $all_total,'money' => round($shipping->money*$this->session->userdata('currency'))));
 		return true;
 	}
 }

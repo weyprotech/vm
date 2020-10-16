@@ -105,7 +105,7 @@
                                         </div>
                                     </div>
                                     <h3><?= $productValue->name ?></h3>
-                                    <div class="price">NT$ <?= $productValue->price ?></div>
+                                    <div class="price"><?= strtoupper($money_type) ?>$ <?= round($productValue->price * $currency) ?></div>
                                 </a>
                             </div>
                         <?php } ?>

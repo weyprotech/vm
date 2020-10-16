@@ -81,7 +81,7 @@ class Tb_designer_model extends MY_Model
         endif;
 
         if (isset($_FILES['aboutImg']) && !$_FILES['aboutImg']['error']):
-            $insert['aboutImg'] = $this->uploadFile('about', $post['designerId'] . '/', 600);
+            $insert['aboutImg'] = $this->uploadFile('about', $post['designerId'] . '/', 540);
         endif;
 
         if (isset($post['langList'])):
@@ -122,7 +122,7 @@ class Tb_designer_model extends MY_Model
         endif;
 
         if (isset($_FILES['aboutImg']) && !$_FILES['aboutImg']['error']):
-            $update['aboutImg'] = $this->uploadFile('about', $designer->designerId . '/', 600);
+            $update['aboutImg'] = $this->uploadFile('about', $designer->designerId . '/', 540);
         endif;
 
         if (isset($post['langList'])):

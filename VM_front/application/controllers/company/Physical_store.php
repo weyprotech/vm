@@ -12,11 +12,18 @@ class Physical_store extends Frontend_Controller
 
     public function index()
     {
+        if($this->langFile == 'tw'){
+            $this->pageMeta['title'][] = '實體店';
+        }else{
+            $this->pageMeta['title'][] = 'Physical Stores';
+        }
         $company = $this->company_model->get_company_information($this->langId);
+        $storeList = $this->physical_store_model->get_physical_store_select(false,array(array('field' => 'physical_store.order', 'dir' => 'desc')),false, $this->langId);
         $data = array(
-            'company' => $company
+            'company' => $company,
+            'storeList' => $storeList
         );
-        $this->get_view('company/policy',$data);
+        $this->get_view('company/about',$data);
     }
 
     private function get_view($page, $data = array(), $script = "")

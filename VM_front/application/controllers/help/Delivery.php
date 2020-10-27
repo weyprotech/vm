@@ -10,6 +10,11 @@ class Delivery extends Frontend_Controller
 
     public function index()
     {
+        if($this->langFile == 'tw'){
+            $this->pageMeta['title'][] = '交貨';
+        }else{
+            $this->pageMeta['title'][] = 'Delivery';
+        }
         $delivery = $this->delivery_model->get_delivery_information($this->langId);
         $data = array(
             'delivery' => $delivery

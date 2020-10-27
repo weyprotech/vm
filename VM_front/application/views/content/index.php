@@ -5,10 +5,10 @@
                 <div class="slide index_banner">
                     <div class="index_banner_icon">
                     <button class="btn confirm addCart index_banner_icon_flex btn_search_map" data-brandid="<?= $brandValue->brandId ?>" type="button">
-                        Search by Map
+                        <?= langText('index','search_map') ?>
                     </button>
                     <a class="btn confirm addCart index_banner_icon_flex " type="button" href="<?= website_url('brand/story').'?brandId='.$brandValue->brandId ?>">
-                        Search by Brand
+                        <?= langText('index','search_brand') ?>
                     </a>
                     </div>
                     <img src="<?= backend_url($brandValue->brandBanner[0]->bannerImg) ?>" alt="" />
@@ -26,14 +26,14 @@
             <div class="radio_switch" id="mapMode">
                 <input class="switch_off" id="day" type="radio" name="mapMode" checked>
                 <input class="switch_on" id="night" type="radio" name="mapMode">
-                <label class="switch_off_label" for="day"><span>Day mode</span></label>
-                <label class="switch_on_label" for="night"><span>Night mode</span></label>
+                <label class="switch_off_label" for="day"><span><?= langText('index','day_mode') ?></span></label>
+                <label class="switch_on_label" for="night"><span><?= langText('index','night_mode') ?></span></label>
                 <div class="turn_dot"></div>
             </div>
             <div class="isOpen" id="streetAside">
                 <a class="open_aside" href="javascript:;"><i class="arrow_double_left"></i></a>
                 <div class="aside_title">
-                    <h2>Shopping map</h2>
+                    <h2><?= langText('index','shopping_map') ?></h2>
                     <a class="close_aside" href="javascript:;"><i class="arrow_double_right"></i></a>
                 </div>
                 <div class="street_list"></div>
@@ -54,7 +54,7 @@
     <?php if(!empty($top_productList)){ ?>
         <div class="top_designers page_block">
             <div class="block_inner">
-            <h2 class="block_title">TOP PRODUCTS</h2>
+            <h2 class="block_title"><?= langText('index','top_product') ?></h2>
             <div class="block_main">
                 <div class="products_list">
                     <?php foreach ($top_productList as $productKey => $productValue){ ?>
@@ -76,7 +76,7 @@
                         </div>                
                     <?php } ?>            
                 </div>
-                <a class="btn common more" href="<?= website_url('product') ?>">All Products</a>
+                <a class="btn common more" href="<?= website_url('product') ?>"><?= langText('index','all_product') ?></a>
             </div>
             </div>
         </div>
@@ -84,7 +84,7 @@
     
     <?php if($runwayList) {?>
     <div class="what_next page_block">
-        <h2 class="block_title">What's Next</h2>
+        <h2 class="block_title"><?= langText('index','what') ?></h2>
         <div class="what_next_main scrollbar_x">
             <div class="items">
                 <?php foreach ($runwayList as $runwayKey => $runwayValue){ ?>
@@ -137,7 +137,7 @@
                         <div class="text_inner">
                             <div class="title"><?= $bannerValue->title ?></div>
                             <div class="subtitle"><?= $bannerValue->sub_title ?></div>
-                            <p><?= $bannerValue->content ?></p><a class="btn common more" href="javascript:;">SHOP NOW</a>
+                            <p><?= $bannerValue->content ?></p><a class="btn common more" href="javascript:;"><?= langText('index','shop_now') ?></a>
                         </div>
                     </div>
                 </div>
@@ -146,7 +146,7 @@
     </div>
     <div class="ootd_list_wrapper page_block">
         <div class="block_inner wide">
-            <h2 class="block_title">OOTD Inspirations</h2>
+            <h2 class="block_title"><?= langText('index','inspiration') ?></h2>
             <div class="block_main">
                 <div class="ootd_list">
                     <div class="grid_sizer"></div>
@@ -168,7 +168,7 @@
                         </div>
                     <?php } ?>
                     <!--↑ 穿搭的list，15筆 ↑-->
-                </div><a class="btn common more" href="<?= website_url('inspiration/index') ?>">MORE</a>
+                </div><a class="btn common more" href="<?= website_url('inspiration/index') ?>"><?= langText('index','more') ?></a>
             </div>
         </div>
     </div>

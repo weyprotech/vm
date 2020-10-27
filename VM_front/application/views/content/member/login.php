@@ -27,7 +27,7 @@
                             </div>
                         </div>
                         <div class="call_action">
-                            <button class="btn confirm" id="login">Sign In</button>
+                            <button class="btn confirm" id="login" data-type="<?= $type ?>">Sign In</button>
                         </div>
                         <div class="create_link">Not a member? &nbsp; <a class="popup" href="<?= website_url('create_account') ?>">Create Account</a></div>
                     </div>

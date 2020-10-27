@@ -329,16 +329,20 @@
                                                     <time class="date"><?= $postValue->update_at ?></time>
                                                     <div class="text"><?= $postValue->content ?></div>
                                                 </div>
-                                                <div class="post_media">
-                                                    <a class="thumb <?= count($postValue->imgList) > 1 ? 'has_more' : (!empty($postValue->imgList[0]->youtube) ? 'is_video' : '') ?> popup" href="<?= website_url('designers/popup/post/'.$postValue->postId) ?>">
-                                                        <div class="pic" style="background-image: url(<?= backend_url($postValue->imgList[0]->postImg) ?>);">
-                                                            <img class="size" src="<?= base_url('assets/images/size_16x9.png') ?>">
-                                                        </div>
-                                                        <?php if(count($postValue->imgList) > 1){ ?>
-                                                            <div class="btn common">More +</div>
-                                                        <?php } ?>
-                                                    </a>
-                                                </div>
+                                                <?php if(!empty($postValue->imgList)){ ?>
+                                                    <div class="post_media">
+                                                        <a class="thumb <?= is_array($postValue->imgList) ? (count(@$postValue->imgList) > 1 ? 'has_more' : (!empty($postValue->imgList[0]->youtube) ? 'is_video' : '')) : '' ?> popup" href="<?= website_url('designers/popup/post/'.$postValue->postId) ?>">
+                                                            <div class="pic" style="background-image: url(<?= backend_url($postValue->imgList[0]->postImg) ?>);">
+                                                                <img class="size" src="<?= base_url('assets/images/size_16x9.png') ?>">
+                                                            </div>
+                                                            <?php if(is_array($postValue->imgList)){
+                                                                if(count(@$postValue->imgList) > 1){ ?>
+                                                                    <div class="btn common">More +</div>
+                                                                <?php }
+                                                            } ?>
+                                                        </a>
+                                                    </div>
+                                                <?php } ?>
                                             </div>
                                             <div class="comments_block">
                                                 <div class="comments_title"><i class="icon_msg"></i>
@@ -377,7 +381,7 @@
                                                                     <?php if(!empty($messageValue->response)){ ?>
                                                                         <div class="msg reply">
                                                                             <div class="profile_picture">
-                                                                                <div class="pic" style="background-image: url(<?= backend_url($row->designiconImg) ?>);">
+                                                                                <div class="pic" style="background-image: url(<?= backend_url($designer->designiconImg) ?>);">
                                                                                     <img class="size" src="<?= base_url('assets/images/size_1x1.png') ?>">
                                                                                 </div>
                                                                             </div>
@@ -395,7 +399,7 @@
                                                             <?php endforeach;
                                                         endif; ?>
                                                     </div>
-                                                    <a class="open_comments" href="javascript:;">See more comments</a>
+                                                    <!-- <a class="open_comments" href="javascript:;">See more comments</a> -->
                                                 </div>
                                             </div>
                                         </div>

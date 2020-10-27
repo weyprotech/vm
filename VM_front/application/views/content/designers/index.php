@@ -86,7 +86,7 @@
     <?php if(!empty($designer_story)){ ?>
         <div class="list_slider_wrapper page_block designer_story">
             <div class="block_inner">
-                <h2 class="block_title">Designer Story</h2>
+                <h2 class="block_title"><?= langText('designer','designer_story') ?></h2>
                 <div class="block_main">
                     <div class="list_slider">                        
                         <?php foreach($designer_story as $storyKey => $storyValue){ ?>
@@ -111,7 +111,7 @@
     
     <div class="list_items_wrapper page_block" id="explore_world">
         <div class="block_inner">
-            <h2 class="block_title">Explore world</h2>
+            <h2 class="block_title"><?= langText('designer','explore_world') ?></h2>
             <div class="block_main">
                 <div class="list_items">
                     <?php if(!empty($designerList)){
@@ -132,13 +132,15 @@
                     } ?>
                 </div>
                 <div class="pager_bar">
-                    <div class="pages">Page <?= $page ?> of <?= $total_page ?></div>
+                    <div class="pages"><?= langText('designer','page') ?> <?= $page ?> <?= langText('designer','of') ?> <?= $total_page ?></div>
                     <ul class="pager_navigation">
-                        <li class="prev"><a href="<?= website_url('designers/index') ?><?= (($page != 1) ? '?page='.($page-1) : '?page='.$page ) ?>#explore_world">&lt; Previous</a></li>
-                        <?php for($i=1;$i<=$total_page;$i++){ ?>
+                        <li class="prev" style="margin-right:0px"><a href="<?= website_url('designers/index') ?><?= (($page != 1) ? '?page='.($page-1) : '?page='.$page ) ?>#explore_world">&lt;</a></li>
+                        <li><a href="<?= website_url('designers/index').'?page='.((((floor($page/10)-1)*10)+1) < 1 ? 1 : (((floor($page/10)-1)*10)+1)) ?>#explore_world">...</a></li>
+                        <?php for($i=($page % 10 == 0 ? $page-9 : (floor($page/10)*10)+1);$i<=($total_page > (ceil($page/10))*10 ? (ceil($page/10))*10 : $total_page);$i++){ ?>
                             <li <?= (($i == $page) ? 'class="current"' : '' )?>><a href="<?= website_url('designers/index').'?page='.$i ?>#explore_world"><?= $i ?></a></li>
                         <?php } ?>
-                        <li class="next"><a href="<?= website_url('designers/index') ?><?= (($page != $total_page) ? '?page='.($page+1) : '?page='.$total_page ) ?>#explore_world">Next &gt;</a></li>
+                        <li><a href="<?= website_url('designers/index').'?page='.(((ceil($page/10))*10+1) < $total_page ? ((ceil($page/10))*10+1) : $total_page) ?>#explore_world">...</a></li>
+                        <li class="next" style="margin-left:0;"><a href="<?= website_url('designers/index') ?><?= (($page != $total_page) ? '?page='.($page+1) : '?page='.$total_page ) ?>#explore_world">&gt;</a></li>
                     </ul>
                 </div>
             </div>

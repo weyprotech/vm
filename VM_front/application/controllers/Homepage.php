@@ -35,6 +35,8 @@ class Homepage extends Frontend_Controller
                 $runwayList[$designerKey]->imgList = $this->tb_runway_model->get_runway_img_select(array(array('field' => 'runway_img.runwayId', 'value' => $temp[0]->runwayId)), array(array('field' => 'runway_img.runwayId', 'dir' => 'asc')));
             }
         }
+        $popup = $this->tb_runway_model->get_runway_select(false, array(array('field' => 'runway.runwayId', 'dir' => 'RANDOM')),array('start' => 0,'limit' => 1), $this->langId);
+
         $saleinformation = $this->tb_sale_model->get_sale_information();
         if($top_productList){
             foreach ($top_productList as $productKey => $productValue){
@@ -57,10 +59,11 @@ class Homepage extends Frontend_Controller
             'saleinformation' => $saleinformation,
             'homepageBanner' => $homepageBanner,
             'inspirationList' => $inspirationList,
-            'runwayList' => $runwayList
+            'runwayList' => $runwayList,
+            'popup' => $popup
         );
 
-        $this->get_view('index', $data, $this->load->view('shared/script/_index_script', array('currency' => $this->session->userdata('currency')), true));
+        $this->get_view('index', $data, $this->load->view('shared/script/_index_script', array('currency' => $this->session->userdata('currency'),'popup' => $popup), true));
     }
 
     private function get_view($page, $data = array(), $script = "")

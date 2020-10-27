@@ -12,6 +12,11 @@ class Events extends Frontend_Controller
         $this->load->model('designer/tb_designer_model','tb_designer_model');
         $this->load->model('designer/tb_post_model','tb_post_model');
         $this->load->model('product/tb_sale_model','tb_sale_model');
+        if($this->langFile == 'tw'){
+            $this->pageMeta['title'][] = '最新資訊';
+        }else{
+            $this->pageMeta['title'][] = 'Events';
+        }
     }
 
     public function index()
@@ -40,6 +45,8 @@ class Events extends Frontend_Controller
     public function detail(){
         $eventId = $this->input->get('eventId',true);
         $row = $this->tb_events_model->get_events_by_id($eventId,$this->langId);
+        $this->pageMeta['title'][] = $row->title;
+
         $eventList = $this->tb_events_model->get_events_select(array(array('field' => 'events.is_visible','value' => 1),array('field' => 'events.category','value' => 0),'other' => array('value' => "events.eventId != '".$eventId."'")),array(array('field' => 'events.order','dir' => 'RANDOM')),array('start' => 0,'limit' => 3),$this->langId);
         $data = array(
             'row' => $row,

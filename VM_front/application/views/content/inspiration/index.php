@@ -11,11 +11,18 @@
                         <div class="item">
                             <div class="item_inner">
                                 <!--↓ 愛心加'active'，表示為有加入最愛 ↓-->
-                                <a class="btn_favorite" data-ootdId="ootd<?= $inspirationKey ?>" href="javascript:;">
-                                    <i class="icon_favorite_heart"></i>
-                                </a>
+                                <?php if($this->session->userdata('memberinfo') && !empty($inspiration_likeList)){                                     
+                                    foreach($inspiration_likeList as $inspiration_likeValue)?>
+                                    <?php if($inspiration_likeValue->inspirationId == $inspirationValue->inspirationId){ ?>
+                                        <a class="btn_favorite active" id="inspiration_like" data-ootdId="ootd01" href="javascript:;" onclick="click_like('<?= $inspirationValue->inspirationId ?>');"><i class="icon_favorite_heart"></i></a>
+                                    <?php }else{ ?>
+                                        <a class="btn_favorite" id="inspiration_like" data-ootdId="ootd01" href="javascript:;" onclick="click_like('<?= $inspirationValue->inspirationId ?>');"><i class="icon_favorite_heart"></i></a>
+                                    <?php } ?>
+                                <?php }else{ ?>
+                                    <a class="btn_favorite" id="inspiration_like" data-ootdId="ootd01" href="javascript:;" onclick="click_like('<?= $inspirationValue->inspirationId ?>');"><i class="icon_favorite_heart"></i></a>
+                                <?php } ?>  
                                 <!--↑ 愛心加'active'，表示為有加入最愛 ↑-->
-                                <a href="ootd_detail.html">
+                                <a href="<?= website_url('inspiration/detail?inspirationId=' . $inspirationValue->inspirationId) ?>">
                                     <div class="thumb">
                                         <img src="<?= backend_url($inspirationValue->inspirationImg) ?>">
                                     </div>
@@ -32,3 +39,18 @@
         </div>
     </div>
 </main>
+
+<script>
+    function click_like(inspirationId)
+    {
+        $.ajax({
+            url:'<?= website_url('ajax/inspiration/set_like') ?>',
+            type:'post',
+            dataType:'json',
+            data:{"inspirationId" : inspirationId},
+            success: function(response){
+                location.reload();
+            }
+        });
+    }
+</script>

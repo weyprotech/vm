@@ -5,11 +5,8 @@ class Brand extends Ajax_Controller
     public function __construct()
     {
         parent::__construct();
-        if (!is_logged_in()):
-            redirect("admin");
-        endif;
-
         $this->load->model('brand/tb_brand_model', 'brand');
+        $this->load->model('brand/tb_brand_message_model','tb_brand_message_model');
     }
 
     /******************** brand ********************/
@@ -24,7 +21,12 @@ class Brand extends Ajax_Controller
         echo json_encode($data);
     }
 
-
+    public function set_brand_message(){
+        $post = $this->input->post(null,true);
+        $this->tb_brand_message_model->insert_brand_message(array('brandId' => $post['brandid'],'message' => $post['message'],'memberId' => $this->session->userdata('memberinfo')['memberId']));
+        $response = 'success';
+        echo json_encode(array('response' => $response,'img' => backend_url($this->session->userdata('memberinfo')['memberImg']),'name' => $this->session->userdata('memberinfo')['memberLast_name'].$this->session->userdata('memberinfo')['memberFirst_name'],'create_at' => date('Y-m-d')));
+    }
     
     /******************** End brand ********************/
 }

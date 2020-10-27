@@ -298,11 +298,12 @@ $(function() {
     }); 
 
 
-
-    // Open a URL in a lightbox
-    var lightbox = lity(
-      "//www.youtube.com/embed/-pPHyof98kk?rel=0&autoplay=1"
-    );
+    <?php if(isset($popup[0])){ ?>
+        // Open a URL in a lightbox
+        var lightbox = lity(
+        "//www.youtube.com/embed/<?= youtube_id($popup[0]->live_youtube) ?>?rel=0&autoplay=1&mute=1"
+        );
+    <?php } ?>
 
     // Bind as an event handler
     $(document).on("click", "[data-lightbox]", lity);

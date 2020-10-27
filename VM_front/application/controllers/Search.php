@@ -9,7 +9,11 @@ class Search extends Frontend_Controller
         $this->load->model('product/tb_product_model','tb_product_model');
         $this->load->model('events/tb_events_model','tb_events_model');
         $this->load->model('product/tb_sale_model','tb_sale_model');
-
+        if($this->langFile == 'tw'){
+            $this->pageMeta['title'][] = '搜尋';
+        }else{
+            $this->pageMeta['title'][] = 'Search';
+        }
     }
 
     public function index()

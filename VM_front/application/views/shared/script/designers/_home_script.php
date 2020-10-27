@@ -2,6 +2,12 @@
 
 <script>
     $(function() {
+        <?php if(!empty($gift)){ ?>
+            swal({
+                'type':'success',
+                'html':'<p>thanks for your gift</p>'
+            })
+        <?php } ?>
         // 愛心的點擊事件
         $(document).on('click', '.btn_favorite', function(event) {
             // designerId 取得設計師的 ID

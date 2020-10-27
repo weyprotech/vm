@@ -18,14 +18,17 @@ class Order extends Ajax_Controller
         $start = $this->input->post('start', true);
         $limit = $this->input->post('length', true);
         $search = check_input_value($this->input->post('search[value]', true));
+        $status = $this->input->post('status',true);
         $this->load->model('order/tb_order_model', 'order');
 
-        $filter['like'] = array('field' => 'lang.name', 'value' => $search);
+        $filter = array(
+                    array('field' => 'order.status', 'value' => $status),
+                    'other' => array('value' => "(`order`.`orderId` LIKE '%$search%' or `order`.`first_name` LIKE '%$search%' or `order`.`country` LIKE '%$search%' or `order`.`phone` LIKE '%$search%')")
+                );
         
-        $order = array(array('field' => 'order.date', 'dir' => 'desc'));
+        $order = array(array('field' => 'order.create_at', 'dir' => 'desc'));
         $query = $this->set_http_query(array('search' => $search));
 
-        
         $orderList = $this->order->get_order_select($filter, $order, array('limit' => $limit, 'start' => $start), $this->langId);
         $recordsTotal = $this->order->count_order($filter, $this->langId);
 
@@ -33,13 +36,16 @@ class Order extends Ajax_Controller
             foreach ($orderList as $row):
                 switch ($row->status){
                     case '0':
-                        $status = '尚未付款';
+                        $row_status = 'Not paid yet';
                         break;
                     case '1':
-                        $status = '待確認付款';
+                        $row_status = 'Paid';
                         break;
                     case '2':
-                        $status = '已付款';
+                        $row_status = 'Delivered';
+                        break;
+                    case '3':
+                        $row_status = 'Finished';
                         break;
                 }
                 $data[] = array(
@@ -47,7 +53,7 @@ class Order extends Ajax_Controller
                     'date' => $row->date,
                     'currency' => strtoupper($row->currency),
                     'total' => $row->total,
-                    'status' => $status,
+                    'status' => $row_status,
                     'country' => $row->country,
                     'name' => $row->first_name.' '.$row->last_name,
                     'phone' => $row->phone,

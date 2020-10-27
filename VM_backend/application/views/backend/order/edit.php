@@ -25,8 +25,8 @@
 
                     <h2>Edit</h2>
                     <ul class="nav nav-tabs pull-right in">
-                        <li class="active"><a data-toggle="tab" href="#hb1">訂單資料</a></li>
-                        <li><a data-toggle="tab" href="#hb2">商品資訊</a></li>
+                        <li class="active"><a data-toggle="tab" href="#hb1">Order</a></li>
+                        <li><a data-toggle="tab" href="#hb2">Product List</a></li>
                     </ul>
                 </header>
 
@@ -119,6 +119,34 @@
                                         </div>
 
                                         <div class="form-group">
+                                            <label class="col-sm-2 control-label">Status</label>
+
+                                            <div class="col-sm-5">
+                                                <label class="radio radio-inline">
+                                                    <input type="radio" class="radiobox" name="status" value="0" <?= $row->status == 0 ? 'checked' : '' ?>>
+                                                    <span>Not paid yet</span>
+                                                </label>
+
+                                                <label class="radio radio-inline">
+                                                    <input type="radio" class="radiobox" name="status" value="1" <?= $row->status == 1 ? 'checked' : '' ?>>
+                                                    <span>Paid</span>
+                                                </label>
+
+                                                <label class="radio radio-inline">
+                                                    <input type="radio" class="radiobox" name="status" value="2" <?= $row->status == 2 ? 'checked' : '' ?>>
+                                                    <span>Delivered</span>
+                                                </label>
+
+                                                <label class="radio radio-inline">
+                                                    <input type="radio" class="radiobox" name="status" value="3" <?= $row->status == 3 ? 'checked' : '' ?>>
+                                                    <span>Finished</span>
+                                                </label>
+                                            </div>
+                                        </div>
+
+                                        <legend>Order Money</legend>
+
+                                        <div class="form-group">
                                             <label class="col-sm-2 control-label">Currency</label>
 
                                             <div class="col-sm-5">
@@ -146,7 +174,7 @@
                                             <label class="col-sm-2 control-label">Coupon</label>
 
                                             <div class="col-sm-5">
-                                                <input class="form-control" type="text" value="<?= !empty($coupon) ? $coupon->coupon_money : '' ?>" readonly>
+                                                <input class="form-control" type="text" value="<?= !empty($coupon) ? round($coupon->coupon_money * $currency) : '' ?>" readonly>
                                             </div>
                                         </div>
 
@@ -158,20 +186,80 @@
                                             </div>
                                         </div>
 
+                                        <legend>Payment</legend>
+
                                         <div class="form-group">
-                                            <label class="col-sm-2 control-label">Payment</label>
+                                            <label class="col-sm-2 control-label">Payment Status</label>
 
                                             <div class="col-sm-9 col-lg-8">
                                                 <label class="radio radio-inline">
-                                                    <input type="radio" class="radiobox status" id="status1" name="status" value="0">
-                                                    <span>not paid yet</span>
-                                                </label>
-                                                <label class="radio radio-inline">
-                                                    <input type="radio" class="radiobox status" id="status1" name="status" value="1">
-                                                    <span>Paid</span>
-                                                </label>                                                                                         
+                                                    <?= $row->rtn_msg == '付款成功' ? 'Succeeded' : '' ?>
+                                                </label>                                                                                                                                    
                                             </div>
                                         </div>
+
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">Ecpay Order Number</label>
+
+                                            <div class="col-sm-9 col-lg-8">
+                                                <label class="radio radio-inline">
+                                                    <?= $row->trade_no ?>
+                                                </label>                                                                                                                                    
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">Payment Type</label>
+
+                                            <div class="col-sm-9 col-lg-8">
+                                                <label class="radio radio-inline">
+                                                    <?= $row->payment_type ?>
+                                                </label>                                                                                                                                    
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">Payment Date</label>
+
+                                            <div class="col-sm-9 col-lg-8">
+                                                <label class="radio radio-inline">
+                                                    <?= $row->payment_date ?>
+                                                </label>                                                                                                                                    
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">Payment Virtual Account</label>
+
+                                            <div class="col-sm-9 col-lg-8">
+                                                <label class="radio radio-inline">
+                                                    <?= $row->v_account ?>
+                                                </label>                                                                                                                                    
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">Payment Type Charge Fee</label>
+
+                                            <div class="col-sm-9 col-lg-8">
+                                                <label class="radio radio-inline">
+                                                    <?= $row->payment_type_charge_fee ?>
+                                                </label>                                                                                                                                    
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">Trade Amount<br>(TWD)</label>
+
+                                            <div class="col-sm-9 col-lg-8">
+                                                <label class="radio radio-inline">
+                                                    <?= $row->trade_amount ?>
+                                                </label>                                                                                                                                    
+                                            </div>
+                                        </div>
+
+                                        <legend>Delivery</legend>
+
                                         <div class="form-group">
                                             <label class="col-sm-2 control-label">Delivery Date</label>
 

@@ -11,6 +11,11 @@ class Popular_designers extends Frontend_Controller
         $this->load->model('designer/tb_post_model','tb_post_model');
         $this->load->model('brand/tb_brand_model','tb_brand_model');
         $this->load->model('designer/tb_designer_like_model','tb_designer_like_model');
+        if($this->langFile == 'tw'){
+            $this->pageMeta['title'][] = '熱門設計師';
+        }else{
+            $this->pageMeta['title'][] = 'Popular designers';
+        }
     }
 
     public function index()

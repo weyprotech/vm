@@ -278,7 +278,7 @@ class My_cart
      * @param int
      */
     public function update_dividend($dividend){
-        $this->_cart_contents['dividend'] = $dividend;
+        $this->_cart_contents['dividend'] = $dividend * $this->CI->session->userdata('currency');
         $this->_calc_cart();
     }
 
@@ -289,6 +289,27 @@ class My_cart
      */
     public function update_coupon($coupon){
         $this->_cart_contents['coupon'] = $coupon;
+        $this->_cart_contents['coupon']['money'] = $coupon['money'] * $this->CI->session->userdata('currency');
+        $this->_calc_cart();
+    }
+
+    /**
+     * 重置紅利
+     * 
+     *
+     */
+    public function reset_dividend(){
+        $this->_cart_contents['dividend'] = 0;
+        $this->_calc_cart();
+    }
+
+    /**
+     * 重置折價券
+     * 
+     *
+     */
+    public function reset_coupon(){
+        $this->_cart_contents['coupon'] = array();
         $this->_calc_cart();
     }
 
@@ -317,7 +338,7 @@ class My_cart
         //紅利
         if(!empty($this->_cart_contents['dividend'])){
             $alltotal = $alltotal-$this->_cart_contents['dividend'];
-            $original_all_total = $original_all_total-$this->_cart_contents['dividend'];
+            $original_all_total = $original_all_total-($this->_cart_contents['dividend'] / $this->CI->session->userdata('currency'));
         }else{
             $alltotal = $alltotal;
             $original_all_total = $original_all_total;
@@ -325,12 +346,11 @@ class My_cart
         //折價券
         if(!empty($this->_cart_contents['coupon'])){
             $alltotal = $alltotal-$this->_cart_contents['coupon']['money'];
-            $original_all_total = $original_all_total-$this->_cart_contents['coupon']['money'];
+            $original_all_total = $original_all_total-($this->_cart_contents['coupon']['money'] / $this->CI->session->userdata('currency'));
         }else{
             $alltotal = $alltotal;
             $original_all_total = $original_all_total;
         }
-        
         $this->_cart_contents['amount'] = $amount;
         $this->_cart_contents['total'] = $total;
         $this->_cart_contents['all_total'] = $alltotal;

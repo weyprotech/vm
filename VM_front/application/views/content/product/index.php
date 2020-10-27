@@ -100,11 +100,13 @@
             <div class="pager_bar">
                 <div class="pages">Page <?= $page ?> of <?= $total_page ?></div>
                 <ul class="pager_navigation">
-                    <li class="prev"><a href="<?= website_url('product/index') ?><?= (($page != 1) ? '?page='.($page-1) : '?page='.$page ) ?><?= !empty($sort) ? '&sort='.$sort : '' ?><?= !empty($categoryId) ? '&categoryId='.$categoryId : '' ?><?= !empty($subId) ? '&subId='.$subId : '' ?><?= !empty($baseId) ? '&baseId='.$baseId : '' ?>">&lt; Previous</a></li>
-                    <?php for($i=1;$i<=$total_page;$i++){ ?>
+                    <li class="prev" style="margin-right:0px"><a href="<?= website_url('product/index') ?><?= (($page != 1) ? '?page='.($page-1) : '?page='.$page ) ?><?= !empty($sort) ? '&sort='.$sort : '' ?><?= !empty($categoryId) ? '&categoryId='.$categoryId : '' ?><?= !empty($subId) ? '&subId='.$subId : '' ?><?= !empty($baseId) ? '&baseId='.$baseId : '' ?>">&lt;</a></li>
+                    <li><a href="<?= website_url('product/index').'?page='.((((floor($page/10)-1)*10)+1) < 1 ? 1 : (((floor($page/10)-1)*10)+1)) ?><?= !empty($categoryId) ? '&categoryId='.$categoryId : '' ?><?= !empty($subId) ? '&subId='.$subId : '' ?><?= !empty($baseId) ? '&baseId='.$baseId : '' ?>">...</a></li>
+                    <?php for($i=($page % 10 == 0 ? $page-9 : (floor($page/10)*10)+1);$i<=($total_page > (ceil($page/10))*10 ? (ceil($page/10))*10 : $total_page);$i++){ ?>
                         <li <?= (($i == $page) ? 'class="current"' : '' )?>><a href="<?= website_url('product/index').'?page='.$i ?><?= !empty($categoryId) ? '&categoryId='.$categoryId : '' ?><?= !empty($subId) ? '&subId='.$subId : '' ?><?= !empty($baseId) ? '&baseId='.$baseId : '' ?>"><?= $i ?></a></li>
                     <?php } ?>
-                    <li class="next"><a href="<?= website_url('product/index') ?><?= (($page != $total_page) ? '?page='.($page+1) : '?page='.$total_page ) ?><?= !empty($sort) ? '&sort='.$sort : '' ?><?= !empty($categoryId) ? '&categoryId='.$categoryId : '' ?><?= !empty($subId) ? '&subId='.$subId : '' ?><?= !empty($baseId) ? '&baseId='.$baseId : '' ?>">Next &gt;</a></li>
+                    <li><a href="<?= website_url('product/index').'?page='.(((ceil($page/10))*10+1) < $total_page ? ((ceil($page/10))*10+1) : $total_page) ?><?= !empty($categoryId) ? '&categoryId='.$categoryId : '' ?><?= !empty($subId) ? '&subId='.$subId : '' ?><?= !empty($baseId) ? '&baseId='.$baseId : '' ?>">...</a></li>
+                    <li class="next" style="margin-left:0;"><a href="<?= website_url('product/index') ?><?= (($page != $total_page) ? '?page='.($page+1) : '?page='.$total_page ) ?><?= !empty($sort) ? '&sort='.$sort : '' ?><?= !empty($categoryId) ? '&categoryId='.$categoryId : '' ?><?= !empty($subId) ? '&subId='.$subId : '' ?><?= !empty($baseId) ? '&baseId='.$baseId : '' ?>">&gt;</a></li>
                 </ul>
             </div>
         </div>

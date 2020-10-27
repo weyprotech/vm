@@ -188,8 +188,9 @@ class Tb_post_model extends MY_Model
         $this->set_filter($filter);
         $this->set_order($order);
         $this->set_limit($limit);
-        $this->set_message_join();
-        $query = $this->db->get('tb_designer_post_message as message');    
+        $this->db->select('message.*, member.first_name, member.last_name, member.memberImg as memberImg');
+        $this->db->join('tb_member as member','member.memberId = message.memberId','inner');
+        $query = $this->db->get('tb_designer_post_message as message');
 
         if ($query->num_rows() > 0):
             return $query->result();
@@ -271,10 +272,6 @@ class Tb_post_model extends MY_Model
     /******************** End post Model ********************/
 
     /******************** Private Function ********************/
-    private function set_message_join(){
-        $this->db->select('message.*,member.*');
-        $this->db->join('tb_member as member','message.memberId = member.memberId','left');
-    }
     /*************** 處理資料 ***************/
     private function check_db_data($post)
     {

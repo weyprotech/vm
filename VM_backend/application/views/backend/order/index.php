@@ -13,9 +13,8 @@
         float: none;
     }
 
-    .main-select, .minor-select, .category-select{
-        padding-left: 5px;
-        padding-bottom: 5px;
+    .input-group{
+        margin-left:5px;
     }
 </style>
 <section id="widget-grid" class="">
@@ -75,7 +74,7 @@
             tablet: 1024,
             phone: 480
         };
-
+        var status = {0:'Not paid yet',1:'Paid',2:'Delivered',3:'Finished'};
         var $Table = $('#dt_basic').DataTable({
             "displayStart": <?= $start = check_input_value($this->input->get('start', true), true, 0) ?>,
             "pageLength": <?= $length = check_input_value($this->input->get('length', true), true, 25) ?>,
@@ -83,7 +82,7 @@
             "autoWidth": false,
             "ordering": false,
             "serverSide": true,
-            "sDom": "<'dt-toolbar'<'col-sm-9 hidden-xs' <'main-select input-group'><'minor-select input-group'><'category-select input-group'>><'col-xs-12 col-sm-3'Tl>>" + "t" + "<'dt-toolbar-footer'<'col-sm-6 col-xs-12 hidden-xs'i><'col-xs-12 col-sm-6'p>>",
+            "sDom": "<'dt-toolbar'<'col-sm-9 hidden-xs' f<'status-select input-group'><'payment_type-select input-group'><'dateFrom input-group hidden-tablet'><'dateTo input-group hidden-tablet'>><'col-xs-12 col-sm-3'Tl>>" + "t" + "<'dt-toolbar-footer'<'col-sm-6 col-xs-12 hidden-xs'i><'col-xs-12 col-sm-6'p>>",
             "oTableTools": {
                 "aButtons": [
                 //     {
@@ -102,6 +101,16 @@
             "ajax": {
                 "url": "<?= site_url("backend/ajax/order/order/get_order_data") ?>",
                 "data": function (data) {
+                    data.page = '<?= $page ?>';
+
+                    var status = $('div.status-select select').val();
+                    data.status = status != undefined ? status : '<?= $this->input->get('status',true) ?>';
+
+                    var startDate = $('div.dateFrom input').val();
+                    data.startDate = startDate != undefined ? startDate : "<?= $this->input->get('startDate',true) ?>";
+
+                    var endDate = $('div.dateTo input').val();
+                    data.endDate = endDate != undefined ? endDate : "<?= $this->input->get('endDate',true) ?>";
                 },
                 "type":'post'
             },
@@ -137,8 +146,19 @@
                     }
                 );
             },
-            "initComplete": function () {                
+            "initComplete": function () {      
+                $status = $('div.status-select').html('<span class="input-group-addon">Status</span><select class="form-control"></select>')
+                    .find('select').html('<option value="">All</option>').change(function () {
+                        $Table.draw();
+                    });
+                option_init($status,status);
             }
         });
     });
+
+    function option_init(select,option){
+        $.each(option,function(index,value){
+            select.append('<option value="'+index+'">'+value+'</option>');
+        });
+    }
 </script>

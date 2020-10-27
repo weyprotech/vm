@@ -22,7 +22,12 @@ class Order extends Backend_Controller
 
     public function index()
     {
-        $this->get_view('index');
+        $data = array(
+            'page' => $this->input->get('page', true),
+            'startDate' => $this->input->get('startDate',true),
+            'endDate' => $this->input->get('endDate',true)
+        );
+        $this->get_view('index',$data);
     }
 
     public function edit($orderId = false)

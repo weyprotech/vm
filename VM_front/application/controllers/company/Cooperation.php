@@ -10,6 +10,11 @@ class Cooperation extends Frontend_Controller
 
     public function index()
     {
+        if($this->langFile == 'tw'){
+            $this->pageMeta['title'][] = '合作';
+        }else{
+            $this->pageMeta['title'][] = 'Cooperation';
+        }
         $company = $this->company_model->get_company_information($this->langId);
         $data = array(
             'company' => $company

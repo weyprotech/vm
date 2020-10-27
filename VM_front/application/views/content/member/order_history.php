@@ -35,14 +35,17 @@
                                     <div class="td" data-label="Status">
                                         <?php switch($orderValue->status){ 
                                             case 0: ?>                                            
-                                                <span class="font_khaki">Go to pay</span>                                            
+                                                <span class="font_khaki">Not paid yet</span>
                                             <?php break;
                                             case 1: ?>
-                                                <span class="font_red">In transit</span>
+                                                Paid
                                             <?php break;
                                             case 2: ?>
                                                 Delivered
                                             <?php break;
+                                            case 3: ?>
+                                                Finished
+                                            <?php break;;
                                         } ?>
                                     </div>
                                 </a>

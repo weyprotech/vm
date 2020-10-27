@@ -7,6 +7,7 @@ class Homepage extends Ajax_Controller
         parent::__construct();
         $this->load->model('tb_location_model', 'location_model');
         $this->load->model('brand/tb_brand_model', 'brand_model');
+        $this->load->model('money/tb_money_model','money_model');
     }
 
     /******************** homepage ********************/
@@ -65,5 +66,27 @@ class Homepage extends Ajax_Controller
         echo json_encode($json);
     }
     
+
+    public function set_currency(){
+        $money_type = $this->input->post('money_type',true);
+        $this->session->set_userdata('money_type',$money_type);
+        /***** 取得幣值 ******/
+        $moneyList = array();
+        if($money_type != null){ 
+            $moneyList = $this->money_model->get_money_select(false,false,false);
+            switch($money_type){
+                case 'eur':
+                    $currency = $moneyList[0]->eur_value;
+                    break;
+                case 'twd':
+                    $currency = $moneyList[0]->twd_value;
+                    break;
+                default:
+                    $currency = 1;
+            }
+            $this->session->set_userdata('currency',$currency);
+        }
+        echo json_encode(array('status' => 'success'));
+    }
     /******************** End homepage ********************/
 }

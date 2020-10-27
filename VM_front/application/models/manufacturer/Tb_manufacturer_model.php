@@ -37,7 +37,6 @@ class Tb_manufacturer_model extends MY_Model
         $this->set_manufacturer_join($langId);
         $this->set_filter(array(array('field' => 'manufacturer.is_enable', 'value' => $boolean['enable']), array('field' => 'manufacturer.is_visible', 'value' => $boolean['visible'])));
         $query = $this->db->where('manufacturer.manufacturerId', $manufacturerId)->get('tb_manufacturer as manufacturer');
-
         if ($query->num_rows() > 0):
             $manufacturer = $query->row();
             if (!$langId):
@@ -48,48 +47,6 @@ class Tb_manufacturer_model extends MY_Model
         endif;
 
         return false;
-    }
-
-    public function insert_manufacturer($post)
-    {
-        $post['create_at'] =  date("Y-m-d H:i:s");
-        $post['is_enable'] = 1;
-        $post['is_visible'] = 1;
-        $insert = $this->check_db_data($post);
-        if (isset($_FILES['manufacturerImg']) && !$_FILES['manufacturerImg']['error']):
-            $insert['manufacturerImg'] = $this->uploadFile('manufacturer',  $post['manufacturerId'] . '/', 600);
-        endif;
-
-        if (isset($post['langList'])):
-            foreach ($post['langList'] as $i => $lrow):
-                $post['langList'][$i] = $this->check_db_data($lrow);
-            endforeach;
-
-            $this->update_manufacturer_lang($post['manufacturerId'], $post['langList']);
-        endif;
-
-        $this->insert('tb_manufacturer', $insert);
-        return $this->db->insert_id();
-    }
-
-    public function update_manufacturer($manufacturer, $post)
-    {
-        $update = $this->check_db_data($post);
-
-        if (isset($_FILES['manufacturerImg']) && !$_FILES['manufacturerImg']['error']):
-            $update['manufacturerImg'] = $this->uploadFile('manufacturer', $manufacturer->manufacturerId . '/', 600);
-        endif;
-
-        if (isset($post['langList'])):
-            foreach ($post['langList'] as $i => $lrow):
-                $post['langList'][$i] = $this->check_db_data($lrow);
-            endforeach;
-
-            $this->update_manufacturer_lang($manufacturer->manufacturerId, $post['langList']);
-        endif;
-
-        $this->update('tb_manufacturer', $update, array('manufacturerId' => $manufacturer->manufacturerId));
-        return true;
     }
 
     public function delete_manufacturer($manufacturer)
@@ -113,22 +70,6 @@ class Tb_manufacturer_model extends MY_Model
         return $langList;
     }
 
-    private function update_manufacturer_lang($manufacturerId, $update)
-    {
-        $this->db->where('manufacturerId', $manufacturerId)->update_batch('tb_manufacturer_lang', $update, 'langId');
-      
-        $langList = $this->get_manufacturer_lang_select(array(array('field' => 'manufacturerId', 'value' => $manufacturerId)));
-        $insert = array_diff_key($update, $langList);
-        if (!empty($insert)):
-            foreach ($insert as $i => $lrow):
-                $insert[$i] = array_merge($lrow, array('create_at' => date("Y-m-d H:i:s")));
-            endforeach;
-
-            return $this->db->insert_batch('tb_manufacturer_lang', $insert);
-        endif;
-
-        return true;
-    }
     /*************** End manufacturer Lang Model ***************/
     /******************** End manufacturer Model ********************/
 

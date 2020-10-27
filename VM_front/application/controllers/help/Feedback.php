@@ -12,6 +12,11 @@ class Feedback extends Frontend_Controller
 
     public function index()
     {
+        if($this->langFile == 'tw'){
+            $this->pageMeta['title'][] = '反饋';
+        }else{
+            $this->pageMeta['title'][] = 'Feedback';
+        }
         $type = $this->input->get('type',true);
         if($post = $this->input->post(null,true)){
             $captcha = $this->input->post('g-recaptcha-response',TRUE);   

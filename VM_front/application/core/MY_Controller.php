@@ -35,31 +35,14 @@ class Frontend_Controller extends MY_Controller
         parent::__construct();
         $this->set_lang($this->uri->segment(1));
         $this->pageMeta = array(
-            'title' => array('VETRINA MIA'),
+            'title' => array('YMYX'),
             'description' => '',
             'image' => '',
             'url' => current_url()
         );
         
-        $this->load->helper('cookie');
-        $this->money_type = get_cookie('money_type');
-        /***** 取得幣值 ******/
-        $this->moneyList = array();
-        if($this->money_type != null){ 
-            $this->moneyList = $this->money_model->get_money_select(false,false,false);
-            switch($this->money_type){
-                case 'eur':
-                    $this->currency = $this->moneyList[0]->eur_value;
-                    break;
-                case 'twd':
-                    $this->currency = $this->moneyList[0]->twd_value;
-                    break;
-                default:
-                    $this->currency = 1;
-            }
-            $this->session->set_userdata('currency',$this->currency);
-            $this->session->set_userdata('money_type',$this->money_type);
-        }
+        $this->money_type = $this->session->userdata('money_type');
+        $this->currency = $this->session->userdata('currency');
     }
 
     public function get_frontend_view($page, $data = array(), $script = "", $productId = false, $category = array('menu_basecategory' => '', 'menu_subcategory' => '', 'menu_category' => ''))

@@ -20,8 +20,8 @@
                 <div class="breadcrumbs">
                     <div class="breadcrumbs_inner">
                         <i class="icon_story"></i>
-                        <a href="<?= website_url('designers/home?designerId='.$designer->designerId) ?>">Designer</a>
-                        <span>/</span><span class="current">Brand</span>
+                        <a href="<?= website_url('designers/home?designerId='.$designer->designerId) ?>"><?= langText('brand','designer') ?></a>
+                        <span>/</span><span class="current"><?= langText('brand','brand') ?></span>
                     </div>
                 </div>
                 <div class="brand_name">
@@ -31,7 +31,7 @@
                     <h2><?= $row->name ?></h2>
                 </div>
                 <div class="intro_text">
-                    <p><?= nl2br($row->content) ?></p>
+                    <p class="first_up"><?= nl2br($row->content) ?></p>
                 </div>
                 <div class="share_links">
                     Share<a class="facebook" href="javascript:;" target="_blank"><i class="icon_share_facebook"></i></a>
@@ -85,15 +85,15 @@
         <?php }?>
         <div class="item">
             <div class="designer_link">
-                <h3>Brand Designer</h3>
-                <a class="btn common more" href="<?= website_url('designers/home').'?designerId='.$row->designerId ?>">Find Out</a>
+                <h3><?= langText('brand','brand_designer') ?></h3>
+                <a class="btn common more" href="<?= website_url('designers/home').'?designerId='.$row->designerId ?>"><?= langText('brand','find_out') ?></a>
             </div>
         </div>
     </div>
     <?php if($productList){ ?>
         <div class="shop_look page_block">
             <div class="block_inner">
-                <h2 class="block_title">Shop the Look</h2>
+                <h2 class="block_title"><?= langText('brand','shop_the_look') ?></h2>
                 <div class="block_main">
                     <div class="products_list">
                         <?php foreach ($productList as $productKey => $productValue){ ?>
@@ -109,7 +109,7 @@
                                 </a>
                             </div>
                         <?php } ?>
-                    </div><a class="btn common more" href="product.html">All Products</a>
+                    </div><a class="btn common more" href="<?= website_url('product/brand_product').'?brandId='.$row->brandId  ?>"><?= langText('brand','all_products') ?></a>
                 </div>
             </div>
         </div>
@@ -117,7 +117,7 @@
     <?php if($postList){ ?>
         <div class="related_post page_block">
             <div class="block_inner">
-            <h2 class="block_title">Related Post</h2>
+            <h2 class="block_title"><?= langText('brand','related_post') ?></h2>
             <div class="block_main">
                 <div class="related_post_list scrollbar_x">
                     <?php foreach ($postList as $postKey => $postValue){ 
@@ -136,73 +136,70 @@
                             </div>
                         <?php }
                     } ?>
-                </div><a class="btn common more" href="<?= website_url('designers/home').'?designerId='.$row->designerId ?>">View All</a>
+                </div><a class="btn common more" href="<?= website_url('designers/home').'?designerId='.$row->designerId ?>"><?= langText('brand','view_all') ?></a>
             </div>
             </div>
         </div>
     <?php } ?>
     <div class="message_wrapper page_block">
         <div class="block_inner">
-            <h2 class="block_title">Messages</h2>
+            <h2 class="block_title"><?= langText('brand','messages') ?></h2>
             <div class="block_main">
                 <div class="comments_block message_block">
                     <div class="comments_content">
-                        <!-- <div class="comments_form">
-                            <div class="profile_picture">
-                                <div class="pic" style="background-image: url(https://source.unsplash.com/rDEOVtE7vOs/100x100);"><img class="size" src="images/size_1x1.png"></div>
-                            </div>
-                            <div class="controls">
-                                <textarea placeholder="Leave us a message…"></textarea>
-                                <button type="button">Send</button>
-                            </div>
-                        </div> -->
-                        <div class="comments_messages">
-                            <div class="item">
-                                <div class="msg">
-                                    <div class="profile_picture">
-                                        <div class="pic" style="background-image: url(https://source.unsplash.com/JQDflNNnrEE/100x100);"><img class="size" src="<?= base_url('assets/images/size_1x1.png') ?>"></div>
-                                    </div>
-                                    <div class="msg_content">
-                                        <div class="title">
-                                            <div class="name">Lily Allen</div>
-                                            <div class="divide_line"></div>
-                                            <div class="time">2019.08.01 18:05</div>
-                                        </div>
-                                        <div class="text">Hello! I really love your design!</div>
-                                    </div>
-                                </div>
-                                <!-- <div class="msg reply">
-                                    <div class="profile_picture">
-                                        <div class="pic" style="background-image: url(images/img_profile.jpg);"><img class="size" src="<?= base_url('assets/images/size_1x1.png') ?>"></div>
-                                    </div>
-                                    <div class="msg_content">
-                                        <div class="title">
-                                            <div class="name">Lauren Jensen</div>
-                                            <div class="divide_line"></div>
-                                            <div class="time">2019.08.01 18:05</div>
-                                        </div>
-                                        <div class="text">Thank you ：）</div>
-                                    </div>
-                                </div> -->
-                            </div>
-                            <div class="item">
-                                <div class="msg">
+                        <?php if(isset($this->session->userdata('memberinfo')['memberId'])){  ?>
+                            <div class="comments_form">
                                 <div class="profile_picture">
-                                    <div class="pic" style="background-image: url(https://source.unsplash.com/rDEOVtE7vOs/100x100);"><img class="size" src="<?= base_url('assets/images/size_1x1.png') ?>"></div>
+                                    <div class="pic" style="background-image: url(<?= backend_url($this->session->userdata('memberinfo')['memberImg']) ?>);"><img class="size" src="<?= base_url('assets/images/size_1x1.png') ?>"></div>
                                 </div>
-                                <div class="msg_content">
-                                    <div class="title">
-                                    <div class="name">Annie ELe</div>
-                                    <div class="divide_line"></div>
-                                    <div class="time">2019.08.01 18:05</div>
-                                    </div>
-                                    <div class="text">Hello! I really love your design!</div>
-                                </div>
+                                <div class="controls">
+                                    <textarea placeholder="Leave us a message…"></textarea>
+                                    <button type="button" class="brand_message" data-brandid="<?= $row->brandId ?>"><?= langText('brand','send') ?></button>
                                 </div>
                             </div>
+                        <?php } ?>
+                        <div class="comments_messages">
+                            <?php if(!empty($messageList)){
+                                foreach($messageList as $messageKey => $messageValue){ ?>
+                                    <div class="item">
+                                        <div class="msg">
+                                            <div class="profile_picture">
+                                                <div class="pic" style="background-image: url(<?= backend_url($messageValue->memberImg) ?>);"><img class="size" src="<?= base_url('assets/images/size_1x1.png') ?>"></div>
+                                            </div>
+                                            <div class="msg_content">
+                                                <div class="title">
+                                                <div class="name"><?= $messageValue->last_name.$messageValue->first_name ?></div>
+                                                <div class="divide_line"></div>
+                                                <?php $date = explode(" ",$messageValue->create_at); ?>
+                                                <div class="time"><?= $date[0] ?></div>
+                                                </div>
+                                                <div class="text"><?= $messageValue->message ?></div>
+                                            </div>
+                                        </div>
+                                        <?php if(!empty($messageValue->response)){ ?>
+                                            <div class="msg reply">
+                                                <div class="profile_picture">
+                                                    <div class="pic" style="background-image: url(<?= backend_url($row->brandiconImg) ?>);">
+                                                        <img class="size" src="<?= base_url('assets/images/size_1x1.png') ?>">
+                                                    </div>
+                                                </div>
+                                                <div class="msg_content">
+                                                    <div class="title">
+                                                    <div class="name"><?= langText('brand','reply') ?></div>
+                                                    <div class="divide_line"></div>
+                                                    <div class="time"><?= $messageValue->update_at ?></div>
+                                                    </div>
+                                                    <div class="text"><?= $messageValue->response ?></div>
+                                                </div>
+                                            </div>
+                                        <?php } ?>
+                                    </div>
+                                <?php }
+                            } ?>
                         </div>
                     </div>
-                </div><a class="btn common more" href="javascript:;">All Messages</a>
+                </div>
+                <!-- <a class="btn common more" href="javascript:;">All Messages</a> -->
             </div>
         </div>
     </div>

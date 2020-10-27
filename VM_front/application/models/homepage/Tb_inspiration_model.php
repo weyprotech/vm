@@ -161,7 +161,7 @@ class Tb_inspiration_model extends MY_Model
         $this->set_limit($limit);
         $this->set_inspiration_related_product_join($langId);
         $array = array();
-        $query = $this->db->get('tb_inspiration_related_product as relate_product');
+        $query = $this->db->where('product.is_enable', 1)->get('tb_inspiration_related_product as relate_product');     
         if ($query->num_rows() > 0):
             foreach ($query->result() as $lrow):
                 $array[$lrow->Id] = $lrow;
@@ -210,7 +210,7 @@ class Tb_inspiration_model extends MY_Model
 
     private function set_inspiration_related_product_join($langId)
     {
-        $this->db->select('relate_product.Id,product.productImg,product.price,product.productId,inspiration.inspirationImg,inspiration.inspirationId');
+        $this->db->select('relate_product.Id,product.productImg,product.price,product.productId,inspiration.inspirationImg,inspiration.inspirationId, product.is_enable');
         $this->db->join('tb_product as product','product.productId = relate_product.pId','left');
         $this->db->join('tb_inspiration as inspiration','inspiration.inspirationId = relate_product.iId','left');
         $this->db->join('tb_product_category as minor', 'minor.categoryId = product.cId AND minor.is_enable', 'left');

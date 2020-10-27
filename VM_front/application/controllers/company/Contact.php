@@ -12,6 +12,11 @@ class Contact extends Frontend_Controller
 
     public function index()
     {
+        if($this->langFile == 'tw'){
+            $this->pageMeta['title'][] = '聯絡我們';
+        }else{
+            $this->pageMeta['title'][] = 'Contact';
+        }
         $type = $this->input->get('type',true);
         $area_numberList = $this->area_number_model->get_area_number_select(array(array('field' => 'area_number.is_visible','value' => 1)),false,false,$this->langId);
         $topicList = $this->topic_model->get_topic_select(array(array('field' => 'topic.is_visible','value' => 1)),false,false,$this->langId);

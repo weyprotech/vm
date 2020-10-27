@@ -7,7 +7,13 @@
             <th>Order Number</th>
             <td>No.<?= $order->orderId ?></td>
             </tr>
-            <tr>
+            <?php if(!empty($order->v_account)){ ?>
+                <tr>
+                    <th>Payment virtual account number</th>
+                    <td><?= $order->v_account ?></td>
+                </tr>
+            <?php } ?>
+            <tr>            
             <th>Date</th>
             <td><?= $order->date ?></td>
             </tr>

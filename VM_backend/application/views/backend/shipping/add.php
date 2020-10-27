@@ -59,7 +59,7 @@
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <label class="col-sm-2 control-label" for="name-<?= $lrow->langId ?>">Money</label>
+                                                    <label class="col-sm-2 control-label" for="name-<?= $lrow->langId ?>">Money<br>(USD)</label>
 
                                                     <div class="col-sm-3">
                                                         <input class="form-control" type="text" id="name-<?= $lrow->langId ?>" name="langList[<?= $lrow->langId ?>][money]" data-bv-notempty="true" data-bv-notempty-message=" ">

@@ -10,6 +10,12 @@ class Forgot_password extends Frontend_Controller
 
     public function index()
     {
+        if($this->langFile == 'tw'){
+            $this->pageMeta['title'][] = '忘記密碼';
+        }else{
+            $this->pageMeta['title'][] = 'Forgot password';
+        }
+
         $type = $this->input->get('type',true);
         if($post = $this->input->post(null,true)){
             if($member = $this->member_model->get_member_select(array(array('field' => 'member.email','value' => $post['email'])))){
@@ -30,7 +36,7 @@ class Forgot_password extends Frontend_Controller
                 // $content .= '+---------------------------------------------+<br /><br /><br />';
 
                 // $content = "+----------------------------------------------+<br />";
-                $content .= $title."\n";                
+                $content .= $title."\n";
                 $content .= 'New password:' . $num;
                 $this->load->library('email');
                 $a=$this->email->attach(base_url('assets/images/logo.png'),'','VETRINA MIA');

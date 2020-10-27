@@ -18,12 +18,18 @@ class Designers extends Frontend_Controller
         $this->load->model('designer/tb_designer_like_model','tb_designer_like_model');
         $this->load->model('designer/tb_wish_model', 'tb_wish_model');
         $this->load->model('member/tb_member_model','member_model');
-        $this->load->model('member/tb_gift_designer_model','tb_gift_designer_model');
+        $this->load->model('designer/tb_gift_designer_model','tb_gift_designer_model');
+        $this->load->library('my_pay_ecpay');
+        if($this->langFile == 'tw'){
+            $this->pageMeta['title'][] = '設計師';
+        }else{
+            $this->pageMeta['title'][] = 'Designers';
+        }
     }
 
     public function index()
     {
-        $page = $this->input->get('page',true);
+        $page = $this->input->get('page',true) == null ? '1' : $this->input->get('page',true);        
         $top_designerList = $this->tb_designer_model->get_designer_select(array(array('field' => 'designer.is_visible','value' => 1)),array(array('field'=>'designer.order','dir' => 'desc')),array('start' => 0,'limit' => 4),$this->langId);
         $designerList = $this->tb_designer_model->get_designer_select(array(array('field'=>'designer.is_visible','value' => 1)),array(array('field'=>'designer.order','dir' => 'desc')),array('start' => ($page*10)+4,'limit' =>'10'),$this->langId);        
         $designer_story = $this->tb_designer_model->get_designer_select(array(array('field' => 'designer.is_visible','value' => 1),array('field' => 'designer.is_designer_story','value' => 1)),array(array('field' => 'designer.designerId','dir' => 'RANDOM')),false,$this->langId);
@@ -72,10 +78,12 @@ class Designers extends Frontend_Controller
 
     public function home(){
         $designerId = $this->input->get('designerId', true);
+        $gift = $this->input->get('gift',true);
         if($designerId == ''){
             redirect(website_url('designers/index'));
         }
-        $row = $this->tb_designer_model->get_designer_by_id($designerId, $this->langId);    
+        $row = $this->tb_designer_model->get_designer_by_id($designerId, $this->langId);   
+        $this->pageMeta['title'][] = $row->name;
 
         if($runway = $this->tb_runway_model->get_runway_select(array(array('field' => 'runway.designerId','value' => $designerId)),false,false,$this->langId)){
             $runway_imgList = $this->tb_runway_model->get_runway_img_select(array(array('field' => 'runway_img.runwayId','value' => $runway[0]->runwayId)),array(array('field' => 'runway_img.order','dir' => 'desc')),false);
@@ -109,7 +117,7 @@ class Designers extends Frontend_Controller
             'brandList' => $brandList,
             'link' => $this->load->view('content/designers/_links', array('row' => $row, 'designer_bannerList' => $designer_bannerList, 'brandList' => $brandList, 'like' => $like, 'likecount' => $likecount), true)
         );
-        $this->get_view('designers/home',$data,$this->load->view('shared/script/designers/_home_script','',true));
+        $this->get_view('designers/home',$data,$this->load->view('shared/script/designers/_home_script',array('gift' => $gift),true));
     }
 
     public function profile(){
@@ -117,7 +125,10 @@ class Designers extends Frontend_Controller
         if(!$designerId){
             redirect(website_url('designers/index'));
         }
+        
         $row = $this->tb_designer_model->get_designer_by_id($designerId,$this->langId);
+        $this->pageMeta['title'][] = $row->name;
+
         $brandList = $this->tb_brand_model->get_brand_select(array(array('field' => 'brand.designerId','value' => $designerId)),false,false,$this->langId);
 
         //讀取愛心
@@ -141,6 +152,7 @@ class Designers extends Frontend_Controller
         $designerId = $this->input->get('designerId',true);
         $row = $this->tb_designer_model->get_designer_by_id($designerId,$this->langId);
         $designer_bannerList = $this->tb_designer_banner_model->get_designer_banner_select(array(array('field' => 'banner.designerId', 'value' => $designerId), array('field' => 'banner.is_visible', 'value' => 1), 'other' => array('value' => '(banner.date = \'\' || banner.date is NULL || banner.date > \''.date("Y-m-d").'\')')), array(array('field' => 'banner.order', 'dir' => 'desc')));
+        $this->pageMeta['title'][] = $row->name;
 
         if($designerId == ''){
             redirect(website_url('designers/index'));
@@ -221,6 +233,8 @@ class Designers extends Frontend_Controller
         $row = $this->tb_designer_model->get_designer_by_id($designerId,$this->langId);
         $designer_bannerList = $this->tb_designer_banner_model->get_designer_banner_select(array(array('field' => 'banner.designerId', 'value' => $designerId), array('field' => 'banner.is_visible', 'value' => 1), 'other' => array('value' => '(banner.date = \'\' || banner.date is NULL || banner.date > \''.date("Y-m-d").'\')')), array(array('field' => 'banner.order', 'dir' => 'desc')));
 
+        $this->pageMeta['title'][] = $row->name;
+
         //讀取愛心
         $likecount = $this->tb_designer_like_model->count_designer_like(array(array('field' => 'designer_like.designerId','value' => $designerId)));
         if(!$this->session->userdata('memberinfo')){
@@ -247,10 +261,19 @@ class Designers extends Frontend_Controller
         $data = array(
             'designerId' => $designerId
         );
+
         $this->load->view('content/designers/_message_popup',$data);
     }
 
-    public function wish_popup($designerId){        
+    public function wish_popup($designerId){
+        if(!$this->session->userdata('memberinfo')['memberId']){
+            js_warn('請重新登入，謝謝!');
+            redirect(website_url());
+        }
+        if($post = $this->input->post(null,true)){
+            $this->tb_wish_model->insert_wish(array('designerId' => $post['designerId'],'memberId' => $this->session->userdata('memberinfo')['memberId'],'title' => $post['title'],'content' => $post['content']));
+        }
+        
         $data = array(
             'designerId' => $designerId
         );
@@ -280,7 +303,8 @@ class Designers extends Frontend_Controller
             redirect(website_url());
         }
         if($post = $this->input->post(null, true)){
-            $designer = $this->tb_gift_designer_model->insert_gift_designer(array(
+            $giftId = $this->tb_gift_designer_model->insert_gift_designer(array(
+                'is_enable' => 0,
                 'designerId' => $designerId,
                 'memberId' => $this->session->userdata('memberinfo')['memberId'],
                 'date' => date('Y-m-d'),
@@ -288,12 +312,83 @@ class Designers extends Frontend_Controller
                 'money' => $post['money'],
                 'payway' => $post['payway']
             ));
-            redirect(website_url('designers/home?designerId='.$designerId));
+
+            $designer = $this->tb_designer_model->get_designer_by_id($designerId,$this->langId);
+
+            //匯率
+            $moneyList = $this->money_model->get_money_select(false,false,false);
+            $productList = array();
+            $productList[] = array('Name' => 'Gift designer-'.$designer->name, 'Price' => round($post['money'] * $moneyList[0]->twd_value),
+            'Currency' => "元", 'Quantity' => 1, 'URL' => "dedwed");
+
+            //串綠界
+            $this->my_pay_ecpay->set_paramer(array(
+                'redirect' => website_url("designers/popup_gift_response/$giftId"),
+                'return' => website_url('receive_gift'),
+                'orderId' => $giftId,
+                'money' => round($post['money'] * $moneyList[0]->twd_value),
+                'productList' => $productList
+            ));
+
+            $member = $this->member_model->get_member_by_id($this->session->userdata('memberinfo')['memberId']);
+            switch($post['payway']){
+                case '0':                    
+                    $mac_code = $this->my_pay_ecpay->credit();
+                    break;
+                case '2': //扣除會員點數
+                    if($member->point < $post['money']){
+                        js_warn('error');
+                        redirect(website_url());
+                    }
+                    $point = $member->point-$post['money'];
+                    $this->member_model->update_member($member,array('point' => $point));
+                    redirect(website_url("designer/popup_gift_response/".$giftId));
+                    break;                                
+            }
         }
         $data = array(
             'designerId' => $designerId
         );
-        $this->load->view('content/member/popup_gift',$data);
+        $this->load->view('content/designers/popup_gift',$data);
+    }
+
+    //贈送禮物回傳
+    public function popup_gift_response($giftId){
+        $gift = $this->tb_gift_designer_model->get_gift_designer_by_id($giftId);
+        if($gift->rtn_msg != 'Succeeded' && $gift->rtn_msg != 'SUCCESS'){
+            $post = $this->input->post(null,true);
+            $response = $this->my_pay_ecpay->receive();
+            $this->db->insert('tb_gift_return_status',array('text' => '----信用卡----'.json_encode($response)));
+
+            if($response == 'CheckMacValue verify fail.'){
+                redirect(website_url());
+            }
+            $member = $this->member_model->get_member_by_id($gift->memberId);
+            $return_update = array(
+                'is_enable' => 1,
+                'rtn_code' => $response['RtnCode'],
+                'rtn_msg' => $response['RtnMsg'],
+                'trade_no' => $response['TradeNo'],
+                'payment_type' => $response['PaymentType'],
+                'trade_amount' => $response['TradeAmt'],
+                'payment_type_charge_fee' => isset($response['PaymentTypeChargeFee']) ? $response['PaymentTypeChargeFee'] : '',
+                'v_account' => isset($response['vAccount']) ? $response['vAccount'] : ''
+            );
+
+            $this->tb_gift_designer_model->update_gift_designer($gift,$return_update);
+            
+            //判斷有沒有綠界金流在此筆交易成功時所產生的序號，有的話session重新更新
+            $this->session->set_userdata('memberinfo', array(
+                'memberId' => $member->memberId,
+                'memberEmail' => $member->email,
+                'memberPassword' => $member->password,
+                'memberImg' => $member->memberImg,
+                'memberFirst_name' => $member->first_name,
+                'memberLast_name' => $member->last_name
+            ));
+
+        }
+        redirect(website_url('designers/home').'?designerId='.$gift->designerId.'&gift=1');
     }
 
     private function get_view($page, $data = array(), $script = "")

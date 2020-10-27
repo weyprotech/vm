@@ -10,6 +10,11 @@ class Policy extends Frontend_Controller
 
     public function index()
     {
+        if($this->langFile == 'tw'){
+            $this->pageMeta['title'][] = '條款和政策';
+        }else{
+            $this->pageMeta['title'][] = 'Terms and Policy';
+        }
         $company = $this->company_model->get_company_information($this->langId);
         $data = array(
             'company' => $company

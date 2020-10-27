@@ -5,10 +5,12 @@
                 <a class="active" href="<?= website_url('brand/index') ?>">All</a>
                 <a href="<?= website_url('brand/search').'?alphabet=A' ?>">A-Z</a>
             </div>
-            <div class="search_form">
-                <input type="search" placeholder="Designer / Brand name">
-                <button type="button"><i class="icon_search"></i></button>
-            </div>
+            <form method="get" action="<?= website_url('brand/search') ?>">
+                <div class="search_form">
+                    <input type="search" name="search" placeholder="Designer / Brand name">
+                    <button type="submit"><i class="icon_search"></i></button>
+                </div>
+            </form>
         </div>
     </div>
     <div class="topping_block brand_topping">
@@ -70,7 +72,7 @@
     <?php if(!empty($italyList)){ ?>
         <div class="list_items_wrapper page_block bg_gray">
             <div class="block_inner wide">
-                <h2 class="block_title">Fashion in Italy</h2>
+                <h2 class="block_title"><?= langText('brand','fashion') ?></h2>
                 <div class="block_main">
                     <div class="list_items">
                         <?php foreach ($italyList as $italyKey => $italyValue){ ?>
@@ -97,7 +99,7 @@
     <?php if(!empty($brandList)){ ?>
         <div class="list_items_wrapper page_block">
             <div class="block_inner wide">
-                <h2 class="block_title">Explore world</h2>
+                <h2 class="block_title"><?= langText('brand','explore') ?></h2>
                 <div class="block_main">
                     <div class="list_items"  id="brand_explore">
                         <?php foreach($brandList as $brandKey => $brandValue){ ?>
@@ -116,7 +118,7 @@
                                 </a>
                             </div>
                         <?php } ?>
-                    </div><a class="btn common more" id="brand_more" data-start='14'>View More</a>
+                    </div><a class="btn common more" id="brand_more" data-start='14'><?= langText('brand','view_more') ?></a>
                 </div>
             </div>
         </div>

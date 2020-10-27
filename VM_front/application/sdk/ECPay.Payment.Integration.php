@@ -497,9 +497,15 @@ class ECPay_AllInOne {
         ECPay_Send::CheckOut($target,$arParameters,$this->SendExtend,$this->HashKey,$this->HashIV,$this->ServiceURL);
     }
 
+    //
+    function get_mac_code($target = "_self"){
+        $arParameters = array_merge( array('MerchantID' => $this->MerchantID, 'EncryptType' => $this->EncryptType) ,$this->Send);        
+        return ECPay_Send::get_mac_code($target,$arParameters,$this->SendExtend,$this->HashKey,$this->HashIV,$this->ServiceURL);
+    }
+
     //產生訂單html code
     function CheckOutString($paymentButton = null, $target = "_self") {
-        $arParameters = array_merge( array('MerchantID' => $this->MerchantID, 'EncryptType' => $this->EncryptType) ,$this->Send);
+        $arParameters = array_merge(array('MerchantID' => $this->MerchantID, 'EncryptType' => $this->EncryptType) ,$this->Send);
         return ECPay_Send::CheckOutString($paymentButton,$target = "_self",$arParameters,$this->SendExtend,$this->HashKey,$this->HashIV,$this->ServiceURL);
     }
 
@@ -641,6 +647,13 @@ class ECPay_Send extends ECPay_Aio
 
         echo $szHtml ;
         exit;
+    }
+
+    static function get_mac_code($target = "_self",$arParameters = array(),$arExtend = array(),$HashKey='',$HashIV='',$ServiceURL=''){
+        $arParameters = self::process($arParameters,$arExtend);
+        //產生檢查碼
+        $szCheckMacValue = ECPay_CheckMacValue::generate($arParameters,$HashKey,$HashIV,$arParameters['EncryptType']);
+        return $szCheckMacValue;
     }
 
     static function CheckOutString($paymentButton,$target = "_self",$arParameters = array(),$arExtend = array(),$HashKey='',$HashIV='',$ServiceURL=''){

@@ -11,7 +11,7 @@
                         <p>Name: <?= $order->first_name.' '.$order->last_name ?><br>
                             Address: <?= $order->address ?>
                         </p>
-                        </div><a class="btn common popup" href="popup_returns.html">Need Returns</a>
+                        </div><a class="btn common popup" href="<?= website_url('member/member/popup_returns') ?>">Need Returns</a>
                     </div>
                     <div class="rwd_table">
                         <div class="thead">
@@ -128,7 +128,7 @@
                         </ul>
                         <div class="total_calculation">
                             <label>TOTAL</label>
-                            <div class="total_amount">NTD$<?= $order->total ?></div>
+                            <div class="total_amount"><?= strtoupper($order->currency) ?>$<?= $order->total ?></div>
                         </div>
                         </div>
                     </div>

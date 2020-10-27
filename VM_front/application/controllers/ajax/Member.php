@@ -18,7 +18,7 @@ class Member extends Ajax_Controller
         $email = $this->input->post('email',null);
         $password = $this->input->post('password',null);
         $remember = $this->input->post('remember',null);
-        if($member = $this->member_model->get_member_select(array(array('field' => 'member.email','value' => $email),array('field' => 'member.password','value' => md5($password))))){
+        if($member = $this->member_model->get_member_select(array(array('field' => 'member.email','value' => $email),array('field' => 'member.password','value' => md5($password)),array('field' => 'member.is_open','value' => 1)))){
             $this->session->set_userdata('memberinfo',array(
                 'memberId' => $member[0]->memberId,
                 'memberEmail' => $member[0]->email,
@@ -58,7 +58,7 @@ class Member extends Ajax_Controller
         if($dividend <= $member->dividend && $dividend < ($cart_total/2)){
             $this->my_cart->update_dividend($dividend);
 		    $all_total = $this->my_cart->all_total();
-            echo json_encode(array('status' => "success",'all_total' => $all_total));
+            echo json_encode(array('status' => "success",'all_total' => $all_total,'dividend' => round($dividend * $this->session->userdata('currency'))));
         }else{
             echo json_encode(array('status' => "error"));
         }

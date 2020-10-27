@@ -10,7 +10,13 @@ class Login extends Frontend_Controller
 
     public function index()
     {
+        if($this->langFile == 'tw'){
+            $this->pageMeta['title'][] = '登入';
+        }else{
+            $this->pageMeta['title'][] = 'Login';
+        }
         $login = $this->input->cookie('login', true);
+        $type = $this->input->get('type',true);
         $this->encryption->initialize(array('driver' => 'mcrypt'));
         if($this->session->userdata('memberinfo')['memberId']){
             redirect(website_url('member/member'));
@@ -29,10 +35,14 @@ class Login extends Frontend_Controller
                     'memberFirst_name' => $member[0]->first_name,
                     'memberLast_name' => $member[0]->last_name                
                 ));
-                redirect(website_url('member/member'));
+                if($type == 'order'){
+                    redirect(website_url('order/index'));
+                }else{
+                    redirect(website_url('member/member'));
+                }
             }
         }
-        $this->get_view('member/login', array(), $this->load->view('shared/script/member/_login_script', array(), true));
+        $this->get_view('member/login', array('type' => $type), $this->load->view('shared/script/member/_login_script', array(), true));
     }
 
     private function get_view($page, $data = array(), $script = "")

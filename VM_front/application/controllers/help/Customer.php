@@ -10,6 +10,11 @@ class Customer extends Frontend_Controller
 
     public function index()
     {
+        if($this->langFile == 'tw'){
+            $this->pageMeta['title'][] = '客戶服務';
+        }else{
+            $this->pageMeta['title'][] = 'Customer Service';
+        }
         $customer = $this->customer_model->get_customer_information($this->langId);
         $data = array(
             'customer' => $customer

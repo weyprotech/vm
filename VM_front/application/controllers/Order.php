@@ -15,7 +15,13 @@ class Order extends Frontend_Controller{
     }
 
     public function index(){
-
+        $this->my_cart->reset_coupon();
+        $this->my_cart->reset_dividend();
+        if($this->langFile == 'tw'){
+            $this->pageMeta['title'][] = '購物車';
+        }else{
+            $this->pageMeta['title'][] = 'Shopping Cart';
+        }
         //購物車內容
         $this->my_cart->_calc_cart();
         $cart_productList = $this->my_cart->get_product_list();
@@ -29,7 +35,9 @@ class Order extends Frontend_Controller{
         $cart_total = $this->my_cart->total();
         $all_total = $this->my_cart->all_total();
         $shipping = $this->my_cart->shipping();
-
+        $moneyList = $this->money_model->get_money_select(false,false,false);
+        $twd_currency = $moneyList[0]->twd_value;
+        
         if(empty($shipping)){
             $shipping = array('shippingId' => "","money" => "");
         }
@@ -40,12 +48,18 @@ class Order extends Frontend_Controller{
             'all_total' => $all_total,
             'shippingList' => $shippingList,
             'shippingId' => $shipping['shippingId'],
-            'money' => $shipping['money']
+            'money' => $shipping['money'],
+            'twd_currency' => $twd_currency
         );
         $this->get_view('order/index',$data);        
     }
 
     public function order_information(){
+        if($this->langFile == 'tw'){
+            $this->pageMeta['title'][] = '訂單';
+        }else{
+            $this->pageMeta['title'][] = 'Order';
+        }
         //購物車內容
         $cart_productList = $this->my_cart->get_product_list();
         foreach($cart_productList as $cartKey => $cartValue){
@@ -57,7 +71,7 @@ class Order extends Frontend_Controller{
             $member = $this->member_model->get_member_by_id($this->session->userdata('memberinfo')['memberId']);
         }else{
             js_warn("請登入會員，謝謝!");
-            redirect(website_url('login'));
+            redirect(website_url('login').'?type=order');
         }
 
         if($post = $this->input->post(null,true)){
@@ -86,7 +100,7 @@ class Order extends Frontend_Controller{
                 ));
             }
             $insert = array(
-                'is_enable' => 1,
+                'is_enable' => 0,
                 'memberId' => $this->session->userdata('memberinfo')['memberId'],
                 'date' => date('Y-m-d'),
                 'currency' => $this->my_cart->currency(),
@@ -134,6 +148,11 @@ class Order extends Frontend_Controller{
     }
 
     public function order_payment($orderId){
+        if($this->langFile == 'tw'){
+            $this->pageMeta['title'][] = '訂單';
+        }else{
+            $this->pageMeta['title'][] = 'Order';
+        }
         $data = array();
         if(!isset($this->session->userdata('memberinfo')['memberId'])){
             js_warn("請登入會員，謝謝!");
@@ -141,13 +160,20 @@ class Order extends Frontend_Controller{
         }
 
         $member = $this->member_model->get_member_by_id($this->session->userdata('memberinfo')['memberId']);
-        $order = $this->order_model->get_order_by_id($orderId);
+        $order = $this->order_model->get_order_by_id($orderId,array('enable' => false));
         if($post = $this->input->post(null,true)){
             $this->order_model->update_order($order,array('payway' => $post['payway']));
             //購物車美金金額
-            $cart_total = $this->my_cart->original_total();
-            $all_total = $this->my_cart->original_all_total();
+            if($this->session->userdata('money_type') == 'twd'){
+                $cart_total = $this->my_cart->total();
+                $all_total = $this->my_cart->all_total();
+            }else{
+                $cart_total = $this->my_cart->original_total();
+                $all_total = $this->my_cart->original_all_total();
+            }
 
+            $usd_cart_total = $this->my_cart->original_total();
+            $usd_all_total = $this->my_cart->original_all_total();
             //匯率
             $moneyList = $this->money_model->get_money_select(false,false,false);
 
@@ -163,31 +189,27 @@ class Order extends Frontend_Controller{
                 'redirect' => website_url("order/order_view/$orderId"),
                 'return' => website_url('receive'),
                 'orderId' => $orderId,
-                'money' => round($all_total * $moneyList[0]->twd_value),
+                'money' => ($this->session->userdata('money_type') == 'twd' ? $all_total : round($all_total * $moneyList[0]->twd_value)),
                 'productList' => $productList
             ));
 
             switch($post['payway']){
                 case '0':
                     $mac_code = $this->my_pay_ecpay->credit();
-                    $this->order_model->update_order($order,array('check_mac_value' => $mac_code)); 
-                    $this->my_pay_ecpay->excute();  
                     break;
                 case '1':
                     $this->my_pay_ecpay->atm();
                     break;
                 case '2': //扣除會員點數
-                    if($member->point < $all_total){
+                    if($member->point < $usd_all_total){
                         js_warn('error');
                         redirect(website_url());
                     }
-                    $point = $member->point-$all_total;
+                    $point = $member->point-$usd_all_total;
                     $this->member_model->update_member($member,array('point' => $point));
                     redirect(website_url("order/order_view/".$orderId));
                     break;                                
             }
-            //重置購物車
-            $this->my_cart->reset_cart();
         }
 
 
@@ -199,20 +221,51 @@ class Order extends Frontend_Controller{
     }
 
     public function order_view($orderId){
-        $order = $this->order_model->get_order_by_id($orderId);
-        if($order->rtn_msg == 'Succeeded' || $order->rtn_msg == 'SUCCESS'){
-            redirect(website_url());
+        if($this->langFile == 'tw'){
+            $this->pageMeta['title'][] = '訂單';
+        }else{
+            $this->pageMeta['title'][] = 'Order';
         }
-        $post = $this->input->post(null,true);
-        $mac_value = $this->my_pay_ecpay->ecpayCheckMacValue($post);
-        print_r($post);
-        echo '<br>';
-        print_r($mac_value);exit;
-        $member = $this->member_model->get_member_by_id($order->memberId);
-        $this->order_model->update_order($order,array('status' => 1));
-        $dividend = intval(($order->total-$order->shipping)/10);
-        $this->member_model->update_member($member,array('dividend' => $dividend));
-        $this->dividend_model->insert_dividend(array('orderId' => $orderId,'dividend' => $dividend,'memberId' => $order->memberId));
+        //重置購物車
+        $this->my_cart->reset_cart();
+        $order = $this->order_model->get_order_by_id($orderId,array('enable' => false));
+        if($order->rtn_msg != 'Succeeded' && $order->rtn_msg != 'SUCCESS'){
+            $post = $this->input->post(null,true);
+            $response = $this->my_pay_ecpay->receive();
+            $this->db->insert('tb_return_status',array('text' => '----信用卡-----'.json_encode($response)));
+            if($response == 'CheckMacValue verify fail.'){
+                redirect(website_url());
+            }
+            $member = $this->member_model->get_member_by_id($order->memberId);
+            $return_update = array(
+                'is_enable' => 1,
+                'rtn_code' => $response['RtnCode'],
+                'rtn_msg' => $response['RtnMsg'],
+                'trade_no' => $response['TradeNo'],
+                'payment_type' => $response['PaymentType'],
+                'trade_amount' => $response['TradeAmt'],
+                'payment_type_charge_fee' => isset($response['PaymentTypeChargeFee']) ? $response['PaymentTypeChargeFee'] : '',
+                'v_account' => isset($response['vAccount']) ? $response['vAccount'] : ''
+            );
+            if($response['RtnMsg'] == 'Succeeded'){
+                $return_update['status'] = 1;
+            }
+            $this->order_model->update_order($order,$return_update);
+            //判斷有沒有綠界金流在此筆交易成功時所產生的序號，有的話session重新更新
+            $this->session->set_userdata('memberinfo', array(
+                'memberId' => $member->memberId,
+                'memberEmail' => $member->email,
+                'memberPassword' => $member->password,
+                'memberImg' => $member->memberImg,
+                'memberFirst_name' => $member->first_name,
+                'memberLast_name' => $member->last_name                
+            ));
+            $dividend = intval(($order->total-$order->shipping)/10);  //紅利
+            $this->member_model->update_member($member,array('dividend' => $dividend));
+            $this->dividend_model->insert_dividend(array('orderId' => $orderId,'dividend' => $dividend,'memberId' => $order->memberId));
+            $order = $this->order_model->get_order_by_id($orderId);
+        }
+       
         $data = array(
             'order' => $order
         );

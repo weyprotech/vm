@@ -18,10 +18,10 @@ class SwitchLang extends Frontend_Controller
             //取index.php後的第一個
             $url_arr = explode('/', $url);
             if (in_array($lang, $url_arr)) {
-                $new_url = str_replace('/'.$lang.'/','/'.$new_lang.'/',$url);
+                $new_url = str_replace('/'.$lang,'/'.$new_lang,$url);
             }
             else {
-                $new_url = site_url($lang);
+                $new_url = site_url($new_lang);
             }
             
             echo json_encode(array('status' => true, 'url' => $new_url));

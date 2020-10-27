@@ -103,7 +103,7 @@
                                     </div>
                                     <div class="coupon_price price">-$0</div>
                                 </li>
-                                <?php if($cart_total >= (2000 * $currency)){ ?>
+                                <?php if($cart_total >= ((2000/$twd_currency) * $currency)){ ?>
                                     <li class="item">
                                         <div class="controls_group">
                                             <label>Use dividend</label>
@@ -117,7 +117,7 @@
                             </ul>
                             <div class="total_calculation">
                                 <label>TOTAL</label>
-                                <div class="total_amount" id="all_total"><?= strtoupper(strtoupper($money_type)) ?> $<?= $all_total ?></div>
+                                <div class="total_amount" id="all_total"><?= strtoupper($money_type) ?> $<?= $all_total ?></div>
                             </div>
                         </div>
                     </div>

@@ -27,12 +27,12 @@
                 </div>
             </a>            
             <ul class="links">
-                <li><a href="<?= $row->url ?>" title="Blog" target="_blank"><i class="icon_blog"></i><span>Blog</span></a></li>
-                <li><a class="popup" href="<?= website_url('designers/just_popup/'.$row->designerId) ?>" title="Just for you"><i class="icon_just_for_you"></i><span>Just for you</span></a></li>
-                <li><a class="popup" href="<?= website_url('designers/message_popup/'.$row->designerId) ?>" title="Message"><i class="icon_message"></i><span>Message</span></a></li>
+                <li><a <?= !empty($row->url) ? 'href="'.$row->url.'"' : '' ?> title="Blog" target="_blank"><i class="icon_blog"></i><span><?= langText('designer','blog') ?></span></a></li>
+                <li><a class="popup" href="<?= website_url('designers/just_popup/'.$row->designerId) ?>" title="Just for you"><i class="icon_just_for_you"></i><span><?= langText('designer','just') ?></span></a></li>
+                <li><a class="popup" href="<?= website_url('designers/message_popup/'.$row->designerId) ?>" title="Message"><i class="icon_message"></i><span><?= langText('designer','message') ?></span></a></li>
                 <li><a class="btn_favorite <?= ($like != false) ? 'active' : '' ?>" href="javascript:;" data-designerId="<?= $row->designerId ?>" title="Favorite"><i class="icon_favorite_heart_big"></i><span>(<span class="count"><?= $likecount ?></span>)</span></a></li>
-                <li><a class="popup" href="<?= website_url('designers/popup_gift/'.$row->designerId) ?>" title="Gift Designer"><i class="icon_gift_designer"></i><span>Gift Designer</span></a></li>
-                <li><a class="popup" href="popup_makeWish.html" title="Make a Wish"><i class="icon_make_wish"></i><span>Make a Wish</span></a></li>
+                <li><a class="<?= !$this->session->userdata('memberinfo')['memberId'] ? '' : 'popup' ?>" href="<?= !$this->session->userdata('memberinfo')['memberId'] ? website_url('login') : website_url('designers/popup_gift/'.$row->designerId) ?>" title="Gift Designer"><i class="icon_gift_designer"></i><span><?= langText('designer','gift_designer') ?></span></a></li>
+                <li><a class="<?= !$this->session->userdata('memberinfo')['memberId'] ? '' : 'popup' ?>" href="<?= !$this->session->userdata('memberinfo')['memberId'] ? website_url('login') : website_url('designers/wish_popup/'.$row->designerId) ?>" title="Make a Wish"><i class="icon_make_wish"></i><span><?= langText('designer','make_a_wish') ?></span></a></li>
             </ul>
         </div>
         <div class="designer_navigation">
@@ -41,13 +41,13 @@
                     <a href="designer_review.html">
                         <i class="icon_star_full_big"></i>
                         <span class="score">4.8</span>
-                        <span class="count">(232 Reviews)</span>
+                        <span class="count">(232 <?= langText('designer','reviews') ?>)</span>
                     </a>
                 </div>
                 <div class="nav_menu">
                     <ul> 
-                        <li><a <?= (stripos($_SERVER['REQUEST_URI'], 'home') ? 'current active' : '') ? 'class="current"' : '' ?> href="<?= website_url('designers/home').'?designerId='.$row->designerId ?>">Home</a></li>
-                        <li><a href="javascript:;"><?= $row->name ?>'s Brands</a>
+                        <li><a <?= (stripos($_SERVER['REQUEST_URI'], 'home') ? 'current active' : '') ? 'class="current"' : '' ?> href="<?= website_url('designers/home').'?designerId='.$row->designerId ?>"><?= langText('designer','home') ?></a></li>
+                        <li><a href="javascript:;"><?= $row->name ?><?= langText('designer','brands') ?></a>
                             <ul>
                                 <?php 
                                 if(!empty($brandList)) {
@@ -61,8 +61,8 @@
                             </ul>
                         </li>
                         <li><a href="<?= website_url('designers/profile').'?designerId='.$row->designerId ?>"><?= $row->name ?></a></li>
-                        <li><a <?= (stripos($_SERVER['REQUEST_URI'], 'product') ? 'current active' : '') ? 'class="current"' : '' ?> href="<?= website_url('designers/product').'?designerId='.$row->designerId ?>">Product</a></li>
-                        <li><a <?= (stripos($_SERVER['REQUEST_URI'], 'review') ? 'current active' : '') ? 'class="current"' : '' ?> href="<?= website_url('designers/review').'?designerId='.$row->designerId ?>">Review</a></li>
+                        <li><a <?= (stripos($_SERVER['REQUEST_URI'], 'product') ? 'current active' : '') ? 'class="current"' : '' ?> href="<?= website_url('designers/product').'?designerId='.$row->designerId ?>"><?= langText('designer','product')  ?></a></li>
+                        <li><a <?= (stripos($_SERVER['REQUEST_URI'], 'review') ? 'current active' : '') ? 'class="current"' : '' ?> href="<?= website_url('designers/review').'?designerId='.$row->designerId ?>"><?= langText('designer','review')  ?></a></li>
                     </ul>
                     <a class="toggle_menu" href="javascript:;">Menu</a>
                 </div>

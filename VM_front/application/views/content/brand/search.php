@@ -25,9 +25,9 @@
     <!--↑ 篩選選 A-Z 時才顯示 ↑-->
     <div class="search_block page_block">
         <div class="block_inner">
-            <h2 class="block_title">Search Results for ”<?= $search.$alphabet ?>”</h2>
+            <h2 class="block_title"><?= langText('brand','search_result') ?>”<?= $search.$alphabet ?>”</h2>
             <div class="block_main">
-                <div class="search_title">Brands</div>
+                <div class="search_title"><?= langText('brand','brands') ?></div>
                 <div class="search_main">
                     <div class="topping_list brand_topping_list">
                         <?php if($brandList){
@@ -54,7 +54,7 @@
                                     </a>
                                 </div>
                             <?php }
-                        } ?>                       
+                        } ?>
                     </div>
                 </div>
             </div>

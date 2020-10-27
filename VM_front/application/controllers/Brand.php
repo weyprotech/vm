@@ -10,6 +10,12 @@ class Brand extends Frontend_Controller
         $this->load->model('product/tb_product_model','tb_product_model');
         $this->load->model('designer/tb_designer_model','tb_designer_model');
         $this->load->model('designer/tb_post_model','tb_post_model');
+        $this->load->model('brand/tb_brand_message_model','tb_brand_message_model');
+        if($this->langFile == 'tw'){
+            $this->pageMeta['title'][] = '品牌';
+        }else{
+            $this->pageMeta['title'][] = 'Brands';
+        }
     }
 
     public function index()
@@ -50,6 +56,8 @@ class Brand extends Frontend_Controller
             redirect(website_url('brand/index'));
         }
         $row = $this->tb_brand_model->get_brand_by_id($brandId,$this->langId);
+        $this->pageMeta['title'][] = $row->name;
+
         $designer = $this->tb_designer_model->get_designer_by_id($row->designerId,$this->langId);
         $postList = $this->tb_post_model->get_post_select(array(array('field' => 'post.designerId','value' => $row->designerId)),array(array('field' => 'post.order','dir' => 'RANDOM')),array('start' => 0,'limit' =>'3'),$this->langId);
         if($postList){
@@ -59,13 +67,14 @@ class Brand extends Frontend_Controller
         }
         $brandBanner = $this->tb_brand_banner_model->get_brand_banner_select(array(array('field' => 'banner.brandId','value' => $brandId)),array(array('field' => 'banner.order','dir' => 'desc')));
         $productList = $this->tb_product_model->get_product_select(array(array('field' => 'product.brandId','value' => $brandId)),array(array('field' => 'banner.order','dir' => 'RANDOM')),array('start' => 0,'limit' => 4),$this->langId);
-        // print_r($postList);exit;
+        $messageList = $this->tb_brand_message_model->get_brand_message_select(array(array('field' => 'message.brandId','value' => $brandId)),array(array('field' => 'message.create_at','dir' => 'desc')));
         $data = array(
             'row' => $row,
             'designer' => $designer,
             'brandBanner' => $brandBanner,
             'productList' => $productList,
-            'postList' => $postList
+            'postList' => $postList,
+            'messageList' => $messageList
         );
         $this->get_view('brand/story',$data,$this->load->view('shared/script/designers/_home_script','',true));
     }

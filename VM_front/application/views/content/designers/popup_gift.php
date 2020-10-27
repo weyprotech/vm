@@ -7,7 +7,7 @@
         <div class="controls_group">
           <label>Gift amount</label>
           <div class="controls">
-            <input name="money" type="text" placeholder="NT$"/>
+            <input name="money" type="text" placeholder="NT USD$"/>
           </div>
         </div>
         <div class="controls_group">

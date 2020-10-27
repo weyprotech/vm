@@ -216,6 +216,15 @@ table {
   margin-bottom: 0;
 }
 
+.first_up:first-letter {
+  font-size : 310%;
+  font-weight : bold;
+  color:#A32018;
+  float : left;
+  margin-right: 10px;
+  line-height: 1;
+}
+
 @media (min-width: 768px) {
   .row .grid {
     margin-bottom: 0;

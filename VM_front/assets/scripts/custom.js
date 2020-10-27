@@ -45,7 +45,7 @@ var website = function () {
                     if (response['brandList']) {
                         $.each(response['brandList'], function (key, value) {
                             result += '<div class="item">' +
-                                '<a href="brand_story.html">' +
+                                '<a href="' + site_url(lang+'/brand/story') + '?brandId='+value.brandId+'">' +
                                 '<div class="thumb">' +
                                 '<div class="pic" style="background-image: url(' + backend_url(value.brandindexImg) + ');"><img class="size" src="' + base_url('assets/images/size_1x1.png') + '"></div>' +
                                 '</div>' +
@@ -79,7 +79,7 @@ var website = function () {
                             result += '<div class="popular_block">' +
                                 '<div class="popular_block_inner">' +
                                 '<div class="popular_picture">' +
-                                '<a class="thumb" href="' + site_url('designers/home') + '?designerId=' + value.designerId + '">' +
+                                '<a class="thumb" href="' + site_url(lang+'/designers/home') + '?designerId=' + value.designerId + '">' +
                                 '<div class="pic" style="background-image: url(' + backend_url(value.designImg) + ');">' +
                                 '<img class="size" src="' + base_url('assets/images/size_3x4.png') + '">' +
                                 '</div>' +
@@ -118,7 +118,14 @@ var website = function () {
             console.log(123);
             lang = $('#language_select').val();
             doCookieSetup('front', $('#language_select').val());
-            doCookieSetup('money_type', $('#money_type_select').val());
+            $.ajax({
+                url: site_url('ajax/homepage/set_currency'),
+                type: 'post',
+                dataType:'json',
+                data:{money_type : $('#money_type_select').val()},
+                success: function(response) {
+                }
+            });
             change_lang($('#language_select').val()).done(function (response) {
                 if (response['status']) location.href = response['url'];
             });
@@ -135,8 +142,15 @@ var website = function () {
 
         //幣值
         $money_type_select.on('change', function () {
-            doCookieSetup('money_type', $(this).val());
-            location.reload();
+            $.ajax({
+                url: site_url('ajax/homepage/set_currency'),
+                type: 'post',
+                dataType:'json',
+                data:{money_type : $(this).val()},
+                success: function(response) {
+                    location.reload();
+                }
+            });
         });
 
         //消息更多
@@ -185,6 +199,7 @@ var website = function () {
             var email = $('#email').val();
             var password = $('#password').val();
             var remember = '';
+            var type = $(this).data('type');
             if ($("#remember").is(":checked")) {
                 remember = 1;
             } else {
@@ -205,7 +220,11 @@ var website = function () {
                             $('.swal2-container').css('z-index', '100000');
                             $('#password').val('');
                         } else {
-                            location.href = site_url(lang + '/member/member');
+                            if(type == 'order'){
+                                location.href = site_url(lang + '/order/index');
+                            }else{
+                                location.href = site_url(lang + '/member/member');
+                            }
                         }
                     }
                 });
@@ -254,7 +273,7 @@ var website = function () {
             });
         });
 
-        //傳送設計師留言
+        //傳送設計師貼文留言
         $('.message_send').on('click',function(){
             var postId = $(this).data('postid');
             var message = $(this).siblings('input').val();
@@ -283,11 +302,72 @@ var website = function () {
                 }
             });
         });
+
+        //傳送品牌留言
+        $('.brand_message').on('click',function(){
+            var brandid = $(this).data('brandid');
+            var message = $(this).siblings('textarea').val();
+            $.ajax({
+                url:site_url('ajax/brand/set_brand_message'),
+                data:{brandid : brandid,message : message},
+                type:'post',
+                dataType:'json',
+                success:function (response) {
+                    $('.comments_messages').append('<div class="item">'+
+                        '<div class="msg">'+
+                            '<div class="profile_picture">'+
+                                '<div class="pic" style="background-image: url('+response['img']+');"><img class="size" src="'+base_url('assets/images/size_1x1.png')+'"></div>'+
+                            '</div>'+
+                            '<div class="msg_content">'+
+                                '<div class="title">'+
+                                    '<div class="name">'+response['name']+'</div>'+
+                                    '<div class="divide_line"></div>'+
+                                    '<div class="time">'+response['create_at']+'</div>'+
+                                '</div>'+
+                                '<div class="text">'+message+'</div>'+
+                            '</div>'+
+                        '</div>'+
+                    '</div>');
+                    $(this).siblings('textarea').val('');
+                }
+            });
+        });
         
         //送禮物給設計師
-        $('body').on('click', '#gift_send',function(){
-            console.log('gift_send');
+        $('body').on('click', '#gift_send',function(){            
             $('#form').submit();
+        });
+
+        //寄出make a wish
+        $('body').on('click','#wish_send', function (){
+            var data = $('#wish_form').serializeArray();
+            var error = 0;
+            $.each(data, function (key, value) {
+                if (value.value == '') {
+                    console.log(value);
+                    error = 1;
+                    swal({
+                        title: "cann't empty",
+                        type: 'error'
+                    });
+                    $('.swal2-container').css('z-index', '100000');
+                }
+            });
+            if (error == 0) {
+                $('.mfp-close').click();
+                $.ajax({
+                    url: site_url('ajax/designers/set_make_a_wish'),
+                    data: data,
+                    type: 'post',
+                    dataType: 'json',
+                    success: function (response) {
+                        swal({
+                            title: response['response'],
+                            type: 'success'
+                        });
+                    }
+                });
+            }
         });
 
         //just for you寄出
@@ -490,7 +570,7 @@ var website = function () {
                             '</div>'
                         );
                     });
-                    $('.total_calculation').find('.total_amount').html('NTD $' + response['total']);
+                    $('.total_calculation').find('.total_amount').html('NTD $' + response['cart_total']);
                     $('#all_total').html('NTD$' + response['all_total']);
                     $('#item_total').html('$ ' + response['cart_total']);
                     $('#item_' + productid).remove();
@@ -538,7 +618,7 @@ var website = function () {
                 success: function (response) {
                     if (response['status'] == 'success') {
                         $('#all_total').html("NTD$" + response['all_total']);
-                        $('.dividend_price').html("-$" + dividend);
+                        $('.dividend_price').html("-$" + response['dividend']);
                     } else {
                         swal({
                             title: "Insufficient dividends or Greater than the maximum usage limit",

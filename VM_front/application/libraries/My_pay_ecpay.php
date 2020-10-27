@@ -31,20 +31,20 @@ class My_pay_ecpay{
     {
         $this->obj = new ECPay_AllInOne();
         
-        // //服務參數-測試
-        // $this->obj->ServiceURL  = "https://payment-stage.ecpay.com.tw/Cashier/AioCheckOut/V5";  //服務位置
-        // $this->obj->HashKey     = '5294y06JbISpM5x9' ;                                          //測試用Hashkey，請自行帶入ECPay提供的HashKey
-        // $this->obj->HashIV      = 'v77hoKGq4kWxNNIS' ;                                          //測試用HashIV，請自行帶入ECPay提供的HashIV
-        // $this->obj->MerchantID  = '2000132';                                                    //測試用MerchantID，請自行帶入ECPay提供的MerchantID
-        // $this->obj->EncryptType = '1';                                                   //CheckMacValue加密類型，請固定填入1，使用SHA256加密
-
-
-        //服務參數-正式
+        //服務參數-測試
         $this->obj->ServiceURL  = "https://payment-stage.ecpay.com.tw/Cashier/AioCheckOut/V5";  //服務位置
-        $this->obj->HashKey     = '5294y06JbISpM5x9';                                    //測試用Hashkey，請自行帶入ECPay提供的HashKey
-        $this->obj->HashIV      = 'v77hoKGq4kWxNNIS';                                    //測試用HashIV，請自行帶入ECPay提供的HashIV
-        $this->obj->MerchantID  = '2000132';                                              //測試用MerchantID，請自行帶入ECPay提供的MerchantID
+        $this->obj->HashKey     = '5294y06JbISpM5x9' ;                                          //測試用Hashkey，請自行帶入ECPay提供的HashKey
+        $this->obj->HashIV      = 'v77hoKGq4kWxNNIS' ;                                          //測試用HashIV，請自行帶入ECPay提供的HashIV
+        $this->obj->MerchantID  = '2000132';                                                    //測試用MerchantID，請自行帶入ECPay提供的MerchantID
         $this->obj->EncryptType = '1';                                                   //CheckMacValue加密類型，請固定填入1，使用SHA256加密
+
+
+        // //服務參數-正式
+        // $this->obj->ServiceURL  = "https://payment-stage.ecpay.com.tw/Cashier/AioCheckOut/V5";  //服務位置
+        // $this->obj->HashKey     = '5294y06JbISpM5x9';                                    //測試用Hashkey，請自行帶入ECPay提供的HashKey
+        // $this->obj->HashIV      = 'v77hoKGq4kWxNNIS';                                    //測試用HashIV，請自行帶入ECPay提供的HashIV
+        // $this->obj->MerchantID  = '2000132';                                              //測試用MerchantID，請自行帶入ECPay提供的MerchantID
+        // $this->obj->EncryptType = '1';                                                   //CheckMacValue加密類型，請固定填入1，使用SHA256加密
 
         if(!empty($post)){
             $this->paramer = array(
@@ -54,7 +54,7 @@ class My_pay_ecpay{
                 'money' => $post['money'],
                 'productList' => $post['productList']
             );
-        }        
+        }
     }
 
     /**
@@ -75,12 +75,14 @@ class My_pay_ecpay{
             $this->obj->Send['TradeDesc']         = "VETRINA MIA-Payment" ;                           //交易描述
             $this->obj->Send['IgnorePayment']     = 'BARCODE';            //隱藏付款方式
             $this->obj->Send['ChoosePayment']     = ECPay_PaymentMethod::ALL ;                  //付款方式:全功能
+            $this->obj->Send['PaymentType']       = 'aio';
+
+            
     
             //訂單的商品資料
             foreach ($this->paramer['productList'] as $productKey => $productValue){
                 array_push($this->obj->Send['Items'], $productValue);
             }
-
 
             //產生訂單(auto submit至ECPay)
             $this->obj->CheckOut();
@@ -134,7 +136,7 @@ class My_pay_ecpay{
             $this->obj->Send['NeedExtraPaidInfo'] = 'Y';
             $this->obj->Send['MerchantTradeDate'] = date('Y/m/d H:i:s');                        //交易時間
             $this->obj->Send['TotalAmount']       = $this->paramer['money'];                                      //交易金額
-            $this->obj->Send['TradeDesc']         = "HDz 社交平台行銷系統-儲值" ;                           //交易描述
+            $this->obj->Send['TradeDesc']         = "VETRINA MIA-Payment" ;                           //交易描述
             $this->obj->Send['ChoosePayment']     = ECPay_PaymentMethod::CVS ;                  //付款方式:CVS
 
             
@@ -205,7 +207,8 @@ class My_pay_ecpay{
             $this->obj->Send['TotalAmount']       = $this->paramer['money'];                                      //交易金額
             $this->obj->Send['TradeDesc']         = "VETRINA MIA-Payment" ;                           //交易描述
             $this->obj->Send['ChoosePayment']     = ECPay_PaymentMethod::Credit ;                  //付款方式:Credit
-    
+            $this->obj->Send['PaymentType']       = 'aio';
+
             //訂單的商品資料
             foreach ($this->paramer['productList'] as $productKey => $productValue){
                 array_push($this->obj->Send['Items'], $productValue);
@@ -222,15 +225,10 @@ class My_pay_ecpay{
             // $obj->SendExtend['PeriodType']   = '' ;    //週期種類，預設空字串
             // $obj->SendExtend['Frequency']    = '' ;    //執行頻率，預設空字串
             // $obj->SendExtend['ExecTimes']    = '' ;    //執行次數，預設空字串
-
+            $this->obj->CheckOut();
         } catch (Exception $e) {
             echo $e->getMessage();exit;
         }
-    }
-
-    public function excute(){
-        //產生訂單(auto submit至ECPay)
-        $this->obj->CheckOut();
     }
 
     /**
@@ -239,58 +237,15 @@ class My_pay_ecpay{
      */
     public function receive(){
         try {
+            $this->obj = new ECPay_AllInOne();
+            $this->obj->HashKey     = '5294y06JbISpM5x9';                                    //測試用Hashkey，請自行帶入ECPay提供的HashKey
+            $this->obj->HashIV      = 'v77hoKGq4kWxNNIS';                                    //測試用HashIV，請自行帶入ECPay提供的HashIV
+            $this->obj->MerchantID  = '2000132';                                              //測試用MerchantID，請自行帶入ECPay提供的MerchantID
             $this->obj->EncryptType = ECPay_EncryptType::ENC_SHA256; // SHA256
             $result = $this->obj->CheckOutFeedback();
             return $result;
         }catch(Exception $e) {
             return $e->getMessage();            
         }
-    }
-
-    /**
-     * 綠界檢查碼產生器
-     *
-     * @author Liao San Kai 
-     * @param array
-     * @param int $encType 編碼方式 (1=sha256, 0=md5)
-     * @return string
-     */
-    public function ecpayCheckMacValue($params,$encType = 1)
-    {
-        // 0) 如果資料中有 null，必需轉成空字串
-        $params = array_map('strval', $params);
-
-        // 1) 如果資料中有 CheckMacValue 必需先移除
-        unset($params['CheckMacValue']);
-
-        // 2) 將鍵值由 A-Z 排序
-        uksort($params, 'strcasecmp');
-
-        // 3) 將陣列轉為 query 字串
-        $paramsString = urldecode(http_build_query($params));
-
-        // 4) 最前方加入 HashKey，最後方加入 HashIV
-        $paramsString = "HashKey={5294y06JbISpM5x9}&{$paramsString}&HashIV={v77hoKGq4kWxNNIS}";
-
-        // 5) 做 URLEncode
-        $paramsString = urlencode($paramsString);
-
-        // 6) 轉為全小寫
-        $paramsString = strtolower($paramsString);
-
-        // 7) 轉換特定字元
-        $paramsString = str_replace('%2d', '-', $paramsString);
-        $paramsString = str_replace('%5f', '_', $paramsString);
-        $paramsString = str_replace('%2e', '.', $paramsString);
-        $paramsString = str_replace('%21', '!', $paramsString);
-        $paramsString = str_replace('%2a', '*', $paramsString);
-        $paramsString = str_replace('%28', '(', $paramsString);
-        $paramsString = str_replace('%29', ')', $paramsString);
-
-        // 8) 進行編碼
-        $paramsString = $encType ? hash('sha256', $paramsString) : md5($paramsString);
-
-        // 9) 轉為全大寫後回傳
-        return strtoupper($paramsString);
     }
 }

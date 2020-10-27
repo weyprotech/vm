@@ -14,7 +14,7 @@
                 <div class="breadcrumbs">
                     <div class="breadcrumbs_inner">
                         <i class="icon_story"></i>
-                        <a href="<?= website_url('designers/home').'?designerId='.$row->designerId ?>">Designer</a><span>/</span><span class="current">Designer Profile</span>
+                        <a href="<?= website_url('designers/home').'?designerId='.$row->designerId ?>"><?= langText('designer','designer') ?></a><span>/</span><span class="current"><?= langText('designer','designer_profile') ?></span>
                     </div>
                 </div>
                 <div class="designer_info">
@@ -43,7 +43,7 @@
                 <div class="intro_text">
                     <?= nl2br($row->description) ?>
                 </div>
-                <div class="share_links">Share
+                <div class="share_links"><?= langText('designer','share') ?>
                     <a class="facebook" href="javascript:;" target="_blank"><i class="icon_share_facebook"></i></a>
                     <a class="pinterest" href="javascript:;" target="_blank"><i class="icon_share_pinterest"></i></a>
                 </div>
@@ -66,7 +66,7 @@
     ?>
     <div class="designer_profile_brands page_block">
         <div class="block_inner">
-            <h2 class="block_title">My Brands</h2>
+            <h2 class="block_title"><?= langText('designer','my_brands') ?></h2>
             <div class="block_main">
                 <div class="brands_items">
                     <?php if($brandList){

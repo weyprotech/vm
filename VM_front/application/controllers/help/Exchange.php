@@ -10,6 +10,12 @@ class Exchange extends Frontend_Controller
 
     public function index()
     {
+        if($this->langFile == 'tw'){
+            $this->pageMeta['title'][] = '退款與換貨';
+        }else{
+            $this->pageMeta['title'][] = 'Refunds & Exchanges';
+        }
+        
         $exchange = $this->exchange_model->get_exchange_information($this->langId);
         $data = array(
             'exchange' => $exchange

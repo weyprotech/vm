@@ -2,7 +2,7 @@
     <?= $link ?>
     <div class="designer_brands_sort page_block">
         <div class="block_inner">
-            <h2 class="block_title">My Brands</h2>
+            <h2 class="block_title"><?= langText('designer','my_brands') ?></h2>
             <div class="block_main">
                 <div class="brands_sort">
                     <?php if($brandList){
@@ -26,7 +26,7 @@
     <?php if(!empty($brandId) && $category){ ?>
         <div class="designer_new_arrivals page_block">
             <div class="block_inner">
-                <h2 class="block_title">New Arrivals</h2>
+                <h2 class="block_title"><?= langText('designer','new_arrival') ?></h2>
                 <div class="block_main">
                     <div class="news_arrivals scrollbar_x">
                         <div class="news_arrivals_inner">
@@ -88,7 +88,7 @@
     <?php if(!empty($brandId) && $category){ ?>
         <div class="designer_products page_block">
             <div class="block_inner">
-                <h2 class="block_title">Products</h2>
+                <h2 class="block_title"><?= langText('designer','products') ?></h2>
                 <div class="block_main">
                     <div class="sort_menu">
                         <ul>
@@ -174,7 +174,7 @@
                             }
                         } ?>                                
                     </div>
-                    <a class="btn common more" href="javascript:;">More Products</a>
+                    <a class="btn common more" href="javascript:;"><?= langText('designer','more_product') ?></a>
                 </div>
             </div>
         </div>

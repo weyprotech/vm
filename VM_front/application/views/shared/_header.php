@@ -12,7 +12,7 @@
                 </form>
             </div>
             <a class="header_logo" href="<?= website_url('homepage') ?>">
-                <img class="retina" src="<?= base_url('assets/images/logo.gif') ?>">
+                <img class="retina" src="<?= base_url('assets/images/demo/logo.png') ?>">
             </a>
             <div class="user_options">
                 <div class="option_search">
@@ -60,7 +60,7 @@
                             <div class="cart_foot">
                                 <div class="total_calculation">
                                     <div class="label">Subtotal</div>
-                                    <div class="total_amount"><?= $money_type ?> $<?= $cart_total ?></div>
+                                    <div class="total_amount"><?= strtoupper($money_type) ?> $<?= $cart_total == 'undefined' ? 0 : $cart_total ?></div>
                                 </div>
                                 <a class="btn confirm" href="<?= website_url('order/index') ?>">CHECKOUT</a>                               
                             </div>

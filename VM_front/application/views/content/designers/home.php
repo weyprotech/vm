@@ -9,10 +9,10 @@
         </div>
         <div class="designer_about_intro">
             <!--<h2 class="block_title">About Designer</h2>-->
-            <div class="text">
+            <div class="text first_up">
                 <?php @$temp = explode('<br>', $row->description); ?>
                 <?= @$temp[0] ?>
-            </div><a class="btn common more" href="<?= website_url('designers/profile').'?designerId='.$row->designerId ?>">My Profile</a>
+            </div><a class="btn common more" href="<?= website_url('designers/profile').'?designerId='.$row->designerId ?>"><?= langText('designer','my_profile') ?></a>
         </div>
         </div>
     </div>
@@ -28,14 +28,14 @@
                 <?php }else{ ?>
                     <!-- ↓ 倒數期間使用 ↓-->
                     <div class="event_countdown">
-                        <h2 class="block_title">RUNWAY<br>NEW EVENT</h2>
+                        <h2 class="block_title"><?= langText('designer','runway') ?></h2>
                         <div class="countdown" data-date="<?= $runway->date ?>" data-time="<?= $runway->time ?>"></div>
                     </div>
                     <!-- ↑ 倒數期間使用 ↑-->
                 <?php } ?>
                 <div class="event_content">
                     <h3 class="event_title"><?= @$runway->title ?></h3>
-                    <div class="event_time"><i class="dot"></i>Collection on <?= $runway->date ?> <?= $runway->time ?></div>
+                    <div class="event_time"><i class="dot"></i><?= langText('designer','collection_on') ?><?= $runway->date ?> <?= $runway->time ?></div>
                     <div class="text"><?= $runway->content ?></div>
                     <?php if($runway->live != 1){ ?>
                         <!-- ↓ 直播影片的時候不放 ↓--><a class="thumb is_video popup" href="<?= website_url('designers/popup/event/'.$runway->runwayId) ?>">
@@ -75,7 +75,7 @@
     <?php if(!empty($postList)){ ?>
         <div class="designer_posts page_block" data-anchor="posts">
             <div class="block_inner">
-                <h2 class="block_title">My Post</h2>
+                <h2 class="block_title"><?= langText('designer','my_post') ?></h2>
                 <div class="block_main">
                     <?php foreach($postList as $postKey => $postValue){ ?>
                         <div class="post_block">
@@ -92,7 +92,7 @@
                                                 <img class="size" src="<?= base_url('assets/images/size_16x9.png') ?>">
                                             </div>                                    
                                             <?php if(count($postValue->imgList) > 1){ ?>
-                                                <div class="btn common">More +</div>
+                                                <div class="btn common"><?= langText('designer','more') ?> +</div>
                                             <?php } ?>
                                         </a>
                                     </div>
@@ -100,7 +100,7 @@
                             </div>
                             <div class="comments_block">
                                 <div class="comments_title"><i class="icon_msg"></i>
-                                    <h2><?= is_array($postValue->message) ? count($postValue->message) : 0 ?> comments</h2><i class="arrow_down"></i>
+                                    <h2><?= is_array($postValue->message) ? count($postValue->message) : 0 ?> <?= langText('designer','comments') ?></h2><i class="arrow_down"></i>
                                 </div>
                                 <div class="comments_content">
                                     <!-- <div class="comments_form">
@@ -119,13 +119,14 @@
                                             foreach ($postValue->message as $messageKey => $messageValue): ?>
                                                 <div class="item">
                                                     <div class="msg">
-                                                        <div class="profile_picture">
-                                                            
-                                                        <div class="pic" style="background-image: url(https://source.unsplash.com/JQDflNNnrEE/100x100);"><img class="size" src="images/size_1x1.png"></div>
+                                                        <div class="profile_picture">                                                            
+                                                            <div class="pic" style="background-image: url(https://source.unsplash.com/JQDflNNnrEE/100x100);">
+                                                                <img class="size" src="<?= base_url('assets/images/size_1x1.png') ?>">
+                                                            </div>
                                                         </div>
                                                         <div class="msg_content">
                                                         <div class="title">
-                                                            <div class="name">Lily Allen</div>
+                                                            <div class="name"><?= $messageValue->last_name.$messageValue->first_name ?></div>
                                                             <div class="divide_line"></div>
                                                             <div class="time"><?= $messageValue->create_at ?></div>
                                                         </div>
@@ -140,12 +141,12 @@
                                                                 </div>
                                                             </div>
                                                             <div class="msg_content">
-                                                            <div class="title">
-                                                                <div class="name">Reply</div>
-                                                                <div class="divide_line"></div>
-                                                                <div class="time"><?= $messageValue->update_at ?></div>
-                                                            </div>
-                                                            <div class="text"><?= $messageValue->response ?></div>
+                                                                <div class="title">
+                                                                    <div class="name"><?= langText('designer','reply') ?></div>
+                                                                    <div class="divide_line"></div>
+                                                                    <div class="time"><?= $messageValue->update_at ?></div>
+                                                                </div>
+                                                                <div class="text"><?= $messageValue->response ?></div>
                                                             </div>
                                                         </div>
                                                     <?php } ?>
@@ -153,7 +154,7 @@
                                             <?php endforeach;
                                         endif; ?>
                                     </div>
-                                    <a class="open_comments" href="javascript:;">See more comments</a>
+                                    <a class="open_comments" href="javascript:;"><?= langText('designer','see_more_comments') ?></a>
                                 </div>
                             </div>
                         </div>

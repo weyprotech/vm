@@ -9,6 +9,7 @@ class Designers extends Ajax_Controller
         $this->load->model('designer/tb_message_model','tb_message_model');
         $this->load->model('designer/tb_designer_like_model','tb_designer_like_model');
         $this->load->model('designer/tb_designer_post_message_model','tb_designer_post_message_model');
+        $this->load->model('designer/tb_wish_model', 'tb_wish_model');
     }
 
     /******************** just for you ********************/
@@ -37,6 +38,26 @@ class Designers extends Ajax_Controller
         echo json_encode(array('response' => $response));
     }
     /******************** End Message ************************/
+
+    /******************** Make a wish ************************/
+    public function set_make_a_wish()
+    {
+        header('Content-Type: application/json; charset=utf-8');
+        
+        $post = $this->input->post(null,true);
+        $this->tb_wish_model->insert_wish(
+            array(
+                'designerId' => $post['designerId'],
+                'memberId' => $this->session->userdata('memberinfo')['memberId'],
+                'title' => $post['title'],
+                'content' => $post['content']
+            )
+        );
+        $response = 'success';
+
+        echo json_encode(array('response' => $response));
+    }
+    /******************** End Make a wish *********************/
 
     public function set_like(){
         $designerId = $this->input->post('designerId',true);

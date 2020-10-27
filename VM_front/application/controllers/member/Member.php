@@ -15,9 +15,14 @@ class Member extends Frontend_Controller
         $this->load->model('coupon/tb_coupon_model','tb_coupon_model');
         $this->load->model('member/tb_member_point_record_model','tb_member_point_record_model');
         $this->load->model('member/tb_member_reward_record_model','tb_member_reward_record_model');
-        $this->load->model('member/tb_gift_designer_model','tb_gift_designer_model');
+        $this->load->model('designer/tb_gift_designer_model','tb_gift_designer_model');
         $this->load->model('member/tb_member_inspiration_model','tb_member_inspiration_model');
         $this->load->library('my_api');
+        if($this->langFile == 'tw'){
+            $this->pageMeta['title'][] = '會員';
+        }else{
+            $this->pageMeta['title'][] = 'Member';
+        }
     }
 
     public function index()
@@ -204,7 +209,7 @@ class Member extends Frontend_Controller
         $data = array(
             'designerId' => $designerId
         );
-        $this->load->view('content/member/popup_gift',$data);
+        $this->load->view('content/designers/popup_gift',$data);
     }
 
     //Style Inspiration
@@ -258,6 +263,16 @@ class Member extends Frontend_Controller
             'totalPage' => $totalPage
         );
         $this->get_view('member/upcoming_events',$data);
+    }
+
+    //Need Returns
+    public function popup_returns(){
+        if(!$this->session->userdata('memberinfo')['memberId']){
+            js_warn('請重新登入，謝謝!');
+            redirect(website_url());
+        }
+        $data = array();
+        $this->load->view('content/member/popup_returns',$data);
     }
 
     private function get_view($page, $data = array(), $script = "")

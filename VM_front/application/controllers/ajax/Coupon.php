@@ -14,7 +14,7 @@ class Coupon extends Ajax_Controller
         if($couponList = $this->tb_coupon_model->get_coupon_select(array(array('field' => 'coupon.code','value' => $coupon)))){
             $this->my_cart->update_coupon(array('couponId' => $couponList[0]->couponId,'money' => $couponList[0]->coupon_money));
 		    $all_total = $this->my_cart->all_total();
-            echo json_encode(array('status' => "success",'all_total' => $all_total,'coupon' => $couponList[0]->coupon_money));            
+            echo json_encode(array('status' => "success",'all_total' => $all_total,'coupon' => round(($couponList[0]->coupon_money)* $this->session->userdata('currency'))));
         }else{
             echo json_encode(array('status' => "error"));
         }

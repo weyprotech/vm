@@ -2,7 +2,7 @@
     <?= $link ?>
     <div class="designer_reviews page_block">
         <div class="block_inner">
-        <h2 class="block_title">Reviews<small>(232 Reviews)</small></h2>
+        <h2 class="block_title"><?= langText('designer','reviews') ?><small>(232 <?= langText('designer','reviews') ?>)</small></h2>
         <div class="block_main">
             <div class="reviews_wrapper has_thumb">
             <div class="item">
@@ -332,15 +332,15 @@
             </div>
             </div>
             <div class="pager_bar">
-            <div class="pages">Page 1 of 15</div>
+            <div class="pages"><?= langText('designer','page') ?> 1 <?= langText('designer','of') ?> 15</div>
             <ul class="pager_navigation">
-                <li class="prev"><a href="javascript:;">&lt; Previous</a></li>
+                <li class="prev"><a href="javascript:;">&lt; <?= langText('designer','previous') ?></a></li>
                 <li class="current"><a href="javascript:;">1</a></li>
                 <li><a href="javascript:;">2</a></li>
                 <li><a href="javascript:;">3</a></li>
                 <li><a href="javascript:;">4</a></li>
                 <li><a href="javascript:;">5</a></li>
-                <li class="next"><a href="javascript:;">Next &gt;</a></li>
+                <li class="next"><a href="javascript:;"><?= langText('designer','next') ?> &gt;</a></li>
             </ul>
             </div>
         </div>

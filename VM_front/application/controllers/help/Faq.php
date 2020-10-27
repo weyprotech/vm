@@ -11,6 +11,8 @@ class Faq extends Frontend_Controller
 
     public function index()
     {
+        $this->pageMeta['title'][] = 'FAQ';
+
         $faqList = $this->faq_model->get_faq_select(array(array('field' => 'faq.is_visible','value' => 1)),array(array('field'=>'faq.order','dir' => 'desc')),false,$this->langId);
         $data = array(
             'faqList' => $faqList

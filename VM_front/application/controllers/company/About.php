@@ -10,6 +10,11 @@ class About extends Frontend_Controller
 
     public function index()
     {
+        if($this->langFile == 'tw'){
+            $this->pageMeta['title'][] = '關於我們';
+        }else{
+            $this->pageMeta['title'][] = 'About';
+        }
         $company = $this->company_model->get_company_information($this->langId);
         $data = array(
             'company' => $company
